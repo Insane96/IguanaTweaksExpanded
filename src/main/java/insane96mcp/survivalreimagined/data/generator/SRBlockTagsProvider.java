@@ -3,7 +3,7 @@ package insane96mcp.survivalreimagined.data.generator;
 import insane96mcp.survivalreimagined.SurvivalReimagined;
 import insane96mcp.survivalreimagined.module.combat.fletching.Fletching;
 import insane96mcp.survivalreimagined.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.survivalreimagined.module.farming.HarderCrops;
+import insane96mcp.survivalreimagined.module.farming.HardCrops;
 import insane96mcp.survivalreimagined.module.farming.bonemeal.BoneMeal;
 import insane96mcp.survivalreimagined.module.items.crate.Crate;
 import insane96mcp.survivalreimagined.module.items.explosivebarrel.ExplosiveBarrel;
@@ -116,7 +116,7 @@ public class SRBlockTagsProvider extends BlockTagsProvider {
         tag(OBSIDIANS)
                 .add(Blocks.OBSIDIAN).add(Blocks.CRYING_OBSIDIAN);
 
-        tag(HarderCrops.HARDER_CROPS_TAG)
+        tag(HardCrops.HARDER_CROPS_TAG)
                 .add(Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.BEETROOTS);
 
         tag(HARDNESS_BLACKLIST)

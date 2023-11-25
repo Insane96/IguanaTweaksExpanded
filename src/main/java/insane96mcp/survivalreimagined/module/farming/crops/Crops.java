@@ -8,7 +8,6 @@ import insane96mcp.insanelib.base.config.LoadFeature;
 import insane96mcp.survivalreimagined.data.lootmodifier.DropMultiplierModifier;
 import insane96mcp.survivalreimagined.data.lootmodifier.ReplaceLootModifier;
 import insane96mcp.survivalreimagined.module.Modules;
-import insane96mcp.survivalreimagined.module.farming.plantsgrowth.PlantGrowthModifier;
 import insane96mcp.survivalreimagined.module.misc.DataPacks;
 import insane96mcp.survivalreimagined.setup.IntegratedDataPack;
 import insane96mcp.survivalreimagined.setup.SRRegistries;
@@ -35,9 +34,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.ArrayList;
-
-@Label(name = "Crops", description = "Slower Crops growing based off various factors and less yield from crops")
+@Label(name = "Crops", description = "Crops tweaks and less yield from crops")
 @LoadFeature(module = Modules.Ids.FARMING)
 public class Crops extends Feature {
 	@Config
@@ -63,8 +60,6 @@ public class Crops extends Feature {
 	public static final RegistryObject<WildCropBlock> WILD_CARROTS = SRRegistries.BLOCKS.register("wild_carrots", () -> new WildCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
 	public static final RegistryObject<WildCropBlock> WILD_POTATOES = SRRegistries.BLOCKS.register("wild_potatoes", () -> new WildCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
 	public static final RegistryObject<WildCropBlock> WILD_BEETROOTS = SRRegistries.BLOCKS.register("wild_beetroots", () -> new WildCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
-
-	public ArrayList<PlantGrowthModifier> plantGrowthModifiers = new ArrayList<>();
 
 	public Crops(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

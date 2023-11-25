@@ -141,7 +141,7 @@ public class ItemStats extends JsonFeature {
 			IdTagValue.newId("minecraft:netherite_leggings", 222),
 			IdTagValue.newId("minecraft:netherite_boots", 192),
 
-			IdTagValue.newId("shieldsplus:wooden_shield", 101),
+			IdTagValue.newId("shieldsplus:wooden_shield", 127),
 			IdTagValue.newId("shieldsplus:stone_shield", 84),
 			IdTagValue.newId("survivalreimagined:flint_shield", 58),
 			IdTagValue.newId("survivalreimagined:copper_shield", 42),

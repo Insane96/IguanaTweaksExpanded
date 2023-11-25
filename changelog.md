@@ -1,5 +1,7 @@
 # Changelog
 
+* Falling breaking glass should work with any block
+
 ## 0.17.1
 * Increased Wooden tools durability
 * Slightly increased wild crops amount
