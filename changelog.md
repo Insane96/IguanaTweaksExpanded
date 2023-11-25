@@ -10,6 +10,7 @@
 * Loot changes
   * Small slimes now always drop 1 slimeball
   * Magma cubes now drop more creams (~~0.25~~ -> 0.5)
+* `survivalreimagined:fall_on_break` block tag can now be used to add more blocks that break when you fall on them
 
 ## 0.17.0
 * Removed the hunger bar ... again

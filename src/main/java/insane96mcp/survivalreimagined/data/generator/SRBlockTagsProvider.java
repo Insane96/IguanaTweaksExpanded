@@ -15,6 +15,7 @@ import insane96mcp.survivalreimagined.module.mining.keego.Keego;
 import insane96mcp.survivalreimagined.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.survivalreimagined.module.mining.multiblockfurnaces.block.MultiBlockBlastFurnaceBlock;
 import insane96mcp.survivalreimagined.module.mining.multiblockfurnaces.block.MultiBlockSoulBlastFurnaceBlock;
+import insane96mcp.survivalreimagined.module.misc.Tweaks;
 import insane96mcp.survivalreimagined.module.misc.beaconconduit.BeaconConduit;
 import insane96mcp.survivalreimagined.module.movement.minecarts.Minecarts;
 import insane96mcp.survivalreimagined.module.sleeprespawn.death.Death;
@@ -28,6 +29,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -150,6 +152,10 @@ public class SRBlockTagsProvider extends BlockTagsProvider {
         tag(COPPER_ORES).add(Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, OreGeneration.POOR_RICH_COPPER_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get());
         tag(IRON_ORES).add(Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, OreGeneration.POOR_RICH_IRON_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().block().get());
         tag(GOLD_ORES).add(Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, OreGeneration.POOR_RICH_GOLD_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get());
+
+        //noinspection unchecked
+        tag(Tweaks.FALL_ON_BREAK)
+                .addTags(Tags.Blocks.GLASS, BlockTags.LEAVES);
     }
 
     public static TagKey<Block> create(String tagName) {
