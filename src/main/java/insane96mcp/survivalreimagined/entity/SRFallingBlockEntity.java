@@ -35,6 +35,7 @@ import java.util.List;
 public class SRFallingBlockEntity extends FallingBlockEntity {
 	public Entity source;
 	public Direction directionFalling;
+	public Direction movedFrom;
 
 	public SRFallingBlockEntity(Level level, BlockPos pos, BlockState fallingBlockState, Direction directionFalling) {
 		this(level, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z, fallingBlockState);
@@ -143,6 +144,8 @@ public class SRFallingBlockEntity extends FallingBlockEntity {
 				dir = Arrays.stream(Direction.values()).filter((direction) -> direction.getAxis().isHorizontal()).skip(this.random.nextInt(4)).findFirst().get();
 			//blockPos.set(pos.relative(dir));
 			this.directionFalling = dir;
+			//TODO prevent moving back from where it came
+			this.movedFrom = dir.getOpposite();
 			this.setPos(this.position().relative(dir, 1d).relative(Direction.UP, 2));
 		}
 	}

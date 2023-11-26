@@ -1,7 +1,5 @@
 # Changelog
 
-* Timber acacia
-
 ## 0.17.1
 * Shields
   * Shields+ 1.8.0!
@@ -17,6 +15,7 @@
   * Magma cubes now drop more creams (~~0.25~~ -> 0.5)
 * `survivalreimagined:fall_on_break` block tag can now be used to add more blocks that break when you fall on them
 * Keego shield blocking now applies attack momentum which decreases the cooldown
+* Fixed not straight trees not falling if there was no block above (acacia basically)
 
 ## 0.17.0
 * Removed the hunger bar ... again
