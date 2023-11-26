@@ -1,10 +1,13 @@
 # Changelog
 
+* Timber acacia
+
 ## 0.17.1
 * Shields
   * Shields+ 1.8.0!
   * Now can be lifted only for a certain time
   * Rebalanced blocked damage
+* Now compatible with Enhanced AI 2.x
 * Increased Wooden tools durability
 * Slightly increased wild crops amount
 * Reduced stamina consumed when swimming (and made it configurable)

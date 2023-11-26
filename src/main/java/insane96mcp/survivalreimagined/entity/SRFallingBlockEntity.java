@@ -226,4 +226,38 @@ public class SRFallingBlockEntity extends FallingBlockEntity {
 		}
 		return null;
 	}
+
+	/*@Override
+	public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
+		if (!this.hurtEntities)
+			return false;
+		int i = Mth.ceil(pFallDistance - 1.0F);
+		if (i < 0)
+			return false;
+
+		Predicate<Entity> predicate = EntitySelector.NO_CREATIVE_OR_SPECTATOR.and(EntitySelector.LIVING_ENTITY_STILL_ALIVE);
+		Block block = this.blockState.getBlock();
+		DamageSource damagesource1;
+		if (block instanceof Fallable fallable)
+			damagesource1 = fallable.getFallDamageSource(this);
+		else
+			damagesource1 = this.damageSources().fallingBlock(this);
+
+		DamageSource damagesource = damagesource1;
+		float f = (float)Math.min(Mth.floor((float)i * this.fallDamagePerDistance), this.fallDamageMax);
+		this.level().getEntities(this, this.getBoundingBox(), predicate).forEach((p_149649_) -> {
+			p_149649_.hurt(damagesource, f);
+		});
+		boolean flag = this.blockState.is(BlockTags.ANVIL);
+		if (flag && f > 0.0F && this.random.nextFloat() < 0.05F + (float)i * 0.05F) {
+			BlockState blockstate = AnvilBlock.damage(this.blockState);
+			if (blockstate == null) {
+				this.cancelDrop = true;
+			} else {
+				this.blockState = blockstate;
+			}
+		}
+
+		return false;
+	}*/
 }

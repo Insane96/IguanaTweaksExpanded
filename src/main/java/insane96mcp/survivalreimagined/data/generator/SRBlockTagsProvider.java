@@ -21,6 +21,7 @@ import insane96mcp.survivalreimagined.module.movement.minecarts.Minecarts;
 import insane96mcp.survivalreimagined.module.sleeprespawn.death.Death;
 import insane96mcp.survivalreimagined.module.world.coalfire.CoalFire;
 import insane96mcp.survivalreimagined.module.world.oregeneration.OreGeneration;
+import insane96mcp.survivalreimagined.module.world.timber.TimberTrees;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -156,6 +157,9 @@ public class SRBlockTagsProvider extends BlockTagsProvider {
         //noinspection unchecked
         tag(Tweaks.FALL_ON_BREAK)
                 .addTags(Tags.Blocks.GLASS, BlockTags.LEAVES);
+
+        tag(TimberTrees.TIMBER_TRUNKS)
+                .addTag(BlockTags.OVERWORLD_NATURAL_LOGS);
     }
 
     public static TagKey<Block> create(String tagName) {
