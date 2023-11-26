@@ -1,8 +1,10 @@
 # Changelog
 
-* Falling breaking glass should work with any block
-
 ## 0.17.1
+* Shields
+  * Shields+ 1.8.0!
+  * Now can be lifted only for a certain time
+  * Rebalanced blocked damage
 * Increased Wooden tools durability
 * Slightly increased wild crops amount
 * Reduced stamina consumed when swimming (and made it configurable)
@@ -11,6 +13,7 @@
   * Small slimes now always drop 1 slimeball
   * Magma cubes now drop more creams (~~0.25~~ -> 0.5)
 * `survivalreimagined:fall_on_break` block tag can now be used to add more blocks that break when you fall on them
+* Keego shield blocking now applies attack momentum which decreases the cooldown
 
 ## 0.17.0
 * Removed the hunger bar ... again
