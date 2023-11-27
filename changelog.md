@@ -1,6 +1,7 @@
 # Changelog
 
 * Hammer durabilities (make a tag)
+* Enhanced AI Bonus speed
 
 ## 0.17.1
 * Shields
