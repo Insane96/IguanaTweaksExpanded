@@ -14,7 +14,6 @@ import insane96mcp.survivalreimagined.module.items.itemstats.ItemStats;
 import insane96mcp.survivalreimagined.module.items.solarium.Solarium;
 import insane96mcp.survivalreimagined.module.mining.Durium;
 import insane96mcp.survivalreimagined.module.mining.SoulSteel;
-import insane96mcp.survivalreimagined.module.mining.forging.Forging;
 import insane96mcp.survivalreimagined.module.mining.keego.Keego;
 import insane96mcp.survivalreimagined.module.sleeprespawn.tiredness.Tiredness;
 import insane96mcp.survivalreimagined.module.world.coalfire.CoalFire;
@@ -78,8 +77,7 @@ public class SRItemTagsProvider extends ItemTagsProvider {
         tag(ItemStats.NOT_UNBREAKABLE)
                 .addTags(WOODEN_HAND_EQUIPMENT, STONE_HAND_EQUIPMENT, FLINT_HAND_EQUIPMENT, COPPER_HAND_EQUIPMENT, CHAINED_COPPER_ARMOR)
                 .add(CopperToolsExpansion.COPPER_SHIELD.get(), SPItems.WOODEN_SHIELD.get(), SPItems.STONE_SHIELD.get(), FlintExpansion.SHIELD.get())
-                .add(CoalFire.FIRESTARTER.get())
-                .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get());
+                .add(CoalFire.FIRESTARTER.get());
         tag(Knockback.REDUCED_KNOCKBACK);
 
         tag(Spawners.SPAWNER_REACTIVATOR_TAG)

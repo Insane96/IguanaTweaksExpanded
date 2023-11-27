@@ -44,7 +44,8 @@ public class EnhancedAI extends Feature {
         Module.getFeature(SkeletonShoot.class).readConfig(event);
 
         //Controlled via MPR
-        Module.getFeature(Movement.class).setConfigOption("Swim Speed Multiplier", 0d);
+        Module.getFeature(Movement.class).setConfigOption("Bonus movement speed", 0d);
+        Module.getFeature(Movement.class).setConfigOption("Swim Speed Addition Multiplier", 0d);
         Module.getFeature(Movement.class).readConfig(event);
 
         Module.getFeature(ThirstyWitches.class).setConfigOption("Strong healing Threshold", 0.25d);

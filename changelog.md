@@ -1,14 +1,13 @@
 # Changelog
 
-* Hammer durabilities (make a tag)
-* Enhanced AI Bonus speed
-
 ## 0.17.1
 * Shields
   * Shields+ 1.8.0!
   * Now can be lifted only for a certain time
   * Rebalanced blocked damage
 * Now compatible with Enhanced AI 2.x
+* Hammers can now be used as weapons again
+  * 10 base damage, 0.4 base attack speed and -0.75 attack reach
 * Increased Wooden tools durability
 * Slightly increased wild crops amount
 * Reduced stamina consumed when swimming (and made it configurable)
@@ -31,7 +30,7 @@
   * Pickaxes now all have 3 base attack damage
   * Shovels now all have 4.5 base attack damage
   * Base Attack Damage and Attack Speeds can now be set from Item stats
-* Rebalanced shield durabilities and blocked damages
+* Rebalanced shields durability and blocked damages
 * Hoes can now be used as weapon
   * With a really high attack speed and low knockback and damage, it's like a dagger
 * Halved max stamina

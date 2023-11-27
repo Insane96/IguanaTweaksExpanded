@@ -88,6 +88,7 @@ public class Stats extends JsonFeature {
 
 			//Reach changes
 			new ItemAttributeModifier(IdTagMatcher.newTag("minecraft:swords"), UUID.fromString("de87cf5d-0f15-4b4e-88c5-9b3c971146d0"), EquipmentSlot.MAINHAND, ForgeMod.ENTITY_REACH, 0.5d, AttributeModifier.Operation.ADDITION),
+			new ItemAttributeModifier(IdTagMatcher.newTag("minecraft:hoes"), UUID.fromString("de87cf5d-0f15-4b4e-88c5-9b3c971146d0"), EquipmentSlot.MAINHAND, ForgeMod.ENTITY_REACH, 0.5d, AttributeModifier.Operation.ADDITION),
 			new ItemAttributeModifier(IdTagMatcher.newId("minecraft:trident"), UUID.fromString("de87cf5d-0f15-4b4e-88c5-9b3c971146d0"), EquipmentSlot.MAINHAND, ForgeMod.ENTITY_REACH, 1d, AttributeModifier.Operation.ADDITION),
 
 			//Various type specific weapons changes
@@ -328,7 +329,7 @@ public class Stats extends JsonFeature {
 								if (attribute.equals(Attributes.KNOCKBACK_RESISTANCE))
 									component = Component.translatable(translationString + operation.toValue(), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount * 100) + "%", Component.translatable(attribute.getDescriptionId()));
 								else
-									component = Component.translatable(translationString + operation.toValue(), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(amount < 0 ? 0 : amount), Component.translatable(attribute.getDescriptionId()));
+									component = Component.translatable(translationString + operation.toValue(), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(amount)), Component.translatable(attribute.getDescriptionId()));
 							}
 							case MULTIPLY_BASE -> {
 								component = Component.translatable(translationString + operation.toValue(), ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(Math.abs(amount) * 100), Component.translatable(attribute.getDescriptionId()));
