@@ -38,7 +38,6 @@
         "PotionItemMixin",
         "ProtectionEnchantmentMixin",
         "PumpkinBlockMixin",
-        "SpiderAttackGoalMixin",
         "SpiderMixin",
         "SpringFeatureMixin",
         "ThornsEnchantmentMixin",

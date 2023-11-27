@@ -26,3 +26,176 @@ run_server
 forge*changelog.txt
 
 .vs
+/run-data/config/fml.toml
+/run-data/config/kiwi-client.yaml
+/run-data/config/moonlight-client.toml
+/run-data/config/passablefoliage-common.yaml
+/run-data/logs/2023-09-12-1.log.gz
+/run-data/logs/2023-09-13-1.log.gz
+/run-data/logs/2023-09-13-2.log.gz
+/run-data/logs/2023-09-16-1.log.gz
+/run-data/logs/2023-09-16-2.log.gz
+/run-data/logs/2023-09-17-1.log.gz
+/run-data/logs/2023-09-17-2.log.gz
+/run-data/logs/2023-09-17-3.log.gz
+/run-data/logs/2023-09-17-4.log.gz
+/run-data/logs/2023-09-18-1.log.gz
+/run-data/logs/2023-09-18-2.log.gz
+/run-data/logs/2023-09-18-3.log.gz
+/run-data/logs/2023-09-18-4.log.gz
+/run-data/logs/2023-09-18-5.log.gz
+/run-data/logs/2023-09-18-6.log.gz
+/run-data/logs/2023-09-20-1.log.gz
+/run-data/logs/2023-09-20-2.log.gz
+/run-data/logs/2023-09-20-3.log.gz
+/run-data/logs/2023-09-21-1.log.gz
+/run-data/logs/2023-09-22-1.log.gz
+/run-data/logs/2023-09-22-2.log.gz
+/run-data/logs/2023-09-22-3.log.gz
+/run-data/logs/2023-09-24-1.log.gz
+/run-data/logs/2023-09-24-2.log.gz
+/run-data/logs/2023-09-28-1.log.gz
+/run-data/logs/2023-09-28-2.log.gz
+/run-data/logs/2023-09-28-3.log.gz
+/run-data/logs/2023-09-29-1.log.gz
+/run-data/logs/2023-09-30-1.log.gz
+/run-data/logs/2023-09-30-2.log.gz
+/run-data/logs/2023-09-30-3.log.gz
+/run-data/logs/2023-11-19-1.log.gz
+/run-data/logs/2023-11-25-1.log.gz
+/run-data/logs/2023-11-25-2.log.gz
+/run-data/logs/debug.log
+/run-data/logs/debug-1.log.gz
+/run-data/logs/debug-2.log.gz
+/run-data/logs/debug-3.log.gz
+/run-data/logs/debug-4.log.gz
+/run-data/logs/debug-5.log.gz
+/run-data/logs/latest.log
+/run-server/config/sereneseasons/fertility.toml
+/run-server/config/sereneseasons/seasons.toml
+/run-server/config/survivalreimagined/Combat/Stats/item_modifiers.json
+/run-server/config/survivalreimagined/Experience/Enchantments/disabled_enchantments.json
+/run-server/config/survivalreimagined/Experience/Experience from Blocks/blocks_experience.json
+/run-server/config/survivalreimagined/Farming/Bone meal/fail_chances.json
+/run-server/config/survivalreimagined/Farming/Harder Crops/crops_hardness.json
+/run-server/config/survivalreimagined/Farming/Hoes/hoes_stats.json
+/run-server/config/survivalreimagined/Farming/Livestock/breeding_cooldown_multiplier.json
+/run-server/config/survivalreimagined/Farming/Livestock/breeding_fail_chance.json
+/run-server/config/survivalreimagined/Farming/Livestock/cow_milk_cooldown.json
+/run-server/config/survivalreimagined/Farming/Livestock/egg_lay_cooldown_multiplier.json
+/run-server/config/survivalreimagined/Farming/Livestock/growth_slowdown_multiplier.json
+/run-server/config/survivalreimagined/Farming/Livestock/sheep_wool_regrowth_chance.json
+/run-server/config/survivalreimagined/Farming/Plants Growth/plants_growth_modifiers.json
+/run-server/config/survivalreimagined/Hunger & Health/Foods & Drinks/food_properties.json
+/run-server/config/survivalreimagined/Items/Item Stats/item_durabilities.json
+/run-server/config/survivalreimagined/Items/Item Stats/tool_efficiencies.json
+/run-server/config/survivalreimagined/Items/Stack Sizes/custom_stack_sizes.json
+/run-server/config/survivalreimagined/Mining/Block Hardness/custom_hardnesses.json
+/run-server/config/survivalreimagined/Mining/Block Hardness/depth_multipliers.json
+/run-server/config/survivalreimagined/Mining/Block Hardness/dimension_hardness.json
+/run-server/config/survivalreimagined/Miscellaneous/Beacon & Conduit/beacon_blocks_ranges.json
+/run-server/config/survivalreimagined/Miscellaneous/DeBuffs/debuffs.json
+/run-server/config/survivalreimagined/Mobs/Equipment/custom_drop_chances.json
+/run-server/config/survivalreimagined/Movement/Terrain Slowdown/custom_in_terrain_slowdown.json
+/run-server/config/survivalreimagined/Movement/Terrain Slowdown/custom_terrain_slowdown.json
+/run-server/config/survivalreimagined/Movement/Weighted Equipment/enchantments_weights.json
+/run-server/config/survivalreimagined/Movement/Weighted Equipment/materials_weights.json
+/run-server/config/survivalreimagined/Sleep & Respawn/Respawn/respawn_obelisk_catalysts.json
+/run-server/config/survivalreimagined/Sleep & Respawn/Sleeping Effects/effects_on_wake_up.json
+/run-server/config/survivalreimagined/Sleep & Respawn/Tiredness/energy_boost_items.json
+/run-server/config/survivalreimagined/World/Wandering Trader/buying_trades.json
+/run-server/config/survivalreimagined/World/Wandering Trader/generic_trades.json
+/run-server/config/survivalreimagined/World/Wandering Trader/rare_trades.json
+/run-server/config/survivalreimagined/common.toml
+/run-server/config/dummmmmmy-common.toml
+/run-server/config/easymagic-server.toml
+/run-server/config/enhancedai-common.toml
+/run-server/config/fml.toml
+/run-server/config/insanelib-common.toml
+/run-server/config/mobspropertiesrandomness-common.toml
+/run-server/config/passablefoliage-common.yaml
+/run-server/config/pehkui-common.toml
+/run-server/config/shieldsplus-common.toml
+/run-server/config/toolbelt-common.toml
+/run-server/crash-reports/crash-2023-09-12_12.08.22-server.txt
+/run-server/logs/2023-09-01-1.log.gz
+/run-server/logs/2023-09-01-2.log.gz
+/run-server/logs/2023-09-01-3.log.gz
+/run-server/logs/2023-09-01-4.log.gz
+/run-server/logs/2023-09-02-1.log.gz
+/run-server/logs/2023-09-12-1.log.gz
+/run-server/logs/2023-09-12-2.log.gz
+/run-server/logs/2023-09-12-3.log.gz
+/run-server/logs/2023-09-12-4.log.gz
+/run-server/logs/2023-09-12-5.log.gz
+/run-server/logs/2023-09-12-6.log.gz
+/run-server/logs/2023-09-12-7.log.gz
+/run-server/logs/debug.log
+/run-server/logs/debug-1.log.gz
+/run-server/logs/debug-2.log.gz
+/run-server/logs/debug-3.log.gz
+/run-server/logs/debug-4.log.gz
+/run-server/logs/debug-5.log.gz
+/run-server/logs/latest.log
+/run-server/logs/MobsPropertiesRandomness.log
+/run-server/world/advancements/380df991-f603-344c-a090-369bad2a924a.json
+/run-server/world/data/capabilities.dat
+/run-server/world/data/raids.dat
+/run-server/world/data/random_sequences.dat
+/run-server/world/data/seasons.dat
+/run-server/world/DIM1/data/capabilities.dat
+/run-server/world/DIM1/data/raids_end.dat
+/run-server/world/DIM1/data/seasons.dat
+/run-server/world/DIM-1/data/capabilities.dat
+/run-server/world/DIM-1/data/raids.dat
+/run-server/world/DIM-1/data/seasons.dat
+/run-server/world/entities/r.0.0.mca
+/run-server/world/entities/r.0.1.mca
+/run-server/world/entities/r.0.-1.mca
+/run-server/world/entities/r.1.0.mca
+/run-server/world/entities/r.1.1.mca
+/run-server/world/entities/r.-1.0.mca
+/run-server/world/entities/r.-1.-1.mca
+/run-server/world/playerdata/380df991-f603-344c-a090-369bad2a924a.dat
+/run-server/world/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old
+/run-server/world/poi/r.0.0.mca
+/run-server/world/poi/r.0.1.mca
+/run-server/world/poi/r.0.-1.mca
+/run-server/world/poi/r.1.0.mca
+/run-server/world/poi/r.1.1.mca
+/run-server/world/poi/r.1.-1.mca
+/run-server/world/poi/r.-1.0.mca
+/run-server/world/poi/r.-1.1.mca
+/run-server/world/poi/r.-1.-1.mca
+/run-server/world/poi/r.-2.0.mca
+/run-server/world/poi/r.-2.-1.mca
+/run-server/world/region/r.0.0.mca
+/run-server/world/region/r.0.1.mca
+/run-server/world/region/r.0.-1.mca
+/run-server/world/region/r.1.0.mca
+/run-server/world/region/r.1.1.mca
+/run-server/world/region/r.1.-1.mca
+/run-server/world/region/r.2.0.mca
+/run-server/world/region/r.2.1.mca
+/run-server/world/region/r.2.-1.mca
+/run-server/world/region/r.-1.0.mca
+/run-server/world/region/r.-1.1.mca
+/run-server/world/region/r.-1.-1.mca
+/run-server/world/region/r.-2.0.mca
+/run-server/world/region/r.-2.-1.mca
+/run-server/world/serverconfig/forge-server.toml
+/run-server/world/serverconfig/pehkui-server.toml
+/run-server/world/serverconfig/sereneseasons-server.toml
+/run-server/world/serverconfig/toolbelt-server.toml
+/run-server/world/stats/380df991-f603-344c-a090-369bad2a924a.json
+/run-server/world/level.dat
+/run-server/world/level.dat_old
+/run-server/world/session.lock
+/run-server/banned-ips.json
+/run-server/banned-players.json
+/run-server/eula.txt
+/run-server/ops.json
+/run-server/server.properties
+/run-server/usercache.json
+/run-server/usernamecache.json
+/run-server/whitelist.json

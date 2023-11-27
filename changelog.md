@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.12.7
+* Removed spider attack range fix as has been fixed in Enhanced AI
+* Fixed version requirement for Serene Season
+
 ## 0.12.6
 * Version bump so CF can accept the file for the new SR page
 
