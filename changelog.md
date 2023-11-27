@@ -1,5 +1,7 @@
 # Changelog
 
+* Hammer durabilities (make a tag)
+
 ## 0.17.1
 * Shields
   * Shields+ 1.8.0!
