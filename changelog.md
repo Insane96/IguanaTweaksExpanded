@@ -1,5 +1,11 @@
 # Changelog
 
+* Change potato seeds to rooted potato
+* Weakness like strength
+
+## 0.17.2
+* Mining charge crafting recipe now outputs two
+
 ## 0.17.1
 * Shields
   * Shields+ 1.8.0!
