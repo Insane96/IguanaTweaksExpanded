@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.17.2
+## Upcoming
 * Mining charge 
-  * crafting recipe now outputs two
-  * explosion is 3x3
+  * Crafting recipe now outputs 2
+  * Explosion is now 3x3
 * Weakness now works like combat test strength, reduces attack damage by 20%
 * Potato Seeds > Rooted Potato
 * `survivalreimagined:no_fertility_tooltip` prevents items from displaying the fertility tooltip
