@@ -7,6 +7,8 @@
 * Mining charge 
   * crafting recipe now outputs two
   * explosion is 3x3
+* Weakness now works like combat test strength, reduces attack damage by 20%
+* Experimental music now plays more often 
 
 ## 0.17.1
 * Shields

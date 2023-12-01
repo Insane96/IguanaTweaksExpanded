@@ -202,6 +202,9 @@ public class Stats extends JsonFeature {
 	@Config
 	@Label(name = "Combat Test Strength", description = "Changes Strength effect from +3 damage per level to +20% damage per level. (Requires a Minecraft restart)")
 	public static Boolean combatTestStrength = true;
+	@Config
+	@Label(name = "Better weakness", description = "Changes Weakness like Strength effect from -3 damage per level to -20% damage per level. (Requires a Minecraft restart)")
+	public static Boolean betterWeakness = true;
 	@Config(min = 0d, max = 10d)
 	@Label(name = "Bow's Arrows Base Damage", description = "Set arrow's base damage if shot from bow.")
 	public static Double bowsArrowsBaseDamage = 1.5d;
@@ -224,6 +227,10 @@ public class Stats extends JsonFeature {
 			MobEffects.DAMAGE_BOOST.attributeModifiers.remove(Attributes.ATTACK_DAMAGE);
 			MobEffects.DAMAGE_BOOST.addAttributeModifier(Attributes.ATTACK_DAMAGE, "648D7064-6A60-4F59-8ABE-C2C23A6DD7A9", 0.0D, AttributeModifier.Operation.MULTIPLY_BASE);
 			((AttackDamageMobEffect)MobEffects.DAMAGE_BOOST).multiplier = 0.2d;
+
+			MobEffects.WEAKNESS.attributeModifiers.remove(Attributes.ATTACK_DAMAGE);
+			MobEffects.WEAKNESS.addAttributeModifier(Attributes.ATTACK_DAMAGE, "22653B89-116E-49DC-9B6B-9971489B5BE5", 0.0D, AttributeModifier.Operation.MULTIPLY_BASE);
+			((AttackDamageMobEffect)MobEffects.WEAKNESS).multiplier = -0.2d;
 		}
 	}
 
