@@ -4,7 +4,9 @@
 * Weakness like strength
 
 ## 0.17.2
-* Mining charge crafting recipe now outputs two
+* Mining charge 
+  * crafting recipe now outputs two
+  * explosion is 3x3
 
 ## 0.17.1
 * Shields
