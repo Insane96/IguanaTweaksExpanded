@@ -43,7 +43,7 @@
 	"survivalreimagined:farming_module": "Farming",
 
 	"survivalreimagined.weak_hoe": "This hoe is too weak to till soil",
-	"survivalreimagined.till_cooldown": "%.1f Till Cooldown",
+	"survivalreimagined.till_cooldown": "%.1fs Till Cooldown",
 	"survivalreimagined.scythe_radius": "%d Scythe radius",
 
 	"survivalreimagined.milk_cooldown": "This %s's fluid is not yet ready",
@@ -51,7 +51,7 @@
 	"block.survivalreimagined.rich_farmland": "Rich Farmland",
 
 	"block.minecraft.carrots.seeds": "Carrot Seeds",
-	"block.minecraft.potatoes.seeds": "Potato Seeds",
+	"block.minecraft.potatoes.seeds": "Rooted Potato",
 
 	"survivalreimagined:hunger_health_module": "Hunger & Health",
 	"survivalreimagined.tooltip.health": "Health",

@@ -1,13 +1,12 @@
 # Changelog
 
-* Change potato seeds to rooted potato
-* Weakness like strength
-
 ## 0.17.2
 * Mining charge 
   * crafting recipe now outputs two
   * explosion is 3x3
 * Weakness now works like combat test strength, reduces attack damage by 20%
+* Potato Seeds > Rooted Potato
+* `survivalreimagined:no_fertility_tooltip` prevents items from displaying the fertility tooltip
 * Experimental music now plays more often 
 
 ## 0.17.1

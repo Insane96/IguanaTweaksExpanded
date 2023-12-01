@@ -5,6 +5,7 @@ import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.base.config.LoadFeature;
+import insane96mcp.survivalreimagined.SurvivalReimagined;
 import insane96mcp.survivalreimagined.data.lootmodifier.DropMultiplierModifier;
 import insane96mcp.survivalreimagined.data.lootmodifier.ReplaceLootModifier;
 import insane96mcp.survivalreimagined.module.Modules;
@@ -32,6 +33,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.MissingMappingsEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 @Label(name = "Crops", description = "Crops tweaks and less yield from crops")
@@ -54,7 +57,7 @@ public class Crops extends Feature {
 	@Label(name = "No Seed renew datapack", description = "Enables a datapack that makes crops only drop one seed.")
 	public static Boolean noSeedRenewDatapack = true;
 
-	public static final RegistryObject<BlockItem> POTATO_SEEDS = SRRegistries.ITEMS.register("potato_seeds", () -> new SeedsBlockItem(Blocks.POTATOES, new Item.Properties()));
+	public static final RegistryObject<BlockItem> ROOTED_POTATO = SRRegistries.ITEMS.register("rooted_potato", () -> new SeedsBlockItem(Blocks.POTATOES, new Item.Properties()));
 	public static final RegistryObject<BlockItem> CARROT_SEEDS = SRRegistries.ITEMS.register("carrot_seeds", () -> new SeedsBlockItem(Blocks.CARROTS, new Item.Properties()));
 	public static final RegistryObject<WildCropBlock> WILD_WHEAT = SRRegistries.BLOCKS.register("wild_wheat", () -> new WildCropBlock(BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
 	public static final RegistryObject<WildCropBlock> WILD_CARROTS = SRRegistries.BLOCKS.register("wild_carrots", () -> new WildCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).noCollission().randomTicks().instabreak().sound(SoundType.CROP)));
@@ -169,5 +172,17 @@ public class Crops extends Feature {
 		provider.add(path + "no_seeds_from_tall_grass", new DropMultiplierModifier.Builder(Blocks.TALL_GRASS, Items.WHEAT_SEEDS, 0f).build());
 		provider.add(path + "no_seeds_from_fern", new DropMultiplierModifier.Builder(Blocks.FERN, Items.WHEAT_SEEDS, 0f).build());
 		provider.add(path + "no_seeds_from_large_fern", new DropMultiplierModifier.Builder(Blocks.LARGE_FERN, Items.WHEAT_SEEDS, 0f).build());
+	}
+
+
+	@SubscribeEvent
+	public void missingMappings(MissingMappingsEvent event) {
+		if (event.getMappings(ForgeRegistries.Keys.ITEMS, SurvivalReimagined.MOD_ID).isEmpty())
+			return;
+
+		event.getMappings(ForgeRegistries.Keys.ITEMS, SurvivalReimagined.MOD_ID).forEach(blockMapping -> {
+            if (blockMapping.getKey().toString().equals("survivalreimagined:potato_seeds"))
+                blockMapping.remap(ROOTED_POTATO.get());
+		});
 	}
 }
