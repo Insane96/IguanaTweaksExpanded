@@ -186,8 +186,6 @@ public class Stamina extends Feature {
 
     @OnlyIn(Dist.CLIENT)
     public static void renderStamina(ForgeGui gui, GuiGraphics guiGraphics, float partialTicks, int screenWidth, int screenHeight) {
-        int healthIconsOffset = 49;
-
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         assert player != null;
@@ -195,7 +193,7 @@ public class Stamina extends Feature {
         //random.setSeed(gui.getGuiTicks() * 312871L);
 
         int right = mc.getWindow().getGuiScaledWidth() / 2 - 91;
-        int top = mc.getWindow().getGuiScaledHeight() - healthIconsOffset + 9;
+        int top = (mc.getWindow().getGuiScaledHeight() - (gui.leftHeight - 10)) + 9;
         int halfHeartsMaxStamina = Mth.ceil((float) StaminaHandler.getMaxStamina(player) / staminaPerHalfHeart);
         int halfHeartsStamina = Mth.ceil((float) StaminaHandler.getStamina(player) / staminaPerHalfHeart);
         float healthMax = player.getMaxHealth();
