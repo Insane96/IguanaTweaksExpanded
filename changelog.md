@@ -1,8 +1,6 @@
 # Changelog
 
-* 
-
-## Upcoming
+## 0.17.2
 * Mining charge 
   * Crafting recipe now outputs 2
   * Explosion is now 3x3
@@ -11,6 +9,7 @@
 * `survivalreimagined:no_fertility_tooltip` prevents items from displaying the fertility tooltip
 * Experimental music now plays more often 
 * Fixed stamina not following health if the bar was moved (e.g. XP bar was removed)
+* Hopefully fixed item modifiers
 
 ## 0.17.1
 * Shields
