@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed iron shields no repairable
+
 ## 0.17.2
 * Mining charge 
   * Crafting recipe now outputs 2
