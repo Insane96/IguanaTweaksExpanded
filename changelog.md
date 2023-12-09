@@ -1,7 +1,8 @@
 # Changelog
 
 ## Upcoming
-* Fixed iron shields no repairable
+* Reduced stamina consumed when swimming
+* Fixed iron shields not repairable
 
 ## 0.17.2
 * Mining charge 

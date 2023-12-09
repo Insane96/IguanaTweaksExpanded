@@ -53,7 +53,7 @@ public class Stamina extends Feature {
 
     @Config(min = 0)
     @Label(name = "Stamina consumed on swimming", description = "How much stamina the player consumes each tick when swimming")
-    public static Double staminaConsumedOnSwimming = 0.6d;
+    public static Double staminaConsumedOnSwimming = 0.5d;
 
     @Config(min = 0, max = 1d)
     @Label(name = "Unlock Stamina at health ratio", description = "At which health percentage will stamina be unlocked")
