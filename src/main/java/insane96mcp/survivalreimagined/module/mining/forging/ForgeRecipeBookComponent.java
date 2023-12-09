@@ -76,6 +76,8 @@ public class ForgeRecipeBookComponent extends RecipeBookComponent {
 
     }
 
+
+
     public void renderGhostRecipeAmount(GuiGraphics guiGraphics, int pLeftPos, int pTopPos, boolean p_100326_, float pPartialTick) {
         this.ghostRecipeAmount.render(guiGraphics, this.minecraft, pLeftPos, pTopPos, p_100326_, pPartialTick);
     }

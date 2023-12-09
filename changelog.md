@@ -4,6 +4,7 @@
 * You now regain air at the same rate at which is consumed (so much slower)
   * Added options to change air consumed and regained when under/out of water
 * Reduced stamina consumed when swimming
+* Using recipe book to place Forge recipes now works
 * Fixed iron shields not repairable
 
 ## 0.17.2
