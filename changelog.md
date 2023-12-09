@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* You now regain air at the same rate at which is consumed (so much slower)
+  * Added options to change air consumed and regained when under/out of water
 * Reduced stamina consumed when swimming
 * Fixed iron shields not repairable
 

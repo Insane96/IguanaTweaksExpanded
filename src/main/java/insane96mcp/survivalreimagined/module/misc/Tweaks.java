@@ -18,7 +18,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -29,6 +31,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.event.entity.living.LivingBreatheEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -61,6 +64,13 @@ public class Tweaks extends Feature {
     @Config
     @Label(name = "Better hardcore death", description = "When you die in hardcore, your spawn point is set to where you died and a lightning strike is summoned")
     public static Boolean betterHardcoreDeath = true;
+
+    @Config
+    @Label(name = "Player air ticks consumed", description = "The amount of ticks the player consumes when underwater. In vanilla it's 1 without Respiration enchantment.")
+    public static Integer playerConsumeAirAmount = 1;
+    @Config
+    @Label(name = "Player air ticks refilled", description = "The amount of air ticks the player regains each tick when out of water. Vanilla is 4")
+    public static Integer playerRefillAirAmount = 1;
 
     public Tweaks(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
@@ -151,5 +161,18 @@ public class Tweaks extends Feature {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public void onBreathe(LivingBreatheEvent event) {
+        if (!this.isEnabled()
+                || !(event.getEntity() instanceof Player player))
+            return;
+
+        int airConsumed = playerConsumeAirAmount;
+        int respiration = EnchantmentHelper.getRespiration(player);
+        airConsumed = respiration > 0 && player.getRandom().nextInt(respiration + 1) > 0 ? 0 : airConsumed;
+        event.setConsumeAirAmount(airConsumed);
+        event.setRefillAirAmount(playerRefillAirAmount);
     }
 }
