@@ -18,7 +18,7 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 @LoadFeature(module = Modules.Ids.MOBS)
 public class StatsBuffs extends Feature {
     @Config
-    @Label(name = "Enable DataPack", description = "Enables the DataPack that buffs mobs.")
+    @Label(name = "Enable DataPack", description = "Enables a Data Pack that buffs mobs.")
     public static Boolean enableDataPack = true;
 
     public StatsBuffs(Module module, boolean enabledByDefault, boolean canBeDisabled) {
