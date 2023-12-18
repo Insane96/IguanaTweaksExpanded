@@ -6,6 +6,7 @@
 * Equipping broken armor now falls off
 * Reduced stamina consumed when swimming
 * Using recipe book to place Forge recipes now works
+* Players attack range modifier is now configurable
 * You can no longer eat when full health
 * Fixed iron shields not repairable
 

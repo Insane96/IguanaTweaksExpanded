@@ -182,9 +182,9 @@ public class Stats extends JsonFeature {
 
 	public static final UUID ATTACK_RANGE_REDUCTION_UUID = UUID.fromString("0dd017a7-274c-4101-85b4-78af20a24c54");
 	public static final UUID MOVEMENT_SPEED_REDUCTION_UUID = UUID.fromString("a88ac0d1-e2b3-4cf1-bb0e-9577486c874a");
-	@Config
-	@Label(name = "Reduce player attack range", description = "If true, player attack range is reduced by 0.5.")
-	public static Boolean reducePlayerAttackRange = true;
+	@Config(min = -4d, max = 4d)
+	@Label(name = "Player attack range modifier", description = "Adds this to players' attack range")
+	public static Double playerAttackRangeModifier = -0.5d;
 	@Config
 	@Label(name = "Players movement speed reduction", description = "Reduces movement speed for players by this percentage.")
 	public static Double playersMovementSpeedReduction = 0.05d;
@@ -241,8 +241,8 @@ public class Stats extends JsonFeature {
 				|| !(event.getEntity() instanceof Player player))
 			return;
 
-		if (reducePlayerAttackRange)
-			MCUtils.applyModifier(player, ForgeMod.ENTITY_REACH.get(), ATTACK_RANGE_REDUCTION_UUID, "Entity Reach reduction", -0.5d, AttributeModifier.Operation.ADDITION, false);
+		if (playerAttackRangeModifier != 0f)
+			MCUtils.applyModifier(player, ForgeMod.ENTITY_REACH.get(), ATTACK_RANGE_REDUCTION_UUID, "Entity Reach reduction", playerAttackRangeModifier, AttributeModifier.Operation.ADDITION, false);
 		if (playersMovementSpeedReduction != 0d)
 			MCUtils.applyModifier(player, Attributes.MOVEMENT_SPEED, MOVEMENT_SPEED_REDUCTION_UUID, "Movement Speed reduction", -playersMovementSpeedReduction, AttributeModifier.Operation.MULTIPLY_BASE, false);
 	}
