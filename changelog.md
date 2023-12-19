@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 0.17.3
 * You now regain air at the same rate at which is consumed (so, much slower)
   * Added options to change air consumed and regained when under/out of water
 * Equipping broken armor now falls off
