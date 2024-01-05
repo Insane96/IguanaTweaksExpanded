@@ -6,7 +6,7 @@
   "group": "iron_ingot",
   "ingredients": [
     {
-      "item": "iguanatweaksexpanded:grave"
+      "item": "iguanatweaksreborn:grave"
     }
   ],
   "result": "minecraft:iron_ingot"

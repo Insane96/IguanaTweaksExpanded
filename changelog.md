@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.0
+"First" release
+
 ## 0.17.4
 * Mobs Properties Randomness (and Pehkui) are no longer mandatory
   * MPR stuff will obviously not work if MPR is not installed

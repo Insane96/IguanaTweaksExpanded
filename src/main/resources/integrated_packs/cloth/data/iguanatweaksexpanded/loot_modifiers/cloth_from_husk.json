@@ -1,5 +1,5 @@
 {
-    "type": "iguanatweaksexpanded:inject_loot_table",
+    "type": "insanelib:inject_loot_table",
     "conditions": [
         {
             "condition": "forge:loot_table_id",

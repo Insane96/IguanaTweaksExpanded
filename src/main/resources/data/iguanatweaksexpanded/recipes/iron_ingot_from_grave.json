@@ -5,7 +5,7 @@
     "experience": 1,
     "group": "iron_ingot",
     "ingredient": {
-        "item": "iguanatweaksexpanded:grave"
+        "item": "iguanatweaksreborn:grave"
     },
     "result": "minecraft:iron_ingot"
 }

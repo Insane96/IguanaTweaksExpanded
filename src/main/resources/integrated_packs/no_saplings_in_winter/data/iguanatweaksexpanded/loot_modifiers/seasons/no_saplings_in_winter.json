@@ -1,5 +1,5 @@
 {
-    "type": "iguanatweaksexpanded:drop_multiplier",
+    "type": "iguanatweaksreborn:drop_multiplier",
     "amount_to_keep": 0,
     "conditions": [
         {
@@ -7,7 +7,7 @@
             "season": "WINTER"
         },
         {
-            "condition": "iguanatweaksexpanded:block_tag_match",
+            "condition": "iguanatweaksreborn:block_tag_match",
             "block_tag": "minecraft:leaves"
         }
     ],
