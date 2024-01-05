@@ -20,6 +20,6 @@ public class ShieldsPlus extends Feature {
 
 	public ShieldsPlus(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "shields", Component.literal("Survival Reimagined Shields"), () -> super.isEnabled() && !SRDataPacks.disableAllDataPacks && shieldsPlusCompatDataPack));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "shields", Component.literal("IguanaTweaks Expanded Shields"), () -> super.isEnabled() && !SRDataPacks.disableAllDataPacks && shieldsPlusCompatDataPack));
 	}
 }

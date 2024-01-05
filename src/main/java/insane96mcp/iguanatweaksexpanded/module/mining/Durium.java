@@ -78,6 +78,6 @@ Durium extends Feature {
 
 	public Durium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "durium_lodestone", Component.literal("Survival Reimagined Durium Lodestone"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && duriumLodestone));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "durium_lodestone", Component.literal("IguanaTweaks Expanded Durium Lodestone"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && duriumLodestone));
 	}
 }

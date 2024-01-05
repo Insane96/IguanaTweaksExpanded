@@ -17,7 +17,7 @@
 	"parent": "iguanatweaksexpanded:story/flint_pickaxe",
 	"criteria": {
 		"unfair_oneshot": {
-			"trigger": "iguanatweaksexpanded:unfair_oneshot"
+			"trigger": "iguanatweaksreborn:unfair_oneshot"
 		}
 	},
 	"requirements": [

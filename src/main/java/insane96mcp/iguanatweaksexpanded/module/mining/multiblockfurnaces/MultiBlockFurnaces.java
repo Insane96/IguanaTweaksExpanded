@@ -68,7 +68,7 @@ public class MultiBlockFurnaces extends Feature {
 
 	public MultiBlockFurnaces(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "multi_block_blast_furnace", Component.literal("Survival Reimagined Multi Block Blast Furnace"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && blastFurnaceDataPack));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "multi_block_blast_furnace", Component.literal("IguanaTweaks Expanded Multi Block Blast Furnace"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && blastFurnaceDataPack));
 	}
 
 	@SubscribeEvent

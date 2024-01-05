@@ -43,9 +43,9 @@ public class OreGeneration extends Feature {
 
     public OreGeneration(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "iron_generation", Component.literal("Survival Reimagined Iron Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && ironGenerationDataPack));
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "gold_generation", Component.literal("Survival Reimagined Gold Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && goldGenerationDataPack));
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "copper_generation", Component.literal("Survival Reimagined Copper Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && copperGenerationDataPack));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "iron_generation", Component.literal("IguanaTweaks Expanded Iron Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && ironGenerationDataPack));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "gold_generation", Component.literal("IguanaTweaks Expanded Gold Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && goldGenerationDataPack));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "copper_generation", Component.literal("IguanaTweaks Expanded Copper Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && copperGenerationDataPack));
     }
 
     public record PoorRichOre(SimpleBlockWithItem poorOre, SimpleBlockWithItem poorDeepslateOre, SimpleBlockWithItem richOre, SimpleBlockWithItem richDeepslateOre) {

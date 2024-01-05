@@ -23,7 +23,7 @@ public class StatsBuffs extends Feature {
 
     public StatsBuffs(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "mobs_buffs", Component.literal("Survival Reimagined Mobs Stats Buffs"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && enableDataPack));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "mobs_buffs", Component.literal("IguanaTweaks Expanded Mobs Stats Buffs"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && enableDataPack));
     }
 
     @Override

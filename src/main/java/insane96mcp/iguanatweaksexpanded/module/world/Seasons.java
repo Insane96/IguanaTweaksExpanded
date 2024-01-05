@@ -79,8 +79,8 @@ public class Seasons extends Feature {
 
 	public Seasons(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "serene_seasons_changes", Component.literal("Survival Reimagined Serene Seasons Changes"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && noGreenHouseGlass));
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "no_saplings_in_winter", Component.literal("Survival Reimagined No Saplings in Winter"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && noSaplingsInWinter));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "serene_seasons_changes", Component.literal("IguanaTweaks Expanded Serene Seasons Changes"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && noGreenHouseGlass));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "no_saplings_in_winter", Component.literal("IguanaTweaks Expanded No Saplings in Winter"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && noSaplingsInWinter));
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "iguanatweaksexpanded:rich_farmland"
+			"item": "iguanatweaksreborn:rich_farmland"
 		},
 		"title": {
 			"translate": "advancements.sr_story.rich_farmland.title"
@@ -17,7 +17,7 @@
 	"parent": "iguanatweaksexpanded:story/furnace",
 	"criteria": {
 		"rich_farmland": {
-			"trigger": "iguanatweaksexpanded:make_rich_farmland"
+			"trigger": "iguanatweaksreborn:make_rich_farmland"
 		}
 	},
 	"requirements": [

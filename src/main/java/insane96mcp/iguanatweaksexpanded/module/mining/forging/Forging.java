@@ -70,6 +70,6 @@ public class Forging extends Feature {
 
 	public Forging(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "forging_equipment", Component.literal("Survival Reimagined Forging Equipment"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && forgingEquipment));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "forging_equipment", Component.literal("IguanaTweaks Expanded Forging Equipment"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && forgingEquipment));
 	}
 }

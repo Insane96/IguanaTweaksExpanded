@@ -74,7 +74,7 @@ public class CoalCharcoal extends Feature {
 
     public CoalCharcoal(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "charcoal_smelting_iron_coal", Component.literal("Survival Reimagined No Charcoal Smelting and Iron Coal"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && noCharcoalSmeltingAndIronCoal));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "charcoal_smelting_iron_coal", Component.literal("IguanaTweaks Expanded No Charcoal Smelting and Iron Coal"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && noCharcoalSmeltingAndIronCoal));
     }
 
     @SubscribeEvent

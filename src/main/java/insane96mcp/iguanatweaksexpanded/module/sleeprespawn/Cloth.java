@@ -26,6 +26,6 @@ public class Cloth extends Feature {
 
 	public Cloth(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "cloth", Component.literal("Survival Reimagined Cloth"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && dataPack));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "cloth", Component.literal("IguanaTweaks Expanded Cloth"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && dataPack));
 	}
 }
