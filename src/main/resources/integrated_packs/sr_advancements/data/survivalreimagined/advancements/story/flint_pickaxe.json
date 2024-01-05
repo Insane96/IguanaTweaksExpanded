@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:flint_pickaxe"
+			"item": "iguanatweaksexpanded:flint_pickaxe"
 		},
 		"title": {
 			"translate": "advancements.sr_story.flint_pickaxe.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/root",
+	"parent": "iguanatweaksexpanded:story/root",
 	"criteria": {
 		"flint_tools": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,9 +22,9 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:flint_pickaxe",
-							"survivalreimagined:flint_axe",
-							"survivalreimagined:flint_shovel"
+							"iguanatweaksexpanded:flint_pickaxe",
+							"iguanatweaksexpanded:flint_axe",
+							"iguanatweaksexpanded:flint_shovel"
 						]
 					}
 				]

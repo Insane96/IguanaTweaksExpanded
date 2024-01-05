@@ -1,14 +1,14 @@
 {
   "values": [
-    "survivalreimagined:crate",
-    "survivalreimagined:poor_iron_ore",
-    "survivalreimagined:rich_iron_ore",
-    "survivalreimagined:poor_deepslate_iron_ore",
-    "survivalreimagined:rich_deepslate_iron_ore",
-    "survivalreimagined:poor_copper_ore",
-    "survivalreimagined:rich_copper_ore",
-    "survivalreimagined:poor_deepslate_copper_ore",
-    "survivalreimagined:rich_deepslate_copper_ore",
-    "survivalreimagined:enchanting_table"
+    "iguanatweaksexpanded:crate",
+    "iguanatweaksexpanded:poor_iron_ore",
+    "iguanatweaksexpanded:rich_iron_ore",
+    "iguanatweaksexpanded:poor_deepslate_iron_ore",
+    "iguanatweaksexpanded:rich_deepslate_iron_ore",
+    "iguanatweaksexpanded:poor_copper_ore",
+    "iguanatweaksexpanded:rich_copper_ore",
+    "iguanatweaksexpanded:poor_deepslate_copper_ore",
+    "iguanatweaksexpanded:rich_deepslate_copper_ore",
+    "iguanatweaksexpanded:enchanting_table"
   ]
 }

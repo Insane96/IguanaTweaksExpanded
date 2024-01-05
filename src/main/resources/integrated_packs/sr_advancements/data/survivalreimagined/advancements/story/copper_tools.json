@@ -1,7 +1,7 @@
 {
     "display": {
         "icon": {
-            "item": "survivalreimagined:copper_pickaxe"
+            "item": "iguanatweaksexpanded:copper_pickaxe"
         },
         "title": {
             "translate": "advancements.sr_story.copper_tools.title"
@@ -14,7 +14,7 @@
         "announce_to_chat": true,
         "hidden": false
     },
-    "parent": "survivalreimagined:story/furnace",
+    "parent": "iguanatweaksexpanded:story/furnace",
     "criteria": {
         "copper_tools": {
             "trigger": "minecraft:inventory_changed",
@@ -22,10 +22,10 @@
                 "items": [
                     {
                         "items": [
-                            "survivalreimagined:copper_pickaxe",
-                            "survivalreimagined:copper_axe",
-                            "survivalreimagined:copper_shovel",
-                            "survivalreimagined:copper_hoe"
+                            "iguanatweaksexpanded:copper_pickaxe",
+                            "iguanatweaksexpanded:copper_axe",
+                            "iguanatweaksexpanded:copper_shovel",
+                            "iguanatweaksexpanded:copper_hoe"
                         ]
                     }
                 ]

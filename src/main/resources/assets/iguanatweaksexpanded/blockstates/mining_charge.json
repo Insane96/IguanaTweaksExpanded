@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "iguanatweaksexpanded:block/mining_charge"
+    },
+    "facing=up": {
+      "model": "iguanatweaksexpanded:block/mining_charge",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "iguanatweaksexpanded:block/mining_charge",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south": {
+      "model": "iguanatweaksexpanded:block/mining_charge",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "iguanatweaksexpanded:block/mining_charge",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west": {
+      "model": "iguanatweaksexpanded:block/mining_charge",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

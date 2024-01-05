@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:respawn_obelisk"
+			"item": "iguanatweaksexpanded:respawn_obelisk"
 		},
 		"title": {
 			"translate": "advancements.sr_story.activate_respawn_obelisk.title"
@@ -14,10 +14,10 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/respawn_obelisk",
+	"parent": "iguanatweaksexpanded:story/respawn_obelisk",
 	"criteria": {
 		"activate_respawn_obelisk": {
-			"trigger": "survivalreimagined:activate_respawn_obelisk"
+			"trigger": "iguanatweaksexpanded:activate_respawn_obelisk"
 		}
 	},
 	"requirements": [

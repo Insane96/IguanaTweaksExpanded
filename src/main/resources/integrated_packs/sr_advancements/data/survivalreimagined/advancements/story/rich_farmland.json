@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:rich_farmland"
+			"item": "iguanatweaksexpanded:rich_farmland"
 		},
 		"title": {
 			"translate": "advancements.sr_story.rich_farmland.title"
@@ -14,10 +14,10 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/furnace",
+	"parent": "iguanatweaksexpanded:story/furnace",
 	"criteria": {
 		"rich_farmland": {
-			"trigger": "survivalreimagined:make_rich_farmland"
+			"trigger": "iguanatweaksexpanded:make_rich_farmland"
 		}
 	},
 	"requirements": [

@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "#iguanatweaksexpanded:equipment/hand/solarium",
+        "#iguanatweaksexpanded:equipment/armor/solarium",
+        "iguanatweaksexpanded:solarium_shield"
+    ]
+}

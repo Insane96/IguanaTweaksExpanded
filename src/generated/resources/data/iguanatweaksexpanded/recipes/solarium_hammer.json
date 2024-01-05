@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "iguanatweaksexpanded:solarium_ball"
+  },
+  "base": {
+    "item": "iguanatweaksexpanded:iron_hammer"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:solarium_hammer"
+  },
+  "template": []
+}

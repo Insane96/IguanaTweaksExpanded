@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:smithing_transform",
+    "template": {
+        "item": "iguanatweaksexpanded:soul_steel_upgrade_smithing_template"
+    },
+    "base": {
+        "item": "shieldsplus:diamond_shield"
+    },
+    "addition": {
+        "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    "result": {
+        "item": "iguanatweaksexpanded:soul_steel_shield"
+    }
+}

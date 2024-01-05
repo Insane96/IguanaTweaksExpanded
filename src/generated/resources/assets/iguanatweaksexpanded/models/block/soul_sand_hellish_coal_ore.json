@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "iguanatweaksexpanded:block/soul_sand_hellish_coal_ore"
+  }
+}

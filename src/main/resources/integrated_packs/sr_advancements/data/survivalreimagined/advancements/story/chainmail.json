@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/cloth",
+	"parent": "iguanatweaksexpanded:story/cloth",
 	"criteria": {
 		"chainmail": {
 			"trigger": "minecraft:inventory_changed",

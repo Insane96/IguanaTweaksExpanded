@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:forge"
+			"item": "iguanatweaksexpanded:forge"
 		},
 		"title": {
 			"translate": "advancements.sr_story.forge.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/blast_furnace",
+	"parent": "iguanatweaksexpanded:story/blast_furnace",
 	"criteria": {
 		"forge": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:forge"
+							"iguanatweaksexpanded:forge"
 						]
 					}
 				]

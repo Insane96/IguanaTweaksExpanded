@@ -1,0 +1,9 @@
+// 1.20.1	2024-01-05T16:42:24.2814065	Tags for minecraft:item mod id iguanatweaksexpanded
+be067471b4fffc6fa4756e4c14194bdaf9edf18f data/minecraft/tags/items/arrows.json
+c6a016aab11c7b7295455bf6089600ba1a420ebf data/minecraft/tags/items/axes.json
+ac9781b8184296583748478f23ecd7540fa446db data/minecraft/tags/items/beacon_payment_items.json
+bc3274edc71a5db9c423f57a5356ed4bd021931b data/minecraft/tags/items/hoes.json
+aa8952f4c58e13df0bc140104878be6a6aea86a0 data/minecraft/tags/items/pickaxes.json
+9a00dfe2f18bc00275adecad37e54e185c6dbaeb data/minecraft/tags/items/shovels.json
+5c63988dec6fadf0004d2674fa8a6559bd9e304d data/minecraft/tags/items/swords.json
+dbb35700a1b104df1f308ec4797ad529b1220978 data/minecraft/tags/items/trimmable_armor.json

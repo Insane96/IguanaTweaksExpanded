@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 4,
+  "category": "forge_misc",
+  "experience": 9.0,
+  "gear": {
+    "item": "iguanatweaksexpanded:copper_shield"
+  },
+  "ingredient": {
+    "item": "minecraft:obsidian"
+  },
+  "result": "iguanatweaksexpanded:coated_copper_shield",
+  "smashes_required": 12
+}

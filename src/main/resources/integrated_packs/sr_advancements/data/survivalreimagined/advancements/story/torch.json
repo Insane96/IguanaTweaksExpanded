@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/campfire",
+	"parent": "iguanatweaksexpanded:story/campfire",
 	"criteria": {
 		"torch": {
 			"trigger": "minecraft:item_used_on_block",

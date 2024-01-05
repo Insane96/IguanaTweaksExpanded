@@ -2,6 +2,7 @@
 
 ## 0.17.4
 * Mobs Properties Randomness (and Pehkui) are no longer mandatory
+  * MPR stuff will obviously not work if MPR is not installed
 
 ## 0.17.3
 * You now regain air at the same rate at which is consumed (so, much slower)

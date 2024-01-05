@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:flint_shield"
+			"item": "iguanatweaksexpanded:flint_shield"
 		},
 		"title": {
 			"translate": "advancements.sr_story.upgrade_wooden_shield.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/wooden_shield",
+	"parent": "iguanatweaksexpanded:story/wooden_shield",
 	"criteria": {
 		"shield": {
 			"trigger": "minecraft:inventory_changed",
@@ -23,8 +23,8 @@
 					{
 						"items": [
 							"shieldsplus:stone_shield",
-							"survivalreimagined:flint_shield",
-							"survivalreimagined:copper_shield"
+							"iguanatweaksexpanded:flint_shield",
+							"iguanatweaksexpanded:copper_shield"
 						]
 					}
 				]

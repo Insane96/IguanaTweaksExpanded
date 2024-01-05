@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/furnace",
+	"parent": "iguanatweaksexpanded:story/furnace",
 	"criteria": {
 		"blast_furnace": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:blast_furnace"
+							"iguanatweaksexpanded:blast_furnace"
 						]
 					}
 				]

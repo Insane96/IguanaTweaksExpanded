@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:durium_pickaxe"
+			"item": "iguanatweaksexpanded:durium_pickaxe"
 		},
 		"title": {
 			"translate": "advancements.sr_story.durium_gear.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/durium_ingot",
+	"parent": "iguanatweaksexpanded:story/durium_ingot",
 	"criteria": {
 		"durium_gear": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,16 +22,16 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:durium_pickaxe",
-							"survivalreimagined:durium_axe",
-							"survivalreimagined:durium_shovel",
-							"survivalreimagined:durium_hoe",
-							"survivalreimagined:durium_sword",
-							"survivalreimagined:durium_helmet",
-							"survivalreimagined:durium_chestplate",
-							"survivalreimagined:durium_leggings",
-							"survivalreimagined:durium_boots",
-							"survivalreimagined:durium_shield"
+							"iguanatweaksexpanded:durium_pickaxe",
+							"iguanatweaksexpanded:durium_axe",
+							"iguanatweaksexpanded:durium_shovel",
+							"iguanatweaksexpanded:durium_hoe",
+							"iguanatweaksexpanded:durium_sword",
+							"iguanatweaksexpanded:durium_helmet",
+							"iguanatweaksexpanded:durium_chestplate",
+							"iguanatweaksexpanded:durium_leggings",
+							"iguanatweaksexpanded:durium_boots",
+							"iguanatweaksexpanded:durium_shield"
 						]
 					}
 				]

@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:firestarter"
+			"item": "iguanatweaksexpanded:firestarter"
 		},
 		"title": {
 			"translate": "advancements.sr_story.firestarter.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/charcoal",
+	"parent": "iguanatweaksexpanded:story/charcoal",
 	"criteria": {
 		"firestarter": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:firestarter"
+							"iguanatweaksexpanded:firestarter"
 						]
 					}
 				]

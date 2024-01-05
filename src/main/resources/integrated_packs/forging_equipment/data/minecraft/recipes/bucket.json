@@ -1,12 +1,12 @@
 {
-  "type": "survivalreimagined:forging",
+  "type": "iguanatweaksexpanded:forging",
   "category": "forge_misc",
   "ingredient": {
     "item": "minecraft:iron_ingot"
   },
   "amount": 3,
   "gear": {
-    "item": "survivalreimagined:durium_ingot"
+    "item": "iguanatweaksexpanded:durium_ingot"
   },
   "result": "minecraft:bucket",
   "smashes_required": 10,

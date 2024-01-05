@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredient": {
+    "item": "iguanatweaksexpanded:durium_ore"
+  },
+  "result": "iguanatweaksexpanded:durium_scrap_piece"
+}

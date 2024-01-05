@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/campfire",
+	"parent": "iguanatweaksexpanded:story/campfire",
 	"criteria": {
 		"seeds": {
 			"trigger": "minecraft:inventory_changed",
@@ -24,8 +24,8 @@
 						"items": [
 							"minecraft:wheat_seeds",
 							"minecraft:beetroot_seeds",
-							"survivalreimagined:rooted_potato",
-							"survivalreimagined:carrot_seeds"
+							"iguanatweaksexpanded:rooted_potato",
+							"iguanatweaksexpanded:carrot_seeds"
 						]
 					}
 				]

@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:respawn_obelisk"
+			"item": "iguanatweaksexpanded:respawn_obelisk"
 		},
 		"title": {
 			"translate": "advancements.sr_story.respawn_obelisk.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/blast_furnace",
+	"parent": "iguanatweaksexpanded:story/blast_furnace",
 	"criteria": {
 		"respawn_obelisk_stonebrick": {
 			"trigger": "minecraft:location",
@@ -25,7 +25,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"structure": "survivalreimagined:respawn_obelisk_stonebrick"
+								"structure": "iguanatweaksexpanded:respawn_obelisk_stonebrick"
 							}
 						}
 					}
@@ -41,7 +41,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"structure": "survivalreimagined:respawn_obelisk_birch"
+								"structure": "iguanatweaksexpanded:respawn_obelisk_birch"
 							}
 						}
 					}
@@ -57,7 +57,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"structure": "survivalreimagined:respawn_obelisk_deepslate"
+								"structure": "iguanatweaksexpanded:respawn_obelisk_deepslate"
 							}
 						}
 					}
@@ -73,7 +73,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"structure": "survivalreimagined:respawn_obelisk_desert"
+								"structure": "iguanatweaksexpanded:respawn_obelisk_desert"
 							}
 						}
 					}
@@ -89,7 +89,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"structure": "survivalreimagined:respawn_obelisk_jungle"
+								"structure": "iguanatweaksexpanded:respawn_obelisk_jungle"
 							}
 						}
 					}
@@ -105,7 +105,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"structure": "survivalreimagined:respawn_obelisk_ocean"
+								"structure": "iguanatweaksexpanded:respawn_obelisk_ocean"
 							}
 						}
 					}
@@ -121,7 +121,7 @@
 						"entity": "this",
 						"predicate": {
 							"location": {
-								"structure": "survivalreimagined:respawn_obelisk_snow"
+								"structure": "iguanatweaksexpanded:respawn_obelisk_snow"
 							}
 						}
 					}

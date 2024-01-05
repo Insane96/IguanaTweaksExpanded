@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:soul_steel_ingot"
+    }
+  ],
+  "result": {
+    "item": "iguanatweaksexpanded:soul_steel_block"
+  }
+}

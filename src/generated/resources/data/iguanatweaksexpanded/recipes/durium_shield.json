@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "iguanatweaksexpanded:durium_ingot"
+  },
+  "base": {
+    "item": "minecraft:shield"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:durium_shield"
+  },
+  "template": []
+}

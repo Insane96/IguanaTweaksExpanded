@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/birch_planks",
+    "east": "iguanatweaksexpanded:block/fletching_table_side",
+    "north": "iguanatweaksexpanded:block/fletching_table_front",
+    "particle": "iguanatweaksexpanded:block/fletching_table_front",
+    "south": "iguanatweaksexpanded:block/fletching_table_front",
+    "up": "iguanatweaksexpanded:block/fletching_table_top",
+    "west": "iguanatweaksexpanded:block/fletching_table_side"
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "iguanatweaksexpanded:fletching",
+    "category": "fletching_misc",
+    "ingredient": {
+        "item": "minecraft:arrow",
+        "count": 1
+    },
+    "catalyst1": "minecraft:torch",
+    "result": {
+        "item": "iguanatweaksexpanded:torch_arrow",
+        "count": 1
+    }
+}

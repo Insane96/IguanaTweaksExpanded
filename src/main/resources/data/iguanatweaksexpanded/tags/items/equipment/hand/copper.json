@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#iguanatweaksexpanded:equipment/hand/tools/copper",
+        "iguanatweaksexpanded:copper_sword"
+    ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 8,
+  "category": "forge_misc",
+  "experience": 23.0,
+  "gear": {
+    "item": "minecraft:golden_chestplate"
+  },
+  "ingredient": {
+    "item": "iguanatweaksexpanded:keego"
+  },
+  "result": "iguanatweaksexpanded:keego_chestplate",
+  "smashes_required": 25
+}

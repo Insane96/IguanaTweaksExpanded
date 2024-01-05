@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/durium_ingot",
+	"parent": "iguanatweaksexpanded:story/durium_ingot",
 	"criteria": {
 		"use_lodestone": {
 			"trigger": "minecraft:item_used_on_block",

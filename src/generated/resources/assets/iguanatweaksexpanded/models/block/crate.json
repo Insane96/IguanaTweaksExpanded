@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "iguanatweaksexpanded:block/crate_bottom",
+    "side": "iguanatweaksexpanded:block/crate_side",
+    "top": "iguanatweaksexpanded:block/crate_top"
+  }
+}

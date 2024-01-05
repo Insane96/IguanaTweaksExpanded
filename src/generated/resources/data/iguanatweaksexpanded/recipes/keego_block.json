@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:keego"
+    },
+    {
+      "item": "iguanatweaksexpanded:keego"
+    },
+    {
+      "item": "iguanatweaksexpanded:keego"
+    },
+    {
+      "item": "iguanatweaksexpanded:keego"
+    },
+    {
+      "item": "iguanatweaksexpanded:keego"
+    },
+    {
+      "item": "iguanatweaksexpanded:keego"
+    },
+    {
+      "item": "iguanatweaksexpanded:keego"
+    },
+    {
+      "item": "iguanatweaksexpanded:keego"
+    },
+    {
+      "item": "iguanatweaksexpanded:keego"
+    }
+  ],
+  "result": {
+    "item": "iguanatweaksexpanded:keego_block"
+  }
+}

@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:soul_blast_furnace"
+			"item": "iguanatweaksexpanded:soul_blast_furnace"
 		},
 		"title": {
 			"translate": "advancements.sr_nether.soul_blast_furnace.title"
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:soul_blast_furnace"
+							"iguanatweaksexpanded:soul_blast_furnace"
 						]
 					}
 				]

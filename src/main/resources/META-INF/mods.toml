@@ -2,109 +2,113 @@ modLoader="javafml"
 loaderVersion="[47,)"
 license="All rights reserved"
 [[mods]]
-    modId="survivalreimagined"
+    modId="iguanatweaksexpanded"
     version="${file.jarVersion}"
-    displayName="Survival Reimagined"
-    displayURL="https://www.curseforge.com/minecraft/mc-mods/iguanatweaks-reborn"
+    displayName="Iguana Tweaks Expanded"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/survival-reimagined"
     #logoFile="examplemod.png"
-    credits = "IguanaMan for the original Mod. Effect Icons by hamzaa#1200. Unfair one shot sound by thecheeseman from freesound.org. Stamina overlay code from AppleSkin exhaustion code. Tinkers' Construct 3 for many \"borrowed\" ideas. Carboniglio for Alpha testing and many ideas. kioraSperlusenta for bearing with me in livestream. e___kho for some durium textures."
+    credits = ""
     authors = "Insane96MCP"
     description = '''
-    Multiple changes to bring back Survival in Minecraft.
-    Movement Restrictions, Farming, Mining, Explosions and much more.
-
-    Formerly known as Iguana Tweaks Reborn
+        Expand upon IguanaTweaks Reborn, with new items, tools, blocks, enchantments ...
     '''
     # Catalogue icon
-    # itemIcon = "survivalreimagined:flint_pickaxe"
+    # itemIcon = "iguanatweaksexpanded:flint_pickaxe"
     # Configured background
-    configBackground = "survivalreimagined:textures/block/rich_farmland_moist.png"
+    configBackground = "iguanatweaksexpanded:textures/block/rich_farmland_moist.png"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="forge"
     mandatory=true
     versionRange="[47,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.20.1,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="insanelib"
     mandatory=true
     versionRange="[1.12.1,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
+    modId="iguanatweaksreborn"
+    mandatory=true
+    versionRange="[3.0.1,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.iguanatweaksexpanded]]
     modId="shieldsplus"
     mandatory=true
     versionRange="[1.8.0,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="enhancedai"
     mandatory=true
     versionRange="[2.0.0,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="sereneseasons"
     mandatory=true
     versionRange="[9.0.0.43,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="maxhealthfix"
     mandatory=true
     versionRange="[12.0.2,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="mobspropertiesrandomness"
     mandatory=false
     versionRange="[4.7.2,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="pehkui"
     mandatory=false
     versionRange="[3.7.7,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="passablefoliage"
     mandatory=false
     versionRange="[7.0.0,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="toolbelt"
     mandatory=false
     versionRange="[1.20.0,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="easymagic"
     mandatory=false
     versionRange="[6.0.0,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.survivalreimagined]]
+[[dependencies.iguanatweaksexpanded]]
     modId="corail_woodcutter"
     mandatory=false
     versionRange="[2.7.0,)"

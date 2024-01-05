@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "iguanatweaksexpanded:soul_steel_ingot"
+  },
+  "base": {
+    "item": "iguanatweaksexpanded:iron_hammer"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:soul_steel_hammer"
+  },
+  "template": {
+    "item": "iguanatweaksexpanded:soul_steel_upgrade_smithing_template"
+  }
+}

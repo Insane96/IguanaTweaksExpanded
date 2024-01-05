@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:cloth"
+			"item": "iguanatweaksexpanded:cloth"
 		},
 		"title": {
 			"translate": "advancements.sr_story.cloth.title"
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:cloth"
+							"iguanatweaksexpanded:cloth"
 						]
 					}
 				]

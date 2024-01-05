@@ -1,0 +1,27 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 400,
+  "experience": 10.0,
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:hellish_coal"
+    },
+    [
+      {
+        "item": "minecraft:soul_sand"
+      },
+      {
+        "item": "minecraft:soul_soil"
+      }
+    ]
+  ],
+  "output_increase": 0.2,
+  "result": "iguanatweaksexpanded:soul_steel_ingot"
+}

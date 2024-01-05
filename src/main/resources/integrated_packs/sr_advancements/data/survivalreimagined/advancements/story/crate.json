@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:crate"
+			"item": "iguanatweaksexpanded:crate"
 		},
 		"title": {
 			"translate": "advancements.sr_story.crate.title"
@@ -14,10 +14,10 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/durium_ingot",
+	"parent": "iguanatweaksexpanded:story/durium_ingot",
 	"criteria": {
 		"overweight": {
-			"trigger": "survivalreimagined:overweight_crate_carry"
+			"trigger": "iguanatweaksexpanded:overweight_crate_carry"
 		}
 	},
 	"requirements": [

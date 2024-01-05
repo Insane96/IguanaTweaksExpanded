@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#iguanatweaksexpanded:equipment/hand/coated_copper",
+        "iguanatweaksexpanded:coated_copper_shield"
+    ]
+}

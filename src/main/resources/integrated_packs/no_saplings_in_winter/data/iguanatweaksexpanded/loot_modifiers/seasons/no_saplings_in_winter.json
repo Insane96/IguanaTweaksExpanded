@@ -1,0 +1,16 @@
+{
+    "type": "iguanatweaksexpanded:drop_multiplier",
+    "amount_to_keep": 0,
+    "conditions": [
+        {
+            "condition": "iguanatweaksexpanded:current_season",
+            "season": "WINTER"
+        },
+        {
+            "condition": "iguanatweaksexpanded:block_tag_match",
+            "block_tag": "minecraft:leaves"
+        }
+    ],
+    "tag": "minecraft:saplings",
+    "multiplier": 0
+}

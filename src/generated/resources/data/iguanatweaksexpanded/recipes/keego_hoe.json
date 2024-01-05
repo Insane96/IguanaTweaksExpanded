@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 2,
+  "category": "forge_misc",
+  "experience": 15.0,
+  "gear": {
+    "item": "minecraft:golden_hoe"
+  },
+  "ingredient": {
+    "item": "iguanatweaksexpanded:keego"
+  },
+  "result": "iguanatweaksexpanded:keego_hoe",
+  "smashes_required": 16
+}

@@ -14,10 +14,10 @@
 		"announce_to_chat": true,
 		"hidden": true
 	},
-	"parent": "survivalreimagined:story/flint_pickaxe",
+	"parent": "iguanatweaksexpanded:story/flint_pickaxe",
 	"criteria": {
 		"unfair_oneshot": {
-			"trigger": "survivalreimagined:unfair_oneshot"
+			"trigger": "iguanatweaksexpanded:unfair_oneshot"
 		}
 	},
 	"requirements": [

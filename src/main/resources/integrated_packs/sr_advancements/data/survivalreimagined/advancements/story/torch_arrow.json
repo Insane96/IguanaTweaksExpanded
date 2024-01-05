@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:torch_arrow"
+			"item": "iguanatweaksexpanded:torch_arrow"
 		},
 		"title": {
 			"translate": "advancements.sr_story.torch_arrow.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/fletching_table",
+	"parent": "iguanatweaksexpanded:story/fletching_table",
 	"criteria": {
 		"torch_arrow": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:torch_arrow"
+							"iguanatweaksexpanded:torch_arrow"
 						]
 					}
 				]

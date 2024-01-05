@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:keego_pickaxe"
+			"item": "iguanatweaksexpanded:keego_pickaxe"
 		},
 		"title": {
 			"translate": "advancements.sr_nether.keego_equipment.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:nether/keego",
+	"parent": "iguanatweaksexpanded:nether/keego",
 	"criteria": {
 		"keego": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,15 +22,15 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:keego_pickaxe",
-							"survivalreimagined:keego_axe",
-							"survivalreimagined:keego_shovel",
-							"survivalreimagined:keego_sword",
-							"survivalreimagined:keego_hoe",
-							"survivalreimagined:keego_helmet",
-							"survivalreimagined:keego_chestplate",
-							"survivalreimagined:keego_leggings",
-							"survivalreimagined:keego_boots"
+							"iguanatweaksexpanded:keego_pickaxe",
+							"iguanatweaksexpanded:keego_axe",
+							"iguanatweaksexpanded:keego_shovel",
+							"iguanatweaksexpanded:keego_sword",
+							"iguanatweaksexpanded:keego_hoe",
+							"iguanatweaksexpanded:keego_helmet",
+							"iguanatweaksexpanded:keego_chestplate",
+							"iguanatweaksexpanded:keego_leggings",
+							"iguanatweaksexpanded:keego_boots"
 						]
 					}
 				]

@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:iron_ore_rock"
+			"item": "iguanatweaksexpanded:iron_ore_rock"
 		},
 		"title": {
 			"translate": "advancements.sr_story.ore_rocks.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/furnace",
+	"parent": "iguanatweaksexpanded:story/furnace",
 	"criteria": {
 		"ore_rocks": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,9 +22,9 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:iron_ore_rock",
-							"survivalreimagined:gold_ore_rock",
-							"survivalreimagined:copper_ore_rock"
+							"iguanatweaksexpanded:iron_ore_rock",
+							"iguanatweaksexpanded:gold_ore_rock",
+							"iguanatweaksexpanded:copper_ore_rock"
 						]
 					}
 				]

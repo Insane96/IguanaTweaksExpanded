@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:mining_charge"
+			"item": "iguanatweaksexpanded:mining_charge"
 		},
 		"title": {
 			"translate": "advancements.sr_story.mining_charge.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/furnace",
+	"parent": "iguanatweaksexpanded:story/furnace",
 	"criteria": {
 		"mining_charge": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:mining_charge"
+							"iguanatweaksexpanded:mining_charge"
 						]
 					}
 				]

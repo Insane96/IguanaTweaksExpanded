@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#iguanatweaksexpanded:equipment/hand/tools/soul_steel",
+        "iguanatweaksexpanded:soul_steel_sword"
+    ]
+}

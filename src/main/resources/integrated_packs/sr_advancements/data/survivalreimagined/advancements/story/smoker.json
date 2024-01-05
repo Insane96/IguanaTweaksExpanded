@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/iron_pickaxe",
+	"parent": "iguanatweaksexpanded:story/iron_pickaxe",
 	"criteria": {
 		"smoker": {
 			"trigger": "minecraft:inventory_changed",

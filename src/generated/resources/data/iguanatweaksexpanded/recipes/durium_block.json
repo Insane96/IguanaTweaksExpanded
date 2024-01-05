@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:durium_ingot"
+    }
+  ],
+  "result": {
+    "item": "iguanatweaksexpanded:durium_block"
+  }
+}

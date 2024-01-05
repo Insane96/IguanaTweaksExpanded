@@ -1,0 +1,13 @@
+{
+    "type": "iguanatweaksexpanded:fletching",
+    "category": "fletching_misc",
+    "ingredient": {
+        "item": "minecraft:arrow",
+        "count": 2
+    },
+    "catalyst1": "minecraft:quartz",
+    "result": {
+        "item": "iguanatweaksexpanded:quartz_arrow",
+        "count": 2
+    }
+}

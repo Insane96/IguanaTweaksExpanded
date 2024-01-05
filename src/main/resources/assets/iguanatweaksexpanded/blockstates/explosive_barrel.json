@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "iguanatweaksexpanded:block/explosive_barrel",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "iguanatweaksexpanded:block/explosive_barrel",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "iguanatweaksexpanded:block/explosive_barrel",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "iguanatweaksexpanded:block/explosive_barrel",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "iguanatweaksexpanded:block/explosive_barrel"
+    },
+    "facing=west": {
+      "model": "iguanatweaksexpanded:block/explosive_barrel",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

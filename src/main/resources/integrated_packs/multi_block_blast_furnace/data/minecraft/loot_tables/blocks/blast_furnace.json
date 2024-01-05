@@ -7,7 +7,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "survivalreimagined:blast_furnace",
+                    "name": "iguanatweaksexpanded:blast_furnace",
                     "functions": [
                         {
                             "function": "minecraft:copy_name",

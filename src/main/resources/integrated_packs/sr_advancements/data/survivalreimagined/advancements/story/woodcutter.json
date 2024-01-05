@@ -24,7 +24,7 @@
 					"announce_to_chat": true,
 					"hidden": false
 				},
-				"parent": "survivalreimagined:story/furnace",
+				"parent": "iguanatweaksexpanded:story/furnace",
 				"criteria": {
 					"woodcutter": {
 						"trigger": "minecraft:inventory_changed",

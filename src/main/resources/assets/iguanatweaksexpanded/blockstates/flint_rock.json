@@ -1,0 +1,21 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "iguanatweaksexpanded:block/flint_rock"
+            },
+            {
+                "model": "iguanatweaksexpanded:block/flint_rock",
+                "y": 90
+            },
+            {
+                "model": "iguanatweaksexpanded:block/flint_rock",
+                "y": 180
+            },
+            {
+                "model": "iguanatweaksexpanded:block/flint_rock",
+                "y": 270
+            }
+        ]
+    }
+}

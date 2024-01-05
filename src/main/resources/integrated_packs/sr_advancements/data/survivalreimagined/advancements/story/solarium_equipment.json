@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:solarium_ball"
+			"item": "iguanatweaksexpanded:solarium_ball"
 		},
 		"title": {
 			"translate": "advancements.sr_story.solarium.title"
@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/iron_pickaxe",
+	"parent": "iguanatweaksexpanded:story/iron_pickaxe",
 	"criteria": {
 		"solarium": {
 			"trigger": "minecraft:inventory_changed",
@@ -22,15 +22,15 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:solarium_pickaxe",
-							"survivalreimagined:solarium_axe",
-							"survivalreimagined:solarium_shovel",
-							"survivalreimagined:solarium_hoe",
-							"survivalreimagined:solarium_sword",
-							"survivalreimagined:solarium_helmet",
-							"survivalreimagined:solarium_chestplate",
-							"survivalreimagined:solarium_leggings",
-							"survivalreimagined:solarium_boots"
+							"iguanatweaksexpanded:solarium_pickaxe",
+							"iguanatweaksexpanded:solarium_axe",
+							"iguanatweaksexpanded:solarium_shovel",
+							"iguanatweaksexpanded:solarium_hoe",
+							"iguanatweaksexpanded:solarium_sword",
+							"iguanatweaksexpanded:solarium_helmet",
+							"iguanatweaksexpanded:solarium_chestplate",
+							"iguanatweaksexpanded:solarium_leggings",
+							"iguanatweaksexpanded:solarium_boots"
 						]
 					}
 				]

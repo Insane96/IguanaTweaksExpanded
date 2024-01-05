@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 5,
+  "category": "forge_misc",
+  "experience": 15.0,
+  "gear": {
+    "item": "iguanatweaksexpanded:golden_hammer"
+  },
+  "ingredient": {
+    "item": "minecraft:diamond"
+  },
+  "result": "iguanatweaksexpanded:diamond_hammer",
+  "smashes_required": 16
+}

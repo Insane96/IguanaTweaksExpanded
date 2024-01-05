@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:diamond_arrow"
+			"item": "iguanatweaksexpanded:diamond_arrow"
 		},
 		"title": {
 			"translate": "advancements.sr_story.diamond_arrow.title"
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:diamond_arrow"
+							"iguanatweaksexpanded:diamond_arrow"
 						]
 					}
 				]

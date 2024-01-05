@@ -1,12 +1,12 @@
 {
-  "type": "survivalreimagined:forging",
+  "type": "iguanatweaksexpanded:forging",
   "category": "forge_misc",
   "ingredient": {
     "item": "minecraft:iron_ingot"
   },
   "amount": 5,
   "gear": {
-    "item": "survivalreimagined:chained_copper_helmet"
+    "item": "iguanatweaksexpanded:chained_copper_helmet"
   },
   "result": "minecraft:iron_helmet",
   "smashes_required": 12,

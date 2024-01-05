@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 3,
+  "category": "forge_misc",
+  "experience": 9.0,
+  "gear": {
+    "item": "iguanatweaksexpanded:copper_pickaxe"
+  },
+  "ingredient": {
+    "item": "minecraft:obsidian"
+  },
+  "result": "iguanatweaksexpanded:coated_copper_pickaxe",
+  "smashes_required": 12
+}

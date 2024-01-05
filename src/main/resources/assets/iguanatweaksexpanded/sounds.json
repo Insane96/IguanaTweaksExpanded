@@ -1,0 +1,12 @@
+{
+    "primed_mining_charge": {
+        "subtitle": "iguanatweaksexpanded.subtitle.primed_mining_charge",
+        "sounds": [ "minecraft:entity.tnt.primed" ]
+    },
+    "electrocution": {
+        "subtitle": "iguanatweaksexpanded.subtitle.electrocution",
+        "sounds": [
+            "iguanatweaksexpanded:electrocution"
+        ]
+    }
+}

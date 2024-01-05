@@ -14,10 +14,10 @@
 		"announce_to_chat": true,
 		"hidden": true
 	},
-	"parent": "survivalreimagined:story/seeds",
+	"parent": "iguanatweaksexpanded:story/seeds",
 	"criteria": {
 		"autumn": {
-			"trigger": "survivalreimagined:season_changed",
+			"trigger": "iguanatweaksexpanded:season_changed",
 			"conditions": {
 				"seasons": [
 					"EARLY_AUTUMN",

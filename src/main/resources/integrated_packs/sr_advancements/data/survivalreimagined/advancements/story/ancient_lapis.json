@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:ancient_lapis"
+			"item": "iguanatweaksexpanded:ancient_lapis"
 		},
 		"title": {
 			"translate": "advancements.sr_story.ancient_lapis.title"
@@ -14,14 +14,14 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/cleansed_lapis",
+	"parent": "iguanatweaksexpanded:story/cleansed_lapis",
 	"criteria": {
 		"ancient_lapis": {
-			"trigger": "survivalreimagined:anvil_repair",
+			"trigger": "iguanatweaksexpanded:anvil_repair",
 			"conditions": {
 				"input2": {
 					"items": [
-						"survivalreimagined:ancient_lapis"
+						"iguanatweaksexpanded:ancient_lapis"
 					]
 				}
 			}

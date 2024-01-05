@@ -1,0 +1,11 @@
+{
+    "required": true,
+    "package": "insane96mcp.iguanatweaksexpanded.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "refmap": "iguanatweaksexpanded.refmap.json",
+    "mixins": [
+        "AbstractMinecartMixin",
+        "FishingHookMixin"
+    ],
+    "minVersion": "0.8"
+}

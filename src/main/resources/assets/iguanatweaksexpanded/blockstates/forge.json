@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "iguanatweaksexpanded:block/forge",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "iguanatweaksexpanded:block/forge",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "iguanatweaksexpanded:block/forge"
+    },
+    "facing=west": {
+      "model": "iguanatweaksexpanded:block/forge",
+      "y": 90
+    }
+  }
+}

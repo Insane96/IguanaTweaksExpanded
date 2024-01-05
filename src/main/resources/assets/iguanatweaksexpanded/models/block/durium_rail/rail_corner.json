@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/rail_curved",
+  "textures": {
+    "rail": "iguanatweaksexpanded:block/durium_rail_corner"
+  }
+}

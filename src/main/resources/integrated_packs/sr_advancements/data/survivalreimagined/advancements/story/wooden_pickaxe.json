@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "survivalreimagined:story/root",
+	"parent": "iguanatweaksexpanded:story/root",
 	"criteria": {
 		"wooden_tools": {
 			"trigger": "minecraft:inventory_changed",

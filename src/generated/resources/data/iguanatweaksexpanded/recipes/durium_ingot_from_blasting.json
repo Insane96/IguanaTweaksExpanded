@@ -1,0 +1,18 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_blasting",
+  "category": "blast_furnace_misc",
+  "cookingtime": 800,
+  "experience": 5.0,
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:durium_scrap_block"
+    },
+    {
+      "tag": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    }
+  ],
+  "result": "iguanatweaksexpanded:durium_ingot"
+}

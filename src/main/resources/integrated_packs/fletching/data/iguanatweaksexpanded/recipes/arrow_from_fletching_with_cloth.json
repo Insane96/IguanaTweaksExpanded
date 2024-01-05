@@ -1,0 +1,11 @@
+{
+    "type": "iguanatweaksexpanded:fletching",
+    "category": "fletching_misc",
+    "ingredient": "minecraft:stick",
+    "catalyst1": "iguanatweaksexpanded:cloth",
+    "catalyst2": "minecraft:flint",
+    "result": {
+        "item": "minecraft:arrow",
+        "count": 2
+    }
+}

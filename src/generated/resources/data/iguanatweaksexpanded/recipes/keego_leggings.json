@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 7,
+  "category": "forge_misc",
+  "experience": 21.0,
+  "gear": {
+    "item": "minecraft:golden_leggings"
+  },
+  "ingredient": {
+    "item": "iguanatweaksexpanded:keego"
+  },
+  "result": "iguanatweaksexpanded:keego_leggings",
+  "smashes_required": 22
+}

@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:cleansed_lapis"
+			"item": "iguanatweaksexpanded:cleansed_lapis"
 		},
 		"title": {
 			"translate": "advancements.sr_story.cleansed_lapis.title"
@@ -17,11 +17,11 @@
 	"parent": "minecraft:story/enchant_item",
 	"criteria": {
 		"cleansed_lapis": {
-			"trigger": "survivalreimagined:anvil_repair",
+			"trigger": "iguanatweaksexpanded:anvil_repair",
 			"conditions": {
 				"input2": {
 					"items": [
-						"survivalreimagined:cleansed_lapis"
+						"iguanatweaksexpanded:cleansed_lapis"
 					]
 				}
 			}

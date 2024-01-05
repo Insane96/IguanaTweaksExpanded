@@ -1,0 +1,21 @@
+{
+    "variants": {
+        "": [
+            {
+                "model": "iguanatweaksexpanded:block/copper_ore_rock"
+            },
+            {
+                "model": "iguanatweaksexpanded:block/copper_ore_rock",
+                "y": 90
+            },
+            {
+                "model": "iguanatweaksexpanded:block/copper_ore_rock",
+                "y": 180
+            },
+            {
+                "model": "iguanatweaksexpanded:block/copper_ore_rock",
+                "y": 270
+            }
+        ]
+    }
+}

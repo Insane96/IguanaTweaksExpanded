@@ -1,0 +1,9 @@
+{
+  "values": [
+    {
+      "id": "#iguanatweaksreborn:piercing_damage_type",
+      "required": false
+    },
+    "iguanatweaksexpanded:electrocution_attack"
+  ]
+}

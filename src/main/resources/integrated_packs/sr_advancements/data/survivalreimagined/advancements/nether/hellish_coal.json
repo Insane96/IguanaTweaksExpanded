@@ -1,7 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "survivalreimagined:hellish_coal"
+			"item": "iguanatweaksexpanded:hellish_coal"
 		},
 		"title": {
 			"translate": "advancements.sr_nether.hellish_coal.title"
@@ -22,7 +22,7 @@
 				"items": [
 					{
 						"items": [
-							"survivalreimagined:hellish_coal"
+							"iguanatweaksexpanded:hellish_coal"
 						]
 					}
 				]
