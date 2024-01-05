@@ -1,4 +1,22 @@
 {
+	"item.iguanatweaksexpanded.ancient_lapis": "Ancient Lapis",
+	"item.iguanatweaksexpanded.cleansed_lapis": "Cleansed Lapis",
+
+	"enchantment.iguanatweaksexpanded.magnetic": "Magnetic",
+	"enchantment.iguanatweaksexpanded.magic_protection": "Magic Protection",
+	"enchantment.iguanatweaksexpanded.melee_protection": "Melee Protection",
+	"enchantment.iguanatweaksexpanded.expanded": "Expanded",
+	"enchantment.iguanatweaksexpanded.blasting": "Blasting",
+	"enchantment.iguanatweaksexpanded.step_up": "Step Up",
+	"enchantment.iguanatweaksexpanded.bane_of_sssss": "Bane of SSSSS",
+	"enchantment.iguanatweaksexpanded.water_coolant": "Water Coolant",
+	"enchantment.iguanatweaksexpanded.smartness": "Smartness",
+	"enchantment.iguanatweaksexpanded.ma_jump": "M.A. Jump",
+	"enchantment.iguanatweaksexpanded.gravity_defying": "Gravity Defying",
+	"enchantment.iguanatweaksexpanded.critical": "Critical",
+	"enchantment.iguanatweaksexpanded.healthy": "Healthy",
+	"enchantment.iguanatweaksexpanded.swift_strike": "Swift Strike",
+
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",
 	"item.iguanatweaksexpanded.explosive_arrow": "Explosive Arrow",

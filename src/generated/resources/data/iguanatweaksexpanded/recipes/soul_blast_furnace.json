@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "B": {
-      "item": "minecraft:blackstone"
+      "item": "minecraft:nether_bricks"
     },
     "F": {
       "item": "iguanatweaksexpanded:blast_furnace"

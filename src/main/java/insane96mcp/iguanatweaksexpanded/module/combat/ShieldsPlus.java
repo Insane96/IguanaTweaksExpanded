@@ -15,7 +15,7 @@ import net.minecraft.server.packs.PackType;
 @LoadFeature(module = Modules.Ids.COMBAT)
 public class ShieldsPlus extends Feature {
 	@Config
-	@Label(name = "Shields+ Compat DataPack", description = "Removes wooden shields and changes the crafting recipes of metal shields to require a Forge.")
+	@Label(name = "Shields+ Compat DataPack", description = "Changes the crafting recipes of metal shields to require a Forge and rebalances the shields.")
 	public static Boolean shieldsPlusCompatDataPack = true;
 
 	public ShieldsPlus(Module module, boolean enabledByDefault, boolean canBeDisabled) {

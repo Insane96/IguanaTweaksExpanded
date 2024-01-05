@@ -407,7 +407,7 @@ public class SRRecipeProvider extends RecipeProvider implements IConditionBuilde
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_SWORD), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SWORD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.SHIELD), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SHIELD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(SPItems.DIAMOND_SHIELD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SHIELD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_shield");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_HELMET), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.HELMET.get())
@@ -518,7 +518,7 @@ public class SRRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .define('G', Items.GOLD_INGOT)
                 .define('N', Items.NETHERITE_INGOT)
                 .define('F', MultiBlockFurnaces.BLAST_FURNACE.item().get())
-                .define('B', Items.BLACKSTONE)
+                .define('B', Items.NETHER_BRICKS)
                 .unlockedBy("has_netherite", has(Items.NETHERITE_INGOT))
                 .save(writer);
 

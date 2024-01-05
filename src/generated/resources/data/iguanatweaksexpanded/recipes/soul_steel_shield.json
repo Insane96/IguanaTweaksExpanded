@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:soul_steel_ingot"
   },
   "base": {
-    "item": "minecraft:shield"
+    "item": "shieldsplus:diamond_shield"
   },
   "result": {
     "item": "iguanatweaksexpanded:soul_steel_shield"
