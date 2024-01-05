@@ -1,4 +1,11 @@
 {
+	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
+	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",
+	"item.iguanatweaksexpanded.explosive_arrow": "Explosive Arrow",
+	"item.iguanatweaksexpanded.torch_arrow": "Torch Arrow",
+
+	"container.fletching": "Fletching",
+
 	"item.iguanatweaksexpanded.altimeter": "Altimeter",
 
 	"item.iguanatweaksexpanded.recall_idol": "Recall Idol",

@@ -1,5 +1,6 @@
 {
 	"item": "iguanatweaksexpanded:chained_copper_chestplate",
 	"durability": 64,
-	"armor": 4
+	"armor": 4,
+	"armor_toughness": 1
 }

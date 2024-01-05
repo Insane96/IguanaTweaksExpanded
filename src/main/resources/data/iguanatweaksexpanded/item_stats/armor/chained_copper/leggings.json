@@ -1,5 +1,6 @@
 {
 	"item": "iguanatweaksexpanded:chained_copper_leggings",
 	"durability": 60,
-	"armor": 3
+	"armor": 3,
+	"armor_toughness": 1
 }

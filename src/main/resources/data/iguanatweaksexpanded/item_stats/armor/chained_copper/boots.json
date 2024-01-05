@@ -1,5 +1,6 @@
 {
 	"item": "iguanatweaksexpanded:chained_copper_boots",
 	"durability": 48,
-	"armor": 1
+	"armor": 1,
+	"armor_toughness": 1
 }

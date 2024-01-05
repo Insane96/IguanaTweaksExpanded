@@ -76,14 +76,17 @@ public class FletchingMenu extends RecipeBookMenu<CraftingContainer> {
         return pRecipe.matches(this.craftSlots, this.player.level());
     }
 
+    @Override
+    public void handlePlacement(boolean pPlaceAll, Recipe<?> pRecipe, ServerPlayer pPlayer) {
+        new FletchingPlaceRecipe(this).recipeClicked(pPlayer, (Recipe<CraftingContainer>) pRecipe, pPlaceAll);
+    }
+
     /**
      * Called when the container is closed.
      */
     public void removed(Player pPlayer) {
         super.removed(pPlayer);
-        this.access.execute((p_39371_, p_39372_) -> {
-            this.clearContainer(pPlayer, this.craftSlots);
-        });
+        this.access.execute((p_39371_, p_39372_) -> this.clearContainer(pPlayer, this.craftSlots));
     }
 
     @Override
