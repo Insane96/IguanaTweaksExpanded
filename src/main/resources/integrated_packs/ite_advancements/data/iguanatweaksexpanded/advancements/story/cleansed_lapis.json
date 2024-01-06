@@ -17,7 +17,7 @@
 	"parent": "minecraft:story/enchant_item",
 	"criteria": {
 		"cleansed_lapis": {
-			"trigger": "iguanatweaksexpanded:anvil_repair",
+			"trigger": "iguanatweaksreborn:anvil_repair",
 			"conditions": {
 				"input2": {
 					"items": [

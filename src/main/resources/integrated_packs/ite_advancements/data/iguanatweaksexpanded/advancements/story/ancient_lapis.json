@@ -17,7 +17,7 @@
 	"parent": "iguanatweaksexpanded:story/cleansed_lapis",
 	"criteria": {
 		"ancient_lapis": {
-			"trigger": "iguanatweaksexpanded:anvil_repair",
+			"trigger": "iguanatweaksreborn:anvil_repair",
 			"conditions": {
 				"input2": {
 					"items": [

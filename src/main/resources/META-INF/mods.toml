@@ -41,7 +41,7 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="iguanatweaksreborn"
     mandatory=true
-    versionRange="[3.0.1,)"
+    versionRange="[3.0.2,)"
     ordering="AFTER"
     side="BOTH"
 
@@ -56,14 +56,14 @@ license="All rights reserved"
     modId="enhancedai"
     mandatory=true
     versionRange="[2.0.0,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="sereneseasons"
     mandatory=true
     versionRange="[9.0.0.43,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
@@ -91,7 +91,7 @@ license="All rights reserved"
     modId="passablefoliage"
     mandatory=false
     versionRange="[7.0.0,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
