@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.crate;
 
-import insane96mcp.iguanatweaksexpanded.data.criterion.OverweightCrateCarryTrigger;
+import insane96mcp.iguanatweaksexpanded.data.criterion.ITETriggers;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.insanelib.base.Feature;
@@ -60,7 +60,7 @@ public class Crate extends Feature {
 			double slowness = (cratesInInventory - (slownessAtCrates - 1)) * slownessPerCrate;
 			MCUtils.applyModifier(event.player, Attributes.MOVEMENT_SPEED, CRATE_WEIGHT_UUID, "Crate weight penalty", -slowness, AttributeModifier.Operation.MULTIPLY_BASE, false);
 			if (event.player.tickCount % 20 == 4 && event.player instanceof ServerPlayer serverPlayer)
-				OverweightCrateCarryTrigger.TRIGGER.trigger(serverPlayer);
+				ITETriggers.OVERWEIGHT_CREATE_CARRY.trigger(serverPlayer);
 		}
 	}
 }

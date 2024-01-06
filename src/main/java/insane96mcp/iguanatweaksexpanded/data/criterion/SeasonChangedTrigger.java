@@ -4,7 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -21,8 +20,6 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = IguanaTweaksExpanded.MOD_ID)
 public class SeasonChangedTrigger extends SimpleCriterionTrigger<SeasonChangedTrigger.TriggerInstance> {
 	static final ResourceLocation ID = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "season_changed");
-
-	public static SeasonChangedTrigger TRIGGER = CriteriaTriggers.register(new SeasonChangedTrigger());
 
 	@Override
 	protected TriggerInstance createInstance(JsonObject jsonObject, ContextAwarePredicate pPredicate, DeserializationContext context) {
@@ -49,11 +46,11 @@ public class SeasonChangedTrigger extends SimpleCriterionTrigger<SeasonChangedTr
 	}
 
 	@SubscribeEvent
-	public static void onAnvilRepair(SeasonChangedEvent.Standard event) {
+	public static void onSeasonChanged(SeasonChangedEvent.Standard event) {
 		if (!(event.getLevel() instanceof ServerLevel serverLevel))
 			return;
 
-		serverLevel.players().forEach(serverPlayer -> TRIGGER.trigger(serverPlayer, event.getNewSeason()));
+		serverLevel.players().forEach(serverPlayer -> ITETriggers.SEASON_CHANGED.trigger(serverPlayer, event.getNewSeason()));
 	}
 
 	public static class TriggerInstance extends AbstractCriterionTriggerInstance {

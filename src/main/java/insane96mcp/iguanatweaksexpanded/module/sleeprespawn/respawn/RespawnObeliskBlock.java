@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn;
 
 import com.google.common.collect.ImmutableList;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.data.criterion.ActivateRespawnObeliskTrigger;
+import insane96mcp.iguanatweaksexpanded.data.criterion.ITETriggers;
 import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
 import insane96mcp.iguanatweaksreborn.utils.MCUtils;
 import insane96mcp.insanelib.data.IdTagValue;
@@ -94,7 +94,7 @@ public class RespawnObeliskBlock extends Block {
                 }
                 serverPlayer.setRespawnPosition(level.dimension(), pos, 0.0F, false, true);
                 level.playSound(null, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
-                ActivateRespawnObeliskTrigger.TRIGGER.trigger(serverPlayer);
+                ITETriggers.ACTIVATE_RESPAWN_OBELISK.trigger(serverPlayer);
                 return InteractionResult.SUCCESS;
             }
         }

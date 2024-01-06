@@ -2,17 +2,12 @@ package insane96mcp.iguanatweaksexpanded.data.criterion;
 
 import com.google.gson.JsonObject;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = IguanaTweaksExpanded.MOD_ID)
 public class OverweightCrateCarryTrigger extends SimpleCriterionTrigger<OverweightCrateCarryTrigger.TriggerInstance> {
 	static final ResourceLocation ID = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "overweight_crate_carry");
-
-	public static OverweightCrateCarryTrigger TRIGGER = CriteriaTriggers.register(new OverweightCrateCarryTrigger());
 
 	@Override
 	protected TriggerInstance createInstance(JsonObject jsonObject, ContextAwarePredicate pPredicate, DeserializationContext context) {

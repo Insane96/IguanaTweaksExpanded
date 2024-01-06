@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded;
 
 import com.google.common.collect.Lists;
+import insane96mcp.iguanatweaksexpanded.data.criterion.ITETriggers;
 import insane96mcp.iguanatweaksexpanded.data.generator.*;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.SRBlockModelsProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.SRBlockStatesProvider;
@@ -77,6 +78,8 @@ public class IguanaTweaksExpanded
         modEventBus.addListener(this::gatherData);
         modEventBus.addListener(this::addPackFinders);
         SRRegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
+
+        ITETriggers.init();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
