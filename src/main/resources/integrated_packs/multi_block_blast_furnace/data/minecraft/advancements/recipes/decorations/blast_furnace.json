@@ -28,7 +28,7 @@
     ],
     "rewards": {
         "recipes": [
-            "iguanatweaksexpanded:blast_furnace"
+            "minecraft:blast_furnace"
         ]
     },
     "sends_telemetry_event": false

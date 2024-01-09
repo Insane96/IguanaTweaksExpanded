@@ -4,6 +4,7 @@
 * To reduce inventory clutter, ore rocks now drop raw ores
   * Silk touch if you want to get the rocks
 * Fixed missing lang for new foods
+* Fixed blast furnace recipe not unlocking
 
 ## 1.0.2
 * Fixed respawn obelisk structures having no obelisk
