@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.world.coalfire;
 
+import insane96mcp.iguanatweaksreborn.module.world.coalfire.PilableLayerBlock;
 import insane96mcp.iguanatweaksreborn.setup.ITRRegistries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

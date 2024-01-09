@@ -6,6 +6,7 @@ import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.data.lootmodifier.ReplaceLootModifier;
+import insane96mcp.iguanatweaksreborn.module.world.coalfire.PilableLayerBlock;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
