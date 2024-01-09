@@ -6,10 +6,40 @@
             "bonus_rolls": 0,
             "entries": [
                 {
-                    "type": "minecraft:item",
-                    "name": "iguanatweaksexpanded:gold_ore_rock"
+                    "type": "minecraft:alternatives",
+                    "children": [
+                        {
+                            "type": "minecraft:item",
+                            "name": "iguanatweaksexpanded:gold_ore_rock",
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:match_tool",
+                                    "predicate": {
+                                        "enchantments": [
+                                            {
+                                                "enchantment": "minecraft:silk_touch",
+                                                "levels": {
+                                                    "min": 1
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "minecraft:item",
+                            "name": "minecraft:raw_gold",
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:survives_explosion"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
-    ]
+    ],
+    "random_sequence": "iguanatweaksexpanded:blocks/gold_ore_rock"
 }
