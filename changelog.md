@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Fixed vanilla material hammers not having stat changes
+* Slight rebalancement of durium and solarium
+
 ## 1.0.3
 * To reduce inventory clutter, ore rocks now drop raw ores
   * Silk touch if you want to get the rocks
