@@ -1,8 +1,6 @@
 # Changelog
 
-* Diamond arrows should fall faster, Quartz instead should have less velocity
-
-## Upcoming
+## 1.0.4
 * Arrows
   * Diamond arrows are now heavier and fall faster
   * Quartz arrows are now faster and have less friction
