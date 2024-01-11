@@ -16,6 +16,6 @@ public class SolariumForgeHammerItem extends ForgeHammerItem {
         int cooldown = super.getUseCooldown(entity, stack);
         if (entity == null)
             return cooldown;
-        return cooldown - (int)  (Solarium.getCalculatedSkyLightRatio(entity) * 10);
+        return cooldown - (int) (Solarium.getCalculatedSkyLightRatio(entity) * 10);
     }
 }

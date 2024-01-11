@@ -19,7 +19,7 @@ public class KeegoForgeHammerItem extends ForgeHammerItem {
         if (entity == null || !entity.hasEffect(Keego.ATTACK_MOMENTUM.get()))
             return cooldown;
         int amplifier = entity.getEffect(Keego.ATTACK_MOMENTUM.get()).getAmplifier();
-        return cooldown - ((amplifier + 1));
+        return cooldown - (amplifier + 1);
     }
 
     @Override

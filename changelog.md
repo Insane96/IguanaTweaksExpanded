@@ -1,8 +1,12 @@
 # Changelog
 
+* Diamond arrows should fall faster, Quartz instead should have less velocity
+
 ## Upcoming
 * Fixed vanilla material hammers not having stat changes
 * Slight rebalancement of durium and solarium
+* Rebalanced Hammers cooldown
+  * Cooldown is now capped at 0.5 seconds
 
 ## 1.0.3
 * To reduce inventory clutter, ore rocks now drop raw ores

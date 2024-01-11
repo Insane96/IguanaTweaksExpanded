@@ -15,6 +15,6 @@ public class ForgePlaceRecipe extends ServerPlaceRecipe<Container> {
     @Override
     public void placeRecipe(int pWidth, int pHeight, int pOutputSlot, Recipe<?> pRecipe, Iterator<Integer> pIngredients, int pMaxAmount) {
         this.addItemToSlot(pIngredients, 0, ((ForgeRecipe)pRecipe).ingredientAmount, 0, 0);
-        this.addItemToSlot(pIngredients, 1, 64, 0, 0);
+        this.addItemToSlot(pIngredients, 1, 1, 0, 0);
     }
 }

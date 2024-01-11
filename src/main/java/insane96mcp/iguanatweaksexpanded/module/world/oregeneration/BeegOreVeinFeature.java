@@ -96,13 +96,13 @@ public class BeegOreVeinFeature extends Feature<OreWithRandomPatchConfiguration>
         }
     }
 
-    protected static boolean shouldSkipAirCheck(RandomSource p_225169_, float p_225170_) {
-        if (p_225170_ <= 0.0F) {
+    protected static boolean shouldSkipAirCheck(RandomSource random, float discardChance) {
+        if (discardChance <= 0.0F) {
             return true;
-        } else if (p_225170_ >= 1.0F) {
+        } else if (discardChance >= 1.0F) {
             return false;
         } else {
-            return p_225169_.nextFloat() >= p_225170_;
+            return random.nextFloat() >= discardChance;
         }
     }
 }

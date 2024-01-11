@@ -68,7 +68,7 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
     }
 
     public void onUse(Player player, ItemStack stack) {
-        player.getCooldowns().addCooldown(this, this.getUseCooldown(player, stack));
+        player.getCooldowns().addCooldown(this, Math.max(this.getUseCooldown(player, stack), 10));
     }
 
     @Override
