@@ -12,11 +12,11 @@ import net.minecraft.world.level.Level;
 
 import java.util.function.Supplier;
 
-public class SRArrow extends ArrowItem {
+public class ITEArrowItem extends ArrowItem {
     final float baseDamage; // Vanilla arrow is 2.0
     final Supplier<EntityType<? extends Arrow>> arrowType;
 
-    public SRArrow(Supplier<EntityType<? extends Arrow>> arrowType, float baseDamage, Properties pProperties) {
+    public ITEArrowItem(Supplier<EntityType<? extends Arrow>> arrowType, float baseDamage, Properties pProperties) {
         super(pProperties);
         this.arrowType = arrowType;
         this.baseDamage = baseDamage;

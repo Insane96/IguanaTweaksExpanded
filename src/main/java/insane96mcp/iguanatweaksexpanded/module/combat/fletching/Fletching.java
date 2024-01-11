@@ -4,10 +4,12 @@ import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.block.SRFletchingTableBlock;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.data.FletchingRecipeSerializer;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.DiamondArrow;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.ExplosiveArrow;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.QuartzArrow;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.TorchArrow;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.inventory.FletchingMenu;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.SRArrow;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.ITEArrowItem;
 import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
@@ -45,14 +47,14 @@ public class Fletching extends Feature {
 	public static final RegistryObject<MenuType<FletchingMenu>> FLETCHING_MENU_TYPE = SRRegistries.MENU_TYPES.register("fletching", () -> new MenuType<>(FletchingMenu::new, FeatureFlags.VANILLA_SET));
 
 	public static final RegistryObject<EntityType<Arrow>> QUARTZ_ARROW = SRRegistries.ENTITY_TYPES.register("quartz_arrow", () ->
-			EntityType.Builder.<Arrow>of(Arrow::new, MobCategory.MISC)
+			EntityType.Builder.<Arrow>of(QuartzArrow::new, MobCategory.MISC)
 					.sized(0.5F, 0.5F)
 					.clientTrackingRange(4)
 					.updateInterval(3)
 					.build("quartz_arrow"));
 
 	public static final RegistryObject<EntityType<Arrow>> DIAMOND_ARROW = SRRegistries.ENTITY_TYPES.register("diamond_arrow", () ->
-			EntityType.Builder.<Arrow>of(Arrow::new, MobCategory.MISC)
+			EntityType.Builder.<Arrow>of(DiamondArrow::new, MobCategory.MISC)
 					.sized(0.5F, 0.5F)
 					.clientTrackingRange(4)
 					.updateInterval(3)
@@ -72,10 +74,10 @@ public class Fletching extends Feature {
 					.updateInterval(3)
 					.build("torch_arrow"));
 
-	public static final RegistryObject<SRArrow> QUARTZ_ARROW_ITEM = SRRegistries.ITEMS.register("quartz_arrow", () -> new SRArrow(QUARTZ_ARROW::get, 2.5f, new Item.Properties()));
-	public static final RegistryObject<SRArrow> DIAMOND_ARROW_ITEM = SRRegistries.ITEMS.register("diamond_arrow", () -> new SRArrow(DIAMOND_ARROW::get, 3.33f, new Item.Properties()));
-	public static final RegistryObject<SRArrow> EXPLOSIVE_ARROW_ITEM = SRRegistries.ITEMS.register("explosive_arrow", () -> new SRArrow(EXPLOSIVE_ARROW::get, 0f, new Item.Properties()));
-	public static final RegistryObject<SRArrow> TORCH_ARROW_ITEM = SRRegistries.ITEMS.register("torch_arrow", () -> new SRArrow(TORCH_ARROW::get, 2f, new Item.Properties()));
+	public static final RegistryObject<ITEArrowItem> QUARTZ_ARROW_ITEM = SRRegistries.ITEMS.register("quartz_arrow", () -> new ITEArrowItem(QUARTZ_ARROW::get, 2f, new Item.Properties()));
+	public static final RegistryObject<ITEArrowItem> DIAMOND_ARROW_ITEM = SRRegistries.ITEMS.register("diamond_arrow", () -> new ITEArrowItem(DIAMOND_ARROW::get, 3f, new Item.Properties()));
+	public static final RegistryObject<ITEArrowItem> EXPLOSIVE_ARROW_ITEM = SRRegistries.ITEMS.register("explosive_arrow", () -> new ITEArrowItem(EXPLOSIVE_ARROW::get, 0f, new Item.Properties()));
+	public static final RegistryObject<ITEArrowItem> TORCH_ARROW_ITEM = SRRegistries.ITEMS.register("torch_arrow", () -> new ITEArrowItem(TORCH_ARROW::get, 2f, new Item.Properties()));
 
 	@Config
 	@Label(name = "Fletching Data Pack", description = """

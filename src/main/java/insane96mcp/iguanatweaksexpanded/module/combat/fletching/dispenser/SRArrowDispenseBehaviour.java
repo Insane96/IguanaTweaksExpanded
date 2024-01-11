@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser;
 
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.SRArrow;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.ITEArrowItem;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -10,6 +10,6 @@ import net.minecraft.world.level.Level;
 public class SRArrowDispenseBehaviour extends AbstractProjectileDispenseBehavior {
 	@Override
 	protected Projectile getProjectile(Level pLevel, Position pPosition, ItemStack pStack) {
-		return ((SRArrow)pStack.getItem()).createDispenserArrow(pLevel, pPosition, pStack);
+		return ((ITEArrowItem)pStack.getItem()).createDispenserArrow(pLevel, pPosition, pStack);
 	}
 }
