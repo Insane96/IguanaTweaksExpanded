@@ -62,21 +62,17 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         super.init();
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
+        this.maxCost = this.menu.maxCost.get();
     }
 
     private void updatePossibleEnchantments() {
         ItemStack stack = this.menu.getSlot(0).getItem();
-        if (ItemStack.isSameItem(stack, this.lastStack))
+        this.maxCost = this.menu.maxCost.get();
+        if (ItemStack.isSameItem(stack, this.lastStack) || stack.isEnchanted())
             return;
         this.lastStack = stack.copy();
         this.enchantments.clear();
         this.enchantmentEntries.clear();
-        if (stack.isEmpty() || stack.isEnchanted()) {
-            this.maxCost = 0;
-            return;
-        }
-        //TODO Max cost should be a base value + libraries around / enchantment value
-        this.maxCost = 4 + stack.getEnchantmentValue();
         boolean isBook = stack.is(Items.BOOK);
         List<Enchantment> availableEnchantments = new ArrayList<>();
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {

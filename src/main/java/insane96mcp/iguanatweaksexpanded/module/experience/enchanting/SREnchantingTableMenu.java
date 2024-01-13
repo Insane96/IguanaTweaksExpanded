@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -10,7 +11,9 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.EnchantmentTableBlock;
 
 public class SREnchantingTableMenu extends AbstractContainerMenu {
     public static final int ITEM_SLOT = 0;
@@ -41,6 +44,12 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             public int getMaxStackSize() {
                 return 1;
             }
+
+            @Override
+            public void setChanged() {
+                super.setChanged();
+                SREnchantingTableMenu.this.slotsChanged(this.container);
+            }
         });
         this.addSlot(new Slot(pContainer, CATALYST_SLOT, 28, 18) {
             public boolean mayPlace(ItemStack stack) {
@@ -59,6 +68,32 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
         }
         this.addDataSlot(this.maxCost);
         this.addDataSlot(this.enchantCost);
+
+        this.access.execute((level, blockPos) -> this.updateMaxCost(this.container.getItem(0), level, blockPos));
+    }
+
+    @Override
+    public void slotsChanged(Container pContainer) {
+        this.access.execute((level, blockPos) -> this.updateMaxCost(this.container.getItem(0), level, blockPos));
+    }
+
+    private void updateMaxCost(ItemStack stack, Level level, BlockPos blockPos) {
+        if (stack.isEmpty() || !stack.isEnchantable() || stack.isEnchanted()) {
+            this.maxCost.set(0);
+        }
+        else {
+            float j = 0;
+
+            for (BlockPos blockpos : EnchantmentTableBlock.BOOKSHELF_OFFSETS) {
+                if (EnchantmentTableBlock.isValidBookShelf(level, blockPos, blockpos)) {
+                    j += level.getBlockState(blockPos.offset(blockpos)).getEnchantPowerBonus(level, blockPos.offset(blockpos));
+                }
+            }
+            this.maxCost.set((int) (4 + stack.getEnchantmentValue() * (j / 20f)));
+
+        }
+
+        this.broadcastChanges();
     }
 
     @Override
@@ -68,7 +103,8 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             return false;
         }
         this.access.execute((level, blockPos) -> {
-
+            this.updateMaxCost(this.container.getItem(0), level, blockPos);
+            this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
         });
         this.broadcastChanges();
         return true;
