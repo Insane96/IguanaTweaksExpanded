@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.network.message.SyncSREnchantingTableEnchantments;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -47,7 +48,6 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     static final int ENCH_ENTRY_W = LVL_BTN_W + ENCH_DISPLAY_W + ENCH_LVL_W + LVL_BTN_W;
     static final int ENCH_ENTRY_H = 14;
 
-    private List<EnchantmentInstance> enchantments = new ArrayList<>();
     private List<EnchantmentEntry> enchantmentEntries = new ArrayList<>();
     private ItemStack lastStack;
     private int maxCost = 0;
@@ -71,7 +71,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         if (ItemStack.isSameItem(stack, this.lastStack) || stack.isEnchanted())
             return;
         this.lastStack = stack.copy();
-        this.enchantments.clear();
+        List<EnchantmentInstance> enchantments = new ArrayList<>();
         this.enchantmentEntries.clear();
         boolean isBook = stack.is(Items.BOOK);
         List<Enchantment> availableEnchantments = new ArrayList<>();
@@ -80,11 +80,11 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
                 availableEnchantments.add(enchantment);
             }
         }
-        availableEnchantments.forEach(enchantment -> this.enchantments.add(new EnchantmentInstance(enchantment, 0)));
+        availableEnchantments.forEach(enchantment -> enchantments.add(new EnchantmentInstance(enchantment, 0)));
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
-        for (int i = 0; i < this.enchantments.size(); i++) {
-            EnchantmentInstance instance = this.enchantments.get(i);
+        for (int i = 0; i < enchantments.size(); i++) {
+            EnchantmentInstance instance = enchantments.get(i);
             this.enchantmentEntries.add(new EnchantmentEntry(topLeftCornerX + LIST_X, topLeftCornerY + LIST_Y + (i * ENCH_ENTRY_H), instance.enchantment, instance.level));
         }
     }
@@ -112,6 +112,16 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         double x = pMouseX - (double)(topLeftCornerX + BUTTON_X);
         double y = pMouseY - (double)(topLeftCornerY + BUTTON_Y);
         if (x >= 0.0D && y >= 0.0D && x < BUTTON_W && y < BUTTON_H && this.menu.clickMenuButton(this.minecraft.player, 0)) {
+            List<EnchantmentInstance> list = new ArrayList<>();
+            for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
+                if (enchantmentEntry.enchantmentDisplay.lvl <= 0)
+                    continue;
+
+                list.add(new EnchantmentInstance(enchantmentEntry.enchantmentDisplay.enchantment, enchantmentEntry.enchantmentDisplay.lvl));
+            }
+            if (list.isEmpty())
+                return true;
+            SyncSREnchantingTableEnchantments.sync(list);
             this.minecraft.gameMode.handleInventoryButtonClick((this.menu).containerId, 0);
             return true;
         }
@@ -238,8 +248,8 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
     private static class EnchantmentDisplay extends AbstractWidget {
 
-        Enchantment enchantment;
-        int lvl;
+        public Enchantment enchantment;
+        public int lvl;
         public EnchantmentDisplay(int pX, int pY, Enchantment enchantment, int lvl) {
             super(pX, pY, ENCH_DISPLAY_W, ENCH_ENTRY_H, Component.translatable(enchantment.getDescriptionId()));
             this.enchantment = enchantment;

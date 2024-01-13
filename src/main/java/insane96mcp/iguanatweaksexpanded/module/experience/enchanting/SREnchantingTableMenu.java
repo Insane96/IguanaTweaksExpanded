@@ -11,9 +11,11 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantmentTableBlock;
+
+import java.util.List;
 
 public class SREnchantingTableMenu extends AbstractContainerMenu {
     public static final int ITEM_SLOT = 0;
@@ -90,10 +92,17 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 }
             }
             this.maxCost.set((int) (4 + stack.getEnchantmentValue() * (j / 20f)));
-
         }
-
         this.broadcastChanges();
+    }
+
+    public void updateEnchantmentsChosen(List<EnchantmentInstance> enchantments) {
+        this.access.execute((level, blockPos) -> {
+            if (!(level.getBlockEntity(blockPos) instanceof SREnchantingTableBlockEntity enchantingTable))
+                return;
+            enchantingTable.clearEnchantmentsChosen();
+            enchantments.forEach(enchantingTable::addEnchantmentChosen);
+        });
     }
 
     @Override
@@ -104,7 +113,7 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
         }
         this.access.execute((level, blockPos) -> {
             this.updateMaxCost(this.container.getItem(0), level, blockPos);
-            this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
+            //this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
         });
         this.broadcastChanges();
         return true;
