@@ -124,7 +124,8 @@
 	"block.iguanatweaksexpanded.durium_ore": "Durium Ore",
 	"block.iguanatweaksexpanded.deepslate_durium_ore": "Deepslate Durium Ore",
 
-	"iguanatweaksexpanded.cant_forge": "Can't Forge, no recipe found or output slot occupied",
+	"iguanatweaksexpanded.cant_forge": "Can't forge, no recipe found or output slot occupied",
+	"iguanatweaksexpanded.cant_forge_enchanted": "Can't forge enchanted items",
 	"iguanatweaksexpanded.hammer_cooldown": "%f Forge Cooldown",
 	"iguanatweaksexpanded.hammer_durability": "%f Durability Used",
 	"block.iguanatweaksexpanded.forge": "Forge",

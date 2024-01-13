@@ -60,8 +60,9 @@ public class ForgeBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         ItemStack stack = pPlayer.getItemInHand(pHand);
         if (stack.getItem() instanceof ForgeHammerItem forgeHammerItem && pLevel.getBlockEntity(pPos) instanceof ForgeBlockEntity forgeBlockEntity && pHit.getDirection() == Direction.UP) {
-            if (Forging.unforgableEnchantedItems && !pLevel.isClientSide && forgeBlockEntity.getItem(0).isEnchanted()) {
+            if (Forging.unforgableEnchantedItems && forgeBlockEntity.getItem(1).isEnchanted()) {
                 pPlayer.displayClientMessage(Component.translatable(CANT_FORGE_ENCHANTED), true);
+                return InteractionResult.PASS;
             }
             if (!pPlayer.getCooldowns().isOnCooldown(forgeHammerItem) && ForgeBlockEntity.onUse(pLevel, pPos, pState, forgeBlockEntity, forgeHammerItem.getSmashesOnHit(stack, pPlayer.getRandom()))) {
                 forgeHammerItem.onUse(pPlayer, stack);
