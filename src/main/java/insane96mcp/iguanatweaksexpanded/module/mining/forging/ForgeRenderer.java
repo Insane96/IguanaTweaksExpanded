@@ -2,8 +2,6 @@ package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.ForgeBlock;
-import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.ForgeBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;

@@ -1,7 +1,6 @@
-package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
+package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeHammerItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -34,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class ForgeBlock extends BaseEntityBlock {
     public static final String CANT_FORGE = IguanaTweaksExpanded.MOD_ID + ".cant_forge";
+    public static final String CANT_FORGE_ENCHANTED = IguanaTweaksExpanded.MOD_ID + ".cant_forge_enchanted";
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private static final VoxelShape BASE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D);
@@ -60,6 +60,9 @@ public class ForgeBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         ItemStack stack = pPlayer.getItemInHand(pHand);
         if (stack.getItem() instanceof ForgeHammerItem forgeHammerItem && pLevel.getBlockEntity(pPos) instanceof ForgeBlockEntity forgeBlockEntity && pHit.getDirection() == Direction.UP) {
+            if (Forging.unforgableEnchantedItems && !pLevel.isClientSide && forgeBlockEntity.getItem(0).isEnchanted()) {
+                pPlayer.displayClientMessage(Component.translatable(CANT_FORGE_ENCHANTED), true);
+            }
             if (!pPlayer.getCooldowns().isOnCooldown(forgeHammerItem) && ForgeBlockEntity.onUse(pLevel, pPos, pState, forgeBlockEntity, forgeHammerItem.getSmashesOnHit(stack, pPlayer.getRandom()))) {
                 forgeHammerItem.onUse(pPlayer, stack);
                 if (pPlayer instanceof ServerPlayer serverPlayer) {

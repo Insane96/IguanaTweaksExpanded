@@ -7,8 +7,6 @@ import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
-import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.ForgeBlock;
-import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.ForgeBlockEntity;
 import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
@@ -58,6 +56,11 @@ public class Forging extends Feature {
 	public static final RegistryObject<ForgeHammerItem> DIAMOND_HAMMER = SRRegistries.ITEMS.register("diamond_hammer", () -> new ForgeHammerItem(Tiers.DIAMOND, 15, 2, new Item.Properties()));
 	public static final RegistryObject<ForgeHammerItem> SOUL_STEEL_HAMMER = SRRegistries.ITEMS.register("soul_steel_hammer", () -> new ForgeHammerItem(SoulSteel.ITEM_TIER, 15, 2, new Item.Properties()));
 	public static final RegistryObject<ForgeHammerItem> NETHERITE_HAMMER = SRRegistries.ITEMS.register("netherite_hammer", () -> new ForgeHammerItem(Tiers.NETHERITE, 15, 2, new Item.Properties()));
+
+	@Config
+	@Label(name = "Unforgable enchanted items", description = "Enchanted items can't be forged")
+	public static Boolean unforgableEnchantedItems = true;
+
 	@Config
 	@Label(name = "Forging Equipment Crafting Data Pack", description = """
 			Enables the following changes to vanilla data pack:

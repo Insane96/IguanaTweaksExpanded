@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.network.message;
 
-import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.ForgeBlockEntity;
+import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;

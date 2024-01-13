@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Enchanted items can no longer be forged
+* Fixed ore rocks advancement
+
 ## 1.0.4
 * Arrows
   * Diamond arrows are now heavier and fall faster

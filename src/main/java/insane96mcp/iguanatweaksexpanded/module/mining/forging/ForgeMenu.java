@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.ForgeBlockEntity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;

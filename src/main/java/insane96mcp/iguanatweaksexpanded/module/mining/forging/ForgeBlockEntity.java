@@ -1,10 +1,7 @@
-package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
+package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import com.google.common.collect.Lists;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeMenu;
-import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
-import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncForgeStatus;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -117,6 +114,10 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
             return false;
 
         ItemStack ingredientStack = pBlockEntity.items.get(ForgeMenu.INGREDIENT_SLOT);
+        if (ingredientStack.isEnchanted()) {
+            pBlockEntity.smashes = 0;
+            return false;
+        }
         ItemStack gearStack = pBlockEntity.items.get(ForgeMenu.GEAR_SLOT);
         if (ingredientStack.isEmpty() || gearStack.isEmpty()) {
             pBlockEntity.smashes = 0;

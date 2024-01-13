@@ -16,16 +16,77 @@
 	},
 	"parent": "iguanatweaksexpanded:story/furnace",
 	"criteria": {
-		"ore_rocks": {
-			"trigger": "minecraft:inventory_changed",
+		"iron": {
+			"trigger": "minecraft:location",
 			"conditions": {
-				"items": [
+				"player": [
 					{
-						"items": [
-							"iguanatweaksexpanded:iron_ore_rock",
-							"iguanatweaksexpanded:gold_ore_rock",
-							"iguanatweaksexpanded:copper_ore_rock"
-						]
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"type_specific": {
+								"type": "player",
+								"stats": [
+									{
+										"type": "minecraft:mined",
+										"stat": "iguanatweaksexpanded:iron_ore_rock",
+										"value": {
+											"min": 1
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		},
+		"gold": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"type_specific": {
+								"type": "player",
+								"stats": [
+									{
+										"type": "minecraft:mined",
+										"stat": "iguanatweaksexpanded:gold_ore_rock",
+										"value": {
+											"min": 1
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		},
+		"copper": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"type_specific": {
+								"type": "player",
+								"stats": [
+									{
+										"type": "minecraft:mined",
+										"stat": "iguanatweaksexpanded:copper_ore_rock",
+										"value": {
+											"min": 1
+										}
+									}
+								]
+							}
+						}
 					}
 				]
 			}
@@ -33,7 +94,9 @@
 	},
 	"requirements": [
 		[
-			"ore_rocks"
+			"iron",
+			"gold",
+			"copper"
 		]
 	]
 }
