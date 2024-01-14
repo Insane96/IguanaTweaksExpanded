@@ -107,7 +107,7 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_COOLDOWN_LANG, IguanaTweaksExpanded.ONE_DECIMAL_FORMATTER.format(this.getUseCooldown(null, pStack) / 20f)).withStyle(ChatFormatting.DARK_GREEN)));
+        pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_COOLDOWN_LANG, IguanaTweaksExpanded.ONE_DECIMAL_FORMATTER.format(Math.max(this.getUseCooldown(null, pStack) / 20f, 0.5f))).withStyle(ChatFormatting.DARK_GREEN)));
         pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_DURABILITY_LANG, this.useDamageTaken).withStyle(ChatFormatting.DARK_GREEN)));
     }
 }
