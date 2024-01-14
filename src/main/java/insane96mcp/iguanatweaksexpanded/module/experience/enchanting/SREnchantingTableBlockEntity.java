@@ -5,10 +5,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
@@ -18,20 +16,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
     protected NonNullList<ItemStack> items = NonNullList.withSize(SREnchantingTableMenu.SLOT_COUNT, ItemStack.EMPTY);
-    protected List<EnchantmentInstance> enchantmentsChosen = new ArrayList<>();
 
     protected SREnchantingTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -41,28 +31,11 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
         super.load(tag);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.items);
-        if (tag.contains("Enchantments")) {
-            ListTag enchantmentsListTag = tag.getList("Enchantments", 10);
-            for (int i = 0; i < enchantmentsListTag.size(); ++i) {
-                CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
-                Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
-                if (enchantment != null) {
-                    this.enchantmentsChosen.add(new EnchantmentInstance(enchantment, compoundtag.getShort("lvl")));
-                }
-            }
-        }
     }
 
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
         ContainerHelper.saveAllItems(pTag, this.items);
-        if (!pTag.contains("Enchantments", 9)) {
-            pTag.put("Enchantments", new ListTag());
-        }
-        for (EnchantmentInstance enchantmentInstance : enchantmentsChosen) {
-            ListTag listtag = pTag.getList("Enchantments", 10);
-            listtag.add(EnchantmentHelper.storeEnchantment(ForgeRegistries.ENCHANTMENTS.getKey(enchantmentInstance.enchantment), (byte)enchantmentInstance.level));
-        }
     }
 
     @Override
@@ -146,14 +119,6 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
 
     public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    public void addEnchantmentChosen(EnchantmentInstance enchantmentInstance) {
-        this.enchantmentsChosen.add(enchantmentInstance);
-    }
-
-    public void clearEnchantmentsChosen() {
-        this.enchantmentsChosen.clear();
     }
 
     net.minecraftforge.common.util.LazyOptional<? extends net.minecraftforge.items.IItemHandler>[] handlers =

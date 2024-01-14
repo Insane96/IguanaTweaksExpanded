@@ -3,7 +3,6 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncSREnchantingTableEnchantments;
-import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractButton;
@@ -11,6 +10,8 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -23,6 +24,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import static insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded.ONE_DECIMAL_FORMATTER;
 
 public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantingTableMenu> {
     private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/enchanting_table.png");
@@ -41,9 +45,9 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     static final int LVL_BTN_W = 9;
     static final int LOWER_LVL_BTN_U = 0;
     static final int ENCH_DISPLAY_U = LVL_BTN_W;
-    static final int ENCH_DISPLAY_W = 83;
+    static final int ENCH_DISPLAY_W = 81;
     static final int ENCH_LVL_U = LVL_BTN_W + ENCH_DISPLAY_W;
-    static final int ENCH_LVL_W = 13;
+    static final int ENCH_LVL_W = 15;
     static final int RISE_LVL_BTN_U = LVL_BTN_W + ENCH_DISPLAY_W + ENCH_LVL_W;
     static final int ENCH_ENTRY_W = LVL_BTN_W + ENCH_DISPLAY_W + ENCH_LVL_W + LVL_BTN_W;
     static final int ENCH_ENTRY_H = 14;
@@ -87,20 +91,33 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             EnchantmentInstance instance = enchantments.get(i);
             this.enchantmentEntries.add(new EnchantmentEntry(topLeftCornerX + LIST_X, topLeftCornerY + LIST_Y + (i * ENCH_ENTRY_H), instance.enchantment, instance.level));
         }
+
+        if (stack.getTag() != null && stack.getTag().contains("PendingEnchantments")) {
+            List<EnchantmentInstance> pendingEnchantments = new ArrayList<>();
+            ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+            for (int i = 0; i < enchantmentsListTag.size(); ++i) {
+                CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
+                Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
+                if (enchantment != null) {
+                    pendingEnchantments.add(new EnchantmentInstance(enchantment, compoundtag.getShort("lvl")));
+                }
+            }
+            for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
+                Optional<EnchantmentInstance> instanceOptional = pendingEnchantments.stream().filter(pendingEnchantment -> enchantmentEntry.enchantmentDisplay.enchantment.equals(pendingEnchantment.enchantment)).findAny();
+                instanceOptional.ifPresent(pendingEnchantment -> enchantmentEntry.enchantmentDisplay.lvl = pendingEnchantment.level);
+            }
+        }
     }
 
-    private int getCurrentCost() {
+    private float getCurrentCost() {
         float cost = 0;
         for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
             int lvl = enchantmentEntry.enchantmentDisplay.lvl;
             if (lvl <= 0)
-                continue;/*
-            Enchantment enchantment = enchantmentEntry.enchantmentDisplay.enchantment;
-            cost += (enchantment.getMinCost(lvl) + enchantment.getMaxCost(lvl)) / 10f;*/
-            int rarityCost = Anvils.getRarityCost(enchantmentEntry.enchantmentDisplay.enchantment);
-            cost += rarityCost * lvl + (rarityCost * lvl / 2f);
+                continue;
+            cost += EnchantingFeature.getCost(enchantmentEntry.enchantmentDisplay.enchantment, lvl);
         }
-        return (int) cost;
+        return cost;
     }
 
     @Override
@@ -112,17 +129,9 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         double x = pMouseX - (double)(topLeftCornerX + BUTTON_X);
         double y = pMouseY - (double)(topLeftCornerY + BUTTON_Y);
         if (x >= 0.0D && y >= 0.0D && x < BUTTON_W && y < BUTTON_H && this.menu.clickMenuButton(this.minecraft.player, 0)) {
-            List<EnchantmentInstance> list = new ArrayList<>();
-            for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
-                if (enchantmentEntry.enchantmentDisplay.lvl <= 0)
-                    continue;
-
-                list.add(new EnchantmentInstance(enchantmentEntry.enchantmentDisplay.enchantment, enchantmentEntry.enchantmentDisplay.lvl));
-            }
-            if (list.isEmpty())
-                return true;
-            SyncSREnchantingTableEnchantments.sync(list);
             this.minecraft.gameMode.handleInventoryButtonClick((this.menu).containerId, 0);
+            this.enchantmentEntries.clear();
+            this.maxCost = 0;
             return true;
         }
         for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
@@ -139,7 +148,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         int x = pMouseX - (topLeftCornerX + BUTTON_X);
         int y = pMouseY - (topLeftCornerY + BUTTON_Y);
         pGuiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX, topLeftCornerY, 0, 0, this.imageWidth, this.imageHeight);
-        int cost = this.getCurrentCost();
+        float cost = this.getCurrentCost();
         if ((this.minecraft.player.experienceLevel < cost && !this.minecraft.player.getAbilities().instabuild) || cost <= 0 || cost > this.maxCost)
             pGuiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X, topLeftCornerY + BUTTON_Y, BUTTON_U + BUTTON_W, BUTTON_V, BUTTON_W, BUTTON_H);
         else if (x >= 0 && y >= 0 && x < BUTTON_W && y < BUTTON_H)
@@ -159,9 +168,9 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         }
         if (this.maxCost > 0) {
             guiGraphics.drawCenteredString(this.font, "Max: %d".formatted(this.maxCost), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H, 0x11FF11);
-            int cost = this.getCurrentCost();
+            float cost = this.getCurrentCost();
             int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
-            guiGraphics.drawCenteredString(this.font, "Cost: %d".formatted(this.getCurrentCost()), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 10, color);
+            guiGraphics.drawCenteredString(this.font, "Cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost())), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 10, color);
         }
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
@@ -213,6 +222,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
                 this.enchantmentEntry.enchantmentDisplay.lower();
             else
                 this.enchantmentEntry.enchantmentDisplay.rise();
+            syncEnchantments();
         }
 
         @Override
@@ -225,6 +235,11 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
             int i = getFGColor();
             this.renderString(guiGraphics, minecraft.font, i | Mth.ceil(this.alpha * 255.0F) << 24);
+            if (this.type == Type.LOWER && this.enchantmentEntry.enchantmentDisplay.lvl > 0)
+                this.setTooltip(Tooltip.create(Component.literal("Previous level cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(this.enchantmentEntry.enchantmentDisplay.enchantment, this.enchantmentEntry.enchantmentDisplay.lvl - 1))))));
+            else if (this.type == Type.RISE && this.enchantmentEntry.enchantmentDisplay.lvl < this.enchantmentEntry.enchantmentDisplay.enchantment.getMaxLevel())
+                this.setTooltip(Tooltip.create(Component.literal("Next level cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(this.enchantmentEntry.enchantmentDisplay.enchantment, this.enchantmentEntry.enchantmentDisplay.lvl + 1))))));
+            else this.setTooltip(null);
         }
 
         private int getYOffset() {
@@ -254,18 +269,19 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             super(pX, pY, ENCH_DISPLAY_W, ENCH_ENTRY_H, Component.translatable(enchantment.getDescriptionId()));
             this.enchantment = enchantment;
             this.lvl = lvl;
-            this.setTooltip(Tooltip.create(Component.literal("Cost per level: %d".formatted(Anvils.getRarityCost(enchantment)))));
         }
 
         @Override
         protected void renderWidget(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-            pGuiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), ENCH_DISPLAY_U, ENCH_ENTRY_V, this.getWidth(), this.getHeight());
-            pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V, this.getWidth(), this.getHeight());
-            this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 2, 0xDDDDDD);
+            pGuiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), ENCH_DISPLAY_U, ENCH_ENTRY_V + this.getYOffset(), this.getWidth(), this.getHeight());
+            pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V + this.getYOffset(), this.getWidth(), this.getHeight());
+            this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 1, 0xDDDDDD);
             Component lvlTxt = Component.empty();
             if (this.lvl > 0)
                 lvlTxt = Component.translatable("enchantment.level." + this.lvl);
-            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W + LVL_BTN_W / 2 + 2, this.getY() + 3, 0xDDDDDD);
+            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W + LVL_BTN_W / 2 + 3, this.getY() + 3, 0xDDDDDD);
+            this.setTooltip(Tooltip.create(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl))))));
+            this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;
         }
 
         public void rise() {
@@ -278,9 +294,30 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
                 this.lvl--;
         }
 
+        private int getYOffset() {
+            int i = 0;
+            if (this.isHoveredOrFocused())
+                i = 1;
+
+            return i * this.height;
+        }
+
         @Override
         protected void updateWidgetNarration(NarrationElementOutput pNarrationElementOutput) {
 
         }
+    }
+
+    private void syncEnchantments() {
+        List<EnchantmentInstance> list = new ArrayList<>();
+        for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
+            if (enchantmentEntry.enchantmentDisplay.lvl <= 0)
+                continue;
+
+            list.add(new EnchantmentInstance(enchantmentEntry.enchantmentDisplay.enchantment, enchantmentEntry.enchantmentDisplay.lvl));
+        }
+        if (list.isEmpty())
+            return;
+        SyncSREnchantingTableEnchantments.sync(list);
     }
 }

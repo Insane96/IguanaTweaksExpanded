@@ -3,12 +3,14 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
+import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -24,4 +26,11 @@ public class EnchantingFeature extends Feature {
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
+
+    public static float getCost(Enchantment enchantment, int lvl) {
+        if (lvl <= 0)
+            return 0;
+        int rarityCost = Anvils.getRarityCost(enchantment);
+        return rarityCost * lvl + ((rarityCost + lvl) / 8f);
+    }
 }

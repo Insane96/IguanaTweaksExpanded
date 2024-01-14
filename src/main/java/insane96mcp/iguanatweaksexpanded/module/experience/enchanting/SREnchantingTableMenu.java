@@ -2,6 +2,11 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,9 +16,13 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantmentTableBlock;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
@@ -55,7 +64,7 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
         });
         this.addSlot(new Slot(pContainer, CATALYST_SLOT, 28, 18) {
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(net.minecraftforge.common.Tags.Items.ENCHANTING_FUELS);
+                return stack.is(Tags.Items.ENCHANTING_FUELS);
             }
         });
 
@@ -84,24 +93,35 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             this.maxCost.set(0);
         }
         else {
-            float j = 0;
+            float enchantingPower = 0;
 
             for (BlockPos blockpos : EnchantmentTableBlock.BOOKSHELF_OFFSETS) {
                 if (EnchantmentTableBlock.isValidBookShelf(level, blockPos, blockpos)) {
-                    j += level.getBlockState(blockPos.offset(blockpos)).getEnchantPowerBonus(level, blockPos.offset(blockpos));
+                    enchantingPower += level.getBlockState(blockPos.offset(blockpos)).getEnchantPowerBonus(level, blockPos.offset(blockpos));
                 }
             }
-            this.maxCost.set((int) (4 + stack.getEnchantmentValue() * (j / 20f)));
+            float leftoverPower = 0;
+            if (enchantingPower > 20f) {
+                leftoverPower = Math.min(enchantingPower - 20f, 10f);
+                enchantingPower = 20f;
+            }
+            float cost = 4 + stack.getEnchantmentValue() * (enchantingPower / 20f) + ((2f + stack.getEnchantmentValue() / 2f) * (leftoverPower / 10f));
+            this.maxCost.set((int) cost);
         }
         this.broadcastChanges();
     }
 
     public void updateEnchantmentsChosen(List<EnchantmentInstance> enchantments) {
         this.access.execute((level, blockPos) -> {
-            if (!(level.getBlockEntity(blockPos) instanceof SREnchantingTableBlockEntity enchantingTable))
-                return;
-            enchantingTable.clearEnchantmentsChosen();
-            enchantments.forEach(enchantingTable::addEnchantmentChosen);
+            CompoundTag tag = this.container.getItem(0).getOrCreateTag();
+            if (!tag.contains("PendingEnchantments", CompoundTag.TAG_LIST)) {
+                tag.put("PendingEnchantments", new ListTag());
+            }
+            ListTag pendingEnchantments = tag.getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+            pendingEnchantments.clear();
+            for (EnchantmentInstance enchantmentInstance : enchantments) {
+                pendingEnchantments.add(EnchantmentHelper.storeEnchantment(ForgeRegistries.ENCHANTMENTS.getKey(enchantmentInstance.enchantment), (byte)enchantmentInstance.level));
+            }
         });
     }
 
@@ -112,8 +132,23 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             return false;
         }
         this.access.execute((level, blockPos) -> {
-            this.updateMaxCost(this.container.getItem(0), level, blockPos);
+            ItemStack stack = this.container.getItem(0);
+            if (stack.getTag() == null || !stack.getTag().contains("PendingEnchantments"))
+                return;
+            ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+            float cost = 0;
+            for (int i = 0; i < enchantmentsListTag.size(); ++i) {
+                CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
+                Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
+                if (enchantment != null) {
+                    stack.enchant(enchantment, compoundtag.getShort("lvl"));
+                }
+                cost += EnchantingFeature.getCost(enchantment, compoundtag.getShort("lvl"));
+            }
+            player.onEnchantmentPerformed(stack, (int) cost);
+            level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             //this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
+
         });
         this.broadcastChanges();
         return true;
