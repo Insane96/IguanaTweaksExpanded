@@ -20,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraftforge.client.gui.widget.ScrollPanel;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
@@ -53,8 +54,11 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     static final int ENCH_ENTRY_H = 14;
 
     private List<EnchantmentEntry> enchantmentEntries = new ArrayList<>();
+    private ScrollPanel scrollPanel;
     private ItemStack lastStack;
     private int maxCost = 0;
+
+    private int scroll = 0;
 
     public SREnchantingTableScreen(SREnchantingTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -64,8 +68,6 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     @Override
     protected void init() {
         super.init();
-        int topLeftCornerX = (this.width - this.imageWidth) / 2;
-        int topLeftCornerY = (this.height - this.imageHeight) / 2;
         this.maxCost = this.menu.maxCost.get();
     }
 
@@ -77,6 +79,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         this.lastStack = stack.copy();
         List<EnchantmentInstance> enchantments = new ArrayList<>();
         this.enchantmentEntries.clear();
+        this.scroll = 0;
         boolean isBook = stack.is(Items.BOOK);
         List<Enchantment> availableEnchantments = new ArrayList<>();
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
@@ -104,7 +107,10 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             }
             for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
                 Optional<EnchantmentInstance> instanceOptional = pendingEnchantments.stream().filter(pendingEnchantment -> enchantmentEntry.enchantmentDisplay.enchantment.equals(pendingEnchantment.enchantment)).findAny();
-                instanceOptional.ifPresent(pendingEnchantment -> enchantmentEntry.enchantmentDisplay.lvl = pendingEnchantment.level);
+                instanceOptional.ifPresent(pendingEnchantment -> {
+                    enchantmentEntry.enchantmentDisplay.lvl = pendingEnchantment.level;
+                    enchantmentEntry.updateActiveState();
+                });
             }
         }
     }
@@ -163,16 +169,35 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
         updatePossibleEnchantments();
-        for (EnchantmentEntry entry : this.enchantmentEntries) {
-            entry.render(guiGraphics, mouseX, mouseY, partialTick);
+        List<EnchantmentEntry> entries = this.enchantmentEntries;
+        for (int i = 0; i < entries.size(); i++) {
+            EnchantmentEntry entry = entries.get(i);
+            if (i >= this.scroll && i < this.scroll + 4)
+                entry.render(guiGraphics, mouseX, mouseY, partialTick);
         }
         if (this.maxCost > 0) {
-            guiGraphics.drawCenteredString(this.font, "Max: %d".formatted(this.maxCost), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H, 0x11FF11);
             float cost = this.getCurrentCost();
             int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
+            guiGraphics.drawCenteredString(this.font, "Max: %d".formatted(this.maxCost), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H, color);
+            color = cost > this.maxCost || this.minecraft.player.experienceLevel < cost ? 0xFF0000 : 0x11FF11;
             guiGraphics.drawCenteredString(this.font, "Cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost())), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 10, color);
         }
         this.renderTooltip(guiGraphics, mouseX, mouseY);
+    }
+
+    @Override
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
+        this.scroll(-(int) pDelta);
+        return true;
+    }
+
+    public void scroll(int delta) {
+        int topLeftCornerY = (this.height - this.imageHeight) / 2;
+        this.scroll = Mth.clamp(this.scroll + delta, 0, Math.max(this.enchantmentEntries.size() - 4, 0));
+        for (int i = 0; i < enchantmentEntries.size(); i++) {
+            EnchantmentEntry enchantmentEntry = enchantmentEntries.get(i);
+            enchantmentEntry.setY(topLeftCornerY + LIST_Y + ((i - this.scroll) * enchantmentEntry.getHeight()));
+        }
     }
 
     private class EnchantmentEntry extends AbstractWidget {
@@ -182,9 +207,15 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
         public EnchantmentEntry(int pX, int pY, Enchantment enchantment, int lvl) {
             super(pX, pY, ENCH_ENTRY_W, ENCH_ENTRY_H, Component.empty());
-            this.levelDownBtn = new LevelBtn(pX, pY, LevelBtn.Type.LOWER, this);
             this.enchantmentDisplay = new EnchantmentDisplay(pX + LVL_BTN_W, pY, enchantment, lvl);
+            this.levelDownBtn = new LevelBtn(pX, pY, LevelBtn.Type.LOWER, this);
             this.levelUpBtn = new LevelBtn(pX + RISE_LVL_BTN_U, pY, LevelBtn.Type.RISE, this);
+            this.updateActiveState();
+        }
+
+        private void updateActiveState() {
+            this.levelUpBtn.active = this.enchantmentDisplay.lvl < this.enchantmentDisplay.enchantment.getMaxLevel();
+            this.levelDownBtn.active = this.enchantmentDisplay.lvl > 0;
         }
 
         @Override
@@ -199,6 +230,14 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             return this.levelDownBtn.mouseClicked(mouseX, mouseY, button)
                     || this.enchantmentDisplay.mouseClicked(mouseX, mouseY, button)
                     || this.levelUpBtn.mouseClicked(mouseX, mouseY, button);
+        }
+
+        @Override
+        public void setY(int pY) {
+            super.setY(pY);
+            this.enchantmentDisplay.setY(pY);
+            this.levelUpBtn.setY(pY);
+            this.levelDownBtn.setY(pY);
         }
 
         @Override
@@ -222,6 +261,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
                 this.enchantmentEntry.enchantmentDisplay.lower();
             else
                 this.enchantmentEntry.enchantmentDisplay.rise();
+            this.enchantmentEntry.updateActiveState();
             syncEnchantments();
         }
 
@@ -244,7 +284,9 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
         private int getYOffset() {
             int i = 0;
-            if (this.isHoveredOrFocused())
+            if (!this.active)
+                i = 2;
+            else if (this.isHoveredOrFocused())
                 i = 1;
 
             return i * this.height;
@@ -274,7 +316,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         @Override
         protected void renderWidget(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
             pGuiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), ENCH_DISPLAY_U, ENCH_ENTRY_V + this.getYOffset(), this.getWidth(), this.getHeight());
-            pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V + this.getYOffset(), this.getWidth(), this.getHeight());
+            pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V + this.getYOffset(), ENCH_LVL_W, this.getHeight());
             this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 1, 0xDDDDDD);
             Component lvlTxt = Component.empty();
             if (this.lvl > 0)
@@ -284,11 +326,17 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;
         }
 
+        /**
+         * Returns if the button should be disabled
+         */
         public void rise() {
             if (this.lvl < this.enchantment.getMaxLevel())
                 this.lvl++;
         }
 
+        /**
+         * Returns if the button should be disabled
+         */
         public void lower() {
             if (this.lvl > 0)
                 this.lvl--;

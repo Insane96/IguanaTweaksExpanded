@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
+import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
@@ -27,6 +28,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class EnchantingFeature extends Feature {
 	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new SREnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).strength(3.5f)));
 	public static final RegistryObject<BlockEntityType<SREnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = SRRegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(SREnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
+
+    public static final String INFUSED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "infused";
 
     @Config
     @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items")
@@ -56,7 +59,10 @@ public class EnchantingFeature extends Feature {
     public static float getCost(Enchantment enchantment, int lvl) {
         if (lvl <= 0)
             return 0;
+        /*int minCost = enchantment.getMinCost(lvl);
+        int maxCost = enchantment.getMaxCost(lvl);
+        return (minCost + maxCost) / 20f;*/
         int rarityCost = Anvils.getRarityCost(enchantment);
-        return rarityCost * lvl + ((rarityCost + lvl) / 8f);
+        return (float) (rarityCost * lvl + (Math.pow(lvl, 0.25f)));
     }
 }

@@ -13,7 +13,7 @@ public class Smartness extends Enchantment {
     static EnchantmentCategory WEAPON_AND_DIGGER = EnchantmentCategory.create("weapon_and_digger", item -> item instanceof SwordItem || item instanceof DiggerItem);
 
     public Smartness() {
-        super(Rarity.RARE, WEAPON_AND_DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     public int getMinCost(int lvl) {

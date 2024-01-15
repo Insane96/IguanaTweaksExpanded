@@ -47,7 +47,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Expanded extends Enchantment {
     public Expanded() {
-        super(Rarity.UNCOMMON, EnchantmentCategory.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentCategory.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
