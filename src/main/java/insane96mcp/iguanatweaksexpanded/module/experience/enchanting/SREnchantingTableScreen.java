@@ -20,7 +20,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
-import net.minecraftforge.client.gui.widget.ScrollPanel;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
@@ -33,12 +32,22 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/enchanting_table.png");
     private static final ResourceLocation ENCHANTING_TABLE_LOCATION = new ResourceLocation("textures/gui/container/enchanting_table.png");
 
-    static final int BUTTON_X = 13;
-    static final int BUTTON_Y = 38;
+    static final int BUTTON_X = 9;
+    static final int BUTTON_Y = 37;
     static final int BUTTON_U = 0;
     static final int BUTTON_V = 166;
-    static final int BUTTON_W = 26;
-    static final int BUTTON_H = 18;
+    static final int BUTTON_W = 36;
+    static final int BUTTON_H = 16;
+
+    static final int EXP_ORB_U = 0;
+    static final int EXP_ORB_V = 212;
+    static final int EXP_ORB_W = 10;
+    static final int EXP_ORB_H = 10;
+
+    static final int DOWN_BUTTON_U = 108;
+    static final int DOWN_BUTTON_V = 166;
+    static final int SCROLL_BUTTON_W = 12;
+    static final int SCROLL_BUTTON_H = 7;
 
     static final int LIST_X = 52;
     static final int LIST_Y = 15;
@@ -54,7 +63,8 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     static final int ENCH_ENTRY_H = 14;
 
     private List<EnchantmentEntry> enchantmentEntries = new ArrayList<>();
-    private ScrollPanel scrollPanel;
+    private ScrollButton scrollUpBtn;
+    private ScrollButton scrollDownBtn;
     private ItemStack lastStack;
     private int maxCost = 0;
 
@@ -68,7 +78,13 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     @Override
     protected void init() {
         super.init();
+        int topLeftCornerX = (this.width - this.imageWidth) / 2;
+        int topLeftCornerY = (this.height - this.imageHeight) / 2;
+
         this.maxCost = this.menu.maxCost.get();
+        this.scrollUpBtn = new ScrollButton(topLeftCornerX + 158, topLeftCornerY + 5, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.UP);
+        this.scrollUpBtn.active = false;
+        this.scrollDownBtn = new ScrollButton(topLeftCornerX + 158, topLeftCornerY + 73, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.DOWN);
     }
 
     private void updatePossibleEnchantments() {
@@ -113,6 +129,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
                 });
             }
         }
+        this.scroll(-999);
     }
 
     private float getCurrentCost() {
@@ -143,6 +160,8 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             enchantmentEntry.levelDownBtn.mouseClicked(pMouseX, pMouseY, pButton);
             enchantmentEntry.levelUpBtn.mouseClicked(pMouseX, pMouseY, pButton);
         }
+        this.scrollUpBtn.mouseClicked(pMouseX, pMouseY, pButton);
+        this.scrollDownBtn.mouseClicked(pMouseX, pMouseY, pButton);
         return super.mouseClicked(pMouseX, pMouseY, pButton);
     }
 
@@ -177,16 +196,21 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         List<EnchantmentEntry> entries = this.enchantmentEntries;
         for (int i = 0; i < entries.size(); i++) {
             EnchantmentEntry entry = entries.get(i);
-            if (i >= this.scroll && i < this.scroll + 4)
-                entry.render(guiGraphics, mouseX, mouseY, partialTick);
+            entry.render(guiGraphics, mouseX, mouseY, partialTick);
         }
         if (this.maxCost > 0) {
             float cost = this.getCurrentCost();
             int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
-            guiGraphics.drawCenteredString(this.font, "Max: %d".formatted(this.maxCost), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H, color);
+            guiGraphics.drawCenteredString(this.font, "Max: %d".formatted(this.maxCost), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 5, color);
             color = this.minecraft.player.experienceLevel < cost ? 0xFF0000 : 0x11FF11;
-            guiGraphics.drawCenteredString(this.font, "Cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost())), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 10, color);
+            if (this.isButtonEnabled())
+                guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
+            else
+                guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
+            guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost())), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
         }
+        this.scrollUpBtn.render(guiGraphics, mouseX, mouseY, partialTick);
+        this.scrollDownBtn.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
@@ -197,11 +221,18 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     }
 
     public void scroll(int delta) {
-        int topLeftCornerY = (this.height - this.imageHeight) / 2;
         this.scroll = Mth.clamp(this.scroll + delta, 0, Math.max(this.enchantmentEntries.size() - 4, 0));
+        this.updateEnchantmentEntryPositionAndVisibility();
+        this.scrollUpBtn.active = this.scroll > 0 && enchantmentEntries.size() > 4;
+        this.scrollDownBtn.active = this.scroll < enchantmentEntries.size() - 4 && enchantmentEntries.size() > 4;
+    }
+
+    private void updateEnchantmentEntryPositionAndVisibility() {
+        int topLeftCornerY = (this.height - this.imageHeight) / 2;
         for (int i = 0; i < enchantmentEntries.size(); i++) {
             EnchantmentEntry enchantmentEntry = enchantmentEntries.get(i);
             enchantmentEntry.setY(topLeftCornerY + LIST_Y + ((i - this.scroll) * enchantmentEntry.getHeight()));
+            enchantmentEntry.setActive(i >= this.scroll && i < this.scroll + 4);
         }
     }
 
@@ -245,6 +276,13 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             this.levelDownBtn.setY(pY);
         }
 
+        public void setActive(boolean active) {
+            this.visible = active;
+            this.enchantmentDisplay.visible = active;
+            this.levelUpBtn.visible = active;
+            this.levelDownBtn.visible = active;
+        }
+
         @Override
         protected void updateWidgetNarration(NarrationElementOutput pNarrationElementOutput) {
 
@@ -262,6 +300,8 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
         @Override
         public void onPress() {
+            if (!this.isActive())
+                return;
             if (this.type == Type.LOWER)
                 this.enchantmentEntry.enchantmentDisplay.lower();
             else
@@ -272,6 +312,10 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
         @Override
         protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            if (!this.isActive()) {
+                this.setTooltip(null);
+                return;
+            }
             Minecraft minecraft = Minecraft.getInstance();
             guiGraphics.setColor(1.0F, 1.0F, 1.0F, this.alpha);
             RenderSystem.enableBlend();
@@ -289,9 +333,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
         private int getYOffset() {
             int i = 0;
-            if (!this.active)
-                i = 2;
-            else if (this.isHoveredOrFocused())
+            if (this.isHoveredOrFocused())
                 i = 1;
 
             return i * this.height;
@@ -320,6 +362,10 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
         @Override
         protected void renderWidget(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
+            if (!this.isActive()) {
+                this.setTooltip(null);
+                return;
+            }
             pGuiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), ENCH_DISPLAY_U, ENCH_ENTRY_V + this.getYOffset(), this.getWidth(), this.getHeight());
             pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V + this.getYOffset(), ENCH_LVL_W, this.getHeight());
             this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 1, 0xDDDDDD);
@@ -358,6 +404,46 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         @Override
         protected void updateWidgetNarration(NarrationElementOutput pNarrationElementOutput) {
 
+        }
+    }
+
+    private class ScrollButton extends AbstractWidget {
+
+        final Type type;
+
+        public ScrollButton(int pX, int pY, int pWidth, int pHeight, Type type) {
+            super(pX, pY, pWidth, pHeight, Component.empty());
+            this.type = type;
+        }
+
+        @Override
+        protected void renderWidget(GuiGraphics guiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
+            if (!this.isActive())
+                return;
+            guiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), DOWN_BUTTON_U + this.getXOffset(), DOWN_BUTTON_V + (this.type == Type.DOWN ? SCROLL_BUTTON_H : 0), SCROLL_BUTTON_W, SCROLL_BUTTON_H);
+        }
+
+        @Override
+        protected void updateWidgetNarration(NarrationElementOutput pNarrationElementOutput) {
+
+        }
+
+        @Override
+        public void onClick(double mouseX, double mouseY, int button) {
+            SREnchantingTableScreen.this.scroll(this.type == Type.DOWN ? 1 : -1);
+        }
+
+        private int getXOffset() {
+            int i = 0;
+            if (this.isHoveredOrFocused())
+                i = 1;
+
+            return i * this.width;
+        }
+
+        enum Type {
+            UP,
+            DOWN
         }
     }
 

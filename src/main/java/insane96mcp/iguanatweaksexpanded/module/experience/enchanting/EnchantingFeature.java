@@ -14,7 +14,12 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AnvilScreen;
 import net.minecraft.client.gui.screens.inventory.GrindstoneScreen;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
@@ -28,6 +33,7 @@ import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 @Label(name = "Enchanting", description = "Change some enchanting related stuff.")
@@ -90,8 +96,21 @@ public class EnchantingFeature extends Feature {
             event.getToolTip().add(Component.literal("Enchanting Infused").withStyle(ChatFormatting.DARK_PURPLE));
         }
 
-        if (event.getItemStack().getTag().contains("PendingEnchantments") && !(mc.screen instanceof GrindstoneScreen)) {
+        if (event.getItemStack().getTag().contains("PendingEnchantments") && !(mc.screen instanceof GrindstoneScreen) && !event.getItemStack().isEnchanted()) {
             event.getToolTip().add(Component.literal("Has pending enchantments").withStyle(ChatFormatting.DARK_GRAY));
+            if (mc.screen instanceof SREnchantingTableScreen) {
+                ListTag enchantmentsListTag = event.getItemStack().getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+                for (int i = 0; i < enchantmentsListTag.size(); ++i) {
+                    CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
+                    Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
+                    short lvl = compoundtag.getShort("lvl");
+                    MutableComponent mutablecomponent = CommonComponents.space().append(Component.translatable(enchantment.getDescriptionId())).withStyle(ChatFormatting.DARK_GRAY);
+                    if (lvl != 1 || enchantment.getMaxLevel() != 1) {
+                        mutablecomponent.append(CommonComponents.SPACE).append(Component.translatable("enchantment.level." + lvl));
+                    }
+                    event.getToolTip().add(mutablecomponent);
+                }
+            }
         }
     }
 }

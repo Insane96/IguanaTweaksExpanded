@@ -37,9 +37,7 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
     private final Container container;
     private final ContainerLevelAccess access;
     protected final Level level;
-    //Given by tool's enchanting power and bookshelves
     public DataSlot maxCost = DataSlot.standalone();
-    public DataSlot enchantCost = DataSlot.standalone();
 
     public SREnchantingTableMenu(int pContainerId, Inventory pPlayerInventory) {
         this(pContainerId, pPlayerInventory, new SimpleContainer(SLOT_COUNT), ContainerLevelAccess.NULL);
@@ -78,7 +76,6 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(pPlayerInventory, k, 8 + k * 18, 142));
         }
         this.addDataSlot(this.maxCost);
-        this.addDataSlot(this.enchantCost);
 
         this.access.execute((level, blockPos) -> this.updateMaxCost(this.container.getItem(0), level, blockPos));
     }

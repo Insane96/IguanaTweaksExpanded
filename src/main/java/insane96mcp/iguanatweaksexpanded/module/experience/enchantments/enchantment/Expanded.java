@@ -201,7 +201,7 @@ public class Expanded extends Enchantment {
         }
     }
 
-    public static final int[] MAX_BLOCKS_MINED = new int[] { 0, 3, 9, 16 };
+    public static final int[] MAX_BLOCKS_MINED = new int[] { 0, 3, 6, 9 };
 
     public static List<BlockPos> getMinedBlocks(ItemStack heldStack, int lvl, boolean square, Level level, LivingEntity entity, BlockPos targetPos, Direction face) {
         List<BlockPos> minedBlocks = new ArrayList<>();
@@ -265,7 +265,7 @@ public class Expanded extends Enchantment {
     private static boolean addIfCanBeMined(ItemStack stack, List<BlockPos> blockPos, Level level, BlockPos targetPos, BlockPos minedPos) {
         BlockState targetState = level.getBlockState(targetPos);
         BlockState minedState = level.getBlockState(minedPos);
-        if (stack.isCorrectToolForDrops(minedState) && targetState.getDestroySpeed(level, targetPos) >= minedState.getDestroySpeed(level, minedPos) - 0.5d) {
+        if (minedState.getDestroySpeed(level, minedPos) > 0 && stack.isCorrectToolForDrops(minedState) && targetState.getDestroySpeed(level, targetPos) >= minedState.getDestroySpeed(level, minedPos) - 0.5d) {
             blockPos.add(minedPos);
             return true;
         }
