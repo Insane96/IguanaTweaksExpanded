@@ -1,5 +1,7 @@
 # Changelog
 
+* Shouldn't upgrade enchanted items
+
 ## Upcoming
 * Enchanted items can no longer be forged
 * Fixed ore rocks advancement

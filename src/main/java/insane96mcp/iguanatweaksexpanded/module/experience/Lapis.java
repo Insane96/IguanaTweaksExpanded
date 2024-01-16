@@ -2,30 +2,20 @@ package insane96mcp.iguanatweaksexpanded.module.experience;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
-import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import insane96mcp.insanelib.data.lootmodifier.InjectLootTableModifier;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Label(name = "Lapis", description = "New lapis for better enchanting.")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
@@ -39,18 +29,25 @@ public class Lapis extends Feature {
 	}
 
 	@SubscribeEvent
-	public void onAnvilUpdateAncient(final AnvilUpdateEvent event) {
+	public void onAnvilUpdate(final AnvilUpdateEvent event) {
 		if (!this.isEnabled())
 			return;
 
 		ItemStack left = event.getLeft();
-		if (!left.isEnchanted()
-				&& !left.is(Items.ENCHANTED_BOOK))
+		if (!left.isEnchantable() || left.isEnchanted())
 			return;
 
 		ItemStack right = event.getRight();
 		boolean isAncient = right.is(ANCIENT_LAPIS.get());
-		if (!isAncient && !right.is(CLEANSED_LAPIS.get()))
+		if (!isAncient)
+			return;
+
+		event.setCost(15);
+		event.setMaterialCost(1);
+		ItemStack result = left.copy();
+		left.getOrCreateTag().putBoolean(EnchantingFeature.INFUSED_ITEM, true);
+		event.setOutput(result);
+		/*if (!isAncient && !right.is(CLEANSED_LAPIS.get()))
 			return;
 
 		Map<Enchantment, Integer> allEnchantments = EnchantmentHelper.getEnchantments(left);
@@ -96,21 +93,21 @@ public class Lapis extends Feature {
 
 		event.setCost(Anvils.getRarityCost(enchantmentChosen) * (enchantmentLvlChosen + 1));
 		event.setMaterialCost(1);
-		event.setOutput(result);
+		event.setOutput(result);*/
 	}
 
 	//Damn Enchanted Books
-	public static void enchantStack(ItemStack stack, Enchantment enchantment, int level) {
+	/*public static void enchantStack(ItemStack stack, Enchantment enchantment, int level) {
 		if (stack.is(Items.ENCHANTED_BOOK))
 			EnchantedBookItem.addEnchantment(stack, new EnchantmentInstance(enchantment, level));
 		else
 			stack.enchant(enchantment, level);
-	}
+	}*/
 
 	private static final String path = "experience/lapis";
 
 	public static void addGlobalLoot(GlobalLootModifierProvider provider) {
-		provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(IguanaTweaksExpanded .RESOURCE_PREFIX + "blocks/cleansed_lapis")));
-		provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(IguanaTweaksExpanded .RESOURCE_PREFIX + "blocks/cleansed_lapis")));
+		provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/cleansed_lapis")));
+		provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/cleansed_lapis")));
 	}
 }

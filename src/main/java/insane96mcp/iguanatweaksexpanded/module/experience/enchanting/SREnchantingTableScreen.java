@@ -131,10 +131,9 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
 
-        //TODO ButtonWidget
         double x = pMouseX - (double)(topLeftCornerX + BUTTON_X);
         double y = pMouseY - (double)(topLeftCornerY + BUTTON_Y);
-        if (x >= 0.0D && y >= 0.0D && x < BUTTON_W && y < BUTTON_H && this.menu.clickMenuButton(this.minecraft.player, 0)) {
+        if (this.isButtonEnabled() && x >= 0.0D && y >= 0.0D && x < BUTTON_W && y < BUTTON_H && this.menu.clickMenuButton(this.minecraft.player, 0)) {
             this.minecraft.gameMode.handleInventoryButtonClick((this.menu).containerId, 0);
             this.enchantmentEntries.clear();
             this.maxCost = 0;
@@ -154,13 +153,19 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         int x = pMouseX - (topLeftCornerX + BUTTON_X);
         int y = pMouseY - (topLeftCornerY + BUTTON_Y);
         pGuiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX, topLeftCornerY, 0, 0, this.imageWidth, this.imageHeight);
-        float cost = this.getCurrentCost();
-        if ((this.minecraft.player.experienceLevel < cost && !this.minecraft.player.getAbilities().instabuild) || cost <= 0 || cost > this.maxCost)
+        if (!this.isButtonEnabled())
             pGuiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X, topLeftCornerY + BUTTON_Y, BUTTON_U + BUTTON_W, BUTTON_V, BUTTON_W, BUTTON_H);
         else if (x >= 0 && y >= 0 && x < BUTTON_W && y < BUTTON_H)
             pGuiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X, topLeftCornerY + BUTTON_Y, BUTTON_U + BUTTON_W * 2, BUTTON_V, BUTTON_W, BUTTON_H);
         else
             pGuiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X, topLeftCornerY + BUTTON_Y, BUTTON_U, BUTTON_V, BUTTON_W, BUTTON_H);
+    }
+
+    private boolean isButtonEnabled() {
+        if (this.menu.getSlot(0).getItem().isEnchanted())
+            return false;
+        float cost = this.getCurrentCost();
+        return (this.minecraft.player.experienceLevel >= cost && cost > 0 && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild;
     }
 
     @Override
@@ -179,7 +184,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             float cost = this.getCurrentCost();
             int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
             guiGraphics.drawCenteredString(this.font, "Max: %d".formatted(this.maxCost), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H, color);
-            color = cost > this.maxCost || this.minecraft.player.experienceLevel < cost ? 0xFF0000 : 0x11FF11;
+            color = this.minecraft.player.experienceLevel < cost ? 0xFF0000 : 0x11FF11;
             guiGraphics.drawCenteredString(this.font, "Cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost())), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 10, color);
         }
         this.renderTooltip(guiGraphics, mouseX, mouseY);

@@ -100,15 +100,16 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                     enchantingPower += level.getBlockState(blockPos.offset(blockpos)).getEnchantPowerBonus(level, blockPos.offset(blockpos));
                 }
             }
-            float leftoverPower = 0;
-            if (enchantingPower > 20f) {
-                leftoverPower = Math.min(enchantingPower - 20f, 5f);
-                enchantingPower = 20f;
+            //float leftoverPower = 0;
+            if (enchantingPower > 15f) {
+                //leftoverPower = Math.min(enchantingPower - 20f, 5f);
+                enchantingPower = 15f;
             }
-            float cost = 4 + stack.getEnchantmentValue() * (enchantingPower / 20f);
+            float maxCost = 4 + (stack.getEnchantmentValue() * 0.5f);
             if (stack.getTag() != null && stack.getTag().contains(EnchantingFeature.INFUSED_ITEM))
-                cost += (7f * (leftoverPower / 5f));
-            this.maxCost.set((int) cost);
+                maxCost += stack.getEnchantmentValue() * 0.5f;
+            maxCost *= (enchantingPower / 15f);
+            this.maxCost.set((int) maxCost);
         }
         this.broadcastChanges();
     }

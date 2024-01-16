@@ -10,6 +10,12 @@ import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.base.config.LoadFeature;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.inventory.AnvilScreen;
+import net.minecraft.client.gui.screens.inventory.GrindstoneScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
@@ -19,6 +25,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.event.AnvilUpdateEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -63,6 +70,28 @@ public class EnchantingFeature extends Feature {
         int maxCost = enchantment.getMaxCost(lvl);
         return (minCost + maxCost) / 20f;*/
         int rarityCost = Anvils.getRarityCost(enchantment);
-        return (float) (rarityCost * lvl + (Math.pow(lvl, 0.25f)));
+        //return (float) (1 + rarityCost * lvl * (Math.pow(lvl, 0.25f)));
+        return rarityCost * lvl + (lvl / 4f);
+    }
+
+    @SubscribeEvent
+    public void onTooltip(ItemTooltipEvent event) {
+        if (!isEnabled(EnchantingFeature.class)
+                || event.getItemStack().getTag() == null
+                || !(event.getEntity() instanceof Player))
+            return;
+
+        Minecraft mc = Minecraft.getInstance();
+        if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof SREnchantingTableScreen))
+            return;
+
+        if (event.getItemStack().getTag().contains(INFUSED_ITEM)) {
+            event.getToolTip().add(Component.empty());
+            event.getToolTip().add(Component.literal("Enchanting Infused").withStyle(ChatFormatting.DARK_PURPLE));
+        }
+
+        if (event.getItemStack().getTag().contains("PendingEnchantments") && !(mc.screen instanceof GrindstoneScreen)) {
+            event.getToolTip().add(Component.literal("Has pending enchantments").withStyle(ChatFormatting.DARK_GRAY));
+        }
     }
 }
