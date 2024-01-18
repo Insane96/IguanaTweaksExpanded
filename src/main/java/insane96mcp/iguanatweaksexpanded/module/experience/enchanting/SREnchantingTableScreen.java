@@ -181,7 +181,8 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     }
 
     private boolean isButtonEnabled() {
-        if (this.menu.getSlot(0).getItem().isEnchanted())
+        if (this.menu.getSlot(0).getItem().isEmpty()
+                || this.menu.getSlot(0).getItem().isEnchanted())
             return false;
         float cost = this.getCurrentCost();
         return (this.minecraft.player.experienceLevel >= cost && cost > 0 && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild;

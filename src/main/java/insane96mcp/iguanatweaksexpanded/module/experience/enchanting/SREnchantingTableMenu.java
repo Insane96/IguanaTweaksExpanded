@@ -102,10 +102,12 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 //leftoverPower = Math.min(enchantingPower - 20f, 5f);
                 enchantingPower = 15f;
             }
-            float maxCost = 4 + (stack.getEnchantmentValue() * 0.5f);
+            float p = 0.5f;
+            //float maxCost = 3;
             if (stack.getTag() != null && stack.getTag().contains(EnchantingFeature.INFUSED_ITEM))
-                maxCost += stack.getEnchantmentValue() * 0.5f;
-            maxCost *= (enchantingPower / 15f);
+                p = 1f;
+            float maxCost = stack.getEnchantmentValue() * p * (enchantingPower / 15f) + 3;
+            //maxCost *= (enchantingPower / 15f);
             this.maxCost.set((int) maxCost);
         }
         this.broadcastChanges();
