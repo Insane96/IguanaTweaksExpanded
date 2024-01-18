@@ -46,7 +46,10 @@ public class EnchantingFeature extends Feature {
 
     @Config
     @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items")
-    public static Boolean noEnchantmentMerge = false;
+    public static Boolean noEnchantmentMerge = true;
+    @Config
+    @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
+    public static Boolean noEnchantedSmithing = true;
 
 	public static final RegistryObject<MenuType<SREnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = SRRegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(SREnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
 

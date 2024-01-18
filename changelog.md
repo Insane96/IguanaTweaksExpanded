@@ -3,9 +3,9 @@
 * Shouldn't upgrade enchanted items
 
 ## Upcoming
-* Enchanted items can no longer be forged
-* Fixed ore rocks advancement
 * Expanded is now limited to Pickaxes
+* Enchanted items can no longer be forged or upgraded in Smithing table
+* Fixed ore rocks advancement
 
 ## 1.0.4
 * Arrows
