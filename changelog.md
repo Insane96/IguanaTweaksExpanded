@@ -5,6 +5,7 @@
 ## Upcoming
 * Enchanted items can no longer be forged
 * Fixed ore rocks advancement
+* Expanded is now limited to Pickaxes
 
 ## 1.0.4
 * Arrows

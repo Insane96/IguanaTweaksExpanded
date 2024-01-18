@@ -46,8 +46,9 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Expanded extends Enchantment {
+    static EnchantmentCategory PICKAXE = EnchantmentCategory.create("pickaxe", item -> item instanceof PickaxeItem);
     public Expanded() {
-        super(Rarity.RARE, EnchantmentCategory.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, PICKAXE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
