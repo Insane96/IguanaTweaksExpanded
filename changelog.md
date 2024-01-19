@@ -1,10 +1,11 @@
 # Changelog
 
-* Shouldn't upgrade enchanted items
+* Wrong and missing textures (Soul steel hoe and hammer)
 
 ## Upcoming
 * Expanded is now limited to Pickaxes
 * Enchanted items can no longer be forged or upgraded in Smithing table
+* Rebalanced some material stats
 * Fixed ore rocks advancement
 
 ## 1.0.4
