@@ -37,8 +37,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
-public class SRRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public SRRecipeProvider(PackOutput p_248933_) {
+public class ITERecipeProvider extends RecipeProvider implements IConditionBuilder {
+    public ITERecipeProvider(PackOutput p_248933_) {
         super(p_248933_);
     }
 

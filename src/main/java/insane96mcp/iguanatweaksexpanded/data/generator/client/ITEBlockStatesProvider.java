@@ -8,8 +8,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class SRBlockStatesProvider extends BlockStateProvider {
-    public SRBlockStatesProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
+public class ITEBlockStatesProvider extends BlockStateProvider {
+    public ITEBlockStatesProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
         super(output, modid, existingFileHelper);
     }
 

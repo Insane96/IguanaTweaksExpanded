@@ -8,8 +8,8 @@ import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 
-public class SRGlobalLootModifierProvider extends GlobalLootModifierProvider {
-    public SRGlobalLootModifierProvider(PackOutput output, String modid) {
+public class ITEGlobalLootModifierProvider extends GlobalLootModifierProvider {
+    public ITEGlobalLootModifierProvider(PackOutput output, String modid) {
         super(output, modid);
     }
 

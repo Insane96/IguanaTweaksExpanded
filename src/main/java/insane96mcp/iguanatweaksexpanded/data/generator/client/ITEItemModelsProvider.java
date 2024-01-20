@@ -35,7 +35,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class SRItemModelsProvider extends ItemModelProvider {
+public class ITEItemModelsProvider extends ItemModelProvider {
     private static LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
     static {
         trimMaterials.put(TrimMaterials.QUARTZ, 0.1F);
@@ -50,7 +50,7 @@ public class SRItemModelsProvider extends ItemModelProvider {
         trimMaterials.put(TrimMaterials.AMETHYST, 1.0F);
     }
 
-    public SRItemModelsProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
+    public ITEItemModelsProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
         super(output, modid, existingFileHelper);
     }
 

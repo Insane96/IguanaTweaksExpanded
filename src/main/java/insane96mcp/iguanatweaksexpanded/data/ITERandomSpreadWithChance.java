@@ -16,19 +16,19 @@ import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class SRRandomSpreadWithChance extends StructurePlacement {
-    public static final Codec<SRRandomSpreadWithChance> CODEC =
+public class ITERandomSpreadWithChance extends StructurePlacement {
+    public static final Codec<ITERandomSpreadWithChance> CODEC =
             RecordCodecBuilder.create(instance ->
             placementCodec(instance).and(instance.group(
-                    RandomSpreadParams.CODEC.get().fieldOf("random_spread").forGetter(SRRandomSpreadWithChance::randomSpreadParams),
-                    ChanceParams.CODEC.get().fieldOf("chance_data").forGetter(SRRandomSpreadWithChance::chanceParams)
-            )).apply(instance, SRRandomSpreadWithChance::new));
+                    RandomSpreadParams.CODEC.get().fieldOf("random_spread").forGetter(ITERandomSpreadWithChance::randomSpreadParams),
+                    ChanceParams.CODEC.get().fieldOf("chance_data").forGetter(ITERandomSpreadWithChance::chanceParams)
+            )).apply(instance, ITERandomSpreadWithChance::new));
 
     RandomSpreadParams randomSpreadParams;
 
     ChanceParams chanceParams;
 
-    public SRRandomSpreadWithChance(Vec3i locateOffset, StructurePlacement.FrequencyReductionMethod frequencyReductionMethod, float frequency, int salt, Optional<ExclusionZone> exclusionZone, RandomSpreadParams randomSpreadParams, ChanceParams chanceParams) {
+    public ITERandomSpreadWithChance(Vec3i locateOffset, StructurePlacement.FrequencyReductionMethod frequencyReductionMethod, float frequency, int salt, Optional<ExclusionZone> exclusionZone, RandomSpreadParams randomSpreadParams, ChanceParams chanceParams) {
         super(locateOffset, frequencyReductionMethod, frequency, salt, exclusionZone);
         this.randomSpreadParams = randomSpreadParams;
         this.chanceParams = chanceParams;

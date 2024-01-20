@@ -9,8 +9,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.List;
 
-public class SRBlockModelsProvider extends BlockModelProvider {
-    public SRBlockModelsProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
+public class ITEBlockModelsProvider extends BlockModelProvider {
+    public ITEBlockModelsProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
         super(output, modid, existingFileHelper);
     }
 

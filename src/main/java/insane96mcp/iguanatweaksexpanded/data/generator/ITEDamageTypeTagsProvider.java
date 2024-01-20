@@ -15,9 +15,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class SRDamageTypeTagsProvider extends DamageTypeTagsProvider {
+public class ITEDamageTypeTagsProvider extends DamageTypeTagsProvider {
 
-    public SRDamageTypeTagsProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, String modId, @Nullable ExistingFileHelper existingFileHelper) {
+    public ITEDamageTypeTagsProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, String modId, @Nullable ExistingFileHelper existingFileHelper) {
         super(pOutput, pLookupProvider, modId, existingFileHelper);
     }
 
