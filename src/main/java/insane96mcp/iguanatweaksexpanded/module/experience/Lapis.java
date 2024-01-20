@@ -38,76 +38,19 @@ public class Lapis extends Feature {
 			return;
 
 		ItemStack right = event.getRight();
-		boolean isAncient = right.is(ANCIENT_LAPIS.get());
-		if (!isAncient)
+		if (!right.is(CLEANSED_LAPIS.get()))
 			return;
-
-		event.setCost(15);
+		event.setCost(0);
 		event.setMaterialCost(1);
 		ItemStack result = left.copy();
 		left.getOrCreateTag().putBoolean(EnchantingFeature.INFUSED_ITEM, true);
 		event.setOutput(result);
-		/*if (!isAncient && !right.is(CLEANSED_LAPIS.get()))
-			return;
-
-		Map<Enchantment, Integer> allEnchantments = EnchantmentHelper.getEnchantments(left);
-		List<Enchantment> possibleEnchantments = new ArrayList<>();
-		for (var ench : allEnchantments.entrySet()) {
-			int lvl = ench.getValue();
-			int maxLvl = ench.getKey().getMaxLevel();
-
-			//Allow only one "upgrade" per item
-			if (isAncient && lvl >= maxLvl + 1)
-				return;
-
-			//Don't accept enchantments with a max level of 1
-			if (maxLvl <= 1)
-				continue;
-			//If is ancient lapis only accept max level enchantments
-			if (isAncient && lvl < maxLvl)
-				continue;
-			//Else if is cleansed, only accept non-max level enchantments
-			if (!isAncient && lvl >= maxLvl)
-				continue;
-
-			possibleEnchantments.add(ench.getKey());
-		}
-		if (possibleEnchantments.isEmpty())
-			return;
-
-		RandomSource random = event.getPlayer().getRandom();
-		random.setSeed(event.getPlayer().getEnchantmentSeed());
-
-		Enchantment enchantmentChosen = possibleEnchantments.get(random.nextInt(possibleEnchantments.size()));
-		int enchantmentLvlChosen = left.getEnchantmentLevel(enchantmentChosen);
-
-		ItemStack result = left.copy();
-		result.removeTagKey(ItemStack.TAG_ENCH);
-		result.removeTagKey(EnchantedBookItem.TAG_STORED_ENCHANTMENTS);
-		for (var ench : allEnchantments.entrySet()) {
-			if (ench.getKey().equals(enchantmentChosen))
-				enchantStack(result, ench.getKey(), ench.getValue() + 1);
-			else
-				enchantStack(result, ench.getKey(), ench.getValue());
-		}
-
-		event.setCost(Anvils.getRarityCost(enchantmentChosen) * (enchantmentLvlChosen + 1));
-		event.setMaterialCost(1);
-		event.setOutput(result);*/
 	}
-
-	//Damn Enchanted Books
-	/*public static void enchantStack(ItemStack stack, Enchantment enchantment, int level) {
-		if (stack.is(Items.ENCHANTED_BOOK))
-			EnchantedBookItem.addEnchantment(stack, new EnchantmentInstance(enchantment, level));
-		else
-			stack.enchant(enchantment, level);
-	}*/
 
 	private static final String path = "experience/lapis";
 
 	public static void addGlobalLoot(GlobalLootModifierProvider provider) {
-		provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/cleansed_lapis")));
-		provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/cleansed_lapis")));
+		provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
+		provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
 	}
 }

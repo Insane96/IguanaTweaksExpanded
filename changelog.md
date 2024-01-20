@@ -1,10 +1,19 @@
 # Changelog
 
 * Rework damaging enchantments to scale with weapon
+* Ancient lapis empowers the enchanting table allowing over max level enchantments
+* Change enchanting table recipe
+* Fix non-material tools enchantability
 
 ## Upcoming
+* Added a brand new Enchanting Table!
+  * Choose your enchantments! The limit is the item's enchantability.
+  * If you infuse an item with a cleansed lapis, you'll be able to use the full item's enchantability
+  * Enchanted items can no longer be forged or upgraded in Smithing table. Also can no longer be merged with other enchanted items
+* Lapis
+  * Reduced Cleansed Lapis drop
+  * Cleansed lapis no longer increases an enchantment level
 * Expanded is now limited to Pickaxes
-* Enchanted items can no longer be forged or upgraded in Smithing table
 * Rebalanced some material stats
 * Fixed ore rocks advancement
 * Fixed Soul Steel tools textures

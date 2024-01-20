@@ -203,7 +203,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             float cost = this.getCurrentCost();
             int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
             guiGraphics.drawCenteredString(this.font, "Max: %d".formatted(this.maxCost), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 5, color);
-            color = this.minecraft.player.experienceLevel < cost ? 0xFF0000 : 0x11FF11;
+            color = this.minecraft.player.experienceLevel < cost && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
             if (this.isButtonEnabled())
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             else
