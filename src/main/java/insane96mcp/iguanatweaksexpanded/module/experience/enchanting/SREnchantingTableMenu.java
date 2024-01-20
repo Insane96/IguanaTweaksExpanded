@@ -59,6 +59,11 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 super.setChanged();
                 SREnchantingTableMenu.this.slotsChanged(this.container);
             }
+
+            @Override
+            public boolean mayPlace(ItemStack pStack) {
+                return pStack.isEnchantable();
+            }
         });
         this.addSlot(new Slot(pContainer, CATALYST_SLOT, 28, 18) {
             public boolean mayPlace(ItemStack stack) {
@@ -116,6 +121,11 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
     public void updateEnchantmentsChosen(List<EnchantmentInstance> enchantments) {
         this.access.execute((level, blockPos) -> {
             CompoundTag tag = this.container.getItem(0).getOrCreateTag();
+            if (enchantments.isEmpty()) {
+                if (tag.contains("PendingEnchantments", CompoundTag.TAG_LIST))
+                    tag.remove("PendingEnchantments");
+                return;
+            }
             if (!tag.contains("PendingEnchantments", CompoundTag.TAG_LIST)) {
                 tag.put("PendingEnchantments", new ListTag());
             }
@@ -148,6 +158,8 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 cost += EnchantingFeature.getCost(enchantment, compoundtag.getShort("lvl"));
             }
             player.onEnchantmentPerformed(stack, (int) cost);
+            ItemStack lapis = this.container.getItem(1);
+            lapis.shrink((int)(cost / 5));
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             //this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
 
@@ -163,30 +175,37 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
         if (!slotClicked.hasItem())
             return itemstack;
 
-        ItemStack itemInSlot = slotClicked.getItem();
-        itemstack = itemInSlot.copy();
+        ItemStack itemClicked = slotClicked.getItem();
+        itemstack = itemClicked.copy();
         if (pIndex == ITEM_SLOT) {
-            if (!this.moveItemStackTo(itemInSlot, INV_SLOT_START, USE_ROW_SLOT_END, true))
+            if (!this.moveItemStackTo(itemClicked, INV_SLOT_START, USE_ROW_SLOT_END, true))
+                return ItemStack.EMPTY;
+        }
+        else if (pIndex == CATALYST_SLOT) {
+            if (!this.moveItemStackTo(itemClicked, INV_SLOT_START, USE_ROW_SLOT_END, true))
                 return ItemStack.EMPTY;
         }
         else {
-            if (this.slots.get(ITEM_SLOT).hasItem() || !this.slots.get(ITEM_SLOT).mayPlace(itemInSlot))
+            if (!this.slots.get(ITEM_SLOT).hasItem() && this.slots.get(ITEM_SLOT).mayPlace(itemClicked)) {
+                ItemStack itemstack2 = itemClicked.copyWithCount(1);
+                itemClicked.shrink(1);
+                this.slots.get(ITEM_SLOT).setByPlayer(itemstack2);
+            }
+            else if (this.slots.get(CATALYST_SLOT).hasItem()) {
                 return ItemStack.EMPTY;
+            }
 
-            ItemStack itemstack2 = itemInSlot.copyWithCount(1);
-            itemInSlot.shrink(1);
-            this.slots.get(ITEM_SLOT).setByPlayer(itemstack2);
         }
 
-        if (itemInSlot.isEmpty())
+        if (itemClicked.isEmpty())
             slotClicked.setByPlayer(ItemStack.EMPTY);
         else
             slotClicked.setChanged();
 
-        if (itemInSlot.getCount() == itemstack.getCount())
+        if (itemClicked.getCount() == itemstack.getCount())
             return ItemStack.EMPTY;
 
-        slotClicked.onTake(pPlayer, itemInSlot);
+        slotClicked.onTake(pPlayer, itemClicked);
 
         return itemstack;
     }

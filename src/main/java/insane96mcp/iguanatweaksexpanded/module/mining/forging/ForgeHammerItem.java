@@ -85,9 +85,7 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
      * the damage on the stack.
      */
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        pStack.hurtAndBreak(this.useDamageTaken, pAttacker, (p_43296_) -> {
-            p_43296_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-        });
+        pStack.hurtAndBreak(this.useDamageTaken, pAttacker, wielder -> wielder.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         return true;
     }
 
