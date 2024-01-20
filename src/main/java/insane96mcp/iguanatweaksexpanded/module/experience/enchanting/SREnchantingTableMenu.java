@@ -27,9 +27,9 @@ import java.util.List;
 
 public class SREnchantingTableMenu extends AbstractContainerMenu {
     public static final int ITEM_SLOT = 0;
-    public static final int CATALYST_SLOT = 1;
-    public static final int SLOT_COUNT = 2;
-    private static final int INV_SLOT_START = CATALYST_SLOT + 1;
+    //public static final int CATALYST_SLOT = 1;
+    public static final int SLOT_COUNT = 1;
+    private static final int INV_SLOT_START = SLOT_COUNT;
     private static final int INV_SLOT_END = INV_SLOT_START + 27;
     private static final int USE_ROW_SLOT_START = INV_SLOT_END;
     private static final int USE_ROW_SLOT_END = USE_ROW_SLOT_START + 9;
@@ -180,22 +180,10 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             if (!this.moveItemStackTo(itemClicked, INV_SLOT_START, USE_ROW_SLOT_END, true))
                 return ItemStack.EMPTY;
         }
-        /*else if (pIndex == CATALYST_SLOT) {
-            if (!this.moveItemStackTo(itemClicked, INV_SLOT_START, USE_ROW_SLOT_END, true))
-                return ItemStack.EMPTY;
-        }*/
-        else {
-            if (!this.slots.get(ITEM_SLOT).hasItem() && this.slots.get(ITEM_SLOT).mayPlace(itemClicked)) {
-                ItemStack itemstack2 = itemClicked.copyWithCount(1);
-                itemClicked.shrink(1);
-                this.slots.get(ITEM_SLOT).setByPlayer(itemstack2);
-            }
-            else if (this.slots.get(CATALYST_SLOT).mayPlace(itemClicked)) {
-                if (!this.moveItemStackTo(itemClicked, CATALYST_SLOT, CATALYST_SLOT + 1, false)) {
-                    return ItemStack.EMPTY;
-                }
-            }
-
+        else if (!this.slots.get(ITEM_SLOT).hasItem() && this.slots.get(ITEM_SLOT).mayPlace(itemClicked)) {
+            ItemStack itemstack2 = itemClicked.copyWithCount(1);
+            itemClicked.shrink(1);
+            this.slots.get(ITEM_SLOT).setByPlayer(itemstack2);
         }
 
         if (itemClicked.isEmpty())
