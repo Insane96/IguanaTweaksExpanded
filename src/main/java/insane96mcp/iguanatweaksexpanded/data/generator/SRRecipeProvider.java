@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.module.experience.Lapis;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrinks;
 import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
@@ -250,12 +250,12 @@ public class SRRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .unlockedBy("has_durium_ingot", has(Durium.INGOT.get()))
                 .save(writer);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Lapis.ANCIENT_LAPIS.get(), 1)
-                .requires(Lapis.CLEANSED_LAPIS.get(), 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, EnchantingFeature.ANCIENT_LAPIS.get(), 1)
+                .requires(EnchantingFeature.CLEANSED_LAPIS.get(), 1)
                 .requires(Items.NETHERITE_SCRAP, 1)
                 .requires(Items.EXPERIENCE_BOTTLE, 1)
                 .unlockedBy("has_netherite_scrap", has(Items.NETHERITE_SCRAP))
-                .unlockedBy("has_cleansed_lapis", has(Lapis.CLEANSED_LAPIS.get()))
+                .unlockedBy("has_cleansed_lapis", has(EnchantingFeature.CLEANSED_LAPIS.get()))
                 .save(writer);
 
         //Solarium

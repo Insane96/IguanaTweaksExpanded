@@ -10,7 +10,7 @@
   * Choose your enchantments! The limit is the item's enchantability.
   * If you infuse an item with a cleansed lapis, you'll be able to use the full item's enchantability
   * Enchanted items can no longer be forged or upgraded in Smithing table. Also can no longer be merged with other enchanted items
-* Lapis
+* Lapis (moved to Enchanting)
   * Reduced Cleansed Lapis drop
   * Cleansed lapis no longer increases an enchantment level
 * Expanded is now limited to Pickaxes

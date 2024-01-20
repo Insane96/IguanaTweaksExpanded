@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
-import insane96mcp.iguanatweaksexpanded.module.experience.Lapis;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.recallidol.RecallIdol;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
@@ -18,7 +18,7 @@ public class SRGlobalLootModifierProvider extends GlobalLootModifierProvider {
     protected void start() {
         Minecarts.addGlobalLoot(this);
         CoalCharcoal.addGlobalLoot(this);
-        Lapis.addGlobalLoot(this);
+        EnchantingFeature.addGlobalLoot(this);
         RecallIdol.addGlobalLoot(this);
         SoulSteel.addGlobalLoot(this);
     }

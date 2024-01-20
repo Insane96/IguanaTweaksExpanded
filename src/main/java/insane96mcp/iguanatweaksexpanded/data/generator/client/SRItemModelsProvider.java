@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.data.generator.client;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
-import insane96mcp.iguanatweaksexpanded.module.experience.Lapis;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrinks;
 import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
@@ -91,8 +91,8 @@ public class SRItemModelsProvider extends ItemModelProvider {
         withExistingParent("flint_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/flint_block"));
         withExistingParent("polished_flint_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/polished_flint_block"));
 
-        basicItem(Lapis.CLEANSED_LAPIS.get());
-        basicItem(Lapis.ANCIENT_LAPIS.get());
+        basicItem(EnchantingFeature.CLEANSED_LAPIS.get());
+        basicItem(EnchantingFeature.ANCIENT_LAPIS.get());
 
         trimmedArmorItem(ChainedCopperArmor.BOOTS);
         trimmedArmorItem(ChainedCopperArmor.LEGGINGS);

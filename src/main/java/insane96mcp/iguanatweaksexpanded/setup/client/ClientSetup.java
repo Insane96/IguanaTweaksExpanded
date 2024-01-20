@@ -5,7 +5,6 @@ import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.FletchingScreen;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.SRArrowRenderer;
-import insane96mcp.iguanatweaksexpanded.module.experience.Lapis;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.SREnchantingTableRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.SREnchantingTableScreen;
@@ -214,8 +213,8 @@ public class ClientSetup {
             event.accept(SoulSteel.NUGGET.get());
             event.accept(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
             event.accept(Keego.GEM.get());
-            addAfter(event, Items.LAPIS_LAZULI, Lapis.ANCIENT_LAPIS.get());
-            addAfter(event, Items.LAPIS_LAZULI, Lapis.CLEANSED_LAPIS.get());
+            addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ANCIENT_LAPIS.get());
+            addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
             addAfter(event, Items.CHARCOAL, CoalCharcoal.HELLISH_COAL.get());
             event.accept(Cloth.CLOTH.get());
         }
