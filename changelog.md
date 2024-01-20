@@ -1,5 +1,7 @@
 # Changelog
 
+* Rework damaging enchantments to scale with weapon
+
 ## Upcoming
 * Expanded is now limited to Pickaxes
 * Enchanted items can no longer be forged or upgraded in Smithing table

@@ -209,10 +209,10 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             else
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost())), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
-            if (cost > 0) {
+            /*if (cost > 0) {
                 int lapisCost = (int)(cost / 5) + 1;
-                guiGraphics.drawCenteredString(this.font, "%d".formatted(lapisCost), topLeftCornerX + (lapisCost < 10 ? 41 : 38), topLeftCornerY + 18, 0x495e9e);
-            }
+                guiGraphics.drawCenteredString(this.font, "%d".formatted(lapisCost), topLeftCornerX + (lapisCost < 10 ? 48 : 45), topLeftCornerY + 18, 0x495e9e);
+            }*/
         }
         this.scrollUpBtn.render(guiGraphics, mouseX, mouseY, partialTick);
         this.scrollDownBtn.render(guiGraphics, mouseX, mouseY, partialTick);

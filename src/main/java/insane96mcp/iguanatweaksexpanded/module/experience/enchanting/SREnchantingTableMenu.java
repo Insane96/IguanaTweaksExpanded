@@ -21,7 +21,6 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantmentTableBlock;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -49,7 +48,7 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
         this.container = pContainer;
         this.access = access;
         this.level = pPlayerInventory.player.level();
-        this.addSlot(new Slot(pContainer, ITEM_SLOT, 10, 18) {
+        this.addSlot(new Slot(pContainer, ITEM_SLOT, 19, 18) {
             public int getMaxStackSize() {
                 return 1;
             }
@@ -65,11 +64,11 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 return pStack.isEnchantable();
             }
         });
-        this.addSlot(new Slot(pContainer, CATALYST_SLOT, 28, 18) {
+        /*this.addSlot(new Slot(pContainer, CATALYST_SLOT, 28, 18) {
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(Tags.Items.ENCHANTING_FUELS);
             }
-        });
+        });*/
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
@@ -158,8 +157,8 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 cost += EnchantingFeature.getCost(enchantment, compoundtag.getShort("lvl"));
             }
             player.onEnchantmentPerformed(stack, (int) cost);
-            ItemStack lapis = this.container.getItem(1);
-            lapis.shrink((int)(cost / 5));
+            //ItemStack lapis = this.container.getItem(1);
+            //lapis.shrink((int)(cost / 5));
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             //this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
 
@@ -181,18 +180,20 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             if (!this.moveItemStackTo(itemClicked, INV_SLOT_START, USE_ROW_SLOT_END, true))
                 return ItemStack.EMPTY;
         }
-        else if (pIndex == CATALYST_SLOT) {
+        /*else if (pIndex == CATALYST_SLOT) {
             if (!this.moveItemStackTo(itemClicked, INV_SLOT_START, USE_ROW_SLOT_END, true))
                 return ItemStack.EMPTY;
-        }
+        }*/
         else {
             if (!this.slots.get(ITEM_SLOT).hasItem() && this.slots.get(ITEM_SLOT).mayPlace(itemClicked)) {
                 ItemStack itemstack2 = itemClicked.copyWithCount(1);
                 itemClicked.shrink(1);
                 this.slots.get(ITEM_SLOT).setByPlayer(itemstack2);
             }
-            else if (this.slots.get(CATALYST_SLOT).hasItem()) {
-                return ItemStack.EMPTY;
+            else if (this.slots.get(CATALYST_SLOT).mayPlace(itemClicked)) {
+                if (!this.moveItemStackTo(itemClicked, CATALYST_SLOT, CATALYST_SLOT + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
             }
 
         }
