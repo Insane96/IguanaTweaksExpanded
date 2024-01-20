@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.items.copper;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.data.generator.SRDamageTypeTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ITEDamageTypeTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.network.message.ElectrocutionParticleMessage;
@@ -75,7 +75,7 @@ public class CopperToolsExpansion extends Feature {
 	public static final RegistryObject<SPShieldItem> COATED_SHIELD = SRRegistries.registerShield("coated_copper_shield", COATED_SHIELD_MATERIAL);
     public static final RegistryObject<SimpleParticleType> ELECTROCUTION_SPARKS = SRRegistries.PARTICLE_TYPES.register("electrocution_sparks", () -> new SimpleParticleType(true));
 	public static final RegistryObject<SoundEvent> ELECTROCUTION = SRRegistries.SOUND_EVENTS.register("electrocution", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "electrocution")));
-	public static final TagKey<DamageType> DOESNT_TRIGGER_ELECTROCUTION = SRDamageTypeTagsProvider.create("doesnt_trigger_electrocution");
+	public static final TagKey<DamageType> DOESNT_TRIGGER_ELECTROCUTION = ITEDamageTypeTagsProvider.create("doesnt_trigger_electrocution");
 
 	public CopperToolsExpansion(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

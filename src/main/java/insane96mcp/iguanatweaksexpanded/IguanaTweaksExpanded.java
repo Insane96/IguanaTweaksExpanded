@@ -3,9 +3,9 @@ package insane96mcp.iguanatweaksexpanded;
 import com.google.common.collect.Lists;
 import insane96mcp.iguanatweaksexpanded.data.criterion.ITETriggers;
 import insane96mcp.iguanatweaksexpanded.data.generator.*;
-import insane96mcp.iguanatweaksexpanded.data.generator.client.SRBlockModelsProvider;
-import insane96mcp.iguanatweaksexpanded.data.generator.client.SRBlockStatesProvider;
-import insane96mcp.iguanatweaksexpanded.data.generator.client.SRItemModelsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockModelsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockStatesProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEItemModelsProvider;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.SRArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
@@ -101,15 +101,15 @@ public class IguanaTweaksExpanded
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        generator.addProvider(event.includeServer(), new SRRecipeProvider(generator.getPackOutput()));
-        generator.addProvider(event.includeServer(), new SRGlobalLootModifierProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID));
-        SRBlockTagsProvider blockTags = new SRBlockTagsProvider(generator.getPackOutput(), lookupProvider, IguanaTweaksExpanded.MOD_ID, existingFileHelper);
+        generator.addProvider(event.includeServer(), new ITERecipeProvider(generator.getPackOutput()));
+        generator.addProvider(event.includeServer(), new ITEGlobalLootModifierProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID));
+        ITEBlockTagsProvider blockTags = new ITEBlockTagsProvider(generator.getPackOutput(), lookupProvider, IguanaTweaksExpanded.MOD_ID, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new SRItemTagsProvider(generator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeServer(), new SRDamageTypeTagsProvider(generator.getPackOutput(), lookupProvider, IguanaTweaksExpanded.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new SRBlockStatesProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new SRBlockModelsProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new SRItemModelsProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ITEItemTagsProvider(generator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ITEDamageTypeTagsProvider(generator.getPackOutput(), lookupProvider, IguanaTweaksExpanded.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ITEBlockStatesProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ITEBlockModelsProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ITEItemModelsProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
     }
 
     public void addPackFinders(AddPackFindersEvent event)

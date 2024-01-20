@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.recallidol;
 
-import insane96mcp.iguanatweaksexpanded.data.generator.SRGlobalLootModifierProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ITEGlobalLootModifierProvider;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.insanelib.base.Feature;
@@ -23,7 +23,7 @@ public class RecallIdol extends Feature {
 
 	private static final String path = "item/recall_idol";
 
-	public static void addGlobalLoot(SRGlobalLootModifierProvider provider) {
+	public static void addGlobalLoot(ITEGlobalLootModifierProvider provider) {
 		provider.add(path + "chests/recall_idol", new InjectLootTableModifier(new ResourceLocation("minecraft:chests/end_city_treasure"), new ResourceLocation("iguanatweaksexpanded:chests/recall_idol")));
 	}
 }

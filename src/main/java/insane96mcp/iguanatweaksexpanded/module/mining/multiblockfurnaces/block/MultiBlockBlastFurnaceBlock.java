@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.data.generator.SRBlockTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ITEBlockTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -31,9 +31,9 @@ import java.util.Map;
 
 public class MultiBlockBlastFurnaceBlock extends AbstractMultiBlockFurnace {
 
-    public static TagKey<Block> BOTTOM_BLOCKS_TAG = SRBlockTagsProvider.create("blast_furnace/bottom_blocks");
-    public static TagKey<Block> MIDDLE_BLOCKS_TAG = SRBlockTagsProvider.create("blast_furnace/middle_blocks");
-    public static TagKey<Block> TOP_BLOCKS_TAG = SRBlockTagsProvider.create("blast_furnace/top_blocks");
+    public static TagKey<Block> BOTTOM_BLOCKS_TAG = ITEBlockTagsProvider.create("blast_furnace/bottom_blocks");
+    public static TagKey<Block> MIDDLE_BLOCKS_TAG = ITEBlockTagsProvider.create("blast_furnace/middle_blocks");
+    public static TagKey<Block> TOP_BLOCKS_TAG = ITEBlockTagsProvider.create("blast_furnace/top_blocks");
     public static Map<Vec3i, TagKey<Block>> RELATIVE_POS_BLOCK_TAGS = Map.ofEntries(
             new AbstractMap.SimpleEntry<>(new Vec3i(-1, -1, -1), BOTTOM_BLOCKS_TAG),
             new AbstractMap.SimpleEntry<>(new Vec3i(-1, -1, 0), BOTTOM_BLOCKS_TAG),

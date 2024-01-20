@@ -4,12 +4,15 @@
 * Ancient lapis empowers the enchanting table allowing over max level enchantments
 * Change enchanting table recipe
 * Fix non-material tools enchantability
+* Enchanted books? Books will be blacklisted from enchanting
 
 ## Upcoming
 * Added a brand new Enchanting Table!
   * Choose your enchantments! The limit is the item's enchantability.
   * If you infuse an item with a cleansed lapis, you'll be able to use the full item's enchantability
   * Enchanted items can no longer be forged or upgraded in Smithing table. Also can no longer be merged with other enchanted items
+  * Items in the `iguanatweaksexpanded:not_enchantable` item tag will no longer be enchantable
+    * By default, books, flint and steel, shears, brush and elytra are no longer enchantable
 * Lapis (moved to Enchanting)
   * Reduced Cleansed Lapis drop
   * Cleansed lapis no longer increases an enchantment level
