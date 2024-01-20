@@ -60,8 +60,8 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             }
 
             @Override
-            public boolean mayPlace(ItemStack pStack) {
-                return pStack.isEnchantable();
+            public boolean mayPlace(ItemStack stack) {
+                return stack.isEnchantable() && !stack.is(EnchantingFeature.NOT_ENCHANTABLE);
             }
         });
         /*this.addSlot(new Slot(pContainer, CATALYST_SLOT, 28, 18) {

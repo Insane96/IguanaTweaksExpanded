@@ -4,7 +4,6 @@
 * Ancient lapis empowers the enchanting table allowing over max level enchantments
 * Change enchanting table recipe
 * Fix non-material tools enchantability
-* Enchanted books? Books will be blacklisted from enchanting
 
 ## Upcoming
 * Added a brand new Enchanting Table!

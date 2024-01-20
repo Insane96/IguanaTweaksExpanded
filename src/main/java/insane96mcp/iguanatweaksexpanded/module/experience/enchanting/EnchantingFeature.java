@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
@@ -22,6 +23,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
@@ -40,10 +42,11 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-@Label(name = "Enchanting", description = "Change some enchanting related stuff.")
+@Label(name = "Enchanting", description = "Change some enchanting related stuff. Items in not_enchantable tag cannot be enchanted")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class EnchantingFeature extends Feature {
-	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new SREnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).strength(3.5f)));
+    public static final TagKey<Item> NOT_ENCHANTABLE = ITEItemTagsProvider.create("not_enchantable");
+	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new SREnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
 	public static final RegistryObject<BlockEntityType<SREnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = SRRegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(SREnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
 
     public static final String INFUSED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "infused";
@@ -54,6 +57,9 @@ public class EnchantingFeature extends Feature {
     @Config
     @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
     public static Boolean noEnchantedSmithing = true;
+    @Config
+    @Label(name = "Tools enchantability fix", description = "If enabled, the enchantability of the following item is changed to allow enchanting. Tridents, Fishing Rods, Flint and Steel, Brush, ")
+    public static Boolean toolsEnchantabilityFix = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = SRRegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ANCIENT_LAPIS = SRRegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));
