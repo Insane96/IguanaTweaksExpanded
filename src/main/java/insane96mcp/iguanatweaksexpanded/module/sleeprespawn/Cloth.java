@@ -2,8 +2,8 @@ package insane96mcp.iguanatweaksexpanded.module.sleeprespawn;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
+import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
-import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -18,7 +18,7 @@ import net.minecraftforge.registries.RegistryObject;
 @LoadFeature(module = Modules.Ids.SLEEP_RESPAWN)
 public class Cloth extends Feature {
 
-	public static final RegistryObject<Item> CLOTH = SRRegistries.ITEMS.register("cloth", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> CLOTH = ITERegistries.ITEMS.register("cloth", () -> new Item(new Item.Properties()));
 
 	@Config
 	@Label(name = "Data Pack", description = "Enables a Data Pack that makes zombies drop cloth instead of rotten flesh and beds require Cloth to be crafted.")

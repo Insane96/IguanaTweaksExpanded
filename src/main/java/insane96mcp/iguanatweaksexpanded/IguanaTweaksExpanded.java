@@ -9,10 +9,10 @@ import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEItemModelsProvi
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.SRArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
+import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.SRCommonConfig;
 import insane96mcp.iguanatweaksexpanded.setup.SRPackSource;
-import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import net.minecraft.core.HolderLookup;
@@ -77,7 +77,7 @@ public class IguanaTweaksExpanded
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::gatherData);
         modEventBus.addListener(this::addPackFinders);
-        SRRegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
+        ITERegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
 
         ITETriggers.init();
     }

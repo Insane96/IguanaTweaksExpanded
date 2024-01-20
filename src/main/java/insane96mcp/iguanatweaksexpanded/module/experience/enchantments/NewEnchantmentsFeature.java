@@ -5,7 +5,7 @@ import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.*;
 import insane96mcp.iguanatweaksexpanded.network.message.JumpMidAirMessage;
-import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -39,19 +39,19 @@ import net.minecraftforge.registries.RegistryObject;
 public class NewEnchantmentsFeature extends Feature {
 
 	public static final TagKey<EntityType<?>> WATER_COOLANT_AFFECTED = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "water_coolant_affected"));
-	public static final RegistryObject<Enchantment> MAGNETIC = SRRegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
-	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = SRRegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
-	public static final RegistryObject<Enchantment> MELEE_PROTECTION = SRRegistries.ENCHANTMENTS.register("melee_protection", MeleeProtection::new);
-	public static final RegistryObject<Enchantment> BLASTING = SRRegistries.ENCHANTMENTS.register("blasting", Blasting::new);
-	public static final RegistryObject<Enchantment> EXPANDED = SRRegistries.ENCHANTMENTS.register("expanded", Expanded::new);
-	public static final RegistryObject<Enchantment> STEP_UP = SRRegistries.ENCHANTMENTS.register("step_up", StepUp::new);
-	public static final RegistryObject<Enchantment> WATER_COOLANT = SRRegistries.ENCHANTMENTS.register("water_coolant", WaterCoolant::new);
-	public static final RegistryObject<Enchantment> SMARTNESS = SRRegistries.ENCHANTMENTS.register("smartness", Smartness::new);
-	public static final RegistryObject<Enchantment> MA_JUMP = SRRegistries.ENCHANTMENTS.register("ma_jump", DoubleJump::new);
-	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = SRRegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
-	public static final RegistryObject<Enchantment> CRITICAL = SRRegistries.ENCHANTMENTS.register("critical", Critical::new);
-	public static final RegistryObject<Enchantment> SWIFT_STRIKE = SRRegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
-	public static final RegistryObject<Enchantment> HEALTHY = SRRegistries.ENCHANTMENTS.register("healthy", Healthy::new);
+	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
+	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ITERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
+	public static final RegistryObject<Enchantment> MELEE_PROTECTION = ITERegistries.ENCHANTMENTS.register("melee_protection", MeleeProtection::new);
+	public static final RegistryObject<Enchantment> BLASTING = ITERegistries.ENCHANTMENTS.register("blasting", Blasting::new);
+	public static final RegistryObject<Enchantment> EXPANDED = ITERegistries.ENCHANTMENTS.register("expanded", Expanded::new);
+	public static final RegistryObject<Enchantment> STEP_UP = ITERegistries.ENCHANTMENTS.register("step_up", StepUp::new);
+	public static final RegistryObject<Enchantment> WATER_COOLANT = ITERegistries.ENCHANTMENTS.register("water_coolant", WaterCoolant::new);
+	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
+	public static final RegistryObject<Enchantment> MA_JUMP = ITERegistries.ENCHANTMENTS.register("ma_jump", DoubleJump::new);
+	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ITERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
+	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
+	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
+	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
 
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

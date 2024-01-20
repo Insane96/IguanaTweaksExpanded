@@ -172,6 +172,7 @@ public class ClientSetup {
             event.accept(MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
             event.accept(Forging.FORGE.item().get());
             event.accept(Fletching.FLETCHING_TABLE.item().get());
+            addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENCHANTING_TABLE.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());

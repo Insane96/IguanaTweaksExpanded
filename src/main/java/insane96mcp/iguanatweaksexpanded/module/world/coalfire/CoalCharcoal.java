@@ -2,8 +2,8 @@ package insane96mcp.iguanatweaksexpanded.module.world.coalfire;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
+import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
-import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.data.lootmodifier.ReplaceLootModifier;
 import insane96mcp.iguanatweaksreborn.module.world.coalfire.PilableLayerBlock;
@@ -49,11 +49,11 @@ public class CoalCharcoal extends Feature {
 
     public static final SimpleBlockWithItem CHARCOAL_LAYER = SimpleBlockWithItem.register("charcoal_layer", () -> new PilableLayerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).strength(0.4F).sound(SoundType.MOSS_CARPET).isViewBlocking((state, blockGetter, pos) -> state.getValue(PilableLayerBlock.LAYERS) >= 8), Items.CHARCOAL));
 
-    public static final RegistryObject<Item> FIRESTARTER = SRRegistries.ITEMS.register("firestarter", () -> new FirestarterItem(new Item.Properties().stacksTo(1).defaultDurability(11)));
+    public static final RegistryObject<Item> FIRESTARTER = ITERegistries.ITEMS.register("firestarter", () -> new FirestarterItem(new Item.Properties().stacksTo(1).defaultDurability(11)));
 
     public static final SimpleBlockWithItem SOUL_SAND_HELLISH_COAL_ORE = SimpleBlockWithItem.register("soul_sand_hellish_coal_ore", () -> new HellishCoalOreBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).strength(2f).sound(SoundType.SOUL_SAND), UniformInt.of(1, 3)));
     public static final SimpleBlockWithItem SOUL_SOIL_HELLISH_COAL_ORE = SimpleBlockWithItem.register("soul_soil_hellish_coal_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_SOIL).strength(2f).sound(SoundType.SOUL_SOIL), UniformInt.of(1, 3)));
-    public static final RegistryObject<Item> HELLISH_COAL = SRRegistries.ITEMS.register("hellish_coal", () -> new SimpleFuelItem(new Item.Properties().fireResistant(), 2400));
+    public static final RegistryObject<Item> HELLISH_COAL = ITERegistries.ITEMS.register("hellish_coal", () -> new SimpleFuelItem(new Item.Properties().fireResistant(), 2400));
 
     @Config(min = 0d, max = 1d)
     @Label(name = "Charcoal from burnt logs chance", description = "Chance for logs to release charcoal layer when burnt")

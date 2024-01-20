@@ -34,7 +34,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SRRegistries {
+public class ITERegistries {
     public static final List<DeferredRegister<?>> REGISTRIES = new ArrayList<>();
 
     public static final DeferredRegister<Block> BLOCKS = createRegistry(ForgeRegistries.BLOCKS);
@@ -80,7 +80,7 @@ public class SRRegistries {
 
     public static RegistryObject<SPShieldItem> registerShield(String id, SPShieldMaterial material, boolean fireResistant) {
         Item.Properties properties = new Item.Properties().durability(material.durability).rarity(material.rarity);
-        RegistryObject<SPShieldItem> shield = SRRegistries.ITEMS.register(id, () -> new SPShieldItem(material, properties));
+        RegistryObject<SPShieldItem> shield = ITERegistries.ITEMS.register(id, () -> new SPShieldItem(material, properties));
         SPItems.SHIELDS.add(shield);
         return shield;
     }

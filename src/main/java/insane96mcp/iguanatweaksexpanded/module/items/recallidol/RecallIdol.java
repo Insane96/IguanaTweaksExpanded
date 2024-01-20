@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.items.recallidol;
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEGlobalLootModifierProvider;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -15,7 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 @Label(name = "Altimeter", description = "Check your altitude")
 @LoadFeature(module = Modules.Ids.ITEMS)
 public class RecallIdol extends Feature {
-	public static final RegistryObject<Item> ITEM = SRRegistries.ITEMS.register("recall_idol", () -> new RecallIdolItem(new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<Item> ITEM = ITERegistries.ITEMS.register("recall_idol", () -> new RecallIdolItem(new Item.Properties().stacksTo(1)));
 
 	public RecallIdol(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

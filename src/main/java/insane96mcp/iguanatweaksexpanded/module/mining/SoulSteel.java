@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.item.SRArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -34,9 +34,9 @@ import java.util.List;
 public class SoulSteel extends Feature {
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("soul_steel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), new Item.Properties().fireResistant());
 
-	public static final RegistryObject<Item> INGOT = SRRegistries.ITEMS.register("soul_steel_ingot", () -> new Item(new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> INGOT = ITERegistries.ITEMS.register("soul_steel_ingot", () -> new Item(new Item.Properties().fireResistant()));
 
-	public static final RegistryObject<Item> NUGGET = SRRegistries.ITEMS.register("soul_steel_nugget", () -> new Item(new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> NUGGET = ITERegistries.ITEMS.register("soul_steel_nugget", () -> new Item(new Item.Properties().fireResistant()));
 
 	private static final ChatFormatting TITLE_FORMAT = ChatFormatting.GRAY;
 	private static final ChatFormatting DESCRIPTION_FORMAT = ChatFormatting.BLUE;
@@ -55,15 +55,15 @@ public class SoulSteel extends Feature {
 	private static final ResourceLocation EMPTY_SLOT_SHOVEL = new ResourceLocation("item/empty_slot_shovel");
 	private static final ResourceLocation EMPTY_SLOT_PICKAXE = new ResourceLocation("item/empty_slot_pickaxe");
 	private static final ResourceLocation EMPTY_SLOT_INGOT = new ResourceLocation("item/empty_slot_ingot");
-	public static final RegistryObject<Item> UPGRADE_SMITHING_TEMPLATE = SRRegistries.ITEMS.register("soul_steel_upgrade_smithing_template", () -> new SmithingTemplateItem(UPGRADE_APPLIES_TO, UPGRADE_INGREDIENTS, UPGRADE, UPGRADE_BASE_SLOT_DESCRIPTION, UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList()));
+	public static final RegistryObject<Item> UPGRADE_SMITHING_TEMPLATE = ITERegistries.ITEMS.register("soul_steel_upgrade_smithing_template", () -> new SmithingTemplateItem(UPGRADE_APPLIES_TO, UPGRADE_INGREDIENTS, UPGRADE, UPGRADE_BASE_SLOT_DESCRIPTION, UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList()));
 
     public static final ILItemTier ITEM_TIER = new ILItemTier(4, 2356, 8f, 3.0f, 17, () -> Ingredient.of(INGOT.get()));
 
-	public static final RegistryObject<Item> SWORD = SRRegistries.ITEMS.register("soul_steel_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> SHOVEL = SRRegistries.ITEMS.register("soul_steel_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> PICKAXE = SRRegistries.ITEMS.register("soul_steel_pickaxe", () -> new PickaxeItem(ITEM_TIER, 1, -2.8F, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> AXE = SRRegistries.ITEMS.register("soul_steel_axe", () -> new AxeItem(ITEM_TIER, 5.0F, -3.1F, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> HOE = SRRegistries.ITEMS.register("soul_steel_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("soul_steel_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("soul_steel_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> PICKAXE = ITERegistries.ITEMS.register("soul_steel_pickaxe", () -> new PickaxeItem(ITEM_TIER, 1, -2.8F, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("soul_steel_axe", () -> new AxeItem(ITEM_TIER, 5.0F, -3.1F, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("soul_steel_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties().fireResistant()));
 
 	private static final SRArmorMaterial ARMOR_MATERIAL = new SRArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 4);
@@ -72,14 +72,14 @@ public class SoulSteel extends Feature {
 		p_266652_.put(ArmorItem.Type.HELMET, 3);
 	}), 18, SoundEvents.ARMOR_EQUIP_IRON, 1f, 0.05f, () -> Ingredient.of(INGOT.get()));
 
-	public static final RegistryObject<Item> HELMET = SRRegistries.ITEMS.register("soul_steel_helmet", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> CHESTPLATE = SRRegistries.ITEMS.register("soul_steel_chestplate", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> LEGGINGS = SRRegistries.ITEMS.register("soul_steel_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> BOOTS = SRRegistries.ITEMS.register("soul_steel_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> HELMET = ITERegistries.ITEMS.register("soul_steel_helmet", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> CHESTPLATE = ITERegistries.ITEMS.register("soul_steel_chestplate", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("soul_steel_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("soul_steel_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
 
 	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("soul_steel", 756, INGOT, 3, Rarity.COMMON);
 
-	public static final RegistryObject<SPShieldItem> SHIELD = SRRegistries.registerShield("soul_steel_shield", SHIELD_MATERIAL, true);
+	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("soul_steel_shield", SHIELD_MATERIAL, true);
 
 	public SoulSteel(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

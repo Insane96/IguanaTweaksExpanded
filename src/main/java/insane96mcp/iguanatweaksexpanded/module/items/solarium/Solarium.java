@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.items.solarium;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.item.*;
-import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.module.combat.AbsorptionArmor;
 import insane96mcp.iguanatweaksreborn.module.combat.RegeneratingAbsorption;
@@ -61,20 +61,20 @@ public class Solarium extends Feature {
 	public static final TagKey<Item> SOLARIUM_HAND_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/solarium"));
 
 	public static final SimpleBlockWithItem SOLIUM_MOSS = SimpleBlockWithItem.register("solium_moss", () -> new SoliumMossBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).pushReaction(PushReaction.DESTROY).noCollission().strength(0.4F).sound(SoundType.GLOW_LICHEN).lightLevel(GlowLichenBlock.emission(9)).randomTicks()));
-	public static final RegistryObject<Item> SOLARIUM_BALL = SRRegistries.ITEMS.register("solarium_ball", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> SOLARIUM_BALL = ITERegistries.ITEMS.register("solarium_ball", () -> new Item(new Item.Properties()));
 
 	public static final ILItemTier ITEM_TIER = new ILItemTier(2, 207, 5f, 1f, 11, () -> Ingredient.of(SOLARIUM_BALL.get()));
 
-	public static final RegistryObject<Item> SWORD = SRRegistries.ITEMS.register("solarium_sword", () -> new SolariumSwordItem(3, -2.4F, new Item.Properties()));
-	public static final RegistryObject<Item> SHOVEL = SRRegistries.ITEMS.register("solarium_shovel", () -> new SolariumShovelItem(1.5F, -3.0F, new Item.Properties()));
-	public static final RegistryObject<Item> PICKAXE = SRRegistries.ITEMS.register("solarium_pickaxe", () -> new SolariumPickaxeItem(1, -2.8F, new Item.Properties()));
-	public static final RegistryObject<Item> AXE = SRRegistries.ITEMS.register("solarium_axe", () -> new SolariumAxeItem(5.5F, -3.2F, new Item.Properties()));
-	public static final RegistryObject<Item> HOE = SRRegistries.ITEMS.register("solarium_hoe", () -> new SolariumHoeItem(0, -1.0F, new Item.Properties()));
+	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("solarium_sword", () -> new SolariumSwordItem(3, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("solarium_shovel", () -> new SolariumShovelItem(1.5F, -3.0F, new Item.Properties()));
+	public static final RegistryObject<Item> PICKAXE = ITERegistries.ITEMS.register("solarium_pickaxe", () -> new SolariumPickaxeItem(1, -2.8F, new Item.Properties()));
+	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("solarium_axe", () -> new SolariumAxeItem(5.5F, -3.2F, new Item.Properties()));
+	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("solarium_hoe", () -> new SolariumHoeItem(0, -1.0F, new Item.Properties()));
 
-	public static final RegistryObject<Item> HELMET = SRRegistries.ITEMS.register("solarium_helmet", () -> new SolariumArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
-	public static final RegistryObject<Item> CHESTPLATE = SRRegistries.ITEMS.register("solarium_chestplate", () -> new SolariumArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-	public static final RegistryObject<Item> LEGGINGS = SRRegistries.ITEMS.register("solarium_leggings", () -> new SolariumArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
-	public static final RegistryObject<Item> BOOTS = SRRegistries.ITEMS.register("solarium_boots", () -> new SolariumArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
+	public static final RegistryObject<Item> HELMET = ITERegistries.ITEMS.register("solarium_helmet", () -> new SolariumArmorItem(ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> CHESTPLATE = ITERegistries.ITEMS.register("solarium_chestplate", () -> new SolariumArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("solarium_leggings", () -> new SolariumArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("solarium_boots", () -> new SolariumArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 
 	public static final RegistryObject<SPShieldItem> SHIELD = SolariumShield.registerShield("solarium_shield");
 

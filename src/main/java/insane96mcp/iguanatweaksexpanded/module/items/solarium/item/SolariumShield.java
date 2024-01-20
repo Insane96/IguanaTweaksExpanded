@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.items.solarium.item;
 
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
-import insane96mcp.iguanatweaksexpanded.setup.SRRegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.shieldsplus.setup.SPItems;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
@@ -40,7 +40,7 @@ public class SolariumShield extends SPShieldItem {
 
 	public static RegistryObject<SPShieldItem> registerShield(String id) {
 		Item.Properties properties = new Item.Properties().durability(SHIELD_MATERIAL.durability).rarity(SHIELD_MATERIAL.rarity);
-		RegistryObject<SPShieldItem> shield = SRRegistries.ITEMS.register(id, () -> new SolariumShield(properties));
+		RegistryObject<SPShieldItem> shield = ITERegistries.ITEMS.register(id, () -> new SolariumShield(properties));
 		SPItems.SHIELDS.add(shield);
 		return shield;
 	}
