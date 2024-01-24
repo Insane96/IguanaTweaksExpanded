@@ -1,11 +1,12 @@
 # Changelog
 
-* Rework damaging enchantments to scale with weapon
+* Remake all the protection enchantments
 * Ancient lapis empowers the enchanting table allowing over max level enchantments
+* RIP villager workstations
 
 ## Upcoming
 * Added a brand new Enchanting Table!
-  * Choose your enchantments! The limit is half the item's enchantability + 3.
+  * Choose your enchantments! The limit is half the item's enchantability + 3
   * If you infuse an item with a cleansed lapis, you'll be able to use the full item's enchantability
   * Enchanted items can no longer be forged or upgraded in Smithing table. Also can no longer be merged with other enchanted items
   * Items in the `iguanatweaksexpanded:not_enchantable` item tag will no longer be enchantable
@@ -14,6 +15,7 @@
   * Reduced Cleansed Lapis drop
   * Cleansed lapis no longer increases an enchantment level
   * Ancient lapis no longer increase the max level of an enchantment past it's maximum
+* Copper tools now last 1% more per block below sea level
 * Expanded is now limited to Pickaxes
 * Rebalanced some material stats
 * Fixed ore rocks advancement
