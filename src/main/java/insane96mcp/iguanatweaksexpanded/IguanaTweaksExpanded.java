@@ -80,6 +80,7 @@ public class IguanaTweaksExpanded
         ITERegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
 
         ITETriggers.init();
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

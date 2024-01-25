@@ -1,49 +1,20 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IDamagingEnchantment;
+import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.DamageEnchantment;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class Critical extends Enchantment {
+public class Critical extends BonusDamageEnchantment {
     public Critical() {
-        super(Rarity.UNCOMMON, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 5;
-    }
-
-    /**
-     * Returns the minimal value of enchantability needed on the enchantment level passed.
-     */
-    public int getMinCost(int pEnchantmentLevel) {
-        return 3 + (pEnchantmentLevel - 1) * 10;
-    }
-
-    public int getMaxCost(int pEnchantmentLevel) {
-        return this.getMinCost(pEnchantmentLevel) + 20;
-    }
-
-    @Override
-    public boolean checkCompatibility(Enchantment enchantment) {
-        return !(enchantment instanceof DamageEnchantment) && !(enchantment instanceof IDamagingEnchantment) && super.checkCompatibility(enchantment);
-    }
-
-    /**
-     * Determines if this enchantment can be applied to a specific ItemStack.
-     * @param pStack The ItemStack to test.
-     */
-    public boolean canEnchant(ItemStack pStack) {
-        return pStack.getItem() instanceof AxeItem || super.canEnchant(pStack);
+        super(Rarity.UNCOMMON, EnchantmentsFeature.WEAPONS_CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     public static float getCritAmount(int lvl, float baseCrit) {
@@ -57,5 +28,10 @@ public class Critical extends Enchantment {
             if (isCrit)
                 player.magicCrit(entity);
         }
+    }
+
+    @Override
+    public Component getTooltip(ItemStack stack, int lvl) {
+        return Component.translatable(this.getDescriptionId() + ".tooltip", IguanaTweaksReborn.ONE_DECIMAL_FORMATTER.format(lvl + 1)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

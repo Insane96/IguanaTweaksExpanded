@@ -1,52 +1,27 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IDamagingEnchantment;
+import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.DamageEnchantment;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 
 import java.util.UUID;
 
-public class SwiftStrike extends Enchantment {
+public class SwiftStrike extends BonusDamageEnchantment {
     public static final UUID BONUS_ATTACK_SPEED_UUID = UUID.fromString("7b0cb3a4-7a7c-4908-be8d-aadd523690d7");
     public SwiftStrike() {
-        super(Rarity.UNCOMMON, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentsFeature.WEAPONS_CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 5;
-    }
-
-    /**
-     * Returns the minimal value of enchantability needed on the enchantment level passed.
-     */
-    public int getMinCost(int pEnchantmentLevel) {
-        return 3 + (pEnchantmentLevel - 1) * 10;
-    }
-
-    public int getMaxCost(int pEnchantmentLevel) {
-        return this.getMinCost(pEnchantmentLevel) + 20;
-    }
-
-    @Override
-    public boolean checkCompatibility(Enchantment enchantment) {
-        return !(enchantment instanceof DamageEnchantment) && !(enchantment instanceof IDamagingEnchantment) && super.checkCompatibility(enchantment);
-    }
-
-    /**
-     * Determines if this enchantment can be applied to a specific ItemStack.
-     * @param pStack The ItemStack to test.
-     */
-    public boolean canEnchant(ItemStack pStack) {
-        return pStack.getItem() instanceof AxeItem ? true : super.canEnchant(pStack);
+    public static float getAttackSpeedBonusPerLevel() {
+        return 0.15f;
     }
 
     public static void applyAttributeModifier(ItemAttributeModifierEvent event) {
@@ -56,6 +31,11 @@ public class SwiftStrike extends Enchantment {
         if (lvl == 0)
             return;
 
-        event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(BONUS_ATTACK_SPEED_UUID, "Rhythmic Swing enchantment", 0.15 * lvl, AttributeModifier.Operation.MULTIPLY_BASE));
+        event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(BONUS_ATTACK_SPEED_UUID, "Rhythmic Swing enchantment", getAttackSpeedBonusPerLevel() * lvl, AttributeModifier.Operation.MULTIPLY_BASE));
+    }
+
+    @Override
+    public Component getTooltip(ItemStack stack, int lvl) {
+        return Component.translatable(this.getDescriptionId() + ".tooltip", IguanaTweaksReborn.ONE_DECIMAL_FORMATTER.format(getAttackSpeedBonusPerLevel() * lvl * 100f)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

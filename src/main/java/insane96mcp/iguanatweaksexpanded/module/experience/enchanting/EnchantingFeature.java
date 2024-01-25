@@ -7,7 +7,6 @@ import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
-import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -41,7 +40,6 @@ import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -53,7 +51,6 @@ public class EnchantingFeature extends Feature {
 	public static final RegistryObject<BlockEntityType<SREnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ITERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(SREnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
 
     public static final String INFUSED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "infused";
-
     @Config
     @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items")
     public static Boolean noEnchantmentMerge = true;
@@ -73,11 +70,6 @@ public class EnchantingFeature extends Feature {
 		super(module, enabledByDefault, canBeDisabled);
         IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "enchanting_table", Component.literal("IguanaTweaks Expanded Enchanting Table"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks));
 	}
-
-    @Override
-    public void readConfig(ModConfigEvent event) {
-        super.readConfig(event);
-    }
 
     @SubscribeEvent
     public void onAnvilUpdate(AnvilUpdateEvent event) {
@@ -112,9 +104,9 @@ public class EnchantingFeature extends Feature {
             return;
 
         ItemStack right = event.getRight().copy();
-        for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
+        /*for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
             LogHelper.info(enchantment.getDescriptionId() + ": " + enchantment.getMinCost(1));
-        }
+        }*/
         if (!right.is(CLEANSED_LAPIS.get()))
             return;
         event.setCost(0);

@@ -1,8 +1,8 @@
 # Changelog
 
-* Remake all the protection enchantments
 * Ancient lapis empowers the enchanting table allowing over max level enchantments
-* RIP villager workstations
+* RIP villager workstations (https://github.com/xanthian/variantbarrels/blob/1.19/src/main/java/net/xanthian/variantbarrels/util/ModPOITypes.java#L23)
+* Enchanted books and treasure enchantments
 
 ## Upcoming
 * Added a brand new Enchanting Table!
@@ -12,7 +12,7 @@
   * Items in the `iguanatweaksexpanded:not_enchantable` item tag will no longer be enchantable
     * By default, books, flint and steel, shears, brush and elytra are no longer enchantable
 * Lapis (moved to Enchanting)
-  * Reduced Cleansed Lapis drop
+  * Reduced Cleansed Lapis drop rate
   * Cleansed lapis no longer increases an enchantment level
   * Ancient lapis no longer increase the max level of an enchantment past it's maximum
 * Copper tools now last 1% more per block below sea level

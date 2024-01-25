@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.*;
 import insane96mcp.iguanatweaksexpanded.network.message.JumpMidAirMessage;
@@ -12,11 +11,6 @@ import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.BlockHitResult;
@@ -26,7 +20,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -38,7 +35,6 @@ import net.minecraftforge.registries.RegistryObject;
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class NewEnchantmentsFeature extends Feature {
 
-	public static final TagKey<EntityType<?>> WATER_COOLANT_AFFECTED = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "water_coolant_affected"));
 	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
 	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ITERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
 	public static final RegistryObject<Enchantment> MELEE_PROTECTION = ITERegistries.ENCHANTMENTS.register("melee_protection", MeleeProtection::new);
@@ -132,15 +128,6 @@ public class NewEnchantmentsFeature extends Feature {
 			Expanded.apply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
 	}
 
-	@SubscribeEvent
-	public void onLivingAttack(LivingHurtEvent event) {
-		if (!this.isEnabled()
-				|| !(event.getSource().getEntity() instanceof LivingEntity attacker))
-			return;
-
-		waterCoolantOnAttack(attacker, event.getEntity(), event);
-	}
-
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onCriticalHit(CriticalHitEvent event) {
 		if (!this.isEnabled())
@@ -176,17 +163,5 @@ public class NewEnchantmentsFeature extends Feature {
 		if (event.getEntity() instanceof LocalPlayer player)
 			player.getPersistentData().putInt("double_jumps", 0);
 		GravityDefying.applyFallDamageReduction(event);
-	}
-
-	public void waterCoolantOnAttack(LivingEntity attacker, LivingEntity entity, LivingHurtEvent event) {
-		if (!entity.getType().is(WATER_COOLANT_AFFECTED))
-			return;
-
-		int lvl = attacker.getMainHandItem().getEnchantmentLevel(WATER_COOLANT.get());
-		if (lvl == 0)
-			return;
-
-		float bonusDamage = 2.5f * lvl;
-		event.setAmount((event.getAmount() + bonusDamage));
 	}
 }

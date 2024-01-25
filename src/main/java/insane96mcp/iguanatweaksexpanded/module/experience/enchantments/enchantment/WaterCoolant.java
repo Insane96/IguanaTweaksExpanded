@@ -1,56 +1,41 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IDamagingEnchantment;
+import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IEnchantmentTooltip;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.DamageEnchantment;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class WaterCoolant extends Enchantment {
+public class WaterCoolant extends BonusDamageEnchantment implements IEnchantmentTooltip {
+    public static final TagKey<EntityType<?>> AFFECTED_BY_WATER_COOLANT = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments/water_coolant"));
     public WaterCoolant() {
-        super(Rarity.UNCOMMON, EnchantmentCategory.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentsFeature.WEAPONS_CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
-    public int getMaxLevel() {
-        return 5;
+    public float getDamageBonus(LivingEntity attacker, LivingEntity target, ItemStack stack, int lvl) {
+        if (!target.getType().is(AFFECTED_BY_WATER_COOLANT))
+            return 0f;
+        return this.getDamageBonus(stack, lvl);
     }
 
     @Override
-    public int getMinCost(int lvl) {
-        return 5 + (lvl - 1) * 8;
-    }
-
-    @Override
-    public int getMaxCost(int lvl) {
-        return this.getMinCost(lvl) + 20;
-    }
-
-    @Override
-    public boolean checkCompatibility(Enchantment enchantment) {
-        return !(enchantment instanceof DamageEnchantment) && !(enchantment instanceof IDamagingEnchantment) && super.checkCompatibility(enchantment);
-    }
-
-    @Override
-    public boolean canEnchant(ItemStack stack) {
-        return stack.getItem() instanceof AxeItem || super.canEnchant(stack);
-    }
-
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return super.canApplyAtEnchantingTable(stack);
+    public boolean isAffectedByEnchantment(LivingEntity target) {
+        return target.getType().is(AFFECTED_BY_WATER_COOLANT);
     }
 
     @Override
     public void doPostAttack(LivingEntity attacker, Entity entity, int lvl) {
         if (!(entity instanceof LivingEntity livingEntity)
-                || !livingEntity.getType().is(NewEnchantmentsFeature.WATER_COOLANT_AFFECTED))
+                || !livingEntity.getType().is(AFFECTED_BY_WATER_COOLANT))
             return;
 
         if (lvl > 0) {
