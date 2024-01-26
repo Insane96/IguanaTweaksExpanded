@@ -1,13 +1,13 @@
 # Changelog
 
-* Ancient lapis empowers the enchanting table allowing over max level enchantments
-* Enchanted books and treasure enchantments
+* Treasure enchanted books can be "learned" so you can apply the enchantment in the enchanting table
 
 ## Upcoming
 * Added a brand new Enchanting Table!
   * Choose your enchantments! The limit is half the item's enchantability + 3
   * If you infuse an item with a cleansed lapis, you'll be able to use the full item's enchantability
-  * Enchanted items can no longer be forged or upgraded in Smithing table. Also can no longer be merged with other enchanted items
+  * If you empower an item with Ancient Lapis, increasing max cost by 25% and allows over max level enchantments
+  * Enchanted items can no longer be forged or upgraded in Smithing table. Also can no longer be merged with other enchanted items. Enchanted books can only be applied to unenchanted items
   * Items in the `iguanatweaksexpanded:not_enchantable` item tag will no longer be enchantable
     * By default, books, flint and steel, shears, brush and elytra are no longer enchantable
 * Lapis (moved to Enchanting)

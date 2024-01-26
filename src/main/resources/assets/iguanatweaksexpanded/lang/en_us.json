@@ -2,6 +2,8 @@
 	"item.iguanatweaksexpanded.ancient_lapis": "Ancient Lapis",
 	"item.iguanatweaksexpanded.cleansed_lapis": "Cleansed Lapis",
 	"block.iguanatweaksexpanded.enchanting_table": "Enchanting Table",
+	"iguanatweaksexpanded.infused_item": "Enchanting Infused",
+	"iguanatweaksexpanded.empowered_item": "Enchanting Empowered",
 
 	"enchantment.iguanatweaksexpanded.magnetic": "Magnetic",
 	"enchantment.iguanatweaksexpanded.magic_protection": "Magic Protection",
@@ -22,6 +24,7 @@
 	"enchantment.iguanatweaksexpanded.healthy": "Healthy",
 	"enchantment.iguanatweaksexpanded.swift_strike": "Swift Strike",
 	"enchantment.iguanatweaksexpanded.swift_strike.tooltip": "+%s%% Attack Speed",
+	"enchantment.iguanatweaksexpanded.curse_of_mending": "Curse of Mending",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",

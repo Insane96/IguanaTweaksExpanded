@@ -58,6 +58,10 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
     }
 
 
+    public static void clientTick(Level pLevel, BlockPos pos, BlockState pState, SREnchantingTableBlockEntity blockEntity) {
+        bookAnimationTick(pLevel, pos, pState, blockEntity);
+    }
+
     public static void bookAnimationTick(Level pLevel, BlockPos pPos, BlockState pState, SREnchantingTableBlockEntity pBlockEntity) {
         pBlockEntity.oOpen = pBlockEntity.open;
         pBlockEntity.oRot = pBlockEntity.rot;
@@ -74,32 +78,33 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
                     pBlockEntity.flipT += (float)(RANDOM.nextInt(4) - RANDOM.nextInt(4));
                 } while(f1 == pBlockEntity.flipT);
             }
-        } else {
+        }
+        else {
             pBlockEntity.tRot += 0.02F;
             pBlockEntity.open -= 0.1F;
         }
 
-        while(pBlockEntity.rot >= (float)Math.PI) {
+        while (pBlockEntity.rot >= (float)Math.PI) {
             pBlockEntity.rot -= ((float)Math.PI * 2F);
         }
 
-        while(pBlockEntity.rot < -(float)Math.PI) {
+        while (pBlockEntity.rot < -(float)Math.PI) {
             pBlockEntity.rot += ((float)Math.PI * 2F);
         }
 
-        while(pBlockEntity.tRot >= (float)Math.PI) {
+        while (pBlockEntity.tRot >= (float)Math.PI) {
             pBlockEntity.tRot -= ((float)Math.PI * 2F);
         }
 
-        while(pBlockEntity.tRot < -(float)Math.PI) {
+        while (pBlockEntity.tRot < -(float)Math.PI) {
             pBlockEntity.tRot += ((float)Math.PI * 2F);
         }
 
         float f2;
-        for(f2 = pBlockEntity.tRot - pBlockEntity.rot; f2 >= (float)Math.PI; f2 -= ((float)Math.PI * 2F)) {
+        for (f2 = pBlockEntity.tRot - pBlockEntity.rot; f2 >= (float)Math.PI; f2 -= ((float)Math.PI * 2F)) {
         }
 
-        while(f2 < -(float)Math.PI) {
+        while (f2 < -(float)Math.PI) {
             f2 += ((float)Math.PI * 2F);
         }
 

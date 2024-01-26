@@ -11,6 +11,7 @@ import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.BlockHitResult;
@@ -48,6 +49,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
 	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_MENDING = ITERegistries.ENCHANTMENTS.register("curse_of_mending", CurseOfMending::new);
 
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
@@ -71,6 +73,8 @@ public class NewEnchantmentsFeature extends Feature {
 			return;
 
 		Magnetic.tryPullItems(event.getEntity());
+		if (event.getEntity() instanceof ServerPlayer player)
+			CurseOfMending.consumePlayerExperience(player);
 	}
 
 	@SubscribeEvent

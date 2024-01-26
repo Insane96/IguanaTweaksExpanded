@@ -43,16 +43,18 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-@Label(name = "Enchanting", description = "Change some enchanting related stuff. Items in not_enchantable tag cannot be enchanted")
+@Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled a data pack is also enabled that changes the enchanting table recipe. Items in not_enchantable tag cannot be enchanted.")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class EnchantingFeature extends Feature {
     public static final TagKey<Item> NOT_ENCHANTABLE = ITEItemTagsProvider.create("not_enchantable");
 	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new SREnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
 	public static final RegistryObject<BlockEntityType<SREnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ITERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(SREnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
+    public static final RegistryObject<MenuType<SREnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ITERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(SREnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
 
     public static final String INFUSED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "infused";
+    public static final String EMPOWERED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "empowered";
     @Config
-    @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items")
+    @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items and also enchanted books can no longer be applied to enchanted items.")
     public static Boolean noEnchantmentMerge = true;
     @Config
     @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
@@ -64,11 +66,9 @@ public class EnchantingFeature extends Feature {
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ANCIENT_LAPIS = ITERegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));
 
-	public static final RegistryObject<MenuType<SREnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ITERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(SREnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
-
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "enchanting_table", Component.literal("IguanaTweaks Expanded Enchanting Table"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks));
 	}
 
     @SubscribeEvent
@@ -77,6 +77,7 @@ public class EnchantingFeature extends Feature {
             return;
         preventMergingEnchantedItems(event);
         cleansedLapis(event);
+        ancientLapis(event);
     }
 
     public void preventMergingEnchantedItems(AnvilUpdateEvent event) {
@@ -116,6 +117,37 @@ public class EnchantingFeature extends Feature {
         event.setOutput(result);
     }
 
+    public void ancientLapis(final AnvilUpdateEvent event) {
+        ItemStack left = event.getLeft();
+        if (!left.isEnchantable() || left.isEnchanted())
+            return;
+
+        ItemStack right = event.getRight().copy();
+        if (!right.is(ANCIENT_LAPIS.get()))
+            return;
+        event.setCost(0);
+        event.setMaterialCost(1);
+        ItemStack result = left.copy();
+        left.getOrCreateTag().putBoolean(EnchantingFeature.EMPOWERED_ITEM, true);
+        event.setOutput(result);
+    }
+
+    /*@SubscribeEvent
+    public void onRightClick(PlayerInteractEvent.RightClickBlock event) {
+        if (!this.isEnabled()
+                || !event.getItemStack().is(ANCIENT_LAPIS.get())
+                || !(event.getLevel().getBlockEntity(event.getPos()) instanceof SREnchantingTableBlockEntity blockEntity)
+                || blockEntity.empowered)
+            return;
+
+        blockEntity.empowered = true;
+        event.getItemStack().shrink(1);
+        event.getLevel().playSound(null, event.getPos(), SoundEvents.ALLAY_AMBIENT_WITH_ITEM, SoundSource.BLOCKS, 1f, 0.5f);
+        event.setResult(Event.Result.DENY);
+        event.setCanceled(true);
+        event.setCancellationResult(InteractionResult.SUCCESS);
+    }*/
+
     @SubscribeEvent
     public void onTooltip(ItemTooltipEvent event) {
         if (!isEnabled(EnchantingFeature.class)
@@ -129,7 +161,10 @@ public class EnchantingFeature extends Feature {
 
         if (event.getItemStack().getTag().contains(INFUSED_ITEM)) {
             event.getToolTip().add(Component.empty());
-            event.getToolTip().add(Component.literal("Enchanting Infused").withStyle(ChatFormatting.DARK_PURPLE));
+            event.getToolTip().add(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE));
+        }
+        if (event.getItemStack().getTag().contains(EMPOWERED_ITEM)) {
+            event.getToolTip().add(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
 
         if (event.getItemStack().getTag().contains("PendingEnchantments") && !(mc.screen instanceof GrindstoneScreen) && !event.getItemStack().isEnchanted()) {

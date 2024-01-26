@@ -37,6 +37,7 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess access;
     protected final Level level;
     public DataSlot maxCost = DataSlot.standalone();
+    //public DataSlot isEmpowered = DataSlot.standalone();
 
     public SREnchantingTableMenu(int pContainerId, Inventory pPlayerInventory) {
         this(pContainerId, pPlayerInventory, new SimpleContainer(SLOT_COUNT), ContainerLevelAccess.NULL);
@@ -80,8 +81,12 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(pPlayerInventory, k, 8 + k * 18, 142));
         }
         this.addDataSlot(this.maxCost);
+        //this.addDataSlot(this.isEmpowered);
 
-        this.access.execute((level, blockPos) -> this.updateMaxCost(this.container.getItem(0), level, blockPos));
+        this.access.execute((level, blockPos) -> {
+            this.updateMaxCost(this.container.getItem(0), level, blockPos);
+            //this.updateEmpoweredState(level, blockPos);
+        });
     }
 
     @Override
@@ -101,21 +106,25 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                     enchantingPower += level.getBlockState(blockPos.offset(blockpos)).getEnchantPowerBonus(level, blockPos.offset(blockpos));
                 }
             }
-            //float leftoverPower = 0;
-            if (enchantingPower > 15f) {
-                //leftoverPower = Math.min(enchantingPower - 20f, 5f);
+            if (enchantingPower > 15f)
                 enchantingPower = 15f;
-            }
             float p = 0.5f;
-            //float maxCost = 3;
-            if (stack.getTag() != null && stack.getTag().contains(EnchantingFeature.INFUSED_ITEM))
-                p = 1f;
+            if (stack.getTag() != null) {
+                if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM))
+                    p = 1f;
+                if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
+                    p *= 1.25f;
+            }
             float maxCost = stack.getEnchantmentValue() * p * (enchantingPower / 15f) + 3;
             //maxCost *= (enchantingPower / 15f);
-            this.maxCost.set((int) maxCost);
+            this.maxCost.set((int) (maxCost * 100f));
         }
         this.broadcastChanges();
     }
+
+    /*private void updateEmpoweredState(Level level, BlockPos blockPos) {
+        this.isEmpowered.set(level.getBlockEntity(blockPos) instanceof SREnchantingTableBlockEntity srEnchantingTableBlockEntity && srEnchantingTableBlockEntity.empowered ? 1 : 0);
+    }*/
 
     public void updateEnchantmentsChosen(List<EnchantmentInstance> enchantments) {
         this.access.execute((level, blockPos) -> {
@@ -148,6 +157,7 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 return;
             ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
             float cost = 0;
+            //TODO Prevent cheating
             for (int i = 0; i < enchantmentsListTag.size(); ++i) {
                 CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
                 Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
@@ -160,6 +170,11 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             //ItemStack lapis = this.container.getItem(1);
             //lapis.shrink((int)(cost / 5));
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
+            if (level.getBlockEntity(blockPos) instanceof SREnchantingTableBlockEntity srEnchantingTableBlockEntity && srEnchantingTableBlockEntity.empowered) {
+                level.playSound(null, blockPos, SoundEvents.ALLAY_AMBIENT_WITH_ITEM, SoundSource.BLOCKS, 1f, 2f);
+                srEnchantingTableBlockEntity.empowered = false;
+                //this.updateEmpoweredState(level, blockPos);
+            }
             //this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
 
         });

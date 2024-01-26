@@ -140,7 +140,12 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
                 continue;
             cost += EnchantingFeature.getCost(enchantmentEntry.enchantmentDisplay.enchantment, lvl);
         }
-        return cost;
+        return cost * 100f;
+    }
+
+    private boolean isItemEmpowered() {
+        CompoundTag tag = this.menu.getSlot(0).getItem().getTag();
+        return tag != null && tag.contains(EnchantingFeature.EMPOWERED_ITEM);
     }
 
     @Override
@@ -184,8 +189,14 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         if (this.menu.getSlot(0).getItem().isEmpty()
                 || this.menu.getSlot(0).getItem().isEnchanted())
             return false;
+        if (!this.isItemEmpowered()) {
+            for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
+                if (enchantmentEntry.enchantmentDisplay.lvl > enchantmentEntry.enchantmentDisplay.enchantment.getMaxLevel())
+                    return false;
+            }
+        }
         float cost = this.getCurrentCost();
-        return ((this.minecraft.player.experienceLevel >= cost && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0;
+        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0;
     }
 
     @Override
@@ -202,13 +213,13 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         if (this.maxCost > 0) {
             float cost = this.getCurrentCost();
             int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
-            guiGraphics.drawCenteredString(this.font, "Max: %d".formatted(this.maxCost), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 5, color);
-            color = this.minecraft.player.experienceLevel < cost && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
+            guiGraphics.drawCenteredString(this.font, "Max: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.maxCost / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 5, color);
+            color = this.minecraft.player.experienceLevel < cost / 100f && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
             if (this.isButtonEnabled())
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             else
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
-            guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost())), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
+            guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost() / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
             /*if (cost > 0) {
                 int lapisCost = (int)(cost / 5) + 1;
                 guiGraphics.drawCenteredString(this.font, "%d".formatted(lapisCost), topLeftCornerX + (lapisCost < 10 ? 48 : 45), topLeftCornerY + 18, 0x495e9e);
@@ -255,7 +266,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         }
 
         private void updateActiveState() {
-            this.levelUpBtn.active = this.enchantmentDisplay.lvl < this.enchantmentDisplay.enchantment.getMaxLevel();
+            this.levelUpBtn.active = this.enchantmentDisplay.lvl < this.enchantmentDisplay.enchantment.getMaxLevel() || (this.enchantmentDisplay.enchantment.getMaxLevel() > 1 && this.enchantmentDisplay.lvl <= this.enchantmentDisplay.enchantment.getMaxLevel() && SREnchantingTableScreen.this.isItemEmpowered());
             this.levelDownBtn.active = this.enchantmentDisplay.lvl > 0;
         }
 
@@ -321,17 +332,14 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
                 this.setTooltip(null);
                 return;
             }
-            Minecraft minecraft = Minecraft.getInstance();
             guiGraphics.setColor(1.0F, 1.0F, 1.0F, this.alpha);
             RenderSystem.enableBlend();
             RenderSystem.enableDepthTest();
             guiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), this.type == Type.LOWER ? LOWER_LVL_BTN_U : RISE_LVL_BTN_U, ENCH_ENTRY_V + this.getYOffset(), this.width, this.height);
             guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-            int i = getFGColor();
-            this.renderString(guiGraphics, minecraft.font, i | Mth.ceil(this.alpha * 255.0F) << 24);
-            if (this.type == Type.LOWER && this.enchantmentEntry.enchantmentDisplay.lvl > 0)
+            if (this.type == Type.LOWER)
                 this.setTooltip(Tooltip.create(Component.literal("Previous level cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(this.enchantmentEntry.enchantmentDisplay.enchantment, this.enchantmentEntry.enchantmentDisplay.lvl - 1))))));
-            else if (this.type == Type.RISE && this.enchantmentEntry.enchantmentDisplay.lvl < this.enchantmentEntry.enchantmentDisplay.enchantment.getMaxLevel())
+            else if (this.type == Type.RISE)
                 this.setTooltip(Tooltip.create(Component.literal("Next level cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(this.enchantmentEntry.enchantmentDisplay.enchantment, this.enchantmentEntry.enchantmentDisplay.lvl + 1))))));
             else this.setTooltip(null);
         }
@@ -355,7 +363,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         }
     }
 
-    private static class EnchantmentDisplay extends AbstractWidget {
+    private class EnchantmentDisplay extends AbstractWidget {
 
         public Enchantment enchantment;
         public int lvl;
@@ -377,7 +385,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
             Component lvlTxt = Component.empty();
             if (this.lvl > 0)
                 lvlTxt = Component.translatable("enchantment.level." + this.lvl);
-            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W + LVL_BTN_W / 2 + 3, this.getY() + 3, 0xDDDDDD);
+            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W + LVL_BTN_W / 2 + 3, this.getY() + 3, this.lvl > this.enchantment.getMaxLevel() ? 16733695 : 0xDDDDDD);
             this.setTooltip(Tooltip.create(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl))))));
             this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;
         }
@@ -386,7 +394,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
          * Returns if the button should be disabled
          */
         public void rise() {
-            if (this.lvl < this.enchantment.getMaxLevel())
+            if (this.lvl < this.enchantment.getMaxLevel() || (this.enchantment.getMaxLevel() > 1 && this.lvl <= this.enchantment.getMaxLevel() && SREnchantingTableScreen.this.isItemEmpowered()))
                 this.lvl++;
         }
 
