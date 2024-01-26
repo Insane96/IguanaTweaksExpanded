@@ -79,7 +79,7 @@ public class SoulSteel extends Feature {
 
 	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("soul_steel", 756, INGOT, 3, Rarity.COMMON);
 
-	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("soul_steel_shield", SHIELD_MATERIAL, true);
+	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("soul_steel_shield", SHIELD_MATERIAL);
 
 	public SoulSteel(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
