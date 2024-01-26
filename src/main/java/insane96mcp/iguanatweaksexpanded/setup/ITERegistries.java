@@ -2,7 +2,9 @@ package insane96mcp.iguanatweaksexpanded.setup;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.data.condition.LootItemCurrentSeasonCondition;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.SoliumBoulderFeature;
+import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.BeegOreVeinFeature;
 import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreWithRandomPatchConfiguration;
 import insane96mcp.shieldsplus.setup.SPItems;
@@ -16,6 +18,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
+import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -23,6 +27,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
@@ -32,6 +37,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ITERegistries {
@@ -55,9 +61,37 @@ public class ITERegistries {
 
     public static final RegistryObject<LootItemConditionType> CURRENT_SEASON = LOOT_CONDITION_TYPES.register("current_season", () -> new LootItemConditionType(new LootItemCurrentSeasonCondition.Serializer()));
 
+    public static DeferredRegister<PoiType> POI_TYPES = createRegistry("minecraft", ForgeRegistries.POI_TYPES);
+    public static RegistryObject<PoiType> ARMORER = POI_TYPES.register("armorer", () -> {
+        HashSet<BlockState> states = new HashSet<>(ForgeRegistries.POI_TYPES.getDelegateOrThrow(PoiTypes.ARMORER).get().matchingStates());
+        RegistryObject<Block>[] barrelRegistryObjects = new RegistryObject[]{
+                MultiBlockFurnaces.BLAST_FURNACE.block()
+        };
+        for (RegistryObject<Block> barrelRegistryObject : barrelRegistryObjects) {
+            states.addAll(barrelRegistryObject.get().getStateDefinition().getPossibleStates());
+        }
+        return new PoiType(states, 1, 1);
+    });
+    public static RegistryObject<PoiType> FLETCHER = POI_TYPES.register("fletcher", () -> {
+        HashSet<BlockState> states = new HashSet<>(ForgeRegistries.POI_TYPES.getDelegateOrThrow(PoiTypes.FLETCHER).get().matchingStates());
+        RegistryObject<Block>[] barrelRegistryObjects = new RegistryObject[]{
+                Fletching.FLETCHING_TABLE.block()
+        };
+        for (RegistryObject<Block> barrelRegistryObject : barrelRegistryObjects) {
+            states.addAll(barrelRegistryObject.get().getStateDefinition().getPossibleStates());
+        }
+        return new PoiType(states, 1, 1);
+    });
+
 
     static <R> DeferredRegister<R> createRegistry(ResourceKey<? extends Registry<R>> key) {
         DeferredRegister<R> register = DeferredRegister.create(key, IguanaTweaksExpanded.MOD_ID);
+        REGISTRIES.add(register);
+        return register;
+    }
+
+    static <R> DeferredRegister<R> createRegistry(String modId, IForgeRegistry<R> reg) {
+        DeferredRegister<R> register = DeferredRegister.create(reg, modId);
         REGISTRIES.add(register);
         return register;
     }
@@ -75,10 +109,6 @@ public class ITERegistries {
     }
 
     public static RegistryObject<SPShieldItem> registerShield(String id, SPShieldMaterial material) {
-        return registerShield(id, material, false);
-    }
-
-    public static RegistryObject<SPShieldItem> registerShield(String id, SPShieldMaterial material, boolean fireResistant) {
         Item.Properties properties = new Item.Properties().durability(material.durability).rarity(material.rarity);
         RegistryObject<SPShieldItem> shield = ITERegistries.ITEMS.register(id, () -> new SPShieldItem(material, properties));
         SPItems.SHIELDS.add(shield);

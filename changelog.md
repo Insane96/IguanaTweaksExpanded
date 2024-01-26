@@ -1,7 +1,6 @@
 # Changelog
 
 * Ancient lapis empowers the enchanting table allowing over max level enchantments
-* RIP villager workstations (https://github.com/xanthian/variantbarrels/blob/1.19/src/main/java/net/xanthian/variantbarrels/util/ModPOITypes.java#L23)
 * Enchanted books and treasure enchantments
 
 ## Upcoming
@@ -18,6 +17,8 @@
 * Copper tools now last 1% more per block below sea level
 * Expanded is now limited to Pickaxes
 * Rebalanced some material stats
+* Soul Steel items are no longer fire-resistant
+* Fixed villagers ignoring MultiBlock Blast furnace and fletching table as workstations
 * Fixed ore rocks advancement
 * Fixed Soul Steel tools textures
 
