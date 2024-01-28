@@ -20,6 +20,7 @@
 * Soul Steel items are no longer fire-resistant
 * Fixed villagers ignoring MultiBlock Blast furnace and fletching table as workstations
 * Fixed ore rocks advancement
+* Fixed Durium shield smithing recipe not working
 * Fixed Soul Steel tools textures
 * Fixed crash when using Forge with Step Up enchantment
 

@@ -170,11 +170,11 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             //ItemStack lapis = this.container.getItem(1);
             //lapis.shrink((int)(cost / 5));
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
-            if (level.getBlockEntity(blockPos) instanceof SREnchantingTableBlockEntity srEnchantingTableBlockEntity && srEnchantingTableBlockEntity.empowered) {
+            /*if (level.getBlockEntity(blockPos) instanceof SREnchantingTableBlockEntity srEnchantingTableBlockEntity && srEnchantingTableBlockEntity.empowered) {
                 level.playSound(null, blockPos, SoundEvents.ALLAY_AMBIENT_WITH_ITEM, SoundSource.BLOCKS, 1f, 2f);
                 srEnchantingTableBlockEntity.empowered = false;
                 //this.updateEmpoweredState(level, blockPos);
-            }
+            }*/
             //this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
 
         });

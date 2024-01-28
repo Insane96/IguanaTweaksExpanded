@@ -354,7 +354,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SWORD), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.SWORD.get())
                 .unlocks("has_durium", has(Durium.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.SHIELD), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.SHIELD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.IRON_SHIELD.get()), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.SHIELD.get())
                 .unlocks("has_durium", has(Durium.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_shield");
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HELMET), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.HELMET.get())

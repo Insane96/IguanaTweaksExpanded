@@ -16,22 +16,22 @@ import static insane96mcp.iguanatweaksexpanded.network.NetworkHandler.CHANNEL;
 public class SyncSREnchantingTableStatus {
 	BlockPos pos;
 	ItemStack item;
-	boolean empowered;
+	//boolean empowered;
 
-	public SyncSREnchantingTableStatus(BlockPos pos, ItemStack itemToEnchant, boolean empowered) {
+	public SyncSREnchantingTableStatus(BlockPos pos, ItemStack itemToEnchant/*, boolean empowered*/) {
 		this.pos = pos;
 		this.item = itemToEnchant;
-		this.empowered = empowered;
+		//this.empowered = empowered;
 	}
 
 	public static void encode(SyncSREnchantingTableStatus pkt, FriendlyByteBuf buf) {
 		buf.writeBlockPos(pkt.pos);
 		buf.writeItem(pkt.item);
-		buf.writeBoolean(pkt.empowered);
+		//buf.writeBoolean(pkt.empowered);
 	}
 
 	public static SyncSREnchantingTableStatus decode(FriendlyByteBuf buf) {
-		return new SyncSREnchantingTableStatus(buf.readBlockPos(), buf.readItem(), buf.readBoolean());
+		return new SyncSREnchantingTableStatus(buf.readBlockPos(), buf.readItem()/*, buf.readBoolean()*/);
 	}
 
 	public static void handle(final SyncSREnchantingTableStatus message, Supplier<NetworkEvent.Context> ctx) {
@@ -40,13 +40,13 @@ public class SyncSREnchantingTableStatus {
 				return;
 
 			blockEntity.setItem(0, message.item);
-			blockEntity.empowered = message.empowered;
+			//blockEntity.empowered = message.empowered;
 		});
 		ctx.get().setPacketHandled(true);
 	}
 
 	public static void sync(ServerLevel level, BlockPos pos, SREnchantingTableBlockEntity blockEntity) {
-		Object msg = new SyncSREnchantingTableStatus(pos, blockEntity.getItem(0), blockEntity.empowered);
+		Object msg = new SyncSREnchantingTableStatus(pos, blockEntity.getItem(0)/*, blockEntity.empowered*/);
 		level.players().forEach(player -> CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT));
 	}
 }

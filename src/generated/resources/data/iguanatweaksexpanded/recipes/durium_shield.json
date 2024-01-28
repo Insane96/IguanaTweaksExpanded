@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:durium_ingot"
   },
   "base": {
-    "item": "minecraft:shield"
+    "item": "shieldsplus:iron_shield"
   },
   "result": {
     "item": "iguanatweaksexpanded:durium_shield"
