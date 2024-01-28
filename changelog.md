@@ -21,6 +21,7 @@
 * Fixed villagers ignoring MultiBlock Blast furnace and fletching table as workstations
 * Fixed ore rocks advancement
 * Fixed Soul Steel tools textures
+* Fixed crash when using Forge with Step Up enchantment
 
 ## 1.0.4
 * Arrows

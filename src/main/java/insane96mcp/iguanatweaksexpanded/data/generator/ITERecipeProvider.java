@@ -326,7 +326,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         800
                 )
                 .experience(5f)
-                .unlockedBy("has_scrap_block", has(Durium.SCRAP_BLOCK.item().get()))
+                .unlockedBy("has_scrap_block", has(Durium.SCRAP_PIECE.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_ingot_from_blasting");
         MultiItemSmeltingRecipeBuilder.soulBlasting(
                         NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)),
@@ -336,7 +336,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 )
                 .experience(5f)
                 .outputIncrease(0.2f)
-                .unlockedBy("has_scrap_block", has(Durium.SCRAP_BLOCK.item().get()))
+                .unlockedBy("has_scrap_block", has(Durium.SCRAP_PIECE.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_ingot_from_soul_blasting");
 
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_AXE), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.AXE.get())
