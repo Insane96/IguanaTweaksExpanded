@@ -35,7 +35,7 @@ public class StepUp extends Enchantment {
         if (lvl == 0)
             return;
 
-        event.addModifier(ForgeMod.STEP_HEIGHT.get(), new AttributeModifier(STEP_UP_MODIFIER_UUID, "Step Up Enchantment Modifier", 0.5d * lvl, AttributeModifier.Operation.ADDITION));
+        event.addModifier(ForgeMod.STEP_HEIGHT_ADDITION.get(), new AttributeModifier(STEP_UP_MODIFIER_UUID, "Step Up Enchantment Modifier", 0.5d * lvl, AttributeModifier.Operation.ADDITION));
     }
 
 }

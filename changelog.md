@@ -14,7 +14,7 @@
   * Reduced Cleansed Lapis drop rate
   * Cleansed lapis no longer increases an enchantment level
   * Ancient lapis no longer increase the max level of an enchantment past it's maximum
-* Copper tools now last 1% more per block below sea level
+* Copper tools now lasts 1% more per block below sea level
 * Expanded is now limited to Pickaxes
 * Rebalanced some material stats
 * Soul Steel items are no longer fire-resistant
