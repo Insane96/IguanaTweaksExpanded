@@ -153,7 +153,7 @@ public class Solarium extends Feature {
 			ItemStack stack = event.getEntity().getItemBySlot(equipmentSlot);
 			if (!equipmentSlot.isArmor() || !stack.is(SOLARIUM_EQUIPMENT))
 				continue;
-			toughness += (isRegenAbsorption ? 0.2f : 2f) * calculatedSkyLightRatio;
+			toughness += (isRegenAbsorption ? 0.25f : 2.5f) * calculatedSkyLightRatio;
 		}
 		AttributeModifier modifier = toughnessAttr.getModifier(TOUGHNESS_MODIFIER_UUID);
 		if (modifier == null && toughness > 0f) {

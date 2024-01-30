@@ -1,12 +1,13 @@
 # Changelog
 
 * Treasure enchanted books can be "learned" so you can apply the enchantment in the enchanting table
+* `SmithingTransformRecipe#assemble` set durability to 1 if goes lower in the result
 
 ## Upcoming
 * Added a brand new Enchanting Table!
   * Choose your enchantments! The limit is half the item's enchantability + 3
   * If you infuse an item with a cleansed lapis, you'll be able to use the full item's enchantability
-  * If you empower an item with Ancient Lapis, increasing max cost by 25% and allows over max level enchantments
+  * If you empower an item with Ancient Lapis, max cost is increased by 25% and allows over max level enchantments
   * Enchanted items can no longer be forged or upgraded in Smithing table. Also can no longer be merged with other enchanted items. Enchanted books can only be applied to unenchanted items
   * Items in the `iguanatweaksexpanded:not_enchantable` item tag will no longer be enchantable
     * By default, books, flint and steel, shears, brush and elytra are no longer enchantable
@@ -18,11 +19,13 @@
 * Expanded is now limited to Pickaxes
 * Rebalanced some material stats
 * Soul Steel items are no longer fire-resistant
+* Solarium armor bonus toughness/regen. absorption speed increased (2 -> 2.5 toughness (20% -> 25% regen. abs. speed))
 * Fixed villagers ignoring MultiBlock Blast furnace and fletching table as workstations
 * Fixed ore rocks advancement
 * Fixed Durium shield smithing recipe not working
 * Fixed Soul Steel tools textures
 * Fixed crash when using Forge with Step Up enchantment
+* Fixed smithing items with lower durability than the original item resulting in negative durability
 
 ## 1.0.4
 * Arrows
