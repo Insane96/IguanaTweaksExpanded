@@ -1,4 +1,4 @@
-// 1.20.1	2024-01-28T21:26:05.7105777	Recipes
+// 1.20.1	2024-01-30T09:12:05.3724772	Recipes
 526370693a4951624cbf8285db04c56cdc7523cf data/iguanatweaksexpanded/advancements/recipes/building_blocks/durium_block.json
 354b2d1d1780cbf99af3957561d45cd439edcb4e data/iguanatweaksexpanded/advancements/recipes/building_blocks/keego_block.json
 507466e5d6b978e07ed203a435a16ede2cd832b8 data/iguanatweaksexpanded/advancements/recipes/building_blocks/soul_blast_furnace.json
@@ -554,7 +554,7 @@ f33e9671bbfd13d00ede49facc78de7a5d844bf6 data/iguanatweaksexpanded/recipes/solar
 60580026a38d8a5a4f30065e94b7e31ce19832a0 data/iguanatweaksexpanded/recipes/solarium_hoe.json
 418eeb92d28318a0004bb91ff0be1596ec951325 data/iguanatweaksexpanded/recipes/solarium_leggings.json
 e3887784b69f3785a4a6963b9fd21e6d9dab69bf data/iguanatweaksexpanded/recipes/solarium_pickaxe.json
-9f4a482f6632c6b78ee3d33cdea7e8ded479b159 data/iguanatweaksexpanded/recipes/solarium_shield.json
+9fc498456599da315891c0e48168f880aa108673 data/iguanatweaksexpanded/recipes/solarium_shield.json
 c600f3855b44d843dbc60929642419a8bc4b2384 data/iguanatweaksexpanded/recipes/solarium_shovel.json
 35c81e5deccdd25dbb5112baab2c082398f36dfe data/iguanatweaksexpanded/recipes/solarium_sword.json
 5384ab000383bb4cc6d86119f47fdccab1d90af1 data/iguanatweaksexpanded/recipes/soul_blast_furnace.json

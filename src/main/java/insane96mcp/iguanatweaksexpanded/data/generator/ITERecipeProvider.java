@@ -278,7 +278,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SWORD), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.SWORD.get())
                 .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.SHIELD), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.SHIELD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.IRON_SHIELD.get()), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.SHIELD.get())
                 .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_shield");
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HELMET), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.HELMET.get())

@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:solarium_ball"
   },
   "base": {
-    "item": "minecraft:shield"
+    "item": "shieldsplus:iron_shield"
   },
   "result": {
     "item": "iguanatweaksexpanded:solarium_shield"
