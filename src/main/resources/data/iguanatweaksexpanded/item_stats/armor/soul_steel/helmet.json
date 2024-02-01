@@ -1,5 +1,15 @@
 {
 	"item": "iguanatweaksexpanded:soul_steel_helmet",
 	"durability": 299,
-	"armor": 3
+	"armor": 3,
+	"modifiers": [
+		{
+			"uuid": "cf4db784-9677-4e90-9c74-ee3d85c9a641",
+			"name": "Armor slowdown",
+			"slot": "head",
+			"attribute": "minecraft:generic.movement_speed",
+			"amount": -0.024,
+			"operation": "multiply_base"
+		}
+	]
 }

@@ -1,5 +1,15 @@
 {
-	"item": "iguanatweaksexpanded:durium_leggings",
-	"durability": 165,
-	"armor": 4
+	"item": "iguanatweaksexpanded:solarium_leggings",
+	"durability": 90,
+	"armor": 3,
+	"modifiers": [
+		{
+			"uuid": "1277bad1-246f-4f3b-932c-d944839a164e",
+			"name": "Armor slowdown",
+			"slot": "legs",
+			"attribute": "minecraft:generic.movement_speed",
+			"amount": -0.009,
+			"operation": "multiply_base"
+		}
+	]
 }

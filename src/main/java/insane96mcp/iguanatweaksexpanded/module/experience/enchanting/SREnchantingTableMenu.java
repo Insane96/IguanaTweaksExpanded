@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -115,7 +116,7 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
                     p *= 1.25f;
             }
-            float maxCost = stack.getEnchantmentValue() * p * (enchantingPower / 15f) + 3;
+            float maxCost = EnchantmentsFeature.getEnchantmentValue(stack) * p * (enchantingPower / 15f) + 3;
             //maxCost *= (enchantingPower / 15f);
             this.maxCost.set((int) (maxCost * 100f));
         }

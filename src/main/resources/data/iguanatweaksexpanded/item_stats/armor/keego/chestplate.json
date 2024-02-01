@@ -1,14 +1,14 @@
 {
-	"item": "iguanatweaksexpanded:durium_leggings",
-	"durability": 195,
-	"armor": 3,
+	"item": "iguanatweaksexpanded:keego_chestplate",
+	"durability": 176,
+	"armor": 4,
 	"modifiers": [
 		{
 			"uuid": "4b8573c6-bd4b-4560-a411-04b78ae950ce",
 			"name": "Armor slowdown",
 			"slot": "feet",
 			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.015,
+			"amount": -0.0175,
 			"operation": "multiply_base"
 		}
 	]

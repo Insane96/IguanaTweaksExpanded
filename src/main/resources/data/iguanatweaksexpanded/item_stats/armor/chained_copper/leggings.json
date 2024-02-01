@@ -2,5 +2,14 @@
 	"item": "iguanatweaksexpanded:chained_copper_leggings",
 	"durability": 60,
 	"armor": 3,
-	"armor_toughness": 1
+	"modifiers": [
+		{
+			"uuid": "1277bad1-246f-4f3b-932c-d944839a164e",
+			"name": "Armor slowdown",
+			"slot": "legs",
+			"attribute": "minecraft:generic.movement_speed",
+			"amount": 0,
+			"operation": "multiply_base"
+		}
+	]
 }

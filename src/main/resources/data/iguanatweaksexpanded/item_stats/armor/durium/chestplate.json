@@ -1,5 +1,15 @@
 {
-	"item": "iguanatweaksexpanded:solarium_chestplate",
-	"durability": 64,
-	"armor": 5
+	"item": "iguanatweaksexpanded:durium_chestplate",
+	"durability": 208,
+	"armor": 4,
+	"modifiers": [
+		{
+			"uuid": "4b8573c6-bd4b-4560-a411-04b78ae950ce",
+			"name": "Armor slowdown",
+			"slot": "feet",
+			"attribute": "minecraft:generic.movement_speed",
+			"amount": -0.0175,
+			"operation": "multiply_base"
+		}
+	]
 }
