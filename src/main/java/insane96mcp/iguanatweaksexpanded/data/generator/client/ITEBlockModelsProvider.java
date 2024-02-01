@@ -40,6 +40,8 @@ public class ITEBlockModelsProvider extends BlockModelProvider {
         cubeAll("keego_ore", "block/keego_ore");
         cubeAll("keego_block", "block/keego_block");
 
+        cubeAll("quaron_block", "block/quaron_block");
+
         cross("cyan_flower", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/cyan_flower")).renderType("cutout");
         flowerPotCross("potted_cyan_flower", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/cyan_flower"));
     }

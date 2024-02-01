@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.data.generator.client;
 
 import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
+import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
@@ -22,6 +23,7 @@ public class ITEBlockStatesProvider extends BlockStateProvider {
         simpleBlock(SoulSteel.BLOCK.block().get());
         simpleBlock(Keego.ORE.block().get());
         simpleBlock(Keego.BLOCK.block().get());
+        simpleBlock(Quaron.BLOCK.block().get());
         simpleBlock(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get());
         simpleBlock(CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
     }

@@ -11,6 +11,7 @@ import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBa
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
+import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipeBuilder;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
@@ -389,6 +390,36 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Keego.BLOCK.block().get(), 1)
                 .unlockedBy("has_keego", has(Keego.GEM.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "keego_from_block");
+
+
+        //Quaron
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Quaron.BLOCK.block().get(), 1)
+                .requires(Quaron.INGOT.get(), 9)
+                .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.INGOT.get(), 9)
+                .requires(Quaron.BLOCK.block().get(), 1)
+                .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_block");
+        MultiItemSmeltingRecipeBuilder.blasting(
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.IRON_INGOT), Ingredient.of(Items.AMETHYST_SHARD), Ingredient.of(Items.AMETHYST_SHARD), Ingredient.of(Items.AMETHYST_SHARD)),
+                        RecipeCategory.MISC,
+                        Quaron.INGOT.get(),
+                        400
+                )
+                .experience(10f)
+                .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_blasting");
+        MultiItemSmeltingRecipeBuilder.soulBlasting(
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.IRON_INGOT), Ingredient.of(Items.AMETHYST_SHARD), Ingredient.of(Items.AMETHYST_SHARD), Ingredient.of(Items.AMETHYST_SHARD)),
+                        RecipeCategory.MISC,
+                        Quaron.INGOT.get(),
+                        200
+                )
+                .experience(10f)
+                .outputIncrease(0.2f)
+                .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_soul_blasting");
 
         //Soul Steel
         copySmithingTemplate(writer, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERRACK);

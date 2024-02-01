@@ -19,6 +19,7 @@ import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansi
 import insane96mcp.iguanatweaksexpanded.module.items.recallidol.RecallIdol;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
+import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRenderer;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeScreen;
@@ -80,6 +81,10 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_HOE, CopperToolsExpansion.COATED_AXE.get());
             addAfter(event, Items.DIAMOND_HOE, CopperToolsExpansion.COATED_PICKAXE.get());
             addAfter(event, Items.DIAMOND_HOE, CopperToolsExpansion.COATED_SHOVEL.get());
+            addAfter(event, Items.DIAMOND_HOE, Quaron.HOE.get());
+            addAfter(event, Items.DIAMOND_HOE, Quaron.AXE.get());
+            addAfter(event, Items.DIAMOND_HOE, Quaron.PICKAXE.get());
+            addAfter(event, Items.DIAMOND_HOE, Quaron.SHOVEL.get());
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.HOE.get());
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.AXE.get());
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.PICKAXE.get());
@@ -91,6 +96,7 @@ public class ClientSetup {
             addAfter(event, FlintExpansion.HOE.get(), Forging.FLINT_HAMMER.get());
             addAfter(event, CopperToolsExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
             addAfter(event, CopperToolsExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
+            addAfter(event, Quaron.HOE.get(), Forging.QUARON_HAMMER.get());
             addAfter(event, Items.GOLDEN_HOE, Forging.GOLDEN_HAMMER.get());
             addAfter(event, Items.IRON_HOE, Forging.IRON_HAMMER.get());
             addAfter(event, Solarium.HOE.get(), Forging.SOLARIUM_HAMMER.get());
@@ -122,6 +128,7 @@ public class ClientSetup {
             addAfter(event, Items.IRON_AXE, Durium.AXE.get());
             addAfter(event, Items.DIAMOND_AXE, Keego.AXE.get());
             addAfter(event, Items.DIAMOND_AXE, CopperToolsExpansion.COATED_AXE.get());
+            addAfter(event, Items.DIAMOND_AXE, Quaron.AXE.get());
             addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
 
             addAfter(event, SPItems.STONE_SHIELD.get(), FlintExpansion.SHIELD.get());
@@ -130,6 +137,7 @@ public class ClientSetup {
             addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());
             addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.SHIELD.get());
             addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperToolsExpansion.COATED_SHIELD.get());
+            addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.SHIELD.get());
             addAfter(event, SPItems.NETHERITE_SHIELD.get(), SoulSteel.SHIELD.get());
 
             addAfter(event, Items.LEATHER_BOOTS, ChainedCopperArmor.BOOTS.get());
@@ -148,6 +156,10 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_BOOTS, Keego.LEGGINGS.get());
             addAfter(event, Items.DIAMOND_BOOTS, Keego.CHESTPLATE.get());
             addAfter(event, Items.DIAMOND_BOOTS, Keego.HELMET.get());
+            addAfter(event, Items.DIAMOND_BOOTS, Quaron.BOOTS.get());
+            addAfter(event, Items.DIAMOND_BOOTS, Quaron.LEGGINGS.get());
+            addAfter(event, Items.DIAMOND_BOOTS, Quaron.CHESTPLATE.get());
+            addAfter(event, Items.DIAMOND_BOOTS, Quaron.HELMET.get());
             addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.BOOTS.get());
             addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.LEGGINGS.get());
             addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.CHESTPLATE.get());
@@ -163,6 +175,7 @@ public class ClientSetup {
             event.accept(Durium.BLOCK.item().get());
             event.accept(SoulSteel.BLOCK.item().get());
             event.accept(Keego.BLOCK.item().get());
+            event.accept(Quaron.BLOCK.item().get());
             event.accept(CoalCharcoal.CHARCOAL_LAYER.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
@@ -214,6 +227,8 @@ public class ClientSetup {
             event.accept(SoulSteel.NUGGET.get());
             event.accept(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
             event.accept(Keego.GEM.get());
+            event.accept(Quaron.INGOT.get());
+            event.accept(Quaron.NUGGET.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ANCIENT_LAPIS.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
             addAfter(event, Items.CHARCOAL, CoalCharcoal.HELLISH_COAL.get());

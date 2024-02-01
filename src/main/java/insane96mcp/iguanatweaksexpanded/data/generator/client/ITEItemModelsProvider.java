@@ -10,6 +10,7 @@ import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansi
 import insane96mcp.iguanatweaksexpanded.module.items.recallidol.RecallIdol;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
+import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
@@ -79,6 +80,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
         shield(SoulSteel.SHIELD.get());
         withExistingParent("soul_steel_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/soul_steel_block"));
+
         withExistingParent("blast_furnace", new ResourceLocation("block/blast_furnace"));
         withExistingParent("soul_blast_furnace", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/soul_blast_furnace"));
 
@@ -142,6 +144,20 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         withExistingParent("keego_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/keego_ore"));
         withExistingParent("keego_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/keego_block"));
 
+        handHeld(Quaron.AXE.get());
+        handHeld(Quaron.PICKAXE.get());
+        handHeld(Quaron.SHOVEL.get());
+        handHeld(Quaron.HOE.get());
+        handHeld(Quaron.SWORD.get());
+        trimmedArmorItem(Quaron.BOOTS);
+        trimmedArmorItem(Quaron.LEGGINGS);
+        trimmedArmorItem(Quaron.CHESTPLATE);
+        trimmedArmorItem(Quaron.HELMET);
+        basicItem(Quaron.INGOT.get());
+        basicItem(Quaron.NUGGET.get());
+        shield(Quaron.SHIELD.get());
+        withExistingParent("quaron_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/quaron_block"));
+
         handHeld(Durium.AXE.get());
         handHeld(Durium.PICKAXE.get());
         handHeld(Durium.SHOVEL.get());
@@ -191,6 +207,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         handHeld(Forging.SOUL_STEEL_HAMMER.get());
         handHeld(Forging.NETHERITE_HAMMER.get());
         handHeld(Forging.KEEGO_HAMMER.get());
+        handHeld(Forging.QUARON_HAMMER.get());
 
         basicItem(Cloth.CLOTH.get());
 

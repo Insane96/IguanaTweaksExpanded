@@ -1,7 +1,7 @@
 # Changelog
 
 * Treasure enchanted books can be "learned" so you can apply the enchantment in the enchanting table
-* `SmithingTransformRecipe#assemble` set durability to 1 if goes lower in the result
+* Reach enchantment?
 
 ## Upcoming
 * Added a brand new Enchanting Table!
@@ -11,13 +11,16 @@
   * Enchanted items can no longer be forged or upgraded in Smithing table. Also can no longer be merged with other enchanted items. Enchanted books can only be applied to unenchanted items
   * Items in the `iguanatweaksexpanded:not_enchantable` item tag will no longer be enchantable
     * By default, books, flint and steel, shears, brush and elytra are no longer enchantable
-* Lapis (moved to Enchanting)
-  * Reduced Cleansed Lapis drop rate
-  * Cleansed lapis no longer increases an enchantment level
-  * Ancient lapis no longer increase the max level of an enchantment past it's maximum
+  * Lapis (moved to Enchanting feature)
+    * Reduced Cleansed Lapis drop rate
+    * Cleansed lapis no longer increases an enchantment level
+    * Ancient lapis no longer increase the max level of an enchantment past it's maximum
+* Added Quaron
+  * A new tool material that 
 * Copper tools now lasts 1% more per block below sea level
 * Expanded is now limited to Pickaxes
 * Rebalanced some material stats
+* Totally rebalanced armor
 * Soul Steel items are no longer fire-resistant
 * Solarium armor bonus toughness/regen. absorption speed increased (2 -> 2.5 toughness (20% -> 25% regen. abs. speed))
 * Fixed villagers ignoring MultiBlock Blast furnace and fletching table as workstations

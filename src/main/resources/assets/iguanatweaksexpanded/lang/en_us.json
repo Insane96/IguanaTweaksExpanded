@@ -152,6 +152,7 @@
 	"item.iguanatweaksexpanded.soul_steel_hammer": "Soul Steel Forge Hammer",
 	"item.iguanatweaksexpanded.netherite_hammer": "Netherite Forge Hammer",
 	"item.iguanatweaksexpanded.keego_hammer": "Keego Forge Hammer",
+	"item.iguanatweaksexpanded.quaron_hammer": "Quaron Hammer",
 
 	"block.iguanatweaksexpanded.mining_charge": "Mining Charge",
 
@@ -181,6 +182,19 @@
 	"item.iguanatweaksexpanded.smithing_template.soul_steel_upgrade.ingredients": "Soul Steel Ingot",
 	"upgrade.iguanatweaksexpanded.soul_steel_upgrade": "Soul Steel Upgrade",
 
+	"item.iguanatweaksexpanded.quaron_axe": "Quaron Axe",
+	"item.iguanatweaksexpanded.quaron_pickaxe": "Quaron Pickaxe",
+	"item.iguanatweaksexpanded.quaron_sword": "Quaron Sword",
+	"item.iguanatweaksexpanded.quaron_shovel": "Quaron Shovel",
+	"item.iguanatweaksexpanded.quaron_hoe": "Quaron Hoe",
+	"item.iguanatweaksexpanded.quaron_shield": "Quaron Shield",
+	"item.iguanatweaksexpanded.quaron_helmet": "Quaron Helmet",
+	"item.iguanatweaksexpanded.quaron_chestplate": "Quaron Chestplate",
+	"item.iguanatweaksexpanded.quaron_leggings": "Quaron Leggings",
+	"item.iguanatweaksexpanded.quaron_boots": "Quaron Boots",
+	"item.iguanatweaksexpanded.quaron_nugget": "Quaron Nugget",
+	"item.iguanatweaksexpanded.quaron_ingot": "Quaron Ingot",
+	"block.iguanatweaksexpanded.quaron_block": "Block of Quaron",
 
 	"block.iguanatweaksexpanded.copper_powered_rail": "Copper Powered Rail",
 	"block.iguanatweaksexpanded.golden_powered_rail": "Golden Powered Rail",
