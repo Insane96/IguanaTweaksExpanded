@@ -102,13 +102,6 @@ license="All rights reserved"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
-    modId="easymagic"
-    mandatory=false
-    versionRange="[6.0.0,)"
-    ordering="NONE"
-    side="BOTH"
-
-[[dependencies.iguanatweaksexpanded]]
     modId="corail_woodcutter"
     mandatory=false
     versionRange="[2.7.0,)"

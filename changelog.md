@@ -16,7 +16,7 @@
     * Cleansed lapis no longer increases an enchantment level
     * Ancient lapis no longer increase the max level of an enchantment past it's maximum
 * Added Quaron
-  * A new tool material that 
+  * A new material that increases mining speed against blocks that require no tool
 * Copper tools now lasts 1% more per block below sea level
 * Expanded is now limited to Pickaxes
 * Rebalanced some material stats
