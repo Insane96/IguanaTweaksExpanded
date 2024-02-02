@@ -1,17 +1,21 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IEnchantmentTooltip;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 
-public class DoubleJump extends Enchantment {
+public class DoubleJump extends Enchantment implements IEnchantmentTooltip {
     public DoubleJump() {
         super(Rarity.RARE, EnchantmentCategory.ARMOR_FEET, new EquipmentSlot[] {EquipmentSlot.FEET});
     }
@@ -61,5 +65,11 @@ public class DoubleJump extends Enchantment {
 
     public static int getRemainingJumps(Player entity, int lvl) {
         return lvl - entity.getPersistentData().getInt("double_jumps");
+    }
+
+
+    @Override
+    public Component getTooltip(ItemStack stack, int lvl) {
+        return Component.translatable(this.getDescriptionId() + ".tooltip", lvl).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

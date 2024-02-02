@@ -1,7 +1,6 @@
 # Changelog
 
 * Treasure enchanted books can be "learned" so you can apply the enchantment in the enchanting table
-* Reach enchantment?
 
 ## Upcoming
 * Added a brand new Enchanting Table!
@@ -15,10 +14,13 @@
     * Reduced Cleansed Lapis drop rate
     * Cleansed lapis no longer increases an enchantment level
     * Ancient lapis no longer increase the max level of an enchantment past it's maximum
+* Enchantments
+  * (New) Reach (increases block and entity reach by 20%)
+  * (New) Veining (does what Expaded did on Axes and shovels, basically vein mine)
+  * Expanded is now limited to Pickaxes
 * Added Quaron
   * A new material that increases mining speed against blocks that require no tool
 * Copper tools now lasts 1% more per block below sea level
-* Expanded is now limited to Pickaxes
 * Rebalanced some material stats
 * Totally rebalanced armor
 * Soul Steel items are no longer fire-resistant

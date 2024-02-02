@@ -25,7 +25,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.enchantment.DiggingEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -46,10 +45,9 @@ import net.minecraftforge.common.ForgeHooks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Expanded extends Enchantment implements IEnchantmentTooltip {
-    static EnchantmentCategory PICKAXE = EnchantmentCategory.create("pickaxe", item -> item instanceof PickaxeItem);
-    public Expanded() {
-        super(Rarity.RARE, PICKAXE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+public class Veining extends Enchantment implements IEnchantmentTooltip {
+    public Veining() {
+        super(Rarity.RARE, EnchantmentCategory.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -68,14 +66,14 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
     }
 
     public boolean checkCompatibility(Enchantment other) {
-        return !(other instanceof DiggingEnchantment) && !(other instanceof Blasting) && super.checkCompatibility(other);
+        return !(other instanceof DiggingEnchantment) && !(other instanceof Blasting) && !(other instanceof Expanded) && super.checkCompatibility(other);
     }
 
     public static void tryApply(LivingEntity entity, Level level, BlockPos pos, Direction face, BlockState state) {
         ItemStack heldStack = entity.getMainHandItem();
         if (!heldStack.isCorrectToolForDrops(state))
             return;
-        int enchLevel = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.EXPANDED.get());
+        int enchLevel = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.VEINING.get());
         if (enchLevel == 0)
             return;
         List<BlockPos> minedBlocks = getMinedBlocks(heldStack, enchLevel, level, entity, pos, face);
@@ -128,7 +126,7 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
             return;
         }
         // must have the enchantment
-        int enchLevel = player.getMainHandItem().getEnchantmentLevel(NewEnchantmentsFeature.EXPANDED.get());
+        int enchLevel = player.getMainHandItem().getEnchantmentLevel(NewEnchantmentsFeature.VEINING.get());
         if (enchLevel == 0)
             return;
         // must be targeting a block
@@ -184,52 +182,45 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
         vertices.endBatch();
     }
 
-    /**
-     *
-     * @param forward If true, its relative to direction, else opposite
-     */
-    public static BlockPos getRelative(BlockPos targetPos, boolean playerRelative, boolean forward, Direction direction) {
-        if (!playerRelative) {
-            if (forward)
-                return targetPos.above();
-            else
-                return targetPos.below();
-        }
-        else {
-            if (forward)
-                return targetPos.relative(direction);
-            else
-                return targetPos.relative(direction.getOpposite());
-        }
+    public static int getAmountMined(int lvl) {
+        return (lvl + 1) * (lvl + 1);
     }
-
-    public static final int[] MAX_BLOCKS_MINED = new int[] { 0, 3, 6, 9 };
 
     public static List<BlockPos> getMinedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face) {
         List<BlockPos> minedBlocks = new ArrayList<>();
-        boolean playerRelative = false;
-        if (face == Direction.UP || face == Direction.DOWN) {
-            face = entity.getDirection();
-            playerRelative = true;
-        }
 
         //Clamp level to 3
         if (lvl > 3)
             lvl = 3;
 
-        if (lvl >= 1) {
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, true, face));
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, false, face));
-        }
-        if (lvl >= 2) {
-            for (int i = lvl - 1; i > 0; i--) {
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getClockWise(), i));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getCounterClockWise(), i));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), i), playerRelative, true, face));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), i), playerRelative, true, face));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), i), playerRelative, false, face));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), i), playerRelative, false, face));
+        int blocksMined = getAmountMined(lvl);
+        List<BlockPos> posToCheck = new ArrayList<>();
+        posToCheck.add(targetPos);
+        List<BlockPos> explored = new ArrayList<>();
+        int toMine = 0;
+        while (!posToCheck.isEmpty() && toMine < blocksMined) {
+            List<BlockPos> posToCheckTmp = new ArrayList<>();
+            for (BlockPos pos : posToCheck) {
+                for (Direction direction : Direction.values()) {
+                    BlockPos relativePos = pos.relative(direction);
+                    if (explored.contains(relativePos))
+                        continue;
+                    if (addIfCanBeMined(heldStack, minedBlocks, level, targetPos, relativePos)) {
+                        posToCheckTmp.add(relativePos);
+                        if (++toMine >= blocksMined) {
+                            posToCheckTmp.clear();
+                            break;
+                        }
+                    }
+                    explored.add(relativePos);
+                }
+                if (toMine >= blocksMined) {
+                    posToCheckTmp.clear();
+                    break;
+                }
             }
+            posToCheck.clear();
+            posToCheck.addAll(posToCheckTmp);
         }
 
         return minedBlocks;
@@ -238,7 +229,7 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
     private static boolean addIfCanBeMined(ItemStack stack, List<BlockPos> blockPos, Level level, BlockPos targetPos, BlockPos minedPos) {
         BlockState targetState = level.getBlockState(targetPos);
         BlockState minedState = level.getBlockState(minedPos);
-        if (minedState.getDestroySpeed(level, minedPos) > 0 && stack.isCorrectToolForDrops(minedState) && targetState.getDestroySpeed(level, targetPos) >= minedState.getDestroySpeed(level, minedPos) - 0.5d) {
+        if (targetState.is(minedState.getBlock())) {
             blockPos.add(minedPos);
             return true;
         }
@@ -247,6 +238,6 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
 
     @Override
     public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", 1 + ((lvl - 1) * 2), 3).withStyle(ChatFormatting.DARK_PURPLE);
+        return Component.translatable(this.getDescriptionId() + ".tooltip", getAmountMined(lvl)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }
