@@ -1,6 +1,10 @@
 # Changelog
 
-* Treasure enchanted books can be "learned" so you can apply the enchantment in the enchanting table
+* Treasure enchanted books can be applied to the enchanting table so that it "learns" it
+
+## Upcoming
+* Reach enchantment is now treasure only
+* Better enchanting table interface
 
 ## 1.1.0
 * Added a brand new Enchanting Table!

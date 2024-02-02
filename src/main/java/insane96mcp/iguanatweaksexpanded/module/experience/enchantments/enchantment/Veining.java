@@ -189,10 +189,6 @@ public class Veining extends Enchantment implements IEnchantmentTooltip {
     public static List<BlockPos> getMinedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face) {
         List<BlockPos> minedBlocks = new ArrayList<>();
 
-        //Clamp level to 3
-        if (lvl > 3)
-            lvl = 3;
-
         int blocksMined = getAmountMined(lvl);
         List<BlockPos> posToCheck = new ArrayList<>();
         posToCheck.add(targetPos);
