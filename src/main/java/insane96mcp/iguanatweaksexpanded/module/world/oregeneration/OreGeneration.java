@@ -32,20 +32,12 @@ public class OreGeneration extends Feature {
     public static final PoorRichOre POOR_RICH_GOLD_ORE = PoorRichOre.register("gold", Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE);
 
     @Config
-    @Label(name = "Poor and Rich Iron Generation", description = "Enables a Data Pack that changes Iron generation to include Poor and Rich Ores.")
-    public static Boolean ironGenerationDataPack = true;
-    @Config
-    @Label(name = "Poor and Rich Gold Generation", description = "Enables a Data Pack that changes Gold generation to include Poor and Rich Ores.")
-    public static Boolean goldGenerationDataPack = true;
-    @Config
-    @Label(name = "Poor and Rich Copper Generation", description = "Enables a Data Pack that changes Copper generation to include Poor and Rich Ores.")
-    public static Boolean copperGenerationDataPack = true;
+    @Label(name = "Poor and Rich Ore Generation", description = "Enables a Data Pack that changes Iron, Gold and Copper generation to include Poor and Rich Ores.")
+    public static Boolean poorRichOreGenerationDataPack = false;
 
     public OreGeneration(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "iron_generation", Component.literal("IguanaTweaks Expanded Iron Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && ironGenerationDataPack));
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "gold_generation", Component.literal("IguanaTweaks Expanded Gold Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && goldGenerationDataPack));
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "copper_generation", Component.literal("IguanaTweaks Expanded Copper Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && copperGenerationDataPack));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "poor_rich_natural_generation", Component.literal("IguanaTweaks Expanded Poor and Rich Ore Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && poorRichOreGenerationDataPack));
     }
 
     public record PoorRichOre(SimpleBlockWithItem poorOre, SimpleBlockWithItem poorDeepslateOre, SimpleBlockWithItem richOre, SimpleBlockWithItem richDeepslateOre) {

@@ -2,7 +2,7 @@
 
 * Treasure enchanted books can be "learned" so you can apply the enchantment in the enchanting table
 
-## Upcoming
+## 1.1.0
 * Added a brand new Enchanting Table!
   * Choose your enchantments! The limit is half the item's enchantability + 3
   * If you infuse an item with a cleansed lapis, you'll be able to use the full item's enchantability
@@ -20,6 +20,7 @@
   * Expanded is now limited to Pickaxes
 * Added Quaron
   * A new material that increases mining speed against blocks that require no tool
+* Natural veins no longer generate with poor and rich ores (can be re-enabled from 'Ore Generation' config)
 * Copper tools now lasts 1% more per block below sea level
 * Rebalanced some material stats
 * Totally rebalanced armor
