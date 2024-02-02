@@ -28,6 +28,11 @@ public class Reach extends Enchantment/* implements IEnchantmentTooltip */{
         return 40;
     }
 
+    @Override
+    public boolean isTreasureOnly() {
+        return true;
+    }
+
     public static void applyAttributeModifier(ItemAttributeModifierEvent event) {
         if (event.getSlotType() != EquipmentSlot.MAINHAND)
             return;
