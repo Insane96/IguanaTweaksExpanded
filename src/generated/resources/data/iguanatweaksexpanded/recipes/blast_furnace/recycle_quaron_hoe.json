@@ -1,0 +1,16 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_blasting",
+  "category": "blast_furnace_misc",
+  "cookingtime": 200,
+  "group": "recycle_quaron_nugget",
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:quaron_hoe"
+    }
+  ],
+  "recycle": {
+    "amount_at_full_durability": 9,
+    "ratio": 0.75
+  },
+  "result": "iguanatweaksexpanded:quaron_nugget"
+}

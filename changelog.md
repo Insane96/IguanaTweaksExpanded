@@ -7,8 +7,11 @@
 * Soul Steel equipment is now made from Iron
 * Repairing smithen items with their base material now costs more based off durability ratio
   * Also, equipment smithen from Iron can now be repaired with nuggets
+* Changed quaron alloying and made equipment smithable
+* Alloying in soul blast furnace no longer has a chance to double output
 * Fixed most armors having wrong slowdown modifiers
 * Fixed Keego Shield being a Solarium shield
+* Fixed firestarter not breaking
 
 ## 1.1.0
 * Added a brand new Enchanting Table!

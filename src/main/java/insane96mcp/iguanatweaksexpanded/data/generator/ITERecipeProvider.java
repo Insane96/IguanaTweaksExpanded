@@ -336,7 +336,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         400
                 )
                 .experience(5f)
-                .outputIncrease(0.2f)
                 .unlockedBy("has_scrap_block", has(Durium.SCRAP_PIECE.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_ingot_from_soul_blasting");
 
@@ -402,7 +401,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_block");
         MultiItemSmeltingRecipeBuilder.blasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.IRON_INGOT), Ingredient.of(Items.AMETHYST_SHARD), Ingredient.of(Items.AMETHYST_SHARD), Ingredient.of(Items.AMETHYST_SHARD)),
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_POWDER)),
                         RecipeCategory.MISC,
                         Quaron.INGOT.get(),
                         400
@@ -411,15 +410,44 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_blasting");
         MultiItemSmeltingRecipeBuilder.soulBlasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.IRON_INGOT), Ingredient.of(Items.AMETHYST_SHARD), Ingredient.of(Items.AMETHYST_SHARD), Ingredient.of(Items.AMETHYST_SHARD)),
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_POWDER)),
                         RecipeCategory.MISC,
                         Quaron.INGOT.get(),
                         200
                 )
                 .experience(10f)
-                .outputIncrease(0.2f)
                 .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_soul_blasting");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_AXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.AXE.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_axe");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_PICKAXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.PICKAXE.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_pickaxe");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SHOVEL), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.SHOVEL.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_shovel");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HOE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.HOE.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_hoe");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SWORD), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SWORD.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_sword");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.IRON_SHIELD.get()), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SHIELD.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_shield");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HELMET), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.HELMET.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_helmet");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_CHESTPLATE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.CHESTPLATE.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_chestplate");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_LEGGINGS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.LEGGINGS.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_leggings");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_BOOTS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.BOOTS.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_boots");
 
         //Soul Steel
         copySmithingTemplate(writer, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERRACK);
@@ -486,7 +514,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         400
                 )
                 .experience(10f)
-                .outputIncrease(0.2f)
                 .unlockedBy("has_hellish_coal", has(CoalCharcoal.HELLISH_COAL.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_ingot_from_soul_blasting");
 
@@ -776,6 +803,10 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGearBlasting(writer, Durium.CHESTPLATE.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Durium.LEGGINGS.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Durium.BOOTS.get(), Durium.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.HELMET.get(), Quaron.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.CHESTPLATE.get(), Quaron.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.LEGGINGS.get(), Quaron.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.BOOTS.get(), Quaron.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Items.GOLDEN_HELMET, Items.GOLD_NUGGET, 200, 45);
         recycleGearBlasting(writer, Items.GOLDEN_CHESTPLATE, Items.GOLD_NUGGET, 200, 72);
         recycleGearBlasting(writer, Items.GOLDEN_LEGGINGS, Items.GOLD_NUGGET, 200, 63);
@@ -816,6 +847,11 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGearBlasting(writer, Durium.SHOVEL.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Durium.HOE.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Durium.SWORD.get(), Durium.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.PICKAXE.get(), Quaron.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.AXE.get(), Quaron.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.SHOVEL.get(), Quaron.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.HOE.get(), Quaron.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Quaron.SWORD.get(), Quaron.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Items.GOLDEN_PICKAXE, Items.GOLD_NUGGET, 200, 27);
         recycleGearBlasting(writer, Items.GOLDEN_AXE, Items.GOLD_NUGGET, 200, 27);
         recycleGearBlasting(writer, Items.GOLDEN_SHOVEL, Items.GOLD_NUGGET, 200, 9);

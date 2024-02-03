@@ -1,0 +1,15 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 100,
+  "group": "recycle_quaron_nugget",
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:quaron_leggings"
+    }
+  ],
+  "recycle": {
+    "amount_at_full_durability": 9
+  },
+  "result": "iguanatweaksexpanded:quaron_nugget"
+}

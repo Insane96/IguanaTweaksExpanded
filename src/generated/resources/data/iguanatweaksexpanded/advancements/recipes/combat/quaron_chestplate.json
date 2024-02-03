@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_quaron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "iguanatweaksexpanded:quaron_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "iguanatweaksexpanded:quaron_chestplate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_quaron",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "iguanatweaksexpanded:quaron_chestplate"
+    ]
+  },
+  "sends_telemetry_event": false
+}
