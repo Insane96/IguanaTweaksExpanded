@@ -1,12 +1,15 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
-import insane96mcp.iguanatweaksexpanded.network.message.SyncSREnchantingTableStatus;
+import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableStatus;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -18,12 +21,17 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
     public int time;
     public float flip;
     public float oFlip;
@@ -35,9 +43,9 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
     public float oRot;
     public float tRot;
     private static final RandomSource RANDOM = RandomSource.create();
-    protected NonNullList<ItemStack> items = NonNullList.withSize(SREnchantingTableMenu.SLOT_COUNT, ItemStack.EMPTY);
-
-    protected SREnchantingTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
+    protected NonNullList<ItemStack> items = NonNullList.withSize(ITEEnchantingTableMenu.SLOT_COUNT, ItemStack.EMPTY);
+    public List<Enchantment> treasureEnchantments = new ArrayList<>();
+    protected ITEEnchantingTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
     }
 
@@ -45,11 +53,37 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
         super.load(tag);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.items);
+        ListTag listtag = tag.getList("treasure_enchantments", CompoundTag.TAG_STRING);
+        for (int i = 0; i < listtag.size(); i++) {
+            String enchantment = listtag.getString(i);
+            this.treasureEnchantments.add(ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment)));
+        }
     }
 
-    protected void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
-        ContainerHelper.saveAllItems(pTag, this.items);
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        ContainerHelper.saveAllItems(tag, this.items);
+        ListTag treasureEnchantmentsListTag = new ListTag();
+        for (Enchantment enchantment : this.treasureEnchantments) {
+            StringTag stringTag = StringTag.valueOf(ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString());
+            treasureEnchantmentsListTag.add(stringTag);
+        }
+        tag.put("treasure_enchantments", treasureEnchantmentsListTag);
+    }
+
+    public boolean knowsEnchantment(Enchantment enchantment) {
+        for (Enchantment treasureEnchantment : this.treasureEnchantments) {
+            if (treasureEnchantment.equals(enchantment))
+                return true;
+        }
+        return false;
+    }
+
+    public void learnEnchantment(Enchantment enchantment) {
+        if (treasureEnchantments.contains(enchantment))
+            return;
+        this.treasureEnchantments.add(enchantment);
+        this.setChanged();
     }
 
     @Override
@@ -58,11 +92,11 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
     }
 
 
-    public static void clientTick(Level pLevel, BlockPos pos, BlockState pState, SREnchantingTableBlockEntity blockEntity) {
+    public static void clientTick(Level pLevel, BlockPos pos, BlockState pState, ITEEnchantingTableBlockEntity blockEntity) {
         bookAnimationTick(pLevel, pos, pState, blockEntity);
     }
 
-    public static void bookAnimationTick(Level pLevel, BlockPos pPos, BlockState pState, SREnchantingTableBlockEntity pBlockEntity) {
+    public static void bookAnimationTick(Level pLevel, BlockPos pPos, BlockState pState, ITEEnchantingTableBlockEntity pBlockEntity) {
         pBlockEntity.oOpen = pBlockEntity.open;
         pBlockEntity.oRot = pBlockEntity.rot;
         Player player = pLevel.getNearestPlayer((double)pPos.getX() + 0.5D, (double)pPos.getY() + 0.5D, (double)pPos.getZ() + 0.5D, 3.0D, false);
@@ -141,7 +175,7 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
 
     @Override
     protected AbstractContainerMenu createMenu(int pContainerId, Inventory pInventory) {
-        return new SREnchantingTableMenu(pContainerId, pInventory, this, ContainerLevelAccess.create(this.level, this.worldPosition));
+        return new ITEEnchantingTableMenu(pContainerId, pInventory, this, ContainerLevelAccess.create(this.level, this.worldPosition));
     }
 
     @Override
@@ -179,7 +213,7 @@ public class SREnchantingTableBlockEntity extends BaseContainerBlockEntity imple
     public void setItem(int slot, ItemStack stack) {
         this.items.set(slot, stack);
         if (this.level instanceof ServerLevel serverLevel)
-            SyncSREnchantingTableStatus.sync(serverLevel, this.getBlockPos(), this);
+            SyncITEEnchantingTableStatus.sync(serverLevel, this.getBlockPos(), this);
         this.setChanged();
     }
 

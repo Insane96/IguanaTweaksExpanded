@@ -1,11 +1,13 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
+import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableUnlockedEnchantments;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
@@ -26,9 +28,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
-public class SREnchantingTableMenu extends AbstractContainerMenu {
+public class ITEEnchantingTableMenu extends AbstractContainerMenu {
     public static final int ITEM_SLOT = 0;
-    //public static final int CATALYST_SLOT = 1;
     public static final int SLOT_COUNT = 1;
     private static final int INV_SLOT_START = SLOT_COUNT;
     private static final int INV_SLOT_END = INV_SLOT_START + 27;
@@ -38,13 +39,12 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
     private final ContainerLevelAccess access;
     protected final Level level;
     public DataSlot maxCost = DataSlot.standalone();
-    //public DataSlot isEmpowered = DataSlot.standalone();
 
-    public SREnchantingTableMenu(int pContainerId, Inventory pPlayerInventory) {
+    public ITEEnchantingTableMenu(int pContainerId, Inventory pPlayerInventory) {
         this(pContainerId, pPlayerInventory, new SimpleContainer(SLOT_COUNT), ContainerLevelAccess.NULL);
     }
 
-    protected SREnchantingTableMenu(int pContainerId, Inventory pPlayerInventory, Container pContainer, ContainerLevelAccess access) {
+    protected ITEEnchantingTableMenu(int pContainerId, Inventory pPlayerInventory, Container pContainer, ContainerLevelAccess access) {
         super(EnchantingFeature.ENCHANTING_TABLE_MENU_TYPE.get(), pContainerId);
         checkContainerSize(pContainer, SLOT_COUNT);
         this.container = pContainer;
@@ -58,7 +58,7 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             @Override
             public void setChanged() {
                 super.setChanged();
-                SREnchantingTableMenu.this.slotsChanged(this.container);
+                ITEEnchantingTableMenu.this.slotsChanged(this.container);
             }
 
             @Override
@@ -66,11 +66,6 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                 return stack.isEnchantable() && !stack.is(EnchantingFeature.NOT_ENCHANTABLE);
             }
         });
-        /*this.addSlot(new Slot(pContainer, CATALYST_SLOT, 28, 18) {
-            public boolean mayPlace(ItemStack stack) {
-                return stack.is(Tags.Items.ENCHANTING_FUELS);
-            }
-        });*/
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
@@ -82,17 +77,18 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(pPlayerInventory, k, 8 + k * 18, 142));
         }
         this.addDataSlot(this.maxCost);
-        //this.addDataSlot(this.isEmpowered);
 
         this.access.execute((level, blockPos) -> {
             this.updateMaxCost(this.container.getItem(0), level, blockPos);
-            //this.updateEmpoweredState(level, blockPos);
         });
     }
 
     @Override
     public void slotsChanged(Container pContainer) {
-        this.access.execute((level, blockPos) -> this.updateMaxCost(this.container.getItem(0), level, blockPos));
+        this.access.execute((level, blockPos) -> {
+            this.updateMaxCost(this.container.getItem(0), level, blockPos);
+            SyncITEEnchantingTableUnlockedEnchantments.sync((ServerLevel) level, (ITEEnchantingTableBlockEntity) level.getBlockEntity(blockPos));
+        });
     }
 
     private void updateMaxCost(ItemStack stack, Level level, BlockPos blockPos) {
@@ -117,15 +113,10 @@ public class SREnchantingTableMenu extends AbstractContainerMenu {
                     p *= 1.25f;
             }
             float maxCost = EnchantmentsFeature.getEnchantmentValue(stack) * p * (enchantingPower / 15f) + 3;
-            //maxCost *= (enchantingPower / 15f);
             this.maxCost.set((int) (maxCost * 100f));
         }
         this.broadcastChanges();
     }
-
-    /*private void updateEmpoweredState(Level level, BlockPos blockPos) {
-        this.isEmpowered.set(level.getBlockEntity(blockPos) instanceof SREnchantingTableBlockEntity srEnchantingTableBlockEntity && srEnchantingTableBlockEntity.empowered ? 1 : 0);
-    }*/
 
     public void updateEnchantmentsChosen(List<EnchantmentInstance> enchantments) {
         this.access.execute((level, blockPos) -> {

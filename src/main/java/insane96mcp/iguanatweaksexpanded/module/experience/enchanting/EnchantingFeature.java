@@ -47,9 +47,9 @@ import net.minecraftforge.registries.RegistryObject;
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class EnchantingFeature extends Feature {
     public static final TagKey<Item> NOT_ENCHANTABLE = ITEItemTagsProvider.create("not_enchantable");
-	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new SREnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
-	public static final RegistryObject<BlockEntityType<SREnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ITERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(SREnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
-    public static final RegistryObject<MenuType<SREnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ITERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(SREnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
+	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new ITEEnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
+	public static final RegistryObject<BlockEntityType<ITEEnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ITERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(ITEEnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
+    public static final RegistryObject<MenuType<ITEEnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ITERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(ITEEnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
 
     public static final String INFUSED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "infused";
     public static final String EMPOWERED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "empowered";
@@ -156,7 +156,7 @@ public class EnchantingFeature extends Feature {
             return;
 
         Minecraft mc = Minecraft.getInstance();
-        if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof SREnchantingTableScreen))
+        if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ITEEnchantingTableScreen))
             return;
 
         if (event.getItemStack().getTag().contains(INFUSED_ITEM)) {
@@ -169,7 +169,7 @@ public class EnchantingFeature extends Feature {
 
         if (event.getItemStack().getTag().contains("PendingEnchantments") && !(mc.screen instanceof GrindstoneScreen) && !event.getItemStack().isEnchanted()) {
             event.getToolTip().add(Component.literal("Has pending enchantments").withStyle(ChatFormatting.DARK_GRAY));
-            if (mc.screen instanceof SREnchantingTableScreen) {
+            if (mc.screen instanceof ITEEnchantingTableScreen) {
                 ListTag enchantmentsListTag = event.getItemStack().getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
                 for (int i = 0; i < enchantmentsListTag.size(); ++i) {
                     CompoundTag compoundtag = enchantmentsListTag.getCompound(i);

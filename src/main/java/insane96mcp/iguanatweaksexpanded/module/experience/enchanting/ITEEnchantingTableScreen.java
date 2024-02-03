@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.network.message.SyncSREnchantingTableEnchantments;
+import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableEnchantments;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractButton;
@@ -17,7 +17,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -28,7 +27,7 @@ import java.util.Optional;
 
 import static insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded.ONE_DECIMAL_FORMATTER;
 
-public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantingTableMenu> {
+public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchantingTableMenu> {
     private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/enchanting_table.png");
     private static final ResourceLocation ENCHANTING_TABLE_LOCATION = new ResourceLocation("textures/gui/container/enchanting_table.png");
 
@@ -67,10 +66,11 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
     private ScrollButton scrollDownBtn;
     private ItemStack lastStack;
     private int maxCost = 0;
+    public List<Enchantment> unlockedEnchantments = new ArrayList<>();
 
     private int scroll = 0;
 
-    public SREnchantingTableScreen(SREnchantingTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+    public ITEEnchantingTableScreen(ITEEnchantingTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
         this.lastStack = ItemStack.EMPTY;
     }
@@ -96,10 +96,10 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         List<EnchantmentInstance> enchantments = new ArrayList<>();
         this.enchantmentEntries.clear();
         this.scroll = 0;
-        boolean isBook = stack.is(Items.BOOK);
         List<Enchantment> availableEnchantments = new ArrayList<>();
+
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
-            if (!enchantment.isTreasureOnly() && enchantment.isDiscoverable() && enchantment.canApplyAtEnchantingTable(stack) || (isBook && enchantment.isAllowedOnBooks())) {
+            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || this.unlockedEnchantments.contains(enchantment) && !stack.isEmpty()) {
                 availableEnchantments.add(enchantment);
             }
         }
@@ -266,7 +266,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
         }
 
         private void updateActiveState() {
-            this.levelUpBtn.active = this.enchantmentDisplay.lvl < this.enchantmentDisplay.enchantment.getMaxLevel() || (this.enchantmentDisplay.enchantment.getMaxLevel() > 1 && this.enchantmentDisplay.lvl <= this.enchantmentDisplay.enchantment.getMaxLevel() && SREnchantingTableScreen.this.isItemEmpowered());
+            this.levelUpBtn.active = this.enchantmentDisplay.lvl < this.enchantmentDisplay.enchantment.getMaxLevel() || (this.enchantmentDisplay.enchantment.getMaxLevel() > 1 && this.enchantmentDisplay.lvl <= this.enchantmentDisplay.enchantment.getMaxLevel() && ITEEnchantingTableScreen.this.isItemEmpowered());
             this.levelDownBtn.active = this.enchantmentDisplay.lvl > 0;
         }
 
@@ -394,7 +394,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
          * Returns if the button should be disabled
          */
         public void rise() {
-            if (this.lvl < this.enchantment.getMaxLevel() || (this.enchantment.getMaxLevel() > 1 && this.lvl <= this.enchantment.getMaxLevel() && SREnchantingTableScreen.this.isItemEmpowered()))
+            if (this.lvl < this.enchantment.getMaxLevel() || (this.enchantment.getMaxLevel() > 1 && this.lvl <= this.enchantment.getMaxLevel() && ITEEnchantingTableScreen.this.isItemEmpowered()))
                 this.lvl++;
         }
 
@@ -443,7 +443,7 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
         @Override
         public void onClick(double mouseX, double mouseY, int button) {
-            SREnchantingTableScreen.this.scroll(this.type == Type.DOWN ? 1 : -1);
+            ITEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? 1 : -1);
         }
 
         private int getXOffset() {
@@ -468,6 +468,6 @@ public class SREnchantingTableScreen extends AbstractContainerScreen<SREnchantin
 
             list.add(new EnchantmentInstance(enchantmentEntry.enchantmentDisplay.enchantment, enchantmentEntry.enchantmentDisplay.lvl));
         }
-        SyncSREnchantingTableEnchantments.sync(list);
+        SyncITEEnchantingTableEnchantments.sync(list);
     }
 }

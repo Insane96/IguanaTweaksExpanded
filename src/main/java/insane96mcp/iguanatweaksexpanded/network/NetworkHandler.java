@@ -21,7 +21,8 @@ public class NetworkHandler {
 		CHANNEL.registerMessage(++index, JumpMidAirMessage.class, JumpMidAirMessage::encode, JumpMidAirMessage::decode, JumpMidAirMessage::handle);
 		CHANNEL.registerMessage(++index, SyncForgeStatus.class, SyncForgeStatus::encode, SyncForgeStatus::decode, SyncForgeStatus::handle);
 		CHANNEL.registerMessage(++index, ElectrocutionParticleMessage.class, ElectrocutionParticleMessage::encode, ElectrocutionParticleMessage::decode, ElectrocutionParticleMessage::handle);
-		CHANNEL.registerMessage(++index, SyncSREnchantingTableStatus.class, SyncSREnchantingTableStatus::encode, SyncSREnchantingTableStatus::decode, SyncSREnchantingTableStatus::handle);
-		CHANNEL.registerMessage(++index, SyncSREnchantingTableEnchantments.class, SyncSREnchantingTableEnchantments::encode, SyncSREnchantingTableEnchantments::decode, SyncSREnchantingTableEnchantments::handle);
+		CHANNEL.registerMessage(++index, SyncITEEnchantingTableStatus.class, SyncITEEnchantingTableStatus::encode, SyncITEEnchantingTableStatus::decode, SyncITEEnchantingTableStatus::handle);
+		CHANNEL.registerMessage(++index, SyncITEEnchantingTableUnlockedEnchantments.class, SyncITEEnchantingTableUnlockedEnchantments::encode, SyncITEEnchantingTableUnlockedEnchantments::decode, SyncITEEnchantingTableUnlockedEnchantments::handle);
+		CHANNEL.registerMessage(++index, SyncITEEnchantingTableEnchantments.class, SyncITEEnchantingTableEnchantments::encode, SyncITEEnchantingTableEnchantments::decode, SyncITEEnchantingTableEnchantments::handle);
 	}
 }

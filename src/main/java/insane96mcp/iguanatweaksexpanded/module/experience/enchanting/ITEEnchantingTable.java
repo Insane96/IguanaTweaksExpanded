@@ -2,6 +2,9 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
@@ -11,6 +14,9 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -25,18 +31,19 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-public class SREnchantingTable extends BaseEntityBlock {
+public class ITEEnchantingTable extends BaseEntityBlock {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
-    protected SREnchantingTable(Properties pProperties) {
+    protected ITEEnchantingTable(Properties pProperties) {
         super(pProperties);
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new SREnchantingTableBlockEntity(pPos, pState);
+        return new ITEEnchantingTableBlockEntity(pPos, pState);
     }
 
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
@@ -49,27 +56,50 @@ public class SREnchantingTable extends BaseEntityBlock {
 
     protected void openContainer(Level pLevel, BlockPos pPos, Player pPlayer) {
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-        if (blockentity instanceof SREnchantingTableBlockEntity) {
+        if (blockentity instanceof ITEEnchantingTableBlockEntity) {
             pPlayer.openMenu((MenuProvider)blockentity);
         }
     }
 
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player player, InteractionHand hand, BlockHitResult pHit) {
         if (pLevel.isClientSide) {
             return InteractionResult.SUCCESS;
         }
         else {
-            this.openContainer(pLevel, pPos, pPlayer);
-            return InteractionResult.CONSUME;
+            if (player.getItemInHand(hand).is(Items.ENCHANTED_BOOK)) {
+                ITEEnchantingTableBlockEntity enchantingTableBE = (ITEEnchantingTableBlockEntity) pLevel.getBlockEntity(pPos);
+                CompoundTag compoundtag = player.getItemInHand(hand).getTag();
+                if (compoundtag != null) {
+                    ListTag list = compoundtag.getList("StoredEnchantments", 10);
+                    boolean hasTreasure = false;
+                    for (int i = 0; i < list.size(); i++) {
+                        Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(list.getCompound(i)));
+                        if (enchantment == null || !enchantment.isTreasureOnly() || enchantingTableBE.knowsEnchantment(enchantment))
+                            continue;
+                        hasTreasure = true;
+                        enchantingTableBE.learnEnchantment(enchantment);
+                        player.sendSystemMessage(Component.literal("Learned: ").append(Component.translatable(enchantment.getDescriptionId())));
+                    }
+                    if (hasTreasure)
+                        player.getItemInHand(hand).shrink(1);
+                    else
+                        player.sendSystemMessage(Component.literal("This enchanted book has no treasure enchantments on it"));
+                }
+                return InteractionResult.CONSUME;
+            }
+            else {
+                this.openContainer(pLevel, pPos, player);
+                return InteractionResult.CONSUME;
+            }
         }
     }
 
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (!pState.is(pNewState.getBlock())) {
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof SREnchantingTableBlockEntity SREnchantingTableBlockEntity) {
+            if (blockentity instanceof ITEEnchantingTableBlockEntity ITEEnchantingTableBlockEntity) {
                 if (pLevel instanceof ServerLevel) {
-                    Containers.dropContents(pLevel, pPos, SREnchantingTableBlockEntity);
+                    Containers.dropContents(pLevel, pPos, ITEEnchantingTableBlockEntity);
                 }
 
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
@@ -121,8 +151,8 @@ public class SREnchantingTable extends BaseEntityBlock {
     public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, LivingEntity pPlacer, ItemStack pStack) {
         if (pStack.hasCustomHoverName()) {
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof SREnchantingTableBlockEntity) {
-                ((SREnchantingTableBlockEntity)blockentity).setCustomName(pStack.getHoverName());
+            if (blockentity instanceof ITEEnchantingTableBlockEntity) {
+                ((ITEEnchantingTableBlockEntity)blockentity).setCustomName(pStack.getHoverName());
             }
         }
 
@@ -135,6 +165,6 @@ public class SREnchantingTable extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return pLevel.isClientSide ? createTickerHelper(pBlockEntityType, EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), SREnchantingTableBlockEntity::clientTick) : null;
+        return pLevel.isClientSide ? createTickerHelper(pBlockEntityType, EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), ITEEnchantingTableBlockEntity::clientTick) : null;
     }
 }

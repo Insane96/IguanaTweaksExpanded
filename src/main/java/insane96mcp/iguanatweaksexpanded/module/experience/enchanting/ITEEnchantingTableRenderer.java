@@ -21,23 +21,23 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-public class SREnchantingTableRenderer implements BlockEntityRenderer<SREnchantingTableBlockEntity> {
+public class ITEEnchantingTableRenderer implements BlockEntityRenderer<ITEEnchantingTableBlockEntity> {
     /** The texture for the book above the enchantment table. */
     public static final Material BOOK_LOCATION = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation("entity/enchanting_table_book"));
     private final BookModel bookModel;
     private final ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
-    public SREnchantingTableRenderer(BlockEntityRendererProvider.Context context) {
+    public ITEEnchantingTableRenderer(BlockEntityRendererProvider.Context context) {
         this.bookModel = new BookModel(context.bakeLayer(ModelLayers.BOOK));
     }
 
     @Override
-    public void render(SREnchantingTableBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
-        this.renderHoveringItem(blockEntity, ((Container) blockEntity).getItem(SREnchantingTableMenu.ITEM_SLOT), partialTicks, poseStack, bufferSource, packedLight);
-        this.renderBook(blockEntity, ((Container) blockEntity).getItem(SREnchantingTableMenu.ITEM_SLOT), partialTicks, poseStack, bufferSource, packedLight, packedOverlay);
+    public void render(ITEEnchantingTableBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        this.renderHoveringItem(blockEntity, ((Container) blockEntity).getItem(ITEEnchantingTableMenu.ITEM_SLOT), partialTicks, poseStack, bufferSource, packedLight);
+        this.renderBook(blockEntity, ((Container) blockEntity).getItem(ITEEnchantingTableMenu.ITEM_SLOT), partialTicks, poseStack, bufferSource, packedLight, packedOverlay);
     }
 
-    private void renderHoveringItem(SREnchantingTableBlockEntity blockEntity, ItemStack itemToEnchant, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+    private void renderHoveringItem(ITEEnchantingTableBlockEntity blockEntity, ItemStack itemToEnchant, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
         float time = (float)blockEntity.time + partialTick;
         float open = 1 - Mth.lerp(partialTick, blockEntity.oOpen, blockEntity.open);
@@ -57,7 +57,7 @@ public class SREnchantingTableRenderer implements BlockEntityRenderer<SREnchanti
         poseStack.popPose();
     }
 
-    private void renderBook(SREnchantingTableBlockEntity blockEntity, ItemStack itemToEnchant, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+    private void renderBook(ITEEnchantingTableBlockEntity blockEntity, ItemStack itemToEnchant, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         poseStack.pushPose();
         poseStack.translate(0.5F, 0.75F, 0.5F);
         float f = (float)blockEntity.time + partialTick;

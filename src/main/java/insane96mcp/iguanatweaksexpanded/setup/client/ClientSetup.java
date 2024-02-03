@@ -6,8 +6,8 @@ import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.FletchingScreen;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.SRArrowRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.SREnchantingTableRenderer;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.SREnchantingTableScreen;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableRenderer;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableScreen;
 import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrinks;
 import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
@@ -262,7 +262,7 @@ public class ClientSetup {
         MenuScreens.register(MultiBlockFurnaces.BLAST_FURNACE_MENU_TYPE.get(), MultiBlockBlastFurnaceScreen::new);
         MenuScreens.register(MultiBlockFurnaces.SOUL_BLAST_FURNACE_MENU_TYPE.get(), MultiBlockSoulBlastFurnaceScreen::new);
         MenuScreens.register(Forging.FORGE_MENU_TYPE.get(), ForgeScreen::new);
-        MenuScreens.register(EnchantingFeature.ENCHANTING_TABLE_MENU_TYPE.get(), SREnchantingTableScreen::new);
+        MenuScreens.register(EnchantingFeature.ENCHANTING_TABLE_MENU_TYPE.get(), ITEEnchantingTableScreen::new);
         MenuScreens.register(Fletching.FLETCHING_MENU_TYPE.get(), FletchingScreen::new);
     }
 
@@ -274,7 +274,7 @@ public class ClientSetup {
         event.registerEntityRenderer(MiningCharge.PRIMED_MINING_CHARGE.get(), MiningChargeRenderer::new);
 
         event.registerBlockEntityRenderer(Forging.FORGE_BLOCK_ENTITY_TYPE.get(), ForgeRenderer::new);
-        event.registerBlockEntityRenderer(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), SREnchantingTableRenderer::new);
+        event.registerBlockEntityRenderer(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), ITEEnchantingTableRenderer::new);
     }
 
     static RecipeBookCategories BLAST_FURNACE_SEARCH = RecipeBookCategories.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace_search", new ItemStack(Items.COMPASS));
