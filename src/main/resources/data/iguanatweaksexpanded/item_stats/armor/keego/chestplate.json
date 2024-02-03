@@ -4,9 +4,9 @@
 	"armor": 4,
 	"modifiers": [
 		{
-			"uuid": "4b8573c6-bd4b-4560-a411-04b78ae950ce",
+			"uuid": "e5ca3f97-f7a0-439b-8c94-b1af3bdf3828",
 			"name": "Armor slowdown",
-			"slot": "feet",
+			"slot": "chest",
 			"attribute": "minecraft:generic.movement_speed",
 			"amount": -0.0175,
 			"operation": "multiply_base"

@@ -4,6 +4,7 @@
 * Enchanted books can now be used on an enchanting table to let it learn the enchantment, useful for treasure enchantments
 * Reach enchantment is now treasure only
 * Better enchanting table interface
+* Fixed most armors having wrong slowdown modifiers
 
 ## 1.1.0
 * Added a brand new Enchanting Table!
