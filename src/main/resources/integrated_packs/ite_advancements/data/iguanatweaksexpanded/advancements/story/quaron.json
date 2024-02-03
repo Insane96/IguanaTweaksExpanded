@@ -1,0 +1,37 @@
+{
+	"display": {
+		"icon": {
+			"item": "iguanatweaksexpanded:quaron_ingot"
+		},
+		"title": {
+			"translate": "advancements.sr_story.quaron.title"
+		},
+		"description": {
+			"translate": "advancements.sr_story.quaron.description"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "iguanatweaksexpanded:story/iron_pickaxe",
+	"criteria": {
+		"quaron_ingot": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"iguanatweaksexpanded:quaron_ingot"
+						]
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"quaron_ingot"
+		]
+	]
+}

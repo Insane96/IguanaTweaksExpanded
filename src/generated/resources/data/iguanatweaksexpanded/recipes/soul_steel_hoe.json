@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:soul_steel_ingot"
   },
   "base": {
-    "item": "minecraft:diamond_hoe"
+    "item": "minecraft:iron_hoe"
   },
   "result": {
     "item": "iguanatweaksexpanded:soul_steel_hoe"

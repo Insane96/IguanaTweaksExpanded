@@ -5,9 +5,16 @@
 	"repair": [
 		{
 			"repair_material": {
-				"id": "minecraft:diamond"
+				"id": "minecraft:gold_ingot"
 			},
-			"amount": 2,
+			"amount": 32,
+			"max_repair": 0.5
+		},
+		{
+			"repair_material": {
+				"id": "minecraft:gold_nugget"
+			},
+			"amount": 284,
 			"max_repair": 0.5
 		},
 		{

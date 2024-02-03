@@ -4,6 +4,9 @@
 * Enchanted books can now be used on an enchanting table to let it learn the enchantment, useful for treasure enchantments
 * Reach enchantment is now treasure only
 * Better enchanting table interface
+* Soul Steel equipment is now made from Iron
+* Repairing smithen items with their base material now costs more based off durability ratio
+  * Also, equipment smithen from Iron can now be repaired with nuggets
 * Fixed most armors having wrong slowdown modifiers
 
 ## 1.1.0

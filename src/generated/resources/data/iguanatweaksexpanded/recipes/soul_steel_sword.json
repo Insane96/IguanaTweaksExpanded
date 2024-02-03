@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:soul_steel_ingot"
   },
   "base": {
-    "item": "minecraft:diamond_sword"
+    "item": "minecraft:iron_sword"
   },
   "result": {
     "item": "iguanatweaksexpanded:soul_steel_sword"

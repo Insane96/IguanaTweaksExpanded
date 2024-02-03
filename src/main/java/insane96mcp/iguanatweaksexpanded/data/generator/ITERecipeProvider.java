@@ -423,34 +423,34 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
 
         //Soul Steel
         copySmithingTemplate(writer, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERRACK);
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_AXE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.AXE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_AXE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.AXE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_axe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_PICKAXE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.PICKAXE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_PICKAXE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.PICKAXE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_pickaxe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_SHOVEL), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.SHOVEL.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_SHOVEL), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.SHOVEL.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_shovel");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_HOE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.HOE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_HOE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.HOE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_hoe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_SWORD), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SWORD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_SWORD), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SWORD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(SPItems.DIAMOND_SHIELD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SHIELD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(SPItems.IRON_SHIELD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SHIELD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_shield");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_HELMET), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.HELMET.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_HELMET), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.HELMET.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_helmet");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_CHESTPLATE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.CHESTPLATE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_CHESTPLATE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.CHESTPLATE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_chestplate");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_LEGGINGS), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.LEGGINGS.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_LEGGINGS), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.LEGGINGS.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_leggings");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.DIAMOND_BOOTS), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.BOOTS.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_BOOTS), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.BOOTS.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_boots");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, SoulSteel.BLOCK.block().get(), 1)

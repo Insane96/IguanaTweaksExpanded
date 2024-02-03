@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:soul_steel_ingot"
   },
   "base": {
-    "item": "minecraft:diamond_pickaxe"
+    "item": "minecraft:iron_pickaxe"
   },
   "result": {
     "item": "iguanatweaksexpanded:soul_steel_pickaxe"

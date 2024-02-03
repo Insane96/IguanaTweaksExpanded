@@ -61,7 +61,7 @@ public class Quaron extends Feature {
 	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("quaron_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("quaron_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("quaron", 452, INGOT, 9, Rarity.COMMON);
+	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("quaron", 441, INGOT, 9, Rarity.COMMON);
 
 	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("quaron_shield", SHIELD_MATERIAL);
 

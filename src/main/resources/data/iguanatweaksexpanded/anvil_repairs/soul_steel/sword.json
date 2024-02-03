@@ -5,9 +5,9 @@
 	"repair": [
 		{
 			"repair_material": {
-				"id": "minecraft:diamond"
+				"id": "minecraft:iron_ingot"
 			},
-			"amount": 2,
+			"amount": 18,
 			"max_repair": 0.5
 		},
 		{
