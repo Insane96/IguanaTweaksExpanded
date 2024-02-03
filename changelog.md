@@ -8,6 +8,7 @@
 * Repairing smithen items with their base material now costs more based off durability ratio
   * Also, equipment smithen from Iron can now be repaired with nuggets
 * Fixed most armors having wrong slowdown modifiers
+* Fixed Keego Shield being a Solarium shield
 
 ## 1.1.0
 * Added a brand new Enchanting Table!
