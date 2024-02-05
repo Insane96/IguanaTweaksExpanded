@@ -121,8 +121,8 @@ public class NewEnchantmentsFeature extends Feature {
 		if (!this.isEnabled())
 			return;
 
-		Expanded.applyDestroyAnimation(event);
-		Veining.applyDestroyAnimation(event);
+		Expanded.applyOutlineAndDestroyAnimation(event);
+		Veining.applyOutlineAndDestroyAnimation(event);
 	}
 
 	//Priority high: run before Timber Trees

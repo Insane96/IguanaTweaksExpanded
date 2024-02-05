@@ -1,11 +1,12 @@
 # Changelog
 
 * Soul blast furnace should only be able to alloy?
-* Outline for Veining and Expanded
+* Custom enchantments base cost (Expanded 4)
 
 ## Upcoming
 * Blast furnaces now show ghost blocks on how to build them
 * Charcoal can no longer be placed as a pile. Charcoal pile now drops itself with Silk Touch
+* Expanded and Veining now highlight the blocks that are going to be mined
 * Item stats data pack can now be disabled
 
 ## 1.1.1

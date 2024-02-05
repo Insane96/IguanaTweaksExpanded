@@ -11,7 +11,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.MultiPlayerGameMode;
+import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.core.BlockPos;
@@ -21,6 +23,7 @@ import net.minecraft.server.level.BlockDestructionProgress;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -37,6 +40,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
@@ -114,14 +118,14 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void applyDestroyAnimation(RenderLevelStageEvent event) {
+    public static void applyOutlineAndDestroyAnimation(RenderLevelStageEvent event) {
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_SOLID_BLOCKS)
             return;
+
         // validate required variables are set
         MultiPlayerGameMode controller = Minecraft.getInstance().gameMode;
-        if (controller == null || !controller.isDestroying()) {
+        if (controller == null)
             return;
-        }
         Level level = Minecraft.getInstance().level;
         Player player = Minecraft.getInstance().player;
         if (level == null || player == null || Minecraft.getInstance().getCameraEntity() == null) {
@@ -133,9 +137,8 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
             return;
         // must be targeting a block
         HitResult result = Minecraft.getInstance().hitResult;
-        if (result == null || result.getType() != HitResult.Type.BLOCK) {
+        if (result == null || result.getType() != HitResult.Type.BLOCK)
             return;
-        }
         // find breaking progress
         BlockHitResult blockTrace = (BlockHitResult)result;
         BlockPos targetPos = blockTrace.getBlockPos();
@@ -143,6 +146,20 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
         ItemStack heldStack = player.getMainHandItem();
         if (!heldStack.isCorrectToolForDrops(targetState))
             return;
+
+
+        // determine extra blocks to highlight
+        List<BlockPos> minedBlocks = getMinedBlocks(heldStack, enchLevel, level, player, targetPos, blockTrace.getDirection());
+        if (minedBlocks.isEmpty())
+            return;
+
+        Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+        renderMineProgress(event.getPoseStack(), event.getLevelRenderer().renderBuffers.crumblingBufferSource(), targetPos, level, camera.getPosition().x, camera.getPosition().y, camera.getPosition().z, minedBlocks);
+        renderBlockHighlight(event.getPoseStack(), level, camera.getEntity(), camera.getPosition().x, camera.getPosition().y, camera.getPosition().z, minedBlocks);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void renderMineProgress(PoseStack poseStack, MultiBufferSource.BufferSource bufferSource, BlockPos targetPos, Level level, double xOffset, double yOffset, double zOffset, List<BlockPos> minedBlocks) {
         BlockDestructionProgress progress = null;
         for (Int2ObjectMap.Entry<BlockDestructionProgress> entry : Minecraft.getInstance().levelRenderer.destroyingBlocks.int2ObjectEntrySet()) {
             if (entry.getValue().getPos().equals(targetPos)) {
@@ -150,38 +167,37 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
                 break;
             }
         }
-        if (progress == null) {
+        if (progress == null)
             return;
-        }
-        // determine extra blocks to highlight
-        List<BlockPos> minedBlocks = getMinedBlocks(heldStack, enchLevel, level, player, targetPos, blockTrace.getDirection());
-        if (minedBlocks.isEmpty()) {
-            return;
-        }
 
-        // set up buffers
-        PoseStack matrices = event.getPoseStack();
-        matrices.pushPose();
-        MultiBufferSource.BufferSource vertices = event.getLevelRenderer().renderBuffers.crumblingBufferSource();
-        VertexConsumer vertexBuilder = vertices.getBuffer(ModelBakery.DESTROY_TYPES.get(progress.getProgress()));
+        poseStack.pushPose();
+        VertexConsumer vertexBuilder = bufferSource.getBuffer(ModelBakery.DESTROY_TYPES.get(progress.getProgress()));
 
         // finally, render the blocks
-        Camera renderInfo = Minecraft.getInstance().gameRenderer.getMainCamera();
-        double x = renderInfo.getPosition().x;
-        double y = renderInfo.getPosition().y;
-        double z = renderInfo.getPosition().z;
         BlockRenderDispatcher dispatcher = Minecraft.getInstance().getBlockRenderer();
         for (BlockPos minedPos : minedBlocks) {
-            matrices.pushPose();
-            matrices.translate(minedPos.getX() - x, minedPos.getY() - y, minedPos.getZ() - z);
-            PoseStack.Pose entry = matrices.last();
+            if (minedPos.equals(targetPos))
+                continue;
+            poseStack.pushPose();
+            poseStack.translate(minedPos.getX() - xOffset, minedPos.getY() - yOffset, minedPos.getZ() - zOffset);
+            PoseStack.Pose entry = poseStack.last();
             VertexConsumer blockBuilder = new SheetedDecalTextureGenerator(vertexBuilder, entry.pose(), entry.normal(), 1f);
-            dispatcher.renderBreakingTexture(level.getBlockState(minedPos), minedPos, level, matrices, blockBuilder, ModelData.EMPTY);
-            matrices.popPose();
+            dispatcher.renderBreakingTexture(level.getBlockState(minedPos), minedPos, level, poseStack, blockBuilder, ModelData.EMPTY);
+            poseStack.popPose();
         }
         // finish rendering
-        matrices.popPose();
-        vertices.endBatch();
+        poseStack.popPose();
+        bufferSource.endBatch();
+    }
+
+    public static void renderBlockHighlight(PoseStack poseStack, Level level, Entity entity, double xOffset, double yOffset, double zOffset, List<BlockPos> minedBlocks) {
+        VertexConsumer vertexConsumer = Minecraft.getInstance().levelRenderer.renderBuffers.bufferSource().getBuffer(RenderType.lines());
+        for (BlockPos minedPos : minedBlocks) {
+            poseStack.pushPose();
+            BlockState state = level.getBlockState(minedPos);
+            LevelRenderer.renderShape(poseStack, vertexConsumer, state.getShape(level, minedPos, CollisionContext.of(entity)), (double)minedPos.getX() - xOffset, (double)minedPos.getY() - yOffset, (double)minedPos.getZ() - zOffset, 0.0F, 0.0F, 0.0F, 0.4F);
+            poseStack.popPose();
+        }
     }
 
     /**
