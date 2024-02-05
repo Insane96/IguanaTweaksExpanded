@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
+import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -80,8 +81,8 @@ public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
                             )
                             .orElse(new ArrayList<>());
                     if (blocks.isEmpty()) {
-                        player.sendSystemMessage(Component.literal("%s has no blocks".formatted(entry.getValue().toString())));
-                        return InteractionResult.CONSUME;
+                        LogHelper.warn("%s has no blocks".formatted(entry.getValue().toString()));
+                        continue;
                     }
                     BlockState stateNeeded = blocks.get(level.random.nextInt(blocks.size())).defaultBlockState;
                     ghostBlocksData.posAndStates.put(mutableBlockPos.immutable(), stateNeeded);

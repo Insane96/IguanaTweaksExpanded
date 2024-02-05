@@ -1,9 +1,11 @@
 # Changelog
 
+* Soul blast furnace should only be able to alloy?
 * Outline for Veining and Expanded
 
 ## Upcoming
 * Blast furnaces now show ghost blocks on how to build them
+* Charcoal can no longer be placed as a pile. Charcoal pile now drops itself with Silk Touch
 * Item stats data pack can now be disabled
 
 ## 1.1.1

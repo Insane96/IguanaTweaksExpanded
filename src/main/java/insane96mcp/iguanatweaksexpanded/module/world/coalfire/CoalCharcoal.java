@@ -22,7 +22,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -144,20 +143,6 @@ public class CoalCharcoal extends Feature {
             event.getEntity().getOffhandItem().shrink(1);
             event.getEntity().broadcastBreakEvent(InteractionHand.OFF_HAND);
             net.minecraftforge.event.ForgeEventFactory.onPlayerDestroyItem(event.getEntity(), event.getEntity().getOffhandItem(), InteractionHand.OFF_HAND);
-        }
-    }
-
-    @SubscribeEvent
-    public void onCharcoalRightClick(PlayerInteractEvent.RightClickBlock event) {
-        if (!this.isEnabled()
-                || !event.getItemStack().is(Items.CHARCOAL)
-                || event.getCancellationResult().consumesAction())
-            return;
-
-        UseOnContext context = new UseOnContext(event.getLevel(), event.getEntity(), event.getHand(), event.getItemStack(), event.getHitVec());
-        InteractionResult result = CHARCOAL_LAYER.item().get().useOn(context);
-        if (result.shouldSwing()) {
-            event.getEntity().swing(event.getHand());
         }
     }
 
