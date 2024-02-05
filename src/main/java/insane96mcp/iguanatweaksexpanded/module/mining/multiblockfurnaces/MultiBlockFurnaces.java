@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockBlastFurnaceBlock;
@@ -16,11 +17,13 @@ import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
+import insane96mcp.iguanatweaksexpanded.utils.ClientUtils;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.base.config.LoadFeature;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.flag.FeatureFlags;
@@ -29,9 +32,19 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Label(name = "Multi Block Furnaces", description = "Add new multi block furnaces")
 @LoadFeature(module = Modules.Ids.MINING)
@@ -79,5 +92,61 @@ public class MultiBlockFurnaces extends Feature {
 
 		event.getEntity().sendSystemMessage(Component.translatable(INVALID_FURNACE_LANG));
 		event.setCanceled(true);
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	@SubscribeEvent
+	public void onRenderLevelStage(RenderLevelStageEvent event) {
+		if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_PARTICLES)
+			return;
+
+		for (GhostBlocksData ghostBlocksData : GHOST_BLOCKS_DATA) {
+			ghostBlocksData.render(event.getPoseStack());
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
+		if (event.phase == TickEvent.Phase.START)
+			return;
+
+		List<GhostBlocksData> toRemove = new ArrayList<>();
+		for (GhostBlocksData ghostBlocksData : GHOST_BLOCKS_DATA) {
+			ghostBlocksData.tick();
+			if (ghostBlocksData.shouldBeRemoved())
+				toRemove.add(ghostBlocksData);
+		}
+		toRemove.forEach(GHOST_BLOCKS_DATA::remove);
+	}
+
+	public static final List<GhostBlocksData> GHOST_BLOCKS_DATA = new ArrayList<>();
+
+	public static class GhostBlocksData {
+		public int ticksRendered;
+		public BlockPos furnacePos;
+		public Map<BlockPos, BlockState> posAndStates = new HashMap<>();
+
+		public GhostBlocksData(BlockPos furnacePos) {
+			this(furnacePos, 200);
+		}
+
+		public GhostBlocksData(BlockPos furnacePos, int ticksRendered) {
+			this.ticksRendered = ticksRendered;
+			this.furnacePos = furnacePos;
+		}
+
+		public void tick() {
+			this.ticksRendered--;
+		}
+
+		public boolean shouldBeRemoved() {
+			return this.ticksRendered <= 0;
+		}
+
+		public void render(PoseStack poseStack) {
+			for (Map.Entry<BlockPos, BlockState> posAndState : posAndStates.entrySet()) {
+				ClientUtils.renderGhostBlock(poseStack, posAndState.getValue(), posAndState.getKey());
+			}
+		}
 	}
 }

@@ -1,8 +1,9 @@
 # Changelog
 
-* Item stats datapack
+* Outline for Veining and Expanded
 
 ## Upcoming
+* Blast furnaces now show ghost blocks on how to build them
 * Item stats data pack can now be disabled
 
 ## 1.1.1

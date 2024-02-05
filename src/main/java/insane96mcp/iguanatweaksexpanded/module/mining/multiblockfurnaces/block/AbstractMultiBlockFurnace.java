@@ -1,9 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
+import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -31,8 +31,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
@@ -46,16 +48,45 @@ public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, Boolean.FALSE));
     }
 
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (pLevel.isClientSide) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         }
         else {
-            if (this.isValidMultiBlock(pLevel, pPos))
-                this.openContainer(pLevel, pPos, pPlayer);
+            if (this.isValidMultiBlock(level, pos))
+                this.openContainer(level, pos, player);
             else {
-                pPlayer.sendSystemMessage(Component.translatable(getInvalidStructureLang()));
-
+                player.sendSystemMessage(Component.translatable(getInvalidStructureLang()));
+                if (MultiBlockFurnaces.GHOST_BLOCKS_DATA.stream().anyMatch(ghostBlocksData -> ghostBlocksData.furnacePos.equals(pos))) {
+                    return InteractionResult.CONSUME;
+                }
+                MultiBlockFurnaces.GhostBlocksData ghostBlocksData = new MultiBlockFurnaces.GhostBlocksData(pos);
+                Direction direction = state.getValue(FACING);
+                BlockPos midBlock = pos.relative(direction.getOpposite()).above();
+                BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+                for (Map.Entry<Vec3i, TagKey<Block>> entry : getRelativePosBlockTags().entrySet()) {
+                    mutableBlockPos.set(midBlock.offset(entry.getKey()));
+                    BlockState stateRelative = level.getBlockState(mutableBlockPos);
+                    Block block = stateRelative.getBlock();
+                    if (block.equals(this) || stateRelative.is(entry.getValue()))
+                        continue;
+                    Optional<HolderSet.Named<Block>> optionalBlocks = BuiltInRegistries.BLOCK.getTag(entry.getValue());
+                    List<Block> blocks = optionalBlocks
+                            .map(holderSet -> holderSet
+                                    .stream()
+                                    .filter(blockHolder -> blockHolder.value().isCollisionShapeFullBlock(blockHolder.value().defaultBlockState(), level, pos))
+                                    .map(Holder::value)
+                                    .toList()
+                            )
+                            .orElse(new ArrayList<>());
+                    if (blocks.isEmpty()) {
+                        player.sendSystemMessage(Component.literal("%s has no blocks".formatted(entry.getValue().toString())));
+                        return InteractionResult.CONSUME;
+                    }
+                    BlockState stateNeeded = blocks.get(level.random.nextInt(blocks.size())).defaultBlockState;
+                    ghostBlocksData.posAndStates.put(mutableBlockPos.immutable(), stateNeeded);
+                }
+                MultiBlockFurnaces.GHOST_BLOCKS_DATA.add(ghostBlocksData);
             }
             return InteractionResult.CONSUME;
         }

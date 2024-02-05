@@ -162,8 +162,8 @@
 	"block.iguanatweaksexpanded.mining_charge": "Mining Charge",
 
 	"iguanatweaksexpanded.multi_block_structure": "Requires a multi block structure to work",
-	"iguanatweaksexpanded.blast_furnace_invalid_structure": "Multi block structure not valid. Must have a bottom layer of Smooth Stone, a middle and top layer of Bricks (top layer can be stairs). The center middle and center top blocks of the 3x3x3 can be anything.",
-	"iguanatweaksexpanded.soul_blast_furnace_invalid_structure": "Multi block structure not valid. Must have a bottom layer of worked Blackstone, a middle and top layer of Red Nether Bricks (top layer can be stairs). The center middle and center top blocks of the 3x3x3 can be anything.",
+	"iguanatweaksexpanded.blast_furnace_invalid_structure": "Multi block structure not valid. Top layer can be brick stairs.",
+	"iguanatweaksexpanded.soul_blast_furnace_invalid_structure": "Multi block structure not valid. Top layer can be red nether brick stairs.",
 	"iguanatweaksexpanded.invalid_blast_furnace": "This block is not valid. Break and place it back.",
 	"block.iguanatweaksexpanded.soul_blast_furnace": "Soul Blast Furnace",
 	"iguanatweaksexpanded.container.soul_blast_furnace": "Soul Blast Furnace",
