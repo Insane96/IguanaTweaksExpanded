@@ -1,5 +1,10 @@
 # Changelog
 
+* Item stats datapack
+
+## Upcoming
+* Item stats data pack can now be disabled
+
 ## 1.1.1
 * Enchanted books can now be used on an enchanting table to let it learn the enchantment, useful for treasure enchantments
 * Reach enchantment is now treasure only

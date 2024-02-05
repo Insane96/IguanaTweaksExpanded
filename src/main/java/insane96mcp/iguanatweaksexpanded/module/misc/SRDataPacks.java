@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.misc;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
+import insane96mcp.iguanatweaksreborn.module.misc.DataPacks;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -21,9 +22,13 @@ public class SRDataPacks extends Feature {
     @Config
     @Label(name = "Advancements", description = "Enables a Data Pack that overhauls advancements to make them work with IguanaTweaks.")
     public static Boolean advancements = true;
+    @Config
+    @Label(name = "Item Stats Data Pack", description = "Enables a data pack that changes all the item stats")
+    public static Boolean itemStatsDataPack = true;
 
     public SRDataPacks(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
         IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "ite_advancements", Component.literal("IguanaTweaks Expanded Advancements"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && advancements));
+        insane96mcp.iguanatweaksreborn.setup.IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new insane96mcp.iguanatweaksreborn.setup.IntegratedDataPack(PackType.SERVER_DATA, "item_stats", Component.literal("IguanaTweaks Reborn Item Stats"), () -> this.isEnabled() && !DataPacks.disableAllDataPacks && itemStatsDataPack));
     }
 }
