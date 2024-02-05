@@ -32,7 +32,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-@Label(name = "New Enchantments", description = "Change some enchantments related stuff and adds new enchantments.")
+@Label(name = "New Enchantments", description = "Change some enchantments related stuff and adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class NewEnchantmentsFeature extends Feature {
 

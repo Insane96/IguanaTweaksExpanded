@@ -3,8 +3,10 @@ package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -30,6 +32,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
@@ -48,17 +51,44 @@ public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         }
         else {
-            this.openContainer(pLevel, pPos, pPlayer);
+            if (this.isValidMultiBlock(pLevel, pPos))
+                this.openContainer(pLevel, pPos, pPlayer);
+            else {
+                pPlayer.sendSystemMessage(Component.translatable(getInvalidStructureLang()));
+
+            }
             return InteractionResult.CONSUME;
         }
     }
+
+    protected abstract String getInvalidStructureLang();
 
     protected abstract void openContainer(Level pLevel, BlockPos pPos, Player pPlayer);
 
     /**
      * Returns true if the multi-block structure is valid
      */
-    public abstract boolean isValidMultiBlock(Level level, BlockPos pos);
+    public boolean isValidMultiBlock(Level level, BlockPos pos) {
+        BlockState state = level.getBlockState(pos);
+        Direction direction = state.getValue(FACING);
+        BlockPos midBlock = pos.relative(direction.getOpposite()).above();
+        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+        boolean hasFoundThisBlock = false;
+        for (Map.Entry<Vec3i, TagKey<Block>> entry : getRelativePosBlockTags().entrySet()) {
+            mutableBlockPos.set(midBlock.offset(entry.getKey()));
+            BlockState stateRelative = level.getBlockState(mutableBlockPos);
+            Block block = stateRelative.getBlock();
+            if (block.equals(this) && !hasFoundThisBlock) {
+                hasFoundThisBlock = true;
+                continue;
+            }
+            if (!stateRelative.is(entry.getValue()))
+                return false;
+        }
+        return true;
+    }
+
+    public abstract Map<Vec3i, TagKey<Block>> getRelativePosBlockTags();
 
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
@@ -159,6 +189,4 @@ public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
         pTooltip.add(Component.translatable(MULTI_BLOCK_TOOLTIP));
     }
-
-    protected abstract String getInvalidStructureLang();
 }

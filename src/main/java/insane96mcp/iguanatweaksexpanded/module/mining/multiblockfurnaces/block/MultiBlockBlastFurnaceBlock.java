@@ -8,7 +8,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -83,35 +82,14 @@ public class MultiBlockBlastFurnaceBlock extends AbstractMultiBlockFurnace {
     protected void openContainer(Level pLevel, BlockPos pPos, Player pPlayer) {
         BlockEntity blockentity = pLevel.getBlockEntity(pPos);
         if (blockentity instanceof MultiBlockBlastFurnaceBlockEntity) {
-            if (this.isValidMultiBlock(pLevel, pPos)) {
-                pPlayer.openMenu((MenuProvider)blockentity);
-                pPlayer.awardStat(Stats.INTERACT_WITH_BLAST_FURNACE);
-            }
-            else {
-                pPlayer.sendSystemMessage(Component.translatable(getInvalidStructureLang()));
-            }
+            pPlayer.openMenu((MenuProvider)blockentity);
+            pPlayer.awardStat(Stats.INTERACT_WITH_BLAST_FURNACE);
         }
     }
 
     @Override
-    public boolean isValidMultiBlock(Level level, BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        Direction direction = state.getValue(FACING);
-        BlockPos midBlock = pos.relative(direction.getOpposite()).above();
-        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        boolean hasFoundThisBlock = false;
-        for (Map.Entry<Vec3i, TagKey<Block>> entry : RELATIVE_POS_BLOCK_TAGS.entrySet()) {
-            mutableBlockPos.set(midBlock.offset(entry.getKey()));
-            BlockState stateRelative = level.getBlockState(mutableBlockPos);
-            Block block = stateRelative.getBlock();
-            if (block.equals(this) && !hasFoundThisBlock) {
-                hasFoundThisBlock = true;
-                continue;
-            }
-            if (!stateRelative.is(entry.getValue()))
-                return false;
-        }
-        return true;
+    public Map<Vec3i, TagKey<Block>> getRelativePosBlockTags() {
+        return RELATIVE_POS_BLOCK_TAGS;
     }
 
     @Override
