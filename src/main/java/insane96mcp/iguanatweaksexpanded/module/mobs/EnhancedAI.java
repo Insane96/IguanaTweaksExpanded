@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mobs;
 
 import insane96mcp.enhancedai.modules.creeper.CreeperSwell;
+import insane96mcp.enhancedai.modules.mobs.Spawning;
 import insane96mcp.enhancedai.modules.mobs.movement.Movement;
 import insane96mcp.enhancedai.modules.skeleton.SkeletonFleeTarget;
 import insane96mcp.enhancedai.modules.skeleton.shoot.SkeletonShoot;
@@ -24,6 +25,7 @@ public class EnhancedAI extends Feature {
     @Override
     public void readConfig(ModConfigEvent event) {
         super.readConfig(event);
+        Module.getFeature(Spawning.class).setConfigOption("Monsters Despawning Distance", 120);
 
         Module.getFeature(CreeperSwell.class).setConfigOption("Walking Fuse Chance", 0.75d);
         Module.getFeature(CreeperSwell.class).setConfigOption("Breach Chance", 0.4d);
