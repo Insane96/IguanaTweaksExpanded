@@ -1,5 +1,11 @@
 # Changelog
 
+* Item stats don't sync properly
+* Blast furnace ghost block don't work on servers
+
+## Upcoming
+* Reduced mobs attack reach by ~15%
+
 ## 1.1.2
 * Blast furnaces now show ghost blocks on how to build them
 * Charcoal can no longer be placed as a pile. Charcoal pile now drops itself with Silk Touch

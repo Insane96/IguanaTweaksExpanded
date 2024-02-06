@@ -21,6 +21,12 @@
             "modifier_name": "More Swim Speed for Mobs",
             "amount": 2,
             "operation": "multiply_base"
+        },
+        {
+            "id": "forge:entity_reach",
+            "modifier_name": "Lower attack reach",
+            "amount": -0.1282856857,
+            "operation": "addition"
         }
     ],
     "priority": 1
