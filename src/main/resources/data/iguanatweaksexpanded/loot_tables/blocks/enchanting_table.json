@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "bonus_rolls": 0.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "functions": [
+                        {
+                            "function": "minecraft:copy_name",
+                            "source": "block_entity"
+                        },
+                        {
+                            "function": "minecraft:copy_nbt",
+                            "ops": [
+                                {
+                                    "op": "replace",
+                                    "source": "treasure_enchantments",
+                                    "target": "BlockEntityTag.treasure_enchantments"
+                                }
+                            ],
+                            "source": "block_entity"
+                        }
+                    ],
+                    "name": "iguanatweaksexpanded:enchanting_table"
+                }
+            ],
+            "rolls": 1.0
+        }
+    ]
+}

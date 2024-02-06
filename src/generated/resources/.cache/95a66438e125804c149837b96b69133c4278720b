@@ -1,7 +1,7 @@
-// 1.20.1	2024-02-03T18:50:13.9211467	Tags for minecraft:item mod id iguanatweaksexpanded
-c287ff9f610cf96255ae85a1de0c8e3e43f6be3f data/iguanatweaksexpanded/tags/items/equipment/hammers.json
+// 1.20.1	2024-02-06T11:06:05.372681	Tags for minecraft:item mod id iguanatweaksexpanded
+c287ff9f610cf96255ae85a1de0c8e3e43f6be3f data/iguanatweaksexpanded/tags/items/equipment/forge_hammers.json
 bd5368f498398ba2a85f9f4bb0e693de89185150 data/iguanatweaksexpanded/tags/items/not_enchantable.json
-70c5ef769f4a61664d30a2a967214167b54b76b2 data/iguanatweaksreborn/tags/items/enchantments/accepts_damage_enchantments.json
+2f3ab07aa0f1e5f60a535e8f911e8bcac89d717e data/iguanatweaksreborn/tags/items/enchantments/accepts_damage_enchantments.json
 1a396da56d6e9aa472f347fc5ca99f051f0ed411 data/iguanatweaksreborn/tags/items/not_unbreakable.json
 be067471b4fffc6fa4756e4c14194bdaf9edf18f data/minecraft/tags/items/arrows.json
 c6a016aab11c7b7295455bf6089600ba1a420ebf data/minecraft/tags/items/axes.json

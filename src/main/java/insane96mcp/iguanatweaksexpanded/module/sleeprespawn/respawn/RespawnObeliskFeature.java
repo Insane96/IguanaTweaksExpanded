@@ -28,7 +28,7 @@ public class RespawnObeliskFeature extends JsonFeature {
 
 	public static final SimpleBlockWithItem RESPAWN_OBELISK = SimpleBlockWithItem.register("respawn_obelisk", () -> new RespawnObeliskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(50.0F, 1200.0F).lightLevel(RespawnObeliskBlock::lightLevel)));
 
-	public static final ArrayList<IdTagValue> RESPAWN_OBELISK_CATALYSTS_DEFAULT = new ArrayList<>(List.of(
+	public static final List<IdTagValue> RESPAWN_OBELISK_CATALYSTS_DEFAULT = List.of(
 			IdTagValue.newId("minecraft:iron_block", 0.75d),
 			IdTagValue.newId("minecraft:gold_block", 0.3d),
 			IdTagValue.newId("iguanatweaksexpanded:durium_block", 0.075d),
@@ -36,7 +36,7 @@ public class RespawnObeliskFeature extends JsonFeature {
 			IdTagValue.newId("iguanatweaksexpanded:keego_block", 0.05d),
 			IdTagValue.newId("minecraft:emerald_block", 0.35d),
 			IdTagValue.newId("minecraft:netherite_block", 0d)
-	));
+	);
 
 	public static final ArrayList<IdTagValue> respawnObeliskCatalysts = new ArrayList<>();
 

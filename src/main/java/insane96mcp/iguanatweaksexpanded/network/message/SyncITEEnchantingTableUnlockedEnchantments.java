@@ -46,6 +46,7 @@ public class SyncITEEnchantingTableUnlockedEnchantments {
 
 			iteEnchantingTableScreen.unlockedEnchantments.clear();
 			iteEnchantingTableScreen.unlockedEnchantments.addAll(message.treasureEnchantments);
+			iteEnchantingTableScreen.forceUpdateEnchantmentsList = true;
 		});
 		ctx.get().setPacketHandled(true);
 	}

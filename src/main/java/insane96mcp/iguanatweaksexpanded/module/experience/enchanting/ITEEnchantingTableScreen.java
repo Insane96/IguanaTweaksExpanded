@@ -67,6 +67,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
     private ItemStack lastStack;
     private int maxCost = 0;
     public List<Enchantment> unlockedEnchantments = new ArrayList<>();
+    public boolean forceUpdateEnchantmentsList;
 
     private int scroll = 0;
 
@@ -90,16 +91,18 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
     private void updatePossibleEnchantments() {
         ItemStack stack = this.menu.getSlot(0).getItem();
         this.maxCost = this.menu.maxCost.get();
-        if (ItemStack.isSameItem(stack, this.lastStack) || stack.isEnchanted())
+        if ((ItemStack.isSameItem(stack, this.lastStack) || stack.isEnchanted()) && !this.forceUpdateEnchantmentsList)
             return;
+        this.forceUpdateEnchantmentsList = false;
         this.lastStack = stack.copy();
         List<EnchantmentInstance> enchantments = new ArrayList<>();
         this.enchantmentEntries.clear();
-        this.scroll = 0;
         List<Enchantment> availableEnchantments = new ArrayList<>();
+        if (stack.isEmpty())
+            return;
 
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
-            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || this.unlockedEnchantments.contains(enchantment) && !stack.isEmpty()) {
+            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || (this.unlockedEnchantments.contains(enchantment) && enchantment.canApplyAtEnchantingTable(stack))) {
                 availableEnchantments.add(enchantment);
             }
         }

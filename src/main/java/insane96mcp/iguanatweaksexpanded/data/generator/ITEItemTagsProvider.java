@@ -36,7 +36,7 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
     public static final TagKey<Item> FLINT_HAND_EQUIPMENT = ITEItemTagsProvider.create("equipment/hand/flint");
     public static final TagKey<Item> COPPER_HAND_EQUIPMENT = ITEItemTagsProvider.create("equipment/hand/copper");
     public static final TagKey<Item> CHAINED_COPPER_ARMOR = ITEItemTagsProvider.create("equipment/armor/chained_copper");
-    public static final TagKey<Item> HAMMERS = ITEItemTagsProvider.create("equipment/hammers");
+    public static final TagKey<Item> FORGE_HAMMERS = ITEItemTagsProvider.create("equipment/forge_hammers");
 
     public ITEItemTagsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture, CompletableFuture<TagLookup<Block>> tagLookupCompletableFuture, String modId, @Nullable ExistingFileHelper existingFileHelper) {
         super(packOutput, completableFuture, tagLookupCompletableFuture, modId, existingFileHelper);
@@ -47,11 +47,11 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(EnchantingFeature.NOT_ENCHANTABLE)
                 .add(Items.BOOK, Items.FLINT_AND_STEEL, Items.SHEARS, Items.BRUSH, Items.ELYTRA)
                 .add(CoalCharcoal.FIRESTARTER.get());
-        tag(HAMMERS)
+        tag(FORGE_HAMMERS)
                 .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         //ITR
         tag(BonusDamageEnchantment.ACCEPTS_DAMAGE_ENCHANTMENTS)
-                .addTag(HAMMERS);
+                .addTag(FORGE_HAMMERS);
         tag(ItemStats.NOT_UNBREAKABLE)
                 .add(CoalCharcoal.FIRESTARTER.get());
         //Vanilla

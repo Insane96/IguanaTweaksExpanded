@@ -7,12 +7,14 @@ import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
+import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
-import insane96mcp.insanelib.base.Feature;
+import insane96mcp.insanelib.base.JsonFeature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.base.config.LoadFeature;
+import insane96mcp.insanelib.data.IdTagValue;
 import insane96mcp.insanelib.data.lootmodifier.InjectLootTableModifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -43,9 +45,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled a data pack is also enabled that changes the enchanting table recipe. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
-public class EnchantingFeature extends Feature {
+public class EnchantingFeature extends JsonFeature {
     public static final TagKey<Item> NOT_ENCHANTABLE = ITEItemTagsProvider.create("not_enchantable");
 	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new ITEEnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
 	public static final RegistryObject<BlockEntityType<ITEEnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ITERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(ITEEnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
@@ -66,10 +71,23 @@ public class EnchantingFeature extends Feature {
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ANCIENT_LAPIS = ITERegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));
 
+    public static final List<IdTagValue> DEFAULT_ENCHANTMENT_BASE_COST = List.of(
+            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "expanded", 4.2f),
+            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "veining", 3.5f)
+    );
+    public static final ArrayList<IdTagValue> enchantmentBaseCost = new ArrayList<>();
+
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
         IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks));
+        addSyncType(new ResourceLocation(IguanaTweaksReborn.MOD_ID, "enchantments_base_cost"), new SyncType(json -> loadAndReadJson(json, enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("enchantments_base_cost.json", enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "enchantments_base_cost")));
 	}
+
+    @Override
+    public String getModConfigFolder() {
+        return IguanaTweaksExpanded.CONFIG_FOLDER;
+    }
 
     @SubscribeEvent
     public void onAnvilUpdate(AnvilUpdateEvent event) {
@@ -91,12 +109,12 @@ public class EnchantingFeature extends Feature {
     public static float getCost(Enchantment enchantment, int lvl) {
         if (lvl <= 0)
             return 0;
-        /*int minCost = enchantment.getMinCost(lvl);
-        int maxCost = enchantment.getMaxCost(lvl);
-        return (minCost + maxCost) / 20f;*/
-        int rarityCost = Anvils.getRarityCost(enchantment);
-        //return (float) (1 + rarityCost * lvl * (Math.pow(lvl, 0.25f)));
-        return rarityCost * lvl + (lvl / 4f);
+        float baseCost = Anvils.getRarityCost(enchantment);
+        for (IdTagValue enchantmentCost : enchantmentBaseCost) {
+            if (enchantmentCost.id.matchesEnchantment(enchantment))
+                baseCost = (float) enchantmentCost.value;
+        }
+        return baseCost * lvl + (lvl / 4f);
     }
 
     public void cleansedLapis(final AnvilUpdateEvent event) {
@@ -105,9 +123,6 @@ public class EnchantingFeature extends Feature {
             return;
 
         ItemStack right = event.getRight().copy();
-        /*for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
-            LogHelper.info(enchantment.getDescriptionId() + ": " + enchantment.getMinCost(1));
-        }*/
         if (!right.is(CLEANSED_LAPIS.get()))
             return;
         event.setCost(0);
