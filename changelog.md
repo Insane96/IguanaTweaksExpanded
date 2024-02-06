@@ -5,6 +5,7 @@
 
 ## Upcoming
 * Reduced mobs attack reach by ~15%
+* Respawn obelisks now have a higher chance to have iron blocks
 
 ## 1.1.2
 * Blast furnaces now show ghost blocks on how to build them
