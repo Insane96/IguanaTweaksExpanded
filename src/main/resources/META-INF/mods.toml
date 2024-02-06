@@ -107,3 +107,17 @@ license="All rights reserved"
     versionRange="[2.7.0,)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.iguanatweaksexpanded]]
+    modId="globaldataandresourcepacks"
+    mandatory=false
+    versionRange="[1.16.2,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.iguanatweaksexpanded]]
+    modId="paxi"
+    mandatory=false
+    versionRange="[4.0,)"
+    ordering="AFTER"
+    side="BOTH"

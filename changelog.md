@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.1.2
 * Blast furnaces now show ghost blocks on how to build them
 * Charcoal can no longer be placed as a pile. Charcoal pile now drops itself with Silk Touch
 * Expanded and Veining now highlight the blocks that are going to be mined
@@ -8,6 +8,7 @@
 * Item stats data pack can now be disabled
 * Fixed enchanting table not dropping
 * Fixed mobs despawning closer making more spawn around
+* Paxi and Global Data mods now should run after this mod's, allowing for overwriting changes from integrated packs
 
 ## 1.1.1
 * Enchanted books can now be used on an enchanting table to let it learn the enchantment, useful for treasure enchantments
