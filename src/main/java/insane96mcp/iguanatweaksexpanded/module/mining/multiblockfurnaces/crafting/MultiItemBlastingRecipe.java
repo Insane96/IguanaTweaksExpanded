@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting;
 
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
-import insane96mcp.iguanatweaksexpanded.setup.client.SRBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -10,7 +10,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Blocks;
 
 public class MultiItemBlastingRecipe extends AbstractMultiItemSmeltingRecipe {
-    public MultiItemBlastingRecipe(ResourceLocation pId, String pGroup, SRBookCategory pCategory, NonNullList<Ingredient> ingredients, ItemStack pResult, float outputIncrease, float pExperience, int pCookingTime, Recycle recycle) {
+    public MultiItemBlastingRecipe(ResourceLocation pId, String pGroup, ITEBookCategory pCategory, NonNullList<Ingredient> ingredients, ItemStack pResult, float outputIncrease, float pExperience, int pCookingTime, Recycle recycle) {
         super(MultiBlockFurnaces.BLASTING_RECIPE_TYPE.get(), pId, pGroup, pCategory, 4, ingredients, pResult, outputIncrease, pExperience, pCookingTime, recycle);
     }
 

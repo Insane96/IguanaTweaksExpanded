@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.FletchingScreen;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.SRArrowRenderer;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.ITEArrowRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableScreen;
@@ -267,10 +267,10 @@ public class ClientSetup {
     }
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(Fletching.QUARTZ_ARROW.get(), SRArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.DIAMOND_ARROW.get(), SRArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.EXPLOSIVE_ARROW.get(), SRArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.TORCH_ARROW.get(), SRArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.QUARTZ_ARROW.get(), ITEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.DIAMOND_ARROW.get(), ITEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.EXPLOSIVE_ARROW.get(), ITEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.TORCH_ARROW.get(), ITEArrowRenderer::new);
         event.registerEntityRenderer(MiningCharge.PRIMED_MINING_CHARGE.get(), MiningChargeRenderer::new);
 
         event.registerBlockEntityRenderer(Forging.FORGE_BLOCK_ENTITY_TYPE.get(), ForgeRenderer::new);

@@ -16,10 +16,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class SRFletchingTableBlock extends Block {
+public class ITEFletchingTableBlock extends Block {
     private static final Component CONTAINER_TITLE = Component.translatable("container.fletching");
 
-    public SRFletchingTableBlock(Properties pProperties) {
+    public ITEFletchingTableBlock(Properties pProperties) {
         super(pProperties);
     }
 

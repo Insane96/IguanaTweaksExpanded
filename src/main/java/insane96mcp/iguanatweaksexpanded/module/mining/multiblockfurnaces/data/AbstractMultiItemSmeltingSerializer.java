@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
-import insane96mcp.iguanatweaksexpanded.setup.client.SRBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -25,7 +25,7 @@ public abstract class AbstractMultiItemSmeltingSerializer implements RecipeSeria
 
     public AbstractMultiItemSmeltingRecipe fromJson(ResourceLocation pRecipeId, JsonObject pJson) {
         String group = GsonHelper.getAsString(pJson, "group", "");
-        SRBookCategory category = SRBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), this.getDefaultBookCategory());
+        ITEBookCategory category = ITEBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), this.getDefaultBookCategory());
         NonNullList<Ingredient> ingredients = itemsFromJson(GsonHelper.getAsJsonArray(pJson, "ingredients"));
         if (ingredients.isEmpty()) {
             throw new JsonParseException("No ingredients for shapeless recipe");
@@ -54,7 +54,7 @@ public abstract class AbstractMultiItemSmeltingSerializer implements RecipeSeria
         return this.factory.create(pRecipeId, group, category, ingredients, result, outputIncrease, experience, cookingTime, recycle);
     }
 
-    protected abstract SRBookCategory getDefaultBookCategory();
+    protected abstract ITEBookCategory getDefaultBookCategory();
 
     private static NonNullList<Ingredient> itemsFromJson(JsonArray pIngredientArray) {
         NonNullList<Ingredient> nonnulllist = NonNullList.create();
@@ -69,7 +69,7 @@ public abstract class AbstractMultiItemSmeltingSerializer implements RecipeSeria
 
     public AbstractMultiItemSmeltingRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
         String group = pBuffer.readUtf();
-        SRBookCategory category = pBuffer.readEnum(SRBookCategory.class);
+        ITEBookCategory category = pBuffer.readEnum(ITEBookCategory.class);
         int ingredientsAmount = pBuffer.readVarInt();
         NonNullList<Ingredient> ingredients = NonNullList.withSize(ingredientsAmount, Ingredient.EMPTY);
 
@@ -105,7 +105,7 @@ public abstract class AbstractMultiItemSmeltingSerializer implements RecipeSeria
     }
 
     public interface CookieBaker<T extends AbstractMultiItemSmeltingRecipe> {
-        T create(ResourceLocation pId, String pGroup, SRBookCategory pCategory, NonNullList<Ingredient> ingredients, ItemStack pResult, float outputIncrease, float pExperience, int pCookingTime, AbstractMultiItemSmeltingRecipe.Recycle recycle);
+        T create(ResourceLocation pId, String pGroup, ITEBookCategory pCategory, NonNullList<Ingredient> ingredients, ItemStack pResult, float outputIncrease, float pExperience, int pCookingTime, AbstractMultiItemSmeltingRecipe.Recycle recycle);
     }
 
     abstract int getIngredientSlotsCount();

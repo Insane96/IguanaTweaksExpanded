@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.combat.fletching;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.block.SRFletchingTableBlock;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.block.ITEFletchingTableBlock;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.data.FletchingRecipeSerializer;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.DiamondArrow;
@@ -35,7 +35,7 @@ import net.minecraftforge.registries.RegistryObject;
 @Label(name = "Fletching table", description = "Gives a use to the fletching table.")
 @LoadFeature(module = Modules.Ids.COMBAT)
 public class Fletching extends Feature {
-	public static final SimpleBlockWithItem FLETCHING_TABLE = SimpleBlockWithItem.register("fletching_table", () -> new SRFletchingTableBlock(BlockBehaviour.Properties.copy(Blocks.FLETCHING_TABLE)));
+	public static final SimpleBlockWithItem FLETCHING_TABLE = SimpleBlockWithItem.register("fletching_table", () -> new ITEFletchingTableBlock(BlockBehaviour.Properties.copy(Blocks.FLETCHING_TABLE)));
 
 	public static final RegistryObject<RecipeType<FletchingRecipe>> FLETCHING_RECIPE_TYPE = ITERegistries.RECIPE_TYPES.register("fletching", () -> new RecipeType<>() {
 		@Override

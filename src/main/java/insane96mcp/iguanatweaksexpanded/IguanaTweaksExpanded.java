@@ -7,12 +7,12 @@ import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockModelsProv
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockStatesProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEItemModelsProvider;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.SRArrowDispenseBehaviour;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ITEArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
+import insane96mcp.iguanatweaksexpanded.setup.ITECommonConfig;
+import insane96mcp.iguanatweaksexpanded.setup.ITEPackSource;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
-import insane96mcp.iguanatweaksexpanded.setup.SRCommonConfig;
-import insane96mcp.iguanatweaksexpanded.setup.SRPackSource;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import net.minecraft.core.HolderLookup;
@@ -64,7 +64,7 @@ public class IguanaTweaksExpanded
     public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "fletching");
 
     public IguanaTweaksExpanded() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, SRCommonConfig.CONFIG_SPEC, IguanaTweaksReborn.MOD_ID + "/expanded-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ITECommonConfig.CONFIG_SPEC, IguanaTweaksReborn.MOD_ID + "/expanded-common.toml");
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         if (FMLLoader.getDist().isClient()) {
@@ -87,10 +87,10 @@ public class IguanaTweaksExpanded
         NetworkHandler.init();
 
         event.enqueueWork(() -> {
-            DispenserBlock.registerBehavior(Fletching.QUARTZ_ARROW_ITEM.get(), new SRArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.DIAMOND_ARROW_ITEM.get(), new SRArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.EXPLOSIVE_ARROW_ITEM.get(), new SRArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.TORCH_ARROW_ITEM.get(), new SRArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.QUARTZ_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.DIAMOND_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.EXPLOSIVE_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.TORCH_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
         });
     }
 
@@ -121,7 +121,7 @@ public class IguanaTweaksExpanded
 
             Path resourcePath = ModList.get().getModFileById(MOD_ID).getFile().findResource("integrated_packs/" + dataPack.getPath());
             var pack = Pack.readMetaAndCreate(IguanaTweaksExpanded.RESOURCE_PREFIX + dataPack.getPath(), dataPack.getDescription(), dataPack.shouldBeEnabled(),
-                    (path) -> new PathPackResources(path, resourcePath, false), PackType.SERVER_DATA, Pack.Position.TOP, dataPack.shouldBeEnabled() ? PackSource.DEFAULT : SRPackSource.DISABLED);
+                    (path) -> new PathPackResources(path, resourcePath, false), PackType.SERVER_DATA, Pack.Position.TOP, dataPack.shouldBeEnabled() ? PackSource.DEFAULT : ITEPackSource.DISABLED);
             event.addRepositorySource((packConsumer) -> packConsumer.accept(pack));
         }
     }

@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import com.google.gson.JsonObject;
-import insane96mcp.iguanatweaksexpanded.setup.client.SRBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +20,7 @@ public class ForgeRecipeSerializer implements RecipeSerializer<ForgeRecipe> {
     }
 
     public ForgeRecipe fromJson(ResourceLocation pRecipeId, JsonObject pJson) {
-        SRBookCategory category = SRBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), SRBookCategory.FORGE_MISC);
+        ITEBookCategory category = ITEBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), ITEBookCategory.FORGE_MISC);
         Ingredient ingredient = Ingredient.fromJson(pJson.getAsJsonObject("ingredient"));
         //Forge: Check if primitive string to keep vanilla or an object which can contain a count field.
         if (!pJson.has("result"))
@@ -41,7 +41,7 @@ public class ForgeRecipeSerializer implements RecipeSerializer<ForgeRecipe> {
     }
 
     public ForgeRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-        SRBookCategory category = pBuffer.readEnum(SRBookCategory.class);
+        ITEBookCategory category = pBuffer.readEnum(ITEBookCategory.class);
         Ingredient ingredient = Ingredient.fromNetwork(pBuffer);
         int ingredientAmount = pBuffer.readVarInt();
         Ingredient gear = Ingredient.fromNetwork(pBuffer);
@@ -62,6 +62,6 @@ public class ForgeRecipeSerializer implements RecipeSerializer<ForgeRecipe> {
     }
 
     public interface CookieBaker<T extends ForgeRecipe> {
-        T create(ResourceLocation pId, SRBookCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience);
+        T create(ResourceLocation pId, ITEBookCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience);
     }
 }

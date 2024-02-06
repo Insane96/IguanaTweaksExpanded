@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.items;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.item.SRArmorMaterial;
+import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.insanelib.base.Feature;
@@ -22,7 +22,7 @@ import java.util.EnumMap;
 @LoadFeature(module = Modules.Ids.ITEMS)
 public class ChainedCopperArmor extends Feature {
 
-	private static final SRArmorMaterial CHAINED_COPPER = new SRArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "chained_copper", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ITEArmorMaterial CHAINED_COPPER = new ITEArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "chained_copper", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 1);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 3);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 4);

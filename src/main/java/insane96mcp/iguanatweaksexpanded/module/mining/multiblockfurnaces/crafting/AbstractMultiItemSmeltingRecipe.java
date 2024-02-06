@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.annotations.SerializedName;
-import insane96mcp.iguanatweaksexpanded.setup.client.SRBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
 import insane96mcp.iguanatweaksreborn.utils.MCUtils;
 import insane96mcp.insanelib.util.MathHelper;
 import net.minecraft.core.NonNullList;
@@ -30,7 +30,7 @@ import java.util.List;
 public abstract class AbstractMultiItemSmeltingRecipe implements Recipe<Container> {
     protected final RecipeType<?> type;
     protected final ResourceLocation id;
-    private final SRBookCategory category;
+    private final ITEBookCategory category;
     protected final String group;
     final NonNullList<Ingredient> ingredients;
     final float experience;
@@ -42,7 +42,7 @@ public abstract class AbstractMultiItemSmeltingRecipe implements Recipe<Containe
 
     private static final RandomSource RANDOM = RandomSource.create();
 
-    public AbstractMultiItemSmeltingRecipe(RecipeType<?> type, ResourceLocation pId, String pGroup, SRBookCategory pCategory, int maxIngredients, NonNullList<Ingredient> ingredients, ItemStack pResult, float outputIncrease, float pExperience, int pCookingTime, @Nullable Recycle recycle) {
+    public AbstractMultiItemSmeltingRecipe(RecipeType<?> type, ResourceLocation pId, String pGroup, ITEBookCategory pCategory, int maxIngredients, NonNullList<Ingredient> ingredients, ItemStack pResult, float outputIncrease, float pExperience, int pCookingTime, @Nullable Recycle recycle) {
         this.type = type;
         this.category = pCategory;
         this.id = pId;
@@ -165,7 +165,7 @@ public abstract class AbstractMultiItemSmeltingRecipe implements Recipe<Containe
         return this.recycle;
     }
 
-    public SRBookCategory category() {
+    public ITEBookCategory category() {
         return this.category;
     }
 

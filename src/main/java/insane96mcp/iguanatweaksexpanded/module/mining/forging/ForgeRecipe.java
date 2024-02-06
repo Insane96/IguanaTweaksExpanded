@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
-import insane96mcp.iguanatweaksexpanded.setup.client.SRBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 public class ForgeRecipe implements Recipe<Container> {
     protected final RecipeType<?> type;
     protected final ResourceLocation id;
-    private final SRBookCategory category;
+    private final ITEBookCategory category;
     final Ingredient ingredient;
     final int ingredientAmount;
     final Ingredient gear;
@@ -23,7 +23,7 @@ public class ForgeRecipe implements Recipe<Container> {
     protected final int smashesRequired;
     protected final float experience;
 
-    public ForgeRecipe(ResourceLocation pId, SRBookCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience) {
+    public ForgeRecipe(ResourceLocation pId, ITEBookCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience) {
         this.type = Forging.FORGE_RECIPE_TYPE.get();
         this.category = pCategory;
         this.id = pId;
@@ -101,7 +101,7 @@ public class ForgeRecipe implements Recipe<Container> {
         return this.type;
     }
 
-    public SRBookCategory category() {
+    public ITEBookCategory category() {
         return this.category;
     }
 

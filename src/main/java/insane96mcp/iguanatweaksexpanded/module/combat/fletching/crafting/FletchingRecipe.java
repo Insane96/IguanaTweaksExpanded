@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting;
 
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.inventory.FletchingMenu;
-import insane96mcp.iguanatweaksexpanded.setup.client.SRBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
@@ -20,14 +20,14 @@ import javax.annotation.Nullable;
 public class FletchingRecipe implements Recipe<Container> {
     protected final RecipeType<?> type;
     protected final ResourceLocation id;
-    private final SRBookCategory category;
+    private final ITEBookCategory category;
     final ItemStack baseIngredient;
     final ItemStack catalyst1;
     @Nullable
     final ItemStack catalyst2;
     private final ItemStack result;
 
-    public FletchingRecipe(ResourceLocation pId, SRBookCategory pCategory, ItemStack baseIngredient, ItemStack catalyst1, @Nullable ItemStack catalyst2, ItemStack pResult) {
+    public FletchingRecipe(ResourceLocation pId, ITEBookCategory pCategory, ItemStack baseIngredient, ItemStack catalyst1, @Nullable ItemStack catalyst2, ItemStack pResult) {
         this.type = Fletching.FLETCHING_RECIPE_TYPE.get();
         this.category = pCategory;
         this.id = pId;
@@ -115,7 +115,7 @@ public class FletchingRecipe implements Recipe<Container> {
         return this.type;
     }
 
-    public SRBookCategory category() {
+    public ITEBookCategory category() {
         return this.category;
     }
 

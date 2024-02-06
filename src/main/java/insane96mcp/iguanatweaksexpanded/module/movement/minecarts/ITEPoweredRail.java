@@ -7,10 +7,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.PoweredRailBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class SRPoweredRail extends PoweredRailBlock {
+public class ITEPoweredRail extends PoweredRailBlock {
     final float baseSpeed;
     final float acceleration;
-    public SRPoweredRail(Properties properties, float baseSpeed, float acceleration) {
+    public ITEPoweredRail(Properties properties, float baseSpeed, float acceleration) {
         super(properties, true);
         this.baseSpeed = baseSpeed;
         this.acceleration = acceleration;

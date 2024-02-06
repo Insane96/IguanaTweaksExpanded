@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
-import insane96mcp.iguanatweaksexpanded.setup.client.SRBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -26,7 +26,7 @@ import java.util.function.Consumer;
 
 public class MultiItemSmeltingRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
-    private final SRBookCategory bookCategory;
+    private final ITEBookCategory bookCategory;
     @Nullable
     protected String group;
     final NonNullList<Ingredient> ingredients;
@@ -39,7 +39,7 @@ public class MultiItemSmeltingRecipeBuilder implements RecipeBuilder {
     private final RecipeSerializer<? extends AbstractMultiItemSmeltingRecipe> serializer;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public MultiItemSmeltingRecipeBuilder(RecipeCategory pCategory, SRBookCategory pBookCategory, ItemLike pResult, NonNullList<Ingredient> pIngredients, int pCookingTime, RecipeSerializer<? extends AbstractMultiItemSmeltingRecipe> pSerializer) {
+    public MultiItemSmeltingRecipeBuilder(RecipeCategory pCategory, ITEBookCategory pBookCategory, ItemLike pResult, NonNullList<Ingredient> pIngredients, int pCookingTime, RecipeSerializer<? extends AbstractMultiItemSmeltingRecipe> pSerializer) {
         this.category = pCategory;
         this.bookCategory = pBookCategory;
         this.result = pResult.asItem();
@@ -49,11 +49,11 @@ public class MultiItemSmeltingRecipeBuilder implements RecipeBuilder {
     }
 
     public static MultiItemSmeltingRecipeBuilder blasting(NonNullList<Ingredient> pIngredient, RecipeCategory pCategory, ItemLike pResult, int pCookingTime) {
-        return new MultiItemSmeltingRecipeBuilder(pCategory, SRBookCategory.BLAST_FURNACE_MISC, pResult, pIngredient, pCookingTime, MultiBlockFurnaces.BLASTING_RECIPE_SERIALIZER.get());
+        return new MultiItemSmeltingRecipeBuilder(pCategory, ITEBookCategory.BLAST_FURNACE_MISC, pResult, pIngredient, pCookingTime, MultiBlockFurnaces.BLASTING_RECIPE_SERIALIZER.get());
     }
 
     public static MultiItemSmeltingRecipeBuilder soulBlasting(NonNullList<Ingredient> pIngredient, RecipeCategory pCategory, ItemLike pResult, int pCookingTime) {
-        return new MultiItemSmeltingRecipeBuilder(pCategory, SRBookCategory.SOUL_BLAST_FURNACE_MISC, pResult, pIngredient, pCookingTime, MultiBlockFurnaces.SOUL_BLASTING_RECIPE_SERIALIZER.get());
+        return new MultiItemSmeltingRecipeBuilder(pCategory, ITEBookCategory.SOUL_BLAST_FURNACE_MISC, pResult, pIngredient, pCookingTime, MultiBlockFurnaces.SOUL_BLASTING_RECIPE_SERIALIZER.get());
     }
 
     @Override
@@ -111,7 +111,7 @@ public class MultiItemSmeltingRecipeBuilder implements RecipeBuilder {
     static class Result implements FinishedRecipe {
         private final ResourceLocation id;
         private final String group;
-        private final SRBookCategory category;
+        private final ITEBookCategory category;
         private final NonNullList<Ingredient> ingredients;
         private final Item result;
         private final float experience;
@@ -123,7 +123,7 @@ public class MultiItemSmeltingRecipeBuilder implements RecipeBuilder {
         private final ResourceLocation advancementId;
         private final RecipeSerializer<? extends AbstractMultiItemSmeltingRecipe> serializer;
 
-        public Result(ResourceLocation pId, String pGroup, SRBookCategory pCategory, NonNullList<Ingredient> pIngredients, Item pResult, float pExperience, float outputIncrease, int pCookingTime, @Nullable AbstractMultiItemSmeltingRecipe.Recycle recycle, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId, RecipeSerializer<? extends AbstractMultiItemSmeltingRecipe> pSerializer) {
+        public Result(ResourceLocation pId, String pGroup, ITEBookCategory pCategory, NonNullList<Ingredient> pIngredients, Item pResult, float pExperience, float outputIncrease, int pCookingTime, @Nullable AbstractMultiItemSmeltingRecipe.Recycle recycle, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId, RecipeSerializer<? extends AbstractMultiItemSmeltingRecipe> pSerializer) {
             this.id = pId;
             this.group = pGroup;
             this.category = pCategory;
