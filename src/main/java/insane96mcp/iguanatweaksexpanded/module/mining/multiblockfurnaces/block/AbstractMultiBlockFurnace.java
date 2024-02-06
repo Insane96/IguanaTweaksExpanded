@@ -1,12 +1,13 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
-import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
-import net.minecraft.core.*;
-import net.minecraft.core.registries.BuiltInRegistries;
+import insane96mcp.iguanatweaksexpanded.network.message.SendMultiBlockFurnaceGhostData;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
@@ -32,10 +33,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
@@ -58,36 +57,7 @@ public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
                 this.openContainer(level, pos, player);
             else {
                 player.sendSystemMessage(Component.translatable(getInvalidStructureLang()));
-                if (MultiBlockFurnaces.GHOST_BLOCKS_DATA.stream().anyMatch(ghostBlocksData -> ghostBlocksData.furnacePos.equals(pos))) {
-                    return InteractionResult.CONSUME;
-                }
-                MultiBlockFurnaces.GhostBlocksData ghostBlocksData = new MultiBlockFurnaces.GhostBlocksData(pos);
-                Direction direction = state.getValue(FACING);
-                BlockPos midBlock = pos.relative(direction.getOpposite()).above();
-                BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-                for (Map.Entry<Vec3i, TagKey<Block>> entry : getRelativePosBlockTags().entrySet()) {
-                    mutableBlockPos.set(midBlock.offset(entry.getKey()));
-                    BlockState stateRelative = level.getBlockState(mutableBlockPos);
-                    Block block = stateRelative.getBlock();
-                    if (block.equals(this) || stateRelative.is(entry.getValue()))
-                        continue;
-                    Optional<HolderSet.Named<Block>> optionalBlocks = BuiltInRegistries.BLOCK.getTag(entry.getValue());
-                    List<Block> blocks = optionalBlocks
-                            .map(holderSet -> holderSet
-                                    .stream()
-                                    .filter(blockHolder -> blockHolder.value().isCollisionShapeFullBlock(blockHolder.value().defaultBlockState(), level, pos))
-                                    .map(Holder::value)
-                                    .toList()
-                            )
-                            .orElse(new ArrayList<>());
-                    if (blocks.isEmpty()) {
-                        LogHelper.warn("%s has no blocks".formatted(entry.getValue().toString()));
-                        continue;
-                    }
-                    BlockState stateNeeded = blocks.get(level.random.nextInt(blocks.size())).defaultBlockState;
-                    ghostBlocksData.posAndStates.put(mutableBlockPos.immutable(), stateNeeded);
-                }
-                MultiBlockFurnaces.GHOST_BLOCKS_DATA.add(ghostBlocksData);
+                SendMultiBlockFurnaceGhostData.sync((ServerPlayer) player, pos);
             }
             return InteractionResult.CONSUME;
         }

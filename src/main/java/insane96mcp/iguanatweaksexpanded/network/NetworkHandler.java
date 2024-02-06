@@ -24,5 +24,6 @@ public class NetworkHandler {
 		CHANNEL.registerMessage(++index, SyncITEEnchantingTableStatus.class, SyncITEEnchantingTableStatus::encode, SyncITEEnchantingTableStatus::decode, SyncITEEnchantingTableStatus::handle);
 		CHANNEL.registerMessage(++index, SyncITEEnchantingTableUnlockedEnchantments.class, SyncITEEnchantingTableUnlockedEnchantments::encode, SyncITEEnchantingTableUnlockedEnchantments::decode, SyncITEEnchantingTableUnlockedEnchantments::handle);
 		CHANNEL.registerMessage(++index, SyncITEEnchantingTableEnchantments.class, SyncITEEnchantingTableEnchantments::encode, SyncITEEnchantingTableEnchantments::decode, SyncITEEnchantingTableEnchantments::handle);
+		CHANNEL.registerMessage(++index, SendMultiBlockFurnaceGhostData.class, SendMultiBlockFurnaceGhostData::encode, SendMultiBlockFurnaceGhostData::decode, SendMultiBlockFurnaceGhostData::handle);
 	}
 }

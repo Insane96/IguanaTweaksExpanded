@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.world.oregeneration;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
+import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
@@ -37,7 +37,7 @@ public class OreGeneration extends Feature {
 
     public OreGeneration(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "poor_rich_natural_generation", Component.literal("IguanaTweaks Expanded Poor and Rich Ore Generation"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && poorRichOreGenerationDataPack));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "poor_rich_natural_generation", Component.literal("IguanaTweaks Expanded Poor and Rich Ore Generation"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && poorRichOreGenerationDataPack));
     }
 
     public record PoorRichOre(SimpleBlockWithItem poorOre, SimpleBlockWithItem poorDeepslateOre, SimpleBlockWithItem richOre, SimpleBlockWithItem richDeepslateOre) {

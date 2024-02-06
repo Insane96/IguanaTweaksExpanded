@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.combat;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
+import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -20,6 +20,6 @@ public class ShieldsPlus extends Feature {
 
 	public ShieldsPlus(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "shields", Component.literal("IguanaTweaks Expanded Shields"), () -> super.isEnabled() && !SRDataPacks.disableAllDataPacks && shieldsPlusCompatDataPack));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "shields", Component.literal("IguanaTweaks Expanded Shields"), () -> super.isEnabled() && !ITEDataPacks.disableAllDataPacks && shieldsPlusCompatDataPack));
 	}
 }

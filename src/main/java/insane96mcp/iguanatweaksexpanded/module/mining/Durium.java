@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.item.SRArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
+import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
@@ -78,6 +78,6 @@ Durium extends Feature {
 
 	public Durium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "durium_lodestone", Component.literal("IguanaTweaks Expanded Durium Lodestone"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && duriumLodestone));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "durium_lodestone", Component.literal("IguanaTweaks Expanded Durium Lodestone"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && duriumLodestone));
 	}
 }

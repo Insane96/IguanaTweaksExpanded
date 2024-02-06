@@ -10,7 +10,7 @@ import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectil
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.TorchArrow;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.inventory.FletchingMenu;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.ITEArrowItem;
-import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
+import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
@@ -88,6 +88,6 @@ public class Fletching extends Feature {
 
 	public Fletching(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "fletching", Component.literal("IguanaTweaks Expanded Fletching"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && dataPack));
+		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "fletching", Component.literal("IguanaTweaks Expanded Fletching"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && dataPack));
 	}
 }

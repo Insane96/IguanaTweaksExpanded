@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.mobs;
 
 import insane96mcp.enhancedai.modules.mobs.targeting.Targeting;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.misc.SRDataPacks;
+import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -23,7 +23,7 @@ public class StatsBuffs extends Feature {
 
     public StatsBuffs(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "mobs_buffs", Component.literal("IguanaTweaks Expanded Mobs Stats Buffs"), () -> this.isEnabled() && !SRDataPacks.disableAllDataPacks && enableDataPack));
+        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "mobs_buffs", Component.literal("IguanaTweaks Expanded Mobs Stats Buffs"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && enableDataPack));
     }
 
     @Override
