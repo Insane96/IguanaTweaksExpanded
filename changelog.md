@@ -1,10 +1,11 @@
 # Changelog
 
-## Upcoming
+## 1.1.3
 * Reduced mobs attack reach by ~15%
 * Respawn obelisks now have a higher chance to have iron blocks
 * Fixed Blast furnace ghost block not working on servers
 * Fixed item_stats data pack not loaded properly
+* Fixed compatiblity with Paxi
 
 ## 1.1.2
 * Blast furnaces now show ghost blocks on how to build them
