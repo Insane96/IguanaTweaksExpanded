@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Expanded is now compatible with Pickaxes and shovels
+* Respawn obelisks now have a slightly lower chance to have iron blocks
 
 ## 1.1.3
 * Reduced mobs attack reach by ~15%

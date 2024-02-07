@@ -16,7 +16,7 @@
                         },
                         {
                             "processor_type": "minecraft:block_rot",
-                            "integrity": 0.5,
+                            "integrity": 0.4,
                             "rottable_blocks": "minecraft:iron_block"
                         }
                     ]
