@@ -208,6 +208,7 @@
 	"iguanatweaksexpanded.requires_catalyst": "Can't activate. The Obelisk requires at least one catalyst block",
 	"iguanatweaksexpanded.obelisk_disabled": "Respawn Obelisk disabled because there are no catalysts left. Your respawn point has been reset",
 	"iguanatweaksexpanded.fail_respawn_obelisk": "You couldn't respawn at the obelisk because it was disabled.",
+	"iguanatweaksexpanded.set_old_respawn": "Your old respawn point has been set.",
 	"block.iguanatweaksexpanded.respawn_obelisk": "Respawn Obelisk",
 
 	"item.iguanatweaksexpanded.cloth": "Cloth",

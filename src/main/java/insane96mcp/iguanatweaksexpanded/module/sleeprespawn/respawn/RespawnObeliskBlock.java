@@ -81,17 +81,7 @@ public class RespawnObeliskBlock extends Block {
         else if (state.getValue(ENABLED) && !level.isClientSide) {
             ServerPlayer serverPlayer = (ServerPlayer)player;
             if (serverPlayer.getRespawnDimension() != level.dimension() || !pos.equals(serverPlayer.getRespawnPosition())) {
-                if (serverPlayer.getRespawnPosition() != null) {
-                    CompoundTag tag = MCUtils.getOrCreatePersistedData(player);
-                    tag.putInt("OldSpawnX", serverPlayer.getRespawnPosition().getX());
-                    tag.putInt("OldSpawnY", serverPlayer.getRespawnPosition().getY());
-                    tag.putInt("OldSpawnZ", serverPlayer.getRespawnPosition().getZ());
-                    tag.putBoolean("OldSpawnForced", serverPlayer.isRespawnForced());
-                    tag.putFloat("OldSpawnAngle", serverPlayer.getRespawnAngle());
-                    ResourceLocation.CODEC.encodeStart(NbtOps.INSTANCE, serverPlayer.getRespawnDimension().location())
-                            .resultOrPartial(LogHelper::error)
-                            .ifPresent((t) -> tag.put("OldSpawnDimension", t));
-                }
+                trySaveOldSpawn(serverPlayer);
                 serverPlayer.setRespawnPosition(level.dimension(), pos, 0.0F, false, true);
                 level.playSound(null, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
                 ITETriggers.ACTIVATE_RESPAWN_OBELISK.trigger(serverPlayer);
@@ -163,6 +153,21 @@ public class RespawnObeliskBlock extends Block {
                 }
             }
         }
+    }
+
+    public static void trySaveOldSpawn(ServerPlayer player) {
+        if (player.getRespawnPosition() == null)
+            return;
+
+        CompoundTag tag = MCUtils.getOrCreatePersistedData(player);
+        tag.putInt("OldSpawnX", player.getRespawnPosition().getX());
+        tag.putInt("OldSpawnY", player.getRespawnPosition().getY());
+        tag.putInt("OldSpawnZ", player.getRespawnPosition().getZ());
+        tag.putBoolean("OldSpawnForced", player.isRespawnForced());
+        tag.putFloat("OldSpawnAngle", player.getRespawnAngle());
+        ResourceLocation.CODEC.encodeStart(NbtOps.INSTANCE, player.getRespawnDimension().location())
+                .resultOrPartial(LogHelper::error)
+                .ifPresent((t) -> tag.put("OldSpawnDimension", t));
     }
 
     public static boolean trySetOldSpawn(ServerPlayer player) {
