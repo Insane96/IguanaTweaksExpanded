@@ -29,6 +29,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.enchantment.DiggingEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -51,9 +52,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Expanded extends Enchantment implements IEnchantmentTooltip {
-    static EnchantmentCategory PICKAXE = EnchantmentCategory.create("pickaxe", item -> item instanceof PickaxeItem);
+    static EnchantmentCategory PICKAXE_AND_SHOVELS = EnchantmentCategory.create("pickaxe", item -> item instanceof PickaxeItem || item instanceof ShovelItem);
     public Expanded() {
-        super(Rarity.RARE, PICKAXE, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, PICKAXE_AND_SHOVELS, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
