@@ -3,6 +3,8 @@
 * RIP fertility on server
 
 ## Upcoming
+* Added support for the Time Control mod
+  * If the mod is installed, the day and night durations change based off the current season
 * Expanded is now compatible with Pickaxes and shovels
 * Respawn obelisks now have a slightly lower chance to have iron blocks
 * You can now change your old respawn point when you have a respawn obelisk set
