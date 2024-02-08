@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Shields recipes are now consistent with other tools
+* Crate slowdown is now exponential (15% per crate above max -> 5%/20%/45%/80% for 1/2/3/4 crates above max)
 
 ## 1.1.4
 * Added support for the Time Control mod

@@ -36,12 +36,12 @@ public class Crate extends Feature {
 	public static final RegistryObject<BlockEntityType<?>> BLOCK_ENTITY_TYPE = ITERegistries.BLOCK_ENTITY_TYPES.register("crate", () -> BlockEntityType.Builder.of(CrateBlockEntity::new, BLOCK.get()).build(null));
 
 	@Config(min = 0)
-	@Label(name = "Slowness with this or more crates")
-	public static Integer slownessAtCrates = 2;
+	@Label(name = "Max crates without slowdown")
+	public static Integer maxCratesWithoutSlowdown = 1;
 
 	@Config(min = 0d, max = 1d)
-	@Label(name = "Slowness per crate > 'Slowness with this or more crates'")
-	public static Double slownessPerCrate = 0.15d;
+	@Label(name = "Base Slowness per crate over max", description = "When you have > 'Max crates without slowdown' this is the base value for the slowdown. The slowdown is calculated as (crates above 'Max crates' * this * crates above 'Max crates')")
+	public static Double slownessPerCrate = 0.05d;
 
 	public Crate(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
@@ -56,8 +56,8 @@ public class Crate extends Feature {
 
 		int cratesInInventory = ContainerHelper.clearOrCountMatchingItems(event.player.getInventory(), stack -> stack.is(ITEM.get()), 0, true);
 		event.player.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(CRATE_WEIGHT_UUID);
-		if (cratesInInventory >= slownessAtCrates) {
-			double slowness = (cratesInInventory - (slownessAtCrates - 1)) * slownessPerCrate;
+		if (cratesInInventory > maxCratesWithoutSlowdown) {
+			double slowness = ((cratesInInventory - maxCratesWithoutSlowdown) * slownessPerCrate) * Math.max(1, cratesInInventory - maxCratesWithoutSlowdown);
 			MCUtils.applyModifier(event.player, Attributes.MOVEMENT_SPEED, CRATE_WEIGHT_UUID, "Crate weight penalty", -slowness, AttributeModifier.Operation.MULTIPLY_BASE, false);
 			if (event.player.tickCount % 20 == 4 && event.player instanceof ServerPlayer serverPlayer)
 				ITETriggers.OVERWEIGHT_CREATE_CARRY.trigger(serverPlayer);

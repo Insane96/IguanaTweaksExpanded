@@ -4,10 +4,10 @@
 			"item": "shieldsplus:wooden_shield"
 		},
 		"title": {
-			"translate": "advancements.sr_story.wooden_shield.title"
+			"translate": "advancements.sr_story.early_shield.title"
 		},
 		"description": {
-			"translate": "advancements.sr_story.wooden_shield.description"
+			"translate": "advancements.sr_story.early_shield.description"
 		},
 		"frame": "task",
 		"show_toast": true,
@@ -22,7 +22,10 @@
 				"items": [
 					{
 						"items": [
-							"shieldsplus:wooden_shield"
+							"shieldsplus:wooden_shield",
+							"shieldsplus:stone_shield",
+							"iguanatweaksexpanded:flint_shield",
+							"iguanatweaksexpanded:copper_shield"
 						]
 					}
 				]

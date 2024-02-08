@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.crate;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -171,6 +170,6 @@ public class CrateBlock extends BaseEntityBlock {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, blockGetter, components, tooltipFlag);
-        components.add(Component.translatable(WEIGHTED_LANG, Crate.slownessAtCrates).withStyle(ChatFormatting.RED));
+        //components.add(Component.translatable(WEIGHTED_LANG, Crate.slownessAtCrates).withStyle(ChatFormatting.RED));
     }
 }
