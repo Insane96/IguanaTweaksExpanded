@@ -1,11 +1,13 @@
 package insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile;
 
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -81,5 +83,10 @@ public class ExplosiveArrow extends Arrow {
                 this.discard();
             }
         }
+    }
+
+    @Override
+    protected ItemStack getPickupItem() {
+        return new ItemStack(Fletching.EXPLOSIVE_ARROW_ITEM.get());
     }
 }
