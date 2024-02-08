@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.mixin;
 
-import insane96mcp.iguanatweaksexpanded.module.world.Seasons;
+import insane96mcp.iguanatweaksexpanded.module.world.seasons.Seasons;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.entity.projectile.Projectile;

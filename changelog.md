@@ -1,5 +1,7 @@
 # Changelog
 
+* RIP fertility on server
+
 ## Upcoming
 * Expanded is now compatible with Pickaxes and shovels
 * Respawn obelisks now have a slightly lower chance to have iron blocks

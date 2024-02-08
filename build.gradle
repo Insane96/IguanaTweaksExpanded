@@ -119,6 +119,8 @@ dependencies {
     runtimeOnly fg.deobf("dev.gigaherz.sewingkit:SewingKit-1.20:1.8.0")
     runtimeOnly fg.deobf("net.darkhax.maxhealthfix:MaxHealthFix-Forge-${mc_version}:${max_health_fix_version}")
 
+    implementation fg.deobf("curse.maven:time-control-303570:4612856")
+
     //runtimeOnly fg.deobf("curse.maven:corail-woodcutter-331983:4685515")
 
     //implementation fg.deobf("curse.maven:puzzles-lib-495476:4660882")

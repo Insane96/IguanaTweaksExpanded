@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.world;
+package insane96mcp.iguanatweaksexpanded.module.world.seasons;
 
 import com.google.common.collect.Lists;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
@@ -34,8 +34,10 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import sereneseasons.api.season.Season;
+import sereneseasons.api.season.SeasonChangedEvent;
 import sereneseasons.api.season.SeasonHelper;
 import sereneseasons.config.FertilityConfig;
 import sereneseasons.config.ServerConfig;
@@ -90,6 +92,15 @@ public class Seasons extends Feature {
 		if (changeSereneSeasonsConfig) {
 			FertilityConfig.seasonalCrops.set(false);
 		}
+	}
+
+	@SubscribeEvent
+	public void onSeasonChanged(SeasonChangedEvent.Standard event) {
+		if (!this.isEnabled())
+			return;
+
+		if (ModList.get().isLoaded("timecontrol"))
+			TimeControlIntegration.updateDayNightLength(event.getNewSeason());
 	}
 
 	@SubscribeEvent
