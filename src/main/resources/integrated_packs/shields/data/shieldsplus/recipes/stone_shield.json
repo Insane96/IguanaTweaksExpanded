@@ -7,13 +7,13 @@
     ],
     "key": {
         "S": {
-            "item": "minecraft:copper_ingot"
+            "tag": "minecraft:stone_tool_materials"
         },
         "L": {
             "tag": "minecraft:logs"
         }
     },
     "result": {
-        "item": "iguanatweaksexpanded:copper_shield"
+        "item": "shieldsplus:stone_shield"
     }
 }
