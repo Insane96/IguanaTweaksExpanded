@@ -1,9 +1,6 @@
 # Changelog
 
-* RIP fertility on server
-* pICKup arrows broken
-
-## Upcoming
+## 1.1.4
 * Added support for the Time Control mod
   * If the mod is installed, the day and night durations change based off the current season
 * Expanded is now compatible with Pickaxes and shovels
