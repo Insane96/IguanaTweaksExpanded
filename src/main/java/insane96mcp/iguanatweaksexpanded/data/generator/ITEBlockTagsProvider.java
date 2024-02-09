@@ -7,6 +7,7 @@ import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
+import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
@@ -65,6 +66,7 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(MultiBlockFurnaces.BLAST_FURNACE.block().get(), MultiBlockFurnaces.SOUL_BLAST_FURNACE.block().get())
                 .add(Forging.FORGE.block().get())
                 .add(FlintExpansion.FLINT_ROCK.block().get())
+                .add(Quaron.BLOCK.block().get())
                 .add(EnchantingFeature.ENCHANTING_TABLE.block().get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
@@ -77,6 +79,7 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(OreGeneration.POOR_RICH_GOLD_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get())
                 .add(Durium.BLOCK.block().get(), Durium.ORE.block().get(), Durium.DEEPSLATE_ORE.block().get(), Durium.SCRAP_BLOCK.block().get())
                 .add(SoulSteel.BLOCK.block().get())
+                .add(Quaron.BLOCK.block().get())
                 .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
 
         tag(BlockTags.RAILS)
@@ -90,7 +93,7 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(OreGeneration.POOR_RICH_COPPER_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get());
 
         tag(BlockTags.BEACON_BASE_BLOCKS)
-                .add(Durium.BLOCK.block().get(), SoulSteel.BLOCK.block().get(), Keego.BLOCK.block().get());
+                .add(Durium.BLOCK.block().get(), SoulSteel.BLOCK.block().get(), Quaron.BLOCK.block().get(), Keego.BLOCK.block().get());
 
         tag(BlockTags.REPLACEABLE_BY_TREES)
                 .add(OreGeneration.COPPER_ORE_ROCK.block().get(), OreGeneration.IRON_ORE_ROCK.block().get(), OreGeneration.GOLD_ORE_ROCK.block().get())

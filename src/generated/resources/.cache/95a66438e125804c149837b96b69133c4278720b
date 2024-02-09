@@ -1,13 +1,13 @@
-// 1.20.1	2024-02-06T11:06:05.372681	Tags for minecraft:item mod id iguanatweaksexpanded
+// 1.20.1	2024-02-09T15:57:37.3197974	Tags for minecraft:item mod id iguanatweaksexpanded
 c287ff9f610cf96255ae85a1de0c8e3e43f6be3f data/iguanatweaksexpanded/tags/items/equipment/forge_hammers.json
 bd5368f498398ba2a85f9f4bb0e693de89185150 data/iguanatweaksexpanded/tags/items/not_enchantable.json
 2f3ab07aa0f1e5f60a535e8f911e8bcac89d717e data/iguanatweaksreborn/tags/items/enchantments/accepts_damage_enchantments.json
 1a396da56d6e9aa472f347fc5ca99f051f0ed411 data/iguanatweaksreborn/tags/items/not_unbreakable.json
 be067471b4fffc6fa4756e4c14194bdaf9edf18f data/minecraft/tags/items/arrows.json
-c6a016aab11c7b7295455bf6089600ba1a420ebf data/minecraft/tags/items/axes.json
-ac9781b8184296583748478f23ecd7540fa446db data/minecraft/tags/items/beacon_payment_items.json
-bc3274edc71a5db9c423f57a5356ed4bd021931b data/minecraft/tags/items/hoes.json
-aa8952f4c58e13df0bc140104878be6a6aea86a0 data/minecraft/tags/items/pickaxes.json
-9a00dfe2f18bc00275adecad37e54e185c6dbaeb data/minecraft/tags/items/shovels.json
-5c63988dec6fadf0004d2674fa8a6559bd9e304d data/minecraft/tags/items/swords.json
-dbb35700a1b104df1f308ec4797ad529b1220978 data/minecraft/tags/items/trimmable_armor.json
+27d563bbcdc90f5500e2c6720688a43cabb22d31 data/minecraft/tags/items/axes.json
+0be5822b4d3e0a80e06644610da205523d98ee0c data/minecraft/tags/items/beacon_payment_items.json
+29b9b1c1b9c277d483ebdcb686ab06765d2a45c1 data/minecraft/tags/items/hoes.json
+e06d4433a4149b138f56b440439b615a259558ec data/minecraft/tags/items/pickaxes.json
+1f44318db72818361469b8f6595191306ee2b90a data/minecraft/tags/items/shovels.json
+7d4afe1c6062e1d8e1a7baf7b792b0c095df2260 data/minecraft/tags/items/swords.json
+728862f2a3fdfa5755f098a432b0ff1f9885146f data/minecraft/tags/items/trimmable_armor.json
