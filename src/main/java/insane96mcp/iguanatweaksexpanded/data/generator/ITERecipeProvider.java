@@ -237,7 +237,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('n', Durium.NUGGET.get())
                 .define('i', Items.IRON_INGOT)
                 .define('b', Items.BARREL)
-                .unlockedBy("has_durium_nugget", has(Durium.NUGGET.get()))
+                .unlockedBy("has_durium", has(Durium.INGOT.get()))
                 .unlockedBy("has_barrel", has(Items.BARREL))
                 .save(writer);
 
