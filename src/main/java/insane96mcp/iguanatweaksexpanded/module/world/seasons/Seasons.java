@@ -75,6 +75,10 @@ public class Seasons extends Feature {
 			""")
 	public static Boolean changeSereneSeasonsConfig = true;
 
+	@Config(min = 0, max = 3d)
+	@Label(name = "Time Control day night shift", description = "How many minutes will day and night duration be shifted based off seasons? E.g. in Mid spring / autumn the duration of day and night is vanilla, when moving off those seasons day and night will last this many minutes more/less. In mid summer / winter the duration of day and night duration will be more / less by 3 times this value.")
+	public static Double timeControlDayNightShift = 1d;
+
 	@Config
 	@Label(name = "Season based fishing time")
 	public static Boolean seasonBasedFishingTime = true;
@@ -89,9 +93,8 @@ public class Seasons extends Feature {
 	public void readConfig(ModConfigEvent event) {
 		super.readConfig(event);
 
-		if (changeSereneSeasonsConfig) {
+		if (changeSereneSeasonsConfig)
 			FertilityConfig.seasonalCrops.set(false);
-		}
 	}
 
 	@SubscribeEvent

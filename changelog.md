@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.6
+* Now works with Time control 1.6.0
+  * Also added config to change how much time day and night last when changing seasons
+
 ## 1.1.5
 * Shields recipes are now consistent with other tools
 * Crate slowdown is now exponential (15% per crate above max -> 5%/20%/45%/80% for 1/2/3/4 crates above max)
