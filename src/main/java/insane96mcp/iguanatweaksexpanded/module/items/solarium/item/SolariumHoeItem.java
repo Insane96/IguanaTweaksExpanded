@@ -28,6 +28,6 @@ public class SolariumHoeItem extends HoeItem implements IHoeCooldownModifier {
 		float calculatedSkyLightRatio = Solarium.getCalculatedSkyLightRatio(player);
 		if (calculatedSkyLightRatio <= 0f)
 			return baseCooldown;
-		return (int) (baseCooldown - (10 * calculatedSkyLightRatio));
+		return (int) (baseCooldown - (7 * calculatedSkyLightRatio));
 	}
 }

@@ -33,6 +33,6 @@ public class KeegoHoeItem extends HoeItem implements IHoeCooldownModifier {
         if (!player.hasEffect(Keego.ATTACK_MOMENTUM.get()))
             return baseCooldown;
 
-        return baseCooldown - (player.getEffect(Keego.ATTACK_MOMENTUM.get()).getAmplifier() + 1);
+        return (int) (baseCooldown - ((player.getEffect(Keego.ATTACK_MOMENTUM.get()).getAmplifier() + 1) * 0.66667f));
     }
 }
