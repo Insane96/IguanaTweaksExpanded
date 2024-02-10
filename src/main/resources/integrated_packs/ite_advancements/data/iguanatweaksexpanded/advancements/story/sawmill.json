@@ -5,19 +5,19 @@
 			"conditions": [
 				{
 					"type": "forge:mod_loaded",
-					"modid": "corail_woodcutter"
+					"modid": "sawmill"
 				}
 			],
 			"advancement": {
 				"display": {
 					"icon": {
-						"item": "corail_woodcutter:oak_woodcutter"
+						"item": "sawmill:sawmill"
 					},
 					"title": {
-						"translate": "advancements.sr_story.woodcutter.title"
+						"translate": "advancements.sr_story.sawmill.title"
 					},
 					"description": {
-						"translate": "advancements.sr_story.woodcutter.description"
+						"translate": "advancements.sr_story.sawmill.description"
 					},
 					"frame": "task",
 					"show_toast": true,
@@ -26,12 +26,12 @@
 				},
 				"parent": "iguanatweaksexpanded:story/furnace",
 				"criteria": {
-					"woodcutter": {
+					"sawmill": {
 						"trigger": "minecraft:inventory_changed",
 						"conditions": {
 							"items": [
 								{
-									"tag": "corail_woodcutter:woodcutters"
+									"tag": "sawmill:sawmill"
 								}
 							]
 						}
@@ -39,7 +39,7 @@
 				},
 				"requirements": [
 					[
-						"woodcutter"
+						"sawmill"
 					]
 				]
 			}

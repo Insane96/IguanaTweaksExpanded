@@ -102,9 +102,9 @@ license="All rights reserved"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
-    modId="corail_woodcutter"
+    modId="sawmill"
     mandatory=false
-    versionRange="[2.7.0,)"
+    versionRange="[1.2.6,)"
     ordering="NONE"
     side="BOTH"
 
