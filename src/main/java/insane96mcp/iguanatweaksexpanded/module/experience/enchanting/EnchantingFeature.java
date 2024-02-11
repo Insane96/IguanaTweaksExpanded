@@ -86,7 +86,7 @@ public class EnchantingFeature extends JsonFeature {
 
     @Override
     public String getModConfigFolder() {
-        return IguanaTweaksExpanded.CONFIG_FOLDER;
+        return IguanaTweaksReborn.CONFIG_FOLDER;
     }
 
     @SubscribeEvent

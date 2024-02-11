@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Mobs from spawners now have reduced buffs
+* Wolves and Trader llamas are now 10% slower
 
 ## 1.1.7
 * Witches and endermen are now 10% slower

@@ -55,8 +55,6 @@ public class IguanaTweaksExpanded
 	public static final String RESOURCE_PREFIX = MOD_ID + ":";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public static final String CONFIG_FOLDER = IguanaTweaksReborn.CONFIG_FOLDER;
-
     public static DecimalFormat ONE_DECIMAL_FORMATTER;
     public static final RecipeBookType MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "multi_item_blasting");
     public static final RecipeBookType MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "multi_item_soul_blasting");

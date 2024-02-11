@@ -1,5 +1,5 @@
 {
-    "target": "minecraft:witch",
+    "target": "#iguanatweaksexpanded:speed_nerf",
     "attributes": [
         {
             "id": "minecraft:generic.movement_speed",

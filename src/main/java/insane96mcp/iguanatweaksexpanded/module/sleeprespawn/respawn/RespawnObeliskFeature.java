@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
+import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.insanelib.base.JsonFeature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -47,7 +48,7 @@ public class RespawnObeliskFeature extends JsonFeature {
 
 	@Override
 	public String getModConfigFolder() {
-		return IguanaTweaksExpanded.CONFIG_FOLDER;
+		return IguanaTweaksReborn.CONFIG_FOLDER;
 	}
 
 	@Override
