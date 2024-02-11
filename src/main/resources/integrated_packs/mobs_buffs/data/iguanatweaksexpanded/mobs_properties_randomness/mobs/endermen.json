@@ -1,0 +1,11 @@
+{
+    "target": "minecraft:enderman",
+    "attributes": [
+        {
+            "id": "minecraft:generic.movement_speed",
+            "modifier_name": "Slowdown enderman",
+            "amount": -0.1,
+            "operation": "multiply_base"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "target": "minecraft:witch",
+    "attributes": [
+        {
+            "id": "minecraft:generic.movement_speed",
+            "modifier_name": "Slowdown witches",
+            "amount": -0.1,
+            "operation": "multiply_base"
+        }
+    ]
+}

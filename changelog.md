@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Withches and endermen are now 10% slower 
+
 ## 1.1.6
 * Now works with Time control 1.6.0
   * Also added config to change how much time day and night last when changing seasons
