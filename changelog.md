@@ -1,7 +1,7 @@
 # Changelog
 
-## Upcoming
-* Withches and endermen are now 10% slower
+## 1.1.7
+* Witches and endermen are now 10% slower
 * Keego Movement momentum now gives 5% bonus speed per level instead of 10%
 * Rebalanced armor (or regen. absorption) like in the base mod
 
