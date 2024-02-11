@@ -3,6 +3,7 @@
 ## Upcoming
 * Withches and endermen are now 10% slower
 * Keego Movement momentum now gives 5% bonus speed per level instead of 10%
+* Rebalanced armor (or regen. absorption) like in the base mod
 
 ## 1.1.6
 * Now works with Time control 1.6.0

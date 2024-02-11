@@ -1,14 +1,14 @@
 {
 	"item": "iguanatweaksexpanded:quaron_leggings",
 	"durability": 285,
-	"armor": 4,
+	"armor": 3.6,
 	"modifiers": [
 		{
 			"uuid": "1277bad1-246f-4f3b-932c-d944839a164e",
 			"name": "Armor slowdown",
 			"slot": "legs",
 			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.024,
+			"amount": -0.03,
 			"operation": "multiply_base"
 		}
 	]

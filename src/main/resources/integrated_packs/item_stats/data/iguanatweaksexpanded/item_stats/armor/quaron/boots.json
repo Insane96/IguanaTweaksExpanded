@@ -1,14 +1,14 @@
 {
 	"item": "iguanatweaksexpanded:quaron_boots",
 	"durability": 228,
-	"armor": 1,
+	"armor": 1.8,
 	"modifiers": [
 		{
 			"uuid": "4b8573c6-bd4b-4560-a411-04b78ae950ce",
 			"name": "Armor slowdown",
 			"slot": "feet",
 			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.012,
+			"amount": -0.015,
 			"operation": "multiply_base"
 		}
 	]
