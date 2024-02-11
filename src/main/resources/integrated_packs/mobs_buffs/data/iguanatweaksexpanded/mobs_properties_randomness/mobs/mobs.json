@@ -12,6 +12,13 @@
                     "operation": "multiply",
                     "easy": 0.5,
                     "hard": 1.5
+                },
+                "condition_modifier": {
+                    "operation": "multiply",
+                    "condition": {
+                        "spawner_behaviour": "spawner_only"
+                    },
+                    "amount": 0.333
                 }
             },
             "operation": "addition"

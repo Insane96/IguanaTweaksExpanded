@@ -1,7 +1,7 @@
 # Changelog
 
 ## Upcoming
-* Spawners now have a much lower chance to spawn a zombie miner
+* Mobs from spawners now have reduced buffs
 
 ## 1.1.7
 * Witches and endermen are now 10% slower
