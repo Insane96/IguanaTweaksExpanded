@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Spawners now have a much lower chance to spawn a zombie miner
+
 ## 1.1.7
 * Witches and endermen are now 10% slower
 * Keego Movement momentum now gives 5% bonus speed per level instead of 10%
