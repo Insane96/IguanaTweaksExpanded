@@ -2,6 +2,8 @@
 
 ## Upcoming
 * Changed Quaron bonus speed on wrong blocks (+1 -> +0.5 + 0.2/efficiency level)
+* Copper tools can no longer mine ores (like wooden tools)
+  * But have increased efficiency
 * Mobs from spawners now have reduced buffs
 * Wolves and Trader llamas are now 10% slower
 

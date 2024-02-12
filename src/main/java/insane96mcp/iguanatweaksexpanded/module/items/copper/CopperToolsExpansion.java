@@ -53,7 +53,7 @@ public class CopperToolsExpansion extends Feature {
 	public static final TagKey<Item> COPPER_TOOLS_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/tools/copper"));
 	public static final TagKey<Item> COATED_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/coated_copper"));
 
-	public static final ILItemTier COPPER_ITEM_TIER = new ILItemTier(1, 65, 8f, 1.0f, 9, () -> Ingredient.of(Items.COPPER_INGOT));
+	public static final ILItemTier COPPER_ITEM_TIER = new ILItemTier(0, 65, 8f, 1.0f, 9, () -> Ingredient.of(Items.COPPER_INGOT));
 
 	public static final RegistryObject<Item> COPPER_SWORD = ITERegistries.ITEMS.register("copper_sword", () -> new SwordItem(COPPER_ITEM_TIER, 3, -2.4F, new Item.Properties()));
 	public static final RegistryObject<Item> COPPER_SHOVEL = ITERegistries.ITEMS.register("copper_shovel", () -> new ShovelItem(COPPER_ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
@@ -111,7 +111,7 @@ public class CopperToolsExpansion extends Feature {
 		if (y > 64)
 			return;
 		for (int i = 0; i < amount; i++) {
-			//5% "more durability" per block below sea level (+480% at y=0 and +800% at y=-54)
+			//6% "more durability" per block below sea level (+480% at y=0 and +800% at y=-54)
 			if (event.getRandom().nextFloat() >= 1 - 1 / (1 + (64 - y) * 0.06))
 				++newAmount;
 		}
