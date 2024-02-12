@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.1.8
 * Changed Quaron bonus speed on wrong blocks (+1 -> +0.5 + 0.2/efficiency level)
 * Copper tools can no longer mine ores (like wooden tools)
   * But have increased efficiency
