@@ -5,6 +5,7 @@ import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -19,6 +20,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -76,9 +78,8 @@ public class Quaron extends Feature {
 				|| event.getState().requiresCorrectToolForDrops())
 			return;
 
-		//int effLevel = event.getEntity().getMainHandItem().getEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY);
-		//float bonus = EnchantmentsFeature.applyMiningSpeedModifiers(0.5f * (1f + effLevel * 0.5f), false, event.getEntity());
-		float bonus = 1f;
+		int effLevel = event.getEntity().getMainHandItem().getEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY);
+		float bonus = EnchantmentsFeature.applyMiningSpeedModifiers(1f + (effLevel * 0.2f), false, event.getEntity());
 		event.setNewSpeed(event.getOriginalSpeed() + bonus);
 	}
 }
