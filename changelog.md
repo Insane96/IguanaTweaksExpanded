@@ -6,6 +6,7 @@
   * But have increased efficiency
 * Mobs from spawners now have reduced buffs
 * Wolves and Trader llamas are now 10% slower
+* Fixed applying cleansed and ancient lapis twice
 
 ## 1.1.7
 * Witches and endermen are now 10% slower

@@ -1,7 +1,11 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IEnchantmentTooltip;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DiggerItem;
@@ -12,7 +16,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class Blasting extends Enchantment {
+public class Blasting extends Enchantment implements IEnchantmentTooltip {
     static final EnchantmentCategory PICKAXES = EnchantmentCategory.create("pickaxes", item -> item instanceof PickaxeItem);
 
     public Blasting() {
@@ -42,13 +46,20 @@ public class Blasting extends Enchantment {
         ItemStack heldStack = entity.getMainHandItem();
         if (!heldStack.isCorrectToolForDrops(state))
             return 0f;
-        int level = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.BLASTING.get());
-        if (level == 0)
+        int lvl = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.BLASTING.get());
+        if (lvl == 0)
             return 0f;
         if (!(heldStack.getItem() instanceof DiggerItem diggerItem))
             return 0f;
 
-        float miningSpeedBoost = (float) (level * Math.min(10f, Math.pow(3d, (6f - state.getBlock().getExplosionResistance()) / 1.5f))) / 6f * diggerItem.speed;
+        float miningSpeedBoost = (float) (lvl * Math.min(10f, Math.pow(3d, (6f - state.getBlock().getExplosionResistance()) / 1.5f))) / 6f * diggerItem.speed;
         return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, false, entity);
+    }
+
+    @Override
+    public Component getTooltip(ItemStack stack, int lvl) {
+        if (!(stack.getItem() instanceof DiggerItem diggerItem))
+            return Component.empty();
+        return Component.translatable(this.getDescriptionId() + ".tooltip", IguanaTweaksReborn.ONE_DECIMAL_FORMATTER.format(lvl * 10f / 6f * diggerItem.speed)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

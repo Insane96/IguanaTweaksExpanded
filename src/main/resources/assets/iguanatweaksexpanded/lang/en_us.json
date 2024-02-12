@@ -15,6 +15,7 @@
 	"enchantment.iguanatweaksexpanded.veining": "Veining",
 	"enchantment.iguanatweaksexpanded.veining.tooltip": "Mine multiple blocks, up to %d",
 	"enchantment.iguanatweaksexpanded.blasting": "Blasting",
+	"enchantment.iguanatweaksexpanded.blasting.tooltip": "+%s Blasting Speed",
 	"enchantment.iguanatweaksexpanded.step_up": "Step Up",
 	"enchantment.iguanatweaksexpanded.water_coolant": "Water Coolant",
 	"enchantment.iguanatweaksexpanded.water_coolant.tooltip": "+%s Damage to Nether and Water Sensitive Creatures",

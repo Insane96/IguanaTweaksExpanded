@@ -119,7 +119,7 @@ public class EnchantingFeature extends JsonFeature {
 
     public void cleansedLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.isEnchantable() || left.isEnchanted())
+        if (!left.isEnchantable() || left.getTag() == null || left.getTag().contains(EnchantingFeature.INFUSED_ITEM))
             return;
 
         ItemStack right = event.getRight().copy();
@@ -134,7 +134,7 @@ public class EnchantingFeature extends JsonFeature {
 
     public void ancientLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.isEnchantable() || left.isEnchanted())
+        if (!left.isEnchantable() || left.getTag() == null || left.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
             return;
 
         ItemStack right = event.getRight().copy();
