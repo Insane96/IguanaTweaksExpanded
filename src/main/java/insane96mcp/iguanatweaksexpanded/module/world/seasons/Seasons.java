@@ -54,6 +54,8 @@ import java.util.Optional;
 @LoadFeature(module = Modules.Ids.WORLD)
 public class Seasons extends Feature {
 
+	public static final GameRules.Key<GameRules.BooleanValue> RULE_SEASONGRASSGROWDEATH = GameRules.register("iguanatweaks:doSeasonGrassGrowDeath", GameRules.Category.PLAYER, GameRules.BooleanValue.create(true));
+
 	@Config
 	@Label(name = "No greenhouse glass", description = "Removes greenhouse glass.")
 	public static Boolean noGreenHouseGlass = true;
@@ -145,7 +147,8 @@ public class Seasons extends Feature {
         if (!this.isEnabled()
 				|| !grassDecayAndGrowth
 				|| event.phase != TickEvent.Phase.END
-				|| event.side != LogicalSide.SERVER)
+				|| event.side != LogicalSide.SERVER
+				|| !event.level.getGameRules().getBoolean(RULE_SEASONGRASSGROWDEATH))
             return;
 
         Season.SubSeason subSeason = SeasonHelper.getSeasonState(event.level).getSubSeason();
