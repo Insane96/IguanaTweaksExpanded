@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Animals and sea creatures are now reduced in Winter
+* Added the `iguanatweaks:doSeasonGrassGrowDeath` gamerule to prevent grass from growing and dying based off seasons
+
 ## 1.1.9
 * Fixed compatibility with latest ITR
 * Vexes now have swords again and lowered attack_damage (-4)
