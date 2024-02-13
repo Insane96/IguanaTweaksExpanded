@@ -142,7 +142,7 @@ public class Solarium extends Feature {
 		Attribute attr = Attributes.ARMOR_TOUGHNESS;
 		boolean isRegenAbsorption = isEnabled(AbsorptionArmor.class);
 		if (isRegenAbsorption)
-			attr = RegeneratingAbsorption.REGEN_ATTRIBUTE.get();
+			attr = RegeneratingAbsorption.SPEED_ATTRIBUTE.get();
 		AttributeInstance toughnessAttr = event.getEntity().getAttribute(attr);
 		if (toughnessAttr == null)
 			return;

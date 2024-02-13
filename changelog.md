@@ -1,6 +1,7 @@
 # Changelog
 
-## Upcoming
+## 1.1.9
+* Fixed compatibility with latest ITR
 * Vexes now have swords again and lowered attack_damage (-4)
 * Vindicators no longer have -40% attack damage, instead they have -5
 
