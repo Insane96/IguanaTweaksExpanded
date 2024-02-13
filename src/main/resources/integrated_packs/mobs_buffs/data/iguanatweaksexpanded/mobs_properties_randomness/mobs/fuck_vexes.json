@@ -1,15 +1,13 @@
 {
     "target": "minecraft:vex",
-    "equipment": {
-        "main_hand": {
-            "override": true,
-            "items": [
-                {
-                    "id": "minecraft:air"
-                }
-            ]
+    "attributes": [
+        {
+            "id": "minecraft:generic.attack_damage",
+            "modifier_name": "ITE mobs_buffs",
+            "amount": -4,
+            "operation": "addition"
         }
-    },
+    ],
     "scale_pehkui": [
         {
             "scale": 1.2,
