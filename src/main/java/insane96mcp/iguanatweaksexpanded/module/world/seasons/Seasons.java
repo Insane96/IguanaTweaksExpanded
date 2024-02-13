@@ -31,7 +31,9 @@ import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.LevelChunkSection;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.ModList;
@@ -85,6 +87,10 @@ public class Seasons extends Feature {
 	@Label(name = "Season based fishing time")
 	public static Boolean seasonBasedFishingTime = true;
 
+	@Config
+	@Label(name = "Bone meal fail chance", description = "Chance for a bone meal to fail to grow something. Empty this string to disable. Accepts a list of seasons and chances separated by a ;")
+	public static String boneMealChance = "AUTUMN,0.4;WINTER,0.8";
+
 	public Seasons(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "serene_seasons_changes", Component.literal("IguanaTweaks Expanded Serene Seasons Changes"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noGreenHouseGlass));
@@ -121,7 +127,6 @@ public class Seasons extends Feature {
 		if (!event.level.isClientSide && event.level.getGameTime() == 0 && changeSereneSeasonsConfig) {
 			SeasonSavedData seasonData = SeasonHandler.getSeasonSavedData(event.level);
 			seasonData.seasonCycleTicks = SeasonTime.ZERO.getSubSeasonDuration() * Season.SubSeason.EARLY_SUMMER.ordinal();
-			//seasonData.seasonCycleTicks = event.level.random.nextInt(12) * SeasonTime.ZERO.getSubSeasonDuration();
 			seasonData.setDirty();
 			SeasonHandler.sendSeasonUpdate(event.level);
 		}
@@ -230,5 +235,27 @@ public class Seasons extends Feature {
 			case WINTER -> 0.5F;
 		};
 		return level.getRandom().nextFloat() < rng;
+	}
+
+	@SubscribeEvent
+	public void onBonemeal(BonemealEvent event) {
+		if (event.isCanceled()
+				|| event.getResult() == Event.Result.DENY
+				|| !this.isEnabled()
+				|| event.getLevel().isClientSide
+				|| boneMealChance.isBlank())
+			return;
+		String[] seasonSplit = boneMealChance.split(";");
+		for (String seasonChance : seasonSplit) {
+			String[] chanceSplit = seasonChance.split(",");
+			if (chanceSplit.length != 2)
+				continue;
+			Season season = Season.valueOf(chanceSplit[0]);
+			float chance = Float.parseFloat(chanceSplit[1]);
+			if (SeasonHelper.getSeasonState(event.getLevel()).getSeason().equals(season) && event.getLevel().random.nextFloat() < chance) {
+				event.setResult(Event.Result.ALLOW);
+				break;
+			}
+		}
 	}
 }
