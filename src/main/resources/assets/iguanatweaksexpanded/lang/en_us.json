@@ -6,6 +6,7 @@
 	"iguanatweaksexpanded.empowered_item": "Enchanting Empowered",
 
 	"enchantment.iguanatweaksexpanded.magnetic": "Magnetic",
+	"enchantment.iguanatweaksexpanded.magnetic.tooltip": "Pulls items from %d blocks away",
 	"enchantment.iguanatweaksexpanded.magic_protection": "Magic Protection",
 	"enchantment.iguanatweaksexpanded.magic_protection.tooltip": "%s%% Magic Damage reduction",
 	"enchantment.iguanatweaksexpanded.melee_protection": "Melee Protection",
