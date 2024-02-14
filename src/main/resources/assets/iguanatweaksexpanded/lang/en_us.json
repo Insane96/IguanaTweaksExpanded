@@ -7,6 +7,8 @@
 
 	"enchantment.iguanatweaksexpanded.magnetic": "Magnetic",
 	"enchantment.iguanatweaksexpanded.magnetic.tooltip": "Pulls items from %d blocks away",
+	"enchantment.iguanatweaksexpanded.vindication": "Vindication",
+	"enchantment.iguanatweaksexpanded.vindication.tooltip": "Stack up to %s Damage when attacked and deal it back with the next strike",
 	"enchantment.iguanatweaksexpanded.magic_protection": "Magic Protection",
 	"enchantment.iguanatweaksexpanded.magic_protection.tooltip": "%s%% Magic Damage reduction",
 	"enchantment.iguanatweaksexpanded.melee_protection": "Melee Protection",

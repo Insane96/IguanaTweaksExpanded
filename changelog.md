@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Added Vindication enchantment
 * Recall idol 
   * Now has a decent texture (a golden bed basically)
   * Now has "animation" and particles

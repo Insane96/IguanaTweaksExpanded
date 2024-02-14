@@ -1,8 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.IProtectionEnchantment;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
@@ -20,9 +20,8 @@ public class Healthy extends Enchantment {
             UUID.fromString("a48d2f59-7b0d-4539-b4bb-c7271f1a7bd9"),
             UUID.fromString("13225ef2-359e-4efa-9b64-122f26da388a")
     };
-    private static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
     public Healthy() {
-        super(Rarity.RARE, EnchantmentCategory.ARMOR, ARMOR_SLOTS);
+        super(Rarity.RARE, EnchantmentCategory.ARMOR, EnchantmentsFeature.ARMOR_SLOTS);
     }
 
     @Override

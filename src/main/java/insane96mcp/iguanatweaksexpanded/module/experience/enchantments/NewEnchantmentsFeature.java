@@ -21,10 +21,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -52,7 +49,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_MENDING = ITERegistries.ENCHANTMENTS.register("curse_of_mending", CurseOfMending::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
-
+	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
@@ -78,6 +75,22 @@ public class NewEnchantmentsFeature extends Feature {
 		Magnetic.tryPullItems(event.getEntity());
 		if (event.getEntity() instanceof ServerPlayer player)
 			CurseOfMending.consumePlayerExperience(player);
+	}
+
+	@SubscribeEvent
+	public void onDamaged(LivingDamageEvent event) {
+		if (!this.isEnabled())
+			return;
+
+		Vindication.tryStackDamage(event.getEntity(), event.getSource(), event.getAmount());
+	}
+
+	@SubscribeEvent
+	public void onHurt(LivingHurtEvent event) {
+		if (!this.isEnabled())
+			return;
+
+		Vindication.tryApplyDamage(event);
 	}
 
 	@SubscribeEvent
@@ -115,16 +128,6 @@ public class NewEnchantmentsFeature extends Feature {
 			event.setExpToDrop(Smartness.getIncreasedExperience(event.getLevel().getRandom(), lvl, event.getExpToDrop()));
 	}
 
-	@SubscribeEvent
-	@OnlyIn(Dist.CLIENT)
-	public void onRenderLevel(RenderLevelStageEvent event) {
-		if (!this.isEnabled())
-			return;
-
-		Expanded.applyOutlineAndDestroyAnimation(event);
-		Veining.applyOutlineAndDestroyAnimation(event);
-	}
-
 	//Priority high: run before Timber Trees
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBlockBreak(BlockEvent.BreakEvent event) {
@@ -147,6 +150,16 @@ public class NewEnchantmentsFeature extends Feature {
 		if (lvl <= 0)
 			return;
 		event.setDamageModifier(Critical.getCritAmount(lvl, event.getDamageModifier()));
+	}
+
+	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
+	public void onRenderLevel(RenderLevelStageEvent event) {
+		if (!this.isEnabled())
+			return;
+
+		Expanded.applyOutlineAndDestroyAnimation(event);
+		Veining.applyOutlineAndDestroyAnimation(event);
 	}
 
 	@OnlyIn(Dist.CLIENT)
