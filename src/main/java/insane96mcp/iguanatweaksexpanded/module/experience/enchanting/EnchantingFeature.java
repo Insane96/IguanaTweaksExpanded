@@ -128,7 +128,7 @@ public class EnchantingFeature extends JsonFeature {
         event.setCost(0);
         event.setMaterialCost(1);
         ItemStack result = left.copy();
-        left.getOrCreateTag().putBoolean(EnchantingFeature.INFUSED_ITEM, true);
+        result.getOrCreateTag().putBoolean(EnchantingFeature.INFUSED_ITEM, true);
         event.setOutput(result);
     }
 
@@ -143,7 +143,7 @@ public class EnchantingFeature extends JsonFeature {
         event.setCost(0);
         event.setMaterialCost(1);
         ItemStack result = left.copy();
-        left.getOrCreateTag().putBoolean(EnchantingFeature.EMPOWERED_ITEM, true);
+        result.getOrCreateTag().putBoolean(EnchantingFeature.EMPOWERED_ITEM, true);
         event.setOutput(result);
     }
 
