@@ -4,6 +4,7 @@
 * Animals and sea creatures are now reduced in Autumn
 * Bone meal now has 40% and 80% chance to fail to grow plants in autumn and winter respectively
 * Added the `iguanatweaks:doSeasonGrassGrowDeath` gamerule to prevent grass from growing and dying based off seasons
+* Added some stuff to some loot tables
 
 ## 1.1.9
 * Fixed compatibility with latest ITR
