@@ -1,8 +1,13 @@
 package insane96mcp.iguanatweaksexpanded.module.items.recallidol;
 
+import insane96mcp.insanelib.world.scheduled.ScheduledTasks;
+import insane96mcp.insanelib.world.scheduled.ScheduledTickTask;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,7 +27,7 @@ public class RecallIdolItem extends Item {
 
 	@Override
 	public int getUseDuration(ItemStack p_41454_) {
-		return 100;
+		return 110;
 	}
 
 	@Override
@@ -38,24 +43,42 @@ public class RecallIdolItem extends Item {
 	}
 
 	@Override
+	public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
+		if (remainingUseDuration % 20 == 0) {
+			level.playSound(null, livingEntity, SoundEvents.END_PORTAL_SPAWN, SoundSource.PLAYERS, 1f - remainingUseDuration / 100f, 1.5f - remainingUseDuration / 100f);
+			for (int i = 0; i < (getUseDuration(stack) - remainingUseDuration) * 20; i++) {
+				level.addParticle(ParticleTypes.PORTAL, livingEntity.getX() + level.random.nextFloat() - 0.5f, livingEntity.getY() + level.random.nextFloat() * livingEntity.getBbHeight(), livingEntity.getZ() + level.random.nextFloat() - 0.5f, level.random.nextFloat() - 0.5f, level.random.nextFloat() - 0.5f, level.random.nextFloat() - 0.5f);
+			}
+		}
+	}
+
+	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-		if (!(entity instanceof ServerPlayer player))
+		if (!(entity instanceof ServerPlayer player) || player.isDeadOrDying())
 			return stack;
 		BlockPos respawnPos = player.getRespawnPosition();
 		float respawnAngle = player.getRespawnAngle();
 		boolean forcedRespawn = player.isRespawnForced();
-		ServerLevel serverlevel = player.server.getLevel(player.getRespawnDimension());
+		ServerLevel serverLevel = player.server.getLevel(player.getRespawnDimension());
 		Optional<Vec3> optional;
-		if (serverlevel != null && respawnPos != null) {
-			optional = Player.findRespawnPositionAndUseSpawnBlock(serverlevel, respawnPos, respawnAngle, forcedRespawn, true);
+		if (serverLevel != null && respawnPos != null) {
+			optional = Player.findRespawnPositionAndUseSpawnBlock(serverLevel, respawnPos, respawnAngle, forcedRespawn, true);
 		} else {
 			optional = Optional.empty();
 		}
 		optional.ifPresent(vec3 -> {
+			if (player.level() != serverLevel)
+				player.changeDimension(serverLevel);
 			player.teleportTo(vec3.x, vec3.y, vec3.z);
+			ScheduledTasks.schedule(new ScheduledTickTask(2) {
+				@Override
+				public void run() {
+					serverLevel.playSound(null, player, SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 4f, 1f);
+					//serverLevel.broadcastEntityEvent(entity, (byte)35);
+				}
+			});
 			stack.shrink(1);
 		});
-		//TODO totem like animation and sounds when using
 		return stack;
 	}
 }
