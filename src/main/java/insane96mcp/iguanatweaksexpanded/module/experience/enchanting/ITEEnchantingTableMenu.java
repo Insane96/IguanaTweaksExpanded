@@ -69,12 +69,12 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
-                this.addSlot(new Slot(pPlayerInventory, j + i * 9 + 9, 48 + j * 18, 112 + i * 18));
+                this.addSlot(new Slot(pPlayerInventory, j + i * 9 + 9, 37 + j * 18, 104 + i * 18));
             }
         }
 
         for (int k = 0; k < 9; ++k) {
-            this.addSlot(new Slot(pPlayerInventory, k, 48 + k * 18, 170));
+            this.addSlot(new Slot(pPlayerInventory, k, 37 + k * 18, 162));
         }
         this.addDataSlot(this.maxCost);
 

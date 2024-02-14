@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableEnchantments;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -31,7 +32,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
     private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/enchanting_table.png");
 
     static final int BUTTON_X = 9;
-    static final int BUTTON_Y = 39;
+    static final int BUTTON_Y = 41;
     static final int BUTTON_U = 0;
     static final int BUTTON_V = 200;
     static final int BUTTON_W = 56;
@@ -47,16 +48,16 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
     static final int SCROLL_BUTTON_W = 12;
     static final int SCROLL_BUTTON_H = 7;
 
-    static final int LIST_X = 72;
-    static final int LIST_Y = 25;
+    static final int LIST_X = 70;
+    static final int LIST_Y = 23;
     static final int ENCH_ENTRY_V = 218;
     static final int LVL_BTN_W = 9;
     static final int LOWER_LVL_BTN_U = 0;
     static final int ENCH_DISPLAY_U = LVL_BTN_W;
-    static final int ENCH_DISPLAY_W = 118;
+    static final int ENCH_DISPLAY_W = 136;
     static final int ENCH_LVL_U = LVL_BTN_W + ENCH_DISPLAY_W;
     static final int ENCH_LVL_W = 17;
-    static final int RISE_LVL_BTN_U = LVL_BTN_W + ENCH_DISPLAY_W + ENCH_LVL_W;
+    static final int RISE_LVL_BTN_U = LVL_BTN_W + ENCH_DISPLAY_W;
     static final int ENCH_ENTRY_W = LVL_BTN_W + ENCH_DISPLAY_W + ENCH_LVL_W + LVL_BTN_W;
     static final int ENCH_ENTRY_H = 14;
 
@@ -72,10 +73,10 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
 
     public ITEEnchantingTableScreen(ITEEnchantingTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
-        this.imageWidth = 256;
+        this.imageWidth = 234;
         this.imageHeight = 194;
-        this.inventoryLabelX += 40;
-        this.inventoryLabelY += 28;
+        this.inventoryLabelX += 29;
+        this.inventoryLabelY += 20;
     }
 
     @Override
@@ -85,9 +86,9 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
 
         this.maxCost = this.menu.maxCost.get();
-        this.scrollUpBtn = new ScrollButton(topLeftCornerX + LIST_X + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W / 2, topLeftCornerY + LIST_Y - SCROLL_BUTTON_H - 2, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.UP);
+        this.scrollUpBtn = new ScrollButton(topLeftCornerX + LIST_X + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y - SCROLL_BUTTON_H - 2, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.UP);
         this.scrollUpBtn.active = false;
-        this.scrollDownBtn = new ScrollButton(topLeftCornerX + LIST_X + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W / 2, topLeftCornerY + LIST_Y + ENCH_ENTRY_H * 4 + 2, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.DOWN);
+        this.scrollDownBtn = new ScrollButton(topLeftCornerX + LIST_X + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y + ENCH_ENTRY_H * 4 + 2, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.DOWN);
         this.scrollDownBtn.active = false;
     }
 
@@ -215,14 +216,13 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
         updatePossibleEnchantments();
         List<EnchantmentEntry> entries = this.enchantmentEntries;
-        for (int i = 0; i < entries.size(); i++) {
-            EnchantmentEntry entry = entries.get(i);
+        for (EnchantmentEntry entry : entries) {
             entry.render(guiGraphics, mouseX, mouseY, partialTick);
         }
         if (this.maxCost > 0) {
             float cost = this.getCurrentCost();
             int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
-            guiGraphics.drawCenteredString(this.font, "Max: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.maxCost / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 10, color);
+            guiGraphics.drawCenteredString(this.font, "Max: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.maxCost / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 12, color);
             color = this.minecraft.player.experienceLevel < cost / 100f && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
             if (this.isButtonEnabled())
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
@@ -389,14 +389,21 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
                 return;
             }
             pGuiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), ENCH_DISPLAY_U, ENCH_ENTRY_V + this.getYOffset(), this.getWidth(), this.getHeight());
-            pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V + this.getYOffset(), ENCH_LVL_W, this.getHeight());
+            //pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V + this.getYOffset(), ENCH_LVL_W, this.getHeight());
             this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 1, 0xDDDDDD);
             Component lvlTxt = Component.empty();
             if (this.lvl > 0)
                 lvlTxt = Component.translatable("enchantment.level." + this.lvl);
-            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W + LVL_BTN_W / 2 + 5, this.getY() + 3, this.lvl > this.enchantment.getMaxLevel() ? 16733695 : 0xDDDDDD);
+            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.enchantment.getMaxLevel() ? 16733695 : 0xDDDDDD);
             this.setTooltip(Tooltip.create(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl))))));
-            this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;
+            //this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;
+        }
+
+        @Override
+        protected void renderScrollingString(GuiGraphics pGuiGraphics, Font pFont, int pWidth, int pColor) {
+            int i = this.getX() + pWidth;
+            int j = this.getX() + this.getWidth() - pWidth - ENCH_LVL_W;
+            renderScrollingString(pGuiGraphics, pFont, this.getMessage(), i, this.getY(), j, this.getY() + this.getHeight(), pColor);
         }
 
         /**
