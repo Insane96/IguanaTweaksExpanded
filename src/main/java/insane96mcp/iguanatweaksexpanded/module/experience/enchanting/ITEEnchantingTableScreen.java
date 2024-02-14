@@ -445,7 +445,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         }
 
         @Override
-        public void onClick(double mouseX, double mouseY, int button) {
+        public void onClick(double mouseX, double mouseY) {
             ITEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? 1 : -1);
         }
 
