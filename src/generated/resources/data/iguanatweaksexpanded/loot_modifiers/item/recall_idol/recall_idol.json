@@ -6,5 +6,5 @@
       "loot_table_id": "minecraft:chests/end_city_treasure"
     }
   ],
-  "loot_table": "iguanatweaksexpanded:chests/recall_idol"
+  "loot_table": "iguanatweaksexpanded:chests/injection/recall_idol"
 }

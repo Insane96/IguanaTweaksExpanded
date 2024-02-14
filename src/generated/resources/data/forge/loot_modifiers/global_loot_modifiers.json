@@ -1,11 +1,11 @@
 {
   "entries": [
     "iguanatweaksexpanded:minecarts/replace_vanilla_powered_rails",
+    "iguanatweaksexpanded:item/recall_idol/recall_idol",
     "iguanatweaksexpanded:coal_fire/replace_flint_and_steel",
     "iguanatweaksexpanded:experience/enchantingblocks/deepslate_lapis_ore",
-    "iguanatweaksexpanded:mining/soul_steel/chests/upgrade_template_in_fortress",
     "iguanatweaksexpanded:experience/enchantingblocks/lapis_ore",
-    "iguanatweaksexpanded:item/recall_idolchests/recall_idol"
+    "iguanatweaksexpanded:mining/soul_steel/upgrade_template_in_fortress"
   ],
   "replace": false
 }

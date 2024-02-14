@@ -96,6 +96,6 @@ public class SoulSteel extends Feature {
 	private static final String path = "mining/soul_steel/";
 
 	public static void addGlobalLoot(GlobalLootModifierProvider provider) {
-		provider.add(path + "chests/upgrade_template_in_fortress", new InjectLootTableModifier(new ResourceLocation("minecraft:chests/nether_bridge"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "chests/soul_steel_upgrade_template")));
+		provider.add(path + "upgrade_template_in_fortress", new InjectLootTableModifier(new ResourceLocation("minecraft:chests/nether_bridge"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "chests/injection/soul_steel_upgrade_template")));
 	}
 }
