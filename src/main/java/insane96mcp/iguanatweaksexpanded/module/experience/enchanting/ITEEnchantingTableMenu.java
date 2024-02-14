@@ -50,7 +50,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
         this.container = pContainer;
         this.access = access;
         this.level = pPlayerInventory.player.level();
-        this.addSlot(new Slot(pContainer, ITEM_SLOT, 19, 18) {
+        this.addSlot(new Slot(pContainer, ITEM_SLOT, 29, 19) {
             public int getMaxStackSize() {
                 return 1;
             }
@@ -69,12 +69,12 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
-                this.addSlot(new Slot(pPlayerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                this.addSlot(new Slot(pPlayerInventory, j + i * 9 + 9, 48 + j * 18, 112 + i * 18));
             }
         }
 
         for (int k = 0; k < 9; ++k) {
-            this.addSlot(new Slot(pPlayerInventory, k, 8 + k * 18, 142));
+            this.addSlot(new Slot(pPlayerInventory, k, 48 + k * 18, 170));
         }
         this.addDataSlot(this.maxCost);
 
