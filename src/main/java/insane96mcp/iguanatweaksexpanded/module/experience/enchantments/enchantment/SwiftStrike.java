@@ -20,6 +20,11 @@ public class SwiftStrike extends BonusDamageEnchantment {
         super(Rarity.UNCOMMON, EnchantmentsFeature.WEAPONS_CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
+    @Override
+    public float getDamageBonusPerLevel() {
+        return 0f;
+    }
+
     public static float getAttackSpeedBonusPerLevel() {
         return 0.15f;
     }
