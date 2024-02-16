@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.network.message;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableMenu;
-import insane96mcp.iguanatweaksexpanded.network.NetworkHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
@@ -41,7 +40,8 @@ public class SyncITEEnchantingTableEnchantments {
 
 	public static void handle(final SyncITEEnchantingTableEnchantments message, Supplier<NetworkEvent.Context> ctx) {
 		ctx.get().enqueueWork(() -> {
-			if (NetworkHelper.getSidedPlayer(ctx.get()).containerMenu instanceof ITEEnchantingTableMenu enchantingTableMenu) {
+			//noinspection DataFlowIssue
+			if (ctx.get().getSender().containerMenu instanceof ITEEnchantingTableMenu enchantingTableMenu) {
 				enchantingTableMenu.updateEnchantmentsChosen(message.enchantmentInstances);
 			}
 		});

@@ -462,6 +462,11 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             ITEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? 1 : -1);
         }
 
+        @Override
+        public void onClick(double mouseX, double mouseY, int button) {
+            ITEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? 1 : -1);
+        }
+
         private int getXOffset() {
             int i = 0;
             if (this.isHoveredOrFocused())

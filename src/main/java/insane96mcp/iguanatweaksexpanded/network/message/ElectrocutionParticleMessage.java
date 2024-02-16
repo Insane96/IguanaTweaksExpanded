@@ -10,14 +10,8 @@ import java.util.function.Supplier;
 public class ElectrocutionParticleMessage {
     IntList ids;
 
-    public ElectrocutionParticleMessage() {}
-
     public ElectrocutionParticleMessage(IntList ids) {
         this.ids = ids;
-    }
-
-    public void addId(int id) {
-        this.ids.add(id);
     }
 
     public static void encode(ElectrocutionParticleMessage pkt, FriendlyByteBuf buf) {

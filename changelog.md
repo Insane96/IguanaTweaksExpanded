@@ -12,6 +12,7 @@
 * Added some stuff to some loot tables
 * Fixed up and down arrows not working in the enchanting table
 * Fixed pumpkin pulp missing at all
+* Fixed enchanting table not working in servers
 
 ## 1.1.9
 * Fixed compatibility with latest ITR

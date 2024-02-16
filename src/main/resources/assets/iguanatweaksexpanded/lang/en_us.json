@@ -23,6 +23,7 @@
 	"enchantment.iguanatweaksexpanded.water_coolant": "Water Coolant",
 	"enchantment.iguanatweaksexpanded.water_coolant.tooltip": "+%s Damage to Nether and Water Sensitive Creatures",
 	"enchantment.iguanatweaksexpanded.smartness": "Smartness",
+	"enchantment.iguanatweaksexpanded.smartness.tooltip": "+%f%% experience from killed mobs and mined blocks",
 	"enchantment.iguanatweaksexpanded.ma_jump": "M.A. Jump",
 	"enchantment.iguanatweaksexpanded.ma_jump.tooltip": "+%d Mid-Air Jump",
 	"enchantment.iguanatweaksexpanded.gravity_defying": "Gravity Defying",
