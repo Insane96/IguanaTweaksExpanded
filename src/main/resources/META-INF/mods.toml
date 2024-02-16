@@ -42,7 +42,7 @@ license="All rights reserved"
     modId="iguanatweaksreborn"
     mandatory=true
     versionRange="[3.1.7,)"
-    ordering="NONE"
+    ordering="BEFORE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
