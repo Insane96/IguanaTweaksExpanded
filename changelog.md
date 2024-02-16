@@ -2,9 +2,7 @@
 
 ## Upcoming
 * Added Vindication enchantment
-* Recall idol 
-  * Now has a decent texture (a golden bed basically)
-  * Now has "animation" and particles
+* Recall Idol is now a potion effect brew from regeneration and wither roses
 * The enchanting table ui has been enlarged a little bit
 * Animals and sea creatures are now reduced in Autumn
 * Bone meal now has 40% and 80% chance to fail to grow plants in autumn and winter respectively

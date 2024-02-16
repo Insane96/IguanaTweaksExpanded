@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.items.recallidol.RecallIdol;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
@@ -19,7 +18,7 @@ public class ITEGlobalLootModifierProvider extends GlobalLootModifierProvider {
         Minecarts.addGlobalLoot(this);
         CoalCharcoal.addGlobalLoot(this);
         EnchantingFeature.addGlobalLoot(this);
-        RecallIdol.addGlobalLoot(this);
+        //RecallIdol.addGlobalLoot(this);
         SoulSteel.addGlobalLoot(this);
     }
 }

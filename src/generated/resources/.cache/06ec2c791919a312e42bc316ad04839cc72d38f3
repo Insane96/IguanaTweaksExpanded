@@ -1,8 +1,7 @@
-// 1.20.1	2024-02-14T08:29:21.6958321	Global Loot Modifiers : iguanatweaksexpanded
-3625121d587d0b9355b8239bee8c76a22d12604e data/forge/loot_modifiers/global_loot_modifiers.json
+// 1.20.1	2024-02-16T18:44:00.7109125	Global Loot Modifiers : iguanatweaksexpanded
+d151436aa918a436fdd9c9810294cdd9ce4d2c04 data/forge/loot_modifiers/global_loot_modifiers.json
 b76fed28ae8fdd1fbf6d747c9bcaf159d9862eff data/iguanatweaksexpanded/loot_modifiers/coal_fire/replace_flint_and_steel.json
 2efa3fb69c4ed25b6a0c009bca322030447f23e6 data/iguanatweaksexpanded/loot_modifiers/experience/enchantingblocks/deepslate_lapis_ore.json
 e1aeb103b2e0dc392dfdb6cfcbd335ce2809a459 data/iguanatweaksexpanded/loot_modifiers/experience/enchantingblocks/lapis_ore.json
-48c5084e337449b5ff715e5f318a3c3085e2f2dd data/iguanatweaksexpanded/loot_modifiers/item/recall_idol/recall_idol.json
 a3dfc0db34fb63e9a588952d07a9077d4055f913 data/iguanatweaksexpanded/loot_modifiers/minecarts/replace_vanilla_powered_rails.json
 bfd1cfdc1bd5729cc3f0ea78a93c52bb83fceb15 data/iguanatweaksexpanded/loot_modifiers/mining/soul_steel/upgrade_template_in_fortress.json

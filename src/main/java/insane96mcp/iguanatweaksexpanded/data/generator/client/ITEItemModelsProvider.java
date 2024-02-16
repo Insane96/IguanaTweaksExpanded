@@ -7,7 +7,6 @@ import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrink
 import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
-import insane96mcp.iguanatweaksexpanded.module.items.recallidol.RecallIdol;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
@@ -216,7 +215,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(Fletching.EXPLOSIVE_ARROW_ITEM.get());
         basicItem(Fletching.TORCH_ARROW_ITEM.get());
 
-        basicItem(RecallIdol.ITEM.get());
+        //basicItem(RecallIdol.ITEM.get());
     }
 
     private ItemModelBuilder handHeld(Item item) {

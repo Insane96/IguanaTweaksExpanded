@@ -50,7 +50,9 @@
 
 	"item.iguanatweaksexpanded.altimeter": "Altimeter",
 
-	"item.iguanatweaksexpanded.recall_idol": "Recall Idol",
+	"item.minecraft.potion.effect.recall": "Potion of Recall",
+	"item.minecraft.potion.effect.recall_extended": "Potion of Faster Recall",
+	"effect.iguanatweaksexpanded.back_to_spawn": "Back to Spawn",
 
 	"item.iguanatweaksexpanded.chained_copper_helmet": "Chained Copper Helmet",
 	"item.iguanatweaksexpanded.chained_copper_chestplate": "Chained Copper Chestplate",

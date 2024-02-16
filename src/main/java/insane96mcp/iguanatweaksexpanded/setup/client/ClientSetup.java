@@ -16,7 +16,6 @@ import insane96mcp.iguanatweaksexpanded.module.items.copper.ElectrocutionSparkPa
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
-import insane96mcp.iguanatweaksexpanded.module.items.recallidol.RecallIdol;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
@@ -107,7 +106,7 @@ public class ClientSetup {
             addAfter(event, Keego.HOE.get(), Forging.KEEGO_HAMMER.get());
 
             addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
-            addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
+            //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
 
             addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());
             addAfter(event, Items.RAIL, Minecarts.GOLDEN_POWERED_RAIL.item().get());

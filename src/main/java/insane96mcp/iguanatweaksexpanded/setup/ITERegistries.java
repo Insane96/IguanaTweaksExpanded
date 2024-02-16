@@ -22,6 +22,7 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.ai.village.poi.PoiTypes;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -49,6 +50,7 @@ public class ITERegistries {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = createRegistry(ForgeRegistries.BLOCK_ENTITY_TYPES);
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = createRegistry(ForgeRegistries.ENCHANTMENTS);
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = createRegistry(ForgeRegistries.MOB_EFFECTS);
+    public static final DeferredRegister<Potion> POTION = createRegistry(ForgeRegistries.POTIONS);
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = createRegistry(ForgeRegistries.SOUND_EVENTS);
     public static final DeferredRegister<MenuType<?>> MENU_TYPES = createRegistry(ForgeRegistries.MENU_TYPES);
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = createRegistry(ForgeRegistries.PARTICLE_TYPES);
