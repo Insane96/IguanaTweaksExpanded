@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.world.coalfire;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
+import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.data.lootmodifier.ReplaceLootModifier;
 import insane96mcp.iguanatweaksreborn.module.world.coalfire.PilableLayerBlock;
@@ -74,7 +74,7 @@ public class CoalCharcoal extends Feature {
 
     public CoalCharcoal(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "charcoal_smelting_iron_coal", Component.literal("IguanaTweaks Expanded No Charcoal Smelting and Iron Coal"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noCharcoalSmeltingAndIronCoal));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "charcoal_smelting_iron_coal", Component.literal("IguanaTweaks Expanded No Charcoal Smelting and Iron Coal"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noCharcoalSmeltingAndIronCoal));
     }
 
     @SubscribeEvent

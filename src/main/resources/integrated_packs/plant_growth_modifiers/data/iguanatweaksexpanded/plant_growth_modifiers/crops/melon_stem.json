@@ -1,0 +1,14 @@
+{
+    "block": "minecraft:melon_stem",
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER",
+                "SPRING",
+                "AUTUMN"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

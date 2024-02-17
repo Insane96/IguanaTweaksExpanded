@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.movement.minecarts;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
+import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.data.lootmodifier.ReplaceLootModifier;
 import insane96mcp.insanelib.base.Feature;
@@ -32,7 +32,7 @@ public class Minecarts extends Feature {
 
 	public Minecarts(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "better_rails", Component.literal("IguanaTweaks Expanded Better Rails"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && dataPack));
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "better_rails", Component.literal("IguanaTweaks Expanded Better Rails"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && dataPack));
 	}
 
 	/*@SubscribeEvent

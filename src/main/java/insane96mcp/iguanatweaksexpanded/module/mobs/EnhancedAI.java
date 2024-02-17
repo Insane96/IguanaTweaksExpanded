@@ -18,6 +18,8 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 @LoadFeature(module = Modules.Ids.MOBS)
 public class EnhancedAI extends Feature {
 
+    //TODO Disable most of the config and use a Data Pack with MPR
+
     public EnhancedAI(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
     }

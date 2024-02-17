@@ -1,0 +1,12 @@
+{
+    "block": "#minecraft:saplings",
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

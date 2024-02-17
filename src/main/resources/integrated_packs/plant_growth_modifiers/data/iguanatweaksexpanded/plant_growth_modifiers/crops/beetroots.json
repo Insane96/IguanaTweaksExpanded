@@ -1,0 +1,14 @@
+{
+    "block": "minecraft:beetroots",
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER",
+                "SPRING",
+                "SUMMER"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

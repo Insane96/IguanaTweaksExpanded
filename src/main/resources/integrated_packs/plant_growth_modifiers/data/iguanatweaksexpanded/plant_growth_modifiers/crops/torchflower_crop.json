@@ -1,0 +1,13 @@
+{
+    "block": "minecraft:torchflower_crop",
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER",
+                "AUTUMN"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

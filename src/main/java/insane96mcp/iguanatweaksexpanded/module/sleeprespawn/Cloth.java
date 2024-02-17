@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.sleeprespawn;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
+import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -26,6 +26,6 @@ public class Cloth extends Feature {
 
 	public Cloth(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "cloth", Component.literal("IguanaTweaks Expanded Cloth"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && dataPack));
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "cloth", Component.literal("IguanaTweaks Expanded Cloth"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && dataPack));
 	}
 }

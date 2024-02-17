@@ -1,0 +1,13 @@
+{
+    "block": "minecraft:sweet_berry_bush",
+    "growth_multiplier": 2,
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

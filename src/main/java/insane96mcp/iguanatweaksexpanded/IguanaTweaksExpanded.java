@@ -8,12 +8,13 @@ import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockStatesProv
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEItemModelsProvider;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ITEArrowDispenseBehaviour;
+import insane96mcp.iguanatweaksexpanded.module.farming.plantsgrowth.ITEPlantGrowthModifiers;
 import insane96mcp.iguanatweaksexpanded.module.items.recallidol.Recall;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.setup.ITECommonConfig;
 import insane96mcp.iguanatweaksexpanded.setup.ITEPackSource;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
+import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import net.minecraft.core.HolderLookup;
@@ -38,7 +39,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
 import org.apache.logging.log4j.LogManager;
@@ -74,7 +74,6 @@ public class IguanaTweaksExpanded
             modEventBus.addListener(ClientSetup::registerParticleFactories);
         }
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::loadComplete);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::gatherData);
         modEventBus.addListener(this::addPackFinders);
@@ -87,6 +86,7 @@ public class IguanaTweaksExpanded
     private void commonSetup(final FMLCommonSetupEvent event) {
         NetworkHandler.init();
         Recall.onLoadComplete();
+        ITEPlantGrowthModifiers.init();
 
         event.enqueueWork(() -> {
             DispenserBlock.registerBehavior(Fletching.QUARTZ_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
@@ -117,7 +117,7 @@ public class IguanaTweaksExpanded
 
     public void addPackFinders(AddPackFindersEvent event)
     {
-        for (IntegratedDataPack dataPack : IntegratedDataPack.INTEGRATED_DATA_PACKS) {
+        for (IntegratedPack dataPack : IntegratedPack.INTEGRATED_PACKS) {
             if (event.getPackType() != dataPack.getPackType())
                 continue;
 
@@ -134,7 +134,7 @@ public class IguanaTweaksExpanded
         boolean hasDisabledPack = false;
         PackRepository packRepository = event.getServer().getPackRepository();
         List<Pack> list = Lists.newArrayList(packRepository.getSelectedPacks());
-        for (IntegratedDataPack dataPack : IntegratedDataPack.INTEGRATED_DATA_PACKS) {
+        for (IntegratedPack dataPack : IntegratedPack.INTEGRATED_PACKS) {
             String dataPackId = IguanaTweaksExpanded.RESOURCE_PREFIX + dataPack.getPath();
             Pack pack = packRepository.getPack(dataPackId);
             if (pack != null && !dataPack.shouldBeEnabled()) {
@@ -144,13 +144,5 @@ public class IguanaTweaksExpanded
         }
         if (hasDisabledPack)
             event.getServer().reloadResources(list.stream().map(Pack::getId).collect(Collectors.toList()));
-    }
-
-    private void loadComplete(final FMLLoadCompleteEvent event)
-    {
-        event.enqueueWork(() ->
-        {
-            Recall.onLoadComplete();
-        });
     }
 }

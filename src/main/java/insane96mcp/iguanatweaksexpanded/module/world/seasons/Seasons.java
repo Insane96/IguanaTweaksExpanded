@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.world.seasons;
 import com.google.common.collect.Lists;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedDataPack;
+import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -74,7 +74,7 @@ public class Seasons extends Feature {
 	@Label(name = "Serene Seasons changes", description = """
 			Makes the following changes to Serene Seasons config:
 			Makes the following changes to Serene Seasons config:
-			* seasonal_crops is set to false, as it's controlled by PlantsGrowth
+			* seasonal_crops is set to false, as it's controlled by Plants Growth
 			* Sets the starting season to mid summer
 			""")
 	public static Boolean changeSereneSeasonsConfig = true;
@@ -93,8 +93,8 @@ public class Seasons extends Feature {
 
 	public Seasons(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "serene_seasons_changes", Component.literal("IguanaTweaks Expanded Serene Seasons Changes"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noGreenHouseGlass));
-		IntegratedDataPack.INTEGRATED_DATA_PACKS.add(new IntegratedDataPack(PackType.SERVER_DATA, "no_saplings_in_winter", Component.literal("IguanaTweaks Expanded No Saplings in Winter"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noSaplingsInWinter));
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "serene_seasons_changes", Component.literal("IguanaTweaks Expanded Serene Seasons Changes"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noGreenHouseGlass));
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "no_saplings_in_winter", Component.literal("IguanaTweaks Expanded No Saplings in Winter"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noSaplingsInWinter));
 	}
 
 	@Override

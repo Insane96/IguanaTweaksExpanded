@@ -8,6 +8,7 @@
 * Bone meal now has 40% and 80% chance to fail to grow plants in autumn and winter respectively
 * Added the `iguanatweaks:doSeasonGrassGrowDeath` gamerule to prevent grass from growing and dying based off seasons
 * Added some stuff to some loot tables
+* Seasons growth are now included in the mod through a data pack instead of the Mod pack only
 * Fixed up and down arrows not working in the enchanting table
 * Fixed pumpkin pulp missing at all
 * Fixed enchanting table not working in servers
