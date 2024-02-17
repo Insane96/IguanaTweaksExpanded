@@ -25,6 +25,8 @@ public class EnhancedAI extends Feature {
     @Override
     public void readConfig(ModConfigEvent event) {
         super.readConfig(event);
+        if (!this.isEnabled())
+            return;
         Module.getFeature(Spawning.class).setConfigOption("Monsters Despawning Distance", 128);
 
         Module.getFeature(CreeperSwell.class).setConfigOption("Walking Fuse Chance", 0.75d);

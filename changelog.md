@@ -11,6 +11,7 @@
 * Fixed up and down arrows not working in the enchanting table
 * Fixed pumpkin pulp missing at all
 * Fixed enchanting table not working in servers
+* Fixed EnhancedAI feature still changing its config even when disabled
 
 ## 1.1.9
 * Fixed compatibility with latest ITR
