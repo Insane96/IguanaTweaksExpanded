@@ -1,12 +1,11 @@
-package insane96mcp.iguanatweaksexpanded.module.farming.plantsgrowth.modifier;
+package insane96mcp.iguanatweaksexpanded.modifier;
 
 import com.google.gson.*;
 import com.google.gson.annotations.JsonAdapter;
-import insane96mcp.iguanatweaksreborn.module.farming.plantsgrowth.PlantGrowthModifier;
+import insane96mcp.iguanatweaksreborn.modifier.Modifier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import sereneseasons.api.season.Season;
 import sereneseasons.api.season.SeasonHelper;
 
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @JsonAdapter(SeasonModifier.Serializer.class)
-public class SeasonModifier extends PlantGrowthModifier {
+public class SeasonModifier extends Modifier {
     final List<Season> seasons = new ArrayList<>();
     protected SeasonModifier(float multiplier, List<Season> seasons) {
         super(multiplier);
@@ -22,7 +21,7 @@ public class SeasonModifier extends PlantGrowthModifier {
     }
 
     @Override
-    public float getMultiplier(BlockState state, Level level, BlockPos pos) {
+    public float getMultiplier(Level level, BlockPos pos) {
         for (Season season : this.seasons) {
             if (SeasonHelper.getSeasonState(level).getSeason().equals(season)) {
                 return this.multiplier;

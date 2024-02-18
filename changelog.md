@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.2.0
 * Added Vindication enchantment
 * Recall Idol is now a potion effect brew from regeneration and wither roses
 * The enchanting table ui has been enlarged a little bit

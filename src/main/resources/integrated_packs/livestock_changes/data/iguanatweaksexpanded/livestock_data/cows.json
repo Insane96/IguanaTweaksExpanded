@@ -1,0 +1,26 @@
+{
+    "entity": "#iguanatweaksreborn:cows",
+    "cow_fluid_cooldown_modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER"
+            ],
+            "multiplier": 1.33333333
+        },
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "SPRING"
+            ],
+            "multiplier": 0.85
+        },
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "SUMMER"
+            ],
+            "multiplier": 0.66666667
+        }
+    ]
+}

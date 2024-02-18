@@ -2,7 +2,6 @@ package insane96mcp.iguanatweaksexpanded.module.misc;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
-import insane96mcp.iguanatweaksreborn.module.misc.DataPacks;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -31,12 +30,16 @@ public class ITEDataPacks extends Feature {
     @Config
     @Label(name = "Plant growth multipliers data pack", description = "If true, a data pack is enabled that changes the growth of plants based off seasons")
     public static Boolean plantGrowthMultipliersDataPack = true;
+    @Config
+    @Label(name = "Livestock Data", description = "Enables a data pack that slows down growing, breeding, egging etc based off seasons")
+    public static Boolean livestockDataPack = true;
 
     public ITEDataPacks(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "ite_advancements", Component.literal("IguanaTweaks Expanded Advancements"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && advancements));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "item_stats", Component.literal("IguanaTweaks Expanded Item Stats"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && itemStatsDataPack));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "better_loot", Component.literal("IguanaTweaks Expanded Better Loot"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && betterStructureLoot));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "plant_growth_modifiers", Component.literal("IguanaTweaks Expanded Plant Growth modifiers"), () -> super.isEnabled() && !DataPacks.disableAllDataPacks && plantGrowthMultipliersDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "plant_growth_modifiers", Component.literal("IguanaTweaks Expanded Plant Growth modifiers"), () -> super.isEnabled() && !ITEDataPacks.disableAllDataPacks && plantGrowthMultipliersDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "livestock_changes", Component.literal("IguanaTweaks Reborn Livestock Changes"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && livestockDataPack));
     }
 }

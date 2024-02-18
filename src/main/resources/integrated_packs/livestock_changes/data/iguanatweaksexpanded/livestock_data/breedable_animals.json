@@ -1,0 +1,49 @@
+{
+    "entity": "#iguanatweaksreborn:breedable_animals",
+    "breeding_cooldown": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER"
+            ],
+            "multiplier": 1.33333333
+        },
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "SPRING"
+            ],
+            "multiplier": 0.85
+        },
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "SUMMER"
+            ],
+            "multiplier": 0.66666667
+        }
+    ],
+    "breeding_fail_chance_modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER"
+            ],
+            "multiplier": 1.5
+        },
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "SPRING"
+            ],
+            "multiplier": 0.9
+        },
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "SUMMER"
+            ],
+            "multiplier": 0.8
+        }
+    ]
+}
