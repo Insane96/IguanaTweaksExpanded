@@ -55,7 +55,7 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="enhancedai"
     mandatory=true
-    versionRange="[2.0.0,)"
+    versionRange="[2.2.2,)"
     ordering="AFTER"
     side="BOTH"
 
