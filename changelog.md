@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Disabled angry creeper sound
+* Fixed some strange shenanigans with Torch Arrow placing
 
 ## 1.2.0
 * Added Vindication enchantment
