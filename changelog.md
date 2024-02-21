@@ -1,8 +1,9 @@
 # Changelog
 
-## Upcoming
+## 1.2.1
 * Disabled angry creeper sound
 * Fixed some strange shenanigans with Torch Arrow placing
+* Removed beeg coal vein since in ITR coal veins are now the same size
 
 ## 1.2.0
 * Added Vindication enchantment
