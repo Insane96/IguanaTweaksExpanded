@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* Added Zippy enchantment
+  * +10% movement speed
 * Added Durium Shears
   * Higher durability but slower
 * Fixed torch arrows replacing already existing torches
