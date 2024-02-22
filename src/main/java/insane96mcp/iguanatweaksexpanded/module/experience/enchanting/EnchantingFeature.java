@@ -160,6 +160,7 @@ public class EnchantingFeature extends JsonFeature {
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
         for (Map.Entry<Enchantment, Integer> enchantment : event.getBottomItem().getAllEnchantments().entrySet())
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
+        lvl = (int)Math.floor(lvl);
 
         event.setXp((int) (lvl * 35 * 0.95f));
     }
