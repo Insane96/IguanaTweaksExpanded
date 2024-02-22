@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed torch arrows replacing already existing torches
+
 ## 1.2.1
 * Disabled angry creeper sound
 * Fixed some strange shenanigans with Torch Arrow placing

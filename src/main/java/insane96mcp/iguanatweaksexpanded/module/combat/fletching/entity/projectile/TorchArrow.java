@@ -44,7 +44,7 @@ public class TorchArrow extends Arrow {
         BlockPlaceContext blockPlaceContext = new BlockPlaceContext(this.level(), player, InteractionHand.MAIN_HAND, getPickupItem(), pResult);
         BlockState stateToPlace = ((StandingAndWallBlockItem)Items.TORCH).getPlacementState(blockPlaceContext);
 
-        if (stateToPlace != null) {
+        if (stateToPlace != null && this.level().getBlockState(pos).canBeReplaced()) {
             this.level().setBlock(pos, stateToPlace, 3);
             this.playSound(stateToPlace.getSoundType().getPlaceSound());
             this.discard();
