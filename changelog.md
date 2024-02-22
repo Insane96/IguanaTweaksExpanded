@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Fixed torch arrows replacing already existing torches
+* Removed 'Tool enchantability fix', using enchantability in Item Statistics
 
 ## 1.2.1
 * Disabled angry creeper sound

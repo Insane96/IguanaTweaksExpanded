@@ -64,9 +64,6 @@ public class EnchantingFeature extends JsonFeature {
     @Config
     @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
     public static Boolean noEnchantedSmithing = true;
-    @Config
-    @Label(name = "Tools enchantability fix", description = "If enabled, the enchantability of the following item is changed to allow enchanting. Tridents, Fishing Rods, Flint and Steel, Brush, ")
-    public static Boolean toolsEnchantabilityFix = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ANCIENT_LAPIS = ITERegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));

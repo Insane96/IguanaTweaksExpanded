@@ -5,11 +5,8 @@
     "refmap": "iguanatweaksexpanded.refmap.json",
     "mixins": [
         "AbstractMinecartMixin",
-        "BowItemMixin",
         "FishingHookMixin",
-        "FishingRodItemMixin",
-        "SmithingTransformRecipeMixin",
-        "TridentItemMixin"
+        "SmithingTransformRecipeMixin"
     ],
     "minVersion": "0.8"
 }
