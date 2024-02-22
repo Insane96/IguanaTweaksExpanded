@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.mining;
+package insane96mcp.iguanatweaksexpanded.module.mining.durium;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
@@ -71,6 +71,7 @@ Durium extends Feature {
 	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("durium", 452, INGOT, 9, Rarity.COMMON);
 
 	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("durium_shield", SHIELD_MATERIAL);
+	public static final RegistryObject<Item> SHEARS = ITERegistries.ITEMS.register("durium_shears", () -> new DuriumShears((new Item.Properties()).durability(252)));
 
 	@Config
 	@Label(name = "Durium Lodestone", description = "Enables a data pack that makes Lodestone require Durium instead of Netherite.")

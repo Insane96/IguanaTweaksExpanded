@@ -1,8 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.data.generator.client;
 
-import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
+import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import net.minecraft.data.PackOutput;

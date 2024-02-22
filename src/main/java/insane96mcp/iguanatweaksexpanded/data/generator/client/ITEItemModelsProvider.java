@@ -8,9 +8,9 @@ import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
-import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
+import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
@@ -162,6 +162,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         handHeld(Durium.SHOVEL.get());
         handHeld(Durium.HOE.get());
         handHeld(Durium.SWORD.get());
+        handHeld(Durium.SHEARS.get());
         trimmedArmorItem(Durium.BOOTS);
         trimmedArmorItem(Durium.LEGGINGS);
         trimmedArmorItem(Durium.CHESTPLATE);

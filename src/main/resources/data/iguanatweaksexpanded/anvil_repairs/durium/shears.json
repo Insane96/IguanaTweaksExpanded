@@ -1,0 +1,33 @@
+{
+	"item_to_repair": {
+		"id": "iguanatweaksexpanded:durium_shears"
+	},
+	"repair": [
+		{
+			"repair_material": {
+				"id": "minecraft:iron_ingot"
+			},
+			"amount": 3,
+			"max_repair": 0.5
+		},
+		{
+			"repair_material": {
+				"id": "minecraft:iron_nugget"
+			},
+			"amount": 23,
+			"max_repair": 0.5
+		},
+		{
+			"repair_material": {
+				"id": "iguanatweaksexpanded:durium_ingot"
+			},
+			"amount": 2
+		},
+		{
+			"repair_material": {
+				"id": "iguanatweaksexpanded:durium_nugget"
+			},
+			"amount": 18
+		}
+	]
+}

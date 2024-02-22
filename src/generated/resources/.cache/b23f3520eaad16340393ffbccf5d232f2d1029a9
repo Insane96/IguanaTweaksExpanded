@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-16T18:44:00.7159138	Item Models: iguanatweaksexpanded
+// 1.20.1	2024-02-22T09:06:58.7409344	Item Models: iguanatweaksexpanded
 c55d75529abc060f20c2dc12f6361ea2d4eecd91 assets/iguanatweaksexpanded/models/item/ancient_lapis.json
 9db8ff6b8f62a90066f9ec6f113f30579ef147b4 assets/iguanatweaksexpanded/models/item/blast_furnace.json
 fc1b6ed013a34c698e33c1afcd94ac79f4c34781 assets/iguanatweaksexpanded/models/item/brown_mushroom_stew.json
@@ -121,6 +121,7 @@ c156530f4a003d1cc2fa15c11a30d1b1e7f4923c assets/iguanatweaksexpanded/models/item
 39dbe3315b37d3feb3982f6a7d45e5705e36e67c assets/iguanatweaksexpanded/models/item/durium_pickaxe.json
 4aadefa49c8f3bc7daf934f43cd87dfe4918ee48 assets/iguanatweaksexpanded/models/item/durium_scrap_block.json
 9c44124fa3313fe476770173aefb2223f286dd8a assets/iguanatweaksexpanded/models/item/durium_scrap_piece.json
+12d2efcbec2d946adc16beb73bbd475f69200e58 assets/iguanatweaksexpanded/models/item/durium_shears.json
 313300a16ea7cc01a54c0ec8099ea9bf05edd0ac assets/iguanatweaksexpanded/models/item/durium_shield.json
 c00034174291c67a98858852a134f42de0029f42 assets/iguanatweaksexpanded/models/item/durium_shovel.json
 eadf0eab6e652ea12c0dc892fcea6f428ed4d4db assets/iguanatweaksexpanded/models/item/durium_sword.json

@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* Added Durium Shears
+  * Higher durability but slower
 * Fixed torch arrows replacing already existing torches
 * Removed 'Tool enchantability fix', using enchantability in Item Statistics
 

@@ -17,9 +17,9 @@ import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
-import insane96mcp.iguanatweaksexpanded.module.mining.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
+import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRenderer;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeScreen;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
@@ -72,6 +72,7 @@ public class ClientSetup {
             addAfter(event, Items.IRON_HOE, Durium.AXE.get());
             addAfter(event, Items.IRON_HOE, Durium.PICKAXE.get());
             addAfter(event, Items.IRON_HOE, Durium.SHOVEL.get());
+            addAfter(event, Items.SHEARS, Durium.SHEARS.get());
             addAfter(event, Items.DIAMOND_HOE, Keego.HOE.get());
             addAfter(event, Items.DIAMOND_HOE, Keego.AXE.get());
             addAfter(event, Items.DIAMOND_HOE, Keego.PICKAXE.get());
