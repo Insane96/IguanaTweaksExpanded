@@ -5,6 +5,8 @@
   * +10% movement speed
 * Added Durium Shears
   * Higher durability but slower
+* Grindstone now gives back 95% of the experience spent on the mod's enchanting table
+  * Basically much more
 * Fixed torch arrows replacing already existing torches
 * Removed 'Tool enchantability fix', using enchantability in Item Statistics
 

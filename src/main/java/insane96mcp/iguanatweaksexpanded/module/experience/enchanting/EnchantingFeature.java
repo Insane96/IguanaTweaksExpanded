@@ -40,6 +40,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.AnvilUpdateEvent;
+import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -47,6 +48,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled a data pack is also enabled that changes the enchanting table recipe. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
@@ -64,6 +66,9 @@ public class EnchantingFeature extends JsonFeature {
     @Config
     @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
     public static Boolean noEnchantedSmithing = true;
+    @Config
+    @Label(name = "Better grindstone xp", description = "If true, grindstone will give XP based off the new enchanting table. This is based off the ITR levelScalingFormula set to 35")
+    public static Boolean betterGrindstoneXp = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ANCIENT_LAPIS = ITERegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));
@@ -142,6 +147,21 @@ public class EnchantingFeature extends JsonFeature {
         ItemStack result = left.copy();
         result.getOrCreateTag().putBoolean(EnchantingFeature.EMPOWERED_ITEM, true);
         event.setOutput(result);
+    }
+
+    @SubscribeEvent
+    public void onGrindstoneTake(GrindstoneEvent.OnTakeItem event) {
+        if (!this.isEnabled()
+                || !betterGrindstoneXp)
+            return;
+
+        float lvl = 0;
+        for (Map.Entry<Enchantment, Integer> enchantment : event.getTopItem().getAllEnchantments().entrySet())
+            lvl += getCost(enchantment.getKey(), enchantment.getValue());
+        for (Map.Entry<Enchantment, Integer> enchantment : event.getBottomItem().getAllEnchantments().entrySet())
+            lvl += getCost(enchantment.getKey(), enchantment.getValue());
+
+        event.setXp((int) (lvl * 35 * 0.95f));
     }
 
     /*@SubscribeEvent
