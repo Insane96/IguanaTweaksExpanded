@@ -4,6 +4,7 @@
 	"block.iguanatweaksexpanded.enchanting_table": "Enchanting Table",
 	"iguanatweaksexpanded.infused_item": "Enchanting Infused",
 	"iguanatweaksexpanded.empowered_item": "Enchanting Empowered",
+	"iguanatweaksexpanded.apply_to_enchanting_table": "Treasure enchantments can be applied to enchanting table to let it learn it",
 
 	"enchantment.iguanatweaksexpanded.magnetic": "Magnetic",
 	"enchantment.iguanatweaksexpanded.magnetic.tooltip": "Pulls items from %d blocks away",
@@ -36,6 +37,8 @@
 	"enchantment.iguanatweaksexpanded.curse_of_mending": "Curse of Mending",
 	"enchantment.iguanatweaksexpanded.reach": "Reach",
 	"enchantment.iguanatweaksexpanded.reach.tooltip": "+%f%% Reach",
+	"enchantment.iguanatweaksexpanded.multipurpose": "Multipurpose",
+	"enchantment.iguanatweaksexpanded.multipurpose.tooltip": "Item always takes 1 damage when used",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",

@@ -9,6 +9,7 @@ import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
+import insane96mcp.insanelib.event.HurtItemStackEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerPlayer;
@@ -48,6 +49,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
 	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
+	public static final RegistryObject<Enchantment> MULTIPURPOSE = ITERegistries.ENCHANTMENTS.register("multipurpose", Multipurpose::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_MENDING = ITERegistries.ENCHANTMENTS.register("curse_of_mending", CurseOfMending::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
@@ -57,9 +59,6 @@ public class NewEnchantmentsFeature extends Feature {
 
     @SubscribeEvent
 	public void onAttributeModifiers(ItemAttributeModifierEvent event) {
-		if (!this.isEnabled())
-			return;
-
 		StepUp.applyAttributeModifier(event);
 		Zippy.applyAttributeModifier(event);
 		Reach.applyAttributeModifier(event);
@@ -71,9 +70,6 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent
 	public void onEntityTick(LivingEvent.LivingTickEvent event) {
-		if (!this.isEnabled())
-			return;
-
 		Magnetic.tryPullItems(event.getEntity());
 		if (event.getEntity() instanceof ServerPlayer player)
 			CurseOfMending.consumePlayerExperience(player);
@@ -81,40 +77,27 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent
 	public void onDamaged(LivingDamageEvent event) {
-		if (!this.isEnabled())
-			return;
-
 		Vindication.tryStackDamage(event.getEntity(), event.getSource(), event.getAmount());
 	}
 
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
-		if (!this.isEnabled())
-			return;
-
 		Vindication.tryApplyDamage(event);
 	}
 
 	@SubscribeEvent
 	public void onEffectAdded(MobEffectEvent.Added event) {
-		if (!this.isEnabled())
-			return;
-
 		MagicProtection.reduceBadEffectsDuration(event.getEntity(), event.getEffectInstance());
 	}
 
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-		if (!this.isEnabled())
-			return;
-
 		event.setNewSpeed(event.getNewSpeed() + Blasting.getMiningSpeedBoost(event.getEntity(), event.getState()));
 	}
 
 	@SubscribeEvent
 	public void onExperienceDropped(LivingExperienceDropEvent event) {
-		if (!this.isEnabled()
-				|| event.getAttackingPlayer() == null)
+		if (event.getAttackingPlayer() == null)
 			return;
 		int lvl = EnchantmentHelper.getEnchantmentLevel(SMARTNESS.get(), event.getAttackingPlayer());
 		if (lvl > 0)
@@ -123,8 +106,6 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBlockExperienceDropped(BlockEvent.BreakEvent event) {
-		if (!this.isEnabled())
-			return;
 		int lvl = EnchantmentHelper.getEnchantmentLevel(SMARTNESS.get(), event.getPlayer());
 		if (lvl > 0)
 			event.setExpToDrop(Smartness.getIncreasedExperience(event.getLevel().getRandom(), lvl, event.getExpToDrop()));
@@ -133,9 +114,6 @@ public class NewEnchantmentsFeature extends Feature {
 	//Priority high: run before Timber Trees
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBlockBreak(BlockEvent.BreakEvent event) {
-		if (!this.isEnabled())
-			return;
-
 		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 1f, false);
 		if (pick instanceof BlockHitResult blockHitResult) {
 			Veining.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
@@ -145,21 +123,26 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onCriticalHit(CriticalHitEvent event) {
-		if (!this.isEnabled())
-			return;
-
 		int lvl = event.getEntity().getMainHandItem().getEnchantmentLevel(CRITICAL.get());
 		if (lvl <= 0)
 			return;
 		event.setDamageModifier(Critical.getCritAmount(lvl, event.getDamageModifier()));
 	}
 
+	//Priority high: run before ITR unbreakable items
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onHurtItemStack(HurtItemStackEvent event) {
+		if (event.getAmount() <= 1)
+			return;
+		int lvl = event.getEntity().getMainHandItem().getEnchantmentLevel(MULTIPURPOSE.get());
+		if (lvl <= 0)
+			return;
+		event.setAmount(1);
+	}
+
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public void onRenderLevel(RenderLevelStageEvent event) {
-		if (!this.isEnabled())
-			return;
-
 		Expanded.applyOutlineAndDestroyAnimation(event);
 		Veining.applyOutlineAndDestroyAnimation(event);
 	}
@@ -167,16 +150,14 @@ public class NewEnchantmentsFeature extends Feature {
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
 	public void onJump(InputEvent.Key event) {
-		if (!this.isEnabled()
-				|| Minecraft.getInstance().player == null
+		if (Minecraft.getInstance().player == null
 				|| event.getAction() != InputConstants.PRESS
 				|| event.getKey() != Minecraft.getInstance().options.keyJump.getKey().getValue())
 			return;
 
 		LocalPlayer player = Minecraft.getInstance().player;
-		if (DoubleJump.extraJump(player)) {
+		if (DoubleJump.extraJump(player))
 			JumpMidAirMessage.jumpMidAir(player);
-		}
 	}
 
 	@OnlyIn(Dist.CLIENT)

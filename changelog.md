@@ -3,6 +3,8 @@
 ## Upcoming
 * Added Zippy enchantment
   * +10% movement speed
+* Added Multipurpose enchantment
+  * Prevents items from taking more than 1 damage when used
 * Added Durium Shears
   * Higher durability but slower
 * Enchanting now requires lapis each 3 levels spent

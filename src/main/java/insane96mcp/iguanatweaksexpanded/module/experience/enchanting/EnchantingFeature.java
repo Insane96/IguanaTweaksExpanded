@@ -36,6 +36,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -157,9 +158,9 @@ public class EnchantingFeature extends JsonFeature {
             return;
 
         float lvl = 0;
-        for (Map.Entry<Enchantment, Integer> enchantment : event.getTopItem().getAllEnchantments().entrySet())
+        for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getTopItem()).entrySet())
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
-        for (Map.Entry<Enchantment, Integer> enchantment : event.getBottomItem().getAllEnchantments().entrySet())
+        for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getBottomItem()).entrySet())
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
         lvl = (int)Math.floor(lvl);
 
@@ -174,7 +175,13 @@ public class EnchantingFeature extends JsonFeature {
             return;
 
         if (event.getItemStack().is(Items.ENCHANTED_BOOK)) {
-            //TODO tooltip for treasure enchantments
+            for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getItemStack()).entrySet()) {
+                if (enchantment.getKey().isTreasureOnly()) {
+                    event.getToolTip().add(Component.empty());
+                    event.getToolTip().add(Component.translatable("iguanatweaksexpanded.apply_to_enchanting_table").withStyle(ChatFormatting.GREEN));
+                    break;
+                }
+            }
         }
 
         Minecraft mc = Minecraft.getInstance();
