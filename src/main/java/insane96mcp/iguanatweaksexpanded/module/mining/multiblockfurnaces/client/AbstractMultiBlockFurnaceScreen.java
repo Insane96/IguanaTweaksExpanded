@@ -50,7 +50,7 @@ public abstract class AbstractMultiBlockFurnaceScreen<T extends AbstractMultiBlo
         } else {
             this.recipeBookComponent.render(guiGraphics, pMouseX, pMouseY, pPartialTick);
             super.render(guiGraphics, pMouseX, pMouseY, pPartialTick);
-            this.recipeBookComponent.renderGhostRecipe(guiGraphics, this.leftPos, this.topPos, true, pPartialTick);
+            this.recipeBookComponent.renderGhostRecipeAmount(guiGraphics, this.leftPos, this.topPos, true, pPartialTick);
         }
 
         this.renderTooltip(guiGraphics, pMouseX, pMouseY);

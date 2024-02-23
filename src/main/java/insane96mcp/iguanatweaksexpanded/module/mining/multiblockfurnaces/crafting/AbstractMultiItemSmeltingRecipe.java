@@ -112,8 +112,16 @@ public abstract class AbstractMultiItemSmeltingRecipe implements Recipe<Containe
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess p_267052_) {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return this.result;
+    }
+
+    public int getResultAmount(RegistryAccess registryAccess) {
+        if (this.recycle != null)
+            return (int) (this.recycle.amountAtFullDurability * this.recycle.ratio);
+        else if (this.outputIncrease > 0f)
+            return MathHelper.getAmountWithDecimalChance(RANDOM, this.outputIncrease);
+        return 1;
     }
 
     @Override

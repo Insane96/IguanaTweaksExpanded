@@ -17,6 +17,7 @@
   * Soul Blast Furnace
     * Now consumes 2x fuel like blast furnace
     * Ore blocks now give +30% output increase
+  * Recycling recipes now show the amount of items returned
   * Fixed many recipes missing/wrong
 * Quaron 
   * Tools and armor are now made from wooden and leather counterparts
