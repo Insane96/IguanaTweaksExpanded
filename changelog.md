@@ -5,6 +5,7 @@
   * +10% movement speed
 * Added Durium Shears
   * Higher durability but slower
+* Enchanting now requires lapis each 3 levels spent
 * Grindstone now gives back 95% of the experience spent on the mod's enchanting table
   * Basically much more
 * Fixed torch arrows replacing already existing torches

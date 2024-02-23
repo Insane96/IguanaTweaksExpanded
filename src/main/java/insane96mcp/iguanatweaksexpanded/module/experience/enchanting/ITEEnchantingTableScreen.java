@@ -31,6 +31,9 @@ import static insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded.ONE_DECIMAL_
 public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchantingTableMenu> {
     private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/enchanting_table.png");
 
+    static final int CATALYST_SLOT_X = 38;
+    static final int CATALYST_SLOT_Y = 19;
+
     static final int BUTTON_X = 9;
     static final int BUTTON_Y = 41;
     static final int BUTTON_U = 0;
@@ -206,7 +209,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             }
         }
         float cost = this.getCurrentCost();
-        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0;
+        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0 && this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= cost / 100f / 3f + 1;
     }
 
     @Override
@@ -229,10 +232,11 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             else
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost() / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
-            /*if (cost > 0) {
-                int lapisCost = (int)(cost / 5) + 1;
-                guiGraphics.drawCenteredString(this.font, "%d".formatted(lapisCost), topLeftCornerX + (lapisCost < 10 ? 48 : 45), topLeftCornerY + 18, 0x495e9e);
-            }*/
+            if (cost > 0) {
+                int lapis = (int) (this.getCurrentCost() / 100f / 3f) + 1;
+                color = this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() < lapis ? 0xFF0000 : 0x11FF11;
+                guiGraphics.drawCenteredString(this.font, "%d".formatted(lapis), topLeftCornerX + CATALYST_SLOT_X + 21, topLeftCornerY + CATALYST_SLOT_Y + 9, color);
+            }
         }
         this.scrollUpBtn.render(guiGraphics, mouseX, mouseY, partialTick);
         this.scrollDownBtn.render(guiGraphics, mouseX, mouseY, partialTick);

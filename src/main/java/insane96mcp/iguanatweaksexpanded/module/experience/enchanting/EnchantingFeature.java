@@ -8,6 +8,7 @@ import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
+import insane96mcp.iguanatweaksreborn.module.experience.PlayerExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import insane96mcp.insanelib.base.JsonFeature;
 import insane96mcp.insanelib.base.Label;
@@ -67,7 +68,7 @@ public class EnchantingFeature extends JsonFeature {
     @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
     public static Boolean noEnchantedSmithing = true;
     @Config
-    @Label(name = "Better grindstone xp", description = "If true, grindstone will give XP based off the new enchanting table. This is based off the ITR levelScalingFormula set to 35")
+    @Label(name = "Better grindstone xp", description = "If true, grindstone will give XP based off the new enchanting table. This is based off the ITR levelScalingFormula set to a fixed value")
     public static Boolean betterGrindstoneXp = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
@@ -162,7 +163,7 @@ public class EnchantingFeature extends JsonFeature {
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
         lvl = (int)Math.floor(lvl);
 
-        event.setXp((int) (lvl * 35 * 0.95f));
+        event.setXp((int) (lvl * PlayerExperience.getBetterScalingLevel(30) * 0.95f));
     }
 
     /*@SubscribeEvent

@@ -30,7 +30,8 @@ import java.util.List;
 
 public class ITEEnchantingTableMenu extends AbstractContainerMenu {
     public static final int ITEM_SLOT = 0;
-    public static final int SLOT_COUNT = 1;
+    public static final int CATALYST_SLOT = 1;
+    public static final int SLOT_COUNT = CATALYST_SLOT + 1;
     private static final int INV_SLOT_START = SLOT_COUNT;
     private static final int INV_SLOT_END = INV_SLOT_START + 27;
     private static final int USE_ROW_SLOT_START = INV_SLOT_END;
@@ -50,7 +51,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
         this.container = pContainer;
         this.access = access;
         this.level = pPlayerInventory.player.level();
-        this.addSlot(new Slot(pContainer, ITEM_SLOT, 29, 19) {
+        this.addSlot(new Slot(pContainer, ITEM_SLOT, 20, 19) {
             public int getMaxStackSize() {
                 return 1;
             }
@@ -64,6 +65,14 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return stack.isEnchantable() && !stack.is(EnchantingFeature.NOT_ENCHANTABLE);
+            }
+        });
+        this.addSlot(new Slot(pContainer, CATALYST_SLOT, 38, 19) {
+            /**
+             * Check if the stack is allowed to be placed in this slot, used for armor slots as well as furnace fuel.
+             */
+            public boolean mayPlace(ItemStack p_39517_) {
+                return p_39517_.is(net.minecraftforge.common.Tags.Items.ENCHANTING_FUELS);
             }
         });
 
@@ -144,7 +153,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             return false;
         }
         this.access.execute((level, blockPos) -> {
-            ItemStack stack = this.container.getItem(0);
+            ItemStack stack = this.container.getItem(ITEM_SLOT);
             if (stack.getTag() == null || !stack.getTag().contains("PendingEnchantments"))
                 return;
             ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
@@ -159,16 +168,10 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
                 cost += EnchantingFeature.getCost(enchantment, compoundtag.getShort("lvl"));
             }
             player.onEnchantmentPerformed(stack, (int) cost);
-            //ItemStack lapis = this.container.getItem(1);
-            //lapis.shrink((int)(cost / 5));
+            ItemStack lapis = this.container.getItem(CATALYST_SLOT);
+            lapis.shrink((int)(cost / 3));
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
-            /*if (level.getBlockEntity(blockPos) instanceof SREnchantingTableBlockEntity srEnchantingTableBlockEntity && srEnchantingTableBlockEntity.empowered) {
-                level.playSound(null, blockPos, SoundEvents.ALLAY_AMBIENT_WITH_ITEM, SoundSource.BLOCKS, 1f, 2f);
-                srEnchantingTableBlockEntity.empowered = false;
-                //this.updateEmpoweredState(level, blockPos);
-            }*/
-            //this.container.getItem(0).enchant(Enchantments.SHARPNESS, 1);
-
+            this.updateMaxCost(stack, level, blockPos);
         });
         this.broadcastChanges();
         return true;
@@ -185,6 +188,14 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
         itemstack = itemClicked.copy();
         if (pIndex == ITEM_SLOT) {
             if (!this.moveItemStackTo(itemClicked, INV_SLOT_START, USE_ROW_SLOT_END, true))
+                return ItemStack.EMPTY;
+        }
+        else if (pIndex == CATALYST_SLOT) {
+            if (!this.moveItemStackTo(itemClicked, INV_SLOT_START, USE_ROW_SLOT_END, true))
+                return ItemStack.EMPTY;
+        }
+        else if (this.slots.get(CATALYST_SLOT).mayPlace(itemClicked)) {
+            if (!this.moveItemStackTo(itemClicked, CATALYST_SLOT, CATALYST_SLOT + 1, true))
                 return ItemStack.EMPTY;
         }
         else if (!this.slots.get(ITEM_SLOT).hasItem() && this.slots.get(ITEM_SLOT).mayPlace(itemClicked)) {
