@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
+import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableUnlockedEnchantments;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -54,10 +55,11 @@ public class ITEEnchantingTable extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
-    protected void openContainer(Level pLevel, BlockPos pPos, Player pPlayer) {
-        BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+    protected void openContainer(Level level, BlockPos pos, Player player) {
+        BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof ITEEnchantingTableBlockEntity) {
-            pPlayer.openMenu((MenuProvider)blockentity);
+            player.openMenu((MenuProvider)blockentity);
+            SyncITEEnchantingTableUnlockedEnchantments.sync((ServerLevel) level, (ITEEnchantingTableBlockEntity) level.getBlockEntity(pos));
         }
     }
 

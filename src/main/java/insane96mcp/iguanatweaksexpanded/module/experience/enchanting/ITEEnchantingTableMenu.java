@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -169,7 +170,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             }
             player.onEnchantmentPerformed(stack, (int) cost);
             ItemStack lapis = this.container.getItem(CATALYST_SLOT);
-            lapis.shrink((int)(cost / 3));
+            lapis.shrink(Mth.ceil(cost / 3f));
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             this.updateMaxCost(stack, level, blockPos);
         });

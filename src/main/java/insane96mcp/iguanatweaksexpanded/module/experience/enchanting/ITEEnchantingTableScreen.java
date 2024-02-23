@@ -233,7 +233,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost() / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
             if (cost > 0) {
-                int lapis = (int) (this.getCurrentCost() / 100f / 3f) + 1;
+                int lapis = Mth.ceil(this.getCurrentCost() / 100f / 3f);
                 color = this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() < lapis ? 0xFF0000 : 0x11FF11;
                 guiGraphics.drawCenteredString(this.font, "%d".formatted(lapis), topLeftCornerX + CATALYST_SLOT_X + 21, topLeftCornerY + CATALYST_SLOT_Y + 9, color);
             }

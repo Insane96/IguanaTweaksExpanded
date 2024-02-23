@@ -166,28 +166,16 @@ public class EnchantingFeature extends JsonFeature {
         event.setXp((int) (lvl * PlayerExperience.getBetterScalingLevel(30) * 0.95f));
     }
 
-    /*@SubscribeEvent
-    public void onRightClick(PlayerInteractEvent.RightClickBlock event) {
-        if (!this.isEnabled()
-                || !event.getItemStack().is(ANCIENT_LAPIS.get())
-                || !(event.getLevel().getBlockEntity(event.getPos()) instanceof SREnchantingTableBlockEntity blockEntity)
-                || blockEntity.empowered)
-            return;
-
-        blockEntity.empowered = true;
-        event.getItemStack().shrink(1);
-        event.getLevel().playSound(null, event.getPos(), SoundEvents.ALLAY_AMBIENT_WITH_ITEM, SoundSource.BLOCKS, 1f, 0.5f);
-        event.setResult(Event.Result.DENY);
-        event.setCanceled(true);
-        event.setCancellationResult(InteractionResult.SUCCESS);
-    }*/
-
     @SubscribeEvent
     public void onTooltip(ItemTooltipEvent event) {
         if (!isEnabled(EnchantingFeature.class)
                 || event.getItemStack().getTag() == null
                 || !(event.getEntity() instanceof Player))
             return;
+
+        if (event.getItemStack().is(Items.ENCHANTED_BOOK)) {
+            //TODO tooltip for treasure enchantments
+        }
 
         Minecraft mc = Minecraft.getInstance();
         if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ITEEnchantingTableScreen))
