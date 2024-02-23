@@ -1,8 +1,8 @@
 {
-  "type": "iguanatweaksexpanded:multi_item_blasting",
-  "category": "blast_furnace_misc",
-  "cookingtime": 400,
-  "experience": 10.0,
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 1600,
+  "experience": 8.0,
   "ingredients": [
     {
       "item": "minecraft:raw_iron"
@@ -14,5 +14,6 @@
       "item": "minecraft:blaze_rod"
     }
   ],
+  "output_increase": 1.3,
   "result": "iguanatweaksexpanded:quaron_ingot"
 }

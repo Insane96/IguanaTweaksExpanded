@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_scrap_block": {
+    "has_raw_iron": {
       "conditions": {
         "items": [
           {
             "items": [
-              "iguanatweaksexpanded:durium_scrap_piece"
+              "minecraft:raw_iron"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:durium_ingot_from_soul_blasting"
+        "recipe": "iguanatweaksexpanded:blast_furnace/alloy/quaron_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_scrap_block",
+      "has_raw_iron",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:durium_ingot_from_soul_blasting"
+      "iguanatweaksexpanded:blast_furnace/alloy/quaron_ingot"
     ]
   },
   "sends_telemetry_event": true

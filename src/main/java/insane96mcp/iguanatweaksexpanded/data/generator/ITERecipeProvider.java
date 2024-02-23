@@ -321,24 +321,8 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Durium.SCRAP_BLOCK.item().get(), 1)
                 .unlockedBy("has_piece", has(Durium.SCRAP_PIECE.get()))
                 .save(writer);
-        MultiItemSmeltingRecipeBuilder.blasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)),
-                        RecipeCategory.MISC,
-                        Durium.INGOT.get(),
-                        800
-                )
-                .experience(5f)
-                .unlockedBy("has_scrap_block", has(Durium.SCRAP_PIECE.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_ingot_from_blasting");
-        MultiItemSmeltingRecipeBuilder.soulBlasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)),
-                        RecipeCategory.MISC,
-                        Durium.INGOT.get(),
-                        400
-                )
-                .experience(5f)
-                .unlockedBy("has_scrap_block", has(Durium.SCRAP_PIECE.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_ingot_from_soul_blasting");
+        addBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)), Durium.SCRAP_PIECE.get(), Durium.INGOT.get(), 5f, 800);
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)), Durium.SCRAP_PIECE.get(), Durium.INGOT.get(), 5f, 1600, 1.3f);
 
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_AXE), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.AXE.get())
                 .unlocks("has_durium", has(Durium.INGOT.get()))
@@ -401,24 +385,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Quaron.BLOCK.block().get(), 1)
                 .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_block");
-        MultiItemSmeltingRecipeBuilder.blasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_ROD)),
-                        RecipeCategory.MISC,
-                        Quaron.INGOT.get(),
-                        400
-                )
-                .experience(10f)
-                .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_blasting");
-        MultiItemSmeltingRecipeBuilder.soulBlasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_ROD)),
-                        RecipeCategory.MISC,
-                        Quaron.INGOT.get(),
-                        200
-                )
-                .experience(10f)
-                .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_soul_blasting");
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_AXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.AXE.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_axe");
@@ -449,6 +415,8 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_BOOTS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.BOOTS.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_boots");
+        addBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_ROD)), Items.RAW_IRON, Quaron.INGOT.get(), 8f, 800);
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_ROD)), Items.RAW_IRON, Quaron.INGOT.get(),8f, 1600, 1.3f);
 
         //Soul Steel
         copySmithingTemplate(writer, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERRACK);
@@ -498,26 +466,8 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(SoulSteel.INGOT.get(), 1)
                 .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
                 .save(writer);
-
-        MultiItemSmeltingRecipeBuilder.blasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.INGOT.get()), Ingredient.of(Durium.INGOT.get()), Ingredient.of(CoalCharcoal.HELLISH_COAL.get()), Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL)),
-                        RecipeCategory.MISC,
-                        SoulSteel.INGOT.get(),
-                        800
-                )
-                .experience(10f)
-                .unlockedBy("has_hellish_coal", has(CoalCharcoal.HELLISH_COAL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_ingot_from_blasting");
-        MultiItemSmeltingRecipeBuilder.soulBlasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.INGOT.get()), Ingredient.of(Durium.INGOT.get()), Ingredient.of(CoalCharcoal.HELLISH_COAL.get()), Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL)),
-                        RecipeCategory.MISC,
-                        SoulSteel.INGOT.get(),
-                        400
-                )
-                .experience(10f)
-                .unlockedBy("has_hellish_coal", has(CoalCharcoal.HELLISH_COAL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_ingot_from_soul_blasting");
-
+        addBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.INGOT.get()), Ingredient.of(Durium.INGOT.get()), Ingredient.of(CoalCharcoal.HELLISH_COAL.get()), Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL)), CoalCharcoal.HELLISH_COAL.get(), SoulSteel.INGOT.get(), 8f, 800);
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.INGOT.get()), Ingredient.of(Durium.INGOT.get()), Ingredient.of(CoalCharcoal.HELLISH_COAL.get()), Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL)), CoalCharcoal.HELLISH_COAL.get(), SoulSteel.INGOT.get(),8f, 1600, 1.3f);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ExplosiveBarrel.BLOCK.item().get())
                 .requires(Items.TNT, 1)
@@ -639,16 +589,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Durium.DEEPSLATE_ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 400, 1.3f);
         //Other
         addSoulBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 800);
-        MultiItemSmeltingRecipeBuilder.soulBlasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT)),
-                        RecipeCategory.MISC,
-                        Items.NETHERITE_INGOT,
-                        800
-                )
-                .experience(8f)
-                .group("netherite_ingot")
-                .unlockedBy("has_netherite_scrap", has(Items.NETHERITE_SCRAP))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "netherite_ingot");
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT)), Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, 8f, 800);
 
         //<editor-fold desc="Chained Copper Armor">
         SimpleCookingRecipeBuilder.smelting(
@@ -936,31 +877,27 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemPath);
     }
 
-    /*public static void addBlastingAlloy(Consumer<FinishedRecipe> writer, List<Item> items, Item result, float experience, int cookingTime) {
-        addBlastingAlloy(writer, items, result, experience, cookingTime, 0f);
+    public static void addBlastingAlloy(Consumer<FinishedRecipe> writer, NonNullList<Ingredient> items, Item unlockingItem, Item result, float experience, int cookingTime) {
+        addBlastingAlloy(writer, items, unlockingItem, result, experience, cookingTime, 0f);
     }
 
-    public static void addBlastingAlloy(Consumer<FinishedRecipe> writer, List<Item> items, Item result, float experience, int cookingTime, float outputIncrease) {
+    public static void addBlastingAlloy(Consumer<FinishedRecipe> writer, NonNullList<Ingredient> items, Item unlockingItem, Item result, float experience, int cookingTime, float outputIncrease) {
         if (items.isEmpty())
             throw new IndexOutOfBoundsException("items cannot be empty");
-        String itemPath = ForgeRegistries.ITEMS.getKey(items.get(0)).getPath();
+        String itemPath = ForgeRegistries.ITEMS.getKey(items.get(0).getItems()[0].getItem()).getPath();
         String resultPath = ForgeRegistries.ITEMS.getKey(result).getPath();
-        NonNullList<Ingredient> nonNullList = NonNullList.of(Ingredient.EMPTY);
-        for (Item item : items)
-            nonNullList.add(Ingredient.of(item));
 
         MultiItemSmeltingRecipeBuilder.blasting(
-                        nonNullList,
+                        items,
                         RecipeCategory.MISC,
                         result,
                         cookingTime
                 )
                 .experience(experience)
                 .outputIncrease(outputIncrease)
-                .group(resultPath)
-                .unlockedBy("has_" + itemPath, has(items.get(0)))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/" + resultPath);
-    }*/
+                .unlockedBy("has_" + itemPath, has(unlockingItem))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/alloy/" + resultPath);
+    }
 
     public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
         addSoulBlastingRecipe(writer, item, result, experience, cookingTime, 0f);
@@ -980,6 +917,28 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .group(resultPath)
                 .unlockedBy("has_" + itemPath, has(item))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemPath);
+    }
+
+    public static void addSoulBlastingAlloy(Consumer<FinishedRecipe> writer, NonNullList<Ingredient> items, Item unlockingItem, Item result, float experience, int cookingTime) {
+        addSoulBlastingAlloy(writer, items, unlockingItem, result, experience, cookingTime, 0f);
+    }
+
+    public static void addSoulBlastingAlloy(Consumer<FinishedRecipe> writer, NonNullList<Ingredient> items, Item unlockingItem, Item result, float experience, int cookingTime, float outputIncrease) {
+        if (items.isEmpty())
+            throw new IndexOutOfBoundsException("items cannot be empty");
+        String itemPath = ForgeRegistries.ITEMS.getKey(items.get(0).getItems()[0].getItem()).getPath();
+        String resultPath = ForgeRegistries.ITEMS.getKey(result).getPath();
+
+        MultiItemSmeltingRecipeBuilder.soulBlasting(
+                        items,
+                        RecipeCategory.MISC,
+                        result,
+                        cookingTime
+                )
+                .experience(experience)
+                .outputIncrease(outputIncrease)
+                .unlockedBy("has_" + itemPath, has(unlockingItem))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_blast_furnace/alloy/" + resultPath);
     }
 
     private void recycleGearBlasting(Consumer<FinishedRecipe> writer, Item itemToRecycle, Item output, int baseCookingTime, int amountAtMaxDurability) {

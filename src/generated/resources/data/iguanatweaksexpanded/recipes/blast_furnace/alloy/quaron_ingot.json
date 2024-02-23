@@ -1,8 +1,8 @@
 {
-  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
-  "category": "soul_blast_furnace_misc",
-  "cookingtime": 200,
-  "experience": 10.0,
+  "type": "iguanatweaksexpanded:multi_item_blasting",
+  "category": "blast_furnace_misc",
+  "cookingtime": 800,
+  "experience": 8.0,
   "ingredients": [
     {
       "item": "minecraft:raw_iron"

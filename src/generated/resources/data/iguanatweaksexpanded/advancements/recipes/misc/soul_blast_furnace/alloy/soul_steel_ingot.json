@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hellish_coal": {
+    "has_durium_ingot": {
       "conditions": {
         "items": [
           {
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:soul_steel_ingot_from_soul_blasting"
+        "recipe": "iguanatweaksexpanded:soul_blast_furnace/alloy/soul_steel_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_hellish_coal",
+      "has_durium_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:soul_steel_ingot_from_soul_blasting"
+      "iguanatweaksexpanded:soul_blast_furnace/alloy/soul_steel_ingot"
     ]
   },
   "sends_telemetry_event": true

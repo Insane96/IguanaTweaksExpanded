@@ -1,7 +1,7 @@
 {
   "type": "iguanatweaksexpanded:multi_item_soul_blasting",
   "category": "soul_blast_furnace_misc",
-  "cookingtime": 400,
+  "cookingtime": 1600,
   "experience": 5.0,
   "ingredients": [
     {
@@ -14,5 +14,6 @@
       "item": "minecraft:clay_ball"
     }
   ],
+  "output_increase": 1.3,
   "result": "iguanatweaksexpanded:durium_ingot"
 }

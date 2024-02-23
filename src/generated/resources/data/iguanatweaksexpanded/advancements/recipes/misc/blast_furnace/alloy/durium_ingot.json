@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_amethyst": {
+    "has_durium_scrap_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:amethyst_shard"
+              "iguanatweaksexpanded:durium_scrap_piece"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:quaron_ingot_from_blasting"
+        "recipe": "iguanatweaksexpanded:blast_furnace/alloy/durium_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_amethyst",
+      "has_durium_scrap_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:quaron_ingot_from_blasting"
+      "iguanatweaksexpanded:blast_furnace/alloy/durium_ingot"
     ]
   },
   "sends_telemetry_event": true

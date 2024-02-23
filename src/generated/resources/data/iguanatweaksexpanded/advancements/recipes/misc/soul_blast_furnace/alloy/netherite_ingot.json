@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:netherite_ingot"
+        "recipe": "iguanatweaksexpanded:soul_blast_furnace/alloy/netherite_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:netherite_ingot"
+      "iguanatweaksexpanded:soul_blast_furnace/alloy/netherite_ingot"
     ]
   },
   "sends_telemetry_event": true
