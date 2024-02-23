@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:quaron_ingot"
   },
   "base": {
-    "item": "minecraft:iron_axe"
+    "item": "minecraft:wooden_axe"
   },
   "result": {
     "item": "iguanatweaksexpanded:quaron_axe"

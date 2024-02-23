@@ -10,6 +10,11 @@
 * Enchanting now requires lapis each 3 levels spent
 * Grindstone now gives back 95% of the experience spent on the mod's enchanting table
   * Basically much more
+* Quaron 
+  * Tools and armor are now made from wooden and leather counterparts
+  * Reduced armor/regen absorption given
+  * Slightly changed the recipe
+* Increased Durium attack damage
 * Fixed torch arrows replacing already existing torches
 * Removed 'Tool enchantability fix', using enchantability in Item Statistics
 

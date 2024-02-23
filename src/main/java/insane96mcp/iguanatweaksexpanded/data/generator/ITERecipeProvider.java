@@ -401,7 +401,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_block");
         MultiItemSmeltingRecipeBuilder.blasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_POWDER)),
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_ROD)),
                         RecipeCategory.MISC,
                         Quaron.INGOT.get(),
                         400
@@ -410,7 +410,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_blasting");
         MultiItemSmeltingRecipeBuilder.soulBlasting(
-                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_POWDER)),
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_BLOCK), Ingredient.of(Items.BLAZE_ROD)),
                         RecipeCategory.MISC,
                         Quaron.INGOT.get(),
                         200
@@ -418,34 +418,34 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .experience(10f)
                 .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_soul_blasting");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_AXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.AXE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_AXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.AXE.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_axe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_PICKAXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.PICKAXE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_PICKAXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.PICKAXE.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_pickaxe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SHOVEL), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.SHOVEL.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_SHOVEL), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.SHOVEL.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_shovel");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HOE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.HOE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_HOE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.HOE.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_hoe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SWORD), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SWORD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_SWORD), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SWORD.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.IRON_SHIELD.get()), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SHIELD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.WOODEN_SHIELD.get()), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SHIELD.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_shield");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HELMET), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.HELMET.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_HELMET), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.HELMET.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_helmet");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_CHESTPLATE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.CHESTPLATE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_CHESTPLATE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.CHESTPLATE.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_chestplate");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_LEGGINGS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.LEGGINGS.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_LEGGINGS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.LEGGINGS.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_leggings");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_BOOTS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.BOOTS.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_BOOTS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.BOOTS.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_boots");
 
@@ -889,6 +889,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGearBlasting(writer, Durium.SHIELD.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, SPItems.GOLDEN_SHIELD.get(), Items.GOLD_NUGGET, 200, 36);
         recycleGearBlasting(writer, CopperToolsExpansion.COATED_SHIELD.get(), Items.OBSIDIAN, 200, 4);
+        recycleGearBlasting(writer, Quaron.SHIELD.get(), Quaron.NUGGET.get(), 200, 36);
         recycleGearBlasting(writer, SPItems.DIAMOND_SHIELD.get(), Items.DIAMOND, 200, 1);
         recycleGearBlasting(writer, SPItems.NETHERITE_SHIELD.get(), Items.NETHERITE_INGOT, 200, 1);
         recycleGearBlasting(writer, SoulSteel.SHIELD.get(), SoulSteel.NUGGET.get(), 200, 9);
@@ -917,6 +918,9 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Forging.IRON_HAMMER.get()), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Forging.DURIUM_HAMMER.get())
                 .unlocks("has_material", has(Durium.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_hammer");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Forging.WOODEN_HAMMER.get()), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Forging.QUARON_HAMMER.get())
+                .unlocks("has_material", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_hammer");
         forgeRecipe(writer, Items.GOLD_INGOT, 5, Forging.FLINT_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), 4, 9f);
         forgeRecipe(writer, Items.OBSIDIAN, 5, Forging.COPPER_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), 12, 9f);
         forgeRecipe(writer, Items.DIAMOND, 5, Forging.GOLDEN_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), 16, 15f);

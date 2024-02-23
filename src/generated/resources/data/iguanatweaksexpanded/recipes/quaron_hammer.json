@@ -4,10 +4,10 @@
     "item": "iguanatweaksexpanded:quaron_ingot"
   },
   "base": {
-    "item": "shieldsplus:wooden_shield"
+    "item": "iguanatweaksexpanded:wooden_hammer"
   },
   "result": {
-    "item": "iguanatweaksexpanded:quaron_shield"
+    "item": "iguanatweaksexpanded:quaron_hammer"
   },
   "template": []
 }

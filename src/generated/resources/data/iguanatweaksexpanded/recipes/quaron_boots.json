@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:quaron_ingot"
   },
   "base": {
-    "item": "minecraft:iron_boots"
+    "item": "minecraft:leather_boots"
   },
   "result": {
     "item": "iguanatweaksexpanded:quaron_boots"

@@ -1,6 +1,6 @@
 {
 	"item": "#iguanatweaksexpanded:equipment/hand/durium",
-	"durability": 754,
+	"durability": 765,
 	"efficiency": 2.5,
 	"modifiers": [
 		{
@@ -16,7 +16,7 @@
 			"name": "Material modifier",
 			"slot": "mainhand",
 			"attribute": "minecraft:generic.attack_damage",
-			"amount": -1,
+			"amount": -0.5,
 			"operation": "addition"
 		}
 	]
