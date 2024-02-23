@@ -12,11 +12,13 @@
   * Basically much more
 * Slight rework to Blast and Soul Blast furnaces recipes
   * Blast furnace 
-    * Only gives 60% materials of items recycled
-    * Ore blocks now give 2x output increase
+    * Only gives 60% materials of items recycled instead of 75%
+    * Ore blocks now give 2x output increase and raw ores give +30%
   * Soul Blast Furnace
     * Now consumes 2x fuel like blast furnace
-    * Ore blocks now give +30% output increase
+    * Smelting and alloyingis 2x slower than blast furnace
+    * Ore blocks and alloying now give +30% output increase
+    * Is now crafted from a furnace instead of a blast furnace
   * Recycling recipes now show the amount of items returned
   * Fixed many recipes missing/wrong
 * Quaron 

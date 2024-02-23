@@ -9,5 +9,6 @@
       "item": "iguanatweaksexpanded:gold_ore_rock"
     }
   ],
+  "output_increase": 2.0,
   "result": "minecraft:gold_ingot"
 }
