@@ -535,7 +535,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BBB")
                 .define('G', Items.GOLD_INGOT)
                 .define('N', Items.NETHERITE_INGOT)
-                .define('F', MultiBlockFurnaces.BLAST_FURNACE.item().get())
+                .define('F', Items.FURNACE)
                 .define('B', Items.NETHER_BRICKS)
                 .unlockedBy("has_netherite", has(Items.NETHERITE_INGOT))
                 .save(writer);
