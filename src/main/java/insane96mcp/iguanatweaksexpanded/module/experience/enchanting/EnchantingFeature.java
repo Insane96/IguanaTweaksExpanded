@@ -117,7 +117,7 @@ public class EnchantingFeature extends JsonFeature {
             if (enchantmentCost.id.matchesEnchantment(enchantment))
                 baseCost = (float) enchantmentCost.value;
         }
-        return baseCost * lvl + (lvl / 4f);
+        return baseCost * lvl + (lvl / 5f);
     }
 
     public void cleansedLapis(final AnvilUpdateEvent event) {
