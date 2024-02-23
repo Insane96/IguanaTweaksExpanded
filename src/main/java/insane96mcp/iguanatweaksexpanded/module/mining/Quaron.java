@@ -43,7 +43,7 @@ public class Quaron extends Feature {
 
 	public static final RegistryObject<Item> NUGGET = ITERegistries.ITEMS.register("quaron_nugget", () -> new Item(new Item.Properties()));
 
-	public static final ILItemTier ITEM_TIER = new ILItemTier(3, 1942, 6f, 2.5f, 14, () -> Ingredient.of(INGOT.get()));
+	public static final ILItemTier ITEM_TIER = new ILItemTier(3, 1942, 6f, 2.5f, 11, () -> Ingredient.of(INGOT.get()));
 
 	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("quaron_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties()));
 	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("quaron_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
@@ -79,7 +79,7 @@ public class Quaron extends Feature {
 			return;
 
 		int effLevel = event.getEntity().getMainHandItem().getEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY);
-		float bonus = EnchantmentsFeature.applyMiningSpeedModifiers(1f + (effLevel * 0.2f), false, event.getEntity());
+		float bonus = EnchantmentsFeature.applyMiningSpeedModifiers(1f + (effLevel * 0.25f), false, event.getEntity());
 		event.setNewSpeed(event.getOriginalSpeed() + bonus);
 	}
 }

@@ -12,8 +12,9 @@
   * Basically much more
 * Quaron 
   * Tools and armor are now made from wooden and leather counterparts
-  * Reduced armor/regen absorption given
+  * Reduced armor/regen absorption, tool's enchantability and efficiency
   * Slightly changed the recipe
+  * Slightly increased speed against wrong blocks with Efficiency
 * Increased Durium attack damage
 * Fixed torch arrows replacing already existing torches
 * Removed 'Tool enchantability fix', using enchantability in Item Statistics
