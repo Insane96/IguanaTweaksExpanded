@@ -10,7 +10,7 @@
   ],
   "recycle": {
     "amount_at_full_durability": 63,
-    "ratio": 0.75
+    "ratio": 0.6
   },
   "result": "minecraft:iron_nugget"
 }

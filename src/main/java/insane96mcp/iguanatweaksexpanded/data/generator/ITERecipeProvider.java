@@ -22,6 +22,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.Mu
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreGeneration;
+import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.Death;
 import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
@@ -550,6 +551,15 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_egg", has(Items.EGG))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "over_easy_egg_from_smoking");
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodDrinks.MILK_BOTTLE.get(), 3)
+                .requires(Ingredient.of(Items.MILK_BUCKET))
+                .requires(Ingredient.of(Items.GLASS_BOTTLE), 3)
+                .unlockedBy("has_milk", has(Items.MILK_BUCKET))
+                .save(writer);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(FoodDrinks.MILK_BOTTLE.get()), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 600)
+                .unlockedBy("has_milk", has(FoodDrinks.MILK_BOTTLE.get()))
+                .save(writer);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, CoalCharcoal.FIRESTARTER.get())
                 .requires(Items.FLINT, 2)
                 .requires(Items.IRON_INGOT, 1)
@@ -580,64 +590,67 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_netherite", has(Items.NETHERITE_INGOT))
                 .save(writer);
 
-        SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(OreGeneration.COPPER_ORE_ROCK.item().get()),
-                        RecipeCategory.MISC,
-                        Items.COPPER_INGOT,
-                        0.7f,
-                        400
-                )
-                .unlockedBy("has_copper_ore_rock", has(OreGeneration.COPPER_ORE_ROCK.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "copper_ingot_from_smelting_rock");
-        SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(OreGeneration.COPPER_ORE_ROCK.item().get()),
-                        RecipeCategory.MISC,
-                        Items.COPPER_INGOT,
-                        0.7f,
-                        100
-                )
-                .unlockedBy("has_copper_ore_rock", has(OreGeneration.COPPER_ORE_ROCK.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "copper_ingot_from_blasting_rock");
+        //Blast furnace recipes
+        //Copper
+        addBlastingRecipe(writer, Items.RAW_COPPER, Items.COPPER_INGOT, 0.7f, 100);
+        addBlastingRecipe(writer, Items.COPPER_ORE, Items.COPPER_INGOT, 0.7f, 100, 2f);
+        addBlastingRecipe(writer, Items.DEEPSLATE_COPPER_ORE, Items.COPPER_INGOT, 0.7f, 100, 2f);
+        addBlastingRecipe(writer, OreGeneration.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 100);
+        //Iron
+        addBlastingRecipe(writer, Items.RAW_IRON, Items.IRON_INGOT, 1f, 200);
+        addBlastingRecipe(writer, Items.IRON_ORE, Items.IRON_INGOT, 1f, 200, 2f);
+        addBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.IRON_INGOT, 1f, 200, 2f);
+        addBlastingRecipe(writer, OreGeneration.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 200);
+        addBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_INGOT, 0f, 200);
+        addBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 200);
+        //Gold
+        addBlastingRecipe(writer, Items.RAW_GOLD, Items.GOLD_INGOT, 2f, 200);
+        addBlastingRecipe(writer, Items.GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 2f);
+        addBlastingRecipe(writer, Items.DEEPSLATE_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 2f);
+        addBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 2f);
+        addBlastingRecipe(writer, OreGeneration.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 200);
+        //Durium
+        addBlastingRecipe(writer, Durium.ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 200, 2f);
+        addBlastingRecipe(writer, Durium.DEEPSLATE_ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 200, 2f);
+        //Other
+        addBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 400);
 
-        SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(OreGeneration.IRON_ORE_ROCK.item().get()),
+        //Soul Blast furnace recipes
+        //Copper
+        addSoulBlastingRecipe(writer, Items.RAW_COPPER, Items.COPPER_INGOT, 0.7f, 200);
+        addSoulBlastingRecipe(writer, Items.COPPER_ORE, Items.COPPER_INGOT, 0.7f, 200, 1.3f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_COPPER_ORE, Items.COPPER_INGOT, 0.7f, 200, 1.3f);
+        addSoulBlastingRecipe(writer, OreGeneration.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 200);
+        //Iron
+        addSoulBlastingRecipe(writer, Items.RAW_IRON, Items.IRON_INGOT, 1f, 400);
+        addSoulBlastingRecipe(writer, Items.IRON_ORE, Items.IRON_INGOT, 1f, 400, 1.3f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.IRON_INGOT, 1f, 400, 1.3f);
+        addSoulBlastingRecipe(writer, OreGeneration.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 400);
+        addSoulBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_INGOT, 0f, 400);
+        addSoulBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 400);
+        //Gold
+        addSoulBlastingRecipe(writer, Items.RAW_GOLD, Items.GOLD_INGOT, 2f, 200);
+        addSoulBlastingRecipe(writer, Items.GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1.3f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1.3f);
+        addSoulBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1.3f);
+        addSoulBlastingRecipe(writer, OreGeneration.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 200);
+        //Durium
+        addSoulBlastingRecipe(writer, Durium.ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 400, 1.3f);
+        addSoulBlastingRecipe(writer, Durium.DEEPSLATE_ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 400, 1.3f);
+        //Other
+        addSoulBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 800);
+        MultiItemSmeltingRecipeBuilder.soulBlasting(
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT)),
                         RecipeCategory.MISC,
-                        Items.IRON_INGOT,
-                        0.8f,
+                        Items.NETHERITE_INGOT,
                         800
                 )
-                .unlockedBy("has_iron_ore_rock", has(OreGeneration.IRON_ORE_ROCK.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "iron_ingot_from_smelting_rock");
-        SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(OreGeneration.IRON_ORE_ROCK.item().get()),
-                        RecipeCategory.MISC,
-                        Items.IRON_INGOT,
-                        0.8f,
-                        200
-                )
-                .unlockedBy("has_iron_ore_rock", has(OreGeneration.IRON_ORE_ROCK.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "iron_ingot_from_blasting_rock");
+                .experience(8f)
+                .group("netherite_ingot")
+                .unlockedBy("has_netherite_scrap", has(Items.NETHERITE_SCRAP))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "netherite_ingot");
 
-        SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(OreGeneration.GOLD_ORE_ROCK.item().get()),
-                        RecipeCategory.MISC,
-                        Items.GOLD_INGOT,
-                        1f,
-                        800
-                )
-                .unlockedBy("has_gold_ore_rock", has(OreGeneration.GOLD_ORE_ROCK.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "gold_ingot_from_smelting_rock");
-        SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(OreGeneration.GOLD_ORE_ROCK.item().get()),
-                        RecipeCategory.MISC,
-                        Items.GOLD_INGOT,
-                        1f,
-                        200
-                )
-                .unlockedBy("has_gold_ore_rock", has(OreGeneration.GOLD_ORE_ROCK.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "gold_ingot_from_blasting_rock");
-
-        // Chained Copper Armor
+        //<editor-fold desc="Chained Copper Armor">
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(ChainedCopperArmor.HELMET.get()),
                         RecipeCategory.MISC,
@@ -710,47 +723,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 )
                 .unlockedBy("has_chained_armor", has(ChainedCopperArmor.BOOTS.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting_chained_copper_boots");
-
-        //Durium
-        SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(Durium.ORE.item().get()),
-                        RecipeCategory.MISC,
-                        Durium.SCRAP_PIECE.get(),
-                        1f,
-                        200
-                )
-                .unlockedBy("has_durium_ore", has(Durium.ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_scrap_piece_from_smelting_ore");
-
-        SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(Durium.DEEPSLATE_ORE.item().get()),
-                        RecipeCategory.MISC,
-                        Durium.SCRAP_PIECE.get(),
-                        1f,
-                        200
-                )
-                .unlockedBy("has_durium_ore", has(Durium.DEEPSLATE_ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_scrap_piece_from_smelting_deepslate_ore");
-
-        SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(Durium.ORE.item().get()),
-                        RecipeCategory.MISC,
-                        Durium.SCRAP_PIECE.get(),
-                        1f,
-                        100
-                )
-                .unlockedBy("has_durium_ore", has(Durium.ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_scrap_piece_from_blasting_ore");
-
-        SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(Durium.DEEPSLATE_ORE.item().get()),
-                        RecipeCategory.MISC,
-                        Durium.SCRAP_PIECE.get(),
-                        1f,
-                        100
-                )
-                .unlockedBy("has_durium_ore", has(Durium.DEEPSLATE_ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_scrap_piece_from_blasting_deepslate_ore");
+        //</editor-fold>
 
         //Hellish Coal
         SimpleCookingRecipeBuilder.smelting(
@@ -931,34 +904,82 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlocks("has_material", has(Items.NETHERITE_INGOT))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "netherite_hammer");
 
-        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_IRON_ORE, Items.IRON_INGOT, 0.8f);
-        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_COPPER_ORE, Items.COPPER_INGOT, 0.7f);
-        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_GOLD_ORE, Items.GOLD_INGOT, 1f);
+        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_COPPER_ORE, Items.COPPER_INGOT, 0.75f, 100);
+        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_IRON_ORE, Items.IRON_INGOT, 1f, 200);
+        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_GOLD_ORE, Items.GOLD_INGOT, 2f, 200);
     }
 
-    private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, OreGeneration.PoorRichOre poorRichOre, Item smeltOutput, float experience) {
+    private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, OreGeneration.PoorRichOre poorRichOre, Item smeltOutput, float experience, int cookingTime) {
         for (Item item : poorRichOre.getAllItems()) {
-            String name = ForgeRegistries.ITEMS.getKey(item).getPath();
-            String metal = name.split("_")[1];
-            SimpleCookingRecipeBuilder.smelting(
-                            Ingredient.of(item),
-                            RecipeCategory.MISC,
-                            smeltOutput,
-                            experience,
-                            800
-                    )
-                    .unlockedBy("has_" + name, has(item))
-                    .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "ingot_from_smelting_" + name);
-            SimpleCookingRecipeBuilder.blasting(
-                            Ingredient.of(item),
-                            RecipeCategory.MISC,
-                            smeltOutput,
-                            experience,
-                            200
-                    )
-                    .unlockedBy("has_" + name, has(item))
-                    .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "ingot_from_blasting_" + name);
+            addBlastingRecipe(writer, item, smeltOutput, experience, cookingTime);
+            addSoulBlastingRecipe(writer, item, smeltOutput, experience, cookingTime);
         }
+    }
+
+    public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
+        addBlastingRecipe(writer, item, result, experience, cookingTime, 0f);
+    }
+
+    public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {
+        String itemPath = ForgeRegistries.ITEMS.getKey(item).getPath();
+        String resultPath = ForgeRegistries.ITEMS.getKey(result).getPath();
+        MultiItemSmeltingRecipeBuilder.blasting(
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(item)),
+                        RecipeCategory.MISC,
+                        result,
+                        cookingTime
+                )
+                .experience(experience)
+                .outputIncrease(outputIncrease)
+                .group(resultPath)
+                .unlockedBy("has_" + itemPath, has(item))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemPath);
+    }
+
+    /*public static void addBlastingAlloy(Consumer<FinishedRecipe> writer, List<Item> items, Item result, float experience, int cookingTime) {
+        addBlastingAlloy(writer, items, result, experience, cookingTime, 0f);
+    }
+
+    public static void addBlastingAlloy(Consumer<FinishedRecipe> writer, List<Item> items, Item result, float experience, int cookingTime, float outputIncrease) {
+        if (items.isEmpty())
+            throw new IndexOutOfBoundsException("items cannot be empty");
+        String itemPath = ForgeRegistries.ITEMS.getKey(items.get(0)).getPath();
+        String resultPath = ForgeRegistries.ITEMS.getKey(result).getPath();
+        NonNullList<Ingredient> nonNullList = NonNullList.of(Ingredient.EMPTY);
+        for (Item item : items)
+            nonNullList.add(Ingredient.of(item));
+
+        MultiItemSmeltingRecipeBuilder.blasting(
+                        nonNullList,
+                        RecipeCategory.MISC,
+                        result,
+                        cookingTime
+                )
+                .experience(experience)
+                .outputIncrease(outputIncrease)
+                .group(resultPath)
+                .unlockedBy("has_" + itemPath, has(items.get(0)))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/" + resultPath);
+    }*/
+
+    public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
+        addSoulBlastingRecipe(writer, item, result, experience, cookingTime, 0f);
+    }
+
+    public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {
+        String itemPath = ForgeRegistries.ITEMS.getKey(item).getPath();
+        String resultPath = ForgeRegistries.ITEMS.getKey(result).getPath();
+        MultiItemSmeltingRecipeBuilder.blasting(
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(item)),
+                        RecipeCategory.MISC,
+                        result,
+                        cookingTime
+                )
+                .experience(experience)
+                .outputIncrease(outputIncrease)
+                .group(resultPath)
+                .unlockedBy("has_" + itemPath, has(item))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemPath);
     }
 
     private void recycleGearBlasting(Consumer<FinishedRecipe> writer, Item itemToRecycle, Item output, int baseCookingTime, int amountAtMaxDurability) {
@@ -967,7 +988,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         RecipeCategory.COMBAT,
                         output,
                         baseCookingTime)
-                .recycle(amountAtMaxDurability, 0.75f)
+                .recycle(amountAtMaxDurability, 0.6f)
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
                 .unlockedBy("has_armor", has(itemToRecycle))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());

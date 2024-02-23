@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_grave": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "iguanatweaksreborn:grave"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "iguanatweaksexpanded:blast_furnace/iron_ingot_from_grave"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_grave",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "iguanatweaksexpanded:blast_furnace/iron_ingot_from_grave"
+    ]
+  },
+  "sends_telemetry_event": true
+}

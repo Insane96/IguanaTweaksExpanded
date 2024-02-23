@@ -184,6 +184,8 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(FoodDrinks.BROWN_MUSHROOM_STEW.get());
         basicItem(FoodDrinks.RED_MUSHROOM_STEW.get());
         basicItem(FoodDrinks.PUMPKIN_PULP.get());
+        basicItem(FoodDrinks.MILK_BOTTLE.get());
+        basicItem(FoodDrinks.CHEESE_SLICE.get());
 
         withExistingParent("explosive_barrel", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/explosive_barrel"));
 

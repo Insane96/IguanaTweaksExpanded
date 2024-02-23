@@ -1,0 +1,13 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_blasting",
+  "category": "blast_furnace_misc",
+  "cookingtime": 400,
+  "experience": 1.0,
+  "group": "iron_ingot",
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:iron_ore_rock"
+    }
+  ],
+  "result": "minecraft:iron_ingot"
+}

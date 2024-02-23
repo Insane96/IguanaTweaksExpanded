@@ -10,6 +10,14 @@
 * Enchanting now requires lapis each 3 levels spent
 * Grindstone now gives back 95% of the experience spent on the mod's enchanting table
   * Basically much more
+* Slight rework to Blast and Soul Blast furnaces recipes
+  * Blast furnace 
+    * Only gives 60% materials of items recycled
+    * Ore blocks now give 2x output increase
+  * Soul Blast Furnace
+    * Now consumes 2x fuel like blast furnace
+    * Ore blocks now give +30% output increase
+  * Fixed many recipes missing/wrong
 * Quaron 
   * Tools and armor are now made from wooden and leather counterparts
   * Reduced armor/regen absorption, tool's enchantability and efficiency

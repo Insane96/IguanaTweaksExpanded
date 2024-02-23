@@ -31,6 +31,6 @@ public class MultiBlockSoulBlastFurnaceBlockEntity extends AbstractMultiBlockFur
     }
 
     protected int getBurnDuration(ItemStack pFuel) {
-        return super.getBurnDuration(pFuel) / 4;
+        return super.getBurnDuration(pFuel) / 2;
     }
 }
