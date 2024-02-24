@@ -9,6 +9,6 @@
       "item": "iguanatweaksexpanded:copper_ore_rock"
     }
   ],
-  "output_increase": 2.0,
+  "output_increase": 1.0,
   "result": "minecraft:copper_ingot"
 }

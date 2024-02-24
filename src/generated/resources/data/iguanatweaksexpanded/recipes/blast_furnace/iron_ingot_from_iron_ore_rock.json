@@ -9,6 +9,6 @@
       "item": "iguanatweaksexpanded:iron_ore_rock"
     }
   ],
-  "output_increase": 2.0,
+  "output_increase": 1.0,
   "result": "minecraft:iron_ingot"
 }

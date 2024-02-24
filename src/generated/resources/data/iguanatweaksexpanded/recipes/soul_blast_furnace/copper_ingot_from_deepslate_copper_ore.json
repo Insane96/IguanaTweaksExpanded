@@ -9,6 +9,6 @@
       "item": "minecraft:deepslate_copper_ore"
     }
   ],
-  "output_increase": 1.3,
+  "output_increase": 0.3,
   "result": "minecraft:copper_ingot"
 }

@@ -9,6 +9,6 @@
       "item": "minecraft:gold_ore"
     }
   ],
-  "output_increase": 2.0,
+  "output_increase": 1.0,
   "result": "minecraft:gold_ingot"
 }

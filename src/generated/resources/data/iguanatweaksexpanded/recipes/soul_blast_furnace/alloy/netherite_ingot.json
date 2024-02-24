@@ -1,7 +1,7 @@
 {
   "type": "iguanatweaksexpanded:multi_item_soul_blasting",
   "category": "soul_blast_furnace_misc",
-  "cookingtime": 800,
+  "cookingtime": 1600,
   "experience": 8.0,
   "ingredients": [
     {
@@ -23,5 +23,6 @@
       "item": "minecraft:gold_ingot"
     }
   ],
+  "output_increase": 0.3,
   "result": "minecraft:netherite_ingot"
 }
