@@ -5,6 +5,8 @@
   * +10% movement speed
 * Added Multipurpose enchantment
   * Prevents items from taking more than 1 damage when used
+* Added Milk bottle and Cheese
+  * Milk bottle can be drank to get rid of a random effect
 * Added Durium Shears
   * Higher durability but slower
 * Enchanting now requires lapis each 3 levels spent
