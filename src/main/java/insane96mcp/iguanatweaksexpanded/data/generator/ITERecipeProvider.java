@@ -906,7 +906,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
     public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {
         String itemPath = ForgeRegistries.ITEMS.getKey(item).getPath();
         String resultPath = ForgeRegistries.ITEMS.getKey(result).getPath();
-        MultiItemSmeltingRecipeBuilder.blasting(
+        MultiItemSmeltingRecipeBuilder.soulBlasting(
                         NonNullList.of(Ingredient.EMPTY, Ingredient.of(item)),
                         RecipeCategory.MISC,
                         result,
