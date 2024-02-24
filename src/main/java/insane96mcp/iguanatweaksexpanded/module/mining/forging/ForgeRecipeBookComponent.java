@@ -17,6 +17,26 @@ public class ForgeRecipeBookComponent extends RecipeBookComponent {
     protected final GhostRecipeAmount ghostRecipeAmount = new GhostRecipeAmount();
 
     @Override
+    public void initVisuals() {
+        super.initVisuals();
+        this.stackedContents.clear();
+        for (ItemStack stack : this.minecraft.player.getInventory().items) {
+            this.stackedContents.accountStack(stack);
+        }
+        this.menu.fillCraftSlotsStackedContents(this.stackedContents);
+    }
+
+    @Override
+    public void updateStackedContents() {
+        this.stackedContents.clear();
+        for (ItemStack stack : this.minecraft.player.getInventory().items) {
+            this.stackedContents.accountStack(stack);
+        }
+        this.menu.fillCraftSlotsStackedContents(this.stackedContents);
+        this.updateCollections(false);
+    }
+
+    @Override
     public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
         boolean r = super.mouseClicked(pMouseX, pMouseY, pButton);
         if (this.ghostRecipe.getRecipe() == null)
