@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.3.0
 * Added Zippy enchantment
   * +10% movement speed
 * Added Multipurpose enchantment
