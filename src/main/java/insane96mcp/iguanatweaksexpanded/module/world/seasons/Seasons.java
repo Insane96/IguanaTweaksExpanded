@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
+import insane96mcp.iguanatweaksreborn.event.HookTickToHookLureEvent;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -219,13 +220,13 @@ public class Seasons extends Feature {
 		}
 	}
 
-	record ChunkAndHolder(LevelChunk chunk, ChunkHolder holder) {}
-
-	public static boolean shouldSlowdownFishing(Level level) {
+	@SubscribeEvent
+	public void shouldSlowdownFishing(HookTickToHookLureEvent event) {
 		if (!Feature.isEnabled(Seasons.class)
 				|| !seasonBasedFishingTime)
-			return false;
+			return;
 
+		Level level = event.getHookEntity().level();
 		Season season = SeasonHelper.getSeasonState(level).getSeason();
 		//Chance to slowdown fishing
 		float rng = switch (season) {
@@ -234,8 +235,11 @@ public class Seasons extends Feature {
 			case AUTUMN -> 0.2F;
 			case WINTER -> 0.5F;
 		};
-		return level.getRandom().nextFloat() < rng;
+		if (level.getRandom().nextFloat() < rng)
+			event.setTick(event.getTick() - 1);
 	}
+
+	record ChunkAndHolder(LevelChunk chunk, ChunkHolder holder) {}
 
 	@SubscribeEvent
 	public void onBonemeal(BonemealEvent event) {
