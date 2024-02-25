@@ -3,6 +3,7 @@
 ## Upcoming
 * Partially fixed recipes with damaged tools not showing up in Forge Recipe book
   * Partially because if you click the recipe the item doesn't get moved to the slot
+* Fixed multipurpose appearing on armor
 
 ## 1.3.0
 * Added Zippy enchantment
