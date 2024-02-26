@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.3.1
 * Added Quaron Reinforced Fishing rod
   * Higher durability but slower luring/hooking
 * Partially fixed recipes with damaged tools not showing up in Forge Recipe book
