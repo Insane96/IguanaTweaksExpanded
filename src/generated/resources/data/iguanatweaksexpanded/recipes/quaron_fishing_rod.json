@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "iguanatweaksexpanded:quaron_ingot"
+  },
+  "base": {
+    "item": "minecraft:fishing_rod"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:quaron_fishing_rod"
+  },
+  "template": []
+}

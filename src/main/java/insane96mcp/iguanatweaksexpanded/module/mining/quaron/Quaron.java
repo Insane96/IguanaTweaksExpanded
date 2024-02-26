@@ -1,10 +1,11 @@
-package insane96mcp.iguanatweaksexpanded.module.mining;
+package insane96mcp.iguanatweaksexpanded.module.mining.quaron;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
+import insane96mcp.iguanatweaksreborn.event.HookTickToHookLureEvent;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -18,6 +19,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -67,6 +69,8 @@ public class Quaron extends Feature {
 
 	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("quaron_shield", SHIELD_MATERIAL);
 
+	public static final RegistryObject<QuaronFishingRod> FISHING_ROD = ITERegistries.ITEMS.register("quaron_fishing_rod", () -> new QuaronFishingRod(new Item.Properties().durability(104)));
+
 	public Quaron(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
@@ -81,5 +85,24 @@ public class Quaron extends Feature {
 		int effLevel = event.getEntity().getMainHandItem().getEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY);
 		float bonus = EnchantmentsFeature.applyMiningSpeedModifiers(1f + (effLevel * 0.25f), false, event.getEntity());
 		event.setNewSpeed(event.getOriginalSpeed() + bonus);
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onBlockBreak(HookTickToHookLureEvent event) {
+		Player playerOwner = event.getHookEntity().getPlayerOwner();
+		if (!this.isEnabled()
+				|| playerOwner == null)
+			return;
+
+		boolean mainHand = playerOwner.getMainHandItem().is(FISHING_ROD.get());
+		boolean offHand = playerOwner.getOffhandItem().is(FISHING_ROD.get());
+		if (playerOwner.getMainHandItem().getItem() instanceof QuaronFishingRod) {
+			offHand = false;
+		}
+		if ((!mainHand && !offHand))
+			return;
+
+		if (playerOwner.level().getRandom().nextFloat() < 0.25f)
+			event.setTick(event.getTick() - 1);
 	}
 }

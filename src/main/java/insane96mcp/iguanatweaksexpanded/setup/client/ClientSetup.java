@@ -17,7 +17,6 @@ import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
-import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRenderer;
@@ -29,6 +28,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.miningcharge.MiningChargeR
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.MultiBlockBlastFurnaceScreen;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.MultiBlockSoulBlastFurnaceScreen;
+import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn.RespawnObeliskFeature;
@@ -40,6 +40,7 @@ import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -85,6 +86,7 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_HOE, Quaron.AXE.get());
             addAfter(event, Items.DIAMOND_HOE, Quaron.PICKAXE.get());
             addAfter(event, Items.DIAMOND_HOE, Quaron.SHOVEL.get());
+            addAfter(event, Items.FISHING_ROD, Quaron.FISHING_ROD.get());
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.HOE.get());
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.AXE.get());
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.PICKAXE.get());
@@ -261,6 +263,20 @@ public class ClientSetup {
                     if (livingEntity == null)
                         return 96f;
                     return (float) livingEntity.getY();
+                }));
+        event.enqueueWork(() ->
+                ItemProperties.register(Quaron.FISHING_ROD.get(), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "cast"), (stack, clientLevel, livingEntity, entityId) -> {
+                    if (livingEntity == null) {
+                        return 0.0F;
+                    } else {
+                        boolean flag = livingEntity.getMainHandItem() == stack;
+                        boolean flag1 = livingEntity.getOffhandItem() == stack;
+                        if (livingEntity.getMainHandItem().getItem() instanceof FishingRodItem) {
+                            flag1 = false;
+                        }
+
+                        return (flag || flag1) && livingEntity instanceof Player && ((Player)livingEntity).fishing != null ? 1.0F : 0.0F;
+                    }
                 }));
 
         MenuScreens.register(MultiBlockFurnaces.BLAST_FURNACE_MENU_TYPE.get(), MultiBlockBlastFurnaceScreen::new);

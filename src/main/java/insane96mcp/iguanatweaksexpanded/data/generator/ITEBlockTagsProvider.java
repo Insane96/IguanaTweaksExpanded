@@ -6,7 +6,6 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingF
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
-import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
@@ -14,6 +13,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockBlastFurnaceBlock;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockSoulBlastFurnaceBlock;
+import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreGeneration;

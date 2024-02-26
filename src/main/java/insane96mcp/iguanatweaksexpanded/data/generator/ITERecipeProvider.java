@@ -10,7 +10,6 @@ import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
-import insane96mcp.iguanatweaksexpanded.module.mining.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipeBuilder;
@@ -19,6 +18,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.miningcharge.MiningCharge;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.MultiItemSmeltingRecipeBuilder;
+import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreGeneration;
@@ -403,6 +403,9 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.WOODEN_SHIELD.get()), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SHIELD.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_shield");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.FISHING_ROD), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.FISHING_ROD.get())
+                .unlocks("has_quaron", has(Quaron.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_fishing_rod");
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_HELMET), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.HELMET.get())
                 .unlocks("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_helmet");
