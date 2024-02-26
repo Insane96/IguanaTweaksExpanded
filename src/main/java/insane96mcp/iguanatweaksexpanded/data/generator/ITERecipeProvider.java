@@ -336,6 +336,9 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HOE), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.HOE.get())
                 .unlocks("has_durium", has(Durium.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_hoe");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.SHEARS), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.SHEARS.get())
+                .unlocks("has_durium", has(Durium.INGOT.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_shears");
         SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SWORD), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.SWORD.get())
                 .unlocks("has_durium", has(Durium.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_sword");
@@ -766,6 +769,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGearBlasting(writer, Durium.AXE.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Durium.SHOVEL.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Durium.HOE.get(), Durium.NUGGET.get(), 200, 9);
+        recycleGearBlasting(writer, Durium.SHEARS.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Durium.SWORD.get(), Durium.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Quaron.PICKAXE.get(), Quaron.NUGGET.get(), 200, 9);
         recycleGearBlasting(writer, Quaron.AXE.get(), Quaron.NUGGET.get(), 200, 9);

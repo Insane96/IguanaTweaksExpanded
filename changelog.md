@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Fixed Solium moss not dropping with durium shears
+* Fixed missing durium shears recipe
+
 ## 1.3.1
 * Added Quaron Reinforced Fishing rod
   * Higher durability but slower luring/hooking

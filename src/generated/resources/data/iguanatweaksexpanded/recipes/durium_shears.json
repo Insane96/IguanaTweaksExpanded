@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "iguanatweaksexpanded:durium_ingot"
+  },
+  "base": {
+    "item": "minecraft:shears"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:durium_shears"
+  },
+  "template": []
+}
