@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.mobs;
 
 import insane96mcp.enhancedai.modules.creeper.CreeperSwell;
 import insane96mcp.enhancedai.modules.mobs.Spawning;
+import insane96mcp.enhancedai.modules.mobs.fisher.FisherMobs;
 import insane96mcp.enhancedai.modules.mobs.movement.Movement;
 import insane96mcp.enhancedai.modules.skeleton.SkeletonFleeTarget;
 import insane96mcp.enhancedai.modules.skeleton.shoot.SkeletonShoot;
@@ -37,6 +38,9 @@ public class EnhancedAI extends Feature {
         Module.getFeature(CreeperSwell.class).setConfigOption("Angry Creeper.Forced Explosion", false);
         Module.getFeature(CreeperSwell.class).setConfigOption("Angry Creeper.Sounds", CreeperSwell.AngryCreeperSounds.NONE);
         Module.getFeature(CreeperSwell.class).readConfig(event);
+
+        Module.getFeature(FisherMobs.class).setConfigOption("Equip Fishing Rod Chance", 0.5d);
+        Module.getFeature(FisherMobs.class).readConfig(event);
 
         Module.getFeature(SkeletonFleeTarget.class).setConfigOption("Flee speed Multiplier Near", 1.1d);
         Module.getFeature(SkeletonFleeTarget.class).setConfigOption("Flee speed Multiplier Far", 1d);
