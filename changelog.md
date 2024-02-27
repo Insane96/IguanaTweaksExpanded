@@ -1,7 +1,7 @@
 # Changelog
 
 ## Upcoming
-* Reduced max hostile mobs in Winter
+* Reduced max hostile mobs in Winter and slightly increased in summer
 * Fixed Solium moss not dropping with durium shears
 * Fixed missing durium shears recipe
 * Fixed Keego items being repairable with Gold

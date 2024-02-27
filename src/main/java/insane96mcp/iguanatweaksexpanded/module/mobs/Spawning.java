@@ -36,7 +36,7 @@ public class Spawning extends Feature {
     public static Integer hostileCapSpring = 70;
     @Config
     @Label(name = "Hostile Cap.Summer", description = "Hostile Mobs cap on summer, note that lower values increase the mobs around the player.")
-    public static Integer hostileCapSummer = 50;
+    public static Integer hostileCapSummer = 55;
     @Config
     @Label(name = "Hostile Cap.Autumn", description = "Hostile Mobs cap on autumn, note that lower values increase the mobs around the player.")
     public static Integer hostileCapAutumn = 70;
