@@ -1,20 +1,23 @@
 {
-	"item_to_repair": {
-		"id": "iguanatweaksexpanded:soul_steel_chestplate"
-	},
+	"item_to_repair": "iguanatweaksexpanded:soul_steel_chestplate",
 	"repair": [
 		{
-			"repair_material": {
-				"id": "minecraft:iron_ingot"
-			},
-			"amount": 48,
+			"repair_material": "minecraft:iron_ingot",
+			"amount": 100,
 			"max_repair": 0.5
 		},
 		{
-			"repair_material": {
-				"id": "iguanatweaksexpanded:soul_steel_ingot"
-			},
+			"repair_material": "minecraft:iron_nugget",
+			"amount": 892,
+			"max_repair": 0.5
+		},
+		{
+			"repair_material": "iguanatweaksexpanded:soul_steel_ingot",
 			"amount": 2
+		},
+		{
+			"repair_material": "iguanatweaksexpanded:soul_steel_nugget",
+			"amount": 18
 		}
 	]
 }

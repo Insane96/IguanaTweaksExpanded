@@ -7,14 +7,14 @@
 			"repair_material": {
 				"id": "minecraft:iron_ingot"
 			},
-			"amount": 10,
+			"amount": 19,
 			"max_repair": 0.5
 		},
 		{
 			"repair_material": {
 				"id": "minecraft:iron_nugget"
 			},
-			"amount": 82,
+			"amount": 169,
 			"max_repair": 0.5
 		},
 		{
