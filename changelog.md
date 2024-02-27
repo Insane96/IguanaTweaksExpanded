@@ -3,6 +3,7 @@
 ## Upcoming
 * Fixed Solium moss not dropping with durium shears
 * Fixed missing durium shears recipe
+* Fixed Keego items being repairable with Gold
 
 ## 1.3.1
 * Added Quaron Reinforced Fishing rod
