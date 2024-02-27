@@ -6,6 +6,7 @@
 * Fixed missing durium shears recipe
 * Fixed Keego items being repairable with Gold
 * Fixed souls steel and durium items amount wrong
+* Fixed cursed books having treasure enchantments tooltip
 
 ## 1.3.1
 * Added Quaron Reinforced Fishing rod
