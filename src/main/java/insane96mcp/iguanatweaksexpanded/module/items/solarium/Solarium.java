@@ -5,8 +5,7 @@ import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.item.*;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
-import insane96mcp.iguanatweaksreborn.module.combat.AbsorptionArmor;
-import insane96mcp.iguanatweaksreborn.module.combat.RegeneratingAbsorption;
+import insane96mcp.iguanatweaksreborn.module.combat.InnateResistance;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.integration.ToolBelt;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -54,7 +53,7 @@ import java.util.UUID;
 @Label(name = "Solarium", description = "Add Solarium, a new metal made by alloying Overgrown solium moss ball (found in hot biomes) and can be used to upgrade Iron Equipment")
 @LoadFeature(module = Modules.Ids.ITEMS)
 public class Solarium extends Feature {
-	public static final UUID TOUGHNESS_MODIFIER_UUID = UUID.fromString("c9c18638-6505-4544-9871-6397916fd0b7");
+	public static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("c9c18638-6505-4544-9871-6397916fd0b7");
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("435317e9-0146-4f1b-bc21-67f466ee5f9c");
 
 	public static final TagKey<Item> SOLARIUM_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/solarium"));
@@ -127,7 +126,7 @@ public class Solarium extends Feature {
 
 	@SubscribeEvent
 	public void onLivingTick(LivingEvent.LivingTickEvent event) {
-		boostToughness(event);
+		armorBoost(event);
 		boostAttackSpeed(event);
 
 		//Move if any other item needs toolbelt ticking
@@ -135,14 +134,11 @@ public class Solarium extends Feature {
 			ToolBelt.tryTickItemsIn(event.getEntity());
 	}
 
-	public static void boostToughness(LivingEvent.LivingTickEvent event) {
+	public static void armorBoost(LivingEvent.LivingTickEvent event) {
 		if (event.getEntity().tickCount % 2 != 1)
 			return;
 
-		Attribute attr = Attributes.ARMOR_TOUGHNESS;
-		boolean isRegenAbsorption = isEnabled(AbsorptionArmor.class);
-		if (isRegenAbsorption)
-			attr = RegeneratingAbsorption.SPEED_ATTRIBUTE.get();
+		Attribute attr = InnateResistance.ATTRIBUTE.get();
 		AttributeInstance toughnessAttr = event.getEntity().getAttribute(attr);
 		if (toughnessAttr == null)
 			return;
@@ -151,18 +147,18 @@ public class Solarium extends Feature {
 		float toughness = 0f;
 		for (EquipmentSlot equipmentSlot : EquipmentSlot.values()) {
 			ItemStack stack = event.getEntity().getItemBySlot(equipmentSlot);
-			if (!equipmentSlot.isArmor() || !stack.is(SOLARIUM_EQUIPMENT))
+			if (!equipmentSlot.isArmor() || !(stack.getItem() instanceof SolariumArmorItem))
 				continue;
-			toughness += (isRegenAbsorption ? 0.25f : 2.5f) * calculatedSkyLightRatio;
+			toughness += 0.6f * calculatedSkyLightRatio;
 		}
-		AttributeModifier modifier = toughnessAttr.getModifier(TOUGHNESS_MODIFIER_UUID);
+		AttributeModifier modifier = toughnessAttr.getModifier(ARMOR_MODIFIER_UUID);
 		if (modifier == null && toughness > 0f) {
-			MCUtils.applyModifier(event.getEntity(), attr, TOUGHNESS_MODIFIER_UUID, "Solarium toughness boost", toughness, AttributeModifier.Operation.MULTIPLY_BASE, false);
+			MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", toughness, AttributeModifier.Operation.MULTIPLY_BASE, false);
 		}
 		else if (modifier != null && modifier.getAmount() != toughness) {
-			toughnessAttr.removeModifier(TOUGHNESS_MODIFIER_UUID);
+			toughnessAttr.removeModifier(ARMOR_MODIFIER_UUID);
 			if (toughness > 0f)
-				MCUtils.applyModifier(event.getEntity(), attr, TOUGHNESS_MODIFIER_UUID, "Solarium toughness boost", toughness, AttributeModifier.Operation.MULTIPLY_BASE, false);
+				MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", toughness, AttributeModifier.Operation.MULTIPLY_BASE, false);
 		}
 	}
 

@@ -1,6 +1,6 @@
 {
 	"item": "iguanatweaksexpanded:keego_chestplate",
-	"durability": 176,
+	"durability": 160,
 	"armor": 3.8,
 	"modifiers": [
 		{
@@ -8,7 +8,7 @@
 			"name": "Armor slowdown",
 			"slot": "chest",
 			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.0175,
+			"amount": -0.035,
 			"operation": "multiply_base"
 		}
 	]

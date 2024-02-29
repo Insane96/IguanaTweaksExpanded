@@ -1,6 +1,6 @@
 {
 	"item": "iguanatweaksexpanded:keego_boots",
-	"durability": 132,
+	"durability": 120,
 	"armor": 1.7,
 	"modifiers": [
 		{
@@ -8,7 +8,7 @@
 			"name": "Armor slowdown",
 			"slot": "feet",
 			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.0075,
+			"amount": -0.015,
 			"operation": "multiply_base"
 		}
 	]

@@ -1,6 +1,6 @@
 {
     "item": "#iguanatweaksexpanded:equipment/armor/durium",
     "enchantability": 8,
-    "knockback_resistance": 0.02,
-    "armor_toughness": 1
+    "knockback_resistance": 0,
+    "armor_toughness": 1.5
 }

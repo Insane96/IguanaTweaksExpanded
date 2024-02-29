@@ -1,7 +1,7 @@
 {
 	"item": "iguanatweaksexpanded:quaron_chestplate",
 	"durability": 304,
-	"armor": 3.5,
+	"armor": 3.1,
 	"modifiers": [
 		{
 			"uuid": "e5ca3f97-f7a0-439b-8c94-b1af3bdf3828",
@@ -10,6 +10,14 @@
 			"attribute": "minecraft:generic.movement_speed",
 			"amount": -0.035,
 			"operation": "multiply_base"
+		},
+		{
+			"uuid": "e5ca3f97-f7a0-439b-8c94-b1af3bdf3828",
+			"name": "Item stats data pack",
+			"slot": "chest",
+			"attribute": "iguanatweaksreborn:innate_resistance",
+			"amount": 0.2,
+			"operation": "addition"
 		}
 	]
 }
