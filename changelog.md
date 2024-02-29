@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Added Lucky Hook enchantment
 * Rebalanced armors using the new Innate Resistance
 * Reduced chance for fisher zombies
 * Reduced max hostile mobs in Winter and slightly increased in summer

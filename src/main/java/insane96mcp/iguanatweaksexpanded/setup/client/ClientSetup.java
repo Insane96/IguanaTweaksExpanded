@@ -271,9 +271,8 @@ public class ClientSetup {
                     } else {
                         boolean flag = livingEntity.getMainHandItem() == stack;
                         boolean flag1 = livingEntity.getOffhandItem() == stack;
-                        if (livingEntity.getMainHandItem().getItem() instanceof FishingRodItem) {
+                        if (livingEntity.getMainHandItem().getItem() instanceof FishingRodItem)
                             flag1 = false;
-                        }
 
                         return (flag || flag1) && livingEntity instanceof Player && ((Player)livingEntity).fishing != null ? 1.0F : 0.0F;
                     }
