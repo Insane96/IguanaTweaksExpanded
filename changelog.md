@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.4.0
 * Added Lucky Hook enchantment
 * Rebalanced armors using the new Innate Resistance
 * Reduced chance for fisher zombies
