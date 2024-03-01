@@ -2,7 +2,7 @@
 
 ## 1.4.0
 * Added Lucky Hook enchantment
-* Rebalanced armors using the new Innate Resistance
+* Rebalanced armors using ITR new armor and toughness
 * Reduced chance for fisher zombies
 * Reduced max hostile mobs in Winter and slightly increased in summer
 * Fixed Solium moss not dropping with durium shears

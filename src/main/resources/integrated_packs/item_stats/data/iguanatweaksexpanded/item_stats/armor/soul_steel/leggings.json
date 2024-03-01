@@ -8,7 +8,7 @@
 			"name": "Armor slowdown",
 			"slot": "legs",
 			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.036,
+			"amount": -0.045,
 			"operation": "multiply_base"
 		}
 	]

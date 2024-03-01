@@ -5,7 +5,8 @@ import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.item.*;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
-import insane96mcp.iguanatweaksreborn.module.combat.InnateResistance;
+import insane96mcp.iguanatweaksreborn.module.combat.AbsorptionArmor;
+import insane96mcp.iguanatweaksreborn.module.combat.RegeneratingAbsorption;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.integration.ToolBelt;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -138,7 +139,10 @@ public class Solarium extends Feature {
 		if (event.getEntity().tickCount % 2 != 1)
 			return;
 
-		Attribute attr = InnateResistance.ATTRIBUTE.get();
+		Attribute attr = Attributes.ARMOR_TOUGHNESS;
+		boolean isRegenAbsorption = isEnabled(AbsorptionArmor.class);
+		if (isRegenAbsorption)
+			attr = RegeneratingAbsorption.SPEED_ATTRIBUTE.get();
 		AttributeInstance toughnessAttr = event.getEntity().getAttribute(attr);
 		if (toughnessAttr == null)
 			return;
@@ -147,18 +151,18 @@ public class Solarium extends Feature {
 		float toughness = 0f;
 		for (EquipmentSlot equipmentSlot : EquipmentSlot.values()) {
 			ItemStack stack = event.getEntity().getItemBySlot(equipmentSlot);
-			if (!equipmentSlot.isArmor() || !(stack.getItem() instanceof SolariumArmorItem))
+			if (!equipmentSlot.isArmor() || !stack.is(SOLARIUM_EQUIPMENT))
 				continue;
-			toughness += 0.6f * calculatedSkyLightRatio;
+			toughness += (isRegenAbsorption ? 0.2f : 4f) * calculatedSkyLightRatio;
 		}
 		AttributeModifier modifier = toughnessAttr.getModifier(ARMOR_MODIFIER_UUID);
 		if (modifier == null && toughness > 0f) {
-			MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", toughness, AttributeModifier.Operation.MULTIPLY_BASE, false);
+			MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", toughness, AttributeModifier.Operation.ADDITION, false);
 		}
 		else if (modifier != null && modifier.getAmount() != toughness) {
 			toughnessAttr.removeModifier(ARMOR_MODIFIER_UUID);
 			if (toughness > 0f)
-				MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", toughness, AttributeModifier.Operation.MULTIPLY_BASE, false);
+				MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", toughness, AttributeModifier.Operation.ADDITION, false);
 		}
 	}
 

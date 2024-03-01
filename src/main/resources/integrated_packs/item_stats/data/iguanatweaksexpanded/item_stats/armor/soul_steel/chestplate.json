@@ -8,7 +8,7 @@
 			"name": "Armor slowdown",
 			"slot": "chest",
 			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.042,
+			"amount": -0.0525,
 			"operation": "multiply_base"
 		}
 	]

@@ -1,5 +1,6 @@
 {
     "item": "#iguanatweaksexpanded:equipment/armor/solarium",
     "enchantability": 9,
-    "knockback_resistance": 0.03
+    "knockback_resistance": 0.03,
+    "armor_toughness": 2
 }
