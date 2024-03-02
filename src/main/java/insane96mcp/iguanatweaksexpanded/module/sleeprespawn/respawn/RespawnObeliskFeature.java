@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.insanelib.base.JsonFeature;
@@ -12,6 +13,7 @@ import insane96mcp.insanelib.data.IdTagValue;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -35,6 +37,8 @@ public class RespawnObeliskFeature extends JsonFeature {
 			IdTagValue.newId("iguanatweaksexpanded:durium_block", 0.075d),
 			IdTagValue.newId("minecraft:diamond_block", 0.05d),
 			IdTagValue.newId("iguanatweaksexpanded:keego_block", 0.05d),
+			IdTagValue.newId("iguanatweaksexpanded:quaron_block", 0.25d),
+			IdTagValue.newId("iguanatweaksexpanded:soul_steel_block", 0.05d),
 			IdTagValue.newId("minecraft:emerald_block", 0.35d),
 			IdTagValue.newId("minecraft:netherite_block", 0d)
 	);
@@ -44,6 +48,7 @@ public class RespawnObeliskFeature extends JsonFeature {
 	public RespawnObeliskFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 		JSON_CONFIGS.add(new JsonConfig<>("respawn_obelisk_catalysts.json", respawnObeliskCatalysts, RESPAWN_OBELISK_CATALYSTS_DEFAULT, IdTagValue.LIST_TYPE));
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "respawn_obelisk", Component.literal("IguanaTweaks Reborn Respawn Obelisk"), this::isEnabled));
 	}
 
 	@Override
