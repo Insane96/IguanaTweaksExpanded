@@ -1,7 +1,7 @@
 # Changelog
 
 ## 1.4.1
-* Made Respawn Obelisks 30% more common
+* Made Respawn Obelisks 3 times more common
   * Also the structure is now a data pack so disabling the Respawn Obelisk feature will also disable the structure generating
 * Fixed beeg ore veins not generating in deepslate
 
