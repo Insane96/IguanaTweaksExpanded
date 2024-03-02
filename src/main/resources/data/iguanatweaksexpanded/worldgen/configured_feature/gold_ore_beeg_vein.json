@@ -50,7 +50,7 @@
             {
                 "target": {
                     "predicate_type": "iguanatweaksreborn:random_block_tag_match",
-                    "tag": "minecraft:deepslate_ore_replaceable",
+                    "tag": "minecraft:deepslate_ore_replaceables",
                     "probability": 0.02
                 },
                 "state": {
@@ -60,7 +60,7 @@
             {
                 "target": {
                     "predicate_type": "iguanatweaksreborn:random_block_tag_match",
-                    "tag": "minecraft:deepslate_ore_replaceable",
+                    "tag": "minecraft:deepslate_ore_replaceables",
                     "probability": 0.06
                 },
                 "state": {
@@ -70,7 +70,7 @@
             {
                 "target": {
                     "predicate_type": "iguanatweaksreborn:random_block_tag_match",
-                    "tag": "minecraft:deepslate_ore_replaceable",
+                    "tag": "minecraft:deepslate_ore_replaceables",
                     "probability": 0.15
                 },
                 "state": {

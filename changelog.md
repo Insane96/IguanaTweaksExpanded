@@ -3,6 +3,7 @@
 ## Upcoming
 * Made Respawn Obelisks 30% more common
   * Also the structure is now a data pack so disabling the Respawn Obelisk feature will also disable the structure generating
+* Fixed beeg ore veins not generating in deepslate
 
 ## 1.4.0
 * Added Lucky Hook enchantment
