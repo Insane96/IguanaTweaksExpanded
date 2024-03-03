@@ -40,6 +40,6 @@ public class ITEDataPacks extends Feature {
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "item_stats", Component.literal("IguanaTweaks Expanded Item Stats"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && itemStatsDataPack));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "better_loot", Component.literal("IguanaTweaks Expanded Better Loot"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && betterStructureLoot));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "plant_growth_modifiers", Component.literal("IguanaTweaks Expanded Plant Growth modifiers"), () -> super.isEnabled() && !ITEDataPacks.disableAllDataPacks && plantGrowthMultipliersDataPack));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "livestock_changes", Component.literal("IguanaTweaks Reborn Livestock Changes"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && livestockDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "livestock_changes", Component.literal("IguanaTweaks Expanded Livestock Changes"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && livestockDataPack));
     }
 }

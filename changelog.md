@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Added a data pack that makes the tool belt start with 4 slots instead of 2
 * Fixed some better loot
 
 ## 1.4.2
