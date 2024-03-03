@@ -4,8 +4,8 @@
 		{
 			"rolls": {
 				"type": "minecraft:uniform",
-				"min": 3,
-				"max": 5
+				"min": 2,
+				"max": 3
 			},
 			"bonus_rolls": 0,
 			"entries": [
@@ -82,8 +82,8 @@
 							"function": "minecraft:set_count",
 							"count": {
 								"type": "minecraft:uniform",
-								"min": 2,
-								"max": 7
+								"min": 1,
+								"max": 2
 							},
 							"add": false
 						}
@@ -107,12 +107,43 @@
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:golden_horse_armor"
+					"weight": 4,
+					"name": "minecraft:amethyst_shard",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 5,
+								"max": 10
+							}
+						}
+					]
 				},
 				{
 					"type": "minecraft:item",
-					"name": "minecraft:diamond_horse_armor"
-				},
+					"weight": 4,
+					"name": "minecraft:netherite_scrap",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 2
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 1,
+				"max": 2
+			},
+			"entries": [
 				{
 					"type": "minecraft:item",
 					"weight": 3,
@@ -245,150 +276,6 @@
 					"type": "minecraft:item",
 					"weight": 3,
 					"name": "minecraft:diamond_axe",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_sword",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_boots",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_chestplate",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_leggings",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_helmet",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_pickaxe",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_shovel",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_hoe",
-					"functions": [
-						{
-							"function": "minecraft:enchant_with_levels",
-							"levels": {
-								"type": "minecraft:uniform",
-								"min": 20,
-								"max": 39
-							},
-							"treasure": true
-						}
-					]
-				},
-				{
-					"type": "minecraft:item",
-					"weight": 3,
-					"name": "iguanatweaksexpanded:soul_steel_axe",
 					"functions": [
 						{
 							"function": "minecraft:enchant_with_levels",
@@ -544,33 +431,57 @@
 							"treasure": true
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"rolls": {
+				"type": "minecraft:uniform",
+				"min": 2,
+				"max": 3
+			},
+			"entries": [
 				{
 					"type": "minecraft:item",
-					"weight": 4,
-					"name": "minecraft:amethyst_shard",
+					"weight": 3,
+					"name": "minecraft:popped_chorus_fruit",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
 								"type": "minecraft:uniform",
-								"min": 5,
-								"max": 10
+								"min": 3,
+								"max": 9
 							}
 						}
 					]
 				},
 				{
 					"type": "minecraft:item",
-					"weight": 4,
-					"name": "minecraft:netherite_scrap",
+					"weight": 3,
+					"name": "minecraft:chorus_fruit",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
 								"type": "minecraft:uniform",
-								"min": 1,
-								"max": 2
+								"min": 2,
+								"max": 5
+							}
+						}
+					]
+				},
+				{
+					"type": "minecraft:item",
+					"weight": 2,
+					"name": "minecraft:end_rod",
+					"functions": [
+						{
+							"function": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 3,
+								"max": 6
 							}
 						}
 					]
