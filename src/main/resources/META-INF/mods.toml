@@ -5,7 +5,7 @@ license="All rights reserved"
     modId="iguanatweaksexpanded"
     version="${file.jarVersion}"
     displayName="Iguana Tweaks Expanded"
-    displayURL="https://www.curseforge.com/minecraft/mc-mods/survival-reimagined"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/iguanatweaks-expanded"
     #logoFile="examplemod.png"
     credits = ""
     authors = "Insane96MCP"
@@ -42,7 +42,7 @@ license="All rights reserved"
     modId="iguanatweaksreborn"
     mandatory=true
     versionRange="[3.4.0,)"
-    ordering="BEFORE"
+    ordering="NONE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]

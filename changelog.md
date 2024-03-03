@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed some better loot
+
 ## 1.4.2
 * Oups
 
