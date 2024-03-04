@@ -170,7 +170,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             }
             player.onEnchantmentPerformed(stack, (int) cost);
             ItemStack lapis = this.container.getItem(CATALYST_SLOT);
-            lapis.shrink(Mth.ceil(cost / 3f));
+            lapis.shrink(Mth.ceil(cost / 2f));
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             this.updateMaxCost(stack, level, blockPos);
         });

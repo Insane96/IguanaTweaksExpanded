@@ -23,6 +23,7 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,7 +117,10 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
                 availableEnchantments.add(enchantment);
             }
         }
-        availableEnchantments.forEach(enchantment -> enchantments.add(new EnchantmentInstance(enchantment, 0)));
+        availableEnchantments
+                .stream()
+                .sorted(Comparator.comparing(ench -> ForgeRegistries.ENCHANTMENTS.getKey(ench).getPath()))
+                .forEach(enchantment -> enchantments.add(new EnchantmentInstance(enchantment, 0)));
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
         for (int i = 0; i < enchantments.size(); i++) {
@@ -209,7 +213,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             }
         }
         float cost = this.getCurrentCost();
-        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0 && this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= cost / 100f / 3f + 1;
+        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0 && this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= cost / 100f / 2f + 1;
     }
 
     @Override
@@ -233,7 +237,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost() / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
             if (cost > 0) {
-                int lapis = Mth.ceil(this.getCurrentCost() / 100f / 3f);
+                int lapis = Mth.ceil(this.getCurrentCost() / 100f / 2f);
                 color = this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() < lapis ? 0xFF0000 : 0x11FF11;
                 guiGraphics.drawCenteredString(this.font, "%d".formatted(lapis), topLeftCornerX + CATALYST_SLOT_X + 21, topLeftCornerY + CATALYST_SLOT_Y + 9, color);
             }

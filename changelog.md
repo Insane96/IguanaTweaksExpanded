@@ -1,5 +1,12 @@
 # Changelog
 
+## Upcoming
+* Reduced Swift Strike bonus attack speed (+15% -> +10% per level)
+* Enchanting table 
+  * Enchantments are now sorted by registry name
+  * Lapis cost has been increased to 1 every 2 levels spent instead of 3
+* Fixed Vindication working with bows
+
 ## 1.4.3
 * Added a data pack that makes the tool belt start with 4 slots instead of 2
 * Fixed some better loot
