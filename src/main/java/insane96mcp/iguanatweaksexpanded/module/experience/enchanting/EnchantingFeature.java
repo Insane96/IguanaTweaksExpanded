@@ -65,7 +65,7 @@ public class EnchantingFeature extends JsonFeature {
     public static final String INFUSED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "infused";
     public static final String EMPOWERED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "empowered";
     @Config
-    @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items and also enchanted books can no longer be applied to enchanted items.")
+    @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items (also applies to enchanted books).")
     public static Boolean noEnchantmentMerge = true;
     @Config
     @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
@@ -78,8 +78,12 @@ public class EnchantingFeature extends JsonFeature {
     public static final RegistryObject<Item> ANCIENT_LAPIS = ITERegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));
 
     public static final List<IdTagValue> DEFAULT_ENCHANTMENT_BASE_COST = List.of(
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "expanded", 4.2f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "veining", 3.5f)
+            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "expanded", 5f),
+            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "veining", 4f),
+            IdTagValue.newId("minecraft:multishot", 5f),
+            IdTagValue.newId("minecraft:quick_charge", 3f),
+            IdTagValue.newId("minecraft:power", 2f),
+            IdTagValue.newId("minecraft:soul_speed", 5f)
     );
     public static final ArrayList<IdTagValue> enchantmentBaseCost = new ArrayList<>();
 
@@ -135,7 +139,7 @@ public class EnchantingFeature extends JsonFeature {
             if (enchantmentCost.id.matchesEnchantment(enchantment))
                 baseCost = (float) enchantmentCost.value;
         }
-        return (float) (baseCost * Math.pow(lvl, 1.1));
+        return (float) (baseCost * Math.pow(lvl, 1.11));
     }
 
     public void cleansedLapis(final AnvilUpdateEvent event) {
