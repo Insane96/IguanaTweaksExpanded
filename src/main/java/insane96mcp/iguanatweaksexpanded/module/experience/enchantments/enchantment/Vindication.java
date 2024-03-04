@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IEnchantmentTooltip;
+import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
@@ -58,7 +58,7 @@ public class Vindication extends Enchantment implements IEnchantmentTooltip {
     }
 
     public static void tryApplyDamage(LivingHurtEvent event) {
-        if (!(event.getSource().getEntity() instanceof LivingEntity attacker))
+        if (!(event.getSource().getDirectEntity() instanceof LivingEntity attacker))
             return;
 
         event.setAmount(event.getAmount() + attacker.getPersistentData().getFloat(STACKED_DAMAGE));

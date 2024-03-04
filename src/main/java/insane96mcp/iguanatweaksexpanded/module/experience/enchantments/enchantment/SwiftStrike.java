@@ -26,7 +26,7 @@ public class SwiftStrike extends BonusDamageEnchantment {
     }
 
     public static float getAttackSpeedBonusPerLevel() {
-        return 0.15f;
+        return 0.1f;
     }
 
     public static void applyAttributeModifier(ItemAttributeModifierEvent event) {

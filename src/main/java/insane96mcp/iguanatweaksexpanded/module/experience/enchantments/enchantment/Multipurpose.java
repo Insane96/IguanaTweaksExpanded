@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IEnchantmentTooltip;
+import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;

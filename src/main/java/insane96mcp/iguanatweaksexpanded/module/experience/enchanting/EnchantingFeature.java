@@ -7,9 +7,11 @@ import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
+import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.iguanatweaksreborn.module.experience.PlayerExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.insanelib.base.JsonFeature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -93,6 +95,21 @@ public class EnchantingFeature extends JsonFeature {
         return IguanaTweaksReborn.CONFIG_FOLDER;
     }
 
+    @Override
+    public void loadJsonConfigs() {
+        super.loadJsonConfigs();
+        for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
+            if (EnchantmentsFeature.isEnchantmentDisabled(enchantment))
+                continue;
+            int maxLvl = enchantment.getMaxLevel();
+            if (maxLvl > 1)
+                maxLvl++;
+            for (int i = 1; i <= maxLvl; i++) {
+                LogHelper.debug("%s %d: %.1f", ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString(), i, getCost(enchantment, i));
+            }
+        }
+    }
+
     @SubscribeEvent
     public void onAnvilUpdate(AnvilUpdateEvent event) {
         if (!this.isEnabled())
@@ -118,7 +135,7 @@ public class EnchantingFeature extends JsonFeature {
             if (enchantmentCost.id.matchesEnchantment(enchantment))
                 baseCost = (float) enchantmentCost.value;
         }
-        return baseCost * lvl + (lvl / 5f);
+        return (float) (baseCost * Math.pow(lvl, 1.1));
     }
 
     public void cleansedLapis(final AnvilUpdateEvent event) {
