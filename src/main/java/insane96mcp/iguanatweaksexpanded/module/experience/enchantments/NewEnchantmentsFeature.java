@@ -9,7 +9,6 @@ import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
-import insane96mcp.insanelib.event.HurtItemStackEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerLevel;
@@ -66,7 +65,6 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
 	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
-	public static final RegistryObject<Enchantment> MULTIPURPOSE = ITERegistries.ENCHANTMENTS.register("multipurpose", Multipurpose::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_MENDING = ITERegistries.ENCHANTMENTS.register("curse_of_mending", CurseOfMending::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
@@ -180,17 +178,6 @@ public class NewEnchantmentsFeature extends Feature {
 		if (lvl <= 0)
 			return;
 		event.setDamageModifier(Critical.getCritAmount(lvl, event.getDamageModifier()));
-	}
-
-	//Priority high: run before ITR unbreakable items
-	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void onHurtItemStack(HurtItemStackEvent event) {
-		if (event.getAmount() <= 1)
-			return;
-		int lvl = event.getEntity().getMainHandItem().getEnchantmentLevel(MULTIPURPOSE.get());
-		if (lvl <= 0)
-			return;
-		event.setAmount(1);
 	}
 
 	@SubscribeEvent

@@ -11,6 +11,7 @@ import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
+import insane96mcp.insanelib.event.HurtItemStackEvent;
 import insane96mcp.insanelib.item.ILItemTier;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
@@ -69,7 +70,7 @@ public class Quaron extends Feature {
 
 	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("quaron_shield", SHIELD_MATERIAL);
 
-	public static final RegistryObject<QuaronFishingRod> FISHING_ROD = ITERegistries.ITEMS.register("quaron_fishing_rod", () -> new QuaronFishingRod(new Item.Properties().durability(104)));
+	public static final RegistryObject<QuaronFishingRod> FISHING_ROD = ITERegistries.ITEMS.register("quaron_fishing_rod", () -> new QuaronFishingRod(new Item.Properties().durability(94)));
 
 	public Quaron(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
@@ -87,8 +88,17 @@ public class Quaron extends Feature {
 		event.setNewSpeed(event.getOriginalSpeed() + bonus);
 	}
 
+	//Priority high: run before ITR unbreakable items
 	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void onBlockBreak(HookTickToHookLureEvent event) {
+	public void onHurtItemStack(HurtItemStackEvent event) {
+		if (event.getAmount() <= 1
+				|| !event.getStack().is(Quaron.FISHING_ROD.get()))
+			return;
+		event.setAmount(1);
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onHookTickToHookLure(HookTickToHookLureEvent event) {
 		Player playerOwner = event.getHookEntity().getPlayerOwner();
 		if (!this.isEnabled()
 				|| playerOwner == null)

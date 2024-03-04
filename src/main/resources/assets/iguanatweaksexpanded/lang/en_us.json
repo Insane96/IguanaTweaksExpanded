@@ -37,9 +37,7 @@
 	"enchantment.iguanatweaksexpanded.curse_of_mending": "Curse of Mending",
 	"enchantment.iguanatweaksexpanded.reach": "Reach",
 	"enchantment.iguanatweaksexpanded.reach.tooltip": "+%f%% Reach",
-	"enchantment.iguanatweaksexpanded.multipurpose": "Multipurpose",
-	"enchantment.iguanatweaksexpanded.multipurpose.tooltip": "Item always takes 1 damage when used",
-	"enchantment.iguanatweaksexpanded.lucky_hook": "Lucky Hook",
+	"enchantment.iguanatweaksexpanded.lucky_hook": "Juicy Bait",
 	"enchantment.iguanatweaksexpanded.lucky_hook.tooltip": "%s chance to fish two items",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
