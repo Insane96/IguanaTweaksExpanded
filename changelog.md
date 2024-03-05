@@ -7,6 +7,7 @@
   * Lapis cost has been increased to 1 every 2 levels spent instead of 3
   * Level cost has been rebalanced, costs slight less for lower levels and slightly more for higher levels
   * Enchantments base cost rebalanced
+  * Increased base max cost from 3 to 4
 * Removed Multipurpose
 * Quaron Fishing Rod
   * No longer takes more than 1 damage when used (e.g. on entities or items) (basically what Multipurpose did)

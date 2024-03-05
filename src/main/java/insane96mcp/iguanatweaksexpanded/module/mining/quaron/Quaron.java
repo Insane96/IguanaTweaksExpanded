@@ -106,9 +106,8 @@ public class Quaron extends Feature {
 
 		boolean mainHand = playerOwner.getMainHandItem().is(FISHING_ROD.get());
 		boolean offHand = playerOwner.getOffhandItem().is(FISHING_ROD.get());
-		if (playerOwner.getMainHandItem().getItem() instanceof QuaronFishingRod) {
+		if (playerOwner.getMainHandItem().getItem() instanceof QuaronFishingRod)
 			offHand = false;
-		}
 		if ((!mainHand && !offHand))
 			return;
 

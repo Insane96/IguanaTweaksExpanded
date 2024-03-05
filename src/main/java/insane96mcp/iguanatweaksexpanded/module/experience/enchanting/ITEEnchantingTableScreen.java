@@ -106,9 +106,10 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         List<EnchantmentInstance> enchantments = new ArrayList<>();
         this.enchantmentEntries.clear();
         List<Enchantment> availableEnchantments = new ArrayList<>();
-        if (stack.isEmpty()) {
+        if (stack.isEmpty() || stack.isEnchanted()) {
             this.scrollUpBtn.active = false;
             this.scrollDownBtn.active = false;
+            this.enchantmentEntries.clear();
             return;
         }
 

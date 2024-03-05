@@ -21,7 +21,7 @@ public class Healthy extends Enchantment {
             UUID.fromString("13225ef2-359e-4efa-9b64-122f26da388a")
     };
     public Healthy() {
-        super(Rarity.RARE, EnchantmentCategory.ARMOR, EnchantmentsFeature.ARMOR_SLOTS);
+        super(Rarity.UNCOMMON, EnchantmentCategory.ARMOR, EnchantmentsFeature.ARMOR_SLOTS);
     }
 
     @Override
