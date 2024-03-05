@@ -83,7 +83,7 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId("minecraft:multishot", 5f),
             IdTagValue.newId("minecraft:quick_charge", 3f),
             IdTagValue.newId("minecraft:power", 2f),
-            IdTagValue.newId("minecraft:soul_speed", 5f)
+            IdTagValue.newId("minecraft:soul_speed", 4f)
     );
     public static final ArrayList<IdTagValue> enchantmentBaseCost = new ArrayList<>();
 

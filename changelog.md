@@ -8,9 +8,10 @@
   * Level cost has been rebalanced, costs slight less for lower levels and slightly more for higher levels
   * Enchantments base cost rebalanced
 * Removed Multipurpose
-* Quaron Fishing
-  * No longer takes more than 1 damage when used (e.g. on entities or items)
+* Quaron Fishing Rod
+  * No longer takes more than 1 damage when used (e.g. on entities or items) (basically what Multipurpose did)
   * Slightly less durability
+* Changed again Quaron recipe
 * Fixed Vindication working with bows
 
 ## 1.4.3
