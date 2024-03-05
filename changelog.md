@@ -13,6 +13,8 @@
   * Slightly less durability
 * Changed again Quaron recipe
 * Fixed Vindication working with bows
+* Fixed serene seasons leaving behind ice
+  * This fix is already in newer versions but will not be backported
 
 ## 1.4.3
 * Added a data pack that makes the tool belt start with 4 slots instead of 2

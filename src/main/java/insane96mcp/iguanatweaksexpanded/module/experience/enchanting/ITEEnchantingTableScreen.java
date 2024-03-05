@@ -239,7 +239,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             if (cost > 0) {
                 int lapis = Mth.ceil(this.getCurrentCost() / 100f / 2f);
                 color = this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() < lapis ? 0xFF0000 : 0x11FF11;
-                guiGraphics.pose().translate(0, 0, 200f);
+                guiGraphics.pose().translate(0, 0, 300f);
                 String sLapis = "%d".formatted(lapis);
                 guiGraphics.drawString(this.font, sLapis, topLeftCornerX + CATALYST_SLOT_X + 16 - this.font.width(sLapis), topLeftCornerY + CATALYST_SLOT_Y, color);
             }

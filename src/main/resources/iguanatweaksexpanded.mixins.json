@@ -5,6 +5,8 @@
     "refmap": "iguanatweaksexpanded.refmap.json",
     "mixins": [
         "AbstractMinecartMixin",
+        "IceBlockInvoker",
+        "RandomUpdateHandlerMixin",
         "SmithingTransformRecipeMixin"
     ],
     "minVersion": "0.8"
