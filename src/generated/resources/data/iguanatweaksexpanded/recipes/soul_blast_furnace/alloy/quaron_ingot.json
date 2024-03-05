@@ -8,7 +8,10 @@
       "item": "minecraft:raw_iron"
     },
     {
-      "item": "minecraft:amethyst_block"
+      "item": "minecraft:amethyst_cluster"
+    },
+    {
+      "item": "minecraft:amethyst_cluster"
     },
     {
       "item": "minecraft:blaze_rod"
