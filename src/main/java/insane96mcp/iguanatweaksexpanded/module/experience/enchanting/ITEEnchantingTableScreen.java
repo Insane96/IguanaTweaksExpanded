@@ -214,7 +214,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             }
         }
         float cost = this.getCurrentCost();
-        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0 && this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= cost / 100f / 2f + 1;
+        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0 && this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= cost / 100f / 2f;
     }
 
     @Override
