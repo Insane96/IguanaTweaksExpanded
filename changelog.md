@@ -14,6 +14,8 @@
   * No longer takes more than 1 damage when used (e.g. on entities or items) (basically what Multipurpose did)
   * Slightly less durability
 * Changed again Quaron recipe
+* Crate has been renamed to Portable Crate
+  * To have less confusion with Quark's storage crates
 * Fixed Vindication working with bows
 * Fixed serene seasons leaving behind ice
   * This fix is already in newer versions but will not be backported

@@ -81,8 +81,8 @@
 	"item.iguanatweaksexpanded.coated_copper_hoe": "Coated Copper Hoe",
 	"item.iguanatweaksexpanded.coated_copper_shield": "Coated Copper Shield",
 
-	"iguanatweaksexpanded.container.crate": "Crate",
-	"block.iguanatweaksexpanded.crate": "Crate",
+	"iguanatweaksexpanded.container.crate": "Portable Crate",
+	"block.iguanatweaksexpanded.crate": "Portable Crate",
 	"iguanatweaksexpanded.crate_weighted": "Slows down if %d or more are carried",
 
 	"block.iguanatweaksexpanded.explosive_barrel": "Explosive Barrel",
@@ -303,7 +303,7 @@
 	"advancements.sr_story.activate_respawn_obelisk.title": "A precise respawn",
 	"advancements.sr_story.activate_respawn_obelisk.description": "Activate a Respawn Obelisk by placing at least a precious block at the same height and set the respawn point.",
 	"advancements.sr_story.crate.title": "This is heavy",
-	"advancements.sr_story.crate.description": "Get a movement speed penalty by transporting more than one Crate.",
+	"advancements.sr_story.crate.description": "Get a movement speed penalty by transporting more than one Portable Crate.",
 	"advancements.sr_story.bucket.title": "Moses one block at time",
 	"advancements.sr_story.bucket.description": "Obtain an Iron Bucket in a Forge.",
 	"advancements.sr_story.golden_armor.title": "Lightweight",
