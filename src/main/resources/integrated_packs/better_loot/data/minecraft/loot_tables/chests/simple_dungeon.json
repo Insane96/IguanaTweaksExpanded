@@ -209,7 +209,7 @@
                 {
                     "type": "minecraft:item",
                     "weight": 10,
-                    "name": "iguanatweaksexpanded:cloth",
+                    "name": "minecraft:rotten_flesh",
                     "functions": [
                         {
                             "function": "minecraft:set_count",

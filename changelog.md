@@ -8,6 +8,7 @@
   * Level cost has been rebalanced, costs slight less for lower levels and slightly more for higher levels
   * Enchantments base cost rebalanced
   * Increased base max cost from 3 to 4
+* Rotten flesh is now replaced automatically in loot with Cloth instead of being removed
 * Removed Multipurpose
 * Quaron Fishing Rod
   * No longer takes more than 1 damage when used (e.g. on entities or items) (basically what Multipurpose did)
