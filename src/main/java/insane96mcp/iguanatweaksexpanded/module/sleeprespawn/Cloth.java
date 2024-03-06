@@ -14,7 +14,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.RegistryObject;
 
-@Label(name = "Cloth", description = "Zombies can drop cloth instead of Rotten Flesh. Cloth is used to make beds.")
+@Label(name = "Cloth", description = "Zombies drop cloth instead of Rotten Flesh. Cloth is used to make beds and various other stuff.")
 @LoadFeature(module = Modules.Ids.SLEEP_RESPAWN)
 public class Cloth extends Feature {
 
