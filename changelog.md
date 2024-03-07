@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.5.0
 * Reduced Swift Strike bonus attack speed (+15% -> +10% per level)
 * Enchanting table 
   * Enchantments are now sorted by registry name
