@@ -51,7 +51,7 @@
                 "target": {
                     "predicate_type": "iguanatweaksreborn:random_block_tag_match",
                     "tag": "minecraft:deepslate_ore_replaceables",
-                    "probability": 0.02
+                    "probability": 0.03
                 },
                 "state": {
                     "Name": "iguanatweaksexpanded:rich_deepslate_gold_ore"
@@ -61,7 +61,7 @@
                 "target": {
                     "predicate_type": "iguanatweaksreborn:random_block_tag_match",
                     "tag": "minecraft:deepslate_ore_replaceables",
-                    "probability": 0.06
+                    "probability": 0.09
                 },
                 "state": {
                     "Name": "minecraft:deepslate_gold_ore"

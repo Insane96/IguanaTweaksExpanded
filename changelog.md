@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed beeg ore veins generating less at deepslate level
+
 ## 1.5.1
 * Fixed Serene Seasons crash
 
