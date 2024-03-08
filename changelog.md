@@ -1,7 +1,10 @@
 # Changelog
 
+* Curses on a tool increase the enchanting power, at the cost of the curse
+
 ## Upcoming
 * Fixed beeg ore veins generating less at deepslate level
+* Fixed Wither Skeletons getting strings and sticks
 
 ## 1.5.1
 * Fixed Serene Seasons crash

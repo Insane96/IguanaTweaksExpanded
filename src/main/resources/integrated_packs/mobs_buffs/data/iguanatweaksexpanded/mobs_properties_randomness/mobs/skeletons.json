@@ -1,5 +1,5 @@
 {
-    "target": "#minecraft:skeletons",
+    "target": "#iguanatweaksexpanded:skeletons",
     "set_nbt": [
         {
             "nbt_tag": "enhancedai:inaccuracy",
