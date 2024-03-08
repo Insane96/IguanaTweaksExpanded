@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.5.1
+* Fixed Serene Seasons crash
+
 ## 1.5.0
 * Reduced Swift Strike bonus attack speed (+15% -> +10% per level)
 * Enchanting table 
