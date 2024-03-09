@@ -65,7 +65,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
 	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
-	public static final RegistryObject<Enchantment> CURSE_OF_MENDING = ITERegistries.ENCHANTMENTS.register("curse_of_mending", CurseOfMending::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("curse_of_experience", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public static final RegistryObject<Enchantment> LUCKY_HOOK = ITERegistries.ENCHANTMENTS.register("lucky_hook", LuckyHook::new);
@@ -86,7 +86,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent
 	public void onHurtItemStack(HurtItemStackEvent event) {
-		CurseOfMending.consumePlayerExperience(event);
+		CurseOfExperience.consumePlayerExperience(event);
 	}
 
 	@SubscribeEvent

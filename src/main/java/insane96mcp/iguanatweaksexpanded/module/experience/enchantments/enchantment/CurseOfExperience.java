@@ -15,9 +15,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class CurseOfMending extends Enchantment implements IEnchantmentTooltip {
-    public static ResourceKey<DamageType> DAMAGE_TYPE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "curse_of_mending"));
-    public CurseOfMending() {
+public class CurseOfExperience extends Enchantment implements IEnchantmentTooltip {
+    public static ResourceKey<DamageType> DAMAGE_TYPE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "curse_of_experience"));
+    public CurseOfExperience() {
         super(Rarity.RARE, EnchantmentCategory.VANISHABLE, EquipmentSlot.values());
     }
 
@@ -41,7 +41,7 @@ public class CurseOfMending extends Enchantment implements IEnchantmentTooltip {
 
     public static void consumePlayerExperience(HurtItemStackEvent event) {
         if (event.getPlayer() == null
-                || event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_MENDING.get()) == 0
+                || event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_EXPERIENCE.get()) == 0
                 || event.getAmount() == 0)
             return;
 
