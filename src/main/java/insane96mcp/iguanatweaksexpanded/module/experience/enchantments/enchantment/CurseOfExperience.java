@@ -18,7 +18,7 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 public class CurseOfExperience extends Enchantment implements IEnchantmentTooltip {
     public static ResourceKey<DamageType> DAMAGE_TYPE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "curse_of_experience"));
     public CurseOfExperience() {
-        super(Rarity.RARE, EnchantmentCategory.VANISHABLE, EquipmentSlot.values());
+        super(Rarity.VERY_RARE, EnchantmentCategory.VANISHABLE, EquipmentSlot.values());
     }
 
     @Override
@@ -53,6 +53,6 @@ public class CurseOfExperience extends Enchantment implements IEnchantmentToolti
 
     @Override
     public Component getTooltip(ItemStack itemStack, int i) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.DARK_PURPLE);
+        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.RED);
     }
 }

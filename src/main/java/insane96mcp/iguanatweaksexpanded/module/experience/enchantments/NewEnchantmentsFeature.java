@@ -39,6 +39,7 @@ import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -65,10 +66,11 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
 	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
-	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("curse_of_experience", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public static final RegistryObject<Enchantment> LUCKY_HOOK = ITERegistries.ENCHANTMENTS.register("lucky_hook", LuckyHook::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("curse_of_experience", CurseOfExperience::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_TEAR = ITERegistries.ENCHANTMENTS.register("curse_of_tear", CurseOfTear::new);
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
@@ -97,6 +99,11 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onDamaged(LivingDamageEvent event) {
 		Vindication.tryStackDamage(event.getEntity(), event.getSource(), event.getAmount());
+	}
+
+	@SubscribeEvent
+	public void onPickUpExperience(PlayerXpEvent.PickupXp event) {
+		CurseOfTear.tearPlayerItems(event);
 	}
 
 	@SubscribeEvent
