@@ -45,7 +45,6 @@ public class CurseOfMending extends Enchantment implements IEnchantmentTooltip {
                 || event.getAmount() == 0)
             return;
 
-        event.setAmount(0);
         if (event.getPlayer().experienceLevel == 0 && event.getPlayer().experienceProgress == 0)
             event.getPlayer().hurt(event.getPlayer().damageSources().source(DAMAGE_TYPE), 2f);
         else
