@@ -4,6 +4,7 @@
 
 ## Upcoming
 * Mining charge crafting is now cheaper
+* All items in creative tabs are now sorted!
 * Fixed beeg ore veins generating less at deepslate level
 * Fixed Wither Skeletons getting strings and sticks
 

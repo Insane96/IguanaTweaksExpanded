@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.network.message.SendMultiBlockFurnaceGhostData;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -189,6 +190,6 @@ public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        pTooltip.add(Component.translatable(MULTI_BLOCK_TOOLTIP));
+        pTooltip.add(Component.translatable(MULTI_BLOCK_TOOLTIP).withStyle(ChatFormatting.DARK_GRAY));
     }
 }

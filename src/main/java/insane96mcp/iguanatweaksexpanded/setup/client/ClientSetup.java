@@ -173,68 +173,68 @@ public class ClientSetup {
             addAfter(event, Items.ARROW, Fletching.QUARTZ_ARROW_ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(Durium.SCRAP_BLOCK.item().get());
-            event.accept(Durium.BLOCK.item().get());
-            event.accept(SoulSteel.BLOCK.item().get());
-            event.accept(Keego.BLOCK.item().get());
-            event.accept(Quaron.BLOCK.item().get());
-            event.accept(CoalCharcoal.CHARCOAL_LAYER.item().get());
+            addBefore(event, Items.GOLD_BLOCK, Durium.BLOCK.item().get());
+            addBefore(event, Items.GOLD_BLOCK, Durium.SCRAP_BLOCK.item().get());
+            addAfter(event, Items.DIAMOND_BLOCK, SoulSteel.BLOCK.item().get());
+            addBefore(event, Items.NETHERITE_BLOCK, Keego.BLOCK.item().get());
+            addBefore(event, Items.DIAMOND_BLOCK, Quaron.BLOCK.item().get());
+            addAfter(event, Items.COAL_BLOCK, CoalCharcoal.CHARCOAL_LAYER.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(RespawnObeliskFeature.RESPAWN_OBELISK.item().get());
-            event.accept(Crate.ITEM.get());
-            event.accept(MultiBlockFurnaces.BLAST_FURNACE.item().get());
-            event.accept(MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
-            event.accept(Forging.FORGE.item().get());
-            event.accept(Fletching.FLETCHING_TABLE.item().get());
+            addBefore(event, Items.RESPAWN_ANCHOR, RespawnObeliskFeature.RESPAWN_OBELISK.item().get());
+            addBefore(event, Items.SHULKER_BOX, Crate.ITEM.get());
+            addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
+            addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.BLAST_FURNACE.item().get());
+            addBefore(event, Items.ANVIL, Forging.FORGE.item().get());
+            addAfter(event, Items.FLETCHING_TABLE, Fletching.FLETCHING_TABLE.item().get());
             addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENCHANTING_TABLE.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());
             addAfter(event, Items.RAIL, Minecarts.GOLDEN_POWERED_RAIL.item().get());
             addAfter(event, Items.RAIL, Minecarts.COPPER_POWERED_RAIL.item().get());
-            event.accept(ExplosiveBarrel.BLOCK.item().get());
-            event.accept(MiningCharge.MINING_CHARGE.item().get());
+            addAfter(event, Items.TNT, MiningCharge.MINING_CHARGE.item().get());
+            addAfter(event, Items.TNT, ExplosiveBarrel.BLOCK.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-            event.accept(Durium.ORE.item().get());
-            event.accept(Durium.DEEPSLATE_ORE.item().get());
-            event.accept(Keego.ORE.item().get());
-            event.accept(Solarium.SOLIUM_MOSS.item().get());
-            event.accept(OreGeneration.COPPER_ORE_ROCK.item().get());
-            event.accept(OreGeneration.IRON_ORE_ROCK.item().get());
-            event.accept(OreGeneration.GOLD_ORE_ROCK.item().get());
-            event.accept(OreGeneration.POOR_RICH_IRON_ORE.poorOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_IRON_ORE.richOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_COPPER_ORE.poorOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_COPPER_ORE.richOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_GOLD_ORE.poorOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_GOLD_ORE.richOre().item().get());
-            event.accept(OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().item().get());
-            event.accept(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get());
-            event.accept(CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get());
-            event.accept(FlintExpansion.FLINT_ROCK.item().get());
+            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.DEEPSLATE_ORE.item().get());
+            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.ORE.item().get());
+            addAfter(event, Items.DEEPSLATE_DIAMOND_ORE, Keego.ORE.item().get());
+            addAfter(event, Items.VINE, Solarium.SOLIUM_MOSS.item().get());
+            addAfter(event, Items.DEEPSLATE_COPPER_ORE, OreGeneration.COPPER_ORE_ROCK.item().get());
+            addAfter(event, Items.DEEPSLATE_IRON_ORE, OreGeneration.IRON_ORE_ROCK.item().get());
+            addAfter(event, Items.DEEPSLATE_GOLD_ORE, OreGeneration.GOLD_ORE_ROCK.item().get());
+            addBefore(event, Items.IRON_ORE, OreGeneration.POOR_RICH_IRON_ORE.poorOre().item().get());
+            addBefore(event, Items.DEEPSLATE_IRON_ORE, OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().item().get());
+            addAfter(event, Items.IRON_ORE, OreGeneration.POOR_RICH_IRON_ORE.richOre().item().get());
+            addAfter(event, Items.DEEPSLATE_IRON_ORE, OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().item().get());
+            addBefore(event, Items.COPPER_ORE, OreGeneration.POOR_RICH_COPPER_ORE.poorOre().item().get());
+            addBefore(event, Items.DEEPSLATE_COPPER_ORE, OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().item().get());
+            addAfter(event, Items.COPPER_ORE, OreGeneration.POOR_RICH_COPPER_ORE.richOre().item().get());
+            addAfter(event, Items.DEEPSLATE_COPPER_ORE, OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().item().get());
+            addBefore(event, Items.GOLD_ORE, OreGeneration.POOR_RICH_GOLD_ORE.poorOre().item().get());
+            addBefore(event, Items.DEEPSLATE_GOLD_ORE, OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().item().get());
+            addAfter(event, Items.GOLD_ORE, OreGeneration.POOR_RICH_GOLD_ORE.richOre().item().get());
+            addAfter(event, Items.DEEPSLATE_GOLD_ORE, OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().item().get());
+            addAfter(event, Items.NETHER_GOLD_ORE, CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get());
+            addAfter(event, Items.NETHER_GOLD_ORE, CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get());
+            addAfter(event, Items.CACTUS, FlintExpansion.FLINT_ROCK.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(Durium.SCRAP_PIECE.get());
-            event.accept(Durium.INGOT.get());
-            event.accept(Durium.NUGGET.get());
-            event.accept(Solarium.SOLARIUM_BALL.get());
-            event.accept(SoulSteel.INGOT.get());
-            event.accept(SoulSteel.NUGGET.get());
-            event.accept(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
-            event.accept(Keego.GEM.get());
-            event.accept(Quaron.INGOT.get());
-            event.accept(Quaron.NUGGET.get());
+            addAfter(event, Items.RAW_GOLD, Durium.SCRAP_PIECE.get());
+            addAfter(event, Items.IRON_INGOT, Durium.INGOT.get());
+            addAfter(event, Items.IRON_NUGGET, Durium.NUGGET.get());
+            addBefore(event, Items.EMERALD, Solarium.SOLARIUM_BALL.get());
+            addAfter(event, Items.GOLD_INGOT, SoulSteel.INGOT.get());
+            addAfter(event, Items.GOLD_NUGGET, SoulSteel.NUGGET.get());
+            addBefore(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
+            addAfter(event, Items.DIAMOND, Keego.GEM.get());
+            addAfter(event, Items.GOLD_INGOT, Quaron.INGOT.get());
+            addAfter(event, Items.GOLD_NUGGET, Quaron.NUGGET.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ANCIENT_LAPIS.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
             addAfter(event, Items.CHARCOAL, CoalCharcoal.HELLISH_COAL.get());
-            event.accept(Cloth.CLOTH.get());
+            addBefore(event, Items.LEATHER, Cloth.CLOTH.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             addAfter(event, Items.MUSHROOM_STEW, FoodDrinks.BROWN_MUSHROOM_STEW.get());
