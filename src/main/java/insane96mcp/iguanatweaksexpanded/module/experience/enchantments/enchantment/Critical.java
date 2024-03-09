@@ -18,7 +18,13 @@ public class Critical extends BonusDamageEnchantment {
     }
 
     public static float getCritAmount(int lvl, float baseCrit) {
-        return lvl * (baseCrit - 1) + 1 + (baseCrit - 1);
+        float critBonus = baseCrit - 1f;
+        return lvl * critBonus + baseCrit;
+    }
+
+    @Override
+    public float getDamageBonusPerLevel() {
+        return 0;
     }
 
     @Override

@@ -3,6 +3,8 @@
 * Curses on a tool increase the enchanting power, at the cost of the curse
 
 ## Upcoming
+* Curses!
+  * Items with curses only can now be enchanted and get a 40% boost to max cost
 * Mining charge crafting is now cheaper
 * All items in creative tabs are now sorted!
 * Fixed beeg ore veins generating less at deepslate level

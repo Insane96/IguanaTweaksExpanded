@@ -99,14 +99,14 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
     private void updatePossibleEnchantments() {
         ItemStack stack = this.menu.getSlot(0).getItem();
         this.maxCost = this.menu.maxCost.get();
-        if ((ItemStack.isSameItem(stack, this.lastStack) || stack.isEnchanted()) && !this.forceUpdateEnchantmentsList)
+        if ((ItemStack.isSameItem(stack, this.lastStack) || !EnchantingFeature.canBeEnchanted(stack)) && !this.forceUpdateEnchantmentsList)
             return;
         this.forceUpdateEnchantmentsList = false;
         this.lastStack = stack.copy();
         List<EnchantmentInstance> enchantments = new ArrayList<>();
         this.enchantmentEntries.clear();
         List<Enchantment> availableEnchantments = new ArrayList<>();
-        if (stack.isEmpty() || stack.isEnchanted()) {
+        if (stack.isEmpty() || !EnchantingFeature.canBeEnchanted(stack)) {
             this.scrollUpBtn.active = false;
             this.scrollDownBtn.active = false;
             this.enchantmentEntries.clear();
@@ -205,7 +205,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
 
     private boolean isButtonEnabled() {
         if (this.menu.getSlot(0).getItem().isEmpty()
-                || this.menu.getSlot(0).getItem().isEnchanted())
+                || !EnchantingFeature.canBeEnchanted(this.menu.getSlot(0).getItem()))
             return false;
         if (!this.isItemEmpowered()) {
             for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
@@ -214,7 +214,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             }
         }
         float cost = this.getCurrentCost();
-        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0 && this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= cost / 100f / 2f;
+        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0 && (this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= cost / 100f / 2f || this.minecraft.player.getAbilities().instabuild);
     }
 
     @Override

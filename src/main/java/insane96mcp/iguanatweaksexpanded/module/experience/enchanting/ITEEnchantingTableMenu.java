@@ -65,7 +65,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
 
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.isEnchantable() && !stack.is(EnchantingFeature.NOT_ENCHANTABLE);
+                return EnchantingFeature.canBeEnchanted(stack);
             }
         });
         this.addSlot(new Slot(pContainer, CATALYST_SLOT, 38, 19) {
@@ -102,7 +102,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
     }
 
     private void updateMaxCost(ItemStack stack, Level level, BlockPos blockPos) {
-        if (stack.isEmpty() || !stack.isEnchantable() || stack.isEnchanted()) {
+        if (stack.isEmpty() || !EnchantingFeature.canBeEnchanted(stack)) {
             this.maxCost.set(0);
         }
         else {
@@ -121,6 +121,8 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
                     p = 1f;
                 if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
                     p *= 1.25f;
+                if (EnchantingFeature.hasCurses(stack))
+                    p += 0.4f;
             }
             float maxCost = EnchantmentsFeature.getEnchantmentValue(stack) * p * (enchantingPower / 15f) + 4;
             this.maxCost.set((int) (maxCost * 100f));

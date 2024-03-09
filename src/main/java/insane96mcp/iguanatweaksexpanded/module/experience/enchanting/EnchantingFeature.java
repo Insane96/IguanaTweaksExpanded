@@ -133,20 +133,9 @@ public class EnchantingFeature extends JsonFeature {
             event.setOutput(ItemStack.EMPTY);
     }
 
-    public static float getCost(Enchantment enchantment, int lvl) {
-        if (lvl <= 0)
-            return 0;
-        float baseCost = Anvils.getRarityCost(enchantment);
-        for (IdTagValue enchantmentCost : enchantmentBaseCost) {
-            if (enchantmentCost.id.matchesEnchantment(enchantment))
-                baseCost = (float) enchantmentCost.value;
-        }
-        return (float) (baseCost * Math.pow(lvl, 1.11));
-    }
-
     public void cleansedLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.isEnchantable() || left.getTag() == null || left.getTag().contains(EnchantingFeature.INFUSED_ITEM))
+        if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.INFUSED_ITEM))
             return;
 
         ItemStack right = event.getRight().copy();
@@ -161,7 +150,7 @@ public class EnchantingFeature extends JsonFeature {
 
     public void ancientLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.isEnchantable() || left.getTag() == null || left.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
+        if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
             return;
 
         ItemStack right = event.getRight().copy();
@@ -181,13 +170,50 @@ public class EnchantingFeature extends JsonFeature {
             return;
 
         float lvl = 0;
-        for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getTopItem()).entrySet())
+        for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getTopItem()).entrySet()) {
+            if (enchantment.getKey().isCurse())
+                continue;
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
-        for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getBottomItem()).entrySet())
+        }
+        for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getBottomItem()).entrySet()) {
+            if (enchantment.getKey().isCurse())
+                continue;
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
+        }
         lvl = (int)Math.floor(lvl);
 
         event.setXp((int) (lvl * PlayerExperience.getBetterScalingLevel(30) * 0.95f));
+    }
+
+    public static float getCost(Enchantment enchantment, int lvl) {
+        if (lvl <= 0)
+            return 0;
+        float baseCost = Anvils.getRarityCost(enchantment);
+        for (IdTagValue enchantmentCost : enchantmentBaseCost) {
+            if (enchantmentCost.id.matchesEnchantment(enchantment))
+                baseCost = (float) enchantmentCost.value;
+        }
+        return (float) (baseCost * Math.pow(lvl, 1.11));
+    }
+
+    public static boolean canBeEnchanted(ItemStack stack) {
+        return stack.getItem().isEnchantable(stack) && (!stack.isEnchanted() || hasOnlyCurses(stack)) && !stack.is(EnchantingFeature.NOT_ENCHANTABLE);
+    }
+
+    private static boolean hasOnlyCurses(ItemStack stack) {
+        for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
+            if (!enchantment.getKey().isCurse())
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean hasCurses(ItemStack stack) {
+        for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
+            if (enchantment.getKey().isCurse())
+                return true;
+        }
+        return false;
     }
 
     @SubscribeEvent
