@@ -85,7 +85,10 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId("minecraft:power", 2f),
             IdTagValue.newId("minecraft:soul_speed", 4f),
             IdTagValue.newId("minecraft:efficiency", 2f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting", 2f)
+            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting", 2f),
+            IdTagValue.newId("shieldsplus:aegis", 2f),
+            IdTagValue.newId("shieldsplus:reinforced", 2f),
+            IdTagValue.newId("shieldsplus:shield_bash", 4f)
     );
     public static final ArrayList<IdTagValue> enchantmentBaseCost = new ArrayList<>();
 

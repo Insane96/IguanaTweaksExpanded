@@ -1,11 +1,22 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.insanelib.event.HurtItemStackEvent;
+import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class CurseOfMending extends Enchantment {
+public class CurseOfMending extends Enchantment implements IEnchantmentTooltip {
+    public static ResourceKey<DamageType> DAMAGE_TYPE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "curse_of_mending"));
     public CurseOfMending() {
         super(Rarity.RARE, EnchantmentCategory.VANISHABLE, EquipmentSlot.values());
     }
@@ -28,16 +39,21 @@ public class CurseOfMending extends Enchantment {
         return 50;
     }
 
-    public static void consumePlayerExperience(Player player) {
-        if (player.tickCount % 20 != 0)
+    public static void consumePlayerExperience(HurtItemStackEvent event) {
+        if (event.getPlayer() == null
+                || event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_MENDING.get()) == 0
+                || event.getAmount() == 0)
             return;
 
-        /*Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(NewEnchantmentsFeature.CURSE_OF_MENDING.get(), player, ItemStack::isDamaged);
-        if (entry != null) {
-            ItemStack stack = entry.getValue();
-            int lvl = stack.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_MENDING.get());
-            player.giveExperiencePoints(-lvl);
-            stack.setDamageValue(Math.max(0, stack.getDamageValue() - lvl));
-        }*/
+        event.setAmount(0);
+        if (event.getPlayer().experienceLevel == 0 && event.getPlayer().experienceProgress == 0)
+            event.getPlayer().hurt(event.getPlayer().damageSources().source(DAMAGE_TYPE), 2f);
+        else
+            event.getPlayer().giveExperiencePoints(-2);
+    }
+
+    @Override
+    public Component getTooltip(ItemStack itemStack, int i) {
+        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.DARK_PURPLE);
     }
 }
