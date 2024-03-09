@@ -3,6 +3,7 @@
 * Curses on a tool increase the enchanting power, at the cost of the curse
 
 ## Upcoming
+* Mining charge crafting is now cheaper
 * Fixed beeg ore veins generating less at deepslate level
 * Fixed Wither Skeletons getting strings and sticks
 

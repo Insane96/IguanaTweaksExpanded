@@ -1,4 +1,4 @@
-// 1.20.1	2024-03-05T08:26:53.7074231	Recipes
+// 1.20.1	2024-03-09T08:51:34.1888378	Recipes
 526370693a4951624cbf8285db04c56cdc7523cf data/iguanatweaksexpanded/advancements/recipes/building_blocks/durium_block.json
 354b2d1d1780cbf99af3957561d45cd439edcb4e data/iguanatweaksexpanded/advancements/recipes/building_blocks/keego_block.json
 c245ac737c4ae3ba93103337c55fcf4fe4bd0c0b data/iguanatweaksexpanded/advancements/recipes/building_blocks/quaron_block.json
@@ -616,7 +616,7 @@ a413a5f8cba42878589fd9116b6e08ea2f41933f data/iguanatweaksexpanded/recipes/keego
 cb1a5ebb81ba95ebd8af39788165f18e77f79c4d data/iguanatweaksexpanded/recipes/keego_shovel.json
 be78215e9fbeb3da708882e92fa9bae0c6fe80fa data/iguanatweaksexpanded/recipes/keego_sword.json
 1e0bda1661dd72a8af8888f2a9befddfee64162a data/iguanatweaksexpanded/recipes/milk_bottle.json
-2bd5e1228e9b74351828fe95e5c2c570793a47e2 data/iguanatweaksexpanded/recipes/mining_charge.json
+e1124fb201cdab24c1b285968918240748a3450c data/iguanatweaksexpanded/recipes/mining_charge.json
 456092b4b486a3f48b716901d823b2dc7e1efa1e data/iguanatweaksexpanded/recipes/netherite_hammer.json
 2e676b3eb9b044f89fb25e8b891b22ca2d3ccaea data/iguanatweaksexpanded/recipes/over_easy_egg_from_campfire.json
 c49d2b9aaf09c4fc1327320ac4075fcac6d39dac data/iguanatweaksexpanded/recipes/over_easy_egg_from_smelting.json
