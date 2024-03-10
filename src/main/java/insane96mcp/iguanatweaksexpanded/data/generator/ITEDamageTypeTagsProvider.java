@@ -25,7 +25,7 @@ public class ITEDamageTypeTagsProvider extends DamageTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(PiercingPickaxes.DOESNT_TRIGGER_PIERCING).add(CopperToolsExpansion.ELECTROCUTION_ATTACK);
+        tag(PiercingPickaxes.DOESNT_TRIGGER_PIERCING).add(CopperToolsExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
 
         tag(CopperToolsExpansion.DOESNT_TRIGGER_ELECTROCUTION).addOptionalTag(PiercingPickaxes.PIERCING_DAMAGE_TYPE.location()).add(CopperToolsExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
 

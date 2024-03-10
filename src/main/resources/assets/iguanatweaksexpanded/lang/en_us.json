@@ -36,6 +36,8 @@
 	"enchantment.iguanatweaksexpanded.swift_strike.tooltip": "+%s%% Attack Speed",
 	"enchantment.iguanatweaksexpanded.reach": "Reach",
 	"enchantment.iguanatweaksexpanded.reach.tooltip": "+%f%% Reach",
+	"enchantment.iguanatweaksexpanded.padding": "Padding",
+	"enchantment.iguanatweaksexpanded.padding.tooltip": "Halves knockback dealt",
 	"enchantment.iguanatweaksexpanded.lucky_hook": "Juicy Bait",
 	"enchantment.iguanatweaksexpanded.lucky_hook.tooltip": "%s chance to fish two items",
 	"enchantment.iguanatweaksexpanded.curse_of_experience": "Curse of Experience",
