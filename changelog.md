@@ -16,6 +16,7 @@
   * Curse of Experience. Consumes experience when used
   * Curse of Tear. Items break when experience is picked up
 * Added padding enchantment
+* Added rage enchantment
 * Mining charge crafting is now cheaper
 * All items in creative tabs are now sorted!
 * Fixed beeg ore veins generating less at deepslate level

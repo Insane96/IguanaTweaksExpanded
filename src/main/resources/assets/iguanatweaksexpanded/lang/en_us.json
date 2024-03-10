@@ -24,6 +24,8 @@
 	"enchantment.iguanatweaksexpanded.zippy": "Zippy",
 	"enchantment.iguanatweaksexpanded.water_coolant": "Water Coolant",
 	"enchantment.iguanatweaksexpanded.water_coolant.tooltip": "+%s Damage to Nether and Water Sensitive Creatures",
+	"enchantment.iguanatweaksexpanded.rage": "Rage",
+	"enchantment.iguanatweaksexpanded.rage.tooltip": "Up to +%s Damage based off attacker's health",
 	"enchantment.iguanatweaksexpanded.smartness": "Smartness",
 	"enchantment.iguanatweaksexpanded.smartness.tooltip": "+%f%% experience from killed mobs and mined blocks",
 	"enchantment.iguanatweaksexpanded.ma_jump": "M.A. Jump",
