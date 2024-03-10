@@ -1,6 +1,5 @@
 # Changelog
 
-* Curses cost should be added to max cost instead of percentage
 * Curse of Slow strike. -15/20% attack speed (weapons only)
 * Curse of Unhurried. -10% speed (armor only)
 * Curse of Inefficiency. Well (mining tools only)
@@ -8,14 +7,13 @@
 * Curse of Fragility. Unbreaking opposite
 * Curse of sinking. sink faster
 * Curse of the void. Chance for drops to be voided
-* ? Curse of the undead. Your helmet will slowly break in the sun
 * Curse of ender. You may randomly teleport when hit
 * Curse of steel fall. Increases fall damage (boots only)
 
 ## Upcoming
 * Curses!
-  * Items with curses only can now be enchanted and get a 40% boost to max cost
-  * Added Curse of Experience. Consumes experience when used
+  * Items with curses only can now be enchanted and get a boost to max cost, based off the curse
+  * Curse of Experience. Consumes experience when used
   * Curse of Tear. Items break when experience is picked up
 * Added padding enchantment
 * Mining charge crafting is now cheaper

@@ -32,6 +32,7 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -174,8 +175,7 @@ public class CopperToolsExpansion extends Feature {
 		Entity lastEntityHit = attacked;
 		do {
 			List<LivingEntity> entitiesOfClass = electrocuter.level().getEntitiesOfClass(LivingEntity.class, lastEntityHit.getBoundingBox().inflate(range),
-					livingEntity -> (electrocuter.canAttack(livingEntity)
-									|| (livingEntity instanceof Player && electrocuter.canHarmPlayer((Player) livingEntity))) && !livingEntity.isDeadOrDying());
+					livingEntity -> electrocuter.canAttack(livingEntity) && !livingEntity.isDeadOrDying() && !electrocuter.isAlliedTo(livingEntity) && (!(livingEntity instanceof ArmorStand) || !((ArmorStand)livingEntity).isMarker()));
 			LivingEntity target = MCUtils.getNearestEntity(entitiesOfClass, listOfHitEntities, attacked.position());
 			if (target == null)
 				break;

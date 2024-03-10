@@ -78,12 +78,13 @@ public class EnchantingFeature extends JsonFeature {
     public static final List<IdTagValue> DEFAULT_ENCHANTMENT_BASE_COST = List.of(
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "expanded", 5f),
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "veining", 4f),
+            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting", 2f),
             IdTagValue.newId("minecraft:multishot", 5f),
             IdTagValue.newId("minecraft:quick_charge", 3f),
             IdTagValue.newId("minecraft:power", 2f),
             IdTagValue.newId("minecraft:soul_speed", 4f),
             IdTagValue.newId("minecraft:efficiency", 2f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting", 2f),
+            IdTagValue.newId("minecraft:vanishing_curse", 2f),
             IdTagValue.newId("shieldsplus:aegis", 2f),
             IdTagValue.newId("shieldsplus:reinforced", 2f),
             IdTagValue.newId("shieldsplus:shield_bash", 4f)
@@ -202,6 +203,8 @@ public class EnchantingFeature extends JsonFeature {
     }
 
     private static boolean hasOnlyCurses(ItemStack stack) {
+        if (!stack.isEnchanted())
+            return false;
         for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
             if (!enchantment.getKey().isCurse())
                 return false;
@@ -210,11 +213,21 @@ public class EnchantingFeature extends JsonFeature {
     }
 
     public static boolean hasCurses(ItemStack stack) {
+        if (!stack.isEnchanted())
+            return false;
         for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
             if (enchantment.getKey().isCurse())
                 return true;
         }
         return false;
+    }
+
+    public static float getFirstCurseCost(ItemStack stack) {
+        for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
+            if (enchantment.getKey().isCurse())
+                return getCost(enchantment.getKey(), 1);
+        }
+        return 0f;
     }
 
     @SubscribeEvent
