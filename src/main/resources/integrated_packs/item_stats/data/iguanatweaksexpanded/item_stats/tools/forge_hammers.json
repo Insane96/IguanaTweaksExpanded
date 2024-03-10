@@ -1,0 +1,13 @@
+{
+	"item": "#iguanatweaksexpanded:equipment/forge_hammers",
+	"modifiers": [
+		{
+			"uuid": "9091eb15-6701-4c63-8603-16c5de7ddc86",
+			"name": "Tool modifier",
+			"slot": "mainhand",
+			"attribute": "minecraft:generic.movement_speed",
+			"amount": -0.15,
+			"operation": "multiply_base"
+		}
+	]
+}
