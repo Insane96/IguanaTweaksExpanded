@@ -42,6 +42,8 @@
 	"enchantment.iguanatweaksexpanded.padding.tooltip": "Halves knockback dealt",
 	"enchantment.iguanatweaksexpanded.lucky_hook": "Juicy Bait",
 	"enchantment.iguanatweaksexpanded.lucky_hook.tooltip": "%s chance to fish two items",
+	"enchantment.iguanatweaksexpanded.burst_of_arrows": "Burst of Arrows",
+	"enchantment.iguanatweaksexpanded.burst_of_arrows.tooltip": "When arrows hit will burst 8 arrows around",
 	"enchantment.iguanatweaksexpanded.experience_curse": "Curse of Experience",
 	"enchantment.iguanatweaksexpanded.experience_curse.tooltip": "Uses experience to not get damaged. Be careful if you have none!",
 	"death.attack.experience_curse": "%s was killed by it's own equipment",

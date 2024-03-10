@@ -5,7 +5,9 @@
     "refmap": "iguanatweaksexpanded.refmap.json",
     "mixins": [
         "AbstractMinecartMixin",
+        "CrossbowItemMixin",
         "IceBlockInvoker",
+        "ProjectileMixin",
         "RandomUpdateHandlerMixin",
         "SmithingTransformRecipeMixin"
     ],

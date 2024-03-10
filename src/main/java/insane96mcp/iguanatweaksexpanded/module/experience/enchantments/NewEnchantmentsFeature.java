@@ -16,9 +16,12 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -35,6 +38,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
@@ -71,6 +75,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> PADDING = ITERegistries.ENCHANTMENTS.register("padding", Padding::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public static final RegistryObject<Enchantment> LUCKY_HOOK = ITERegistries.ENCHANTMENTS.register("lucky_hook", LuckyHook::new);
+	public static final RegistryObject<Enchantment> BURST_OF_ARROWS = ITERegistries.ENCHANTMENTS.register("burst_of_arrows", BurstOfArrows::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_TEAR = ITERegistries.ENCHANTMENTS.register("tear_curse", CurseOfTear::new);
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
@@ -194,9 +199,25 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onCriticalHit(CriticalHitEvent event) {
 		int lvl = event.getEntity().getMainHandItem().getEnchantmentLevel(CRITICAL.get());
-		if (lvl <= 0)
+		if (lvl > 0)
+			event.setDamageModifier(Critical.getCritAmount(lvl, event.getDamageModifier()));
+	}
+
+	@SubscribeEvent
+	public void onProjectileShoot(EntityJoinLevelEvent event) {
+		if (!(event.getEntity() instanceof Projectile projectile)
+				|| !(projectile.getOwner() instanceof LivingEntity owner)
+				|| (projectile.getPersistentData().contains(BurstOfArrows.BURST) && !projectile.getPersistentData().getBoolean(BurstOfArrows.BURST)))
 			return;
-		event.setDamageModifier(Critical.getCritAmount(lvl, event.getDamageModifier()));
+
+		boolean hasCrossbow = owner.getMainHandItem().getItem() instanceof CrossbowItem;
+		boolean hasCrossbowInOffHand = owner.getOffhandItem().getItem() instanceof CrossbowItem;
+		if (!hasCrossbow && !hasCrossbowInOffHand)
+			return;
+		int lvl = hasCrossbow ? owner.getMainHandItem().getEnchantmentLevel(BURST_OF_ARROWS.get()) : owner.getOffhandItem().getEnchantmentLevel(BURST_OF_ARROWS.get());
+		if (lvl == 0)
+			return;
+		projectile.getPersistentData().putBoolean(BurstOfArrows.BURST, true);
 	}
 
 	@SubscribeEvent

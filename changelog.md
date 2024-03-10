@@ -17,8 +17,9 @@
   * Items with curses only can now be enchanted and get a boost to max cost, based off the curse
   * Curse of Experience. Consumes experience when used
   * Curse of Tear. Items break when experience is picked up
-* Added padding enchantment
-* Added rage enchantment
+* Added padding enchantment for weapons
+* Added rage enchantment for weapons
+* Added Burst of Arrows enchantment for Crossbow 
 * Mining charge crafting is now cheaper
 * All items in creative tabs are now sorted!
 * Fixed beeg ore veins generating less at deepslate level
