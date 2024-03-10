@@ -20,7 +20,7 @@
 * Added padding enchantment for weapons
 * Added rage enchantment for weapons
 * Added Burst of Arrows enchantment for Crossbow 
-* Removed Hard mode
+* Removed Hard mode 
 * Mining charge crafting is now cheaper
 * All items in creative tabs are now sorted!
 * Fixed beeg ore veins generating less at deepslate level
