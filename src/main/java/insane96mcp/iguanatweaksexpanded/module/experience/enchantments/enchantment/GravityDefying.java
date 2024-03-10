@@ -32,7 +32,9 @@ public class GravityDefying extends Enchantment {
         return this.getMinCost(level) + 20;
     }
 
-    public static final double[] GRAVITY_MODIFIERS = new double[] { 0d, 0.55d, 0.7d, 0.8d };
+    public static float getGravityReduction(int lvl) {
+        return lvl * 0.6f - ((lvl - 1) * 0.45f);
+    }
 
     public static void applyAttributeModifier(ItemAttributeModifierEvent event) {
         if (event.getSlotType() != EquipmentSlot.FEET)
@@ -40,10 +42,8 @@ public class GravityDefying extends Enchantment {
         int lvl = event.getItemStack().getEnchantmentLevel(NewEnchantmentsFeature.GRAVITY_DEFYING.get());
         if (lvl <= 0)
             return;
-        if (lvl >= GRAVITY_MODIFIERS.length)
-            lvl = GRAVITY_MODIFIERS.length - 1;
 
-        event.addModifier(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(GRAVITY_MODIFIER_UUID, "Gravity Defying enchantment", -GRAVITY_MODIFIERS[lvl], AttributeModifier.Operation.MULTIPLY_TOTAL));
+        event.addModifier(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(GRAVITY_MODIFIER_UUID, "Gravity Defying enchantment", -getGravityReduction(lvl), AttributeModifier.Operation.MULTIPLY_BASE));
     }
 
     public static void applyFallDamageReduction(LivingFallEvent event) {
@@ -51,6 +51,6 @@ public class GravityDefying extends Enchantment {
         if (lvl <= 0)
             return;
 
-        event.setDistance((float) (event.getDistance() * GRAVITY_MODIFIERS[lvl]));
+        event.setDistance((event.getDistance() - lvl * 4));
     }
 }
