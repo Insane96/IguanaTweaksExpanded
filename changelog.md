@@ -9,6 +9,8 @@
 * Curse of the void. Chance for drops to be voided
 * Curse of ender. You may randomly teleport when hit
 * Curse of steel fall. Increases fall damage (boots only)
+* Burst of Arrows: crossbow only make arrows that land summon more arrows around
+* Part breaker: gives a chance for the mob to drop its head or something else like tnt from creepers, shulker shells from shulkers, etc
 
 ## Upcoming
 * Curses!
