@@ -12,6 +12,7 @@ import insane96mcp.insanelib.base.config.LoadFeature;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
@@ -47,6 +48,7 @@ import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
@@ -67,6 +69,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> RAGE = ITERegistries.ENCHANTMENTS.register("rage", Rage::new);
 	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
 	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
+	public static final RegistryObject<Enchantment> PART_BREAKER = ITERegistries.ENCHANTMENTS.register("part_breaker", PartBreaker::new);
 	public static final RegistryObject<Enchantment> MA_JUMP = ITERegistries.ENCHANTMENTS.register("ma_jump", DoubleJump::new);
 	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ITERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
@@ -201,6 +204,33 @@ public class NewEnchantmentsFeature extends Feature {
 		int lvl = event.getEntity().getMainHandItem().getEnchantmentLevel(CRITICAL.get());
 		if (lvl > 0)
 			event.setDamageModifier(Critical.getCritAmount(lvl, event.getDamageModifier()));
+	}
+
+	@SubscribeEvent
+	public void onLivingDropsEvent(LivingDropsEvent event) {
+		if (!(event.getEntity().level() instanceof ServerLevel level)
+				|| !(event.getSource().getDirectEntity() instanceof LivingEntity killer))
+			return;
+		int lvl = killer.getMainHandItem().getEnchantmentLevel(PART_BREAKER.get());
+		if (lvl <= 0)
+			return;
+		ResourceLocation lootTableLocation = ForgeRegistries.ENTITY_TYPES.getKey(event.getEntity().getType()).withPrefix("part_breaking/");
+		LootParams.Builder lootParamsBuilder = new LootParams.Builder(level);
+		if (killer instanceof Player player)
+			lootParamsBuilder.withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player);
+
+		lootParamsBuilder.withParameter(LootContextParams.DAMAGE_SOURCE, event.getSource());
+		lootParamsBuilder.withOptionalParameter(LootContextParams.DIRECT_KILLER_ENTITY, killer);
+		lootParamsBuilder.withOptionalParameter(LootContextParams.KILLER_ENTITY, killer);
+		lootParamsBuilder.withParameter(LootContextParams.THIS_ENTITY, event.getEntity());
+		lootParamsBuilder.withParameter(LootContextParams.ORIGIN, event.getEntity().position());
+		LootParams lootParams = lootParamsBuilder.create(LootContextParamSets.ENTITY);
+		LootTable lootTable = level.getServer().getLootData().getLootTable(lootTableLocation);
+		lootTable.getRandomItems(lootParams)
+				.forEach(stack -> {
+					if (level.getRandom().nextFloat() < PartBreaker.getChance(lvl))
+                    	event.getDrops().add(new ItemEntity(level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), stack));
+                });
 	}
 
 	@SubscribeEvent

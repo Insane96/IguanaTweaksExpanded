@@ -20,10 +20,12 @@
 * Added padding enchantment for weapons
 * Added rage enchantment for weapons
 * Added Burst of Arrows enchantment for Crossbow 
-* Removed Hard mode 
+* Removed Hard mode
 * Mining charge crafting is now cheaper
 * All items in creative tabs are now sorted!
+* Heavily reduced hammers range and slightly attack speed. Also they now give -15% speed
 * Fixed beeg ore veins generating less at deepslate level
+* Fixed gravity defying with slow falling
 * Fixed Wither Skeletons getting strings and sticks
 
 ## 1.5.1

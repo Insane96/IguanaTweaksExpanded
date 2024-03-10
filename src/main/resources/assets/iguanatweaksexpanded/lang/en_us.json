@@ -28,6 +28,8 @@
 	"enchantment.iguanatweaksexpanded.rage.tooltip": "Up to +%s Damage based off attacker's health",
 	"enchantment.iguanatweaksexpanded.smartness": "Smartness",
 	"enchantment.iguanatweaksexpanded.smartness.tooltip": "+%f%% experience from killed mobs and mined blocks",
+	"enchantment.iguanatweaksexpanded.part_breaker": "Part Breaker",
+	"enchantment.iguanatweaksexpanded.part_breaker.tooltip": "+%f%% chance to have extra drops",
 	"enchantment.iguanatweaksexpanded.ma_jump": "M.A. Jump",
 	"enchantment.iguanatweaksexpanded.ma_jump.tooltip": "+%d Mid-Air Jump",
 	"enchantment.iguanatweaksexpanded.gravity_defying": "Gravity Defying",

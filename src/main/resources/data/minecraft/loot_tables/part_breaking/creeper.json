@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:entity",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:tnt"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:creeper_head"
+                }
+            ]
+        }
+    ]
+}

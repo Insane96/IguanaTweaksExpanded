@@ -7,6 +7,7 @@
         "AbstractMinecartMixin",
         "CrossbowItemMixin",
         "IceBlockInvoker",
+        "LivingEntityMixin",
         "ProjectileMixin",
         "RandomUpdateHandlerMixin",
         "SmithingTransformRecipeMixin"
