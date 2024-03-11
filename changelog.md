@@ -10,7 +10,6 @@
 * Curse of ender. You may randomly teleport when hit
 * Curse of steel fall. Increases fall damage (boots only)
 * Burst of Arrows: crossbow only make arrows that land summon more arrows around
-* Part breaker: gives a chance for the mob to drop its head or something else like tnt from creepers, shulker shells from shulkers, etc
 
 ## Upcoming
 * Curses!
@@ -18,7 +17,11 @@
   * Curse of Experience. Consumes experience when used
   * Curse of Tear. Items break when experience is picked up
 * Added padding enchantment for weapons
+  * Reduces knockback
 * Added rage enchantment for weapons
+  * Increases damage based off user missing health
+* Added Part Breaker enchantment for weapons
+  * Gives a chance for additional drops from mobs, eg. heads, tnt, shulker
 * Added Burst of Arrows enchantment for Crossbow
 * Heavily reduced hammers range and slightly attack speed. Also they now give -15% speed
 * Rebalanced shields
