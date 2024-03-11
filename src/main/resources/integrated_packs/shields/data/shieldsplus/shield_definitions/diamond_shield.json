@@ -1,5 +1,5 @@
 {
-    "blocked_damage": 3.5,
+    "blocked_damage": 4,
     "blocking_ticks": 40,
     "cooldown": 40
 }
