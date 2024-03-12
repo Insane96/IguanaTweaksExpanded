@@ -5,7 +5,6 @@ import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -38,12 +37,8 @@ public class LuckyHook extends Enchantment implements IEnchantmentTooltip {
         return lvl * 0.05f;
     }
 
-
-
     @Override
     public Component getTooltip(ItemStack stack, int lvl) {
-        if (!(stack.getItem() instanceof DiggerItem diggerItem))
-            return Component.empty();
         return Component.translatable(this.getDescriptionId() + ".tooltip", IguanaTweaksReborn.ONE_DECIMAL_FORMATTER.format(getChanceToDoubleReel(lvl))).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

@@ -9,7 +9,6 @@
 * Curse of the void. Chance for drops to be voided
 * Curse of ender. You may randomly teleport when hit
 * Curse of steel fall. Increases fall damage (boots only)
-* Burst of Arrows: crossbow only make arrows that land summon more arrows around
 
 ## Upcoming
 * Curses!
