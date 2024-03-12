@@ -45,7 +45,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.file.Path;
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -57,7 +56,6 @@ public class IguanaTweaksExpanded
 	public static final String RESOURCE_PREFIX = MOD_ID + ":";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public static DecimalFormat ONE_DECIMAL_FORMATTER;
     public static final RecipeBookType MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "multi_item_blasting");
     public static final RecipeBookType MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "multi_item_soul_blasting");
     public static final RecipeBookType FORGING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "forging");

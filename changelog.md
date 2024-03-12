@@ -1,8 +1,5 @@
 # Changelog
 
-* Curse of Slow strike. -15/20% attack speed (weapons only)
-* Curse of Unhurried. -10% speed (armor only)
-* Curse of Inefficiency. Well (mining tools only)
 * Curse of short arm. Reduces reach both mining and attack (weapons only)
 * Curse of Fragility. Unbreaking opposite
 * Curse of sinking. sink faster
@@ -15,6 +12,9 @@
   * Items with curses only can now be enchanted and get a boost to max cost, based off the curses
   * Curse of Experience. Consumes experience when used
   * Curse of Tear. Items break when experience is picked up
+  * Curse of Unhurry
+  * Curse of Slow Strike
+  * Curse of Inefficiency
 * Added padding enchantment for weapons
   * Reduces knockback
 * Added rage enchantment for weapons

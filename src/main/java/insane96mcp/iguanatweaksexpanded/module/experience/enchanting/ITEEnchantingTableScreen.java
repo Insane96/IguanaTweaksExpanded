@@ -27,7 +27,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-import static insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded.ONE_DECIMAL_FORMATTER;
+import static insane96mcp.insanelib.InsaneLib.ONE_DECIMAL_FORMATTER;
 
 public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchantingTableMenu> {
     private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/enchanting_table.png");

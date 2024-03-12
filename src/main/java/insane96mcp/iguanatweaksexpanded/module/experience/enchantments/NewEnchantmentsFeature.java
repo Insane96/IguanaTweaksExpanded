@@ -3,8 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments;
 import com.mojang.blaze3d.platform.InputConstants;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.*;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfExperience;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfTear;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.*;
 import insane96mcp.iguanatweaksexpanded.network.message.JumpMidAirMessage;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.insanelib.base.Feature;
@@ -24,6 +23,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.ItemStack;
@@ -83,19 +83,22 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> BURST_OF_ARROWS = ITERegistries.ENCHANTMENTS.register("burst_of_arrows", BurstOfArrows::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_TEAR = ITERegistries.ENCHANTMENTS.register("tear_curse", CurseOfTear::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_UNHURRIED = ITERegistries.ENCHANTMENTS.register("unhurried_curse", CurseOfUnhurried::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_SLOW_STRIKE = ITERegistries.ENCHANTMENTS.register("slow_strike_curse", CurseOfSlowStrike::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_INEFFICIENCY = ITERegistries.ENCHANTMENTS.register("inefficiency_curse", CurseOfInefficiency::new);
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
 
     @SubscribeEvent
 	public void onAttributeModifiers(ItemAttributeModifierEvent event) {
-		StepUp.applyAttributeModifier(event);
-		Zippy.applyAttributeModifier(event);
-		Reach.applyAttributeModifier(event);
-		GravityDefying.applyAttributeModifier(event);
-		Healthy.applyAttributeModifier(event);
-		SwiftStrike.applyAttributeModifier(event);
-		MeleeProtection.applyAttributeModifier(event);
+		event.getItemStack().getAllEnchantments().forEach((enchantment, lvl) -> {
+			if (event.getItemStack().getItem() instanceof ArmorItem armorItem
+				&& armorItem.getEquipmentSlot() != event.getSlotType())
+				return;
+			if (enchantment instanceof IAttributeEnchantment attributeEnchantment)
+				attributeEnchantment.applyAttributeModifier(event, lvl);
+		});
 	}
 
 	@SubscribeEvent
@@ -138,6 +141,8 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
 		event.setNewSpeed(event.getNewSpeed() + Blasting.getMiningSpeedBoost(event.getEntity(), event.getState()));
+		if (event.getEntity().getMainHandItem().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
+			event.setNewSpeed(event.getNewSpeed() * 0.75f);
 	}
 
 	@SubscribeEvent

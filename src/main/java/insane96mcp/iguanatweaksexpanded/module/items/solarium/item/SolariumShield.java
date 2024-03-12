@@ -31,7 +31,7 @@ public class SolariumShield extends SPShieldItem {
 	}
 
 	@Override
-	public double getBlockedDamage(ItemStack stack, @Nullable LivingEntity entity, Level level) {
+	public float getBlockedDamage(ItemStack stack, @Nullable LivingEntity entity, Level level) {
 		if (entity == null)
 			return super.getBlockedDamage(stack, null, level);
 		float calculatedLightRatio = Solarium.getCalculatedSkyLightRatio(entity);

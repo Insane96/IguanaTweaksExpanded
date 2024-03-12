@@ -35,7 +35,6 @@ import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn.RespawnObeli
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreGeneration;
 import insane96mcp.shieldsplus.setup.SPItems;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -48,8 +47,6 @@ import net.minecraftforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.List;
 
 public class ClientSetup {
@@ -255,9 +252,6 @@ public class ClientSetup {
     }
 
     public static void init(FMLClientSetupEvent event) {
-        DecimalFormatSymbols DECIMAL_FORMAT_SYMBOLS = new DecimalFormatSymbols(Minecraft.getInstance().getLocale());
-        IguanaTweaksExpanded.ONE_DECIMAL_FORMATTER = new DecimalFormat("#.#", DECIMAL_FORMAT_SYMBOLS);
-
         event.enqueueWork(() ->
                 ItemProperties.register(Altimeter.ITEM.get(), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "y"), (stack, clientLevel, livingEntity, entityId) -> {
                     if (livingEntity == null)

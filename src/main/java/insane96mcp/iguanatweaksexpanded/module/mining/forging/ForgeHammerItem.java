@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.insanelib.InsaneLib;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.CommonComponents;
@@ -95,9 +96,7 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
      */
     public boolean mineBlock(ItemStack pStack, Level pLevel, BlockState pState, BlockPos pPos, LivingEntity pEntityLiving) {
         if (pState.getDestroySpeed(pLevel, pPos) != 0.0F) {
-            pStack.hurtAndBreak(this.useDamageTaken, pEntityLiving, (p_43276_) -> {
-                p_43276_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-            });
+            pStack.hurtAndBreak(this.useDamageTaken, pEntityLiving, (livingEntity) -> livingEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         }
 
         return true;
@@ -105,7 +104,7 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_COOLDOWN_LANG, IguanaTweaksExpanded.ONE_DECIMAL_FORMATTER.format(Math.max(this.getUseCooldown(null, pStack) / 20f, 0.5f))).withStyle(ChatFormatting.DARK_GREEN)));
+        pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_COOLDOWN_LANG, InsaneLib.ONE_DECIMAL_FORMATTER.format(Math.max(this.getUseCooldown(null, pStack) / 20f, 0.5f))).withStyle(ChatFormatting.DARK_GREEN)));
         pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_DURABILITY_LANG, this.useDamageTaken).withStyle(ChatFormatting.DARK_GREEN)));
     }
 }

@@ -223,23 +223,25 @@ public class EnchantingFeature extends JsonFeature {
         return false;
     }
 
-    public static float getFirstCurseCost(ItemStack stack) {
+    public static float getCurseCost(ItemStack stack) {
+        float cost = 0f;
         for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
             if (enchantment.getKey().isCurse())
-                return getCost(enchantment.getKey(), 1);
+                cost += getCost(enchantment.getKey(), 1);
         }
-        return 0f;
+        return cost;
     }
 
     @SubscribeEvent
     public void onTooltip(ItemTooltipEvent event) {
+        ItemStack itemStack = event.getItemStack();
         if (!isEnabled(EnchantingFeature.class)
-                || event.getItemStack().getTag() == null
+                || itemStack.getTag() == null
                 || !(event.getEntity() instanceof Player))
             return;
 
-        if (event.getItemStack().is(Items.ENCHANTED_BOOK)) {
-            for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getItemStack()).entrySet()) {
+        if (itemStack.is(Items.ENCHANTED_BOOK)) {
+            for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(itemStack).entrySet()) {
                 if (enchantment.getKey().isTreasureOnly() && !enchantment.getKey().isCurse()) {
                     event.getToolTip().add(Component.empty());
                     event.getToolTip().add(Component.translatable("iguanatweaksexpanded.apply_to_enchanting_table").withStyle(ChatFormatting.GREEN));
@@ -252,18 +254,18 @@ public class EnchantingFeature extends JsonFeature {
         if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ITEEnchantingTableScreen))
             return;
 
-        if (event.getItemStack().getTag().contains(INFUSED_ITEM)) {
+        if (itemStack.getTag().contains(INFUSED_ITEM)) {
             event.getToolTip().add(Component.empty());
             event.getToolTip().add(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
-        if (event.getItemStack().getTag().contains(EMPOWERED_ITEM)) {
+        if (itemStack.getTag().contains(EMPOWERED_ITEM)) {
             event.getToolTip().add(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
 
-        if (event.getItemStack().getTag().contains("PendingEnchantments") && !(mc.screen instanceof GrindstoneScreen) && !event.getItemStack().isEnchanted()) {
+        if (itemStack.getTag().contains("PendingEnchantments") && !(mc.screen instanceof GrindstoneScreen) && canBeEnchanted(itemStack)) {
             event.getToolTip().add(Component.literal("Has pending enchantments").withStyle(ChatFormatting.DARK_GRAY));
             if (mc.screen instanceof ITEEnchantingTableScreen) {
-                ListTag enchantmentsListTag = event.getItemStack().getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+                ListTag enchantmentsListTag = itemStack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
                 for (int i = 0; i < enchantmentsListTag.size(); ++i) {
                     CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
                     Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
