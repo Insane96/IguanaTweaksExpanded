@@ -155,6 +155,11 @@ public class RespawnObeliskBlock extends Block {
         }
     }
 
+    @Override
+    public boolean isPossibleToRespawnInThis(BlockState pState) {
+        return true;
+    }
+
     public static void trySaveOldSpawn(ServerPlayer player) {
         if (player.getRespawnPosition() == null)
             return;
