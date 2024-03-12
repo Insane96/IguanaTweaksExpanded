@@ -12,7 +12,7 @@
 
 ## Upcoming
 * Curses!
-  * Items with curses only can now be enchanted and get a boost to max cost, based off the curse
+  * Items with curses only can now be enchanted and get a boost to max cost, based off the curses
   * Curse of Experience. Consumes experience when used
   * Curse of Tear. Items break when experience is picked up
 * Added padding enchantment for weapons

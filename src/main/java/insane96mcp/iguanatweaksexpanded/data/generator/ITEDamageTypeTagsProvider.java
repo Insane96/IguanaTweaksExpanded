@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.CurseOfExperience;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfExperience;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
 import insane96mcp.iguanatweaksreborn.module.combat.PiercingPickaxes;
 import net.minecraft.core.HolderLookup;

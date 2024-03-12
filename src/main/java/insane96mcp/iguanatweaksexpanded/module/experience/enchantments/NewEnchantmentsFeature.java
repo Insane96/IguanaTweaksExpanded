@@ -3,6 +3,8 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments;
 import com.mojang.blaze3d.platform.InputConstants;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.*;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfExperience;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfTear;
 import insane96mcp.iguanatweaksexpanded.network.message.JumpMidAirMessage;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.insanelib.base.Feature;

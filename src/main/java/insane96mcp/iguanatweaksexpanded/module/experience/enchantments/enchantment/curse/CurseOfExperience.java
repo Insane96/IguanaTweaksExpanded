@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
+package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
