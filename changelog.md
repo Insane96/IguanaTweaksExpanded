@@ -15,6 +15,7 @@
   * Curse of Unhurry
   * Curse of Slow Strike
   * Curse of Inefficiency
+  * Curse of Short Arm
 * Added padding enchantment for weapons
   * Reduces knockback
 * Added rage enchantment for weapons
