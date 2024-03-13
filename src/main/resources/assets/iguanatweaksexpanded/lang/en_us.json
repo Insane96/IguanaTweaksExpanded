@@ -66,6 +66,8 @@
 	"enchantment.iguanatweaksexpanded.short_arm_curse.tooltip": "Lowers entity and block reach",
 	"enchantment.iguanatweaksexpanded.fragility_curse": "Curse of Fragility",
 	"enchantment.iguanatweaksexpanded.fragility_curse.tooltip": "Makes the item break faster",
+	"enchantment.iguanatweaksexpanded.ender_curse": "Curse of Ender",
+	"enchantment.iguanatweaksexpanded.ender_curse.tooltip": "Randomly teleports you when hurt",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",
