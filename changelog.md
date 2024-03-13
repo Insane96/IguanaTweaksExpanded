@@ -2,8 +2,6 @@
 
 * Curse of something underwater related
 * Curse of the void. Chance for drops to be voided
-* Curse of ender. You may randomly teleport when hit
-* Curse of steel fall. Increases fall damage (boots only)
 
 ## Upcoming
 * Curses!
@@ -16,6 +14,8 @@
   * Curse of Inefficiency
   * Curse of Short Arm.
   * Curse of Fragility
+  * Curse of Ender
+  * Curse of Steel Fall
 * Added padding enchantment for weapons
   * Reduces knockback
 * Added rage enchantment for weapons

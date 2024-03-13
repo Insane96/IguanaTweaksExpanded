@@ -68,6 +68,8 @@
 	"enchantment.iguanatweaksexpanded.fragility_curse.tooltip": "Makes the item break faster",
 	"enchantment.iguanatweaksexpanded.ender_curse": "Curse of Ender",
 	"enchantment.iguanatweaksexpanded.ender_curse.tooltip": "Randomly teleports you when hurt",
+	"enchantment.iguanatweaksexpanded.steel_fall_curse": "Curse of Steel Fall",
+	"enchantment.iguanatweaksexpanded.steel_fall_curse.tooltip": "Increased fall damage",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",
