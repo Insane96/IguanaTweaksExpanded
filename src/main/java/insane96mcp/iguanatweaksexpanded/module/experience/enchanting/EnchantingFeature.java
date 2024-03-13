@@ -203,7 +203,7 @@ public class EnchantingFeature extends JsonFeature {
         return stack.getItem().isEnchantable(stack) && (!stack.isEnchanted() || hasOnlyCurses(stack)) && !stack.is(EnchantingFeature.NOT_ENCHANTABLE);
     }
 
-    private static boolean hasOnlyCurses(ItemStack stack) {
+    public static boolean hasOnlyCurses(ItemStack stack) {
         if (!stack.isEnchanted())
             return false;
         for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {

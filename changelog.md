@@ -1,7 +1,5 @@
 # Changelog
 
-* Curse of short arm. Reduces reach both mining and attack (weapons only)
-* Curse of Fragility. Unbreaking opposite
 * Curse of sinking. sink faster
 * Curse of the void. Chance for drops to be voided
 * Curse of ender. You may randomly teleport when hit
@@ -10,12 +8,14 @@
 ## Upcoming
 * Curses!
   * Items with curses only can now be enchanted and get a boost to max cost, based off the curses
+  * Also, items with curses only no longer show the enchanted foil
   * Curse of Experience. Consumes experience when used
   * Curse of Tear. Items break when experience is picked up
   * Curse of Unhurry
   * Curse of Slow Strike
   * Curse of Inefficiency
-  * Curse of Short Arm
+  * Curse of Short Arm.
+  * Curse of Fragility
 * Added padding enchantment for weapons
   * Reduces knockback
 * Added rage enchantment for weapons
