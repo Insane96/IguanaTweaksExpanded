@@ -88,6 +88,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_INEFFICIENCY = ITERegistries.ENCHANTMENTS.register("inefficiency_curse", CurseOfInefficiency::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_SHORT_ARM = ITERegistries.ENCHANTMENTS.register("short_arm_curse", CurseOfShortArm::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_FRAGILITY = ITERegistries.ENCHANTMENTS.register("fragility_curse", CurseOfFragility::new);
+	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
@@ -241,6 +242,11 @@ public class NewEnchantmentsFeature extends Feature {
 					if (level.getRandom().nextFloat() < PartBreaker.getChance(lvl))
                     	event.getDrops().add(new ItemEntity(level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), stack));
                 });
+	}
+
+	@SubscribeEvent
+	public void onLivingTick(LivingEvent.LivingTickEvent event) {
+		CurseOfSinking.sink(event);
 	}
 
 	@SubscribeEvent
