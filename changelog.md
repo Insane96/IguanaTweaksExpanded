@@ -1,6 +1,13 @@
 # Changelog
 
-## Upcoming
+* Lava Diver (would be cool to have a similar item to the turtle helm): grants temporary immunity to lava.
+* Vein Seeker (Pickaxe): Occasionally reveals nearby ores when mining a block.
+* Soulbound
+* Torch placer (Chestplate)
+* Wither effect on hit (treasure)
+* Celestial Guardian (gives absorption when below a certain health) (shield)
+
+## 1.6.0
 * Curses!
   * Items with curses only can now be enchanted and get a boost to max cost, based off the curses
   * Also, items with curses only no longer show the enchanted foil
