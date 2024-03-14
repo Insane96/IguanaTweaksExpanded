@@ -14,7 +14,7 @@ public class Rage extends BonusDamageEnchantment implements IEnchantmentTooltip 
 
     @Override
     public float getDamageBonusPerLevel() {
-        return 1.5f;
+        return 2f;
     }
 
     @Override
@@ -22,6 +22,6 @@ public class Rage extends BonusDamageEnchantment implements IEnchantmentTooltip 
         if (!this.isAffectedByEnchantment(target))
             return 0f;
         float ratio = 1f - attacker.getHealth() / attacker.getMaxHealth();
-        return this.getDamageBonus(stack, lvl) * ratio;
+        return this.getDamageBonus(stack, lvl) * (ratio * ratio);
     }
 }

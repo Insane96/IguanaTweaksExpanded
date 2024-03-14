@@ -1,7 +1,5 @@
 # Changelog
 
-* Curse of something underwater related
-
 ## Upcoming
 * Curses!
   * Items with curses only can now be enchanted and get a boost to max cost, based off the curses

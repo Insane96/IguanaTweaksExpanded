@@ -98,6 +98,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_STEEL_FALL = ITERegistries.ENCHANTMENTS.register("steel_fall_curse", CurseOfSteelFall::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_THE_VOID = ITERegistries.ENCHANTMENTS.register("void_curse", CurseOfTheVoid::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_DUMBNESS = ITERegistries.ENCHANTMENTS.register("dumbness_curse", CurseOfDumbness::new);
+	//public static final RegistryObject<Enchantment> CURSE_OF_ANCHOR = ITERegistries.ENCHANTMENTS.register("anchor_curse", CurseOfAnchor::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
@@ -123,6 +124,7 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onEntityTick(LivingEvent.LivingTickEvent event) {
 		Magnetic.tryPullItems(event.getEntity());
+		CurseOfAnchor.apply(event);
 	}
 
 	@SubscribeEvent
