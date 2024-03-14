@@ -1,0 +1,20 @@
+{
+  "type": "iguanatweaksreborn:drop_multiplier",
+  "conditions": [
+    {
+      "chance": 0.35,
+      "condition": "minecraft:random_chance"
+    },
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "enchantments": [
+          {
+            "enchantment": "iguanatweaksexpanded:void_curse"
+          }
+        ]
+      }
+    }
+  ],
+  "multiplier": 0.0
+}

@@ -6,14 +6,17 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantme
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.*;
 import insane96mcp.iguanatweaksexpanded.network.message.JumpMidAirMessage;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksreborn.data.lootmodifier.DropMultiplierModifier;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
+import net.minecraft.advancements.critereon.EnchantmentPredicate;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
@@ -34,12 +37,16 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
+import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
@@ -50,10 +57,10 @@ import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
+import java.util.Optional;
 
 @Label(name = "New Enchantments", description = "Change some enchantments related stuff and adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
@@ -90,6 +97,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_FRAGILITY = ITERegistries.ENCHANTMENTS.register("fragility_curse", CurseOfFragility::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_ENDER = ITERegistries.ENCHANTMENTS.register("ender_curse", CurseOfEnder::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_STEEL_FALL = ITERegistries.ENCHANTMENTS.register("steel_fall_curse", CurseOfSteelFall::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_THE_VOID = ITERegistries.ENCHANTMENTS.register("void_curse", CurseOfTheVoid::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
@@ -226,30 +234,9 @@ public class NewEnchantmentsFeature extends Feature {
 	}
 
 	@SubscribeEvent
-	public void onLivingDropsEvent(LivingDropsEvent event) {
-		if (!(event.getEntity().level() instanceof ServerLevel level)
-				|| !(event.getSource().getDirectEntity() instanceof LivingEntity killer))
-			return;
-		int lvl = killer.getMainHandItem().getEnchantmentLevel(PART_BREAKER.get());
-		if (lvl <= 0)
-			return;
-		ResourceLocation lootTableLocation = ForgeRegistries.ENTITY_TYPES.getKey(event.getEntity().getType()).withPrefix("part_breaking/");
-		LootParams.Builder lootParamsBuilder = new LootParams.Builder(level);
-		if (killer instanceof Player player)
-			lootParamsBuilder.withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player);
-
-		lootParamsBuilder.withParameter(LootContextParams.DAMAGE_SOURCE, event.getSource());
-		lootParamsBuilder.withOptionalParameter(LootContextParams.DIRECT_KILLER_ENTITY, killer);
-		lootParamsBuilder.withOptionalParameter(LootContextParams.KILLER_ENTITY, killer);
-		lootParamsBuilder.withParameter(LootContextParams.THIS_ENTITY, event.getEntity());
-		lootParamsBuilder.withParameter(LootContextParams.ORIGIN, event.getEntity().position());
-		LootParams lootParams = lootParamsBuilder.create(LootContextParamSets.ENTITY);
-		LootTable lootTable = level.getServer().getLootData().getLootTable(lootTableLocation);
-		lootTable.getRandomItems(lootParams)
-				.forEach(stack -> {
-					if (level.getRandom().nextFloat() < PartBreaker.getChance(lvl))
-                    	event.getDrops().add(new ItemEntity(level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), stack));
-                });
+	public void onLivingDrops(LivingDropsEvent event) {
+		PartBreaker.onLootDrop(event);
+		CurseOfTheVoid.onLootDrop(event);
 	}
 
 	@SubscribeEvent
@@ -303,5 +290,15 @@ public class NewEnchantmentsFeature extends Feature {
 		if (event.getEntity() instanceof LocalPlayer player)
 			player.getPersistentData().putInt("double_jumps", 0);
 		GravityDefying.applyFallDamageReduction(event);
+	}
+
+	private static final String path = "new_enchantments_feature/";
+
+	public static void addGlobalLoot(GlobalLootModifierProvider provider) {
+		provider.add(path + "void_curse", new DropMultiplierModifier(new LootItemCondition[] {
+					LootItemRandomChanceCondition.randomChance(0.35f).build(),
+					MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(NewEnchantmentsFeature.CURSE_OF_THE_VOID.get(), MinMaxBounds.Ints.ANY))).build()
+				}, Optional.empty(), Optional.empty(), 0, 0)
+		);
 	}
 }

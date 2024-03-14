@@ -70,6 +70,8 @@
 	"enchantment.iguanatweaksexpanded.ender_curse.tooltip": "Randomly teleports you when hurt",
 	"enchantment.iguanatweaksexpanded.steel_fall_curse": "Curse of Steel Fall",
 	"enchantment.iguanatweaksexpanded.steel_fall_curse.tooltip": "Increased fall damage",
+	"enchantment.iguanatweaksexpanded.void_curse": "Curse of The Void",
+	"enchantment.iguanatweaksexpanded.void_curse.tooltip": "Chance to void drops",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",

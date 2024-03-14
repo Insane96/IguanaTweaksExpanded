@@ -9,13 +9,14 @@
   * Also, items with curses only no longer show the enchanted foil
   * Curse of Experience. Consumes experience when used
   * Curse of Tear. Items break when experience is picked up
-  * Curse of Unhurry
-  * Curse of Slow Strike
-  * Curse of Inefficiency
-  * Curse of Short Arm.
-  * Curse of Fragility
-  * Curse of Ender
-  * Curse of Steel Fall
+  * Curse of Unhurry. Movement slowdown
+  * Curse of Slow Strike. Attack slowdown
+  * Curse of Inefficiency. Efficiency opposite
+  * Curse of Short Arm. Range reduction
+  * Curse of Fragility. Unbreaking opposite
+  * Curse of Ender. Randomly teleport when hit
+  * Curse of Steel Fall. Increase fall damage
+  * Curse of the Void. Chance to void drops
 * Added padding enchantment for weapons
   * Reduces knockback
 * Added rage enchantment for weapons
