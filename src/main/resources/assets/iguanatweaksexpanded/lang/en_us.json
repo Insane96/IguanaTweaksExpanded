@@ -72,6 +72,8 @@
 	"enchantment.iguanatweaksexpanded.steel_fall_curse.tooltip": "Increased fall damage",
 	"enchantment.iguanatweaksexpanded.void_curse": "Curse of The Void",
 	"enchantment.iguanatweaksexpanded.void_curse.tooltip": "Chance to void drops",
+	"enchantment.iguanatweaksexpanded.dumbness_curse": "Curse of Dumbness",
+	"enchantment.iguanatweaksexpanded.dumbness_curse.tooltip": "Reduced experience drop",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",

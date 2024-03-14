@@ -1,7 +1,6 @@
 # Changelog
 
 * Curse of something underwater related
-* Curse of the void. Chance for drops to be voided
 
 ## Upcoming
 * Curses!
@@ -17,12 +16,13 @@
   * Curse of Ender. Randomly teleport when hit
   * Curse of Steel Fall. Increase fall damage
   * Curse of the Void. Chance to void drops
+  * Curse of Dumbness. Experience dropped reduced
 * Added padding enchantment for weapons
   * Reduces knockback
 * Added rage enchantment for weapons
   * Increases damage based off user missing health
 * Added Part Breaker enchantment for weapons
-  * Gives a chance for additional drops from mobs, eg. heads, tnt, shulker
+  * Gives a chance for additional drops from mobs, e.g. heads, tnt, shulker
 * Added Burst of Arrows enchantment for Crossbow
 * Heavily reduced hammers range and slightly attack speed. Also they now give -15% speed
 * Rebalanced shields
