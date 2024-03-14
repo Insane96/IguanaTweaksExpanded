@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
+import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -39,6 +39,6 @@ public class LuckyHook extends Enchantment implements IEnchantmentTooltip {
 
     @Override
     public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", IguanaTweaksReborn.ONE_DECIMAL_FORMATTER.format(getChanceToDoubleReel(lvl))).withStyle(ChatFormatting.DARK_PURPLE);
+        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(getChanceToDoubleReel(lvl))).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

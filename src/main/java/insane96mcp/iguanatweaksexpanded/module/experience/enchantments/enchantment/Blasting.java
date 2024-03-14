@@ -1,8 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -60,6 +60,6 @@ public class Blasting extends Enchantment implements IEnchantmentTooltip {
     public Component getTooltip(ItemStack stack, int lvl) {
         if (!(stack.getItem() instanceof DiggerItem diggerItem))
             return Component.empty();
-        return Component.translatable(this.getDescriptionId() + ".tooltip", IguanaTweaksReborn.ONE_DECIMAL_FORMATTER.format(lvl * 10f / 6f * diggerItem.speed)).withStyle(ChatFormatting.DARK_PURPLE);
+        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(lvl * 10f / 6f * diggerItem.speed)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

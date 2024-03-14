@@ -7,6 +7,9 @@
 * Wither effect on hit (treasure)
 * Celestial Guardian (gives absorption when below a certain health) (shield)
 
+## 1.6.1
+* Fixed crash when shifting on some enchantments
+
 ## 1.6.0
 * Curses!
   * Items with curses only can now be enchanted and get a boost to max cost, based off the curses

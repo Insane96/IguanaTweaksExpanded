@@ -1,8 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -74,6 +74,6 @@ public class PartBreaker extends Enchantment implements IEnchantmentTooltip {
 
     @Override
     public Component getTooltip(ItemStack itemStack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", IguanaTweaksReborn.ONE_DECIMAL_FORMATTER.format(getChance(lvl) * 100f)).withStyle(ChatFormatting.DARK_PURPLE);
+        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(getChance(lvl) * 100f)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }
