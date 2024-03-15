@@ -6,6 +6,14 @@
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
 * Celestial Guardian (gives absorption when below a certain health) (shield)
+* Enchanting table can learn curses
+* Smelting milk should give back bottle
+* Pillaring should only be negated when there are monsters nearby
+* Smartness should work with fishing rods too
+* Repairing an enchanted item with an unenchanted costs levels
+* Enchanting in creative consumes levels
+* Enchanting rounding problem
+* Gravity defying damage reduction doesn't work
 
 ## 1.6.1
 * Fixed crash when shifting on some enchantments

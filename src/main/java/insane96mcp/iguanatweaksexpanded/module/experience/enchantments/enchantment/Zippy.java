@@ -44,6 +44,6 @@ public class Zippy extends Enchantment implements IAttributeEnchantment, IEnchan
 
     @Override
     public Component getTooltip(ItemStack itemStack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(10f + lvl)).withStyle(ChatFormatting.DARK_PURPLE);
+        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(0.1d * lvl * 100f)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }
