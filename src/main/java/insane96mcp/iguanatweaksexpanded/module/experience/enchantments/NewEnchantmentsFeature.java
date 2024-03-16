@@ -147,6 +147,10 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onFall(LivingFallEvent event) {
 		CurseOfSteelFall.onFall(event);
+		GravityDefying.applyFallDamageReduction(event);
+
+		if (event.getEntity() instanceof LocalPlayer player)
+			player.getPersistentData().putInt("double_jumps", 0);
 	}
 
 	@SubscribeEvent
@@ -277,17 +281,6 @@ public class NewEnchantmentsFeature extends Feature {
 		LocalPlayer player = Minecraft.getInstance().player;
 		if (DoubleJump.extraJump(player))
 			JumpMidAirMessage.jumpMidAir(player);
-	}
-
-	@OnlyIn(Dist.CLIENT)
-	@SubscribeEvent
-	public void onLivingFall(LivingFallEvent event) {
-		if (!this.isEnabled())
-			return;
-
-		if (event.getEntity() instanceof LocalPlayer player)
-			player.getPersistentData().putInt("double_jumps", 0);
-		GravityDefying.applyFallDamageReduction(event);
 	}
 
 	private static final String path = "new_enchantments_feature/";

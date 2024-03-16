@@ -10,12 +10,12 @@
 * Repairing an enchanted item with an unenchanted costs levels
 * Enchanting in creative consumes levels
 * Enchanting rounding problem
-* Gravity defying damage reduction doesn't work
 
 ## Upcoming
 * Blast furnaces now try to pick up an item every 5 seconds if empty
 * Smartness now works on Fishing Rods
 * Fixed enchanting table learning curses
+* Fixed gravity defying not reducing fall damage on servers
 
 ## 1.6.1
 * Fixed crash when shifting on some enchantments
