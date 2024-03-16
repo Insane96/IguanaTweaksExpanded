@@ -14,6 +14,7 @@
 ## Upcoming
 * Blast furnaces now try to pick up an item every 5 seconds if empty
 * Smartness now works on Fishing Rods
+* Experience and lapis are no longer consumed in creative when enchanting
 * Fixed enchanting table learning curses
 * Fixed gravity defying not reducing fall damage on servers
 

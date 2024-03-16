@@ -168,9 +168,11 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
                 }
                 cost += EnchantingFeature.getCost(enchantment, compoundtag.getShort("lvl"));
             }
-            player.onEnchantmentPerformed(stack, (int) cost);
-            ItemStack lapis = this.container.getItem(CATALYST_SLOT);
-            lapis.shrink(Mth.ceil(cost / 2f));
+            if (!player.getAbilities().instabuild) {
+                player.onEnchantmentPerformed(stack, (int) cost);
+                ItemStack lapis = this.container.getItem(CATALYST_SLOT);
+                lapis.shrink(Mth.ceil(cost / 2f));
+            }
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             this.updateMaxCost(stack, level, blockPos);
         });
