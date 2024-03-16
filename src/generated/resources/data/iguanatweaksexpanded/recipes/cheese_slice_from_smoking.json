@@ -4,7 +4,7 @@
   "cookingtime": 100,
   "experience": 0.35,
   "ingredient": {
-    "item": "iguanatweaksexpanded:milk_bottle"
+    "item": "iguanatweaksexpanded:uncooked_cheese_slice"
   },
   "result": "iguanatweaksexpanded:cheese_slice"
 }

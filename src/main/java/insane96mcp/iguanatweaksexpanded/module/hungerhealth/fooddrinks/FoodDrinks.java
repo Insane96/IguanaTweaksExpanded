@@ -29,7 +29,11 @@ public class FoodDrinks extends Feature {
 			.food(new FoodProperties.Builder().nutrition(2).saturationMod(0.3F).build())
 	));
 
+	public static final RegistryObject<Item> RENNET = ITERegistries.ITEMS.register("rennet", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> MILK_BOTTLE = ITERegistries.ITEMS.register("milk_bottle", () -> new MilkBottle(new Item.Properties().stacksTo(16)));
+	public static final RegistryObject<Item> UNCOOKED_CHEESE_SLICE = ITERegistries.ITEMS.register("uncooked_cheese_slice", () -> new Item(new Item.Properties()
+			.food(new FoodProperties.Builder().nutrition(2).saturationMod(1F).build())
+	));
 	public static final RegistryObject<Item> CHEESE_SLICE = ITERegistries.ITEMS.register("cheese_slice", () -> new Item(new Item.Properties()
 			.food(new FoodProperties.Builder().nutrition(5).saturationMod(0.6F).build())
 	));

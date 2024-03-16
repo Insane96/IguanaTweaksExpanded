@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:milk_bottle"
+    },
+    {
+      "item": "iguanatweaksexpanded:milk_bottle"
+    },
+    {
+      "item": "iguanatweaksexpanded:milk_bottle"
+    },
+    {
+      "item": "iguanatweaksexpanded:rennet"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "iguanatweaksexpanded:uncooked_cheese_slice"
+  }
+}

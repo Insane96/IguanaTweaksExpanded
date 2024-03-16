@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Smartness;
 import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
@@ -48,6 +49,9 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(EnchantingFeature.NOT_ENCHANTABLE)
                 .add(Items.BOOK, Items.FLINT_AND_STEEL, Items.SHEARS, Items.BRUSH, Items.ELYTRA)
                 .add(CoalCharcoal.FIRESTARTER.get());
+        tag(Smartness.ACCEPTS_ENCHANTMENT)
+                .addTag(FORGE_HAMMERS)
+                .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
         tag(FORGE_HAMMERS)
                 .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         //ITR
