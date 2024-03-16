@@ -6,6 +6,9 @@
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
 
+## Upcoming
+* Fixed pumpkins growing in Spring instead of Autumn
+
 ## 1.6.2
 * Blast furnaces now try to pick up an item every 5 seconds if empty
 * Smartness now works on Fishing Rods
