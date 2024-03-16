@@ -8,7 +8,6 @@
 * Celestial Guardian (gives absorption when below a certain health) (shield)
 * Smartness should work with fishing rods too
 * Repairing an enchanted item with an unenchanted costs levels
-* Enchanting in creative consumes levels
 * Enchanting rounding problem
 
 ## Upcoming
@@ -17,6 +16,7 @@
 * Experience and lapis are no longer consumed in creative when enchanting
 * Fixed enchanting table learning curses
 * Fixed gravity defying not reducing fall damage on servers
+  * Also reduced gravity defying fall damage reduction from 4 per level to 2.5
 
 ## 1.6.1
 * Fixed crash when shifting on some enchantments

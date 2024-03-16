@@ -45,7 +45,7 @@ public class GravityDefying extends Enchantment implements IAttributeEnchantment
         if (lvl <= 0)
             return;
 
-        event.setDistance((event.getDistance() - lvl * 4));
+        event.setDistance((event.getDistance() - lvl * 2.5f));
     }
 
     @Override
