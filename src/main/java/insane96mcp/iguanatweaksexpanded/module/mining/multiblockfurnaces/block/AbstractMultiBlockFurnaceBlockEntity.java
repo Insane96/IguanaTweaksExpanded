@@ -143,7 +143,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         }
 
         ItemStack fuelStack = pBlockEntity.items.get(FUEL_SLOT);
-        boolean hasInputItem = !pBlockEntity.items.get(0).isEmpty();
+        boolean hasInputItem = false;
         int[] inputSlots = pBlockEntity.getIngredientSlots();
         for (int slot : inputSlots) {
             if (!pBlockEntity.items.get(slot).isEmpty()) {
@@ -152,7 +152,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
             }
         }
         boolean hasFuel = !fuelStack.isEmpty();
-        if (pBlockEntity.isLit() || hasFuel && hasInputItem) {
+        if ((pBlockEntity.isLit() || hasFuel) && hasInputItem) {
             Recipe<?> recipe;
             if (hasInputItem) {
                 recipe = pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel).orElse(null);
@@ -189,55 +189,17 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
 
                     setChanged = true;
 
-                    BlockPos posBehind = pPos.relative(pState.getValue(AbstractMultiBlockFurnace.FACING).getOpposite()).above();
-                    AABB aabb = new AABB(posBehind.getX(), posBehind.getY(), posBehind.getZ(), posBehind.getX() + 1f, posBehind.getY() + 1f, posBehind.getZ() + 1f);
-                    List<ItemEntity> entitiesOfClass = pLevel.getEntitiesOfClass(ItemEntity.class, aabb);
-                    if (!entitiesOfClass.isEmpty()) {
-                        int[] ingredientSlots = pBlockEntity.getIngredientSlots();
-
-                        boolean isInventoryEmpty = true;
-                        for (int slot = 0; slot < ingredientSlots.length; slot++) {
-                            ItemStack destinationStack = pBlockEntity.getItem(slot);
-                            if (!destinationStack.isEmpty()) {
-                                isInventoryEmpty = false;
-                                break;
-                            }
-                        }
-
-                        //If ingredient slots are empty pickup 1 of the first item found
-                        if (isInventoryEmpty) {
-                            ItemEntity itemEntity = entitiesOfClass.get(0);
-                            pBlockEntity.setItem(ingredientSlots[0], itemEntity.getItem().copy());
-                            itemEntity.discard();
-                        }
-                        //If not, try to refill the items in the slots
-                        else {
-                            for (int slot = 0; slot < ingredientSlots.length; ++slot) {
-                                ItemStack destinationStack = pBlockEntity.getItem(slot);
-                                if (destinationStack.isEmpty() || destinationStack.getCount() >= destinationStack.getMaxStackSize())
-                                    continue;
-                                Optional<ItemEntity> oAvailableItem = entitiesOfClass.stream().filter(itemEntity -> itemEntity.getItem().is(destinationStack.getItem())).findFirst();
-                                if (oAvailableItem.isEmpty()) {
-                                    continue;
-                                }
-                                ItemStack newStack = oAvailableItem.get().getItem().copy();
-                                newStack.setCount(1);
-                                if (canMergeItems(destinationStack, newStack)) {
-                                    int placeableItemsCount = newStack.getMaxStackSize() - destinationStack.getCount();
-                                    int actuallyPlaceableItemsCount = Math.min(newStack.getCount(), placeableItemsCount);
-                                    oAvailableItem.get().getItem().shrink(actuallyPlaceableItemsCount);
-                                    destinationStack.grow(actuallyPlaceableItemsCount);
-                                }
-                                if (oAvailableItem.get().getItem().isEmpty())
-                                    oAvailableItem.get().discard();
-                            }
-                        }
-                    }
+                    tryGetItemFromLevel(pPos, pState, pLevel, pBlockEntity);
                 }
-            } else {
+            }
+            else {
                 pBlockEntity.cookingProgress = 0;
             }
-        } else if (!pBlockEntity.isLit() && pBlockEntity.cookingProgress > 0) {
+        }
+        else if (!hasInputItem && pLevel.getGameTime() % 100 == 21) {
+            tryGetItemFromLevel(pPos, pState, pLevel, pBlockEntity);
+        }
+        else if (!pBlockEntity.isLit() && pBlockEntity.cookingProgress > 0) {
             pBlockEntity.cookingProgress = Mth.clamp(pBlockEntity.cookingProgress - 2, 0, pBlockEntity.cookingTotalTime);
         }
 
@@ -251,6 +213,54 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
             setChanged(pLevel, pPos, pState);
         }
 
+    }
+
+    protected static void tryGetItemFromLevel(BlockPos pPos, BlockState pState, Level pLevel, AbstractMultiBlockFurnaceBlockEntity pBlockEntity) {
+        BlockPos posBehind = pPos.relative(pState.getValue(AbstractMultiBlockFurnace.FACING).getOpposite()).above();
+        AABB aabb = new AABB(posBehind.getX(), posBehind.getY(), posBehind.getZ(), posBehind.getX() + 1f, posBehind.getY() + 1f, posBehind.getZ() + 1f);
+        List<ItemEntity> entitiesOfClass = pLevel.getEntitiesOfClass(ItemEntity.class, aabb);
+        if (entitiesOfClass.isEmpty())
+            return;
+
+        int[] ingredientSlots = pBlockEntity.getIngredientSlots();
+
+        boolean isInventoryEmpty = true;
+        for (int slot = 0; slot < ingredientSlots.length; slot++) {
+            ItemStack destinationStack = pBlockEntity.getItem(slot);
+            if (!destinationStack.isEmpty()) {
+                isInventoryEmpty = false;
+                break;
+            }
+        }
+
+        //If ingredient slots are empty pickup 1 of the first item found
+        if (isInventoryEmpty) {
+            ItemEntity itemEntity = entitiesOfClass.get(0);
+            pBlockEntity.setItem(ingredientSlots[0], itemEntity.getItem().copy());
+            itemEntity.discard();
+        }
+        //If not, try to refill the items in the slots
+        else {
+            for (int slot = 0; slot < ingredientSlots.length; ++slot) {
+                ItemStack destinationStack = pBlockEntity.getItem(slot);
+                if (destinationStack.isEmpty() || destinationStack.getCount() >= destinationStack.getMaxStackSize())
+                    continue;
+                Optional<ItemEntity> oAvailableItem = entitiesOfClass.stream().filter(itemEntity -> itemEntity.getItem().is(destinationStack.getItem())).findFirst();
+                if (oAvailableItem.isEmpty()) {
+                    continue;
+                }
+                ItemStack newStack = oAvailableItem.get().getItem().copy();
+                newStack.setCount(1);
+                if (canMergeItems(destinationStack, newStack)) {
+                    int placeableItemsCount = newStack.getMaxStackSize() - destinationStack.getCount();
+                    int actuallyPlaceableItemsCount = Math.min(newStack.getCount(), placeableItemsCount);
+                    oAvailableItem.get().getItem().shrink(actuallyPlaceableItemsCount);
+                    destinationStack.grow(actuallyPlaceableItemsCount);
+                }
+                if (oAvailableItem.get().getItem().isEmpty())
+                    oAvailableItem.get().discard();
+            }
+        }
     }
 
     private boolean canBurn(RegistryAccess registryAccess, @javax.annotation.Nullable Recipe<?> recipe, int[] inputSlots, NonNullList<ItemStack> slotsStacks, int stackSize) {

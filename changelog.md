@@ -15,6 +15,9 @@
 * Enchanting rounding problem
 * Gravity defying damage reduction doesn't work
 
+## Upcoming
+* Blast furnaces now try to pick up an item every 5 seconds if empty
+
 ## 1.6.1
 * Fixed crash when shifting on some enchantments
 
