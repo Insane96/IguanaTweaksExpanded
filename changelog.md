@@ -6,9 +6,7 @@
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
 * Celestial Guardian (gives absorption when below a certain health) (shield)
-* Smartness should work with fishing rods too
 * Repairing an enchanted item with an unenchanted costs levels
-* Enchanting rounding problem
 
 ## Upcoming
 * Blast furnaces now try to pick up an item every 5 seconds if empty
