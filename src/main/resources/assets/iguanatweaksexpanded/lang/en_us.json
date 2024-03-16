@@ -27,7 +27,7 @@
 	"enchantment.iguanatweaksexpanded.water_coolant": "Water Coolant",
 	"enchantment.iguanatweaksexpanded.water_coolant.tooltip": "+%s Damage to Nether and Water Sensitive Creatures",
 	"enchantment.iguanatweaksexpanded.rage": "Rage",
-	"enchantment.iguanatweaksexpanded.rage.tooltip": "Up to +%s Damage based off attacker's health",
+	"enchantment.iguanatweaksexpanded.rage.tooltip": "Up to +%s Damage (min +%s) based off attacker's missing health",
 	"enchantment.iguanatweaksexpanded.smartness": "Smartness",
 	"enchantment.iguanatweaksexpanded.smartness.tooltip": "+%f%% experience from killed mobs and mined blocks",
 	"enchantment.iguanatweaksexpanded.part_breaker": "Part Breaker",

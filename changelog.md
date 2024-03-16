@@ -17,6 +17,7 @@
   * Lapis cost is now equal to the sum of the levels of enchantments
   * Experience and lapis are no longer consumed in creative when enchanting
   * Cost is rounded to the nearest integer now
+* Rage now scales slightly better and also has min 20% damage
 * Fixed enchanting table learning curses
 * Fixed gravity defying not reducing fall damage on servers
   * Also reduced gravity defying fall damage reduction from 4 per level to 2.5
