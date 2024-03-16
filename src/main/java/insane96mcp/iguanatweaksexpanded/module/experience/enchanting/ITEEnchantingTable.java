@@ -76,7 +76,7 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                     boolean hasTreasure = false;
                     for (int i = 0; i < list.size(); i++) {
                         Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(list.getCompound(i)));
-                        if (enchantment == null || !enchantment.isTreasureOnly() || enchantingTableBE.knowsEnchantment(enchantment))
+                        if (enchantment == null || !enchantment.isTreasureOnly() || enchantment.isCurse() || enchantingTableBE.knowsEnchantment(enchantment))
                             continue;
                         hasTreasure = true;
                         enchantingTableBE.learnEnchantment(enchantment);
