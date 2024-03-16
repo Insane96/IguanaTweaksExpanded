@@ -196,7 +196,7 @@ public class EnchantingFeature extends JsonFeature {
             if (enchantmentCost.id.matchesEnchantment(enchantment))
                 baseCost = (float) enchantmentCost.value;
         }
-        return (float) (baseCost * Math.pow(lvl, 1.11));
+        return (float) Math.round(baseCost * Math.pow(lvl, 1.11));
     }
 
     public static boolean canBeEnchanted(ItemStack stack) {

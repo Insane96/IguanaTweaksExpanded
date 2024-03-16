@@ -289,7 +289,7 @@ public class NewEnchantmentsFeature extends Feature {
 		provider.add(path + "void_curse", new DropMultiplierModifier(new LootItemCondition[] {
 					LootItemRandomChanceCondition.randomChance(0.35f).build(),
 					MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(NewEnchantmentsFeature.CURSE_OF_THE_VOID.get(), MinMaxBounds.Ints.ANY))).build()
-				}, Optional.empty(), Optional.empty(), 0, 0)
+				}, Optional.empty(), Optional.empty(), 0, 0, false)
 		);
 	}
 }

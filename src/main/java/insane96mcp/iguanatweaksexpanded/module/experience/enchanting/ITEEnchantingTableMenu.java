@@ -10,7 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -27,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantmentTableBlock;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ITEEnchantingTableMenu extends AbstractContainerMenu {
@@ -123,7 +123,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
                     p *= 1.25f;
             }
             float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack) + EnchantingFeature.getCurseCost(stack)) * p * (enchantingPower / 15f) + 4;
-            this.maxCost.set((int) (maxCost * 100f));
+            this.maxCost.set(Math.round(maxCost));
         }
         this.broadcastChanges();
     }
@@ -159,19 +159,24 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
                 return;
             ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
             float cost = 0;
-            //TODO Prevent cheating
+            int lapisCost = 0;
+            List<EnchantmentInstance> enchantmentInstances = new ArrayList<>();
             for (int i = 0; i < enchantmentsListTag.size(); ++i) {
                 CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
                 Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
-                if (enchantment != null) {
-                    stack.enchant(enchantment, compoundtag.getShort("lvl"));
-                }
-                cost += EnchantingFeature.getCost(enchantment, compoundtag.getShort("lvl"));
+                short lvl = compoundtag.getShort("lvl");
+                if (enchantment != null)
+                    enchantmentInstances.add(new EnchantmentInstance(enchantment, lvl));
+                cost += EnchantingFeature.getCost(enchantment, lvl);
+                lapisCost += lvl;
             }
+            if (cost > this.maxCost.get() && !player.getAbilities().instabuild)
+                return;
+            enchantmentInstances.forEach(enchantmentInstance -> stack.enchant(enchantmentInstance.enchantment, enchantmentInstance.level));
             if (!player.getAbilities().instabuild) {
                 player.onEnchantmentPerformed(stack, (int) cost);
                 ItemStack lapis = this.container.getItem(CATALYST_SLOT);
-                lapis.shrink(Mth.ceil(cost / 2f));
+                lapis.shrink(lapisCost);
             }
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             this.updateMaxCost(stack, level, blockPos);

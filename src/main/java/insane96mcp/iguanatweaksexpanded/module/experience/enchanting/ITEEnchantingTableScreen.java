@@ -158,7 +158,17 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
                 continue;
             cost += EnchantingFeature.getCost(enchantmentEntry.enchantmentDisplay.enchantment, lvl);
         }
-        return cost * 100f;
+        float decimalPart = cost - (int)cost;
+        if (decimalPart < 0.1f)
+            cost = (int) cost;
+        return cost;
+    }
+
+    private int getLapisCost() {
+        int cost = 0;
+        for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries)
+            cost += enchantmentEntry.enchantmentDisplay.lvl;
+        return cost;
     }
 
     private boolean isItemEmpowered() {
@@ -207,14 +217,17 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         if (this.menu.getSlot(0).getItem().isEmpty()
                 || !EnchantingFeature.canBeEnchanted(this.menu.getSlot(0).getItem()))
             return false;
+        float cost = this.getCurrentCost();
+        if (cost <= 0f)
+            return false;
         if (!this.isItemEmpowered()) {
             for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
                 if (enchantmentEntry.enchantmentDisplay.lvl > enchantmentEntry.enchantmentDisplay.enchantment.getMaxLevel())
                     return false;
             }
         }
-        float cost = this.getCurrentCost();
-        return ((this.minecraft.player.experienceLevel >= cost / 100f && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild) && cost > 0 && (this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= cost / 100f / 2f || this.minecraft.player.getAbilities().instabuild);
+        return ((this.minecraft.player.experienceLevel >= cost && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild)
+                && (this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= this.getLapisCost() || this.minecraft.player.getAbilities().instabuild);
     }
 
     @Override
@@ -230,15 +243,15 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         if (this.maxCost > 0) {
             float cost = this.getCurrentCost();
             int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
-            guiGraphics.drawCenteredString(this.font, "Max: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.maxCost / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 12, color);
-            color = this.minecraft.player.experienceLevel < cost / 100f && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
+            guiGraphics.drawCenteredString(this.font, "Max: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.maxCost)), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 12, color);
+            color = this.minecraft.player.experienceLevel < cost && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
             if (this.isButtonEnabled())
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             else
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
-            guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(this.getCurrentCost() / 100f)), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
+            guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(cost)), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
             if (cost > 0) {
-                int lapis = Mth.ceil(this.getCurrentCost() / 100f / 2f);
+                int lapis = this.getLapisCost();
                 color = this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() < lapis ? 0xFF0000 : 0x11FF11;
                 guiGraphics.pose().translate(0, 0, 300f);
                 String sLapis = "%d".formatted(lapis);

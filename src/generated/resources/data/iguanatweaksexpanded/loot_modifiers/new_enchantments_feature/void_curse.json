@@ -16,5 +16,6 @@
       }
     }
   ],
+  "ignore_unstackable": false,
   "multiplier": 0.0
 }
