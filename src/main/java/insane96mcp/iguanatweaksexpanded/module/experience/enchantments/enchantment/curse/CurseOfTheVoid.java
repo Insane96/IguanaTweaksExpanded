@@ -1,20 +1,29 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.JuicyBait;
+import insane96mcp.iguanatweaksreborn.data.generator.ITRItemTagsProvider;
 import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.FishingRodItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.ItemFishedEvent;
 
 public class CurseOfTheVoid extends Enchantment implements IEnchantmentTooltip {
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITRItemTagsProvider.create("enchanting/accepts_void_curse");
+    static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("void_curse", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public CurseOfTheVoid() {
-        super(Rarity.UNCOMMON, EnchantmentsFeature.WEAPONS_CATEGORY, EquipmentSlot.values());
+        super(Rarity.UNCOMMON, CATEGORY, EquipmentSlot.values());
     }
 
     @Override
@@ -42,6 +51,21 @@ public class CurseOfTheVoid extends Enchantment implements IEnchantmentTooltip {
         int lvl = killer.getMainHandItem().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_THE_VOID.get());
         if (lvl <= 0 || level.getRandom().nextFloat() >= 0.35f)
             return;
+        event.getDrops().clear();
+    }
+
+    public static void onFishing(ItemFishedEvent event) {
+        Player player = event.getEntity();
+        boolean hasFishingRod = player.getMainHandItem().getItem() instanceof FishingRodItem;
+        boolean hasFishingRodInOffHand = player.getOffhandItem().getItem() instanceof FishingRodItem;
+        if (!hasFishingRod && !hasFishingRodInOffHand)
+            return;
+        int lvl = hasFishingRod ? player.getMainHandItem().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_THE_VOID.get()) : player.getOffhandItem().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_THE_VOID.get());
+        if (lvl == 0 || player.getRandom().nextFloat() > JuicyBait.getChanceToDoubleReel(lvl))
+            return;
+        if (event.getHookEntity().level().getRandom().nextFloat() >= 0.35f)
+            return;
+
         event.getDrops().clear();
     }
 

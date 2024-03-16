@@ -1,6 +1,5 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
@@ -12,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class Rage extends BonusDamageEnchantment implements IEnchantmentTooltip {
     public Rage() {
-        super(Rarity.UNCOMMON, EnchantmentsFeature.WEAPONS_CATEGORY, new EquipmentSlot[]{ EquipmentSlot.MAINHAND });
+        super(Rarity.UNCOMMON, new EquipmentSlot[]{ EquipmentSlot.MAINHAND });
     }
 
     @Override

@@ -17,25 +17,11 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.stats.Stats;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.FishingRodItem;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
@@ -58,7 +44,6 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.List;
 import java.util.Optional;
 
 @Label(name = "New Enchantments", description = "Change some enchantments related stuff and adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'")
@@ -85,7 +70,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 	public static final RegistryObject<Enchantment> PADDING = ITERegistries.ENCHANTMENTS.register("padding", Padding::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
-	public static final RegistryObject<Enchantment> LUCKY_HOOK = ITERegistries.ENCHANTMENTS.register("lucky_hook", LuckyHook::new);
+	public static final RegistryObject<Enchantment> JUICY_BAIT = ITERegistries.ENCHANTMENTS.register("lucky_hook", JuicyBait::new);
 	public static final RegistryObject<Enchantment> BURST_OF_ARROWS = ITERegistries.ENCHANTMENTS.register("burst_of_arrows", BurstOfArrows::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_TEAR = ITERegistries.ENCHANTMENTS.register("tear_curse", CurseOfTear::new);
@@ -175,31 +160,8 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onItemFished(ItemFishedEvent event) {
 		if (event.isCanceled())
 			return;
-		Player player = event.getEntity();
-		boolean hasFishingRod = player.getMainHandItem().getItem() instanceof FishingRodItem;
-		boolean hasFishingRodInOffHand = player.getOffhandItem().getItem() instanceof FishingRodItem;
-		if (!hasFishingRod && !hasFishingRodInOffHand)
-			return;
-		int lvl = hasFishingRod ? player.getMainHandItem().getEnchantmentLevel(LUCKY_HOOK.get()) : player.getOffhandItem().getEnchantmentLevel(LUCKY_HOOK.get());
-		if (lvl == 0 || player.getRandom().nextFloat() > LuckyHook.getChanceToDoubleReel(lvl))
-			return;
-		ItemStack stack = hasFishingRod ? player.getMainHandItem() : player.getOffhandItem();
-		FishingHook hookEntity = event.getHookEntity();
-		LootParams lootparams = (new LootParams.Builder((ServerLevel) player.level())).withParameter(LootContextParams.ORIGIN, hookEntity.position()).withParameter(LootContextParams.TOOL, stack).withParameter(LootContextParams.THIS_ENTITY, hookEntity).withParameter(LootContextParams.KILLER_ENTITY, player).withParameter(LootContextParams.THIS_ENTITY, hookEntity).withLuck((float) hookEntity.luck + player.getLuck()).create(LootContextParamSets.FISHING);
-		LootTable loottable = player.level().getServer().getLootData().getLootTable(BuiltInLootTables.FISHING);
-		List<ItemStack> list = loottable.getRandomItems(lootparams);
-		for(ItemStack itemstack : list) {
-			ItemEntity itementity = new ItemEntity(hookEntity.level(), hookEntity.getX(), hookEntity.getY(), hookEntity.getZ(), itemstack);
-			double xDiff = player.getX() - hookEntity.getX();
-			double yDiff = player.getY() - hookEntity.getY();
-			double zDiff = player.getZ() - hookEntity.getZ();
-			double deltaMovMultiplier = 0.1D;
-			itementity.setDeltaMovement(xDiff * deltaMovMultiplier, yDiff * deltaMovMultiplier + Math.sqrt(Math.sqrt(xDiff * xDiff + yDiff * yDiff + zDiff * zDiff)) * 0.08D, zDiff * deltaMovMultiplier);
-			hookEntity.level().addFreshEntity(itementity);
-			player.level().addFreshEntity(new ExperienceOrb(player.level(), player.getX(), player.getY() + 0.5D, player.getZ() + 0.5D, event.getEntity().getRandom().nextInt(6) + 1));
-			if (itemstack.is(ItemTags.FISHES))
-				player.awardStat(Stats.FISH_CAUGHT, 1);
-		}
+		JuicyBait.apply(event);
+		CurseOfTheVoid.onFishing(event);
 	}
 
 	/*public static boolean doesItemInEitherHandMatches(LivingEntity entity, Predicate<ItemStack> stackPredicate) {

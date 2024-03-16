@@ -3,7 +3,14 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Padding;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.PartBreaker;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Reach;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Smartness;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfDumbness;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfShortArm;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfSlowStrike;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfTheVoid;
 import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
@@ -14,6 +21,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.Luck;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
 import insane96mcp.iguanatweaksreborn.module.items.itemstats.ItemStats;
 import net.minecraft.core.HolderLookup;
@@ -44,19 +52,37 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         super(packOutput, completableFuture, tagLookupCompletableFuture, modId, existingFileHelper);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(EnchantingFeature.NOT_ENCHANTABLE)
                 .add(Items.BOOK, Items.FLINT_AND_STEEL, Items.SHEARS, Items.BRUSH, Items.ELYTRA)
                 .add(CoalCharcoal.FIRESTARTER.get());
         tag(Smartness.ACCEPTS_ENCHANTMENT)
-                .addTag(FORGE_HAMMERS)
+                .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
+                .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
+        tag(Reach.ACCEPTS_ENCHANTMENT)
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+        tag(PartBreaker.ACCEPTS_ENCHANTMENT)
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+        tag(Padding.ACCEPTS_ENCHANTMENT)
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+        tag(CurseOfDumbness.ACCEPTS_ENCHANTMENT)
+                .addTag(Smartness.ACCEPTS_ENCHANTMENT);
+        tag(CurseOfShortArm.ACCEPTS_ENCHANTMENT)
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+        tag(CurseOfSlowStrike.ACCEPTS_ENCHANTMENT)
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+        tag(CurseOfTheVoid.ACCEPTS_ENCHANTMENT)
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
         tag(FORGE_HAMMERS)
                 .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         //ITR
-        tag(BonusDamageEnchantment.ACCEPTS_DAMAGE_ENCHANTMENTS)
+        tag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .addTag(FORGE_HAMMERS);
+        tag(Luck.ACCEPTS_ENCHANTMENT)
+                .add(Quaron.FISHING_ROD.get());
         tag(ItemStats.NOT_UNBREAKABLE)
                 .add(CoalCharcoal.FIRESTARTER.get());
         //Vanilla

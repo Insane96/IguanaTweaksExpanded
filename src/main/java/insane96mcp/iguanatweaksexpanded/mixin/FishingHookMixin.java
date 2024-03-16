@@ -1,12 +1,11 @@
 package insane96mcp.iguanatweaksexpanded.mixin;
 
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Smartness;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfDumbness;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,9 +26,8 @@ public abstract class FishingHookMixin extends Projectile {
     private int onExperienceFromFishing(int exp) {
         if (this.getPlayerOwner() == null)
             return exp;
-        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.SMARTNESS.get(), this.getPlayerOwner());
-        if (lvl > 0)
-            return Smartness.getIncreasedExperience(this.random, lvl, exp);
+        exp = Smartness.applyToFishing((FishingHook) (Object) this, exp);
+        exp = CurseOfDumbness.applyToFishing((FishingHook) (Object) this, exp);
         return exp;
     }
 

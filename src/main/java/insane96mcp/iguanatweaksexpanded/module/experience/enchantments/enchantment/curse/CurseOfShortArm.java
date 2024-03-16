@@ -1,14 +1,17 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.IAttributeEnchantment;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.data.generator.ITRItemTagsProvider;
 import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 
@@ -16,8 +19,10 @@ import java.util.UUID;
 
 public class CurseOfShortArm extends Enchantment implements IAttributeEnchantment, IEnchantmentTooltip {
     public static final UUID MODIFIER_UUID = UUID.fromString("7567b3ad-a4c6-4700-8bf0-cd8c4356c155");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITRItemTagsProvider.create("enchanting/accepts_short_arm_curse");
+    static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("short_arm_curse", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public CurseOfShortArm() {
-        super(Rarity.UNCOMMON, EnchantmentsFeature.WEAPONS_CATEGORY, EquipmentSlot.values());
+        super(Rarity.UNCOMMON, CATEGORY, EquipmentSlot.values());
     }
 
     @Override

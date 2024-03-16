@@ -11,10 +11,13 @@
 ## Upcoming
 * Blast furnaces now try to pick up an item every 5 seconds if empty
 * Smartness now works on Fishing Rods
+  * Also Curse of Dumbness
 * Enchanting
   * Lapis cost is now equal to the sum of the levels of enchantments
   * Experience and lapis are no longer consumed in creative when enchanting
-  * Cost is rounded to the nearest integer now
+  * Cost is now rounded to the nearest integer
+* Enchantments now use item tags to decide on which item they can go
+  * This fixes Forge Hammers missing some recipes
 * Rage now scales slightly better and also has min 20% damage
 * Fixed enchanting table learning curses
 * Fixed gravity defying not reducing fall damage on servers

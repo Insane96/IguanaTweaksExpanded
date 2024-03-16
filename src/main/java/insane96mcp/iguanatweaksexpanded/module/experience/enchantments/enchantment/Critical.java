@@ -1,6 +1,5 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
 import insane96mcp.insanelib.InsaneLib;
 import net.minecraft.ChatFormatting;
@@ -14,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class Critical extends BonusDamageEnchantment {
     public Critical() {
-        super(Rarity.UNCOMMON, EnchantmentsFeature.WEAPONS_CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     public static float getCritAmount(int lvl, float baseCrit) {
