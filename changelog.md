@@ -5,10 +5,8 @@
 * Soulbound
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
-* Celestial Guardian (gives absorption when below a certain health) (shield)
-* Repairing an enchanted item with an unenchanted costs levels
 
-## Upcoming
+## 1.6.2
 * Blast furnaces now try to pick up an item every 5 seconds if empty
 * Smartness now works on Fishing Rods
   * Also Curse of Dumbness
