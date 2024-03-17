@@ -50,28 +50,41 @@ import java.util.Optional;
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class NewEnchantmentsFeature extends Feature {
 
-	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
-	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ITERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
-	public static final RegistryObject<Enchantment> MELEE_PROTECTION = ITERegistries.ENCHANTMENTS.register("melee_protection", MeleeProtection::new);
+	//Tools
 	public static final RegistryObject<Enchantment> BLASTING = ITERegistries.ENCHANTMENTS.register("blasting", Blasting::new);
 	public static final RegistryObject<Enchantment> EXPANDED = ITERegistries.ENCHANTMENTS.register("expanded", Expanded::new);
 	public static final RegistryObject<Enchantment> VEINING = ITERegistries.ENCHANTMENTS.register("veining", Veining::new);
+
+	//Armor
+	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ITERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
+	public static final RegistryObject<Enchantment> MELEE_PROTECTION = ITERegistries.ENCHANTMENTS.register("melee_protection", MeleeProtection::new);
+	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
+	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public static final RegistryObject<Enchantment> STEP_UP = ITERegistries.ENCHANTMENTS.register("step_up", StepUp::new);
 	public static final RegistryObject<Enchantment> ZIPPY = ITERegistries.ENCHANTMENTS.register("zippy", Zippy::new);
+	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
+	public static final RegistryObject<Enchantment> MA_JUMP = ITERegistries.ENCHANTMENTS.register("ma_jump", DoubleJump::new);
+	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ITERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
+
+	//Weapons
 	public static final RegistryObject<Enchantment> WATER_COOLANT = ITERegistries.ENCHANTMENTS.register("water_coolant", WaterCoolant::new);
 	public static final RegistryObject<Enchantment> RAGE = ITERegistries.ENCHANTMENTS.register("rage", Rage::new);
 	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
-	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
-	public static final RegistryObject<Enchantment> PART_BREAKER = ITERegistries.ENCHANTMENTS.register("part_breaker", PartBreaker::new);
-	public static final RegistryObject<Enchantment> MA_JUMP = ITERegistries.ENCHANTMENTS.register("ma_jump", DoubleJump::new);
-	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ITERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
-	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
-	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 	public static final RegistryObject<Enchantment> PADDING = ITERegistries.ENCHANTMENTS.register("padding", Padding::new);
-	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
+	public static final RegistryObject<Enchantment> PART_BREAKER = ITERegistries.ENCHANTMENTS.register("part_breaker", PartBreaker::new);
+
+	//Tools and weapons
+	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
+	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
+
+	//Fishing rods
 	public static final RegistryObject<Enchantment> JUICY_BAIT = ITERegistries.ENCHANTMENTS.register("lucky_hook", JuicyBait::new);
+
+	//Crossbows
 	public static final RegistryObject<Enchantment> BURST_OF_ARROWS = ITERegistries.ENCHANTMENTS.register("burst_of_arrows", BurstOfArrows::new);
+
+	//Curses
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_TEAR = ITERegistries.ENCHANTMENTS.register("tear_curse", CurseOfTear::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_UNHURRIED = ITERegistries.ENCHANTMENTS.register("unhurried_curse", CurseOfUnhurried::new);
