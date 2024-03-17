@@ -5,6 +5,10 @@
 * Soulbound
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
+* Copper efficiency and unbreaking bonus should scale exponentially instead of linearly
+
+## Upcoming
+* Fixed enchanting costs not syncing with clients
 
 ## 1.6.3
 * Fixed server crash when an entity fell

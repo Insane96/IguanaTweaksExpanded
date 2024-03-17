@@ -158,7 +158,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             if (stack.getTag() == null || !stack.getTag().contains("PendingEnchantments"))
                 return;
             ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
-            float cost = 0;
+            int cost = 0;
             int lapisCost = 0;
             List<EnchantmentInstance> enchantmentInstances = new ArrayList<>();
             for (int i = 0; i < enchantmentsListTag.size(); ++i) {

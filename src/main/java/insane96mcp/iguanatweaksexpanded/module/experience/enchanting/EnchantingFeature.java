@@ -95,7 +95,7 @@ public class EnchantingFeature extends JsonFeature {
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
-        addSyncType(new ResourceLocation(IguanaTweaksReborn.MOD_ID, "enchantments_base_cost"), new SyncType(json -> loadAndReadJson(json, enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE)));
+        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost"), new SyncType(json -> loadAndReadJson(json, enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE)));
         JSON_CONFIGS.add(new JsonConfig<>("enchantments_base_cost.json", enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "enchantments_base_cost")));
 	}
 
@@ -188,7 +188,7 @@ public class EnchantingFeature extends JsonFeature {
         event.setXp((int) (lvl * PlayerExperience.getBetterScalingLevel(30) * 0.95f));
     }
 
-    public static float getCost(Enchantment enchantment, int lvl) {
+    public static int getCost(Enchantment enchantment, int lvl) {
         if (lvl <= 0)
             return 0;
         float baseCost = Anvils.getRarityCost(enchantment);
@@ -196,7 +196,7 @@ public class EnchantingFeature extends JsonFeature {
             if (enchantmentCost.id.matchesEnchantment(enchantment))
                 baseCost = (float) enchantmentCost.value;
         }
-        return (float) Math.round(baseCost * Math.pow(lvl, 1.11));
+        return (int) Math.round(baseCost * Math.pow(lvl, 1.11));
     }
 
     public static boolean canBeEnchanted(ItemStack stack) {
