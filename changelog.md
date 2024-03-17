@@ -6,7 +6,8 @@
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
 
-## Upcoming
+## 1.6.3
+* Fixed server crash when an entity fell
 * Fixed pumpkins growing in Spring instead of Autumn
 
 ## 1.6.2

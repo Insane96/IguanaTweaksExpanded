@@ -133,7 +133,11 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onFall(LivingFallEvent event) {
 		CurseOfSteelFall.onFall(event);
 		GravityDefying.applyFallDamageReduction(event);
+	}
 
+	@OnlyIn(Dist.CLIENT)
+	@SubscribeEvent
+	public void onLivingFall(LivingFallEvent event) {
 		if (event.getEntity() instanceof LocalPlayer player)
 			player.getPersistentData().putInt("double_jumps", 0);
 	}
