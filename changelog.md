@@ -5,9 +5,8 @@
 * Soulbound
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
-* Copper efficiency and unbreaking bonus should scale exponentially instead of linearly
 
-## Upcoming
+## 1.6.4
 * Copper tools
   * The bonus now increases exponentially instead of linearly. At the first blocks below the sea will gain the most benefit
   * No longer have bonus speed and durability outside the overworld
