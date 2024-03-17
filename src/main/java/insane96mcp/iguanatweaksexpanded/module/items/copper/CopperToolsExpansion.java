@@ -36,6 +36,7 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -92,11 +93,16 @@ public class CopperToolsExpansion extends Feature {
 				|| !event.getEntity().getMainHandItem().isCorrectToolForDrops(event.getState()))
 			return;
 
-		int y = event.getEntity().getBlockY();
-		if (y > 64)
+		Level level = event.getEntity().level();
+		if (!level.dimension().equals(Level.OVERWORLD))
 			return;
-		//event.setNewSpeed(event.getNewSpeed() + EnchantmentsFeature.applyMiningSpeedModifiers((64 - y) * 0.1f, false, event.getEntity()));
-		event.setNewSpeed(event.getNewSpeed() * (1f + (64 - y) * 0.01f));
+
+		int y = event.getEntity().getBlockY();
+		if (y > level.getSeaLevel())
+			return;
+		//Normalize y to go from sea level to world depth (0~128 usually)
+		y = (level.getSeaLevel() - level.getMinBuildHeight()) - (y + level.getSeaLevel());
+		event.setNewSpeed((float) (event.getNewSpeed() + (0.25f * (Math.pow(y, 0.655f)))));
 	}
 
 	@SubscribeEvent
@@ -106,14 +112,20 @@ public class CopperToolsExpansion extends Feature {
 				|| event.getPlayer() == null)
 			return;
 
+		Level level = event.getEntity().level();
+		if (!level.dimension().equals(Level.OVERWORLD))
+			return;
+
 		int amount = event.getAmount();
 		int newAmount = 0;
 		int y = event.getEntity().getBlockY();
-		if (y > 64)
+		if (y > level.getSeaLevel())
 			return;
+		//Normalize y to go from sea level to world depth (0~128 usually)
+		y = (level.getSeaLevel() - level.getMinBuildHeight()) - (y + level.getSeaLevel());
 		for (int i = 0; i < amount; i++) {
-			//6% "more durability" per block below sea level (+480% at y=0 and +800% at y=-54)
-			if (event.getRandom().nextFloat() >= 1 - 1 / (1 + (64 - y) * 0.06))
+			//+224% at y=16, +356% at y=32, +568% at y=0 and +855% at y=-54
+			if (event.getRandom().nextFloat() >= 1 - 1 / (1 + 0.35f * Math.pow(y, 0.67f)))
 				++newAmount;
 		}
 		event.setAmount(newAmount);

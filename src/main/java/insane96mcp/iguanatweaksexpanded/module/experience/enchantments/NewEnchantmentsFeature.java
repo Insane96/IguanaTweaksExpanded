@@ -153,7 +153,7 @@ public class NewEnchantmentsFeature extends Feature {
 		MagicProtection.reduceBadEffectsDuration(event.getEntity(), event.getEffectInstance());
 	}
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
 		event.setNewSpeed(event.getNewSpeed() + Blasting.getMiningSpeedBoost(event.getEntity(), event.getState()));
 		if (event.getEntity().getMainHandItem().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)

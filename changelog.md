@@ -8,6 +8,9 @@
 * Copper efficiency and unbreaking bonus should scale exponentially instead of linearly
 
 ## Upcoming
+* Copper tools
+  * The bonus now increases exponentially instead of linearly. At the first blocks below the sea will gain the most benefit
+  * No longer have bonus speed and durability outside the overworld
 * Fixed enchanting costs not syncing with clients
 
 ## 1.6.3
