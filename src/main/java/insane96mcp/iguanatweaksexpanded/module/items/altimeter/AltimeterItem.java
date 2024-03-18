@@ -23,6 +23,6 @@ public class AltimeterItem extends Item {
                 break;
             }
         }
-        return InteractionResultHolder.consume(stack);
+        return InteractionResultHolder.success(stack);
     }
 }
