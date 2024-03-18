@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.items.recallidol;
+package insane96mcp.iguanatweaksexpanded.module.items.recallpotion;
 
 import insane96mcp.insanelib.world.scheduled.ScheduledTasks;
 import insane96mcp.insanelib.world.scheduled.ScheduledTickTask;

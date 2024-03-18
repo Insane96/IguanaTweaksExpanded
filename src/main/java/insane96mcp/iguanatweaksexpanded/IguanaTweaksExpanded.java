@@ -9,7 +9,7 @@ import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEItemModelsProvi
 import insane96mcp.iguanatweaksexpanded.modifier.ITEModifiers;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ITEArrowDispenseBehaviour;
-import insane96mcp.iguanatweaksexpanded.module.items.recallidol.Recall;
+import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.setup.ITECommonConfig;
 import insane96mcp.iguanatweaksexpanded.setup.ITEPackSource;

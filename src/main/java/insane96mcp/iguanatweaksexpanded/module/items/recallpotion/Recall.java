@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.items.recallidol;
+package insane96mcp.iguanatweaksexpanded.module.items.recallpotion;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
