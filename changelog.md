@@ -6,6 +6,9 @@
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
 
+## Upcoming
+* Altimeter can now be right clicked to show the same message as the tooltip
+
 ## 1.6.4
 * Copper tools
   * The bonus now increases exponentially instead of linearly. At the first blocks below the sea will gain the most benefit
