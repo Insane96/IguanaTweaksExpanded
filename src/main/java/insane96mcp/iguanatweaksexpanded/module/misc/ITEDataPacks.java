@@ -22,13 +22,13 @@ public class ITEDataPacks extends Feature {
     @Label(name = "Advancements", description = "Enables a Data Pack that overhauls advancements to make them work with IguanaTweaks.")
     public static Boolean advancements = true;
     @Config
-    @Label(name = "Item Stats Data Pack", description = "Enables a data pack that changes all the item stats")
+    @Label(name = "Item Stats", description = "Enables a data pack that changes all the item stats")
     public static Boolean itemStatsDataPack = true;
     @Config
     @Label(name = "Better Structure Loot", description = "If true a data pack will be enabled that overhauls structure loot. This overrides some loot tables from ITR")
     public static Boolean betterStructureLoot = true;
     @Config
-    @Label(name = "Plant growth multipliers data pack", description = "If true, a data pack is enabled that changes the growth of plants based off seasons")
+    @Label(name = "Plant growth multipliers", description = "If true, a data pack is enabled that changes the growth of plants based off seasons")
     public static Boolean plantGrowthMultipliersDataPack = true;
     @Config
     @Label(name = "Livestock Data", description = "Enables a data pack that slows down growing, breeding, egging etc based off seasons")
