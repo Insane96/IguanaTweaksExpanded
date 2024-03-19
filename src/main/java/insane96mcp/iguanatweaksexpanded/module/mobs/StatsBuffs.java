@@ -29,7 +29,7 @@ public class StatsBuffs extends Feature {
     @Override
     public void readConfig(ModConfigEvent event) {
         super.readConfig(event);
-        if (enableDataPack) {
+        if (this.isEnabled() && enableDataPack) {
             Module.getFeature(Targeting.class).setConfigOption("Follow Range Override", new MinMax(0d));
             Module.getFeature(Targeting.class).setConfigOption("XRay Range Override", new MinMax(0d));
             //Read the config values
