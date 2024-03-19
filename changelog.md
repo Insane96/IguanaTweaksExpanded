@@ -8,6 +8,7 @@
 
 ## Upcoming
 * Altimeter can now be right-clicked to show the same message as the tooltip
+* 
 * Fixed poor and rich ores not being doubled
 * Blast furnaces now try to pick up an item every 5 seconds if no fuel or empty
 

@@ -36,8 +36,12 @@ public class GravityDefying extends Enchantment implements IAttributeEnchantment
         return this.getMinCost(level) + 20;
     }
 
+    public static final float[] GRAVITY_REDUCTION = new float[] { 0.5f, 0.7f, 0.8f };
+
     public static float getGravityReduction(int lvl) {
-        return lvl * 0.6f - ((lvl - 1) * 0.45f);
+        if (lvl <= 0 || lvl > GRAVITY_REDUCTION.length)
+            return 0f;
+        return GRAVITY_REDUCTION[lvl - 1];
     }
 
     public static void applyFallDamageReduction(LivingFallEvent event) {
@@ -45,7 +49,7 @@ public class GravityDefying extends Enchantment implements IAttributeEnchantment
         if (lvl <= 0)
             return;
 
-        event.setDistance((event.getDistance() - lvl * 2.5f));
+        event.setDistance((event.getDistance() - lvl * 1.5f));
     }
 
     @Override
