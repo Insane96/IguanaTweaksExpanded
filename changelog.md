@@ -7,7 +7,8 @@
 * Wither effect on hit (treasure)
 
 ## Upcoming
-* Altimeter can now be right clicked to show the same message as the tooltip
+* Altimeter can now be right-clicked to show the same message as the tooltip
+* Fixed poor and rich ores not being doubled
 
 ## 1.6.4
 * Copper tools

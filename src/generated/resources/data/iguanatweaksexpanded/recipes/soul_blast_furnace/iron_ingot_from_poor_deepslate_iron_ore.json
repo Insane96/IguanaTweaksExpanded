@@ -9,5 +9,6 @@
       "item": "iguanatweaksexpanded:poor_deepslate_iron_ore"
     }
   ],
+  "output_increase": 0.3,
   "result": "minecraft:iron_ingot"
 }

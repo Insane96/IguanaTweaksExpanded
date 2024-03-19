@@ -865,10 +865,14 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, OreGeneration.PoorRichOre poorRichOre, Item smeltOutput, float experience, int cookingTime) {
-        for (Item item : poorRichOre.getAllItems()) {
-            addBlastingRecipe(writer, item, smeltOutput, experience, cookingTime);
-            addSoulBlastingRecipe(writer, item, smeltOutput, experience, cookingTime);
-        }
+        addBlastingRecipe(writer, poorRichOre.poorOre().item().get(), smeltOutput, experience, cookingTime, 1f);
+        addBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, cookingTime, 1f);
+        addBlastingRecipe(writer, poorRichOre.richOre().item().get(), smeltOutput, experience, cookingTime, 1f);
+        addBlastingRecipe(writer, poorRichOre.richDeepslateOre().item().get(), smeltOutput, experience, cookingTime, 1f);
+        addSoulBlastingRecipe(writer, poorRichOre.poorOre().item().get(), smeltOutput, experience, cookingTime, 0.3f);
+        addSoulBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, cookingTime, 0.3f);
+        addSoulBlastingRecipe(writer, poorRichOre.richOre().item().get(), smeltOutput, experience, cookingTime, 0.3f);
+        addSoulBlastingRecipe(writer, poorRichOre.richDeepslateOre().item().get(), smeltOutput, experience, cookingTime, 0.3f);
     }
 
     public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {

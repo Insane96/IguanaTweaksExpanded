@@ -9,5 +9,6 @@
       "item": "iguanatweaksexpanded:poor_gold_ore"
     }
   ],
+  "output_increase": 0.3,
   "result": "minecraft:gold_ingot"
 }
