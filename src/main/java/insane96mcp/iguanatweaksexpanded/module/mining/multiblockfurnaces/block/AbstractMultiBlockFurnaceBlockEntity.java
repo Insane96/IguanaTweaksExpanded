@@ -129,83 +129,84 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         pTag.put("RecipesUsed", compoundtag);
     }
 
-    public static void serverTick(Level pLevel, BlockPos pPos, BlockState pState, AbstractMultiBlockFurnaceBlockEntity pBlockEntity) {
+    public static void serverTick(Level pLevel, BlockPos pPos, BlockState pState, AbstractMultiBlockFurnaceBlockEntity blockEntity) {
         if (pLevel.getGameTime() % 20 == 11) {
-            pBlockEntity.isValid = ((AbstractMultiBlockFurnace)pState.getBlock()).isValidMultiBlock(pLevel, pPos);
+            blockEntity.isValid = ((AbstractMultiBlockFurnace)pState.getBlock()).isValidMultiBlock(pLevel, pPos);
         }
-        if (!pBlockEntity.isValid)
+        if (!blockEntity.isValid)
             return;
 
-        boolean isLit = pBlockEntity.isLit();
+        boolean isLit = blockEntity.isLit();
         boolean setChanged = false;
-        if (pBlockEntity.isLit()) {
-            --pBlockEntity.litTime;
+        if (blockEntity.isLit()) {
+            --blockEntity.litTime;
         }
 
-        ItemStack fuelStack = pBlockEntity.items.get(FUEL_SLOT);
+        ItemStack fuelStack = blockEntity.items.get(FUEL_SLOT);
         boolean hasInputItem = false;
-        int[] inputSlots = pBlockEntity.getIngredientSlots();
+        int[] inputSlots = blockEntity.getIngredientSlots();
         for (int slot : inputSlots) {
-            if (!pBlockEntity.items.get(slot).isEmpty()) {
+            if (!blockEntity.items.get(slot).isEmpty()) {
                 hasInputItem = true;
                 break;
             }
         }
         boolean hasFuel = !fuelStack.isEmpty();
-        if ((pBlockEntity.isLit() || hasFuel) && hasInputItem) {
+        if ((blockEntity.isLit() || hasFuel) && hasInputItem) {
             Recipe<?> recipe;
             if (hasInputItem) {
-                recipe = pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel).orElse(null);
+                recipe = blockEntity.quickCheck.getRecipeFor(blockEntity, pLevel).orElse(null);
             } else {
                 recipe = null;
             }
 
-            int i = pBlockEntity.getMaxStackSize();
-            if (!pBlockEntity.isLit() && pBlockEntity.canBurn(pLevel.registryAccess(), recipe, inputSlots, pBlockEntity.items, i)) {
-                pBlockEntity.litTime = pBlockEntity.getBurnDuration(fuelStack);
-                pBlockEntity.litDuration = pBlockEntity.litTime;
-                if (pBlockEntity.isLit()) {
+            int i = blockEntity.getMaxStackSize();
+            if (!blockEntity.isLit() && blockEntity.canBurn(pLevel.registryAccess(), recipe, inputSlots, blockEntity.items, i)) {
+                blockEntity.litTime = blockEntity.getBurnDuration(fuelStack);
+                blockEntity.litDuration = blockEntity.litTime;
+                if (blockEntity.isLit()) {
                     setChanged = true;
                     if (fuelStack.hasCraftingRemainingItem())
-                        pBlockEntity.items.set(FUEL_SLOT, fuelStack.getCraftingRemainingItem());
+                        blockEntity.items.set(FUEL_SLOT, fuelStack.getCraftingRemainingItem());
                     else
                     if (hasFuel) {
                         fuelStack.shrink(1);
                         if (fuelStack.isEmpty()) {
-                            pBlockEntity.items.set(FUEL_SLOT, fuelStack.getCraftingRemainingItem());
+                            blockEntity.items.set(FUEL_SLOT, fuelStack.getCraftingRemainingItem());
                         }
                     }
                 }
             }
 
-            if (pBlockEntity.isLit() && pBlockEntity.canBurn(pLevel.registryAccess(), recipe, inputSlots, pBlockEntity.items, i)) {
-                ++pBlockEntity.cookingProgress;
-                if (pBlockEntity.cookingProgress == pBlockEntity.cookingTotalTime) {
-                    pBlockEntity.cookingProgress = 0;
-                    pBlockEntity.cookingTotalTime = getTotalCookTime(pLevel, pBlockEntity);
-                    if (pBlockEntity.burn(pLevel.registryAccess(), recipe, inputSlots, pBlockEntity.items, i)) {
-                        pBlockEntity.setRecipeUsed(recipe);
+            if (blockEntity.isLit() && blockEntity.canBurn(pLevel.registryAccess(), recipe, inputSlots, blockEntity.items, i)) {
+                ++blockEntity.cookingProgress;
+                if (blockEntity.cookingProgress == blockEntity.cookingTotalTime) {
+                    blockEntity.cookingProgress = 0;
+                    blockEntity.cookingTotalTime = getTotalCookTime(pLevel, blockEntity);
+                    if (blockEntity.burn(pLevel.registryAccess(), recipe, inputSlots, blockEntity.items, i)) {
+                        blockEntity.setRecipeUsed(recipe);
                     }
 
                     setChanged = true;
 
-                    tryGetItemFromLevel(pPos, pState, pLevel, pBlockEntity);
+                    tryGetItemFromLevel(pPos, pState, pLevel, blockEntity);
                 }
             }
             else {
-                pBlockEntity.cookingProgress = 0;
+                blockEntity.cookingProgress = 0;
             }
         }
-        else if (!hasInputItem && pLevel.getGameTime() % 100 == 21) {
-            tryGetItemFromLevel(pPos, pState, pLevel, pBlockEntity);
-        }
-        else if (!pBlockEntity.isLit() && pBlockEntity.cookingProgress > 0) {
-            pBlockEntity.cookingProgress = Mth.clamp(pBlockEntity.cookingProgress - 2, 0, pBlockEntity.cookingTotalTime);
+        else if (!blockEntity.isLit() && blockEntity.cookingProgress > 0) {
+            blockEntity.cookingProgress = Mth.clamp(blockEntity.cookingProgress - 2, 0, blockEntity.cookingTotalTime);
         }
 
-        if (isLit != pBlockEntity.isLit()) {
+        if (!blockEntity.isLit() && (!hasInputItem || !hasFuel) && pLevel.getGameTime() % 100 == 21) {
+            tryGetItemFromLevel(pPos, pState, pLevel, blockEntity);
+        }
+
+        if (isLit != blockEntity.isLit()) {
             setChanged = true;
-            pState = pState.setValue(AbstractFurnaceBlock.LIT, pBlockEntity.isLit());
+            pState = pState.setValue(AbstractFurnaceBlock.LIT, blockEntity.isLit());
             pLevel.setBlock(pPos, pState, 3);
         }
 
