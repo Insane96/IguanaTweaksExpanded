@@ -5,10 +5,12 @@
 * Soulbound
 * Torch placer (Chestplate)
 * Wither effect on hit (treasure)
+* Remove sweep attack from swords and add it to hoes. Swords should be able to block like shields, 20% damage reduction
+* Full mushroom soup with nether shrooms
 
 ## Upcoming
 * Altimeter can now be right-clicked to show the same message as the tooltip
-* 
+* Quaron fishing rods are slightly less slower
 * Fixed poor and rich ores not being doubled
 * Blast furnaces now try to pick up an item every 5 seconds if no fuel or empty
 

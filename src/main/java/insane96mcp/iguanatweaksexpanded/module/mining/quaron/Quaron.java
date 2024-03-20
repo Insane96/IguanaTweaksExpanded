@@ -111,7 +111,7 @@ public class Quaron extends Feature {
 		if ((!mainHand && !offHand))
 			return;
 
-		if (playerOwner.level().getRandom().nextFloat() < 0.25f)
+		if (playerOwner.level().getRandom().nextFloat() < 0.2f)
 			event.setTick(event.getTick() - 1);
 	}
 }
