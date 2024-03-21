@@ -1,11 +1,8 @@
 # Changelog
 
-* Bonemealing when grown on seasons
-* Smithing enchanted items
-* Regenerating absorption should stop damage pre reduction
-
 ## Upcoming
 * Fixed being able to smith enchanted items
+* Fixed Bonemealing grown crops
 
 ## 1.6.5
 * Altimeter can now be right-clicked to show the same message as the tooltip

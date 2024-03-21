@@ -28,6 +28,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.LevelChunkSection;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -35,6 +36,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.ModList;
@@ -241,15 +243,25 @@ public class Seasons extends Feature {
 
 	record ChunkAndHolder(LevelChunk chunk, ChunkHolder holder) {}
 
-	@SubscribeEvent
+	//Run before ITR BoneMeal
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBonemeal(BonemealEvent event) {
 		if (event.isCanceled()
-				|| event.getResult() == Event.Result.DENY
+				|| event.getResult() != Event.Result.DENY
 				|| !this.isEnabled()
 				|| event.getLevel().isClientSide
 				|| boneMealChance.isBlank())
 			return;
-		String[] seasonSplit = boneMealChance.split(";");
+        if ((event.getBlock().hasProperty(BlockStateProperties.AGE_1) && event.getBlock().getValue(BlockStateProperties.AGE_1) == 1)
+				|| (event.getBlock().hasProperty(BlockStateProperties.AGE_2) && event.getBlock().getValue(BlockStateProperties.AGE_2) == 2)
+				|| (event.getBlock().hasProperty(BlockStateProperties.AGE_3) && event.getBlock().getValue(BlockStateProperties.AGE_3) == 3)
+				|| (event.getBlock().hasProperty(BlockStateProperties.AGE_4) && event.getBlock().getValue(BlockStateProperties.AGE_4) == 4)
+				|| (event.getBlock().hasProperty(BlockStateProperties.AGE_5) && event.getBlock().getValue(BlockStateProperties.AGE_5) == 5)
+				|| (event.getBlock().hasProperty(BlockStateProperties.AGE_7) && event.getBlock().getValue(BlockStateProperties.AGE_7) == 7)
+				|| (event.getBlock().hasProperty(BlockStateProperties.AGE_15) && event.getBlock().getValue(BlockStateProperties.AGE_15) == 15)
+				|| (event.getBlock().hasProperty(BlockStateProperties.AGE_25) && event.getBlock().getValue(BlockStateProperties.AGE_25) == 25))
+            return;
+        String[] seasonSplit = boneMealChance.split(";");
 		for (String seasonChance : seasonSplit) {
 			String[] chanceSplit = seasonChance.split(",");
 			if (chanceSplit.length != 2)
