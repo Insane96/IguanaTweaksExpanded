@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.6.5
 * Altimeter can now be right-clicked to show the same message as the tooltip
 * Quaron fishing rods are slightly less slow to lure
 * Fixed poor and rich ores not being doubled in blast furnaces
