@@ -1,15 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:quaron_chestplate",
-	"durability": 304,
+	"durability": 240,
 	"armor": 3.1,
 	"modifiers": [
-		{
-			"uuid": "e5ca3f97-f7a0-439b-8c94-b1af3bdf3828",
-			"name": "Armor slowdown",
-			"slot": "chest",
-			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.035,
-			"operation": "multiply_base"
-		}
+
 	]
 }

@@ -1,15 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:durium_chestplate",
-	"durability": 208,
+	"durability": 168,
 	"armor": 3.1,
 	"modifiers": [
-		{
-			"uuid": "e5ca3f97-f7a0-439b-8c94-b1af3bdf3828",
-			"name": "Armor slowdown",
-			"slot": "chest",
-			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.0175,
-			"operation": "multiply_base"
-		}
+
 	]
 }

@@ -1,15 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:keego_helmet",
-	"durability": 130,
+	"durability": 104,
 	"armor": 2.2,
 	"modifiers": [
-		{
-			"uuid": "cf4db784-9677-4e90-9c74-ee3d85c9a641",
-			"name": "Armor slowdown",
-			"slot": "head",
-			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.02,
-			"operation": "multiply_base"
-		}
+
 	]
 }

@@ -5,14 +5,12 @@ import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.item.*;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
-import insane96mcp.iguanatweaksreborn.module.combat.AbsorptionArmor;
 import insane96mcp.iguanatweaksreborn.module.combat.RegeneratingAbsorption;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.integration.ToolBelt;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
-import insane96mcp.insanelib.event.HurtItemStackEvent;
 import insane96mcp.insanelib.item.ILItemTier;
 import insane96mcp.insanelib.util.MCUtils;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
@@ -23,7 +21,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -92,37 +89,16 @@ public class Solarium extends Feature {
 		event.getToolTip().add(Component.translatable(IguanaTweaksExpanded.RESOURCE_PREFIX + "innate_solarium").withStyle(ChatFormatting.GREEN));
 	}
 
-	@SubscribeEvent
-	public void onHurtItemStack(HurtItemStackEvent event) {
-		if (!this.isEnabled()
-				|| !event.getStack().is(SOLARIUM_EQUIPMENT)
-				|| event.getPlayer() == null)
-			return;
-
-		int amount = event.getAmount();
-		int newAmount = 0;
-		float calculatedSkyLight = getCalculatedSkyLight(event.getPlayer());
-		if (calculatedSkyLight <= 0f)
-			return;
-		for (int i = 0; i < amount; i++) {
-			//4% per light level (60% at 15)
-			if (event.getRandom().nextFloat() >= calculatedSkyLight * 0.04f)
-				++newAmount;
-		}
-		event.setAmount(newAmount);
-	}
-
 	public static void healGear(ItemStack stack, Entity entity, Level level) {
 		if (level.isClientSide
 				|| entity.tickCount % 200 != 22)
 			return;
 
-		float chance = getCalculatedSkyLight(entity) * 0.10f;
-		if (chance <= 0f)
+		float chance = getCalculatedSkyLight(entity);
+        if (chance <= 0f
+				|| level.random.nextFloat() >= chance)
 			return;
-		if (level.random.nextFloat() >= chance)
-			return;
-		stack.setDamageValue(stack.getDamageValue() - 1);
+        stack.setDamageValue(stack.getDamageValue() - 1);
 	}
 
 	@SubscribeEvent
@@ -139,31 +115,27 @@ public class Solarium extends Feature {
 		if (event.getEntity().tickCount % 2 != 1)
 			return;
 
-		Attribute attr = Attributes.ARMOR_TOUGHNESS;
-		boolean isRegenAbsorption = isEnabled(AbsorptionArmor.class);
+		Attribute attr = RegeneratingAbsorption.SPEED_ATTRIBUTE.get();
+		/*boolean isRegenAbsorption = isEnabled(AbsorptionArmor.class);
 		if (isRegenAbsorption)
-			attr = RegeneratingAbsorption.SPEED_ATTRIBUTE.get();
-		AttributeInstance toughnessAttr = event.getEntity().getAttribute(attr);
-		if (toughnessAttr == null)
+			attr = RegeneratingAbsorption.SPEED_ATTRIBUTE.get();*/
+		AttributeInstance attributeInstance = event.getEntity().getAttribute(attr);
+		if (attributeInstance == null)
 			return;
 
 		float calculatedSkyLightRatio = getCalculatedSkyLightRatio(event.getEntity());
-		float toughness = 0f;
-		for (EquipmentSlot equipmentSlot : EquipmentSlot.values()) {
-			ItemStack stack = event.getEntity().getItemBySlot(equipmentSlot);
-			if (!equipmentSlot.isArmor() || !stack.is(SOLARIUM_EQUIPMENT))
+		float amount = 0f;
+		for (ItemStack stack : event.getEntity().getArmorSlots()) {
+			if (!stack.is(SOLARIUM_EQUIPMENT))
 				continue;
-			toughness += (isRegenAbsorption ? 0.2f : 4f) * calculatedSkyLightRatio;
+			amount += 0.05f;
 		}
-		AttributeModifier modifier = toughnessAttr.getModifier(ARMOR_MODIFIER_UUID);
-		if (modifier == null && toughness > 0f) {
-			MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", toughness, AttributeModifier.Operation.ADDITION, false);
-		}
-		else if (modifier != null && modifier.getAmount() != toughness) {
-			toughnessAttr.removeModifier(ARMOR_MODIFIER_UUID);
-			if (toughness > 0f)
-				MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", toughness, AttributeModifier.Operation.ADDITION, false);
-		}
+		amount *= calculatedSkyLightRatio;
+		AttributeModifier modifier = attributeInstance.getModifier(ARMOR_MODIFIER_UUID);
+		if (modifier != null && modifier.getAmount() != amount)
+			attributeInstance.removeModifier(ARMOR_MODIFIER_UUID);
+		if (amount > 0f)
+			MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", amount, AttributeModifier.Operation.ADDITION, false);
 	}
 
 	public static void boostAttackSpeed(LivingEvent.LivingTickEvent event) {

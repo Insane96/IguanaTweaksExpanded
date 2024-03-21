@@ -1,15 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:soul_steel_chestplate",
-	"durability": 368,
+	"durability": 296,
 	"armor": 4.2,
 	"modifiers": [
-		{
-			"uuid": "e5ca3f97-f7a0-439b-8c94-b1af3bdf3828",
-			"name": "Armor slowdown",
-			"slot": "chest",
-			"attribute": "minecraft:generic.movement_speed",
-			"amount": -0.0525,
-			"operation": "multiply_base"
-		}
+
 	]
 }

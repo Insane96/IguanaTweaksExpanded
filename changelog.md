@@ -1,18 +1,11 @@
 # Changelog
 
-* Lava Diver (would be cool to have a similar item to the turtle helm): grants temporary immunity to lava.
-* Vein Seeker (Pickaxe): Occasionally reveals nearby ores when mining a block.
-* Soulbound
-* Torch placer (Chestplate)
-* Wither effect on hit (treasure)
-* Remove sweep attack from swords and add it to hoes. Swords should be able to block like shields, 20% damage reduction
-* Full mushroom soup with nether shrooms
-
 ## Upcoming
 * Altimeter can now be right-clicked to show the same message as the tooltip
-* Quaron fishing rods are slightly less slower
-* Fixed poor and rich ores not being doubled
+* Quaron fishing rods are slightly less slow to lure
+* Fixed poor and rich ores not being doubled in blast furnaces
 * Blast furnaces now try to pick up an item every 5 seconds if no fuel or empty
+* Rebalanced armors to match ITR changes
 
 ## 1.6.4
 * Copper tools
