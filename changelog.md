@@ -1,6 +1,10 @@
 # Changelog
 
+* Enchanted bow broken (had curse of tear and fragility)
+* Feather falling costs too much
+
 ## Upcoming
+* Curse of ender now increases enchantability more
 * Fixed being able to smith enchanted items
 * Fixed Bonemealing grown crops
 

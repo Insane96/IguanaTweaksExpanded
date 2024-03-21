@@ -22,7 +22,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 public class CurseOfEnder extends Enchantment implements IEnchantmentTooltip {
     public CurseOfEnder() {
-        super(Rarity.UNCOMMON, EnchantmentCategory.ARMOR, EquipmentSlot.values());
+        super(Rarity.RARE, EnchantmentCategory.ARMOR, EquipmentSlot.values());
     }
 
     @Override
