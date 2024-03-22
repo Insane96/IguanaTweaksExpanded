@@ -33,13 +33,17 @@ public class ITEDataPacks extends Feature {
     @Config
     @Label(name = "Livestock Data", description = "Enables a data pack that slows down growing, breeding, egging etc based off seasons")
     public static Boolean livestockDataPack = true;
+    @Config
+    @Label(name = "Texture override", description = "Change some vanilla textures such as arrows to flint, spawners to echo")
+    public static Boolean textureOverride = true;
 
     public ITEDataPacks(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "ite_advancements", Component.literal("IguanaTweaks Expanded Advancements"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && advancements));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "item_stats", Component.literal("IguanaTweaks Expanded Item Stats"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && itemStatsDataPack));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "better_loot", Component.literal("IguanaTweaks Expanded Better Loot"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && betterStructureLoot));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "plant_growth_modifiers", Component.literal("IguanaTweaks Expanded Plant Growth modifiers"), () -> super.isEnabled() && !ITEDataPacks.disableAllDataPacks && plantGrowthMultipliersDataPack));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "livestock_changes", Component.literal("IguanaTweaks Expanded Livestock Changes"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && livestockDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "ite_advancements", Component.literal("IguanaTweaks Expanded Advancements"), () -> this.isEnabled() && !disableAllDataPacks && advancements));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "item_stats", Component.literal("IguanaTweaks Expanded Item Stats"), () -> this.isEnabled() && !disableAllDataPacks && itemStatsDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "better_loot", Component.literal("IguanaTweaks Expanded Better Loot"), () -> this.isEnabled() && !disableAllDataPacks && betterStructureLoot));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "plant_growth_modifiers", Component.literal("IguanaTweaks Expanded Plant Growth modifiers"), () -> this.isEnabled() && !disableAllDataPacks && plantGrowthMultipliersDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "livestock_changes", Component.literal("IguanaTweaks Expanded Livestock Changes"), () -> this.isEnabled() && !disableAllDataPacks && livestockDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.CLIENT_RESOURCES, "texture_override", Component.literal("IguanaTweaks Expanded Texture Override"), () -> textureOverride));
     }
 }

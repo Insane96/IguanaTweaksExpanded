@@ -7,6 +7,7 @@
 * Rebalanced some materials
 * Reduced explosive arrow explosion power
 * Altimeters now have a delta of 16 not 32
+* Added resource pack to replace some vanilla textures
 * Fixed being able to smith enchanted items
 * Fixed Bonemealing grown crops
 

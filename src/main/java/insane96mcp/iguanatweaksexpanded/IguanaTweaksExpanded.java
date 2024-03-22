@@ -115,13 +115,13 @@ public class IguanaTweaksExpanded
 
     public void addPackFinders(AddPackFindersEvent event)
     {
-        for (IntegratedPack dataPack : IntegratedPack.INTEGRATED_PACKS) {
-            if (event.getPackType() != dataPack.getPackType())
+        for (IntegratedPack integratedPack : IntegratedPack.INTEGRATED_PACKS) {
+            if (event.getPackType() != integratedPack.getPackType())
                 continue;
 
-            Path resourcePath = ModList.get().getModFileById(MOD_ID).getFile().findResource("integrated_packs/" + dataPack.getPath());
-            var pack = Pack.readMetaAndCreate(IguanaTweaksExpanded.RESOURCE_PREFIX + dataPack.getPath(), dataPack.getDescription(), dataPack.shouldBeEnabled(),
-                    (path) -> new PathPackResources(path, resourcePath, false), PackType.SERVER_DATA, Pack.Position.TOP, dataPack.shouldBeEnabled() ? PackSource.DEFAULT : ITEPackSource.DISABLED);
+            Path resourcePath = ModList.get().getModFileById(MOD_ID).getFile().findResource("integrated_packs/" + integratedPack.getPath());
+            var pack = Pack.readMetaAndCreate(IguanaTweaksExpanded.RESOURCE_PREFIX + integratedPack.getPath(), integratedPack.getDescription(), integratedPack.shouldBeEnabled(),
+                    (path) -> new PathPackResources(path, resourcePath, false), PackType.SERVER_DATA, Pack.Position.TOP, integratedPack.shouldBeEnabled() ? PackSource.DEFAULT : ITEPackSource.DISABLED);
             event.addRepositorySource((packConsumer) -> packConsumer.accept(pack));
         }
     }
