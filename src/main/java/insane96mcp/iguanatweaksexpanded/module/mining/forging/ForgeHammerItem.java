@@ -34,13 +34,11 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
     public static final String FORGE_DURABILITY_LANG = IguanaTweaksExpanded.MOD_ID + ".hammer_durability";
 
     final int useCooldown;
-    final int useDamageTaken;
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;
 
-    public ForgeHammerItem(Tier tier, int useCooldown, int useDamageTaken, Properties pProperties) {
+    public ForgeHammerItem(Tier tier, int useCooldown, Properties pProperties) {
         super(tier, pProperties);
         this.useCooldown = useCooldown;
-        this.useDamageTaken = useDamageTaken;
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", 10 + getTier().getAttackDamageBonus(), AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", -(4d - 0.35), AttributeModifier.Operation.ADDITION));
@@ -64,6 +62,11 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
         return cooldown - (efficiency * 2);
     }
 
+    @Override
+    public int getMaxDamage(ItemStack stack) {
+        return this.maxDamage / 3;
+    }
+
     public int getSmashesOnHit(ItemStack stack, RandomSource random) {
         return 1;
     }
@@ -72,39 +75,39 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
         player.getCooldowns().addCooldown(this, Math.max(this.getUseCooldown(player, stack), 10));
     }
 
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return enchantment == Enchantments.BLOCK_EFFICIENCY || enchantment.category == EnchantmentCategory.BREAKABLE || enchantment.category == EnchantmentCategory.VANISHABLE || super.canApplyAtEnchantingTable(stack, enchantment);
-    }
-
-    public int getUseDamageTaken() {
-        return this.useDamageTaken;
-    }
-
     /**
      * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
      * the damage on the stack.
      */
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        pStack.hurtAndBreak(this.useDamageTaken, pAttacker, wielder -> wielder.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+        pStack.hurtAndBreak(1, pAttacker, (p_43296_) -> {
+            p_43296_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+        });
         return true;
     }
 
     /**
      * Called when a {@link net.minecraft.world.level.block.Block} is destroyed using this Item. Return {@code true} to
-     * criterion the "Use Item" statistic.
+     * trigger the "Use Item" statistic.
      */
     public boolean mineBlock(ItemStack pStack, Level pLevel, BlockState pState, BlockPos pPos, LivingEntity pEntityLiving) {
         if (pState.getDestroySpeed(pLevel, pPos) != 0.0F) {
-            pStack.hurtAndBreak(this.useDamageTaken, pEntityLiving, (livingEntity) -> livingEntity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+            pStack.hurtAndBreak(1, pEntityLiving, (p_43276_) -> {
+                p_43276_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+            });
         }
 
         return true;
     }
 
     @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return super.canApplyAtEnchantingTable(stack, enchantment) || enchantment == Enchantments.BLOCK_EFFICIENCY || enchantment.category == EnchantmentCategory.BREAKABLE || enchantment.category == EnchantmentCategory.VANISHABLE;
+    }
+
+    @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_COOLDOWN_LANG, InsaneLib.ONE_DECIMAL_FORMATTER.format(Math.max(this.getUseCooldown(null, pStack) / 20f, 0.5f))).withStyle(ChatFormatting.DARK_GREEN)));
-        pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_DURABILITY_LANG, this.useDamageTaken).withStyle(ChatFormatting.DARK_GREEN)));
+        //pTooltipComponents.add(CommonComponents.space().append(Component.translatable(FORGE_DURABILITY_LANG, this.useDamageTaken).withStyle(ChatFormatting.DARK_GREEN)));
     }
 }

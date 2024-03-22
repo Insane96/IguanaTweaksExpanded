@@ -68,7 +68,7 @@ public class ForgeBlock extends BaseEntityBlock {
                 forgeHammerItem.onUse(pPlayer, stack);
                 if (pPlayer instanceof ServerPlayer serverPlayer) {
                     pPlayer.causeFoodExhaustion(0.25f);
-                    stack.hurtAndBreak(forgeHammerItem.getUseDamageTaken(), serverPlayer, (player) -> player.broadcastBreakEvent(pHand));
+                    stack.hurtAndBreak(1, serverPlayer, (player) -> player.broadcastBreakEvent(pHand));
                 }
                 return InteractionResult.sidedSuccess(pLevel.isClientSide);
             }

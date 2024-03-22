@@ -9,8 +9,8 @@ import net.minecraft.world.item.Tier;
 import org.jetbrains.annotations.Nullable;
 
 public class KeegoForgeHammerItem extends ForgeHammerItem {
-    public KeegoForgeHammerItem(Tier tier, int useCooldown, int useDamageTaken, Properties pProperties) {
-        super(tier, useCooldown, useDamageTaken, pProperties);
+    public KeegoForgeHammerItem(Tier tier, int useCooldown, Properties pProperties) {
+        super(tier, useCooldown, pProperties);
     }
 
     @Override

@@ -44,20 +44,20 @@ public class Forging extends Feature {
 	public static final RegistryObject<ForgeRecipeSerializer> FORGE_RECIPE_SERIALIZER = ITERegistries.RECIPE_SERIALIZERS.register("forging", ForgeRecipeSerializer::new);
 	public static final RegistryObject<MenuType<ForgeMenu>> FORGE_MENU_TYPE = ITERegistries.MENU_TYPES.register("forge", () -> new MenuType<>(ForgeMenu::new, FeatureFlags.VANILLA_SET));
 
-	public static final RegistryObject<ForgeHammerItem> WOODEN_HAMMER = ITERegistries.ITEMS.register("wooden_hammer", () -> new ForgeHammerItem(Tiers.WOOD, 35, 4, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> STONE_HAMMER = ITERegistries.ITEMS.register("stone_hammer", () -> new ForgeHammerItem(Tiers.STONE, 30, 4, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> FLINT_HAMMER = ITERegistries.ITEMS.register("flint_hammer", () -> new ForgeHammerItem(FlintExpansion.ITEM_TIER, 25, 4, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> COPPER_HAMMER = ITERegistries.ITEMS.register("copper_hammer", () -> new ForgeHammerItem(CopperToolsExpansion.COPPER_ITEM_TIER, 20, 4, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> GOLDEN_HAMMER = ITERegistries.ITEMS.register("golden_hammer", () -> new ForgeHammerItem(Tiers.GOLD, 8, 3, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> IRON_HAMMER = ITERegistries.ITEMS.register("iron_hammer", () -> new ForgeHammerItem(Tiers.IRON, 25, 3, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> SOLARIUM_HAMMER = ITERegistries.ITEMS.register("solarium_hammer", () -> new SolariumForgeHammerItem(Solarium.ITEM_TIER, 30, 3, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> DURIUM_HAMMER = ITERegistries.ITEMS.register("durium_hammer", () -> new ForgeHammerItem(Durium.ITEM_TIER, 30, 3, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> COATED_COPPER_HAMMER = ITERegistries.ITEMS.register("coated_copper_hammer", () -> new ForgeHammerItem(CopperToolsExpansion.COATED_ITEM_TIER, 25, 2, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> QUARON_HAMMER = ITERegistries.ITEMS.register("quaron_hammer", () -> new ForgeHammerItem(Quaron.ITEM_TIER, 20, 2, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> KEEGO_HAMMER = ITERegistries.ITEMS.register("keego_hammer", () -> new KeegoForgeHammerItem(Keego.ITEM_TIER, 18, 2, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> DIAMOND_HAMMER = ITERegistries.ITEMS.register("diamond_hammer", () -> new ForgeHammerItem(Tiers.DIAMOND, 15, 2, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> SOUL_STEEL_HAMMER = ITERegistries.ITEMS.register("soul_steel_hammer", () -> new ForgeHammerItem(SoulSteel.ITEM_TIER, 20, 2, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> NETHERITE_HAMMER = ITERegistries.ITEMS.register("netherite_hammer", () -> new ForgeHammerItem(Tiers.NETHERITE, 15, 2, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> WOODEN_HAMMER = ITERegistries.ITEMS.register("wooden_hammer", () -> new ForgeHammerItem(Tiers.WOOD, 35, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> STONE_HAMMER = ITERegistries.ITEMS.register("stone_hammer", () -> new ForgeHammerItem(Tiers.STONE, 30, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> FLINT_HAMMER = ITERegistries.ITEMS.register("flint_hammer", () -> new ForgeHammerItem(FlintExpansion.ITEM_TIER, 25, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> COPPER_HAMMER = ITERegistries.ITEMS.register("copper_hammer", () -> new ForgeHammerItem(CopperToolsExpansion.COPPER_ITEM_TIER, 20, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> GOLDEN_HAMMER = ITERegistries.ITEMS.register("golden_hammer", () -> new ForgeHammerItem(Tiers.GOLD, 8, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> IRON_HAMMER = ITERegistries.ITEMS.register("iron_hammer", () -> new ForgeHammerItem(Tiers.IRON, 25, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> SOLARIUM_HAMMER = ITERegistries.ITEMS.register("solarium_hammer", () -> new SolariumForgeHammerItem(Solarium.ITEM_TIER, 30, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> DURIUM_HAMMER = ITERegistries.ITEMS.register("durium_hammer", () -> new ForgeHammerItem(Durium.ITEM_TIER, 30, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> COATED_COPPER_HAMMER = ITERegistries.ITEMS.register("coated_copper_hammer", () -> new ForgeHammerItem(CopperToolsExpansion.COATED_ITEM_TIER, 25, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> QUARON_HAMMER = ITERegistries.ITEMS.register("quaron_hammer", () -> new ForgeHammerItem(Quaron.ITEM_TIER, 20, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> KEEGO_HAMMER = ITERegistries.ITEMS.register("keego_hammer", () -> new KeegoForgeHammerItem(Keego.ITEM_TIER, 18, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> DIAMOND_HAMMER = ITERegistries.ITEMS.register("diamond_hammer", () -> new ForgeHammerItem(Tiers.DIAMOND, 15, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> SOUL_STEEL_HAMMER = ITERegistries.ITEMS.register("soul_steel_hammer", () -> new ForgeHammerItem(SoulSteel.ITEM_TIER, 20, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> NETHERITE_HAMMER = ITERegistries.ITEMS.register("netherite_hammer", () -> new ForgeHammerItem(Tiers.NETHERITE, 15, new Item.Properties()));
 
 	@Config
 	@Label(name = "Unforgable enchanted items", description = "Enchanted items can't be forged")

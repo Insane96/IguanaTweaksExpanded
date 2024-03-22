@@ -7,8 +7,8 @@ import net.minecraft.world.item.Tier;
 import org.jetbrains.annotations.Nullable;
 
 public class SolariumForgeHammerItem extends ForgeHammerItem {
-    public SolariumForgeHammerItem(Tier tier, int useCooldown, int useDamageTaken, Properties pProperties) {
-        super(tier, useCooldown, useDamageTaken, pProperties);
+    public SolariumForgeHammerItem(Tier tier, int useCooldown, Properties pProperties) {
+        super(tier, useCooldown, pProperties);
     }
 
     @Override

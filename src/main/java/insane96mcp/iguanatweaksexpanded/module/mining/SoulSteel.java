@@ -57,7 +57,7 @@ public class SoulSteel extends Feature {
 	private static final ResourceLocation EMPTY_SLOT_INGOT = new ResourceLocation("item/empty_slot_ingot");
 	public static final RegistryObject<Item> UPGRADE_SMITHING_TEMPLATE = ITERegistries.ITEMS.register("soul_steel_upgrade_smithing_template", () -> new SmithingTemplateItem(UPGRADE_APPLIES_TO, UPGRADE_INGREDIENTS, UPGRADE, UPGRADE_BASE_SLOT_DESCRIPTION, UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createUpgradeIconList(), createUpgradeMaterialList()));
 
-    public static final ILItemTier ITEM_TIER = new ILItemTier(4, 2356, 8f, 3.0f, 17, () -> Ingredient.of(INGOT.get()));
+    public static final ILItemTier ITEM_TIER = new ILItemTier(4, 2356, 8f, 3.0f, 10, () -> Ingredient.of(INGOT.get()));
 
 	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("soul_steel_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties().fireResistant()));
 	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("soul_steel_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties().fireResistant()));

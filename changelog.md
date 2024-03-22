@@ -1,11 +1,10 @@
 # Changelog
 
-* Enchanted bow broken (had curse of tear and fragility)
-* Feather falling costs too much
-
 ## Upcoming
+* Hammers no longer have a "damage on use" attribute, instead they always use 1 durability but have 1/3 of normal tools
 * Curse of ender now increases enchantability more
 * Reduced Durium Ore generation
+* Rebalanced some materials
 * Fixed being able to smith enchanted items
 * Fixed Bonemealing grown crops
 
