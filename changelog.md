@@ -5,6 +5,7 @@
 
 ## Upcoming
 * Curse of ender now increases enchantability more
+* Reduced Durium Ore generation
 * Fixed being able to smith enchanted items
 * Fixed Bonemealing grown crops
 
