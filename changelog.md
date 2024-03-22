@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.6.6
 * Hammers no longer have a "damage on use" attribute, instead they always use 1 durability but have 1/3 of normal tools
 * Curse of ender now increases enchantability more
 * Reduced Durium Ore generation
