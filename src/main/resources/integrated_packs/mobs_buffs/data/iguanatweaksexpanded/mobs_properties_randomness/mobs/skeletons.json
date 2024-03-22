@@ -10,7 +10,7 @@
                 "difficulty_modifier": {
                     "operation": "multiply",
                     "easy": 1.3333333,
-                    "hard": 0.6666667
+                    "hard": 0.5
                 }
             },
             "persistent_data": true
@@ -19,7 +19,7 @@
     "equipment": {
         "main_hand": {
             "override": true,
-            "chance": 0.15,
+            "chance": 0.05,
             "items": [
                 {
                     "id": "minecraft:stick"

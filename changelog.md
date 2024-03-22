@@ -1,5 +1,26 @@
 # Changelog
 
+* Solarium is too common
+* OT Heal should decay with exhaustion
+* Tall grass growth death seems to not work
+* Movement slowdown should affect mobs
+* Eating soups in server with full inventory has strange behaviour
+* Flax seeds are renewable
+* Supplementaries urns should give all seeds
+* Music discs don't drop from creepers because are not killed by players
+* Increase repair cost when enchanted
+* Poof particles on double jump don't work with others
+* Water coolant on fox hounds
+* Tiredness should play random sounds
+* Soap should be blacklisted from food stacking
+* Soul speed cost should be lowered
+* Stamina enchantment for chestplates
+* Reduce bow (and crossbow?) power and power power
+* Desire paths don't work (on servers?)
+
+## Upcoming
+* Skeletons now have a lower chance to spawn with stick or string
+
 ## 1.6.6
 * Hammers no longer have a "damage on use" attribute, instead they always use 1 durability but have 1/3 of normal tools
 * Curse of ender now increases enchantability more
