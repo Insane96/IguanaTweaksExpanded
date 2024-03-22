@@ -27,7 +27,7 @@ public class ExplosiveArrow extends Arrow {
 
     @Override
     protected void onHitBlock(BlockHitResult pResult) {
-        float power = Math.min(1f + (float) this.getDeltaMovement().length(), 6f);
+        float power = Math.min(1f + (float) this.getDeltaMovement().length() * 0.5f, 6f);
         if (!this.level().isClientSide)
             this.level().explode(this, this.getX(), this.getY(), this.getZ(), power, Level.ExplosionInteraction.BLOCK);
         this.discard();
@@ -66,9 +66,10 @@ public class ExplosiveArrow extends Arrow {
         }
 
         boolean isEnderman = entityHit.getType() == EntityType.ENDERMAN;
-        if (!isEnderman && entityHit.hurt(damagesource, 0.01f)) {
+        if (!isEnderman) {
+            float power = Math.min(1f + (float) this.getDeltaMovement().length() * 0.5f, 6f);
             if (!this.level().isClientSide)
-                this.level().explode(this, this.getX(), this.getY(), this.getZ(), 2.5f, Level.ExplosionInteraction.BLOCK);
+                this.level().explode(this, this.getX(), this.getY(), this.getZ(), power, Level.ExplosionInteraction.BLOCK);
             this.discard();
         }
         else {

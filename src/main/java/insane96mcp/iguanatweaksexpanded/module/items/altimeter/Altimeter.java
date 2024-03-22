@@ -36,9 +36,9 @@ public class Altimeter extends Feature {
 				|| !(event.getEntity() instanceof Player))
 			return;
 
-		for (int i = event.getEntity().level().getMinBuildHeight(); i <= event.getEntity().level().getMaxBuildHeight(); i += 32) {
+		for (int i = event.getEntity().level().getMinBuildHeight(); i <= event.getEntity().level().getMaxBuildHeight(); i += 16) {
 			if (event.getEntity().getBlockY() < i) {
-				event.getToolTip().add(Component.literal("%d ~ %d".formatted(i - 32, i)).withStyle(ChatFormatting.GRAY));
+				event.getToolTip().add(Component.literal("%d ~ %d".formatted(i - 16, i)).withStyle(ChatFormatting.GRAY));
 				break;
 			}
 		}

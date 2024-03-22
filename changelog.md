@@ -5,6 +5,8 @@
 * Curse of ender now increases enchantability more
 * Reduced Durium Ore generation
 * Rebalanced some materials
+* Reduced explosive arrow explosion power
+* Altimeters now have a delta of 16 not 32
 * Fixed being able to smith enchanted items
 * Fixed Bonemealing grown crops
 
