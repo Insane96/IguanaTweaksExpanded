@@ -9,6 +9,10 @@
         "minecraft:wither",
         "minecraft:wither_skeleton",
         "minecraft:zoglin",
-        "minecraft:zombified_piglin"
+        "minecraft:zombified_piglin",
+        {
+            "id": "quark:foxhound",
+            "required": false
+        }
     ]
 }

@@ -1,7 +1,5 @@
 # Changelog
 
-* Supplementaries urns should give all seeds
-* Music discs don't drop from creepers because are not killed by players
 * Increase repair cost when enchanted
 * Poof particles on double jump don't work with others
 * Water coolant on fox hounds
@@ -18,6 +16,7 @@
 * Solium Boulders are now rarer
 * Tall grass now decays more often in cold seasons
 * Integrated some loot in supplementaries urns
+* Quark's foxhounds are now affected by Water Coolant
 
 ## 1.6.6
 * Hammers no longer have a "damage on use" attribute, instead they always use 1 durability but have 1/3 of normal tools
