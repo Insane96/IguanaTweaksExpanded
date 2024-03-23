@@ -1,8 +1,5 @@
 # Changelog
 
-* Movement slowdown should affect mobs
-* Eating soups in server with full inventory has strange behaviour
-* Flax seeds are renewable
 * Supplementaries urns should give all seeds
 * Music discs don't drop from creepers because are not killed by players
 * Increase repair cost when enchanted
@@ -20,6 +17,7 @@
 * Skeletons now have a lower chance to spawn with stick or string 
 * Solium Boulders are now rarer
 * Tall grass now decays more often in cold seasons
+* Integrated some loot in supplementaries urns
 
 ## 1.6.6
 * Hammers no longer have a "damage on use" attribute, instead they always use 1 durability but have 1/3 of normal tools
