@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  },
-  "base": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 5,
+  "category": "forge_misc",
+  "experience": 12.0,
+  "gear": {
     "item": "minecraft:leather_helmet"
   },
-  "result": {
-    "item": "iguanatweaksexpanded:quaron_helmet"
+  "ingredient": {
+    "item": "iguanatweaksexpanded:quaron_ingot"
   },
-  "template": []
+  "result": "iguanatweaksexpanded:quaron_helmet",
+  "smashes_required": 12
 }

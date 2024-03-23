@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  },
-  "base": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 7,
+  "category": "forge_misc",
+  "experience": 15.0,
+  "gear": {
     "item": "minecraft:leather_leggings"
   },
-  "result": {
-    "item": "iguanatweaksexpanded:quaron_leggings"
+  "ingredient": {
+    "item": "iguanatweaksexpanded:quaron_ingot"
   },
-  "template": []
+  "result": "iguanatweaksexpanded:quaron_leggings",
+  "smashes_required": 15
 }

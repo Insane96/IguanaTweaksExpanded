@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_durium": {
+    "has_material": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:durium_shield"
+        "recipe": "iguanatweaksexpanded:durium_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_durium",
+      "has_material",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:durium_shield"
+      "iguanatweaksexpanded:durium_sword"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

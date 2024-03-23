@@ -142,12 +142,12 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer);
 
         //Coated Copper
-        forgeRecipe(writer, Items.OBSIDIAN, 3, CopperToolsExpansion.COPPER_PICKAXE.get(), CopperToolsExpansion.COATED_PICKAXE.get(), 12, 9);
-        forgeRecipe(writer, Items.OBSIDIAN, 3, CopperToolsExpansion.COPPER_AXE.get(), CopperToolsExpansion.COATED_AXE.get(), 12, 9);
-        forgeRecipe(writer, Items.OBSIDIAN, 2, CopperToolsExpansion.COPPER_SWORD.get(), CopperToolsExpansion.COATED_SWORD.get(), 12, 9);
-        forgeRecipe(writer, Items.OBSIDIAN, 2, CopperToolsExpansion.COPPER_HOE.get(), CopperToolsExpansion.COATED_HOE.get(), 12, 9);
-        forgeRecipe(writer, Items.OBSIDIAN, 1, CopperToolsExpansion.COPPER_SHOVEL.get(), CopperToolsExpansion.COATED_SHOVEL.get(), 12, 9);
-        forgeRecipe(writer, Items.OBSIDIAN, 4, CopperToolsExpansion.COPPER_SHIELD.get(), CopperToolsExpansion.COATED_SHIELD.get(), 12, 9);
+        forgeRecipe(writer, Items.OBSIDIAN, 3, CopperToolsExpansion.COPPER_PICKAXE.get(), CopperToolsExpansion.COATED_PICKAXE.get(), 12);
+        forgeRecipe(writer, Items.OBSIDIAN, 3, CopperToolsExpansion.COPPER_AXE.get(), CopperToolsExpansion.COATED_AXE.get(), 12);
+        forgeRecipe(writer, Items.OBSIDIAN, 2, CopperToolsExpansion.COPPER_SWORD.get(), CopperToolsExpansion.COATED_SWORD.get(), 12);
+        forgeRecipe(writer, Items.OBSIDIAN, 2, CopperToolsExpansion.COPPER_HOE.get(), CopperToolsExpansion.COATED_HOE.get(), 12);
+        forgeRecipe(writer, Items.OBSIDIAN, 1, CopperToolsExpansion.COPPER_SHOVEL.get(), CopperToolsExpansion.COATED_SHOVEL.get(), 12);
+        forgeRecipe(writer, Items.OBSIDIAN, 4, CopperToolsExpansion.COPPER_SHIELD.get(), CopperToolsExpansion.COATED_SHIELD.get(), 12);
 
         ConditionalRecipe.builder()
                 .addCondition(not(modLoaded("tconstruct")))
@@ -260,43 +260,23 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_cleansed_lapis", has(EnchantingFeature.CLEANSED_LAPIS.get()))
                 .save(writer);
 
-        //Solarium
+        //Solarium ball and forging
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Solarium.SOLARIUM_BALL.get(), 1)
                 .requires(Solarium.SOLIUM_MOSS.item().get(), 9)
                 .unlockedBy("has_solium_moss", has(Solarium.SOLIUM_MOSS.item().get()))
                 .save(writer);
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_AXE), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.TOOLS, Solarium.AXE.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_axe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_PICKAXE), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.TOOLS, Solarium.PICKAXE.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_pickaxe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SHOVEL), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.TOOLS, Solarium.SHOVEL.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_shovel");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HOE), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.TOOLS, Solarium.HOE.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_hoe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SWORD), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.SWORD.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.IRON_SHIELD.get()), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.SHIELD.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_shield");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HELMET), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.HELMET.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_helmet");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_CHESTPLATE), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.CHESTPLATE.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_chestplate");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_LEGGINGS), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.LEGGINGS.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_leggings");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_BOOTS), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.COMBAT, Solarium.BOOTS.get())
-                .unlocks("has_solarium_moss_ball", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_boots");
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 3, Items.WOODEN_PICKAXE, Solarium.PICKAXE.get(), 6);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 3, Items.WOODEN_AXE, Solarium.AXE.get(), 6);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 2, Items.WOODEN_SWORD, Solarium.SWORD.get(), 6);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 2, Items.WOODEN_HOE, Solarium.HOE.get(), 6);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 1, Items.WOODEN_SHOVEL, Solarium.SHOVEL.get(), 6);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 4, SPItems.WOODEN_SHIELD.get(), Solarium.SHIELD.get(), 6);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 5, Items.LEATHER_HELMET, Solarium.HELMET.get(), 4);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 8, Items.LEATHER_CHESTPLATE, Solarium.CHESTPLATE.get(), 6);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 7, Items.LEATHER_LEGGINGS, Solarium.LEGGINGS.get(), 5);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 4, Items.LEATHER_BOOTS, Solarium.BOOTS.get(), 4);
 
-        //Durium Block, Ingot, Nugget, Scrap, smithing
+        //Durium Block, Ingot, Nugget, Scrap, forging
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Durium.BLOCK.item().get(), 1)
                 .requires(Durium.INGOT.get(), 9)
                 .unlockedBy("has_ingot", has(Durium.INGOT.get()))
@@ -324,51 +304,29 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)), Durium.SCRAP_PIECE.get(), Durium.INGOT.get(), 5f, 800);
         addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)), Durium.SCRAP_PIECE.get(), Durium.INGOT.get(), 5f, 1600, 0.3f);
 
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_AXE), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.AXE.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_axe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_PICKAXE), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.PICKAXE.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_pickaxe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SHOVEL), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.SHOVEL.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_shovel");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HOE), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.HOE.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_hoe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.SHEARS), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Durium.SHEARS.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_shears");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_SWORD), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.SWORD.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.IRON_SHIELD.get()), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.SHIELD.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_shield");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_HELMET), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.HELMET.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_helmet");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_CHESTPLATE), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.CHESTPLATE.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_chestplate");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_LEGGINGS), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.LEGGINGS.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_leggings");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.IRON_BOOTS), Ingredient.of(Durium.INGOT.get()), RecipeCategory.COMBAT, Durium.BOOTS.get())
-                .unlocks("has_durium", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_boots");
+        forgeRecipe(writer, Durium.INGOT.get(), 3, Items.STONE_PICKAXE, Durium.PICKAXE.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 3, Items.STONE_AXE, Durium.AXE.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 2, Items.STONE_SWORD, Durium.SWORD.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 2, Items.STONE_HOE, Durium.HOE.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 1, Items.STONE_SHOVEL, Durium.SHOVEL.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 2, ItemTags.STONE_TOOL_MATERIALS, Durium.SHEARS.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 4, SPItems.STONE_SHIELD.get(), Durium.SHIELD.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 5, ChainedCopperArmor.HELMET.get(), Durium.HELMET.get(), 10);
+        forgeRecipe(writer, Durium.INGOT.get(), 8, ChainedCopperArmor.CHESTPLATE.get(), Durium.CHESTPLATE.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 7, ChainedCopperArmor.LEGGINGS.get(), Durium.LEGGINGS.get(), 12);
+        forgeRecipe(writer, Durium.INGOT.get(), 4, ChainedCopperArmor.BOOTS.get(), Durium.BOOTS.get(), 9);
 
         //Keego
-        forgeRecipe(writer, Keego.GEM.get(), 3, Items.GOLDEN_PICKAXE, Keego.PICKAXE.get(), 16, 15);
-        forgeRecipe(writer, Keego.GEM.get(), 3, Items.GOLDEN_AXE, Keego.AXE.get(), 16, 15);
-        forgeRecipe(writer, Keego.GEM.get(), 2, Items.GOLDEN_SWORD, Keego.SWORD.get(), 16, 15);
-        forgeRecipe(writer, Keego.GEM.get(), 2, Items.GOLDEN_HOE, Keego.HOE.get(), 16, 15);
-        forgeRecipe(writer, Keego.GEM.get(), 1, Items.GOLDEN_SHOVEL, Keego.SHOVEL.get(), 16, 15);
-        forgeRecipe(writer, Keego.GEM.get(), 4, SPItems.GOLDEN_SHIELD.get(), Keego.SHIELD.get(), 17, 18);
-        forgeRecipe(writer, Keego.GEM.get(), 5, Items.GOLDEN_HELMET, Keego.HELMET.get(), 18, 17);
-        forgeRecipe(writer, Keego.GEM.get(), 8, Items.GOLDEN_CHESTPLATE, Keego.CHESTPLATE.get(), 25, 23);
-        forgeRecipe(writer, Keego.GEM.get(), 7, Items.GOLDEN_LEGGINGS, Keego.LEGGINGS.get(), 22, 21);
-        forgeRecipe(writer, Keego.GEM.get(), 4, Items.GOLDEN_BOOTS, Keego.BOOTS.get(), 16, 15);
+        forgeRecipe(writer, Keego.GEM.get(), 3, FlintExpansion.PICKAXE.get(), Keego.PICKAXE.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 3, FlintExpansion.AXE.get(), Keego.AXE.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 2, FlintExpansion.SWORD.get(), Keego.SWORD.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 2, FlintExpansion.HOE.get(), Keego.HOE.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 1, FlintExpansion.SHOVEL.get(), Keego.SHOVEL.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 4, FlintExpansion.SHIELD.get(), Keego.SHIELD.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 5, Items.CHAINMAIL_HELMET, Keego.HELMET.get(), 9);
+        forgeRecipe(writer, Keego.GEM.get(), 8, Items.CHAINMAIL_CHESTPLATE, Keego.CHESTPLATE.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 7, Items.CHAINMAIL_LEGGINGS, Keego.LEGGINGS.get(), 11);
+        forgeRecipe(writer, Keego.GEM.get(), 4, Items.CHAINMAIL_BOOTS, Keego.BOOTS.get(), 8);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Keego.BLOCK.block().get(), 1)
                 .requires(Keego.GEM.get(), 9)
                 .unlockedBy("has_keego", has(Keego.GEM.get()))
@@ -388,72 +346,50 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Quaron.BLOCK.block().get(), 1)
                 .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_block");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_AXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.AXE.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_axe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_PICKAXE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.PICKAXE.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_pickaxe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_SHOVEL), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.SHOVEL.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_shovel");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_HOE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.HOE.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_hoe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.WOODEN_SWORD), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SWORD.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(SPItems.WOODEN_SHIELD.get()), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.SHIELD.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_shield");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.FISHING_ROD), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Quaron.FISHING_ROD.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_fishing_rod");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_HELMET), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.HELMET.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_helmet");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_CHESTPLATE), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.CHESTPLATE.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_chestplate");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_LEGGINGS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.LEGGINGS.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_leggings");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Items.LEATHER_BOOTS), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.COMBAT, Quaron.BOOTS.get())
-                .unlocks("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_boots");
+        forgeRecipe(writer, Quaron.INGOT.get(), 3, Items.WOODEN_PICKAXE, Quaron.PICKAXE.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 3, Items.WOODEN_AXE, Quaron.AXE.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 2, Items.WOODEN_SWORD, Quaron.SWORD.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 2, Items.WOODEN_HOE, Quaron.HOE.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 1, Items.WOODEN_SHOVEL, Quaron.SHOVEL.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 1, Items.FISHING_ROD, Quaron.FISHING_ROD.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 4, SPItems.WOODEN_SHIELD.get(), Quaron.SHIELD.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 5, Items.LEATHER_HELMET, Quaron.HELMET.get(), 12);
+        forgeRecipe(writer, Quaron.INGOT.get(), 8, Items.LEATHER_CHESTPLATE, Quaron.CHESTPLATE.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 7, Items.LEATHER_LEGGINGS, Quaron.LEGGINGS.get(), 15);
+        forgeRecipe(writer, Quaron.INGOT.get(), 4, Items.LEATHER_BOOTS, Quaron.BOOTS.get(), 11);
         addBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_CLUSTER), Ingredient.of(Items.AMETHYST_CLUSTER), Ingredient.of(Items.BLAZE_ROD)), Items.RAW_IRON, Quaron.INGOT.get(), 8f, 800);
         addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.RAW_IRON), Ingredient.of(Items.AMETHYST_CLUSTER), Ingredient.of(Items.AMETHYST_CLUSTER), Ingredient.of(Items.BLAZE_ROD)), Items.RAW_IRON, Quaron.INGOT.get(),8f, 1600, 0.3f);
 
         //Soul Steel
         copySmithingTemplate(writer, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERRACK);
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_AXE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.AXE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.AXE.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.AXE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_axe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_PICKAXE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.PICKAXE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.PICKAXE.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.PICKAXE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_pickaxe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_SHOVEL), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.SHOVEL.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.SHOVEL.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.SHOVEL.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_shovel");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_HOE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.HOE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.HOE.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.HOE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_hoe");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_SWORD), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SWORD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.SWORD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SWORD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(SPItems.IRON_SHIELD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SHIELD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.SHIELD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SHIELD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_shield");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_HELMET), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.HELMET.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.HELMET.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.HELMET.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_helmet");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_CHESTPLATE), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.CHESTPLATE.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.CHESTPLATE.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.CHESTPLATE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_chestplate");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_LEGGINGS), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.LEGGINGS.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.LEGGINGS.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.LEGGINGS.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_leggings");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Items.IRON_BOOTS), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.BOOTS.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.BOOTS.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.BOOTS.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_boots");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, SoulSteel.BLOCK.block().get(), 1)
@@ -839,19 +775,14 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         hammerCraftingRecipe(writer, Forging.STONE_HAMMER.get(), ItemTags.STONE_TOOL_MATERIALS);
         hammerCraftingRecipe(writer, Forging.FLINT_HAMMER.get(), Items.FLINT);
         hammerCraftingRecipe(writer, Forging.COPPER_HAMMER.get(), Items.COPPER_INGOT);
-        forgeRecipe(writer, Items.IRON_INGOT, 5, Forging.STONE_HAMMER.get(), Forging.IRON_HAMMER.get(), 10, 8f);
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Forging.IRON_HAMMER.get()), Ingredient.of(Solarium.SOLARIUM_BALL.get()), RecipeCategory.TOOLS, Forging.SOLARIUM_HAMMER.get())
-                .unlocks("has_material", has(Solarium.SOLARIUM_BALL.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium_hammer");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Forging.IRON_HAMMER.get()), Ingredient.of(Durium.INGOT.get()), RecipeCategory.TOOLS, Forging.DURIUM_HAMMER.get())
-                .unlocks("has_material", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_hammer");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, Ingredient.of(Forging.WOODEN_HAMMER.get()), Ingredient.of(Quaron.INGOT.get()), RecipeCategory.TOOLS, Forging.QUARON_HAMMER.get())
-                .unlocks("has_material", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_hammer");
-        forgeRecipe(writer, Items.GOLD_INGOT, 5, Forging.FLINT_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), 4, 9f);
-        forgeRecipe(writer, Items.OBSIDIAN, 5, Forging.COPPER_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), 12, 9f);
-        forgeRecipe(writer, Items.DIAMOND, 5, Forging.GOLDEN_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), 16, 15f);
+        forgeRecipe(writer, Items.IRON_INGOT, 5, Forging.STONE_HAMMER.get(), Forging.IRON_HAMMER.get(), 10);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 5, Forging.WOODEN_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), 6);
+        forgeRecipe(writer, Durium.INGOT.get(), 5, Forging.STONE_HAMMER.get(), Forging.DURIUM_HAMMER.get(), 14);
+        forgeRecipe(writer, Quaron.INGOT.get(), 5, Forging.WOODEN_HAMMER.get(), Forging.QUARON_HAMMER.get(), 17);
+        forgeRecipe(writer, Items.GOLD_INGOT, 5, Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), 6);
+        forgeRecipe(writer, Items.OBSIDIAN, 5, Forging.COPPER_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), 12);
+        forgeRecipe(writer, Keego.GEM.get(), 5, Forging.FLINT_HAMMER.get(), Forging.KEEGO_HAMMER.get(), 16);
+        forgeRecipe(writer, Items.DIAMOND, 5, Forging.GOLDEN_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), 16);
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Forging.IRON_HAMMER.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, Forging.SOUL_STEEL_HAMMER.get())
                 .unlocks("has_material", has(SoulSteel.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_hammer");
@@ -1003,16 +934,30 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer);
     }
 
-    private void forgeRecipe(Consumer<FinishedRecipe> writer, Item material, int amount, Item gear, Item result, int smashesRequired, float experience) {
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, Item material, int amount, Item gear, Item result, int smashesRequired) {
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(material), amount, Ingredient.of(gear), result, smashesRequired)
-                .awardExperience(experience)
+                .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(material))
                 .save(writer);
     }
 
-    private void forgeRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, int amount, Item gear, Item result, int smashesRequired, float experience) {
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, int amount, Item gear, Item result, int smashesRequired) {
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
-                .awardExperience(experience)
+                .awardExperience(smashesRequired)
+                .unlockedBy("has_material", has(materialTag))
+                .save(writer);
+    }
+
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, Item materialTag, int amount, TagKey<Item> gear, Item result, int smashesRequired) {
+        ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
+                .awardExperience(smashesRequired)
+                .unlockedBy("has_material", has(materialTag))
+                .save(writer);
+    }
+
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, int amount, TagKey<Item> gear, Item result, int smashesRequired) {
+        ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
+                .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(materialTag))
                 .save(writer);
     }

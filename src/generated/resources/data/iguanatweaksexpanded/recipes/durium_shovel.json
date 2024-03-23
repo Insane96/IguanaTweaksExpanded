@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 1,
+  "category": "forge_misc",
+  "experience": 14.0,
+  "gear": {
+    "item": "minecraft:stone_shovel"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "base": {
-    "item": "minecraft:iron_shovel"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_shovel"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:durium_shovel",
+  "smashes_required": 14
 }

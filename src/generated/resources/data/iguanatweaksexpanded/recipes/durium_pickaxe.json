@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 3,
+  "category": "forge_misc",
+  "experience": 14.0,
+  "gear": {
+    "item": "minecraft:stone_pickaxe"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "base": {
-    "item": "minecraft:iron_pickaxe"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_pickaxe"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:durium_pickaxe",
+  "smashes_required": 14
 }

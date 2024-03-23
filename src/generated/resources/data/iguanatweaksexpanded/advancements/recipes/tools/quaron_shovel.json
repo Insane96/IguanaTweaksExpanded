@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_quaron": {
+    "has_material": {
       "conditions": {
         "items": [
           {
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_quaron",
+      "has_material",
       "has_the_recipe"
     ]
   ],
@@ -31,5 +31,5 @@
       "iguanatweaksexpanded:quaron_shovel"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

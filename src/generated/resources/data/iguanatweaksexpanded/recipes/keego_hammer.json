@@ -4,11 +4,11 @@
   "category": "forge_misc",
   "experience": 16.0,
   "gear": {
-    "item": "iguanatweaksexpanded:golden_hammer"
+    "item": "iguanatweaksexpanded:flint_hammer"
   },
   "ingredient": {
-    "item": "minecraft:diamond"
+    "item": "iguanatweaksexpanded:keego"
   },
-  "result": "iguanatweaksexpanded:diamond_hammer",
+  "result": "iguanatweaksexpanded:keego_hammer",
   "smashes_required": 16
 }

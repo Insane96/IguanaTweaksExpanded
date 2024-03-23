@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 2,
+  "category": "forge_misc",
+  "experience": 6.0,
+  "gear": {
+    "item": "minecraft:wooden_hoe"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "minecraft:iron_hoe"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_hoe"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_hoe",
+  "smashes_required": 6
 }

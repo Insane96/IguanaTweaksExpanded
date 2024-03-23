@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 4,
+  "category": "forge_misc",
+  "experience": 9.0,
+  "gear": {
+    "item": "iguanatweaksexpanded:chained_copper_boots"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "base": {
-    "item": "minecraft:iron_boots"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_boots"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:durium_boots",
+  "smashes_required": 9
 }

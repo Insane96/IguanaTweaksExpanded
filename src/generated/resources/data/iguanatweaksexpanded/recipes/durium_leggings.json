@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 7,
+  "category": "forge_misc",
+  "experience": 12.0,
+  "gear": {
+    "item": "iguanatweaksexpanded:chained_copper_leggings"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "base": {
-    "item": "minecraft:iron_leggings"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_leggings"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:durium_leggings",
+  "smashes_required": 12
 }

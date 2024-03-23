@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_durium": {
+    "has_material": {
       "conditions": {
         "items": [
           {
             "items": [
-              "iguanatweaksexpanded:durium_ingot"
+              "iguanatweaksexpanded:solarium_ball"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:durium_chestplate"
+        "recipe": "iguanatweaksexpanded:solarium_shield"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_durium",
+      "has_material",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:durium_chestplate"
+      "iguanatweaksexpanded:solarium_shield"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

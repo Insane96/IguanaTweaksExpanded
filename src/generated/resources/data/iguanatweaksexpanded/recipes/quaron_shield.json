@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  },
-  "base": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 4,
+  "category": "forge_misc",
+  "experience": 17.0,
+  "gear": {
     "item": "shieldsplus:wooden_shield"
   },
-  "result": {
-    "item": "iguanatweaksexpanded:quaron_shield"
+  "ingredient": {
+    "item": "iguanatweaksexpanded:quaron_ingot"
   },
-  "template": []
+  "result": "iguanatweaksexpanded:quaron_shield",
+  "smashes_required": 17
 }

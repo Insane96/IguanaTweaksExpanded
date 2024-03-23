@@ -6,7 +6,7 @@
   },
   "amount": 8,
   "gear": {
-    "item": "minecraft:leather_chestplate"
+    "item": "iguanatweaksexpanded:chained_copper_chestplate"
   },
   "result": "minecraft:golden_chestplate",
   "smashes_required": 6,

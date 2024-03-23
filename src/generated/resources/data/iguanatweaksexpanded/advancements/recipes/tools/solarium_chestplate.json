@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "iguanatweaksexpanded:quaron_ingot"
+              "iguanatweaksexpanded:solarium_ball"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:quaron_axe"
+        "recipe": "iguanatweaksexpanded:solarium_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:quaron_axe"
+      "iguanatweaksexpanded:solarium_chestplate"
     ]
   },
   "sends_telemetry_event": true

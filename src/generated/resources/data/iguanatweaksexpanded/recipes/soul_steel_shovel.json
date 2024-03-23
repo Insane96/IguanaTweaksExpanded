@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:soul_steel_ingot"
   },
   "base": {
-    "item": "minecraft:iron_shovel"
+    "item": "iguanatweaksexpanded:quaron_shovel"
   },
   "result": {
     "item": "iguanatweaksexpanded:soul_steel_shovel"

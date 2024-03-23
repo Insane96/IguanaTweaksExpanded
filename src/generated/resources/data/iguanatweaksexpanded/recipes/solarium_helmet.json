@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 5,
+  "category": "forge_misc",
+  "experience": 4.0,
+  "gear": {
+    "item": "minecraft:leather_helmet"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "minecraft:iron_helmet"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_helmet"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_helmet",
+  "smashes_required": 4
 }

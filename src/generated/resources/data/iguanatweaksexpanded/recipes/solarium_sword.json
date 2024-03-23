@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 2,
+  "category": "forge_misc",
+  "experience": 6.0,
+  "gear": {
+    "item": "minecraft:wooden_sword"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "minecraft:iron_sword"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_sword"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_sword",
+  "smashes_required": 6
 }

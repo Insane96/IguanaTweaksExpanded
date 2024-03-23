@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 5,
+  "category": "forge_misc",
+  "experience": 10.0,
+  "gear": {
+    "item": "iguanatweaksexpanded:chained_copper_helmet"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "base": {
-    "item": "minecraft:iron_helmet"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_helmet"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:durium_helmet",
+  "smashes_required": 10
 }

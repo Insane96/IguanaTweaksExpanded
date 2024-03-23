@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 4,
+  "category": "forge_misc",
+  "experience": 14.0,
+  "gear": {
+    "item": "shieldsplus:stone_shield"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "base": {
-    "item": "shieldsplus:iron_shield"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_shield"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:durium_shield",
+  "smashes_required": 14
 }

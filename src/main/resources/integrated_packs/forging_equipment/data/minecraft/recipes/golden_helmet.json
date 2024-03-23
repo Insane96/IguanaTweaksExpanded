@@ -6,7 +6,7 @@
   },
   "amount": 5,
   "gear": {
-    "item": "minecraft:leather_helmet"
+    "item": "iguanatweaksexpanded:chained_copper_helmet"
   },
   "result": "minecraft:golden_helmet",
   "smashes_required": 4,

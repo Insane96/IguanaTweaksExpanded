@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 8,
+  "category": "forge_misc",
+  "experience": 6.0,
+  "gear": {
+    "item": "minecraft:leather_chestplate"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "minecraft:iron_chestplate"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_chestplate"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_chestplate",
+  "smashes_required": 6
 }

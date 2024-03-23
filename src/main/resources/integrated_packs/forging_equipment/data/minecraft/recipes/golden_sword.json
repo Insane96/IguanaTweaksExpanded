@@ -6,7 +6,7 @@
   },
   "amount": 2,
   "gear": {
-    "item": "iguanatweaksexpanded:flint_sword"
+    "item": "iguanatweaksexpanded:copper_sword"
   },
   "result": "minecraft:golden_sword",
   "smashes_required": 6,

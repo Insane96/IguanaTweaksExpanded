@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 8,
+  "category": "forge_misc",
+  "experience": 14.0,
+  "gear": {
+    "item": "iguanatweaksexpanded:chained_copper_chestplate"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "base": {
-    "item": "minecraft:iron_chestplate"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_chestplate"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:durium_chestplate",
+  "smashes_required": 14
 }

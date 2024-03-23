@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 3,
+  "category": "forge_misc",
+  "experience": 6.0,
+  "gear": {
+    "item": "minecraft:wooden_pickaxe"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "minecraft:iron_pickaxe"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_pickaxe"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_pickaxe",
+  "smashes_required": 6
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_solarium_moss_ball": {
+    "has_material": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:solarium_sword"
+        "recipe": "iguanatweaksexpanded:solarium_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_solarium_moss_ball",
+      "has_material",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:solarium_sword"
+      "iguanatweaksexpanded:solarium_helmet"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

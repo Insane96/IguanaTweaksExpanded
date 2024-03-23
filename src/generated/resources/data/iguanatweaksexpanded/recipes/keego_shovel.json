@@ -2,13 +2,13 @@
   "type": "iguanatweaksexpanded:forging",
   "amount": 1,
   "category": "forge_misc",
-  "experience": 15.0,
+  "experience": 13.0,
   "gear": {
-    "item": "minecraft:golden_shovel"
+    "item": "iguanatweaksexpanded:flint_shovel"
   },
   "ingredient": {
     "item": "iguanatweaksexpanded:keego"
   },
   "result": "iguanatweaksexpanded:keego_shovel",
-  "smashes_required": 16
+  "smashes_required": 13
 }

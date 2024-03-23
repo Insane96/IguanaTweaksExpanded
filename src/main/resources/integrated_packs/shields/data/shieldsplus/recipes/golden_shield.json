@@ -6,7 +6,7 @@
     },
     "amount": 4,
     "gear": {
-        "item": "iguanatweaksexpanded:flint_shield"
+        "item": "iguanatweaksexpanded:copper_shield"
     },
     "result": "shieldsplus:golden_shield",
     "smashes_required": 6,

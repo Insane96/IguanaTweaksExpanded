@@ -13,6 +13,13 @@
 * Integrated some loot in supplementaries urns
 * Empowered items (with ancient lapis) now have 40% bonus enchantability instead of 25%
 * Rebalanced materials, again
+* Changed crafting recipes for tools and armor
+  * Gold items are now made from Copper, armor from chained copper
+  * Solarium from Wood / leather in Forge
+  * Durium from stone / chained copper in Forge
+  * Keego from Flint / Chainmail
+  * Quaron from Wood / leather in Forge
+  * Soul Stetl
 * Fixed m.a. jump effect not playing server side
 * Quark's foxhounds are now affected by Water Coolant
 

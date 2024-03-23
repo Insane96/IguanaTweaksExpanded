@@ -2,13 +2,13 @@
   "type": "iguanatweaksexpanded:forging",
   "amount": 4,
   "category": "forge_misc",
-  "experience": 15.0,
+  "experience": 8.0,
   "gear": {
-    "item": "minecraft:golden_boots"
+    "item": "minecraft:chainmail_boots"
   },
   "ingredient": {
     "item": "iguanatweaksexpanded:keego"
   },
   "result": "iguanatweaksexpanded:keego_boots",
-  "smashes_required": 16
+  "smashes_required": 8
 }

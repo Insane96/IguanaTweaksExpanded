@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_quaron": {
+    "has_material": {
       "conditions": {
         "items": [
           {
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:quaron_boots"
+        "recipe": "iguanatweaksexpanded:quaron_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_quaron",
+      "has_material",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:quaron_boots"
+      "iguanatweaksexpanded:quaron_chestplate"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

@@ -4,7 +4,7 @@
     "item": "iguanatweaksexpanded:soul_steel_ingot"
   },
   "base": {
-    "item": "minecraft:iron_chestplate"
+    "item": "iguanatweaksexpanded:quaron_chestplate"
   },
   "result": {
     "item": "iguanatweaksexpanded:soul_steel_chestplate"

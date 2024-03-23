@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_solarium_moss_ball": {
+    "has_material": {
       "conditions": {
         "items": [
           {
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_solarium_moss_ball",
+      "has_material",
       "has_the_recipe"
     ]
   ],
@@ -31,5 +31,5 @@
       "iguanatweaksexpanded:solarium_axe"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 4,
+  "category": "forge_misc",
+  "experience": 4.0,
+  "gear": {
+    "item": "minecraft:leather_boots"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "minecraft:iron_boots"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_boots"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_boots",
+  "smashes_required": 4
 }

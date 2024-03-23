@@ -2,13 +2,13 @@
   "type": "iguanatweaksexpanded:forging",
   "amount": 3,
   "category": "forge_misc",
-  "experience": 15.0,
+  "experience": 13.0,
   "gear": {
-    "item": "minecraft:golden_pickaxe"
+    "item": "iguanatweaksexpanded:flint_pickaxe"
   },
   "ingredient": {
     "item": "iguanatweaksexpanded:keego"
   },
   "result": "iguanatweaksexpanded:keego_pickaxe",
-  "smashes_required": 16
+  "smashes_required": 13
 }

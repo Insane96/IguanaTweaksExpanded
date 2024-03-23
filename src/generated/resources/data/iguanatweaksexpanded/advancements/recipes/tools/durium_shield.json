@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_quaron": {
+    "has_material": {
       "conditions": {
         "items": [
           {
             "items": [
-              "iguanatweaksexpanded:quaron_ingot"
+              "iguanatweaksexpanded:durium_ingot"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:quaron_chestplate"
+        "recipe": "iguanatweaksexpanded:durium_shield"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_quaron",
+      "has_material",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:quaron_chestplate"
+      "iguanatweaksexpanded:durium_shield"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

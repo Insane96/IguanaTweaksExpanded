@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 4,
+  "category": "forge_misc",
+  "experience": 6.0,
+  "gear": {
+    "item": "shieldsplus:wooden_shield"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "shieldsplus:iron_shield"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_shield"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_shield",
+  "smashes_required": 6
 }

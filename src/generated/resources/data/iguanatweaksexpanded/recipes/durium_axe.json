@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 3,
+  "category": "forge_misc",
+  "experience": 14.0,
+  "gear": {
+    "item": "minecraft:stone_axe"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "base": {
-    "item": "minecraft:iron_axe"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_axe"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:durium_axe",
+  "smashes_required": 14
 }

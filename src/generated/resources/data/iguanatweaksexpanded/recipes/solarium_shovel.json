@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 1,
+  "category": "forge_misc",
+  "experience": 6.0,
+  "gear": {
+    "item": "minecraft:wooden_shovel"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "minecraft:iron_shovel"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_shovel"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_shovel",
+  "smashes_required": 6
 }

@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 5,
+  "category": "forge_misc",
+  "experience": 6.0,
+  "gear": {
+    "item": "iguanatweaksexpanded:wooden_hammer"
+  },
+  "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "base": {
-    "item": "iguanatweaksexpanded:iron_hammer"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_hammer"
-  },
-  "template": []
+  "result": "iguanatweaksexpanded:solarium_hammer",
+  "smashes_required": 6
 }

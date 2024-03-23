@@ -6,7 +6,7 @@
   },
   "amount": 7,
   "gear": {
-    "item": "minecraft:leather_leggings"
+    "item": "iguanatweaksexpanded:chained_copper_leggings"
   },
   "result": "minecraft:golden_leggings",
   "smashes_required": 5,

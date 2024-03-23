@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_solarium_moss_ball": {
+    "has_material": {
       "conditions": {
         "items": [
           {
             "items": [
-              "iguanatweaksexpanded:solarium_ball"
+              "iguanatweaksexpanded:quaron_ingot"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:solarium_shield"
+        "recipe": "iguanatweaksexpanded:quaron_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_solarium_moss_ball",
+      "has_material",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:solarium_shield"
+      "iguanatweaksexpanded:quaron_boots"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

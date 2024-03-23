@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  },
-  "base": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 4,
+  "category": "forge_misc",
+  "experience": 11.0,
+  "gear": {
     "item": "minecraft:leather_boots"
   },
-  "result": {
-    "item": "iguanatweaksexpanded:quaron_boots"
+  "ingredient": {
+    "item": "iguanatweaksexpanded:quaron_ingot"
   },
-  "template": []
+  "result": "iguanatweaksexpanded:quaron_boots",
+  "smashes_required": 11
 }

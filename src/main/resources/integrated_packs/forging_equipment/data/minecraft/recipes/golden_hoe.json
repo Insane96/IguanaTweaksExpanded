@@ -6,7 +6,7 @@
   },
   "amount": 2,
   "gear": {
-    "item": "iguanatweaksexpanded:flint_hoe"
+    "item": "iguanatweaksexpanded:copper_hoe"
   },
   "result": "minecraft:golden_hoe",
   "smashes_required": 6,

@@ -6,7 +6,7 @@
   },
   "amount": 4,
   "gear": {
-    "item": "minecraft:leather_boots"
+    "item": "iguanatweaksexpanded:chained_copper_boots"
   },
   "result": "minecraft:golden_boots",
   "smashes_required": 4,

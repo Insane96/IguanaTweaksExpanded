@@ -1,13 +1,14 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  },
-  "base": {
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 8,
+  "category": "forge_misc",
+  "experience": 17.0,
+  "gear": {
     "item": "minecraft:leather_chestplate"
   },
-  "result": {
-    "item": "iguanatweaksexpanded:quaron_chestplate"
+  "ingredient": {
+    "item": "iguanatweaksexpanded:quaron_ingot"
   },
-  "template": []
+  "result": "iguanatweaksexpanded:quaron_chestplate",
+  "smashes_required": 17
 }
