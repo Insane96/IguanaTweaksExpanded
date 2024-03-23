@@ -1,8 +1,5 @@
 # Changelog
 
-* Solarium is too common
-* OT Heal should decay with exhaustion
-* Tall grass growth death seems to not work
 * Movement slowdown should affect mobs
 * Eating soups in server with full inventory has strange behaviour
 * Flax seeds are renewable
@@ -22,6 +19,7 @@
 ## Upcoming
 * Skeletons now have a lower chance to spawn with stick or string 
 * Solium Boulders are now rarer
+* Tall grass now decays more often in cold seasons
 
 ## 1.6.6
 * Hammers no longer have a "damage on use" attribute, instead they always use 1 durability but have 1/3 of normal tools

@@ -141,11 +141,11 @@ public class Seasons extends Feature {
 			Map.entry(Season.SubSeason.LATE_SUMMER, 0.02f),
 			Map.entry(Season.SubSeason.EARLY_AUTUMN, 0f),
 			Map.entry(Season.SubSeason.MID_AUTUMN, 0f),
-			Map.entry(Season.SubSeason.LATE_AUTUMN, -0.075f),
-			Map.entry(Season.SubSeason.EARLY_WINTER, -0.20f),
-			Map.entry(Season.SubSeason.MID_WINTER, -0.25f),
-			Map.entry(Season.SubSeason.LATE_WINTER, -0.15f),
-			Map.entry(Season.SubSeason.EARLY_SPRING, 0.05f),
+			Map.entry(Season.SubSeason.LATE_AUTUMN, -0.10f),
+			Map.entry(Season.SubSeason.EARLY_WINTER, -0.30f),
+			Map.entry(Season.SubSeason.MID_WINTER, -0.50f),
+			Map.entry(Season.SubSeason.LATE_WINTER, -0.30f),
+			Map.entry(Season.SubSeason.EARLY_SPRING, 0f),
 			Map.entry(Season.SubSeason.MID_SPRING, 0.10f),
 			Map.entry(Season.SubSeason.LATE_SPRING, 0.125f)
 	);
@@ -206,7 +206,7 @@ public class Seasons extends Feature {
 					if (state.is(BlockTags.DIRT) && level.getBrightness(LightLayer.SKY, abovePos) >= 10) {
 						BlockState stateUp = level.getBlockState(abovePos);
 						if (chance < 0f && level.getRandom().nextFloat() < -chance) {
-							if (stateUp.is(Blocks.FERN) || stateUp.is(Blocks.GRASS) || stateUp.is(Blocks.TALL_GRASS))
+							if (stateUp.is(Blocks.FERN) || stateUp.is(Blocks.GRASS) || stateUp.is(Blocks.TALL_GRASS) || stateUp.is(Blocks.LARGE_FERN))
 								level.setBlock(abovePos, Blocks.AIR.defaultBlockState(), 3);
 							else if (stateUp.is(BlockTags.SAPLINGS))
 								level.setBlock(abovePos, Blocks.DEAD_BUSH.defaultBlockState(), 3);
