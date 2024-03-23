@@ -17,9 +17,11 @@
 * Stamina enchantment for chestplates
 * Reduce bow (and crossbow?) power and power power
 * Desire paths don't work (on servers?)
+* Rebalance enchantability to be similar in each tier (maybe a max 33% increase/decrease from average material)
 
 ## Upcoming
-* Skeletons now have a lower chance to spawn with stick or string
+* Skeletons now have a lower chance to spawn with stick or string 
+* Solium Boulders are now rarer
 
 ## 1.6.6
 * Hammers no longer have a "damage on use" attribute, instead they always use 1 durability but have 1/3 of normal tools
