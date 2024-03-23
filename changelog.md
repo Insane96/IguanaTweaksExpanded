@@ -2,10 +2,8 @@
 
 * Increase repair cost when enchanted
 * Poof particles on double jump don't work with others
-* Water coolant on fox hounds
 * Tiredness should play random sounds
 * Soap should be blacklisted from food stacking
-* Soul speed cost should be lowered
 * Stamina enchantment for chestplates
 * Reduce bow (and crossbow?) power and power power
 * Desire paths don't work (on servers?)
@@ -15,6 +13,8 @@
 * Skeletons now have a lower chance to spawn with stick or string 
 * Solium Boulders are now rarer
 * Tall grass now decays more often in cold seasons
+  * Also fixed tall ferns not decaying
+* Soul speed enchantment now costs less
 * Integrated some loot in supplementaries urns
 * Quark's foxhounds are now affected by Water Coolant
 
