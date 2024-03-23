@@ -1,11 +1,8 @@
 # Changelog
 
 * Increase repair cost when enchanted
-* Poof particles on double jump don't work with others
 * Tiredness should play random sounds
-* Soap should be blacklisted from food stacking
 * Stamina enchantment for chestplates
-* Reduce bow (and crossbow?) power and power power
 * Desire paths don't work (on servers?)
 * Rebalance enchantability to be similar in each tier (maybe a max 33% increase/decrease from average material)
 
@@ -16,6 +13,8 @@
   * Also fixed tall ferns not decaying
 * Soul speed enchantment now costs less
 * Integrated some loot in supplementaries urns
+* Rebalanced materials, again
+* Fixed m.a. jump effect not playing server side
 * Quark's foxhounds are now affected by Water Coolant
 
 ## 1.6.6

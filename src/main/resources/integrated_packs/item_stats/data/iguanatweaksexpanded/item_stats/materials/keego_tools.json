@@ -2,6 +2,7 @@
 	"item": "#iguanatweaksexpanded:equipment/hand/keego",
 	"durability": 1137,
 	"efficiency": 6.5,
+	"enchantability": 8,
 	"modifiers": [
 		{
 			"uuid": "294e0db0-1185-4d78-b95e-8823b8bb0041",
