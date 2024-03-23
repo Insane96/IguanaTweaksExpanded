@@ -3,8 +3,6 @@
 * Increase repair cost when enchanted
 * Tiredness should play random sounds
 * Stamina enchantment for chestplates
-* Desire paths don't work (on servers?)
-* Rebalance enchantability to be similar in each tier (maybe a max 33% increase/decrease from average material)
 
 ## Upcoming
 * Skeletons now have a lower chance to spawn with stick or string 
@@ -13,6 +11,7 @@
   * Also fixed tall ferns not decaying
 * Soul speed enchantment now costs less
 * Integrated some loot in supplementaries urns
+* Empowered items (with ancient lapis) now have 40% bonus enchantability instead of 25%
 * Rebalanced materials, again
 * Fixed m.a. jump effect not playing server side
 * Quark's foxhounds are now affected by Water Coolant
