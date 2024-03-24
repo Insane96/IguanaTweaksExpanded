@@ -5,7 +5,7 @@
 * Solium Boulders are now rarer
 * Tall grass now decays more often in cold seasons
   * Also fixed tall ferns not decaying
-* Soul speed enchantment now costs less
+* Soul speed and Luck enchantments now costs less
 * Integrated some loot in supplementaries urns
 * Empowered items (with ancient lapis) now have 40% bonus enchantability instead of 25%
 * Rebalanced materials, again

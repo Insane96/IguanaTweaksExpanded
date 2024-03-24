@@ -1,17 +1,17 @@
 {
 	"item_to_repair": {
-		"id": "iguanatweaksexpanded:durium_hammer"
+		"id": "iguanatweaksexpanded:quaron_helmet"
 	},
 	"repair": [
 		{
 			"repair_material": {
-				"id": "iguanatweaksexpanded:durium_ingot"
+				"id": "iguanatweaksexpanded:quaron_ingot"
 			},
 			"amount": 5
 		},
 		{
 			"repair_material": {
-				"id": "iguanatweaksexpanded:durium_nugget"
+				"id": "iguanatweaksexpanded:quaron_nugget"
 			},
 			"amount": 45
 		}

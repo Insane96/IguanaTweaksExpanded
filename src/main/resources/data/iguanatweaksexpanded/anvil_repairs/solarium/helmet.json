@@ -5,23 +5,9 @@
 	"repair": [
 		{
 			"repair_material": {
-				"id": "minecraft:iron_ingot"
-			},
-			"amount": 5,
-			"max_repair": 0.5
-		},
-		{
-			"repair_material": {
-				"id": "minecraft:iron_nugget"
-			},
-			"amount": 37,
-			"max_repair": 0.5
-		},
-		{
-			"repair_material": {
 				"id": "iguanatweaksexpanded:solarium_ball"
 			},
-			"amount": 2
+			"amount": 5
 		}
 	]
 }

@@ -2,13 +2,13 @@
 	"item_to_repair": "iguanatweaksexpanded:soul_steel_boots",
 	"repair": [
 		{
-			"repair_material": "minecraft:iron_ingot",
-			"amount": 50,
+			"repair_material": "iguanatweaksexpanded:quaron_ingot",
+			"amount": 9,
 			"max_repair": 0.5
 		},
 		{
-			"repair_material": "minecraft:iron_nugget",
-			"amount": 446,
+			"repair_material": "iguanatweaksexpanded:quaron_nugget",
+			"amount": 76,
 			"max_repair": 0.5
 		},
 		{

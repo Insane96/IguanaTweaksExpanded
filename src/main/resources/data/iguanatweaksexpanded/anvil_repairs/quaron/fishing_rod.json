@@ -1,0 +1,13 @@
+{
+	"item_to_repair": {
+		"id": "iguanatweaksexpanded:quaron_fishing_rod"
+	},
+	"repair": [
+		{
+			"repair_material": {
+				"id": "iguanatweaksexpanded:quaron_nugget"
+			},
+			"amount": 9
+		}
+	]
+}

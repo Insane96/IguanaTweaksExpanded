@@ -5,29 +5,15 @@
 	"repair": [
 		{
 			"repair_material": {
-				"id": "minecraft:iron_ingot"
-			},
-			"amount": 11,
-			"max_repair": 0.5
-		},
-		{
-			"repair_material": {
-				"id": "minecraft:iron_nugget"
-			},
-			"amount": 96,
-			"max_repair": 0.5
-		},
-		{
-			"repair_material": {
 				"id": "iguanatweaksexpanded:durium_ingot"
 			},
-			"amount": 2
+			"amount": 4
 		},
 		{
 			"repair_material": {
 				"id": "iguanatweaksexpanded:durium_nugget"
 			},
-			"amount": 18
+			"amount": 36
 		}
 	]
 }
