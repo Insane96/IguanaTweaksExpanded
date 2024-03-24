@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.network;
 
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
+import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -57,7 +57,7 @@ public class ClientNetworkHandler {
             Vec3 pos = new Vec3(x, y, z);
             if (pos.distanceToSqr(entityEnd.position()) <= 0.04d)
                 break;
-            level.addParticle(CopperToolsExpansion.ELECTROCUTION_SPARKS.get(),
+            level.addParticle(CopperExpansion.ELECTROCUTION_SPARKS.get(),
                     x + (RANDOM.nextDouble() * 0.1d - 0.05d),
                     y + (entityStart.getBbHeight() / 2f) + (RANDOM.nextDouble() * 0.1d - 0.05d),
                     z + (RANDOM.nextDouble() * 0.1d - 0.05d),

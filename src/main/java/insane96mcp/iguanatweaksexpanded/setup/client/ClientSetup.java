@@ -9,9 +9,8 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingF
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableScreen;
 import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrinks;
-import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
+import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.ElectrocutionSparkParticle;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
@@ -58,10 +57,10 @@ public class ClientSetup {
             addAfter(event, Items.STONE_HOE, FlintExpansion.AXE.get());
             addAfter(event, Items.STONE_HOE, FlintExpansion.PICKAXE.get());
             addAfter(event, Items.STONE_HOE, FlintExpansion.SHOVEL.get());
-            addAfter(event, FlintExpansion.HOE.get(), CopperToolsExpansion.COPPER_HOE.get());
-            addAfter(event, FlintExpansion.HOE.get(), CopperToolsExpansion.COPPER_AXE.get());
-            addAfter(event, FlintExpansion.HOE.get(), CopperToolsExpansion.COPPER_PICKAXE.get());
-            addAfter(event, FlintExpansion.HOE.get(), CopperToolsExpansion.COPPER_SHOVEL.get());
+            addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_HOE.get());
+            addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_AXE.get());
+            addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_PICKAXE.get());
+            addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_SHOVEL.get());
             addAfter(event, Items.IRON_HOE, Solarium.HOE.get());
             addAfter(event, Items.IRON_HOE, Solarium.AXE.get());
             addAfter(event, Items.IRON_HOE, Solarium.PICKAXE.get());
@@ -75,10 +74,10 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_HOE, Keego.AXE.get());
             addAfter(event, Items.DIAMOND_HOE, Keego.PICKAXE.get());
             addAfter(event, Items.DIAMOND_HOE, Keego.SHOVEL.get());
-            addAfter(event, Items.DIAMOND_HOE, CopperToolsExpansion.COATED_HOE.get());
-            addAfter(event, Items.DIAMOND_HOE, CopperToolsExpansion.COATED_AXE.get());
-            addAfter(event, Items.DIAMOND_HOE, CopperToolsExpansion.COATED_PICKAXE.get());
-            addAfter(event, Items.DIAMOND_HOE, CopperToolsExpansion.COATED_SHOVEL.get());
+            addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_HOE.get());
+            addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_AXE.get());
+            addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_PICKAXE.get());
+            addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_SHOVEL.get());
             addAfter(event, Items.DIAMOND_HOE, Quaron.HOE.get());
             addAfter(event, Items.DIAMOND_HOE, Quaron.AXE.get());
             addAfter(event, Items.DIAMOND_HOE, Quaron.PICKAXE.get());
@@ -93,8 +92,8 @@ public class ClientSetup {
             addAfter(event, Items.WOODEN_HOE, Forging.WOODEN_HAMMER.get());
             addAfter(event, Items.STONE_HOE, Forging.STONE_HAMMER.get());
             addAfter(event, FlintExpansion.HOE.get(), Forging.FLINT_HAMMER.get());
-            addAfter(event, CopperToolsExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
-            addAfter(event, CopperToolsExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
+            addAfter(event, CopperExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
+            addAfter(event, CopperExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
             addAfter(event, Quaron.HOE.get(), Forging.QUARON_HAMMER.get());
             addAfter(event, Items.GOLDEN_HOE, Forging.GOLDEN_HAMMER.get());
             addAfter(event, Items.IRON_HOE, Forging.IRON_HAMMER.get());
@@ -114,35 +113,35 @@ public class ClientSetup {
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             addAfter(event, Items.STONE_SWORD, FlintExpansion.SWORD.get());
-            addAfter(event, FlintExpansion.SWORD.get(), CopperToolsExpansion.COPPER_SWORD.get());
+            addAfter(event, FlintExpansion.SWORD.get(), CopperExpansion.COPPER_SWORD.get());
             addAfter(event, Items.IRON_SWORD, Solarium.SWORD.get());
             addAfter(event, Items.IRON_SWORD, Durium.SWORD.get());
             addAfter(event, Items.DIAMOND_SWORD, Keego.SWORD.get());
-            addAfter(event, Items.DIAMOND_SWORD, CopperToolsExpansion.COATED_SWORD.get());
+            addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
             addAfter(event, Items.NETHERITE_SWORD, SoulSteel.SWORD.get());
 
             addAfter(event, Items.STONE_AXE, FlintExpansion.AXE.get());
-            addAfter(event, FlintExpansion.AXE.get(), CopperToolsExpansion.COPPER_AXE.get());
+            addAfter(event, FlintExpansion.AXE.get(), CopperExpansion.COPPER_AXE.get());
             addAfter(event, Items.IRON_AXE, Solarium.AXE.get());
             addAfter(event, Items.IRON_AXE, Durium.AXE.get());
             addAfter(event, Items.DIAMOND_AXE, Keego.AXE.get());
-            addAfter(event, Items.DIAMOND_AXE, CopperToolsExpansion.COATED_AXE.get());
+            addAfter(event, Items.DIAMOND_AXE, CopperExpansion.COATED_AXE.get());
             addAfter(event, Items.DIAMOND_AXE, Quaron.AXE.get());
             addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
 
             addAfter(event, SPItems.STONE_SHIELD.get(), FlintExpansion.SHIELD.get());
-            addAfter(event, FlintExpansion.SHIELD.get(), CopperToolsExpansion.COPPER_SHIELD.get());
+            addAfter(event, FlintExpansion.SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
             addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.SHIELD.get());
             addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());
             addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.SHIELD.get());
-            addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperToolsExpansion.COATED_SHIELD.get());
+            addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.COATED_SHIELD.get());
             addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.SHIELD.get());
             addAfter(event, SPItems.NETHERITE_SHIELD.get(), SoulSteel.SHIELD.get());
 
-            addAfter(event, Items.LEATHER_BOOTS, ChainedCopperArmor.BOOTS.get());
-            addAfter(event, Items.LEATHER_BOOTS, ChainedCopperArmor.LEGGINGS.get());
-            addAfter(event, Items.LEATHER_BOOTS, ChainedCopperArmor.CHESTPLATE.get());
-            addAfter(event, Items.LEATHER_BOOTS, ChainedCopperArmor.HELMET.get());
+            addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.BOOTS.get());
+            addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.LEGGINGS.get());
+            addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.CHESTPLATE.get());
+            addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.HELMET.get());
             addAfter(event, Items.IRON_BOOTS, Solarium.BOOTS.get());
             addAfter(event, Items.IRON_BOOTS, Solarium.LEGGINGS.get());
             addAfter(event, Items.IRON_BOOTS, Solarium.CHESTPLATE.get());
@@ -322,6 +321,6 @@ public class ClientSetup {
     }
 
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(CopperToolsExpansion.ELECTROCUTION_SPARKS.get(), ElectrocutionSparkParticle.Provider::new);
+        event.registerSpriteSet(CopperExpansion.ELECTROCUTION_SPARKS.get(), ElectrocutionSparkParticle.Provider::new);
     }
 }

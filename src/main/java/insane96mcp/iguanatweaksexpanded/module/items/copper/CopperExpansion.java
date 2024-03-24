@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.items.copper;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEDamageTypeTagsProvider;
+import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.network.message.ElectrocutionParticleMessage;
@@ -18,6 +19,7 @@ import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -26,6 +28,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
@@ -47,11 +50,12 @@ import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 
-@Label(name = "Copper Tools Expansion", description = "Two new set of tools")
+@Label(name = "Copper Tools/Armor Expansion", description = "Two new set of tools and a new Armor Set. Disabling this will prevent copper tools from being faster and more durable the deeper are used and will prevent the electrocution effect of coated copper items")
 @LoadFeature(module = Modules.Ids.ITEMS)
-public class CopperToolsExpansion extends Feature {
+public class CopperExpansion extends Feature {
 	public static final TagKey<Item> COPPER_TOOLS_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/tools/copper"));
 	public static final TagKey<Item> COATED_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/coated_copper"));
 
@@ -79,7 +83,20 @@ public class CopperToolsExpansion extends Feature {
 	public static final RegistryObject<SoundEvent> ELECTROCUTION = ITERegistries.SOUND_EVENTS.register("electrocution", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "electrocution")));
 	public static final TagKey<DamageType> DOESNT_TRIGGER_ELECTROCUTION = ITEDamageTypeTagsProvider.create("doesnt_trigger_electrocution");
 
-	public CopperToolsExpansion(Module module, boolean enabledByDefault, boolean canBeDisabled) {
+
+	private static final ITEArmorMaterial CHAINED_COPPER = new ITEArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "chained_copper", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+		p_266652_.put(ArmorItem.Type.BOOTS, 1);
+		p_266652_.put(ArmorItem.Type.LEGGINGS, 3);
+		p_266652_.put(ArmorItem.Type.CHESTPLATE, 4);
+		p_266652_.put(ArmorItem.Type.HELMET, 1);
+	}), 13, SoundEvents.ARMOR_EQUIP_CHAIN, 0f, 0f, () -> Ingredient.of(Items.COPPER_INGOT));
+
+	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("chained_copper_boots", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.BOOTS, new Item.Properties()));
+	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("chained_copper_leggings", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> CHESTPLATE = ITERegistries.ITEMS.register("chained_copper_chestplate", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> HELMET = ITERegistries.ITEMS.register("chained_copper_helmet", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.HELMET, new Item.Properties()));
+
+	public CopperExpansion(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
 
@@ -170,7 +187,7 @@ public class CopperToolsExpansion extends Feature {
 		int hits = tag.getInt(COATED_TIMES_HIT);
 		if (++hits >= 4) {
 			hits = 0;
-			electrocute(player, attacker, (float) spShieldItem.getBlockedDamage(player.getUseItem(), attacker, player.level()));
+			electrocute(player, attacker, spShieldItem.getBlockedDamage(player.getUseItem(), attacker, player.level()));
 		}
 		tag.putInt(COATED_TIMES_HIT, hits);
 	}

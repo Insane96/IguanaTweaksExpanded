@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfExperience;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
+import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksreborn.module.combat.PiercingPickaxes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -25,9 +25,9 @@ public class ITEDamageTypeTagsProvider extends DamageTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(PiercingPickaxes.DOESNT_TRIGGER_PIERCING).add(CopperToolsExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
+        tag(PiercingPickaxes.DOESNT_TRIGGER_PIERCING).add(CopperExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
 
-        tag(CopperToolsExpansion.DOESNT_TRIGGER_ELECTROCUTION).addOptionalTag(PiercingPickaxes.PIERCING_DAMAGE_TYPE.location()).add(CopperToolsExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
+        tag(CopperExpansion.DOESNT_TRIGGER_ELECTROCUTION).addOptionalTag(PiercingPickaxes.PIERCING_DAMAGE_TYPE.location()).add(CopperExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
 
         tag(DamageTypeTags.BYPASSES_ARMOR).add(CurseOfExperience.DAMAGE_TYPE);
     }

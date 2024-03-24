@@ -4,8 +4,7 @@ import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrinks;
-import insane96mcp.iguanatweaksexpanded.module.items.ChainedCopperArmor;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperToolsExpansion;
+import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -95,23 +94,23 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(EnchantingFeature.CLEANSED_LAPIS.get());
         basicItem(EnchantingFeature.ANCIENT_LAPIS.get());
 
-        trimmedArmorItem(ChainedCopperArmor.BOOTS);
-        trimmedArmorItem(ChainedCopperArmor.LEGGINGS);
-        trimmedArmorItem(ChainedCopperArmor.CHESTPLATE);
-        trimmedArmorItem(ChainedCopperArmor.HELMET);
+        trimmedArmorItem(CopperExpansion.BOOTS);
+        trimmedArmorItem(CopperExpansion.LEGGINGS);
+        trimmedArmorItem(CopperExpansion.CHESTPLATE);
+        trimmedArmorItem(CopperExpansion.HELMET);
 
-        handHeld(CopperToolsExpansion.COPPER_AXE.get());
-        handHeld(CopperToolsExpansion.COPPER_PICKAXE.get());
-        handHeld(CopperToolsExpansion.COPPER_SHOVEL.get());
-        handHeld(CopperToolsExpansion.COPPER_HOE.get());
-        handHeld(CopperToolsExpansion.COPPER_SWORD.get());
+        handHeld(CopperExpansion.COPPER_AXE.get());
+        handHeld(CopperExpansion.COPPER_PICKAXE.get());
+        handHeld(CopperExpansion.COPPER_SHOVEL.get());
+        handHeld(CopperExpansion.COPPER_HOE.get());
+        handHeld(CopperExpansion.COPPER_SWORD.get());
 
-        handHeld(CopperToolsExpansion.COATED_AXE.get());
-        handHeld(CopperToolsExpansion.COATED_PICKAXE.get());
-        handHeld(CopperToolsExpansion.COATED_SHOVEL.get());
-        handHeld(CopperToolsExpansion.COATED_HOE.get());
-        handHeld(CopperToolsExpansion.COATED_SWORD.get());
-        shield(CopperToolsExpansion.COATED_SHIELD.get());
+        handHeld(CopperExpansion.COATED_AXE.get());
+        handHeld(CopperExpansion.COATED_PICKAXE.get());
+        handHeld(CopperExpansion.COATED_SHOVEL.get());
+        handHeld(CopperExpansion.COATED_HOE.get());
+        handHeld(CopperExpansion.COATED_SWORD.get());
+        shield(CopperExpansion.COATED_SHIELD.get());
 
         withExistingParent("charcoal_layer", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/charcoal_layer/height_2"));
 

@@ -1,9 +1,5 @@
 # Changelog
 
-* Increase repair cost when enchanted
-* Tiredness should play random sounds
-* Stamina enchantment for chestplates
-
 ## Upcoming
 * Skeletons now have a lower chance to spawn with stick or string 
 * Solium Boulders are now rarer
@@ -19,8 +15,9 @@
   * Durium from stone / chained copper in Forge
   * Keego from Flint / Chainmail
   * Quaron from Wood / leather in Forge
-  * Soul Stetl
-* Fixed m.a. jump effect not playing server side
+  * Soul Steel smithen from Quaron
+* Moved Chained Copper to Copper Expansion (aka Copper Tools Expansion)
+* Fixed m.a. jump effect (particles and sounds) not playing server side
 * Quark's foxhounds are now affected by Water Coolant
 
 ## 1.6.6
