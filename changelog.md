@@ -5,10 +5,6 @@
 * Solium Boulders are now rarer
 * Tall grass now decays more often in cold seasons
   * Also fixed tall ferns not decaying
-* Soul speed and Luck enchantments now costs less
-* Integrated some loot in supplementaries urns
-* Empowered items (with ancient lapis) now have 40% bonus enchantability instead of 25%
-* Rebalanced materials, again
 * Changed crafting recipes for tools and armor
   * Gold items are now made from Copper, armor from chained copper
   * Solarium from Wood / leather in Forge
@@ -16,6 +12,12 @@
   * Keego from Flint / Chainmail
   * Quaron from Wood / leather in Forge
   * Soul Steel smithen from Quaron
+* Rebalanced materials, again
+* Increased mobs movement speed
+  * Also the movement speed is no longer difficulty dependant
+* Empowered items (with ancient lapis) now have 40% bonus enchantability instead of 25%
+* Soul speed and Luck enchantments now costs less
+* Integrated some loot in supplementaries urns
 * Moved Chained Copper to Copper Expansion (aka Copper Tools Expansion)
 * Fixed m.a. jump effect (particles and sounds) not playing server side
 * Quark's foxhounds are now affected by Water Coolant

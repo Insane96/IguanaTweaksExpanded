@@ -5,18 +5,13 @@
             "id": "minecraft:generic.movement_speed",
             "modifier_name": "More Speed for Zombies",
             "amount": {
-                "value": 0.10,
-                "difficulty_modifier": {
-                    "operation": "multiply",
-                    "easy": 0.75,
-                    "hard": 1.25
-                },
+                "value": 0.13,
                 "condition_modifier": {
                     "operation": "multiply",
                     "condition": {
                         "spawner_behaviour": "spawner_only"
                     },
-                    "amount": 0.333
+                    "amount": 0.35
                 }
             },
             "operation": "multiply_base"
@@ -25,18 +20,13 @@
             "id": "minecraft:generic.follow_range",
             "modifier_name": "More Follow Range for Zombies",
             "amount": {
-                "value": 8,
-                "difficulty_modifier": {
-                    "operation": "multiply",
-                    "easy": 0.5,
-                    "hard": 1.5
-                },
+                "value": 12,
                 "condition_modifier": {
                     "operation": "multiply",
                     "condition": {
                         "spawner_behaviour": "spawner_only"
                     },
-                    "amount": 0.333
+                    "amount": 0.35
                 }
             },
             "operation": "addition"
@@ -60,12 +50,7 @@
             "nbt_tag": "enhancedai:miner",
             "type": "boolean",
             "value": {
-                "value": 0.075,
-                "difficulty_modifier": {
-                    "operation": "add",
-                    "easy": -0.05,
-                    "hard": 0.075
-                },
+                "value": 0.15,
                 "depth_modifier": {
                     "operation": "add",
                     "amount_per_step": 0.01,
@@ -77,7 +62,7 @@
                     "condition": {
                         "spawner_behaviour": "spawner_only"
                     },
-                    "amount": 0.333
+                    "amount": 0.35
                 }
             },
             "persistent_data": true

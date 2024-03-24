@@ -5,18 +5,13 @@
             "id": "minecraft:generic.movement_speed",
             "modifier_name": "More Speed for non-zombie mobs",
             "amount": {
-                "value": 0.085,
-                "difficulty_modifier": {
-                    "operation": "multiply",
-                    "easy": 0.75,
-                    "hard": 1.25
-                },
+                "value": 0.11,
                 "condition_modifier": {
                     "operation": "multiply",
                     "condition": {
                         "spawner_behaviour": "spawner_only"
                     },
-                    "amount": 0.333
+                    "amount": 0.35
                 }
             },
             "operation": "multiply_base"
@@ -25,18 +20,13 @@
             "id": "minecraft:generic.follow_range",
             "modifier_name": "More Follow Range for non-zombie mobs",
             "amount": {
-                "value": 16,
-                "difficulty_modifier": {
-                    "operation": "multiply",
-                    "easy": 0.5,
-                    "hard": 1.5
-                },
+                "value": 24,
                 "condition_modifier": {
                     "operation": "multiply",
                     "condition": {
                         "spawner_behaviour": "spawner_only"
                     },
-                    "amount": 0.333
+                    "amount": 0.35
                 }
             },
             "operation": "addition"

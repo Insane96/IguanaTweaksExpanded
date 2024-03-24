@@ -88,6 +88,7 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId("minecraft:infinity", 2.5f),
             IdTagValue.newId("minecraft:soul_speed", 3f),
             IdTagValue.newId("minecraft:efficiency", 1.8f),
+            IdTagValue.newId("minecraft:mending", 5f),
             IdTagValue.newId("minecraft:vanishing_curse", 2f),
             IdTagValue.newId("shieldsplus:aegis", 2f),
             IdTagValue.newId("shieldsplus:reinforced", 2f),

@@ -3,8 +3,8 @@
     "attributes": [
         {
             "id": "minecraft:generic.movement_speed",
-            "modifier_name": "Slowdown witches",
-            "amount": -0.1,
+            "modifier_name": "Speed nerf",
+            "amount": -0.15,
             "operation": "multiply_base"
         }
     ]
