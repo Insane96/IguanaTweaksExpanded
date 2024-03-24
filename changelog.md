@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.6.7
 * Skeletons now have a lower chance to spawn with stick or string 
 * Solium Boulders are now rarer
 * Tall grass now decays more often in cold seasons
