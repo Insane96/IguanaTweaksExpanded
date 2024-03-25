@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Reduced experience from grindstones (95% -> 80%)
 * Zombified piglins can now be miners
 
 ## 1.6.7

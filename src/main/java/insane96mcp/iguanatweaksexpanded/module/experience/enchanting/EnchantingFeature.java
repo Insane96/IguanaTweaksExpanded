@@ -189,7 +189,7 @@ public class EnchantingFeature extends JsonFeature {
         }
         lvl = (int)Math.floor(lvl);
 
-        event.setXp((int) (lvl * PlayerExperience.getBetterScalingLevel(30) * 0.95f));
+        event.setXp((int) (lvl * PlayerExperience.getBetterScalingLevel(30) * 0.8f));
     }
 
     public static int getCost(Enchantment enchantment, int lvl) {
