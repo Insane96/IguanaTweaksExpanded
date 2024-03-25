@@ -3,6 +3,7 @@
 ## Upcoming
 * Reduced experience from grindstones (95% -> 80%)
 * Zombified piglins can now be miners
+* Endermen now attack much slower
 
 ## 1.6.7
 * Skeletons now have a lower chance to spawn with stick or string 
