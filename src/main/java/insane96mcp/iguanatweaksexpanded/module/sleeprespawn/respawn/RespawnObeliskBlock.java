@@ -11,6 +11,7 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -59,16 +60,7 @@ public class RespawnObeliskBlock extends Block {
 
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
         if (!state.getValue(ENABLED)) {
-            boolean hasCatalyst = false;
-            BlockPos.MutableBlockPos relativePos = new BlockPos.MutableBlockPos();
-            for (Vec3i rel : CATALYST_RELATIVE_POSITIONS) {
-                relativePos.set(pos).move(rel);
-                if (isBlockCatalyst(level.getBlockState(relativePos).getBlock())) {
-                    hasCatalyst = true;
-                    break;
-                }
-            }
-            if (hasCatalyst) {
+            if (hasCatalysts(level, pos)) {
                 enable(player, level, pos, state);
                 return InteractionResult.SUCCESS;
             }
@@ -80,7 +72,10 @@ public class RespawnObeliskBlock extends Block {
         }
         else if (state.getValue(ENABLED) && !level.isClientSide) {
             ServerPlayer serverPlayer = (ServerPlayer)player;
-            if (serverPlayer.getRespawnDimension() != level.dimension() || !pos.equals(serverPlayer.getRespawnPosition())) {
+            if (!hasCatalysts(level, pos)) {
+                disable(player, level, pos, state, true);
+            }
+            else if (serverPlayer.getRespawnDimension() != level.dimension() || !pos.equals(serverPlayer.getRespawnPosition())) {
                 trySaveOldSpawn(serverPlayer);
                 serverPlayer.setRespawnPosition(level.dimension(), pos, 0.0F, false, true);
                 level.playSound(null, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -102,23 +97,25 @@ public class RespawnObeliskBlock extends Block {
         p_270172_.playSound(null, (double)p_270534_.getX() + 0.5D, (double)p_270534_.getY() + 0.5D, (double)p_270534_.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_CHARGE, SoundSource.BLOCKS, 1.0F, 1.0F);
     }
 
+    public static void disable(@Nullable Entity entity, Level level, BlockPos pos, BlockState state, boolean showDisabledMessage) {
+        level.setBlock(pos, state.setValue(RespawnObeliskBlock.ENABLED, false), 3);
+        level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (entity instanceof Player player && showDisabledMessage) {
+            player.displayClientMessage(Component.translatable(OBELISK_DISABLED), false);
+        }
+        if (entity instanceof ServerPlayer serverPlayer) {
+            if (!trySetOldSpawn(serverPlayer)) {
+                serverPlayer.setRespawnPosition(Level.OVERWORLD, null, 0f, false, false);
+            }
+        }
+    }
+
     @Override
     public Optional<Vec3> getRespawnPosition(BlockState state, EntityType<?> type, LevelReader levelReader, BlockPos pos, float orientation, @org.jetbrains.annotations.Nullable LivingEntity entity) {
         if (!levelReader.getBlockState(pos).getValue(RespawnObeliskBlock.ENABLED))
             return Optional.empty();
-        boolean hasCatalyst = false;
-        BlockPos.MutableBlockPos relativePos = new BlockPos.MutableBlockPos();
-        for (Vec3i rel : CATALYST_RELATIVE_POSITIONS) {
-            relativePos.set(pos).move(rel);
-            if (isBlockCatalyst(levelReader.getBlockState(relativePos).getBlock())) {
-                hasCatalyst = true;
-                break;
-            }
-        }
-        if (hasCatalyst && state.getBlock() instanceof RespawnObeliskBlock)
-        {
+        if (state.getBlock() instanceof RespawnObeliskBlock)
             return RespawnAnchorBlock.findStandUpPosition(type, levelReader, pos);
-        }
         return Optional.empty();
     }
 
@@ -135,24 +132,19 @@ public class RespawnObeliskBlock extends Block {
             //Try to break only one block
             break;
         }
-        boolean hasCatalyst = false;
+        if (!hasCatalysts(level, respawnPos))
+            disable(player, level, respawnPos, level.getBlockState(respawnPos), true);
+    }
+
+    public static boolean hasCatalysts(Level level, BlockPos pos) {
+        BlockPos.MutableBlockPos relativePos = new BlockPos.MutableBlockPos();
         for (Vec3i rel : CATALYST_RELATIVE_POSITIONS) {
-            relativePos.set(respawnPos).move(rel);
+            relativePos.set(pos).move(rel);
             if (isBlockCatalyst(level.getBlockState(relativePos).getBlock())) {
-                hasCatalyst = true;
-                break;
+                return true;
             }
         }
-        if (!hasCatalyst) {
-            level.setBlock(respawnPos, level.getBlockState(respawnPos).setValue(RespawnObeliskBlock.ENABLED, false), 3);
-            level.playSound(null, respawnPos.getX(), respawnPos.getY(), respawnPos.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-            player.displayClientMessage(Component.translatable(OBELISK_DISABLED), false);
-            if (player instanceof ServerPlayer serverPlayer) {
-                if (!trySetOldSpawn(serverPlayer)) {
-                    serverPlayer.setRespawnPosition(player.level().dimension(), null, 0f, false, false);
-                }
-            }
-        }
+        return false;
     }
 
     @Override
@@ -164,15 +156,27 @@ public class RespawnObeliskBlock extends Block {
         if (player.getRespawnPosition() == null)
             return;
 
+        saveOldSpawn(player, player.getRespawnPosition(), player.isRespawnForced(), player.getRespawnAngle(), player.getRespawnDimension());
+    }
+
+    public static boolean saveOldSpawn(ServerPlayer player, BlockPos pos, boolean isForced, float angle, ResourceKey<Level> dimension) {
         CompoundTag tag = MCUtils.getOrCreatePersistedData(player);
-        tag.putInt("OldSpawnX", player.getRespawnPosition().getX());
-        tag.putInt("OldSpawnY", player.getRespawnPosition().getY());
-        tag.putInt("OldSpawnZ", player.getRespawnPosition().getZ());
-        tag.putBoolean("OldSpawnForced", player.isRespawnForced());
-        tag.putFloat("OldSpawnAngle", player.getRespawnAngle());
-        ResourceLocation.CODEC.encodeStart(NbtOps.INSTANCE, player.getRespawnDimension().location())
+        if (tag.getInt("OldSpawnX") == pos.getX()
+                && tag.getInt("OldSpawnY") == pos.getY()
+                && tag.getInt("OldSpawnZ") == pos.getZ()
+                && tag.getBoolean("OldSpawnForced") == isForced
+                && tag.getFloat("OldSpawnAngle") == angle
+                && Level.RESOURCE_KEY_CODEC.parse(NbtOps.INSTANCE, tag.get("OldSpawnDimension")).resultOrPartial(LogHelper::error).orElse(Level.OVERWORLD) == dimension)
+            return false;
+        tag.putInt("OldSpawnX", pos.getX());
+        tag.putInt("OldSpawnY", pos.getY());
+        tag.putInt("OldSpawnZ", pos.getZ());
+        tag.putBoolean("OldSpawnForced", isForced);
+        tag.putFloat("OldSpawnAngle", angle);
+        ResourceLocation.CODEC.encodeStart(NbtOps.INSTANCE, dimension.location())
                 .resultOrPartial(LogHelper::error)
                 .ifPresent((t) -> tag.put("OldSpawnDimension", t));
+        return true;
     }
 
     public static boolean trySetOldSpawn(ServerPlayer player) {

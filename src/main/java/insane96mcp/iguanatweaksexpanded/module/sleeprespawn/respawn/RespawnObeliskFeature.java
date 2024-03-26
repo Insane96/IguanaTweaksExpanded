@@ -99,8 +99,8 @@ public class RespawnObeliskFeature extends JsonFeature {
 				&& player.level().getBlockState(player.getRespawnPosition()).getValue(RespawnObeliskBlock.ENABLED)
 				&& event.getNewSpawn() != null
 				&& !player.level().getBlockState(event.getNewSpawn()).is(RESPAWN_OBELISK.block().get())) {
-			RespawnObeliskBlock.trySaveOldSpawn(player);
-			player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.set_old_respawn"));
+			if (RespawnObeliskBlock.saveOldSpawn(player, event.getNewSpawn(), event.isForced(), 0f, event.getSpawnLevel()))
+				player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.set_old_respawn"));
 			event.setCanceled(true);
 		}
 	}

@@ -258,7 +258,7 @@
 	"block.iguanatweaksexpanded.nether_infused_powered_rail": "Nether Infused Powered Rail",
 
 	"iguanatweaksexpanded.requires_catalyst": "Can't activate. The Obelisk requires at least one catalyst block",
-	"iguanatweaksexpanded.obelisk_disabled": "Respawn Obelisk disabled because there are no catalysts left. Your respawn point has been reset",
+	"iguanatweaksexpanded.obelisk_disabled": "Respawn Obelisk disabled. Your respawn point has been set to your last bed, or reset if you didn't have one",
 	"iguanatweaksexpanded.fail_respawn_obelisk": "You couldn't respawn at the obelisk because it was disabled.",
 	"iguanatweaksexpanded.set_old_respawn": "Your old respawn point has been set.",
 	"block.iguanatweaksexpanded.respawn_obelisk": "Respawn Obelisk",
