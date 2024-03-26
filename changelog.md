@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Keego ore now drops 3-5 keego
 * Reduced experience from grindstones (95% -> 80%)
 * Zombified piglins can now be miners
 * Endermen now attack much slower

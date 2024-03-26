@@ -5,7 +5,17 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "iguanatweaksexpanded:keego"
+                    "name": "iguanatweaksexpanded:keego",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "type": "minecraft:uniform",
+                                "min": 3,
+                                "max": 5
+                            }
+                        }
+                    ]
                 }
             ],
             "conditions": [
