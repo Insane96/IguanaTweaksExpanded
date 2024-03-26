@@ -34,7 +34,6 @@ import java.util.Optional;
 public class Recall extends Feature {
 	public static final RegistryObject<MobEffect> BACK_TO_SPAWN = ITERegistries.MOB_EFFECTS.register("back_to_spawn", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0x6600ff));
 	public static final RegistryObject<Potion> RECALL = ITERegistries.POTION.register("recall", () -> new Potion("recall", new MobEffectInstance(BACK_TO_SPAWN.get(), 300)));
-	public static final RegistryObject<Potion> RECALL_EXTENDED = ITERegistries.POTION.register("recall_extended", () -> new Potion("recall_extended", new MobEffectInstance(BACK_TO_SPAWN.get(), 100)));
 	//public static final RegistryObject<Item> ITEM = ITERegistries.ITEMS.register("recall_idol", () -> new RecallIdolItem(new Item.Properties().stacksTo(8)));
 
 	public Recall(Module module, boolean enabledByDefault, boolean canBeDisabled) {
@@ -43,7 +42,6 @@ public class Recall extends Feature {
 
 	public static void onLoadComplete() {
 		PotionBrewing.addMix(Potions.REGENERATION, Items.WITHER_ROSE, RECALL.get());
-		PotionBrewing.addMix(Potions.STRONG_REGENERATION, Items.WITHER_ROSE, RECALL_EXTENDED.get());
 	}
 
 	@SubscribeEvent

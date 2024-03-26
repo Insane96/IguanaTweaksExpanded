@@ -4,6 +4,7 @@
 * Respawn obelisks can now be disabled by removing all the catalysts and right-clicking on them
   * Hopefully fixed respawn obelisk not setting the old bed spawn
 * Keego ore now drops 3-5 keego
+* Recall potions can no longer be "extended"
 * Reduced experience from grindstones (95% -> 80%)
 * Zombified piglins can now be miners
 * Endermen now attack much slower
