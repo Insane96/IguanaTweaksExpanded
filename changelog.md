@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.6.8
 * Respawn obelisks can now be disabled by removing all the catalysts and right-clicking on them
   * Hopefully fixed respawn obelisk not setting the old bed spawn
 * Keego ore now drops 3-5 keego
