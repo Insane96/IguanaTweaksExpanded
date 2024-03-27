@@ -47,7 +47,7 @@ import java.util.List;
 import java.util.Map;
 
 @Label(name = "Multi Block Furnaces", description = "Add new multi block furnaces")
-@LoadFeature(module = Modules.Ids.MINING)
+@LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
 public class MultiBlockFurnaces extends Feature {
 	public static final String INVALID_FURNACE_LANG = IguanaTweaksExpanded.MOD_ID + ".invalid_blast_furnace";
 

@@ -18,7 +18,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.RegistryObject;
 
 @Label(name = "Flint Expansion", description = "Add flint tools and shield.")
-@LoadFeature(module = Modules.Ids.ITEMS)
+@LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
 public class FlintExpansion extends Feature {
 
 	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("flint", 33, () -> Items.FLINT, 9, Rarity.COMMON);

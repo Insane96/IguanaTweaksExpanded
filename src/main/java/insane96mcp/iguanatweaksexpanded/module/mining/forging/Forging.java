@@ -30,7 +30,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
 
 @Label(name = "Forging")
-@LoadFeature(module = Modules.Ids.MINING)
+@LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
 public class Forging extends Feature {
 	public static final SimpleBlockWithItem FORGE = SimpleBlockWithItem.register("forge", () -> new ForgeBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
 	public static final RegistryObject<BlockEntityType<ForgeBlockEntity>> FORGE_BLOCK_ENTITY_TYPE = ITERegistries.BLOCK_ENTITY_TYPES.register("forge", () -> BlockEntityType.Builder.of(ForgeBlockEntity::new, FORGE.block().get()).build(null));

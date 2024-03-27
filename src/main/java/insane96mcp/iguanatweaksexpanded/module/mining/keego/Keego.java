@@ -43,7 +43,7 @@ import java.util.EnumMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Label(name = "Keego", description = "Add a new Netherite alternative which makes you go fast")
-@LoadFeature(module = Modules.Ids.MINING)
+@LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
 public class Keego extends Feature {
 
 	public static final TagKey<Item> KEEGO_TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/tools/keego"));

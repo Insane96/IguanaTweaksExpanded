@@ -25,7 +25,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.UUID;
 
 @Label(name = "Crate", description = "A new block that can let you carry more stuff around.")
-@LoadFeature(module = Modules.Ids.ITEMS)
+@LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
 public class Crate extends Feature {
 
 	public static final UUID CRATE_WEIGHT_UUID = UUID.fromString("4ce89c45-a011-43fa-b9a8-7f2bd0ea2fc3");
@@ -49,8 +49,7 @@ public class Crate extends Feature {
 
 	@SubscribeEvent
 	public void onPlayerTick(TickEvent.PlayerTickEvent event) {
-		if (!this.isEnabled()
-				|| slownessPerCrate == 0d
+		if (slownessPerCrate == 0d
 				|| event.phase == TickEvent.Phase.START)
 			return;
 

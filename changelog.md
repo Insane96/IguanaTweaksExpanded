@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Some features can no longer be disabled (as had no effect)
+
 ## 1.6.8
 * Respawn obelisks can now be disabled by removing all the catalysts and right-clicking on them
   * Hopefully fixed respawn obelisk not setting the old bed spawn

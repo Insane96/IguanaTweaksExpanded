@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.RegistryObject;
 
 @Label(name = "Mining Charge", description = "Adds mining charge")
-@LoadFeature(module = Modules.Ids.MINING)
+@LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
 public class MiningCharge extends Feature {
 
 	public static final SimpleBlockWithItem MINING_CHARGE = SimpleBlockWithItem.register("mining_charge", () -> new MiningChargeBlock(BlockBehaviour.Properties.copy(Blocks.TNT)));

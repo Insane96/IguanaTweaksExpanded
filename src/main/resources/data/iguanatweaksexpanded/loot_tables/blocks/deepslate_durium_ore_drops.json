@@ -24,10 +24,6 @@
                             "formula": "minecraft:ore_drops"
                         }
                     ]
-                },
-                {
-                    "type": "minecraft:item",
-                    "name": "minecraft:cobbled_deepslate"
                 }
             ]
         }

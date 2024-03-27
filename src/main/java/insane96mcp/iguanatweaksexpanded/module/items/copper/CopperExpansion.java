@@ -54,7 +54,7 @@ import java.util.EnumMap;
 import java.util.List;
 
 @Label(name = "Copper Tools/Armor Expansion", description = "Two new set of tools and a new Armor Set. Disabling this will prevent copper tools from being faster and more durable the deeper are used and will prevent the electrocution effect of coated copper items")
-@LoadFeature(module = Modules.Ids.ITEMS)
+@LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
 public class CopperExpansion extends Feature {
 	public static final TagKey<Item> COPPER_TOOLS_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/tools/copper"));
 	public static final TagKey<Item> COATED_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/coated_copper"));

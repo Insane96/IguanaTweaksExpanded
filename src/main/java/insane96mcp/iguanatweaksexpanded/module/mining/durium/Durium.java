@@ -33,7 +33,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.EnumMap;
 
 @Label(name = "Durium", description = "Add Durium, a new metal made by alloying Durium Scrap (found as scrap pieces in ores in the Overworld) and can be used to upgrade Iron Equipment")
-@LoadFeature(module = Modules.Ids.MINING)
+@LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
 public class
 Durium extends Feature {
 

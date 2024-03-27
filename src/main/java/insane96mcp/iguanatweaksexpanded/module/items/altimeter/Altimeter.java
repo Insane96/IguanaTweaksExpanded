@@ -16,7 +16,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 @Label(name = "Altimeter", description = "Check your altitude")
-@LoadFeature(module = Modules.Ids.ITEMS)
+@LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
 public class Altimeter extends Feature {
 	public static final RegistryObject<Item> ITEM = ITERegistries.ITEMS.register("altimeter", () -> new AltimeterItem(new Item.Properties()));
 
