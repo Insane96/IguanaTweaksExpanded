@@ -308,7 +308,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Durium.INGOT.get(), 2, Items.STONE_SWORD, Durium.SWORD.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 2, Items.STONE_HOE, Durium.HOE.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 1, Items.STONE_SHOVEL, Durium.SHOVEL.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 2, ItemTags.STONE_TOOL_MATERIALS, Durium.SHEARS.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 2, Items.SHEARS, Durium.SHEARS.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 4, SPItems.STONE_SHIELD.get(), Durium.SHIELD.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 5, CopperExpansion.HELMET.get(), Durium.HELMET.get(), 10);
         forgeRecipe(writer, Durium.INGOT.get(), 8, CopperExpansion.CHESTPLATE.get(), Durium.CHESTPLATE.get(), 14);

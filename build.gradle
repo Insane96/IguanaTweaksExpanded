@@ -42,6 +42,9 @@ minecraft {
         }
 
         client {
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             workingDirectory project.file('run')
             property 'forge.enabledGameTestNamespaces', mod_id
             property 'mixin.debug.export', 'true'
@@ -92,6 +95,10 @@ repositories {
             includeGroup "com.github.Virtuoel"
         }
     }
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
     maven { url 'https://maven.blamejared.com' }
 }
 
@@ -104,7 +111,10 @@ dependencies {
     implementation fg.deobf("blank:Shields+:${shields_plus_version}-mc${mc_version}")
     implementation fg.deobf("blank:EnhancedAI:${enhancedai_version}-mc${mc_version}")
 
-    runtimeOnly fg.deobf("curse.maven:selene-499980:4728637")
+    compileOnly fg.deobf("dev.emi:emi-forge:${emi_version}:api")
+    runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
+
+    runtimeOnly fg.deobf("curse.maven:selene-499980:5201144")
     runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:5051316")
     runtimeOnly fg.deobf("curse.maven:better-advancements-272515:4631253")
 
@@ -121,6 +131,7 @@ dependencies {
     runtimeOnly fg.deobf("net.darkhax.maxhealthfix:MaxHealthFix-Forge-${mc_version}:${max_health_fix_version}")
 
     implementation fg.deobf("curse.maven:time-control-303570:5095704")
+    implementation fg.deobf("curse.maven:supplementaries-412082:5211386")
 
     //runtimeOnly fg.deobf("curse.maven:corail-woodcutter-331983:4685515")
 

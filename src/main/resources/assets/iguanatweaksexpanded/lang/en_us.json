@@ -191,6 +191,7 @@
 
 	"iguanatweaksexpanded.cant_forge": "Can't forge, no recipe found or output slot occupied",
 	"iguanatweaksexpanded.cant_forge_enchanted": "Can't forge enchanted items",
+	"iguanatweaksexpanded.smashes_required": "Smashes required",
 	"iguanatweaksexpanded.hammer_cooldown": "%fs Forge Cooldown",
 	"iguanatweaksexpanded.hammer_durability": "%f Durability Used",
 	"block.iguanatweaksexpanded.forge": "Forge",
@@ -410,5 +411,7 @@
 	"advancements.sr_nether.keego.title": "Stuck in Bedrock",
 	"advancements.sr_nether.keego.description": "Maybe a blast can pop it out of there",
 	"advancements.sr_nether.keego_equipment.title": "Momentum",
-	"advancements.sr_nether.keego_equipment.description": "Obtain Keego Equipment"
+	"advancements.sr_nether.keego_equipment.description": "Obtain Keego Equipment",
+
+	"emi.category.iguanatweaksexpanded.forge": "Forging"
 }
