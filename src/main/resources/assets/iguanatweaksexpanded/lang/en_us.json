@@ -413,5 +413,8 @@
 	"advancements.sr_nether.keego_equipment.title": "Momentum",
 	"advancements.sr_nether.keego_equipment.description": "Obtain Keego Equipment",
 
-	"emi.category.iguanatweaksexpanded.forge": "Forging"
+	"emi.category.iguanatweaksexpanded.forge": "Forging",
+	"emi.info.iguanatweaksexpanded.grindstone": "Can be used to disenchant items and get back %s%% experience",
+	"emi.info.grindstone": "Can be used to disenchant items and get back %s%% experience",
+	"emi.info.charcoal": "Can be obtained by burning logs"
 }

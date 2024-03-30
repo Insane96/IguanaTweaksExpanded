@@ -65,7 +65,7 @@ public class EmiForgeRecipe implements EmiRecipe {
 		widgets.addSlot(this.gear, 2, 38);
 		widgets.addSlot(this.output, 62, 20).recipeContext(this);
 		widgets.addText(Component.literal("" + this.smashesRequired), 32, 11, 0xFFFFFF, true);
-		widgets.addTooltipText(List.of(Component.translatable(IguanaTweaksExpanded.MOD_ID + ".smash_required")), 30, 9, 18, 11);
+		widgets.addTooltipText(List.of(Component.translatable(IguanaTweaksExpanded.MOD_ID + ".smashes_required")), 30, 9, 18, 11);
 		widgets.addTexture(ForgeScreen.TEXTURE, 0, 0, 86, 58, 53, 14);
 	}
 }
