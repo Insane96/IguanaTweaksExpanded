@@ -56,7 +56,7 @@ public class ITEEmiPlugin implements EmiPlugin {
 					.rightInput(EmiIngredient.of(fire), false, slotWidget -> slotWidget.appendTooltip(Component.literal("Basically fire").withStyle(ChatFormatting.GREEN)))
 					.output(EmiStack.of(CoalCharcoal.CHARCOAL_LAYER.item().get())).build());
 		}
-		registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.ANVIL_REPAIRING);
+		//registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.ANVIL_REPAIRING);
 		if (Feature.isEnabled(EnchantingFeature.class)) {
 			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.GRINDING);
 			String key = EnchantingFeature.betterGrindstoneXp ? "emi.info.iguanatweaksexpanded.grindstone" : "emi.info.grindstone";
