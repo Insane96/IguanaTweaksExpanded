@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Some features can no longer be disabled (as had no effect)
+* Added a starting season config option
 
 ## 1.6.8
 * Respawn obelisks can now be disabled by removing all the catalysts and right-clicking on them

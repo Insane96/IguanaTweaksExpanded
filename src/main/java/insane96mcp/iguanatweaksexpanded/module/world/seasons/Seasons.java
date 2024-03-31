@@ -78,9 +78,13 @@ public class Seasons extends Feature {
 			Makes the following changes to Serene Seasons config:
 			Makes the following changes to Serene Seasons config:
 			* seasonal_crops is set to false, as it's controlled by Plants Growth
-			* Sets the starting season to mid summer
+			* Sets the starting season to the one in 'Starting season'
 			""")
 	public static Boolean changeSereneSeasonsConfig = true;
+
+	@Config
+	@Label(name = "Starting season", description = "Has no effect if 'Serene Seasons changes' is disabled")
+	public static Season.SubSeason startingSeason = Season.SubSeason.EARLY_SUMMER;
 
 	@Config(min = 0, max = 3d)
 	@Label(name = "Time Control day night shift", description = "How many minutes will day and night duration be shifted based off seasons? E.g. in Mid spring / autumn the duration of day and night is vanilla, when moving off those seasons day and night will last this many minutes more/less. In mid summer / winter the duration of day and night duration will be more / less by 3 times this value.")
@@ -120,7 +124,7 @@ public class Seasons extends Feature {
 	@SubscribeEvent
 	public void onServerStart(ServerStartedEvent event) {
 		if (changeSereneSeasonsConfig) {
-			ServerConfig.startingSubSeason.set(4);
+			ServerConfig.startingSubSeason.set(startingSeason.ordinal());
 			ServerConfig.progressSeasonWhileOffline.set(false);
 		}
 	}
