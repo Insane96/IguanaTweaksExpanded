@@ -1,6 +1,12 @@
 # Changelog
 
 ## Upcoming
+* Blast furnaces
+  * Smelting ore blocks now takes less time
+  * Added missing ore blocks from smelting.  
+    The amount of output depends on the ore, so e.g. Lapis ores give 14 lapis (Also copper ore output has been increased)  
+    Also some might be better than using fortune
+  * Fixed a glitch where you could double the output from Blast furnaces just by using <REDACTED>
 * Some features can no longer be disabled (as had no effect)
 * Added a starting season config option
 

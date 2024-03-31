@@ -1,7 +1,7 @@
 {
   "type": "iguanatweaksexpanded:multi_item_soul_blasting",
   "category": "soul_blast_furnace_misc",
-  "cookingtime": 400,
+  "cookingtime": 200,
   "experience": 1.0,
   "group": "iron_ingot",
   "ingredients": [
