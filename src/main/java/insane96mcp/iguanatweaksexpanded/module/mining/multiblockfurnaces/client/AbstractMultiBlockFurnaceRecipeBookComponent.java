@@ -36,7 +36,7 @@ public abstract class AbstractMultiBlockFurnaceRecipeBookComponent extends Recip
     }
 
     public void setupGhostRecipe(Recipe<?> pRecipe, List<Slot> pSlots) {
-        ItemStack resultStack = pRecipe.getResultItem(this.minecraft.level.registryAccess());
+        ItemStack resultStack = pRecipe.getResultItem(this.minecraft.level.registryAccess()).copy();
         this.ghostRecipeAmount.setRecipe(pRecipe);
         this.ghostRecipe.setRecipe(pRecipe);
         this.ghostRecipeAmount.addIngredient(Ingredient.of(resultStack), ((AbstractMultiItemSmeltingRecipe)pRecipe).getResultAmount(this.minecraft.level.registryAccess()), (pSlots.get(AbstractMultiBlockFurnaceMenu.RESULT_SLOT)).x, (pSlots.get(AbstractMultiBlockFurnaceMenu.RESULT_SLOT)).y);
