@@ -8,6 +8,8 @@
     Also some might be better than using fortune
   * Fixed a glitch where you could double the output from Blast furnaces just by using <REDACTED>
 * Some features can no longer be disabled (as had no effect)
+* Keego
+  * Movement Momentum now stacks faster the more pieces you have instead of having a cap on the effect level
 * Added a starting season config option
 
 ## 1.6.8

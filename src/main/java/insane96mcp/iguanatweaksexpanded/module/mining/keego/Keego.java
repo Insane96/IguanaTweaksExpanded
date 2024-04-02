@@ -122,20 +122,20 @@ public class Keego extends Feature {
 				|| event.phase == TickEvent.Phase.END)
 			return;
 
-		AtomicInteger maxAmplifier = new AtomicInteger(0);
+		AtomicInteger pieces = new AtomicInteger(0);
 		event.player.getInventory().armor.forEach(stack -> {
 			if (stack.is(KEEGO_ARMOR_EQUIPMENT))
-				maxAmplifier.addAndGet(2);
+				pieces.addAndGet(1);
 		});
-		if (maxAmplifier.get() == 0)
+		if (pieces.get() == 0)
 			return;
-		if (event.player.walkDist % 8 < event.player.walkDistO % 8) {
+		if (event.player.walkDist % (8 - pieces.get()) < event.player.walkDistO % (8 - pieces.get())) {
 			int amplifier = 0;
 			if (event.player.hasEffect(MOVEMENT_MOMENTUM.get()))
 				//noinspection DataFlowIssue
 				amplifier = event.player.getEffect(MOVEMENT_MOMENTUM.get()).getAmplifier() + 1;
 
-			event.player.addEffect(new MobEffectInstance(MOVEMENT_MOMENTUM.get(), 100, Math.min(amplifier, maxAmplifier.get() - 1), false, false, true));
+			event.player.addEffect(new MobEffectInstance(MOVEMENT_MOMENTUM.get(), 100, Math.min(amplifier, 7), false, false, true));
 		}
 
 	}
