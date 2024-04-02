@@ -9,6 +9,11 @@
   * Fixed a glitch where you could double the output from Blast furnaces just by using <REDACTED>
 * Some features can no longer be disabled (as had no effect)
 * Keego
+  * Heavily reduced efficiency and attack speed of keego tools, but increased momentum strength
+    * Efficiency: 6.5 -> 3.5
+    * Attack Speed modifier: -5% -> -20%
+    * Attack Momentum: 5% -> 6% per level
+    * Mining Momentum: 5% -> 10% per level
   * Movement Momentum now stacks faster the more pieces you have instead of having a cap on the effect level
   * Increased movement momentum bonus speed (+5% -> +6% per level)
   * Armor speed penalty has been increased (10% -> 20%)

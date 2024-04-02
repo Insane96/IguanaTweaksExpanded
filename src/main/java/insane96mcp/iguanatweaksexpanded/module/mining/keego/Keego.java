@@ -51,7 +51,7 @@ public class Keego extends Feature {
 	public static final TagKey<Item> KEEGO_ARMOR_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/armor/keego"));
 
 	public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ITERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.06d, AttributeModifier.Operation.MULTIPLY_BASE));
-	public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ITERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.05d, AttributeModifier.Operation.ADDITION));
+	public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ITERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.06d, AttributeModifier.Operation.ADDITION));
 	public static final RegistryObject<MobEffect> MINING_MOMENTUM = ITERegistries.MOB_EFFECTS.register("mining_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false));
 
 	public static final SimpleBlockWithItem ORE = SimpleBlockWithItem.register("keego_ore", () -> new KeegoOreBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK).strength(-1f, 10f), UniformInt.of(10, 15)));
@@ -96,7 +96,7 @@ public class Keego extends Feature {
 
 		//noinspection DataFlowIssue
 		int lvl = event.getEntity().getEffect(MINING_MOMENTUM.get()).getAmplifier() + 1;
-		event.setNewSpeed(event.getNewSpeed() * (1 + lvl * 0.05f));
+		event.setNewSpeed(event.getNewSpeed() * (1 + lvl * 0.10f));
 	}
 
 	@SubscribeEvent
@@ -110,7 +110,7 @@ public class Keego extends Feature {
 			//noinspection DataFlowIssue
 			amplifier = event.getPlayer().getEffect(MINING_MOMENTUM.get()).getAmplifier() + 1;
 
-		int duration = (int) (1f / event.getState().getDestroyProgress(event.getPlayer(), event.getLevel(), event.getPos()) + 5) * 3;
+		int duration = (int) (1f / event.getState().getDestroyProgress(event.getPlayer(), event.getLevel(), event.getPos()) + 5) * 3 + 1;
 		event.getPlayer().addEffect(new MobEffectInstance(MINING_MOMENTUM.get(), Math.max(duration, 15), Math.min(amplifier, 31), false, false, true));
 	}
 
