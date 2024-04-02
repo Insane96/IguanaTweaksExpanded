@@ -93,8 +93,14 @@
 
 	"item.iguanatweaksexpanded.altimeter": "Altimeter",
 
+	"item.minecraft.potion.effect.regen_wither": "Potion of Withering Regeneration",
 	"item.minecraft.potion.effect.recall": "Potion of Recall",
-	"item.minecraft.potion.effect.recall_extended": "Potion of Faster Recall",
+	"item.minecraft.splash_potion.effect.regen_wither": "Splash Potion of Withering Regeneration",
+	"item.minecraft.splash_potion.effect.recall": "Splash Potion of Recall",
+	"item.minecraft.lingering_potion.effect.regen_wither": "Lingering Potion of Withering Regeneration",
+	"item.minecraft.lingering_potion.effect.recall": "Lingering Potion of Recall",
+	"item.minecraft.tipped_arrow.effect.regen_wither": "Arrow of Withering Regeneration",
+	"item.minecraft.tipped_arrow.effect.recall": "Arrow of Recall",
 	"effect.iguanatweaksexpanded.back_to_spawn": "Back to Spawn",
 
 	"item.iguanatweaksexpanded.chained_copper_helmet": "Chained Copper Helmet",

@@ -17,6 +17,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
@@ -33,15 +34,17 @@ import java.util.Optional;
 @LoadFeature(module = Modules.Ids.ITEMS)
 public class Recall extends Feature {
 	public static final RegistryObject<MobEffect> BACK_TO_SPAWN = ITERegistries.MOB_EFFECTS.register("back_to_spawn", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0x6600ff));
+	public static final RegistryObject<Potion> REGEN_WITHER = ITERegistries.POTION.register("regen_wither", () -> new Potion("regen_wither", new MobEffectInstance(MobEffects.REGENERATION, 450), new MobEffectInstance(MobEffects.WITHER, 450)));
 	public static final RegistryObject<Potion> RECALL = ITERegistries.POTION.register("recall", () -> new Potion("recall", new MobEffectInstance(BACK_TO_SPAWN.get(), 300)));
-	//public static final RegistryObject<Item> ITEM = ITERegistries.ITEMS.register("recall_idol", () -> new RecallIdolItem(new Item.Properties().stacksTo(8)));
+	//public static final RegistryObject<Item> ITEM = ITERegistries.ITEMS.register("recall_idol", () -> new RecallIdolItem(new Item.Properties().stacksTo(1)));
 
 	public Recall(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
 
 	public static void onLoadComplete() {
-		PotionBrewing.addMix(Potions.REGENERATION, Items.WITHER_ROSE, RECALL.get());
+		PotionBrewing.addMix(Potions.REGENERATION, Items.WITHER_ROSE, REGEN_WITHER.get());
+		PotionBrewing.addMix(REGEN_WITHER.get(), Items.ECHO_SHARD, RECALL.get());
 	}
 
 	@SubscribeEvent
@@ -67,7 +70,7 @@ public class Recall extends Feature {
 			ScheduledTasks.schedule(new ScheduledTickTask(2) {
 				@Override
 				public void run() {
-					serverLevel.playSound(null, player, SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 4f, 1f);
+					serverLevel.playSound(null, player, SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 0.6f, 1f);
 					//serverLevel.broadcastEntityEvent(entity, (byte)35);
 				}
 			});
