@@ -5,11 +5,13 @@
   * Smelting ore blocks now takes less time
   * Added missing ore blocks from smelting.  
     The amount of output depends on the ore, so e.g. Lapis ores give 14 lapis (Also copper ore output has been increased)  
-    Also some might be better than using fortune
+    Some might also be better than using fortune
   * Fixed a glitch where you could double the output from Blast furnaces just by using <REDACTED>
 * Some features can no longer be disabled (as had no effect)
 * Keego
   * Movement Momentum now stacks faster the more pieces you have instead of having a cap on the effect level
+  * Increased movement momentum bonus speed (+5% -> +6% per level)
+  * Armor speed penalty has been increased (10% -> 20%)
 * Added a starting season config option
 
 ## 1.6.8

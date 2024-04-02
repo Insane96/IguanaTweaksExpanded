@@ -50,7 +50,7 @@ public class Keego extends Feature {
 	public static final TagKey<Item> KEEGO_HAND_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/keego"));
 	public static final TagKey<Item> KEEGO_ARMOR_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/armor/keego"));
 
-	public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ITERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.05d, AttributeModifier.Operation.MULTIPLY_BASE));
+	public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ITERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.06d, AttributeModifier.Operation.MULTIPLY_BASE));
 	public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ITERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.05d, AttributeModifier.Operation.ADDITION));
 	public static final RegistryObject<MobEffect> MINING_MOMENTUM = ITERegistries.MOB_EFFECTS.register("mining_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false));
 
@@ -129,7 +129,7 @@ public class Keego extends Feature {
 		});
 		if (pieces.get() == 0)
 			return;
-		if (event.player.walkDist % (8 - pieces.get()) < event.player.walkDistO % (8 - pieces.get())) {
+		if (event.player.walkDist % (10 - pieces.get() * 2) < event.player.walkDistO % (10 - pieces.get() * 2)) {
 			int amplifier = 0;
 			if (event.player.hasEffect(MOVEMENT_MOMENTUM.get()))
 				//noinspection DataFlowIssue
