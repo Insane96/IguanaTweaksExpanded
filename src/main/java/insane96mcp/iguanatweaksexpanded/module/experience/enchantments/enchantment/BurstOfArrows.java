@@ -41,13 +41,14 @@ public class BurstOfArrows extends Enchantment implements IEnchantmentTooltip {
     }
 
     public static void summonArrows(Arrow arrow) {
-        for (int i = 0; i < 360; i += 45) {
+        for (int i = 0; i < 360; i += 60) {
             Arrow newArrow = new Arrow(arrow.level(), arrow.getX(), arrow.getY(), arrow.getZ());
             newArrow.setOwner(arrow.getOwner());
             newArrow.setPierceLevel(arrow.getPierceLevel());
             newArrow.setBaseDamage(arrow.getBaseDamage());
             newArrow.setKnockback(arrow.getKnockback());
             newArrow.shoot(Math.cos(Math.toRadians(i)), 0.5f, Math.sin(Math.toRadians(i)), 0.7f, 0);
+            newArrow.setBaseDamage(arrow.getBaseDamage() * 0.5f);
             newArrow.getPersistentData().putBoolean(BURST, false);
             arrow.level().addFreshEntity(newArrow);
         }

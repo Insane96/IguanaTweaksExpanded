@@ -17,6 +17,7 @@
   * Movement Momentum now stacks faster the more pieces you have instead of having a cap on the effect level
   * Increased movement momentum bonus speed (+5% -> +6% per level)
   * Armor speed penalty has been increased (10% -> 20%)
+* Reduced burst of arrows number of arrows (8 -> 6)
 * Added a starting season config option
 
 ## 1.6.8
