@@ -19,6 +19,7 @@
 * Recall potion is now made from a Withering Regeneration potion and echo shard
   * Regeneration potion + Wither Rose = Withering Regenerating
   * Withering Regeneration + Echo shard = Recall potion
+* Added allurement integration!
 * Reduced burst of arrows number of arrows (8 -> 6)
 * Some features can no longer be disabled (as had no effect)
 * Added a starting season config option

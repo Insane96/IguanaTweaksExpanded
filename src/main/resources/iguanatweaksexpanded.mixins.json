@@ -3,6 +3,7 @@
     "package": "insane96mcp.iguanatweaksexpanded.mixin",
     "compatibilityLevel": "JAVA_17",
     "refmap": "iguanatweaksexpanded.refmap.json",
+    "plugin": "insane96mcp.iguanatweaksreborn.mixin.plugin.ModLoadedPlugin",
     "mixins": [
         "AbstractMinecartMixin",
         "CrossbowItemMixin",
@@ -12,7 +13,8 @@
         "LivingEntityMixin",
         "ProjectileMixin",
         "RandomUpdateHandlerMixin",
-        "SmithingTransformRecipeMixin"
+        "SmithingTransformRecipeMixin",
+        "integration.allurement.LaunchEnchantmentMixin"
     ],
     "minVersion": "0.8"
 }

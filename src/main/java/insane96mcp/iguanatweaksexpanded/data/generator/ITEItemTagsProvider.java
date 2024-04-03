@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.integration.Allurement;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Padding;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.PartBreaker;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Reach;
@@ -75,6 +76,8 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(CurseOfTheVoid.ACCEPTS_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
+        tag(Allurement.ACCEPTS_LAUNCH_ENCHANTMENT)
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(FORGE_HAMMERS)
                 .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         //ITR
