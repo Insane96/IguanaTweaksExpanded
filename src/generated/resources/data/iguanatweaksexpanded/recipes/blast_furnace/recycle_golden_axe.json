@@ -1,7 +1,7 @@
 {
   "type": "iguanatweaksexpanded:multi_item_blasting",
   "category": "blast_furnace_misc",
-  "cookingtime": 200,
+  "cookingtime": 100,
   "group": "recycle_gold_nugget",
   "ingredients": [
     {

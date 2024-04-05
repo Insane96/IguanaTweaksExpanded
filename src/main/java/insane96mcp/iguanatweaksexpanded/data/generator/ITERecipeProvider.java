@@ -945,7 +945,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         NonNullList.of(Ingredient.EMPTY, Ingredient.of(itemToRecycle)),
                         RecipeCategory.COMBAT,
                         output,
-                        baseCookingTime)
+                        baseCookingTime / 2)
                 .recycle(amountAtMaxDurability, 0.6f)
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
                 .unlockedBy("has_armor", has(itemToRecycle))
@@ -955,7 +955,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         NonNullList.of(Ingredient.EMPTY, Ingredient.of(itemToRecycle)),
                         RecipeCategory.COMBAT,
                         output,
-                        baseCookingTime / 2)
+                        baseCookingTime)
                 .recycle(amountAtMaxDurability)
                 .unlockedBy("has_armor", has(itemToRecycle))
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
