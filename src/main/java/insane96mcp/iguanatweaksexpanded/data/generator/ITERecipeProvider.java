@@ -850,8 +850,8 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f);
         addBlastingRecipe(writer, poorRichOre.richOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f);
         addBlastingRecipe(writer, poorRichOre.richDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f);
-        addSoulBlastingRecipe(writer, poorRichOre.poorOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f);
-        addSoulBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f);
+        addSoulBlastingRecipe(writer, poorRichOre.poorOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f * 0.3f);
+        addSoulBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f * 0.3f);
         addSoulBlastingRecipe(writer, poorRichOre.richOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f * 0.3f);
         addSoulBlastingRecipe(writer, poorRichOre.richDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f * 0.3f);
     }
