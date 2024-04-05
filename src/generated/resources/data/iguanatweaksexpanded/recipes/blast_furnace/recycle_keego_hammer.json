@@ -1,0 +1,16 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_blasting",
+  "category": "blast_furnace_misc",
+  "cookingtime": 200,
+  "group": "recycle_keego",
+  "ingredients": [
+    {
+      "item": "iguanatweaksexpanded:keego_hammer"
+    }
+  ],
+  "recycle": {
+    "amount_at_full_durability": 5,
+    "ratio": 0.6
+  },
+  "result": "iguanatweaksexpanded:keego"
+}

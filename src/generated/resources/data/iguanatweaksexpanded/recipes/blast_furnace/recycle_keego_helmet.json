@@ -9,7 +9,7 @@
     }
   ],
   "recycle": {
-    "amount_at_full_durability": 1,
+    "amount_at_full_durability": 5,
     "ratio": 0.6
   },
   "result": "iguanatweaksexpanded:keego"

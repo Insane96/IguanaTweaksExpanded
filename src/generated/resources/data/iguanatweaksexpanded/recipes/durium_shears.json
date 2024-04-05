@@ -4,7 +4,7 @@
   "category": "forge_misc",
   "experience": 14.0,
   "gear": {
-    "tag": "minecraft:stone_tool_materials"
+    "item": "minecraft:shears"
   },
   "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"

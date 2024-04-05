@@ -21,7 +21,6 @@
   * Movement Momentum now stacks faster the more pieces you have instead of having a cap on the effect level
   * Increased movement momentum bonus speed (+5% -> +6% per level)
   * Armor speed penalty has been increased (10% -> 20%)
-* 
 * Recall potion is now made from a Withering Regeneration potion and echo shard
   * Regeneration II potion + Wither Rose = Withering Regenerating
   * Withering Regeneration + Echo shard = Recall potion
