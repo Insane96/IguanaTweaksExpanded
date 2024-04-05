@@ -60,9 +60,11 @@ public class ITEEmiPlugin implements EmiPlugin {
 		if (Feature.isEnabled(EnchantingFeature.class)) {
 			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.GRINDING);
 			String key = EnchantingFeature.betterGrindstoneXp ? "emi.info.iguanatweaksexpanded.grindstone" : "emi.info.grindstone";
+			String key2 = EnchantingFeature.grindstoneEnchantmentExtraction ? "emi.info.iguanatweaksexpanded.grindstone2" : "";
 			registry.addRecipe(new EmiInfoRecipe(
 					List.of(emiIngredientOf(Items.GRINDSTONE)),
-					List.of(Component.translatable(key, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f))),
+					List.of(Component.translatable(key, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f)),
+							Component.translatable(key2, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f))),
 					new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "info_grindstone")));
 		}
 		registry.removeRecipes(emiRecipe -> emiRecipe.getId() != null && emiRecipe.getId().getPath().startsWith("/crafting/repairing"));

@@ -422,7 +422,8 @@
 	"advancements.sr_nether.recall_potion.description": "Obtain a Recall Potion by mixin a Wither Rose and an Echo Shard into a Regenration II Potion"
 
 	"emi.category.iguanatweaksexpanded.forge": "Forging",
-	"emi.info.iguanatweaksexpanded.grindstone": "Can be used to disenchant items and get back %s%% experience",
-	"emi.info.grindstone": "Can be used to disenchant items and get back %s%% experience",
+	"emi.info.iguanatweaksexpanded.grindstone": "Can be used to disenchant items and get back %s%% experience or can be used to extract curses and treasure enchantments from items with a book",
+	"emi.info.iguanatweaksexpanded.grindstone2": "Can be used to extract curses and treasure enchantments from items with a book",
+	"emi.info.grindstone": "Can be used to disenchant items",
 	"emi.info.charcoal": "Can be obtained by burning logs"
 }
