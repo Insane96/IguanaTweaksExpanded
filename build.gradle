@@ -133,6 +133,9 @@ dependencies {
     implementation fg.deobf("curse.maven:time-control-303570:5095704")
     implementation fg.deobf("curse.maven:supplementaries-412082:5211386")
 
+    implementation fg.deobf("curse.maven:blueprint-382216:5228040")
+    implementation fg.deobf("curse.maven:allurement-438003:5228059")
+
     //runtimeOnly fg.deobf("curse.maven:corail-woodcutter-331983:4685515")
 
     //implementation fg.deobf("curse.maven:puzzles-lib-495476:4660882")

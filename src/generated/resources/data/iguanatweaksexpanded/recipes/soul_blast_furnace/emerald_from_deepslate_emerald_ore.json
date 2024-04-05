@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 400,
+  "experience": 4.0,
+  "group": "emerald",
+  "ingredients": [
+    {
+      "item": "minecraft:deepslate_emerald_ore"
+    }
+  ],
+  "output_increase": 0.3,
+  "result": "minecraft:emerald"
+}

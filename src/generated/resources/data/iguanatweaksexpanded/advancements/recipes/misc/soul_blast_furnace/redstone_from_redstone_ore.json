@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_egg": {
+    "has_redstone_ore": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:egg"
+              "minecraft:redstone_ore"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:over_easy_egg_from_smelting"
+        "recipe": "iguanatweaksexpanded:soul_blast_furnace/redstone_from_redstone_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_egg",
+      "has_redstone_ore",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:over_easy_egg_from_smelting"
+      "iguanatweaksexpanded:soul_blast_furnace/redstone_from_redstone_ore"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

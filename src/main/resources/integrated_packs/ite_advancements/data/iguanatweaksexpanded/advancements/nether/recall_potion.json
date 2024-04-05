@@ -1,0 +1,39 @@
+{
+	"display": {
+		"icon": {
+			"item": "minecraft:potion",
+			"nbt": "{Potion:\"iguanatweaksexpanded:recall\"}"
+		},
+		"title": {
+			"translate": "advancements.sr_nether.recall_potion.title"
+		},
+		"description": {
+			"translate": "advancements.sr_nether.recall_potion.description"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "minecraft:nether/brew_potion",
+	"criteria": {
+		"recall_potion": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:potion"
+						],
+						"nbt": "{Potion:\"iguanatweaksexpanded:recall\"}"
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"recall_potion"
+		]
+	]
+}

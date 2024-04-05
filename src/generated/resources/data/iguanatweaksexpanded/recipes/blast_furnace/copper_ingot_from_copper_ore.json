@@ -1,7 +1,7 @@
 {
   "type": "iguanatweaksexpanded:multi_item_blasting",
   "category": "blast_furnace_misc",
-  "cookingtime": 100,
+  "cookingtime": 50,
   "experience": 0.7,
   "group": "copper_ingot",
   "ingredients": [
@@ -9,6 +9,6 @@
       "item": "minecraft:copper_ore"
     }
   ],
-  "output_increase": 1.0,
+  "output_increase": 6.0,
   "result": "minecraft:copper_ingot"
 }

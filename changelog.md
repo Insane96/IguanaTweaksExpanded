@@ -1,7 +1,36 @@
 # Changelog
 
 ## Upcoming
+* Treasure and Curses enchantments can now be extracted from items with a grindstone
+  * Just place the enchanted item and a book in the Grindstone
+* Blast furnaces
+  * Smelting ore blocks now takes less time
+  * Added missing ore blocks from smelting.  
+    The amount of output depends on the ore, so e.g. Lapis ores give 14 lapis (Also copper ore output has been increased)  
+    Some might also be better than using fortune
+  * Fixed a glitch where you could double the output from Blast furnaces just by using <REDACTED>
+* Respawn Obelisk
+  * Applies Regeneration, Absorption and Speed to players respawning on it
+  * Now accepts precious blocks even 3 and 2 blocks away
+* Keego
+  * Heavily reduced efficiency and attack speed of keego tools, but increased momentum strength
+    * Efficiency: 6.5 -> 3.5
+    * Attack Speed modifier: -5% -> -20%
+    * Attack Momentum: 5% -> 6% per level
+    * Mining Momentum: 5% -> 10% per level
+  * Movement Momentum now stacks faster the more pieces you have instead of having a cap on the effect level
+  * Increased movement momentum bonus speed (+5% -> +6% per level)
+  * Armor speed penalty has been increased (10% -> 20%)
+* 
+* Recall potion is now made from a Withering Regeneration potion and echo shard
+  * Regeneration II potion + Wither Rose = Withering Regenerating
+  * Withering Regeneration + Echo shard = Recall potion
+* Added allurement integration!
+  * Launch enchantment now works on any weapon
+* Over easy egg recipe no longer loads if Abnormals' Incubation is present
+* Reduced burst of arrows number of arrows (8 -> 6)
 * Some features can no longer be disabled (as had no effect)
+* Added a starting season config option
 
 ## 1.6.8
 * Respawn obelisks can now be disabled by removing all the catalysts and right-clicking on them

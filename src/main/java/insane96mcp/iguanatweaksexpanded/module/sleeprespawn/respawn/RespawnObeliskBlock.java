@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.data.criterion.ITETriggers;
 import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
+import insane96mcp.iguanatweaksreborn.data.ITRMobEffectInstance;
 import insane96mcp.iguanatweaksreborn.utils.MCUtils;
 import insane96mcp.insanelib.data.IdTagValue;
 import net.minecraft.core.BlockPos;
@@ -44,6 +45,14 @@ public class RespawnObeliskBlock extends Block {
     public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
 
     private static final ImmutableList<Vec3i> CATALYST_RELATIVE_POSITIONS = ImmutableList.of(
+            new Vec3i(-2, 0, 0),
+            new Vec3i(2, 0, 0),
+            new Vec3i(0, 0, -2),
+            new Vec3i(0, 0, 2),
+            new Vec3i(-3, 0, 0),
+            new Vec3i(3, 0, 0),
+            new Vec3i(0, 0, -3),
+            new Vec3i(0, 0, 3),
             new Vec3i(-4, 0, 0),
             new Vec3i(4, 0, 0),
             new Vec3i(0, 0, -4),
@@ -131,6 +140,9 @@ public class RespawnObeliskBlock extends Block {
             }
             //Try to break only one block
             break;
+        }
+        for (ITRMobEffectInstance itrMobEffectInstance : RespawnObeliskFeature.respawnObeliskEffects) {
+            player.addEffect(itrMobEffectInstance.getMobEffectInstance());
         }
         if (!hasCatalysts(level, respawnPos))
             disable(player, level, respawnPos, level.getBlockState(respawnPos), true);

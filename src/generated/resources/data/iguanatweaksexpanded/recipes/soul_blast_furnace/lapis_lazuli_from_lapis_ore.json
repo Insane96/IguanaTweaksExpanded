@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "lapis_lazuli",
+  "ingredients": [
+    {
+      "item": "minecraft:lapis_ore"
+    }
+  ],
+  "output_increase": 4.3,
+  "result": "minecraft:lapis_lazuli"
+}

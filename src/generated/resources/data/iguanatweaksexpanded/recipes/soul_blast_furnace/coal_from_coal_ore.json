@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "coal",
+  "ingredients": [
+    {
+      "item": "minecraft:coal_ore"
+    }
+  ],
+  "output_increase": 0.3,
+  "result": "minecraft:coal"
+}

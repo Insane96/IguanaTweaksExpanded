@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_egg": {
+    "has_diamond_ore": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:egg"
+              "minecraft:diamond_ore"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:over_easy_egg_from_smoking"
+        "recipe": "iguanatweaksexpanded:blast_furnace/diamond_from_diamond_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_egg",
+      "has_diamond_ore",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:over_easy_egg_from_smoking"
+      "iguanatweaksexpanded:blast_furnace/diamond_from_diamond_ore"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

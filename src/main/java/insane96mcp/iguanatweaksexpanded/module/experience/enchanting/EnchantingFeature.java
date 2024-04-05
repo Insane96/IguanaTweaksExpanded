@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
+import com.teamabnormals.allurement.core.AllurementConfig;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
@@ -32,11 +33,13 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -71,6 +74,16 @@ public class EnchantingFeature extends JsonFeature {
     @Config
     @Label(name = "Better grindstone xp", description = "If true, grindstone will give XP based off the new enchanting table. This is based off the ITR levelScalingFormula set to a fixed value")
     public static Boolean betterGrindstoneXp = true;
+    @Config
+    @Label(name = "Grindstone trasure enchantment extraction", description = "If true, grindstone will be able to extract treasure enchantments (and curses) from items onto books.")
+    public static Boolean grindstoneEnchantmentExtraction = true;
+    @Config
+    @Label(name = "Allurement integration", description = """
+            If true, some mixins are used on Allurement to make the enchantments work on more things and configs are changed to not overlap with ITE.
+            Requires Minecraft Restart.
+            PLEASE NOTE that due to config limitation, some things cannot be disabled, so better use item tags. E.g. Launch enchantment uses a new iguanatweaksexpanded:enchanting/allurement/accepts_launch_enchantments item tag to decide which item accepts the enchantment.
+            """)
+    public static Boolean allurementIntegration = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ANCIENT_LAPIS = ITERegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));
@@ -92,7 +105,10 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId("minecraft:vanishing_curse", 2f),
             IdTagValue.newId("shieldsplus:aegis", 2f),
             IdTagValue.newId("shieldsplus:reinforced", 2f),
-            IdTagValue.newId("shieldsplus:shield_bash", 4f)
+            IdTagValue.newId("shieldsplus:shield_bash", 4f),
+            IdTagValue.newId("allurement:alleviating", 5f),
+            IdTagValue.newId("allurement:reforming", 5f),
+            IdTagValue.newId("allurement:launch", 3.2f)
     );
     public static final ArrayList<IdTagValue> enchantmentBaseCost = new ArrayList<>();
 
@@ -111,6 +127,15 @@ public class EnchantingFeature extends JsonFeature {
     @Override
     public void loadJsonConfigs() {
         super.loadJsonConfigs();
+        if (this.isEnabled() && allurementIntegration) {
+            AllurementConfig.COMMON.cheapItemRenaming.set(false);
+            AllurementConfig.COMMON.removeTooExpensive.set(false);
+            AllurementConfig.COMMON.anvilIngotRepairing.set(false);
+            AllurementConfig.COMMON.capAnvilCosts.set(false);
+            AllurementConfig.COMMON.enchantableHorseArmor.set(false);
+            AllurementConfig.COMMON.enchantedHorseArmorGenerates.set(false);
+            AllurementConfig.COMMON.enableVengeance.set(false);
+        }
         /*for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
             if (EnchantmentsFeature.isEnchantmentDisabled(enchantment))
                 continue;
@@ -173,7 +198,8 @@ public class EnchantingFeature extends JsonFeature {
     @SubscribeEvent
     public void onGrindstoneTake(GrindstoneEvent.OnTakeItem event) {
         if (!this.isEnabled()
-                || !betterGrindstoneXp)
+                || !betterGrindstoneXp
+                || (grindstoneEnchantmentExtraction && event.getTopItem().isEnchanted() && event.getBottomItem().is(Items.BOOK)))
             return;
 
         float lvl = 0;
@@ -194,6 +220,24 @@ public class EnchantingFeature extends JsonFeature {
 
     public static float getGrindstonePercentageXpGiven() {
         return 0.8f;
+    }
+
+    @SubscribeEvent
+    public void onGrindstoneUpdate(GrindstoneEvent.OnPlaceItem event) {
+        if (!this.isEnabled()
+                || !grindstoneEnchantmentExtraction
+                || !event.getTopItem().isEnchanted()
+                || !event.getBottomItem().is(Items.BOOK))
+            return;
+
+        ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
+        for (Map.Entry<Enchantment, Integer> enchantmentInstance : EnchantmentHelper.getEnchantments(event.getTopItem()).entrySet()) {
+            if (!enchantmentInstance.getKey().isTreasureOnly())
+                continue;
+            EnchantedBookItem.addEnchantment(output, new EnchantmentInstance(enchantmentInstance.getKey(), enchantmentInstance.getValue()));
+        }
+        event.setOutput(output);
+        event.setXp(0);
     }
 
     public static int getCost(Enchantment enchantment, int lvl) {

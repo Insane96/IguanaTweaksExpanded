@@ -120,7 +120,7 @@ public abstract class AbstractMultiItemSmeltingRecipe implements Recipe<Containe
         if (this.recycle != null)
             return (int) (this.recycle.amountAtFullDurability * this.recycle.ratio);
         else if (this.outputIncrease > 0f)
-            return MathHelper.getAmountWithDecimalChance(RANDOM, this.outputIncrease);
+            return (int) (this.outputIncrease + 1);
         return 1;
     }
 
