@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Increased durium scrap from smelting ore
+
 ## 1.7.1
 * Fixed starting season config setting the previous subseason
 * Fixed wrong enchantability on some materials
