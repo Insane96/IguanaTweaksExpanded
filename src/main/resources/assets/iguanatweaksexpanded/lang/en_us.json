@@ -347,7 +347,7 @@
 	"advancements.sr_story.activate_respawn_obelisk.description": "Activate a Respawn Obelisk by placing at least a precious block at the same height and set the respawn point.",
 	"advancements.sr_story.crate.title": "This is heavy",
 	"advancements.sr_story.crate.description": "Get a movement speed penalty by transporting more than one Portable Crate.",
-	"advancements.sr_story.bucket.title": "Moses one block at time",
+	"advancements.sr_story.bucket.title": "How is water infinite?",
 	"advancements.sr_story.bucket.description": "Obtain an Iron Bucket in a Forge.",
 	"advancements.sr_story.golden_armor.title": "Lightweight",
 	"advancements.sr_story.golden_armor.description": "Obtain Golden armor. When worn might benefit your speed.",
@@ -416,5 +416,7 @@
 	"advancements.sr_nether.keego.title": "Stuck in Bedrock",
 	"advancements.sr_nether.keego.description": "Maybe a blast can pop it out of there",
 	"advancements.sr_nether.keego_equipment.title": "Momentum",
-	"advancements.sr_nether.keego_equipment.description": "Obtain Keego Equipment"
+	"advancements.sr_nether.keego_equipment.description": "Obtain Keego Equipment",
+	"advancements.sr_nether.recall_potion.title": "Dying without dying",
+	"advancements.sr_nether.recall_potion.description": "Obtain a Recall Potion"
 }
