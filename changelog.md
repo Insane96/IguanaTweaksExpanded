@@ -8,6 +8,7 @@
   * Added missing ore blocks from smelting.  
     The amount of output depends on the ore, so e.g. Lapis ores give 14 lapis (Also copper ore output has been increased)  
     Some might also be better than using fortune
+  * Recycling is now faster in Blast Furnaces instead of Soul
   * Fixed a glitch where you could double the output from Blast furnaces just by using <REDACTED>
 * Respawn Obelisk
   * Applies Regeneration, Absorption and Speed to players respawning on it
@@ -21,6 +22,8 @@
   * Movement Momentum now stacks faster the more pieces you have instead of having a cap on the effect level
   * Increased movement momentum bonus speed (+5% -> +6% per level)
   * Armor speed penalty has been increased (10% -> 20%)
+* Emi support!
+  * Forging, Blasting and Soul Blasting
 * Recall potion is now made from a Withering Regeneration potion and echo shard
   * Regeneration II potion + Wither Rose = Withering Regenerating
   * Withering Regeneration + Echo shard = Recall potion

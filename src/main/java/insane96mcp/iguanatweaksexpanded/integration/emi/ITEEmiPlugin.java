@@ -13,6 +13,8 @@ import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
+import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
+import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.base.Feature;
@@ -33,14 +35,34 @@ public class ITEEmiPlugin implements EmiPlugin {
 	public static final EmiStack FORGE_WORKSTATION = EmiStack.of(Forging.FORGE.item().get());
 	public static final EmiRecipeCategory FORGE_RECIPE_CATEGORY = new EmiRecipeCategory(FORGE_CATEGORY_ID, FORGE_WORKSTATION);
 
+	public static final ResourceLocation BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "blast_furnace");
+	public static final EmiStack BLAST_FURNACE_WORKSTATION = EmiStack.of(MultiBlockFurnaces.BLAST_FURNACE.item().get());
+	public static final EmiRecipeCategory BLAST_FURNACE_CATEGORY = new EmiRecipeCategory(BLAST_FURNACE_CATEGORY_ID, BLAST_FURNACE_WORKSTATION);
+
+	public static final ResourceLocation SOUL_BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "soul_blast_furnace");
+	public static final EmiStack SOUL_BLAST_FURNACE_WORKSTATION = EmiStack.of(MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
+	public static final EmiRecipeCategory SOUL_BLAST_FURNACE_CATEGORY = new EmiRecipeCategory(SOUL_BLAST_FURNACE_CATEGORY_ID, SOUL_BLAST_FURNACE_WORKSTATION);
+
 	@Override
 	public void register(EmiRegistry registry) {
-		registry.addCategory(FORGE_RECIPE_CATEGORY);
-
-		registry.addWorkstation(FORGE_RECIPE_CATEGORY, FORGE_WORKSTATION);
 		RecipeManager manager = registry.getRecipeManager();
+
+		registry.addCategory(FORGE_RECIPE_CATEGORY);
+		registry.addWorkstation(FORGE_RECIPE_CATEGORY, FORGE_WORKSTATION);
 		for (ForgeRecipe forgeRecipe : manager.getAllRecipesFor(Forging.FORGE_RECIPE_TYPE.get())) {
 			registry.addRecipe(new EmiForgeRecipe(forgeRecipe));
+		}
+
+		registry.addCategory(BLAST_FURNACE_CATEGORY);
+		registry.addWorkstation(BLAST_FURNACE_CATEGORY, BLAST_FURNACE_WORKSTATION);
+		for (AbstractMultiItemSmeltingRecipe multiItemSmeltingRecipe : manager.getAllRecipesFor(MultiBlockFurnaces.BLASTING_RECIPE_TYPE.get())) {
+			registry.addRecipe(new EmiBlastFurnaceRecipe(multiItemSmeltingRecipe));
+		}
+
+		registry.addCategory(SOUL_BLAST_FURNACE_CATEGORY);
+		registry.addWorkstation(SOUL_BLAST_FURNACE_CATEGORY, SOUL_BLAST_FURNACE_WORKSTATION);
+		for (AbstractMultiItemSmeltingRecipe multiItemSmeltingRecipe : manager.getAllRecipesFor(MultiBlockFurnaces.SOUL_BLASTING_RECIPE_TYPE.get())) {
+			registry.addRecipe(new EmiSoulBlastFurnaceRecipe(multiItemSmeltingRecipe));
 		}
 
 		if (Feature.isEnabled(CoalCharcoal.class) && CoalCharcoal.charcoalFromBurntLogsChance > 0) {
@@ -67,7 +89,10 @@ public class ITEEmiPlugin implements EmiPlugin {
 							Component.translatable(key2, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f))),
 					new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "info_grindstone")));
 		}
-		registry.removeRecipes(emiRecipe -> emiRecipe.getId() != null && emiRecipe.getId().getPath().startsWith("/crafting/repairing"));
+		if (Feature.isEnabled(MultiBlockFurnaces.class)) {
+			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);
+			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.BLAST_FURNACE));
+		}
 	}
 
 	public static EmiIngredient emiIngredientOf(Item item) {

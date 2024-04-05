@@ -124,6 +124,10 @@ public abstract class AbstractMultiItemSmeltingRecipe implements Recipe<Containe
         return 1;
     }
 
+    public ItemStack getResult() {
+        return this.result;
+    }
+
     @Override
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> nonnulllist = NonNullList.create();
