@@ -23,7 +23,8 @@
   * Increased movement momentum bonus speed (+5% -> +6% per level)
   * Armor speed penalty has been increased (10% -> 20%)
 * Emi support!
-  * Forging, Blasting and Soul Blasting
+  * Forging, Blasting and Soul Blasting, Fletching
+  * A few minor things like some infos on some items
 * Recall potion is now made from a Withering Regeneration potion and echo shard
   * Regeneration II potion + Wither Rose = Withering Regenerating
   * Withering Regeneration + Echo shard = Recall potion

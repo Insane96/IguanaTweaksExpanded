@@ -102,6 +102,10 @@ public class FletchingRecipe implements Recipe<Container> {
         return 0;
     }
 
+    public ItemStack getResult() {
+        return this.result;
+    }
+
     @Override
     public RecipeSerializer<?> getSerializer() {
         return Fletching.FLETCHING_RECIPE_SERIALIZER.get();

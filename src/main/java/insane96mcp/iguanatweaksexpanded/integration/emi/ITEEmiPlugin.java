@@ -10,7 +10,10 @@ import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
+import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
@@ -34,6 +37,10 @@ public class ITEEmiPlugin implements EmiPlugin {
 	public static final ResourceLocation FORGE_CATEGORY_ID = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "forging");
 	public static final EmiStack FORGE_WORKSTATION = EmiStack.of(Forging.FORGE.item().get());
 	public static final EmiRecipeCategory FORGE_RECIPE_CATEGORY = new EmiRecipeCategory(FORGE_CATEGORY_ID, FORGE_WORKSTATION);
+
+	public static final ResourceLocation FLETCHING_CATEGORY_ID = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "fletching");
+	public static final EmiStack FLETCHING_WORKSTATION = EmiStack.of(Fletching.FLETCHING_TABLE.item().get());
+	public static final EmiRecipeCategory FLETCHING_RECIPE_CATEGORY = new EmiRecipeCategory(FLETCHING_CATEGORY_ID, FLETCHING_WORKSTATION);
 
 	public static final ResourceLocation BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "blast_furnace");
 	public static final EmiStack BLAST_FURNACE_WORKSTATION = EmiStack.of(MultiBlockFurnaces.BLAST_FURNACE.item().get());
@@ -65,6 +72,12 @@ public class ITEEmiPlugin implements EmiPlugin {
 			registry.addRecipe(new EmiSoulBlastFurnaceRecipe(multiItemSmeltingRecipe));
 		}
 
+		registry.addCategory(FLETCHING_RECIPE_CATEGORY);
+		registry.addWorkstation(FLETCHING_RECIPE_CATEGORY, FLETCHING_WORKSTATION);
+		for (FletchingRecipe fletchingRecipe : manager.getAllRecipesFor(Fletching.FLETCHING_RECIPE_TYPE.get())) {
+			registry.addRecipe(new EmiFletchingRecipe(fletchingRecipe));
+		}
+
 		if (Feature.isEnabled(CoalCharcoal.class) && CoalCharcoal.charcoalFromBurntLogsChance > 0) {
 			Ingredient fire = Ingredient.of(CoalCharcoal.FIRESTARTER.get(), Items.FLINT_AND_STEEL);
 			registry.addRecipe(EmiWorldInteractionRecipe.builder()
@@ -93,6 +106,14 @@ public class ITEEmiPlugin implements EmiPlugin {
 			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);
 			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.BLAST_FURNACE));
 		}
+		if (Feature.isEnabled(Fletching.class)) {
+			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.FLETCHING_TABLE));
+		}
+		registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), "info_altimeter", Component.translatable("emi.info.iguanatweaksexpanded.altimeter")));
+	}
+
+	public EmiInfoRecipe createSimpleInfo(Item item, String id, Component component) {
+		return new EmiInfoRecipe(List.of(emiIngredientOf(item)), List.of(component), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, id));
 	}
 
 	public static EmiIngredient emiIngredientOf(Item item) {
