@@ -1,6 +1,9 @@
 # Changelog
 
-## Upcoming
+## 1.7.0 - The "The recipe book sucks" update
+* Emi support!
+  * Forging, Blasting and Soul Blasting, Fletching
+  * A few minor things like some infos on some items
 * Treasure and Curses enchantments can now be extracted from items with a grindstone
   * Just place the enchanted item and a book in the Grindstone
 * Blast furnaces
@@ -22,9 +25,6 @@
   * Movement Momentum now stacks faster the more pieces you have instead of having a cap on the effect level
   * Increased movement momentum bonus speed (+5% -> +6% per level)
   * Armor speed penalty has been increased (10% -> 20%)
-* Emi support!
-  * Forging, Blasting and Soul Blasting, Fletching
-  * A few minor things like some infos on some items
 * Recall potion is now made from a Withering Regeneration potion and echo shard
   * Regeneration II potion + Wither Rose = Withering Regenerating
   * Withering Regeneration + Echo shard = Recall potion
