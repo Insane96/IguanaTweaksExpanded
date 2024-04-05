@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed starting season config setting the previous subseason
+
 ## 1.7.0 - The "The recipe book sucks" update
 * Emi support!
   * Forging, Blasting and Soul Blasting, Fletching

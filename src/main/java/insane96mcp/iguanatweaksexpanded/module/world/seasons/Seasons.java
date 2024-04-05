@@ -124,7 +124,7 @@ public class Seasons extends Feature {
 	@SubscribeEvent
 	public void onServerStart(ServerStartedEvent event) {
 		if (changeSereneSeasonsConfig) {
-			ServerConfig.startingSubSeason.set(startingSeason.ordinal());
+			ServerConfig.startingSubSeason.set(startingSeason.ordinal() + 1);
 			ServerConfig.progressSeasonWhileOffline.set(false);
 		}
 	}
