@@ -7,6 +7,9 @@
     The amount of output depends on the ore, so e.g. Lapis ores give 14 lapis (Also copper ore output has been increased)  
     Some might also be better than using fortune
   * Fixed a glitch where you could double the output from Blast furnaces just by using <REDACTED>
+* Respawn Obelisk
+  * Applies Regeneration, Absorption and Speed to players respawning on it
+  * Now accepts precious blocks even 3 and 2 blocks away
 * Keego
   * Heavily reduced efficiency and attack speed of keego tools, but increased momentum strength
     * Efficiency: 6.5 -> 3.5
@@ -21,7 +24,7 @@
   * Withering Regeneration + Echo shard = Recall potion
 * Added allurement integration!
   * Launch enchantment now works on any weapon
-* Over easy egg recipe no longer loads if Abonrmals' Incubation is present
+* Over easy egg recipe no longer loads if Abnormals' Incubation is present
 * Reduced burst of arrows number of arrows (8 -> 6)
 * Some features can no longer be disabled (as had no effect)
 * Added a starting season config option

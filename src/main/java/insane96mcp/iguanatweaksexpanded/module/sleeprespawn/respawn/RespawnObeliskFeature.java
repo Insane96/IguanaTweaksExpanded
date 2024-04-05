@@ -5,6 +5,7 @@ import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
+import insane96mcp.iguanatweaksreborn.data.ITRMobEffectInstance;
 import insane96mcp.insanelib.base.JsonFeature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -14,6 +15,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
@@ -45,9 +47,25 @@ public class RespawnObeliskFeature extends JsonFeature {
 
 	public static final ArrayList<IdTagValue> respawnObeliskCatalysts = new ArrayList<>();
 
+	public static final List<ITRMobEffectInstance> RESPAWN_OBELISK_EFFECTS_DEFAULT = List.of(
+			new ITRMobEffectInstance.Builder(MobEffects.REGENERATION, 45 * 20)
+					.ambientParticles()
+					.build(),
+			new ITRMobEffectInstance.Builder(MobEffects.ABSORPTION, 60 * 20)
+					.setAmplifier(1)
+					.ambientParticles()
+					.build(),
+			new ITRMobEffectInstance.Builder(MobEffects.MOVEMENT_SPEED, 60 * 20)
+					.ambientParticles()
+					.build()
+	);
+
+	public static final ArrayList<ITRMobEffectInstance> respawnObeliskEffects = new ArrayList<>();
+
 	public RespawnObeliskFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 		JSON_CONFIGS.add(new JsonConfig<>("respawn_obelisk_catalysts.json", respawnObeliskCatalysts, RESPAWN_OBELISK_CATALYSTS_DEFAULT, IdTagValue.LIST_TYPE));
+		JSON_CONFIGS.add(new JsonConfig<>("respawn_obelisk_effects.json", respawnObeliskEffects, RESPAWN_OBELISK_EFFECTS_DEFAULT, ITRMobEffectInstance.LIST_TYPE));
 		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "respawn_obelisk", Component.literal("IguanaTweaks Reborn Respawn Obelisk"), this::isEnabled));
 	}
 
