@@ -26,6 +26,7 @@ import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -432,15 +433,30 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_mushroom", has(Items.RED_MUSHROOM))
                 .save(writer);
 
-        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 600)
-                .unlockedBy("has_egg", has(Items.EGG))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "over_easy_egg_from_campfire");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 200)
-                .unlockedBy("has_egg", has(Items.EGG))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "over_easy_egg_from_smelting");
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 100)
-                .unlockedBy("has_egg", has(Items.EGG))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "over_easy_egg_from_smoking");
+        ConditionalRecipe.builder()
+                .addCondition(not(modLoaded("incubation")))
+                .addRecipe(
+                        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 600)
+                                .unlockedBy("has_egg", has(Items.EGG))
+                                ::save
+                )
+                .build(writer, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_easy_egg_from_campfire"));
+        ConditionalRecipe.builder()
+                .addCondition(not(modLoaded("incubation")))
+                .addRecipe(
+                        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 600)
+                                .unlockedBy("has_egg", has(Items.EGG))
+                                ::save
+                )
+                .build(writer, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_easy_egg_from_smelting"));
+        ConditionalRecipe.builder()
+                .addCondition(not(modLoaded("incubation")))
+                .addRecipe(
+                        SimpleCookingRecipeBuilder.smoking(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 600)
+                                .unlockedBy("has_egg", has(Items.EGG))
+                                ::save
+                )
+                .build(writer, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_easy_egg_from_smoking"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodDrinks.MILK_BOTTLE.get(), 3)
                 .requires(Ingredient.of(Items.MILK_BUCKET))

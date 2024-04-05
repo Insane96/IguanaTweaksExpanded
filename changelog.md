@@ -20,6 +20,8 @@
   * Regeneration potion + Wither Rose = Withering Regenerating
   * Withering Regeneration + Echo shard = Recall potion
 * Added allurement integration!
+  * Launch enchantment now works on any weapon
+* Over easy egg recipe no longer loads if Abonrmals' Incubation is present
 * Reduced burst of arrows number of arrows (8 -> 6)
 * Some features can no longer be disabled (as had no effect)
 * Added a starting season config option
