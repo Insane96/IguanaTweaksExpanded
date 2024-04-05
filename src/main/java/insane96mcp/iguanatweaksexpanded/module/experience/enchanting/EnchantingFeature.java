@@ -33,11 +33,13 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -72,6 +74,9 @@ public class EnchantingFeature extends JsonFeature {
     @Config
     @Label(name = "Better grindstone xp", description = "If true, grindstone will give XP based off the new enchanting table. This is based off the ITR levelScalingFormula set to a fixed value")
     public static Boolean betterGrindstoneXp = true;
+    @Config
+    @Label(name = "Grindstone trasure enchantment extraction", description = "If true, grindstone will be able to extract treasure enchantments (and curses) from items onto books.")
+    public static Boolean grindstoneEnchantmentExtraction = true;
     @Config
     @Label(name = "Allurement integration", description = """
             If true, some mixins are used on Allurement to make the enchantments work on more things and configs are changed to not overlap with ITE.
@@ -193,7 +198,8 @@ public class EnchantingFeature extends JsonFeature {
     @SubscribeEvent
     public void onGrindstoneTake(GrindstoneEvent.OnTakeItem event) {
         if (!this.isEnabled()
-                || !betterGrindstoneXp)
+                || !betterGrindstoneXp
+                || (grindstoneEnchantmentExtraction && event.getTopItem().isEnchanted() && event.getBottomItem().is(Items.BOOK)))
             return;
 
         float lvl = 0;
@@ -210,6 +216,24 @@ public class EnchantingFeature extends JsonFeature {
         lvl = (int)Math.floor(lvl);
 
         event.setXp((int) (lvl * PlayerExperience.getBetterScalingLevel(30) * 0.8f));
+    }
+
+    @SubscribeEvent
+    public void onGrindstoneUpdate(GrindstoneEvent.OnPlaceItem event) {
+        if (!this.isEnabled()
+                || !grindstoneEnchantmentExtraction
+                || !event.getTopItem().isEnchanted()
+                || !event.getBottomItem().is(Items.BOOK))
+            return;
+
+        ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
+        for (Map.Entry<Enchantment, Integer> enchantmentInstance : EnchantmentHelper.getEnchantments(event.getTopItem()).entrySet()) {
+            if (!enchantmentInstance.getKey().isTreasureOnly())
+                continue;
+            EnchantedBookItem.addEnchantment(output, new EnchantmentInstance(enchantmentInstance.getKey(), enchantmentInstance.getValue()));
+        }
+        event.setOutput(output);
+        event.setXp(0);
     }
 
     public static int getCost(Enchantment enchantment, int lvl) {

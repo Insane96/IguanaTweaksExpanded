@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* Treasure and Curses enchantments can now be extracted from items with a grindstone
+  * Just place the enchanted item and a book in the Grindstone
 * Blast furnaces
   * Smelting ore blocks now takes less time
   * Added missing ore blocks from smelting.  
