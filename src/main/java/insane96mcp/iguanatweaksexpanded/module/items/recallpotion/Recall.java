@@ -43,7 +43,7 @@ public class Recall extends Feature {
 	}
 
 	public static void onLoadComplete() {
-		PotionBrewing.addMix(Potions.REGENERATION, Items.WITHER_ROSE, REGEN_WITHER.get());
+		PotionBrewing.addMix(Potions.STRONG_REGENERATION, Items.WITHER_ROSE, REGEN_WITHER.get());
 		PotionBrewing.addMix(REGEN_WITHER.get(), Items.ECHO_SHARD, RECALL.get());
 	}
 

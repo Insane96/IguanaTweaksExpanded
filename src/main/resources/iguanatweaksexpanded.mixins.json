@@ -8,6 +8,7 @@
         "AbstractMinecartMixin",
         "CrossbowItemMixin",
         "FishingHookMixin",
+        "GrindstoneMenuMixin",
         "IceBlockInvoker",
         "ItemMixin",
         "LivingEntityMixin",
