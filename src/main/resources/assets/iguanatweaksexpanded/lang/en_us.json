@@ -24,6 +24,8 @@
 	"enchantment.iguanatweaksexpanded.air_born.tooltip": "Doesn't slowdown mining if not on ground",
 	"enchantment.iguanatweaksexpanded.blood_pact": "Blood Pact",
 	"enchantment.iguanatweaksexpanded.blood_pact.tooltip": "Whenever used can consume health to repair itself",
+	"enchantment.iguanatweaksexpanded.adrenaline": "Adrenaline",
+	"enchantment.iguanatweaksexpanded.adrenaline.tooltip": "Tool mines and attacks faster the lower the durability",
 	"enchantment.iguanatweaksexpanded.soulbound": "Soulbound",
 	"enchantment.iguanatweaksexpanded.soulbound.tooltip": "If you die, the item stays in your inventory",
 	"enchantment.iguanatweaksexpanded.step_up": "Step Up",

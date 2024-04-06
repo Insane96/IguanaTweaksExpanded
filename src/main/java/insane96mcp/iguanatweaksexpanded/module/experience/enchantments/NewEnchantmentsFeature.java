@@ -79,6 +79,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
 	public static final RegistryObject<Enchantment> BLOOD_PACT = ITERegistries.ENCHANTMENTS.register("blood_pact", BloodPact::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
+	public static final RegistryObject<Enchantment> ADRENALINE = ITERegistries.ENCHANTMENTS.register("adrenaline", Adrenaline::new);
 
 	//Fishing rods
 	public static final RegistryObject<Enchantment> JUICY_BAIT = ITERegistries.ENCHANTMENTS.register("lucky_hook", JuicyBait::new);
@@ -177,6 +178,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
 		event.setNewSpeed(event.getNewSpeed() * AirBorn.getMiningSpeedMultiplier(event.getEntity(), event.getState()));
 		event.setNewSpeed(event.getNewSpeed() + Blasting.getMiningSpeedBoost(event.getEntity(), event.getState()));
+		event.setNewSpeed(event.getNewSpeed() + Adrenaline.getMiningSpeedBoost(event.getEntity(), event.getState()));
 		if (event.getEntity().getMainHandItem().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
 			event.setNewSpeed(event.getNewSpeed() * 0.65f);
 	}

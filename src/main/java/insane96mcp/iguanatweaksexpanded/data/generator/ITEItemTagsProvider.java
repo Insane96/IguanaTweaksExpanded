@@ -65,8 +65,9 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(Padding.ACCEPTS_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(BloodPact.ACCEPTS_ENCHANTMENT)
-                .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
-                .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
+                .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+        tag(Adrenaline.ACCEPTS_ENCHANTMENT)
+                .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(CurseOfDumbness.ACCEPTS_ENCHANTMENT)
                 .addTag(Smartness.ACCEPTS_ENCHANTMENT);
         tag(CurseOfShortArm.ACCEPTS_ENCHANTMENT)
