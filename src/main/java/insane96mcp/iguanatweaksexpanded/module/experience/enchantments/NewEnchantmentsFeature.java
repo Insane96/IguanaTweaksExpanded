@@ -77,6 +77,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	//Tools and weapons
 	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
+	public static final RegistryObject<Enchantment> BLOOD_PACT = ITERegistries.ENCHANTMENTS.register("blood_pact", BloodPact::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 
 	//Fishing rods
@@ -159,6 +160,8 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
 		Vindication.tryApplyDamage(event);
+		if (event.getSource().getDirectEntity() instanceof LivingEntity attacker)
+			BloodPact.trySuckingAndRepairing(attacker);
 		Padding.shouldApply(event);
 	}
 
@@ -207,6 +210,7 @@ public class NewEnchantmentsFeature extends Feature {
 			Veining.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
 			Expanded.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
 		}
+		BloodPact.trySuckingAndRepairing(event.getPlayer());
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)

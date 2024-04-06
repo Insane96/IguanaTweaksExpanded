@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.BloodPact;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfExperience;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksreborn.module.combat.PiercingPickaxes;
@@ -29,7 +30,7 @@ public class ITEDamageTypeTagsProvider extends DamageTypeTagsProvider {
 
         tag(CopperExpansion.DOESNT_TRIGGER_ELECTROCUTION).addOptionalTag(PiercingPickaxes.PIERCING_DAMAGE_TYPE.location()).add(CopperExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
 
-        tag(DamageTypeTags.BYPASSES_ARMOR).add(CurseOfExperience.DAMAGE_TYPE);
+        tag(DamageTypeTags.BYPASSES_ARMOR).add(CurseOfExperience.DAMAGE_TYPE, BloodPact.DAMAGE_TYPE);
     }
 
     public static TagKey<DamageType> create(String tagName) {

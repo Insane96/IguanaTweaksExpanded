@@ -4,10 +4,7 @@ import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.integration.Allurement;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Padding;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.PartBreaker;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Reach;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Smartness;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.*;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfDumbness;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfShortArm;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfSlowStrike;
@@ -67,6 +64,9 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(Padding.ACCEPTS_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+        tag(BloodPact.ACCEPTS_ENCHANTMENT)
+                .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
+                .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
         tag(CurseOfDumbness.ACCEPTS_ENCHANTMENT)
                 .addTag(Smartness.ACCEPTS_ENCHANTMENT);
         tag(CurseOfShortArm.ACCEPTS_ENCHANTMENT)

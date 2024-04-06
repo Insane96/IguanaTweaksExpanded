@@ -3,6 +3,7 @@
 ## Upcoming
 * New enchantments!
   * Air Born: removes the mining penalty when not on ground 
+  * Blood pact: mending but the durability bar is your health
 * Forge Hammers
   * Movement Speed -15% -> -10%
   * Entity Reach 1.5 -> 2

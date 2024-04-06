@@ -1,4 +1,5 @@
-// 1.20.1	2024-04-03T22:01:33.3582206	Tags for minecraft:item mod id iguanatweaksexpanded
+// 1.20.1	2024-04-06T18:38:29.924935	Tags for minecraft:item mod id iguanatweaksexpanded
+9d7253f222e4b2e23e46f4d33766c8779a86fc51 data/iguanatweaksexpanded/tags/items/enchanting/accepts_blood_pact.json
 9d7253f222e4b2e23e46f4d33766c8779a86fc51 data/iguanatweaksexpanded/tags/items/enchanting/accepts_smartness.json
 f54b262c3e2589b6dd7205ef6b855d57bf34e82a data/iguanatweaksexpanded/tags/items/equipment/forge_hammers.json
 bd5368f498398ba2a85f9f4bb0e693de89185150 data/iguanatweaksexpanded/tags/items/not_enchantable.json

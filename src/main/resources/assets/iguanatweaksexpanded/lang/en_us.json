@@ -22,6 +22,8 @@
 	"enchantment.iguanatweaksexpanded.blasting.tooltip": "+%s Blasting Speed",
 	"enchantment.iguanatweaksexpanded.air_born": "Air Born",
 	"enchantment.iguanatweaksexpanded.air_born.tooltip": "Doesn't slowdown mining if not on ground",
+	"enchantment.iguanatweaksexpanded.blood_pact": "Blood Pact",
+	"enchantment.iguanatweaksexpanded.blood_pact.tooltip": "Whenever used can consume health to repair itself",
 	"enchantment.iguanatweaksexpanded.step_up": "Step Up",
 	"enchantment.iguanatweaksexpanded.step_up.tooltip": "Climb blocks like stairs",
 	"enchantment.iguanatweaksexpanded.zippy": "Zippy",
