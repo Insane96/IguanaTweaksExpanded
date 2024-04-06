@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+* Forge Hammers
+  * Movement Speed -15% -> -10%
+  * Entity Reach 1.5 -> 2
 * Increased durium scrap from smelting ore
 
 ## 1.7.1
