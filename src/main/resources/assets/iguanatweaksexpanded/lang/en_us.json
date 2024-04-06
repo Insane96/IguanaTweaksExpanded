@@ -20,6 +20,8 @@
 	"enchantment.iguanatweaksexpanded.veining.tooltip": "Mine multiple blocks, up to %d",
 	"enchantment.iguanatweaksexpanded.blasting": "Blasting",
 	"enchantment.iguanatweaksexpanded.blasting.tooltip": "+%s Blasting Speed",
+	"enchantment.iguanatweaksexpanded.air_born": "Air Born",
+	"enchantment.iguanatweaksexpanded.air_born.tooltip": "Doesn't slowdown mining if not on ground",
 	"enchantment.iguanatweaksexpanded.step_up": "Step Up",
 	"enchantment.iguanatweaksexpanded.step_up.tooltip": "Climb blocks like stairs",
 	"enchantment.iguanatweaksexpanded.zippy": "Zippy",

@@ -52,6 +52,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	//Tools
 	public static final RegistryObject<Enchantment> BLASTING = ITERegistries.ENCHANTMENTS.register("blasting", Blasting::new);
+	public static final RegistryObject<Enchantment> AIR_BORN = ITERegistries.ENCHANTMENTS.register("air_born", AirBorn::new);
 	public static final RegistryObject<Enchantment> EXPANDED = ITERegistries.ENCHANTMENTS.register("expanded", Expanded::new);
 	public static final RegistryObject<Enchantment> VEINING = ITERegistries.ENCHANTMENTS.register("veining", Veining::new);
 
@@ -168,6 +169,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
+		event.setNewSpeed(event.getNewSpeed() * AirBorn.getMiningSpeedMultiplier(event.getEntity(), event.getState()));
 		event.setNewSpeed(event.getNewSpeed() + Blasting.getMiningSpeedBoost(event.getEntity(), event.getState()));
 		if (event.getEntity().getMainHandItem().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
 			event.setNewSpeed(event.getNewSpeed() * 0.65f);
