@@ -8,6 +8,7 @@
   * Movement Speed -15% -> -10%
   * Entity Reach 1.5 -> 2
 * Increased durium scrap from smelting ore
+* Fixed "data pack" error when Allurement isn't present
 
 ## 1.7.1
 * Fixed starting season config setting the previous subseason

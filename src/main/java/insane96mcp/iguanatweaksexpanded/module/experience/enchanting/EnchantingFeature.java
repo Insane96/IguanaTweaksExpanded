@@ -48,6 +48,7 @@ import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -128,7 +129,7 @@ public class EnchantingFeature extends JsonFeature {
     @Override
     public void loadJsonConfigs() {
         super.loadJsonConfigs();
-        if (this.isEnabled() && allurementIntegration) {
+        if (this.isEnabled() && ModList.get().isLoaded("allurement") && allurementIntegration) {
             AllurementConfig.COMMON.cheapItemRenaming.set(false);
             AllurementConfig.COMMON.removeTooExpensive.set(false);
             AllurementConfig.COMMON.anvilIngotRepairing.set(false);
