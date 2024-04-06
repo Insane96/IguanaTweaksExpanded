@@ -37,6 +37,11 @@ public class BloodPact extends Enchantment implements IEnchantmentTooltip {
         return this.getMinCost(level) + 50;
     }
 
+    @Override
+    public boolean isTreasureOnly() {
+        return true;
+    }
+
     public boolean checkCompatibility(Enchantment other) {
         return !(other instanceof MendingEnchantment) && super.checkCompatibility(other);
     }
