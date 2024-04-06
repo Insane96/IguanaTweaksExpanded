@@ -4,6 +4,7 @@
 * New enchantments!
   * Air Born: removes the mining penalty when not on ground 
   * Blood pact: mending but the durability bar is your health (Treasure)
+  * Soulbound: items are kept in the inventory on death (Treasure)
 * Forge Hammers
   * Movement Speed -15% -> -10%
   * Entity Reach 1.5 -> 2

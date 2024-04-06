@@ -86,6 +86,9 @@ public class NewEnchantmentsFeature extends Feature {
 	//Crossbows
 	public static final RegistryObject<Enchantment> BURST_OF_ARROWS = ITERegistries.ENCHANTMENTS.register("burst_of_arrows", BurstOfArrows::new);
 
+	//General
+	public static final RegistryObject<Enchantment> SOULBOUND = ITERegistries.ENCHANTMENTS.register("soulbound", Soulbound::new);
+
 	//Curses
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_TEAR = ITERegistries.ENCHANTMENTS.register("tear_curse", CurseOfTear::new);
@@ -229,6 +232,15 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onLivingTick(LivingEvent.LivingTickEvent event) {
 		CurseOfSinking.sink(event);
+	}
+
+	@SubscribeEvent
+	public void onLivingDeath(LivingDeathEvent event) {
+		Soulbound.onPlayerDeath(event);
+	}
+	@SubscribeEvent
+	public void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+		Soulbound.onPlayerRespawn(event);
 	}
 
 	@SubscribeEvent
