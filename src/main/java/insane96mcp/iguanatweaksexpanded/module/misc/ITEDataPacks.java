@@ -36,6 +36,9 @@ public class ITEDataPacks extends Feature {
     @Config
     @Label(name = "Texture override", description = "Change some vanilla textures such as arrows to flint, spawners to echo")
     public static Boolean textureOverride = true;
+    @Config
+    @Label(name = "Block Data Data Pack")
+    public static Boolean blockData = true;
 
     public ITEDataPacks(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
@@ -44,6 +47,7 @@ public class ITEDataPacks extends Feature {
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "better_loot", Component.literal("IguanaTweaks Expanded Better Loot"), () -> this.isEnabled() && !disableAllDataPacks && betterStructureLoot));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "plant_growth_modifiers", Component.literal("IguanaTweaks Expanded Plant Growth modifiers"), () -> this.isEnabled() && !disableAllDataPacks && plantGrowthMultipliersDataPack));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "livestock_changes", Component.literal("IguanaTweaks Expanded Livestock Changes"), () -> this.isEnabled() && !disableAllDataPacks && livestockDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "block_data", Component.literal("IguanaTweaks Expanded Block Data"), () -> this.isEnabled() && !disableAllDataPacks && blockData));
         IntegratedPack.addPack(new IntegratedPack(PackType.CLIENT_RESOURCES, "texture_override", Component.literal("IguanaTweaks Expanded Texture Override"), () -> textureOverride));
     }
 }
