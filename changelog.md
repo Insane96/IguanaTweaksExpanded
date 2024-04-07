@@ -9,6 +9,9 @@
 * Forge Hammers
   * Movement Speed -15% -> -10%
   * Entity Reach 1.5 -> 2
+* Coated Copper
+  * Halved electrocution damage dealt with attacks
+  * Increased shield lifted time
 * Increased durium scrap from smelting ore
 * Fixed "data pack" error when Allurement isn't present
 
