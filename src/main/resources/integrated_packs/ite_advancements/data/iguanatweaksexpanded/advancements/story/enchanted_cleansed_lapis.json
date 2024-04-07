@@ -1,0 +1,37 @@
+{
+	"display": {
+		"icon": {
+			"item": "iguanatweaksexpanded:cleansed_lapis",
+			"nbt": "{Enchantments:[{}]}"
+		},
+		"title": {
+			"translate": "advancements.sr_story.enchanted_cleansed_lapis.title"
+		},
+		"description": {
+			"translate": "advancements.sr_story.enchanted_cleansed_lapis.description"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "iguanatweaksexpanded:story/cleansed_lapis",
+	"criteria": {
+		"enchanted_cleansed_lapis": {
+			"trigger": "iguanatweaksreborn:anvil_repair",
+			"conditions": {
+				"input2": {
+					"items": [
+						"iguanatweaksexpanded:cleansed_lapis"
+					],
+					"nbt": "{Enchantments:[{}],display:{Name:'{\"text\":\"Enchanted Cleansed Lapis\"}'}}"
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"enchanted_cleansed_lapis"
+		]
+	]
+}

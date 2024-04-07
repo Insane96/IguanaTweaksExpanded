@@ -76,7 +76,7 @@
 				{
 					"type": "minecraft:item",
 					"weight": 7,
-					"name": "iguanatweaksexpanded:ancient_lapis",
+					"name": "iguanatweaksexpanded:cleansed_lapis",
 					"functions": [
 						{
 							"function": "minecraft:set_count",
@@ -86,6 +86,10 @@
 								"max": 2
 							},
 							"add": false
+						},
+						{
+							"function": "minecraft:set_nbt",
+							"tag": "{Enchantments:[{}]}"
 						}
 					]
 				},
