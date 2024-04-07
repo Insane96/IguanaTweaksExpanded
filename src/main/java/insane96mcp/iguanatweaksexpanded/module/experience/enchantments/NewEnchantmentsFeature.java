@@ -74,6 +74,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
 	public static final RegistryObject<Enchantment> PADDING = ITERegistries.ENCHANTMENTS.register("padding", Padding::new);
 	public static final RegistryObject<Enchantment> PART_BREAKER = ITERegistries.ENCHANTMENTS.register("part_breaker", PartBreaker::new);
+	public static final RegistryObject<Enchantment> AIR_STEALER = ITERegistries.ENCHANTMENTS.register("air_stealer", AirStealer::new);
 
 	//Tools and weapons
 	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
@@ -164,8 +165,10 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onHurt(LivingHurtEvent event) {
 		Vindication.tryApplyDamage(event);
-		if (event.getSource().getDirectEntity() instanceof LivingEntity attacker)
+		if (event.getSource().getDirectEntity() instanceof LivingEntity attacker) {
 			BloodPact.trySuckingAndRepairing(attacker);
+			AirStealer.onAttack(attacker, event.getEntity());
+		}
 		Padding.shouldApply(event);
 	}
 
