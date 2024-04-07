@@ -227,7 +227,6 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND, Keego.GEM.get());
             addAfter(event, Items.GOLD_INGOT, Quaron.INGOT.get());
             addAfter(event, Items.GOLD_NUGGET, Quaron.NUGGET.get());
-            addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ANCIENT_LAPIS.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
             addAfter(event, Items.CHARCOAL, CoalCharcoal.HELLISH_COAL.get());
             addBefore(event, Items.LEATHER, Cloth.CLOTH.get());

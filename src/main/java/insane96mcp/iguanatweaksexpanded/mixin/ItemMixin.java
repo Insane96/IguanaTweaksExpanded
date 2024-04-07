@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Item.class)
 public class ItemMixin {
     @Inject(method = "isFoil", at = @At("RETURN"), cancellable = true)
-    public void isFoil(ItemStack pStack, CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(cir.getReturnValue() && !EnchantingFeature.hasOnlyCurses(pStack));
+    public void isFoil(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(cir.getReturnValue() && (!EnchantingFeature.hasOnlyCurses(stack) || EnchantingFeature.hasEnchantGlintOnly(stack)));
     }
 }

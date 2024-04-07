@@ -29,6 +29,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
@@ -47,6 +49,7 @@ import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -76,7 +79,7 @@ public class EnchantingFeature extends JsonFeature {
     @Label(name = "Better grindstone xp", description = "If true, grindstone will give XP based off the new enchanting table. This is based off the ITR levelScalingFormula set to a fixed value")
     public static Boolean betterGrindstoneXp = true;
     @Config
-    @Label(name = "Grindstone trasure enchantment extraction", description = "If true, grindstone will be able to extract treasure enchantments (and curses) from items onto books.")
+    @Label(name = "Grindstone trasure enchantment extraction", description = "If true, grindstone will be able to extract treasure enchantments (and curses) from items onto books. Please note this feature is incompatible with Forgery, so you should ban the \"Grindstone disenchantment\" feature from it.")
     public static Boolean grindstoneEnchantmentExtraction = true;
     @Config
     @Label(name = "Allurement integration", description = """
@@ -155,15 +158,16 @@ public class EnchantingFeature extends JsonFeature {
         if (!this.isEnabled())
             return;
         preventMergingEnchantedItems(event);
+        enchantedCleansedLapisCrafting(event);
         cleansedLapis(event);
-        ancientLapis(event);
+        enchantedCleansedLapis(event);
     }
 
     public void preventMergingEnchantedItems(AnvilUpdateEvent event) {
         if (!noEnchantmentMerge)
             return;
 
-        if (event.getRight().isEnchanted() || (event.getLeft().isEnchanted() && event.getRight().is(Items.ENCHANTED_BOOK)))
+        if ((event.getRight().isEnchanted() && !event.getRight().is(CLEANSED_LAPIS.get())) || (event.getLeft().isEnchanted() && event.getRight().is(Items.ENCHANTED_BOOK)))
             event.setCanceled(true);
     }
 
@@ -173,7 +177,8 @@ public class EnchantingFeature extends JsonFeature {
             return;
 
         ItemStack right = event.getRight().copy();
-        if (!right.is(CLEANSED_LAPIS.get()))
+        if (!right.is(CLEANSED_LAPIS.get())
+                || right.isEnchanted())
             return;
         event.setCost(0);
         event.setMaterialCost(1);
@@ -182,19 +187,57 @@ public class EnchantingFeature extends JsonFeature {
         event.setOutput(result);
     }
 
-    public void ancientLapis(final AnvilUpdateEvent event) {
+    public void enchantedCleansedLapisCrafting(final AnvilUpdateEvent event) {
+        ItemStack left = event.getLeft();
+        if (!left.is(CLEANSED_LAPIS.get())
+                || left.getCount() > 1
+                || left.isEnchanted())
+            return;
+
+        ItemStack right = event.getRight().copy();
+        if (!right.is(Items.EXPERIENCE_BOTTLE))
+            return;
+        event.setCost(1);
+        event.setMaterialCost(1);
+        ItemStack result = left.copy();
+        CompoundTag tag = result.getOrCreateTag();
+        if (!tag.contains("Enchantments", CompoundTag.TAG_LIST))
+            tag.put("Enchantments", new ListTag());
+        tag.getList("Enchantments", CompoundTag.TAG_COMPOUND).add(new CompoundTag());
+        result.setHoverName(Component.literal("Enchanted Cleansed Lapis").withStyle(ChatFormatting.RESET));
+        event.setOutput(result);
+    }
+
+    public void enchantedCleansedLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
         if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
             return;
 
         ItemStack right = event.getRight().copy();
-        if (!right.is(ANCIENT_LAPIS.get()))
+        if (!right.is(CLEANSED_LAPIS.get())
+                || !right.isEnchanted())
             return;
         event.setCost(0);
         event.setMaterialCost(1);
         ItemStack result = left.copy();
         result.getOrCreateTag().putBoolean(EnchantingFeature.EMPOWERED_ITEM, true);
         event.setOutput(result);
+    }
+
+    @SubscribeEvent
+    public void onRightClick(PlayerInteractEvent.RightClickItem event) {
+        if (event.getLevel().isClientSide
+                || !event.getItemStack().is(ANCIENT_LAPIS.get()))
+            return;
+
+        int count = event.getItemStack().getCount();
+        for (int i = 0; i < count; i++) {
+            event.getEntity().addItem(new ItemStack(CLEANSED_LAPIS.get()));
+            event.getEntity().addItem(new ItemStack(Items.EXPERIENCE_BOTTLE));
+            event.getEntity().addItem(new ItemStack(Items.NETHERITE_SCRAP));
+            event.getLevel().playSound(null, event.getEntity(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 1f, 1f);
+            event.getItemStack().shrink(1);
+        }
     }
 
     @SubscribeEvent
@@ -286,12 +329,25 @@ public class EnchantingFeature extends JsonFeature {
         return cost;
     }
 
+    public static boolean hasEnchantGlintOnly(ItemStack stack) {
+        ListTag enchantments = stack.getEnchantmentTags();
+        if (enchantments.isEmpty())
+            return false;
+        return enchantments.size() == 1 && enchantments.getCompound(0).isEmpty();
+    }
+
     @SubscribeEvent
     public void onTooltip(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
         if (!isEnabled(EnchantingFeature.class)
-                || itemStack.getTag() == null
                 || !(event.getEntity() instanceof Player))
+            return;
+
+        if (itemStack.is(ANCIENT_LAPIS.get())) {
+            event.getToolTip().add(Component.translatable("item.iguanatweaksexpanded.ancient_lapis.deprecated").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.BOLD));
+        }
+
+        if (itemStack.getTag() == null)
             return;
 
         if (itemStack.is(Items.ENCHANTED_BOOK)) {
