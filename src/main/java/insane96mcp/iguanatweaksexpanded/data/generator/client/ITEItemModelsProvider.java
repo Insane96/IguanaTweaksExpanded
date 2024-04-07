@@ -182,6 +182,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(FoodDrinks.OVER_EASY_EGG.get());
         basicItem(FoodDrinks.BROWN_MUSHROOM_STEW.get());
         basicItem(FoodDrinks.RED_MUSHROOM_STEW.get());
+        basicItem(FoodDrinks.NETHERIZED_STEW.get());
         basicItem(FoodDrinks.PUMPKIN_PULP.get());
         basicItem(FoodDrinks.MILK_BOTTLE.get());
         basicItem(FoodDrinks.CHEESE_SLICE.get());

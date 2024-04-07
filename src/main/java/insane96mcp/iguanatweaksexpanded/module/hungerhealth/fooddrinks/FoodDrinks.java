@@ -6,6 +6,8 @@ import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
@@ -19,6 +21,9 @@ public class FoodDrinks extends Feature {
 	));
 	public static final RegistryObject<Item> RED_MUSHROOM_STEW = ITERegistries.ITEMS.register("red_mushroom_stew", () -> new BowlFoodItem(new Item.Properties()
 			.food(new FoodProperties.Builder().nutrition(3).saturationMod(0.6F).build())
+	));
+	public static final RegistryObject<Item> NETHERIZED_STEW = ITERegistries.ITEMS.register("netherized_stew", () -> new BowlFoodItem(new Item.Properties()
+			.food(new FoodProperties.Builder().nutrition(12).saturationMod(1.4F).effect(() -> new MobEffectInstance(MobEffects.POISON, 30 * 20, 0), 0.9f).build())
 	));
 
 	public static final RegistryObject<Item> OVER_EASY_EGG = ITERegistries.ITEMS.register("over_easy_egg", () -> new Item(new Item.Properties()

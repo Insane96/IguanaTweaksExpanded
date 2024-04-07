@@ -232,6 +232,7 @@ public class ClientSetup {
             addBefore(event, Items.LEATHER, Cloth.CLOTH.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            addAfter(event, Items.MUSHROOM_STEW, FoodDrinks.NETHERIZED_STEW.get());
             addAfter(event, Items.MUSHROOM_STEW, FoodDrinks.BROWN_MUSHROOM_STEW.get());
             addAfter(event, Items.MUSHROOM_STEW, FoodDrinks.RED_MUSHROOM_STEW.get());
             addAfter(event, Items.COOKIE, FoodDrinks.OVER_EASY_EGG.get());

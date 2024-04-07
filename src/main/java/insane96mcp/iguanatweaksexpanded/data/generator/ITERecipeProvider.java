@@ -424,6 +424,19 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_mushroom", has(Items.RED_MUSHROOM))
                 .save(writer);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodDrinks.NETHERIZED_STEW.get())
+                .requires(Items.BOWL, 1)
+                .requires(Items.RED_MUSHROOM, 1)
+                .requires(Items.BROWN_MUSHROOM, 1)
+                .requires(Items.CRIMSON_FUNGUS, 1)
+                .requires(Items.WARPED_FUNGUS, 1)
+                .unlockedBy("has_bowl", has(Items.BOWL))
+                .unlockedBy("has_red_mushroom", has(Items.RED_MUSHROOM))
+                .unlockedBy("has_brown_mushroom", has(Items.BROWN_MUSHROOM))
+                .unlockedBy("has_crimson_fungus", has(Items.CRIMSON_FUNGUS))
+                .unlockedBy("has_warped_fungus", has(Items.WARPED_FUNGUS))
+                .save(writer);
+
         ConditionalRecipe.builder()
                 .addCondition(not(modLoaded("incubation")))
                 .addRecipe(

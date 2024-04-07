@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-23T15:29:33.162999	Item Models: iguanatweaksexpanded
+// 1.20.1	2024-04-07T10:58:32.828092	Item Models: iguanatweaksexpanded
 c55d75529abc060f20c2dc12f6361ea2d4eecd91 assets/iguanatweaksexpanded/models/item/ancient_lapis.json
 9db8ff6b8f62a90066f9ec6f113f30579ef147b4 assets/iguanatweaksexpanded/models/item/blast_furnace.json
 fc1b6ed013a34c698e33c1afcd94ac79f4c34781 assets/iguanatweaksexpanded/models/item/brown_mushroom_stew.json
@@ -197,6 +197,7 @@ f6cbafb4d77dbf412d1df1d46361be756c915029 assets/iguanatweaksexpanded/models/item
 52a2be895ffa1b8a2651a54177fc73af9334a258 assets/iguanatweaksexpanded/models/item/keego_sword.json
 ac72e4628448e498007b3ea7307a20184c190085 assets/iguanatweaksexpanded/models/item/milk_bottle.json
 ebfd978a8d01aa100cf4cfe25cb4dbb7a6c03b74 assets/iguanatweaksexpanded/models/item/netherite_hammer.json
+8fa78f3f4db01e6cc2c386b9fec576a4800d7410 assets/iguanatweaksexpanded/models/item/netherized_stew.json
 32502d681596fdcca8f69c1e06b70b080ae5f60b assets/iguanatweaksexpanded/models/item/nether_infused_powered_rail.json
 3c0b83a4eccd377eec9e3ef0162364fdd34c9bad assets/iguanatweaksexpanded/models/item/over_easy_egg.json
 a3df3d4dfc94027d91b4d0f6901cd722c96e7a49 assets/iguanatweaksexpanded/models/item/polished_flint_block.json
