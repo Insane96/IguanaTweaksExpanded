@@ -24,7 +24,7 @@
 	"enchantment.iguanatweaksexpanded.air_born": "Air Born",
 	"enchantment.iguanatweaksexpanded.air_born.tooltip": "Doesn't slowdown mining if not on ground",
 	"enchantment.iguanatweaksexpanded.blood_pact": "Blood Pact",
-	"enchantment.iguanatweaksexpanded.blood_pact.tooltip": "Whenever used can consume health to repair itself",
+	"enchantment.iguanatweaksexpanded.blood_pact.tooltip": "Item becomes indestructible but might damage the user",
 	"enchantment.iguanatweaksexpanded.air_stealer": "Air Stealer",
 	"enchantment.iguanatweaksexpanded.air_stealer.tooltip": "Steals air from attacked entities",
 	"enchantment.iguanatweaksexpanded.adrenaline": "Adrenaline",

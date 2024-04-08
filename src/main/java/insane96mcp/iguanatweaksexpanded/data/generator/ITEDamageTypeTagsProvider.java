@@ -31,6 +31,7 @@ public class ITEDamageTypeTagsProvider extends DamageTypeTagsProvider {
         tag(CopperExpansion.DOESNT_TRIGGER_ELECTROCUTION).addOptionalTag(PiercingPickaxes.PIERCING_DAMAGE_TYPE.location()).add(CopperExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
 
         tag(DamageTypeTags.BYPASSES_ARMOR).add(CurseOfExperience.DAMAGE_TYPE, BloodPact.DAMAGE_TYPE);
+        tag(DamageTypeTags.BYPASSES_COOLDOWN).add(BloodPact.DAMAGE_TYPE);
     }
 
     public static TagKey<DamageType> create(String tagName) {

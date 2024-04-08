@@ -124,6 +124,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onHurtItemStack(HurtItemStackEvent event) {
 		CurseOfExperience.consumePlayerExperience(event);
 		CurseOfFragility.increaseItemHurt(event);
+		BloodPact.trySuckingAndRepairing(event);
 	}
 
 	@SubscribeEvent
@@ -166,7 +167,6 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onHurt(LivingHurtEvent event) {
 		Vindication.tryApplyDamage(event);
 		if (event.getSource().getDirectEntity() instanceof LivingEntity attacker) {
-			BloodPact.trySuckingAndRepairing(attacker);
 			AirStealer.onAttack(attacker, event.getEntity());
 		}
 		Padding.shouldApply(event);
@@ -218,7 +218,6 @@ public class NewEnchantmentsFeature extends Feature {
 			Veining.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
 			Expanded.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
 		}
-		BloodPact.trySuckingAndRepairing(event.getPlayer());
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
