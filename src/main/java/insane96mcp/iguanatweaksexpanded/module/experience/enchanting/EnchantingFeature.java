@@ -364,6 +364,8 @@ public class EnchantingFeature extends JsonFeature {
         if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ITEEnchantingTableScreen))
             return;
 
+        event.getToolTip().add(Component.literal("Base Enchantability: " + EnchantmentsFeature.getEnchantmentValue(itemStack)).withStyle(ChatFormatting.LIGHT_PURPLE));
+
         if (itemStack.getTag().contains(INFUSED_ITEM)) {
             event.getToolTip().add(Component.empty());
             event.getToolTip().add(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE));
