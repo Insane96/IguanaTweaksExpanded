@@ -6,7 +6,7 @@
             "chance": 0.5,
             "modifier_name": "More XRay Range for Mobs",
             "amount": {
-                "min": 8,
+                "min": 16,
                 "max": 16,
                 "condition_modifier": {
                     "operation": "multiply",
