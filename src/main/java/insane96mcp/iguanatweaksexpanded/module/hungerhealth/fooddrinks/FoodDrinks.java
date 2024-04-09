@@ -23,7 +23,7 @@ public class FoodDrinks extends Feature {
 			.food(new FoodProperties.Builder().nutrition(3).saturationMod(0.6F).build())
 	));
 	public static final RegistryObject<Item> NETHERIZED_STEW = ITERegistries.ITEMS.register("netherized_stew", () -> new BowlFoodItem(new Item.Properties()
-			.food(new FoodProperties.Builder().nutrition(12).saturationMod(1.4F).effect(() -> new MobEffectInstance(MobEffects.POISON, 30 * 20, 0), 0.9f).build())
+			.food(new FoodProperties.Builder().nutrition(12).saturationMod(1.4F).effect(() -> new MobEffectInstance(MobEffects.POISON, 30 * 20, 0), 0.8f).build())
 	));
 
 	public static final RegistryObject<Item> OVER_EASY_EGG = ITERegistries.ITEMS.register("over_easy_egg", () -> new Item(new Item.Properties()

@@ -4,6 +4,7 @@
 * Blood pact
   * Now works on any destructible item
   * The item becomes indestructible at the cost that the player might get damaged
+* Reduced chance for Netherized stew to poison
 
 ## 1.8.0
 * New enchantments!
