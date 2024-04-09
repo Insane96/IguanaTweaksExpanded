@@ -1,15 +1,11 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
-import insane96mcp.insanelib.InsaneLib;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 
 public class Critical extends BonusDamageEnchantment {
     public Critical() {
@@ -33,10 +29,5 @@ public class Critical extends BonusDamageEnchantment {
             if (isCrit)
                 player.magicCrit(entity);
         }
-    }
-
-    @Override
-    public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(lvl + 1)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

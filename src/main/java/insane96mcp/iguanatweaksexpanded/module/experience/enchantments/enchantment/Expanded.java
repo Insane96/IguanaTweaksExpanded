@@ -5,9 +5,7 @@ import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.items.itemstats.ItemStats;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.MultiPlayerGameMode;
@@ -18,7 +16,6 @@ import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.BlockDestructionProgress;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -51,7 +48,7 @@ import net.minecraftforge.common.ForgeHooks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Expanded extends Enchantment implements IEnchantmentTooltip {
+public class Expanded extends Enchantment {
     static EnchantmentCategory PICKAXE_AND_SHOVELS = EnchantmentCategory.create("pickaxe", item -> item instanceof PickaxeItem || item instanceof ShovelItem);
     public Expanded() {
         super(Rarity.RARE, PICKAXE_AND_SHOVELS, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
@@ -260,10 +257,5 @@ public class Expanded extends Enchantment implements IEnchantmentTooltip {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", 1 + ((lvl - 1) * 2), 3).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

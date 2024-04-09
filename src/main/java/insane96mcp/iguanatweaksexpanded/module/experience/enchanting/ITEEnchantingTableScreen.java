@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableEnchantments;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -10,10 +11,13 @@ import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
@@ -265,7 +269,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
 
     @Override
     public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
-        this.scroll(-(int) pDelta);
+        this.scroll(-(int) (Screen.hasShiftDown() ? pDelta * 4 : pDelta));
         return true;
     }
 
@@ -419,7 +423,12 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             if (this.lvl > 0)
                 lvlTxt = Component.translatable("enchantment.level." + this.lvl);
             pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.enchantment.getMaxLevel() ? 16733695 : 0xDDDDDD);
-            this.setTooltip(Tooltip.create(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl))))));
+            MutableComponent component = Component.empty();
+            if (Screen.hasShiftDown()) {
+                component.append(Component.translatable(this.enchantment.getDescriptionId() + ".info").withStyle(ChatFormatting.LIGHT_PURPLE));
+                component.append(CommonComponents.NEW_LINE);
+            }
+            this.setTooltip(Tooltip.create(component.append(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl)))))));
             //this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;
         }
 
@@ -483,12 +492,18 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
 
         @Override
         public void onClick(double mouseX, double mouseY) {
-            ITEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? 1 : -1);
+            int amount = 1;
+            if (Screen.hasShiftDown())
+                amount = 4;
+            ITEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? amount : -amount);
         }
 
         @Override
         public void onClick(double mouseX, double mouseY, int button) {
-            ITEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? 1 : -1);
+            int amount = 1;
+            if (Screen.hasShiftDown())
+                amount = 4;
+            ITEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? amount : -amount);
         }
 
         private int getXOffset() {

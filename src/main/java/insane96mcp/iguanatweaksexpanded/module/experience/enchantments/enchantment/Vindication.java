@@ -2,20 +2,15 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.insanelib.InsaneLib;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
-public class Vindication extends Enchantment implements IEnchantmentTooltip {
+public class Vindication extends Enchantment {
 
     public static final String STACKED_DAMAGE = IguanaTweaksExpanded.RESOURCE_PREFIX + "stacked_vindication_damage";
 
@@ -63,10 +58,5 @@ public class Vindication extends Enchantment implements IEnchantmentTooltip {
 
         event.setAmount(event.getAmount() + attacker.getPersistentData().getFloat(STACKED_DAMAGE));
         attacker.getPersistentData().remove(STACKED_DAMAGE);
-    }
-
-    @Override
-    public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(maxStackedDamage(lvl))).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

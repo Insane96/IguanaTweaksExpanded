@@ -2,7 +2,6 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -13,7 +12,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
-public class WaterCoolant extends BonusDamageEnchantment implements IEnchantmentTooltip {
+public class WaterCoolant extends BonusDamageEnchantment {
     public static final TagKey<EntityType<?>> AFFECTED_BY_WATER_COOLANT = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments/water_coolant"));
     public WaterCoolant() {
         super(Rarity.UNCOMMON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});

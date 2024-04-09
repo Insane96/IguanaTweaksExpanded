@@ -6,6 +6,8 @@
   * The item becomes indestructible at the cost that the player might get damaged
 * Split Pehkui changes in the mobs_buffs data pack from other MPR changes
   * This way, if you remove Pehkui, MPR stuff will still work
+* Pending enchantments and enchantments in the Enchanting Screen now show the enchantment info
+* Anvils and Enchanting Tables Screens now show item's enchantability
 * Reduced chance for Netherized stew to poison
 * Reduced horses bonus speed (+15% -> +5%)
 

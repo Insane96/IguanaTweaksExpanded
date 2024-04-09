@@ -2,10 +2,6 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.data.generator.ITRItemTagsProvider;
-import insane96mcp.insanelib.InsaneLib;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -14,7 +10,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -24,7 +19,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class PartBreaker extends Enchantment implements IEnchantmentTooltip {
+public class PartBreaker extends Enchantment {
 
     public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITRItemTagsProvider.create("enchanting/accepts_part_breaker");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("part_breaker", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
@@ -75,10 +70,5 @@ public class PartBreaker extends Enchantment implements IEnchantmentTooltip {
                     if (level.getRandom().nextFloat() < PartBreaker.getChance(lvl))
                         event.getDrops().add(new ItemEntity(level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), stack));
                 });
-    }
-
-    @Override
-    public Component getTooltip(ItemStack itemStack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(getChance(lvl) * 100f)).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

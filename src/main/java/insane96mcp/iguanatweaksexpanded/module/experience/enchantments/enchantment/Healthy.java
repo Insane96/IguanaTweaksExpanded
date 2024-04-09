@@ -2,12 +2,8 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.IProtectionEnchantment;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ITRProtectionEnchantment;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.ProtectionEnchantment;
@@ -15,7 +11,7 @@ import net.minecraftforge.event.ItemAttributeModifierEvent;
 
 import java.util.UUID;
 
-public class Healthy extends Enchantment implements IAttributeEnchantment, IEnchantmentTooltip {
+public class Healthy extends Enchantment implements IAttributeEnchantment {
     public static final UUID[] MAX_HEALTH_MODIFIER_UUIDS = new UUID[] {
             UUID.fromString("532b9dee-e3c6-4c1d-9eb5-0e15010e5a58"),
             UUID.fromString("c8b9ab58-c2ab-4a6e-ab67-5d76b86cc1f5"),
@@ -52,10 +48,5 @@ public class Healthy extends Enchantment implements IAttributeEnchantment, IEnch
     @Override
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
         event.addModifier(Attributes.MAX_HEALTH, new AttributeModifier(MAX_HEALTH_MODIFIER_UUIDS[event.getSlotType().getIndex()], "Healthy enchantment", 1d * enchantmentLvl, AttributeModifier.Operation.ADDITION));
-    }
-
-    @Override
-    public Component getTooltip(ItemStack itemStack, int i) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

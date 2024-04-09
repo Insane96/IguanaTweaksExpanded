@@ -3,9 +3,6 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.JuicyBait;
 import insane96mcp.iguanatweaksreborn.data.generator.ITRItemTagsProvider;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,13 +10,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
 
-public class CurseOfTheVoid extends Enchantment implements IEnchantmentTooltip {
+public class CurseOfTheVoid extends Enchantment {
     public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITRItemTagsProvider.create("enchanting/accepts_void_curse");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("void_curse", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public CurseOfTheVoid() {
@@ -67,10 +63,5 @@ public class CurseOfTheVoid extends Enchantment implements IEnchantmentTooltip {
             return;
 
         event.getDrops().clear();
-    }
-
-    @Override
-    public Component getTooltip(ItemStack itemStack, int i) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.RED);
     }
 }

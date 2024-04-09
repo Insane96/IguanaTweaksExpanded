@@ -3,15 +3,11 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class CurseOfFragility extends Enchantment implements IEnchantmentTooltip {
+public class CurseOfFragility extends Enchantment {
     public CurseOfFragility() {
         super(Rarity.UNCOMMON, EnchantmentCategory.VANISHABLE, EquipmentSlot.values());
     }
@@ -42,10 +38,5 @@ public class CurseOfFragility extends Enchantment implements IEnchantmentTooltip
             event.setAmount(1);
         else
             event.setAmount(event.getAmount() * 2);
-    }
-
-    @Override
-    public Component getTooltip(ItemStack itemStack, int i) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.RED);
     }
 }

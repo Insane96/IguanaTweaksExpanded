@@ -4,9 +4,6 @@ import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.utils.MCUtils;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,7 +20,7 @@ import net.minecraftforge.event.ItemAttributeModifierEvent;
 
 import java.util.UUID;
 
-public class Adrenaline extends Enchantment implements IAttributeEnchantment, IEnchantmentTooltip {
+public class Adrenaline extends Enchantment implements IAttributeEnchantment {
     public static TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_adrenaline");
     public static EnchantmentCategory CATEGORY = EnchantmentCategory.create("accepts_adrenaline", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public static final UUID MODIFIER_UUID = UUID.fromString("656cda69-88a6-4925-a1ce-8ec8e475efdd");
@@ -77,10 +74,5 @@ public class Adrenaline extends Enchantment implements IAttributeEnchantment, IE
             return;
         float durConsumed = 1 - MCUtils.getPercentageDurabilityLeft(event.getItemStack());
         event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(MODIFIER_UUID, "Adrenaline Enchantment Modifier", 0.15f * enchantmentLvl * (durConsumed * durConsumed), AttributeModifier.Operation.MULTIPLY_BASE));
-    }
-
-    @Override
-    public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

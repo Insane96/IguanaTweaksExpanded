@@ -1,10 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.insanelib.InsaneLib;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
@@ -27,7 +23,7 @@ import net.minecraftforge.event.entity.player.ItemFishedEvent;
 
 import java.util.List;
 
-public class JuicyBait extends Enchantment implements IEnchantmentTooltip {
+public class JuicyBait extends Enchantment {
 
     public JuicyBait() {
         super(Rarity.RARE, EnchantmentCategory.FISHING_ROD, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
@@ -80,10 +76,5 @@ public class JuicyBait extends Enchantment implements IEnchantmentTooltip {
             if (itemstack.is(ItemTags.FISHES))
                 player.awardStat(Stats.FISH_CAUGHT, 1);
         }
-    }
-
-    @Override
-    public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(getChanceToDoubleReel(lvl))).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

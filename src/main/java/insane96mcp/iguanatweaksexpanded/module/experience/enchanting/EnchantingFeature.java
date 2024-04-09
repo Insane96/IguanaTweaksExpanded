@@ -11,6 +11,7 @@ import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.iguanatweaksreborn.module.experience.PlayerExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.insanelib.base.JsonFeature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -20,8 +21,8 @@ import insane96mcp.insanelib.data.IdTagValue;
 import insane96mcp.insanelib.data.lootmodifier.InjectLootTableModifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AnvilScreen;
-import net.minecraft.client.gui.screens.inventory.GrindstoneScreen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.CommonComponents;
@@ -374,7 +375,7 @@ public class EnchantingFeature extends JsonFeature {
             event.getToolTip().add(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
 
-        if (itemStack.getTag().contains("PendingEnchantments") && !(mc.screen instanceof GrindstoneScreen) && canBeEnchanted(itemStack)) {
+        if (itemStack.getTag().contains("PendingEnchantments") && canBeEnchanted(itemStack)) {
             event.getToolTip().add(Component.literal("Has pending enchantments").withStyle(ChatFormatting.DARK_GRAY));
             if (mc.screen instanceof ITEEnchantingTableScreen) {
                 ListTag enchantmentsListTag = itemStack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
@@ -387,6 +388,8 @@ public class EnchantingFeature extends JsonFeature {
                         mutablecomponent.append(CommonComponents.SPACE).append(Component.translatable("enchantment.level." + lvl));
                     }
                     event.getToolTip().add(mutablecomponent);
+                    if (Screen.hasShiftDown())
+                        event.getToolTip().add(Component.literal("  ").append(Component.translatable(enchantment.getDescriptionId() + ".info").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC)));
                 }
             }
         }

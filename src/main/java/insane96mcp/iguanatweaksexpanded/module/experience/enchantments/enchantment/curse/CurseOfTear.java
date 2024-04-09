@@ -2,9 +2,6 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.items.itemstats.ItemStats;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +12,7 @@ import net.minecraftforge.event.entity.player.PlayerXpEvent;
 
 import java.util.Map;
 
-public class CurseOfTear extends Enchantment implements IEnchantmentTooltip {
+public class CurseOfTear extends Enchantment {
     public CurseOfTear() {
         super(Rarity.RARE, EnchantmentCategory.VANISHABLE, EquipmentSlot.values());
     }
@@ -54,10 +51,5 @@ public class CurseOfTear extends Enchantment implements IEnchantmentTooltip {
         event.getOrb().value -= tearAmount;
         if (event.getOrb().value > 0)
             tearPlayerItems(event);
-    }
-
-    @Override
-    public Component getTooltip(ItemStack itemStack, int i) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.RED);
     }
 }

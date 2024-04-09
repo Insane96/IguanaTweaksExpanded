@@ -3,15 +3,11 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.insanelib.util.MathHelper;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -19,7 +15,7 @@ import net.minecraft.world.item.enchantment.LootBonusEnchantment;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.level.BlockEvent;
 
-public class Smartness extends Enchantment implements IEnchantmentTooltip {
+public class Smartness extends Enchantment {
     public static TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_smartness");
     public static EnchantmentCategory CATEGORY = EnchantmentCategory.create("accepts_smartness", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public Smartness() {
@@ -69,10 +65,5 @@ public class Smartness extends Enchantment implements IEnchantmentTooltip {
         if (lvl > 0)
             return getIncreasedExperience(hook.level().random, lvl, exp);
         return exp;
-    }
-
-    @Override
-    public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", getBonusExperience(lvl) * 100f).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

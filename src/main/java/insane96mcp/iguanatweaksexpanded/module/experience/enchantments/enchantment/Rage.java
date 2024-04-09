@@ -1,15 +1,11 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
-import insane96mcp.insanelib.InsaneLib;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
-public class Rage extends BonusDamageEnchantment implements IEnchantmentTooltip {
+public class Rage extends BonusDamageEnchantment {
     public Rage() {
         super(Rarity.UNCOMMON, new EquipmentSlot[]{ EquipmentSlot.MAINHAND });
     }
@@ -29,10 +25,5 @@ public class Rage extends BonusDamageEnchantment implements IEnchantmentTooltip 
 
     public float getMinDamageBonus(ItemStack stack, int lvl) {
         return this.getDamageBonusPerLevel() * lvl * getDamageBonusRatio(stack) * 0.2f;
-    }
-
-    @Override
-    public Component getTooltip(ItemStack stack, int lvl) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip", InsaneLib.ONE_DECIMAL_FORMATTER.format(this.getDamageBonus(stack, lvl)), InsaneLib.ONE_DECIMAL_FORMATTER.format(this.getMinDamageBonus(stack, lvl))).withStyle(ChatFormatting.DARK_PURPLE);
     }
 }

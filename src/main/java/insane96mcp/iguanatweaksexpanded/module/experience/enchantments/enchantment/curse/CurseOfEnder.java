@@ -1,9 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.insanelib.world.enchantments.IEnchantmentTooltip;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -20,7 +17,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
-public class CurseOfEnder extends Enchantment implements IEnchantmentTooltip {
+public class CurseOfEnder extends Enchantment {
     public CurseOfEnder() {
         super(Rarity.RARE, EnchantmentCategory.ARMOR, EquipmentSlot.values());
     }
@@ -73,10 +70,5 @@ public class CurseOfEnder extends Enchantment implements IEnchantmentTooltip {
                 }
             }
         }
-    }
-
-    @Override
-    public Component getTooltip(ItemStack itemStack, int i) {
-        return Component.translatable(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.RED);
     }
 }
