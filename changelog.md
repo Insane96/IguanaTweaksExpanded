@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed enchanting table screen having no background
+
 ## 1.8.1
 * Blood pact
   * Now works on any destructible item
