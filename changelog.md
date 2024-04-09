@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.8.1
 * Blood pact
   * Now works on any destructible item
   * The item becomes indestructible at the cost that the player might get damaged
