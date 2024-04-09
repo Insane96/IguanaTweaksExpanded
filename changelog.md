@@ -4,6 +4,8 @@
 * Blood pact
   * Now works on any destructible item
   * The item becomes indestructible at the cost that the player might get damaged
+* Split Pehkui changes in the mobs_buffs data pack from other MPR changes
+  * This way, if you remove Pehkui, MPR stuff will still work
 * Reduced chance for Netherized stew to poison
 * Reduced horses bonus speed (+15% -> +5%)
 
