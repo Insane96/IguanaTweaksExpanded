@@ -407,8 +407,14 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(SoulSteel.INGOT.get(), 1)
                 .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
                 .save(writer);
-        addBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.INGOT.get()), Ingredient.of(Durium.INGOT.get()), Ingredient.of(CoalCharcoal.HELLISH_COAL.get()), Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL)), CoalCharcoal.HELLISH_COAL.get(), SoulSteel.INGOT.get(), 8f, 800);
-        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.INGOT.get()), Ingredient.of(Durium.INGOT.get()), Ingredient.of(CoalCharcoal.HELLISH_COAL.get()), Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL)), CoalCharcoal.HELLISH_COAL.get(), SoulSteel.INGOT.get(),8f, 1600, 0.3f);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.INGOT.get(), 1)
+                .requires(Items.NETHERITE_SCRAP, 4)
+                .requires(Items.IRON_INGOT, 2)
+                .requires(CoalCharcoal.HELLISH_COAL.get(), 2)
+                .requires(Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS), 1)
+                .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
+                .save(writer);
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.IRON_INGOT), Ingredient.of(CoalCharcoal.HELLISH_COAL.get()), Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS)), CoalCharcoal.HELLISH_COAL.get(), SoulSteel.INGOT.get(), 8f, 1600, 0.3f);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ExplosiveBarrel.BLOCK.item().get())
                 .requires(Items.TNT, 1)

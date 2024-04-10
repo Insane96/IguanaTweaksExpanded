@@ -1,9 +1,10 @@
 {
-  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
-  "category": "soul_blast_furnace_misc",
-  "cookingtime": 1600,
-  "experience": 8.0,
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
+    {
+      "item": "minecraft:netherite_scrap"
+    },
     {
       "item": "minecraft:netherite_scrap"
     },
@@ -17,12 +18,19 @@
       "item": "minecraft:iron_ingot"
     },
     {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "iguanatweaksexpanded:hellish_coal"
+    },
+    {
       "item": "iguanatweaksexpanded:hellish_coal"
     },
     {
       "tag": "minecraft:soul_fire_base_blocks"
     }
   ],
-  "output_increase": 0.3,
-  "result": "iguanatweaksexpanded:soul_steel_ingot"
+  "result": {
+    "item": "iguanatweaksexpanded:soul_steel_ingot"
+  }
 }

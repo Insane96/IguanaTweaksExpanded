@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_durium_ingot": {
+    "has_netherite_scrap": {
       "conditions": {
         "items": [
           {
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_durium_ingot",
+      "has_netherite_scrap",
       "has_the_recipe"
     ]
   ],

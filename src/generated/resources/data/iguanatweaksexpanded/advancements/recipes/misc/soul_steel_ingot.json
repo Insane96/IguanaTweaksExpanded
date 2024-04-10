@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_durium_ingot": {
+    "has_ingot": {
       "conditions": {
         "items": [
           {
             "items": [
-              "iguanatweaksexpanded:hellish_coal"
+              "iguanatweaksexpanded:soul_steel_ingot"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:blast_furnace/alloy/soul_steel_ingot"
+        "recipe": "iguanatweaksexpanded:soul_steel_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_durium_ingot",
+      "has_ingot",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:blast_furnace/alloy/soul_steel_ingot"
+      "iguanatweaksexpanded:soul_steel_ingot"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }
