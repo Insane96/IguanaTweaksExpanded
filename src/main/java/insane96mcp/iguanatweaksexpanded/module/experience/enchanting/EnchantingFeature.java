@@ -94,6 +94,7 @@ public class EnchantingFeature extends JsonFeature {
     public static final RegistryObject<Item> ANCIENT_LAPIS = ITERegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));
 
     public static final List<IdTagValue> DEFAULT_ENCHANTMENT_BASE_COST = List.of(
+            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "reach", 5f),
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "expanded", 5f),
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "veining", 4f),
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting", 1.8f),

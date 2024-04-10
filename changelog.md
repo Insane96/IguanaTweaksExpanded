@@ -1,8 +1,11 @@
 # Changelog
 
 ## Upcoming
+* Reach can now be applied to Chestplates
 * Horse armor can now be recycled
+* Solarium no longer increases attack speed
 * Increased Gravity Defying and M.A. Jump cost
+* Fixed missing Quaron Nugget recipe
 * Fixed enchanting table screen having no background
 
 ## 1.8.1

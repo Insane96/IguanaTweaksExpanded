@@ -337,6 +337,14 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Quaron.BLOCK.block().get(), 1)
                 .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
                 .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_block");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.INGOT.get(), 1)
+                .requires(Quaron.NUGGET.get(), 9)
+                .unlockedBy("has_nuggets", has(Quaron.NUGGET.get()))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_nuggets");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.NUGGET.get(), 9)
+                .requires(Quaron.INGOT.get(), 1)
+                .unlockedBy("has_ingot", has(Quaron.INGOT.get()))
+                .save(writer);
         forgeRecipe(writer, Quaron.INGOT.get(), 3, Items.WOODEN_PICKAXE, Quaron.PICKAXE.get(), 17);
         forgeRecipe(writer, Quaron.INGOT.get(), 3, Items.WOODEN_AXE, Quaron.AXE.get(), 17);
         forgeRecipe(writer, Quaron.INGOT.get(), 2, Items.WOODEN_SWORD, Quaron.SWORD.get(), 17);

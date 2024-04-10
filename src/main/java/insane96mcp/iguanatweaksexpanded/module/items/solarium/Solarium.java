@@ -25,7 +25,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -104,7 +103,6 @@ public class Solarium extends Feature {
 	@SubscribeEvent
 	public void onLivingTick(LivingEvent.LivingTickEvent event) {
 		armorBoost(event);
-		boostAttackSpeed(event);
 
 		//Move if any other item needs toolbelt ticking
 		if (ModList.get().isLoaded("toolbelt"))
@@ -138,24 +136,6 @@ public class Solarium extends Feature {
 			MCUtils.applyModifier(event.getEntity(), attr, ARMOR_MODIFIER_UUID, "Solarium boost", amount, AttributeModifier.Operation.ADDITION, false);
 	}
 
-	public static void boostAttackSpeed(LivingEvent.LivingTickEvent event) {
-		if (event.getEntity().tickCount % 2 != 1)
-			return;
-
-		AttributeInstance attackSpeed = event.getEntity().getAttribute(Attributes.ATTACK_SPEED);
-		if (attackSpeed == null)
-			return;
-		float calculatedSkyLightRatio = getCalculatedSkyLightRatio(event.getEntity());
-		AttributeModifier modifier = attackSpeed.getModifier(ATTACK_SPEED_MODIFIER_UUID);
-		if (!event.getEntity().getMainHandItem().is(SOLARIUM_HAND_EQUIPMENT) || calculatedSkyLightRatio == 0f) {
-			if (modifier != null)
-				attackSpeed.removeModifier(modifier);
-		}
-		else if (modifier == null) {
-			MCUtils.applyModifier(event.getEntity(), Attributes.ARMOR_TOUGHNESS, ATTACK_SPEED_MODIFIER_UUID, "Solarium attack speed boost", 0.1f * calculatedSkyLightRatio, AttributeModifier.Operation.MULTIPLY_BASE, false);
-		}
-	}
-
 	@SubscribeEvent
 	public void boostAD(LivingHurtEvent event) {
 		if (!(event.getSource().getEntity() instanceof LivingEntity entity)
@@ -164,7 +144,7 @@ public class Solarium extends Feature {
 		float calculatedSkyLightRatio = getCalculatedSkyLightRatio(event.getEntity());
 		if (calculatedSkyLightRatio <= 0f)
 			return;
-		event.setAmount(event.getAmount() * (1 + 0.25f * calculatedSkyLightRatio));
+		event.setAmount(event.getAmount() * (1 + 0.2f * calculatedSkyLightRatio));
 	}
 
 	@SubscribeEvent
