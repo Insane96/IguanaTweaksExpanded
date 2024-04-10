@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Horse armor can now be recycled
 * Increased Gravity Defying and M.A. Jump cost
 * Fixed enchanting table screen having no background
 

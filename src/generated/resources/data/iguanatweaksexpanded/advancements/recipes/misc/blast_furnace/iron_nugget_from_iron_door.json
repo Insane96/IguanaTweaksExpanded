@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:soul_blast_furnace/iron_ingot_from_iron_door"
+        "recipe": "iguanatweaksexpanded:blast_furnace/iron_nugget_from_iron_door"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:soul_blast_furnace/iron_ingot_from_iron_door"
+      "iguanatweaksexpanded:blast_furnace/iron_nugget_from_iron_door"
     ]
   },
   "sends_telemetry_event": true

@@ -1,0 +1,13 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 200,
+  "group": "diamond",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond_horse_armor"
+    }
+  ],
+  "output_increase": 3.0,
+  "result": "minecraft:diamond"
+}

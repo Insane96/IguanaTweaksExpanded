@@ -1,0 +1,13 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 200,
+  "group": "iron_nugget",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_horse_armor"
+    }
+  ],
+  "output_increase": 35.0,
+  "result": "minecraft:iron_nugget"
+}

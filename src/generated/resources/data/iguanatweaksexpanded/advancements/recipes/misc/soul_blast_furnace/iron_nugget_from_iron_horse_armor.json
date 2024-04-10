@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_door": {
+    "has_iron_horse_armor": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:iron_door"
+              "minecraft:iron_horse_armor"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:blast_furnace/iron_ingot_from_iron_door"
+        "recipe": "iguanatweaksexpanded:soul_blast_furnace/iron_nugget_from_iron_horse_armor"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_iron_door",
+      "has_iron_horse_armor",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:blast_furnace/iron_ingot_from_iron_door"
+      "iguanatweaksexpanded:soul_blast_furnace/iron_nugget_from_iron_horse_armor"
     ]
   },
   "sends_telemetry_event": true

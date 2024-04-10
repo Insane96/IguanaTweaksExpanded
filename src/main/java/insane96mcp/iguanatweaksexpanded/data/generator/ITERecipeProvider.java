@@ -519,7 +519,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, Items.IRON_ORE, Items.IRON_INGOT, 1f, 100, 1f);
         addBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.IRON_INGOT, 1f, 100, 1f);
         addBlastingRecipe(writer, OreGeneration.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 100, 1f);
-        addBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_INGOT, 0f, 200);
+        addBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 200, 4.4f);
         addBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 200);
         //Gold
         addBlastingRecipe(writer, Items.RAW_GOLD, Items.GOLD_INGOT, 2f, 200, 0.3f);
@@ -555,7 +555,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Items.IRON_ORE, Items.IRON_INGOT, 1f, 200, 0.3f);
         addSoulBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.IRON_INGOT, 1f, 200, 0.3f);
         addSoulBlastingRecipe(writer, OreGeneration.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 200, 0.3f);
-        addSoulBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_INGOT, 0f, 200);
+        addSoulBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 200, 8f);
         addSoulBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 200);
         //Gold
         addSoulBlastingRecipe(writer, Items.RAW_GOLD, Items.GOLD_INGOT, 2f, 400);
@@ -800,6 +800,14 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGear(writer, SPItems.DIAMOND_SHIELD.get(), Items.DIAMOND, 200, 1);
         recycleGear(writer, SPItems.NETHERITE_SHIELD.get(), Items.NETHERITE_INGOT, 200, 1);
         recycleGear(writer, SoulSteel.SHIELD.get(), SoulSteel.NUGGET.get(), 200, 9);
+
+        //Recycle Horse Armor
+        addBlastingRecipe(writer, Items.IRON_HORSE_ARMOR, Items.IRON_NUGGET, 0, 200, 20.6f);
+        addBlastingRecipe(writer, Items.GOLDEN_HORSE_ARMOR, Items.GOLD_NUGGET, 0, 200, 20.6f);
+        addBlastingRecipe(writer, Items.DIAMOND_HORSE_ARMOR, Items.DIAMOND, 0, 200, 1.4f);
+        addSoulBlastingRecipe(writer, Items.IRON_HORSE_ARMOR, Items.IRON_NUGGET, 0, 200, 35);
+        addSoulBlastingRecipe(writer, Items.GOLDEN_HORSE_ARMOR, Items.GOLD_NUGGET, 0, 200, 35);
+        addSoulBlastingRecipe(writer, Items.DIAMOND_HORSE_ARMOR, Items.DIAMOND, 0, 200, 3);
 
         //Forge recipes
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Forging.FORGE.item().get())
