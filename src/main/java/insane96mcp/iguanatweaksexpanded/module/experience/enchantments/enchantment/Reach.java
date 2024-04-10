@@ -20,7 +20,7 @@ public class Reach extends Enchantment implements IAttributeEnchantment {
     public static final UUID REACH_MODIFIER_UUID = UUID.fromString("75f2bcd4-4f76-43b8-b75c-0c2a825cec8a");
 
     public Reach() {
-        super(Rarity.VERY_RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.CHEST});
     }
 
     @Override

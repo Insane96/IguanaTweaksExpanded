@@ -31,6 +31,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -59,7 +60,8 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
                 .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
         tag(Reach.ACCEPTS_ENCHANTMENT)
-                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
+                .addTag(Tags.Items.ARMORS_CHESTPLATES);
         tag(PartBreaker.ACCEPTS_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(Padding.ACCEPTS_ENCHANTMENT)
@@ -106,6 +108,21 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.ARROWS).add(Fletching.QUARTZ_ARROW_ITEM.get(), Fletching.DIAMOND_ARROW_ITEM.get(), Fletching.EXPLOSIVE_ARROW_ITEM.get(), Fletching.TORCH_ARROW_ITEM.get());
 
         tag(ItemTags.BEACON_PAYMENT_ITEMS).add(Items.NETHER_STAR).add(Durium.INGOT.get(), SoulSteel.INGOT.get(), Keego.GEM.get(), Quaron.INGOT.get());
+
+        //Forge
+        tag(Tags.Items.ARMORS_HELMETS)
+                .add(Solarium.HELMET.get(), Durium.HELMET.get(), CopperExpansion.HELMET.get(), SoulSteel.HELMET.get(), Keego.HELMET.get(), Quaron.HELMET.get());
+        tag(Tags.Items.ARMORS_CHESTPLATES)
+                .add(Solarium.CHESTPLATE.get(), Durium.CHESTPLATE.get(), CopperExpansion.CHESTPLATE.get(), SoulSteel.CHESTPLATE.get(), Keego.CHESTPLATE.get(), Quaron.CHESTPLATE.get());
+        tag(Tags.Items.ARMORS_LEGGINGS)
+                .add(Solarium.LEGGINGS.get(), Durium.LEGGINGS.get(), CopperExpansion.LEGGINGS.get(), SoulSteel.LEGGINGS.get(), Keego.LEGGINGS.get(), Quaron.LEGGINGS.get());
+        tag(Tags.Items.ARMORS_BOOTS)
+                .add(Solarium.BOOTS.get(), Durium.BOOTS.get(), CopperExpansion.BOOTS.get(), SoulSteel.BOOTS.get(), Keego.BOOTS.get(), Quaron.BOOTS.get());
+
+        tag(Tags.Items.TOOLS_FISHING_RODS)
+                .add(Quaron.FISHING_ROD.get());
+        tag(Tags.Items.SHEARS)
+                .add(Durium.SHEARS.get());
     }
 
     public static TagKey<Item> create(String tagName) {

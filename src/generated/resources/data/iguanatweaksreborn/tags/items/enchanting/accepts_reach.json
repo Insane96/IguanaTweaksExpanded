@@ -1,5 +1,6 @@
 {
   "values": [
-    "#iguanatweaksreborn:enchanting/accepts_damage_enchantments"
+    "#iguanatweaksreborn:enchanting/accepts_damage_enchantments",
+    "#forge:armors/chestplates"
   ]
 }
