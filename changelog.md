@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Increased Gravity Defying and M.A. Jump cost
 * Fixed enchanting table screen having no background
 
 ## 1.8.1
