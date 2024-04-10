@@ -5,6 +5,7 @@
 * Horse armor can now be recycled
 * Solarium no longer increases attack speed
 * Increased Gravity Defying and M.A. Jump cost
+* Like the base mod, materials now have a percentage increase/decrease in attack speed
 * Fixed missing Quaron Nugget recipe
 * Fixed enchanting table screen having no background
 

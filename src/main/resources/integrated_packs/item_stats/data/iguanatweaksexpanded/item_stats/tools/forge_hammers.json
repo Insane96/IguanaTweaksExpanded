@@ -8,6 +8,14 @@
 			"attribute": "minecraft:generic.movement_speed",
 			"amount": -0.1,
 			"operation": "multiply_base"
+		},
+		{
+			"uuid": "9e076948-c612-4599-a037-935211bd2f4e",
+			"name": "Tool modifier",
+			"slot": "mainhand",
+			"attribute": "minecraft:generic.attack_damage",
+			"amount": 1,
+			"operation": "multiply_base"
 		}
 	]
 }
