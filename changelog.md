@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.8.2
 * Reach can now be applied to Chestplates
 * Gravity defying
   * Max level is now I and reduces gravity by 55%

@@ -34,7 +34,7 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="insanelib"
     mandatory=true
-    versionRange="[1.13.1,)"
+    versionRange="[1.13.2,)"
     ordering="NONE"
     side="BOTH"
 
