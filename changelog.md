@@ -11,7 +11,7 @@
 * Soul Steel now requires Netherite Scrap to be made
   * Can also be made in a crafting table like Netherite
   * With this, Netherite Scrap has been renamed to Ancient Scrap
-* Like the base mod, materials now have a percentage increase/decrease in attack speed
+* Like the base mod, materials now have a percentage increase/decrease in attack damage and piercing pickaxes
 * Fixed missing Quaron Nugget recipe
 * Fixed enchanting table screen having no background
 * Fixed Bundle not showing in EMI
