@@ -11,6 +11,7 @@
 * Like the base mod, materials now have a percentage increase/decrease in attack speed
 * Fixed missing Quaron Nugget recipe
 * Fixed enchanting table screen having no background
+* Fixed Bundle not showing in EMI
 
 ## 1.8.1
 * Blood pact
