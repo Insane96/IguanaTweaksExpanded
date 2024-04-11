@@ -2,6 +2,9 @@
 
 ## Upcoming
 * Reach can now be applied to Chestplates
+* Gravity defying
+  * Max level is now I and reduces gravity by 55%
+  * Cost has been increased to 5
 * Horse armor can now be recycled
 * Solarium no longer increases attack speed
 * Increased Gravity Defying and M.A. Jump cost
