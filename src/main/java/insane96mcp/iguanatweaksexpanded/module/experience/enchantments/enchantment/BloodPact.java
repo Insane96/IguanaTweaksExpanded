@@ -43,10 +43,13 @@ public class BloodPact extends Enchantment {
         if (event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.BLOOD_PACT.get()) <= 0)
             return;
 
+        float damage = 0f;
         for (int i = 0; i < event.getAmount(); i++) {
             if (event.getPlayer().getRandom().nextFloat() < 0.1f)
-                event.getPlayer().hurt(event.getPlayer().damageSources().source(DAMAGE_TYPE), 1);
+                damage++;
         }
+        if (damage > 0)
+            event.getPlayer().hurt(event.getPlayer().damageSources().source(DAMAGE_TYPE), damage);
         event.setAmount(0);
     }
 }
