@@ -4,7 +4,7 @@
 * Bees are now smaller
 * Gravity defying
   * Reduced fall distance reduction (1.5 -> 0.5)
-  * Slightly reduced gravity reduction
+  * Reduced gravity reduction
 
 ## 1.8.2
 * Reach can now be applied to Chestplates
