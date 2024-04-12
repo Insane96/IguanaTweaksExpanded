@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.8.5
+* Fixed charcoal layer having a wrong id
+
 ## 1.8.4
 * Hotfix startup crash
 
