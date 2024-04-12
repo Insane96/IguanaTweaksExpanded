@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": true
 	},
-	"parent": "iguanatweaksexpanded:story/flint_pickaxe",
+	"parent": "iguanatweaksexpanded:story/root",
 	"criteria": {
 		"unfair_oneshot": {
 			"trigger": "iguanatweaksreborn:unfair_oneshot"

@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Updated advancements
 * Bees are now smaller
 * Gravity defying
   * Reduced fall distance reduction (1.5 -> 0.5)

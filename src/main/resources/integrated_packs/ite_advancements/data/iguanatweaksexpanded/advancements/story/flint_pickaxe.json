@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/root",
+	"parent": "iguanatweaksexpanded:story/wooden_pickaxe",
 	"criteria": {
 		"flint_tools": {
 			"trigger": "minecraft:inventory_changed",
