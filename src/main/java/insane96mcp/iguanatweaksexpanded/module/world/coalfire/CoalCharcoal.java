@@ -6,6 +6,7 @@ import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.data.lootmodifier.ReplaceLootModifier;
+import insane96mcp.iguanatweaksreborn.module.world.coalfire.CoalFire;
 import insane96mcp.iguanatweaksreborn.module.world.coalfire.PilableLayerBlock;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -40,13 +41,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-@Label(name = "Coal & Charcoal")
+@Label(name = "Coal & Charcoal", description = "If this feature is enabled, 'Unlit campfire' from IguanaTweaks Reborn is set to true")
 @LoadFeature(module = Modules.Ids.WORLD)
 public class CoalCharcoal extends Feature {
 
-    public static final SimpleBlockWithItem CHARCOAL_LAYER = SimpleBlockWithItem.register("charcoal_layer", () -> new PilableLayerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).strength(0.4F).sound(SoundType.MOSS_CARPET).isViewBlocking((state, blockGetter, pos) -> state.getValue(PilableLayerBlock.LAYERS) >= 8), Items.CHARCOAL));
+    public static final SimpleBlockWithItem CHARCOAL_LAYER = SimpleBlockWithItem.register("charcfoal_layer", () -> new PilableLayerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).strength(0.4F).sound(SoundType.MOSS_CARPET).isViewBlocking((state, blockGetter, pos) -> state.getValue(PilableLayerBlock.LAYERS) >= 8), Items.CHARCOAL));
 
     public static final RegistryObject<Item> FIRESTARTER = ITERegistries.ITEMS.register("firestarter", () -> new FirestarterItem(new Item.Properties().stacksTo(1).defaultDurability(11)));
 
@@ -75,6 +77,13 @@ public class CoalCharcoal extends Feature {
     public CoalCharcoal(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "charcoal_smelting_iron_coal", Component.literal("IguanaTweaks Expanded No Charcoal Smelting and Iron Coal"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noCharcoalSmeltingAndIronCoal));
+    }
+
+    @Override
+    public void readConfig(ModConfigEvent event) {
+        super.readConfig(event);
+        if (this.isEnabled())
+            Feature.get(CoalFire.class).setConfigOption("Unlit campfire", true);
     }
 
     @SubscribeEvent

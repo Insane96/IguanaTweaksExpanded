@@ -5,6 +5,7 @@
 * Gravity defying
   * Reduced fall distance reduction (1.5 -> 0.5)
   * Reduced gravity reduction
+* If Coal Charcoal feature is enabled, 'Unlit campfire' from IguanaTweaks Reborn is set to true
 
 ## 1.8.2
 * Reach can now be applied to Chestplates
