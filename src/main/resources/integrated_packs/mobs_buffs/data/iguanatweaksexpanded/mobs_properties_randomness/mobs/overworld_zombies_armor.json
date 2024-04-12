@@ -1,0 +1,158 @@
+{
+    "target": "#iguanatweaksexpanded:overworld_zombies",
+    "equipment": {
+        "head": {
+            "enchantments": [
+                {
+                    "chance": {
+                        "value": 0.4,
+                        "condition_modifier": {
+                            "operation": "multiply",
+                            "amount": 1.5,
+                            "condition": {
+                                "world": {
+                                    "moon_phases": "full_moon"
+                                }
+                            }
+                        }
+                    },
+                    "with_levels": {
+                        "min": 5,
+                        "max": 15,
+                        "modifier_behavior": "max_only",
+                        "difficulty_modifier": {
+                            "operation": "add",
+                            "hard": 7
+                        }
+                    }
+                }
+            ]
+        },
+        "chest": {
+            "enchantments": [
+                {
+                    "chance": {
+                        "value": 0.4,
+                        "condition_modifier": {
+                            "operation": "multiply",
+                            "amount": 1.5,
+                            "condition": {
+                                "world": {
+                                    "moon_phases": "full_moon"
+                                }
+                            }
+                        }
+                    },
+                    "with_levels": {
+                        "min": 5,
+                        "max": 15,
+                        "modifier_behavior": "max_only",
+                        "difficulty_modifier": {
+                            "operation": "add",
+                            "hard": 7
+                        }
+                    }
+                }
+            ]
+        },
+        "legs": {
+            "enchantments": [
+                {
+                    "chance": {
+                        "value": 0.4,
+                        "condition_modifier": {
+                            "operation": "multiply",
+                            "amount": 1.5,
+                            "condition": {
+                                "world": {
+                                    "moon_phases": "full_moon"
+                                }
+                            }
+                        }
+                    },
+                    "with_levels": {
+                        "min": 5,
+                        "max": 15,
+                        "modifier_behavior": "max_only",
+                        "difficulty_modifier": {
+                            "operation": "add",
+                            "hard": 7
+                        }
+                    }
+                }
+            ]
+        },
+        "feet": {
+            "enchantments": [
+                {
+                    "chance": {
+                        "value": 0.4,
+                        "condition_modifier": {
+                            "operation": "multiply",
+                            "amount": 1.5,
+                            "condition": {
+                                "world": {
+                                    "moon_phases": "full_moon"
+                                }
+                            }
+                        }
+                    },
+                    "with_levels": {
+                        "min": 5,
+                        "max": 15,
+                        "modifier_behavior": "max_only",
+                        "difficulty_modifier": {
+                            "operation": "add",
+                            "hard": 7
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "presets": {
+        "mode": "before",
+        "chance": {
+            "value": 0.15,
+            "condition_modifier": {
+                "operation": "multiply",
+                "amount": 1.5,
+                "condition": {
+                    "world": {
+                        "moon_phases": "full_moon"
+                    }
+                }
+            }
+        },
+        "list": [
+            {
+                "id": "iguanatweaksexpanded:leather_armor",
+                "weight": 90
+            },
+            {
+                "id": "iguanatweaksexpanded:chained_copper_armor",
+                "weight": 60
+            },
+            {
+                "id": "iguanatweaksexpanded:chainmail_armor",
+                "weight": 20
+            },
+            {
+                "id": "iguanatweaksexpanded:golden_armor",
+                "weight": 110
+            },
+            {
+                "id": "iguanatweaksexpanded:iron_armor",
+                "weight": 4
+            },
+            {
+                "id": "iguanatweaksexpanded:durium_armor",
+                "weight": 4
+            },
+            {
+                "id": "iguanatweaksexpanded:diamond_armor",
+                "weight": 1
+            }
+        ]
+    }
+}

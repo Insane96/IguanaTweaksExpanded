@@ -83,7 +83,7 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="mobspropertiesrandomness"
     mandatory=false
-    versionRange="[4.7.2,)"
+    versionRange="[4.10.4,)"
     ordering="NONE"
     side="BOTH"
 
