@@ -3,6 +3,7 @@
 ## Upcoming
 * Changed how mobs spawn with equipment
   * Armor: Zombies and Skeletons have 15% chance (more with Full Moon) to spawn with an armor set. Each armor piece has 50% chance (more in Hard) to actually be equipped. Then the equipment has 40% chance (more with Full Moon) to be enchanted with 5 to 15 levels (5~22 in hard).
+* Nerfed soul steel armor
 
 ## 1.8.5
 * Fixed charcoal layer having a wrong id
