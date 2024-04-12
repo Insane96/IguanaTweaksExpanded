@@ -31,7 +31,7 @@ public class GravityDefying extends Enchantment implements IAttributeEnchantment
     }
 
     public static void applyFallDamageReduction(LivingFallEvent event) {
-        event.setDistance((event.getDistance() - 1.5f));
+        event.setDistance((event.getDistance() - 0.5f));
     }
 
     @Override
