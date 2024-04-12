@@ -27,7 +27,7 @@ public class GravityDefying extends Enchantment implements IAttributeEnchantment
     }
 
     public static float getGravityReduction() {
-        return 0.55f;
+        return 0.5f;
     }
 
     public static void applyFallDamageReduction(LivingFallEvent event) {
