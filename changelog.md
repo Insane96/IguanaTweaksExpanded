@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.8.4
+* Hotfix startup crash
+
 ## 1.8.3
 * Updated advancements
 * Bees are now smaller
