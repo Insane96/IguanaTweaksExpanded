@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Bees are now smaller
 
 ## 1.8.2
 * Reach can now be applied to Chestplates

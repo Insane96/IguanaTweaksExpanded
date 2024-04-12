@@ -1,0 +1,16 @@
+{
+    "target": "minecraft:bee",
+    "scale_pehkui": [
+        {
+            "scale": {
+                "min": 0.6,
+                "max": 0.9
+            },
+            "scale_types": [
+                "pehkui:width",
+                "pehkui:height"
+            ],
+            "operation": "set"
+        }
+    ]
+}
