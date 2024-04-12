@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.8.3
 * Updated advancements
 * Bees are now smaller
 * Gravity defying
