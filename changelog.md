@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.8.6
 * Changed how mobs spawn with equipment
   * Armor: Zombies and Skeletons have 15% chance (more with Full Moon) to spawn with an armor set.  
   Each armor piece has 50% chance (more in Hard) to actually be equipped.  
