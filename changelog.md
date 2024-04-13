@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Fixed Gravity Defying applying fall damage reduction even without the enchantment 
+* Fixed sawmill advancement ... again
 
 ## 1.8.6
 * Changed how mobs spawn with equipment
