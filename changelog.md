@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed Gravity Defying applying fall damage reduction even without the enchantment 
+
 ## 1.8.6
 * Changed how mobs spawn with equipment
   * Armor: Zombies and Skeletons have 15% chance (more with Full Moon) to spawn with an armor set.  

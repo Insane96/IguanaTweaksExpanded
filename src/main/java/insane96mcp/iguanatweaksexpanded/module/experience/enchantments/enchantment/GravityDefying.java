@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -31,6 +32,8 @@ public class GravityDefying extends Enchantment implements IAttributeEnchantment
     }
 
     public static void applyFallDamageReduction(LivingFallEvent event) {
+        if (event.getEntity().getItemBySlot(EquipmentSlot.FEET).getEnchantmentLevel(NewEnchantmentsFeature.GRAVITY_DEFYING.get()) <= 0)
+            return;
         event.setDistance((event.getDistance() - 0.5f));
     }
 
