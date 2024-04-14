@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.8.7
 * Fixed Gravity Defying applying fall damage reduction even without the enchantment 
 * Fixed sawmill advancement ... again
 
