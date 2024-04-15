@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Removed Gravity Defying
+  * Was too strong, and nerfing it to the ground would make it useless on its own and too strong with M.A. Jump
+
 ## 1.8.7
 * Fixed Gravity Defying applying fall damage reduction even without the enchantment 
 * Fixed sawmill advancement ... again
