@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-10T20:34:19.7387018	Recipes
+// 1.20.1	2024-04-15T19:28:19.1676846	Recipes
 526370693a4951624cbf8285db04c56cdc7523cf data/iguanatweaksexpanded/advancements/recipes/building_blocks/durium_block.json
 354b2d1d1780cbf99af3957561d45cd439edcb4e data/iguanatweaksexpanded/advancements/recipes/building_blocks/keego_block.json
 c245ac737c4ae3ba93103337c55fcf4fe4bd0c0b data/iguanatweaksexpanded/advancements/recipes/building_blocks/quaron_block.json
@@ -895,7 +895,7 @@ bf84222be6f68c2e5b9547b958efcee4eab2ea9e data/iguanatweaksexpanded/recipes/soul_
 2c42f2f75b7857cd82e7bd6d32811613c7a73a87 data/iguanatweaksexpanded/recipes/soul_steel_block.json
 8ddb823cb1155ff2b29f8827419d4437c9c14c90 data/iguanatweaksexpanded/recipes/soul_steel_boots.json
 e1839cd424140caacd73f624759611f2d653d298 data/iguanatweaksexpanded/recipes/soul_steel_chestplate.json
-6449aca0c38a4a28a1ad337e6331a07f68b78fa4 data/iguanatweaksexpanded/recipes/soul_steel_hammer.json
+db5aab963ffd69655aa262ee383f1bd518a7b0d7 data/iguanatweaksexpanded/recipes/soul_steel_hammer.json
 ff5c313144d2c0cc502af0335c1939e0b1c416f7 data/iguanatweaksexpanded/recipes/soul_steel_helmet.json
 d8c26842049526b7a90f0d8147d68564e7a23700 data/iguanatweaksexpanded/recipes/soul_steel_hoe.json
 98058a3a98abce9251d48e33da59c95957f125db data/iguanatweaksexpanded/recipes/soul_steel_ingot.json
