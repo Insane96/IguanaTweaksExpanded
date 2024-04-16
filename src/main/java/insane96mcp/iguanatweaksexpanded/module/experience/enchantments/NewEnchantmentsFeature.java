@@ -56,6 +56,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> AIR_BORN = ITERegistries.ENCHANTMENTS.register("air_born", AirBorn::new);
 	public static final RegistryObject<Enchantment> EXPANDED = ITERegistries.ENCHANTMENTS.register("expanded", Expanded::new);
 	public static final RegistryObject<Enchantment> VEINING = ITERegistries.ENCHANTMENTS.register("veining", Veining::new);
+	//public static final RegistryObject<Enchantment> EXCHANGE = ITERegistries.ENCHANTMENTS.register("exchange", Exchange::new);
 
 	//Armor
 	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ITERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
@@ -206,24 +207,29 @@ public class NewEnchantmentsFeature extends Feature {
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public void onBlockExperienceDropped(BlockEvent.BreakEvent event) {
+	public void onBlockBreakLowest(BlockEvent.BreakEvent event) {
 		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public void onBlockExperienceDropped(EnchantmentBlockBreakEvent event) {
+	public void onEnchantmentBlockBreak(EnchantmentBlockBreakEvent event) {
 		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
+		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
+		if (pick instanceof BlockHitResult blockHitResult) {
+			Exchange.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult, event.getState());
+		}
 	}
 
 	//Priority high: run before Timber Trees
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBlockBreak(BlockEvent.BreakEvent event) {
-		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 1f, false);
+		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
 		if (pick instanceof BlockHitResult blockHitResult) {
 			Veining.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
 			Expanded.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
+			Exchange.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult, event.getState());
 		}
 	}
 
