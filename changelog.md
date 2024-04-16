@@ -3,6 +3,9 @@
 ## Upcoming
 * Removed Gravity Defying
   * Was too strong, and nerfing it to the ground would make it useless on its own and too strong with M.A. Jump
+* Refactored enchanting feature tooltip
+  * It was becoming spaghetti and there were untranslatable strings
+  * Also fixed Base Enchantability showing on non-enchantable items
 
 ## 1.8.7
 * Fixed Gravity Defying applying fall damage reduction even without the enchantment 

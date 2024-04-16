@@ -5,7 +5,9 @@
 	"block.iguanatweaksexpanded.enchanting_table": "Enchanting Table",
 	"iguanatweaksexpanded.infused_item": "Enchanting Infused",
 	"iguanatweaksexpanded.empowered_item": "Enchanting Empowered",
-	"iguanatweaksexpanded.apply_to_enchanting_table": "Treasure enchantments can be applied to enchanting table to let it learn it",
+	"iguanatweaksexpanded.apply_to_enchanting_table": "Treasure enchantments can be applied to enchanting tables to let them learn it",
+	"iguanatweaksexpanded.has_pending_enchantments": "Has Pending Enchantments",
+	"iguanatweaksexpanded.base_enchantability": "Base Enchantability: %d",
 
 	"enchantment.iguanatweaksexpanded.magnetic": "Magnetic",
 	"enchantment.iguanatweaksexpanded.vindication": "Vindication",

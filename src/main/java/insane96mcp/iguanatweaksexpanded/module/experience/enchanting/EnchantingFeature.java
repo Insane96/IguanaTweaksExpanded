@@ -46,6 +46,8 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.GrindstoneEvent;
@@ -342,57 +344,83 @@ public class EnchantingFeature extends JsonFeature {
 
     @SubscribeEvent
     public void onTooltip(ItemTooltipEvent event) {
-        ItemStack itemStack = event.getItemStack();
+        ItemStack stack = event.getItemStack();
         if (!isEnabled(EnchantingFeature.class)
                 || !(event.getEntity() instanceof Player))
             return;
 
-        if (itemStack.is(ANCIENT_LAPIS.get())) {
-            event.getToolTip().add(Component.translatable("item.iguanatweaksexpanded.ancient_lapis.deprecated").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.BOLD));
-        }
-
-        if (itemStack.getTag() == null)
+        ancientLapisTooltip(stack, event.getToolTip());
+        treasureEnchantmentsEnchantedBooksTooltip(stack, event.getToolTip());
+        Minecraft mc = Minecraft.getInstance();
+        if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ITEEnchantingTableScreen) && !Screen.hasShiftDown())
             return;
 
-        if (itemStack.is(Items.ENCHANTED_BOOK)) {
-            for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(itemStack).entrySet()) {
+        enchantabilityTooltip(stack, event.getToolTip());
+
+        CompoundTag tag = stack.getTag();
+        if (tag == null)
+            return;
+        infusedEmpoweredTooltip(stack, tag, event.getToolTip());
+        pendingEnchantmentsTooltip(stack, tag, event.getToolTip());
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private static void ancientLapisTooltip(ItemStack stack, List<Component> tooltip) {
+        if (stack.is(ANCIENT_LAPIS.get()))
+            tooltip.add(Component.translatable("item.iguanatweaksexpanded.ancient_lapis.deprecated").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.BOLD));
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private static void treasureEnchantmentsEnchantedBooksTooltip(ItemStack stack, List<Component> tooltip) {
+        if (stack.is(Items.ENCHANTED_BOOK)) {
+            for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(stack).entrySet()) {
                 if (enchantment.getKey().isTreasureOnly() && !enchantment.getKey().isCurse()) {
-                    event.getToolTip().add(Component.empty());
-                    event.getToolTip().add(Component.translatable("iguanatweaksexpanded.apply_to_enchanting_table").withStyle(ChatFormatting.GREEN));
+                    tooltip.add(Component.empty());
+                    tooltip.add(Component.translatable("iguanatweaksexpanded.apply_to_enchanting_table").withStyle(ChatFormatting.GREEN));
                     break;
                 }
             }
         }
+    }
 
-        Minecraft mc = Minecraft.getInstance();
-        if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ITEEnchantingTableScreen))
+    @OnlyIn(Dist.CLIENT)
+    private static void enchantabilityTooltip(ItemStack stack, List<Component> tooltip) {
+        int enchantmentValue = EnchantmentsFeature.getEnchantmentValue(stack);
+        if (enchantmentValue <= 0)
             return;
+        tooltip.add(Component.translatable("iguanatweaksexpanded.base_enchantability", enchantmentValue).withStyle(ChatFormatting.LIGHT_PURPLE));
+    }
 
-        event.getToolTip().add(Component.literal("Base Enchantability: " + EnchantmentsFeature.getEnchantmentValue(itemStack)).withStyle(ChatFormatting.LIGHT_PURPLE));
-
-        if (itemStack.getTag().contains(INFUSED_ITEM)) {
-            event.getToolTip().add(Component.empty());
-            event.getToolTip().add(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE));
+    @OnlyIn(Dist.CLIENT)
+    private static void infusedEmpoweredTooltip(ItemStack stack, CompoundTag tag, List<Component> tooltip) {
+        if (tag.contains(INFUSED_ITEM)) {
+            tooltip.add(Component.empty());
+            tooltip.add(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
-        if (itemStack.getTag().contains(EMPOWERED_ITEM)) {
-            event.getToolTip().add(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE));
+        if (tag.contains(EMPOWERED_ITEM)) {
+            tooltip.add(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
+    }
 
-        if (itemStack.getTag().contains("PendingEnchantments") && canBeEnchanted(itemStack)) {
-            event.getToolTip().add(Component.literal("Has pending enchantments").withStyle(ChatFormatting.DARK_GRAY));
-            if (mc.screen instanceof ITEEnchantingTableScreen) {
-                ListTag enchantmentsListTag = itemStack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+    @OnlyIn(Dist.CLIENT)
+    private static void pendingEnchantmentsTooltip(ItemStack stack, CompoundTag tag, List<Component> tooltip) {
+        if (tag.contains("PendingEnchantments") && canBeEnchanted(stack)) {
+            tooltip.add(Component.translatable("iguanatweaksexpanded.has_pending_enchantments").withStyle(ChatFormatting.DARK_GRAY));
+            if (Minecraft.getInstance().screen instanceof ITEEnchantingTableScreen) {
+                ListTag enchantmentsListTag = tag.getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
                 for (int i = 0; i < enchantmentsListTag.size(); ++i) {
                     CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
                     Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
+                    if (enchantment == null)
+                        continue;
                     short lvl = compoundtag.getShort("lvl");
                     MutableComponent mutablecomponent = CommonComponents.space().append(Component.translatable(enchantment.getDescriptionId())).withStyle(ChatFormatting.DARK_GRAY);
                     if (lvl != 1 || enchantment.getMaxLevel() != 1) {
                         mutablecomponent.append(CommonComponents.SPACE).append(Component.translatable("enchantment.level." + lvl));
                     }
-                    event.getToolTip().add(mutablecomponent);
+                    tooltip.add(mutablecomponent);
                     if (Screen.hasShiftDown())
-                        event.getToolTip().add(Component.literal("  ").append(Component.translatable(enchantment.getDescriptionId() + ".info").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC)));
+                        tooltip.add(Component.literal("  ").append(Component.translatable(enchantment.getDescriptionId() + ".info").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC)));
                 }
             }
         }
