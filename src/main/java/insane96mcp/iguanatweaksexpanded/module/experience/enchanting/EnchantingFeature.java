@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 import com.teamabnormals.allurement.core.AllurementConfig;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.item.ITEItem;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
@@ -30,8 +31,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
@@ -52,7 +51,6 @@ import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -93,7 +91,7 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean allurementIntegration = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_LAPIS = ITERegistries.ITEMS.register("ancient_lapis", () -> new Item(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ITERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ITEItem(new Item.Properties(), true));
 
     public static final List<IdTagValue> DEFAULT_ENCHANTMENT_BASE_COST = List.of(
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "reach", 5f),
@@ -196,21 +194,15 @@ public class EnchantingFeature extends JsonFeature {
     public void enchantedCleansedLapisCrafting(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
         if (!left.is(CLEANSED_LAPIS.get())
-                || left.getCount() > 1
-                || left.isEnchanted())
+                || left.isEnchanted()
+                || left.getCount() > 1)
             return;
 
         ItemStack right = event.getRight().copy();
         if (!right.is(Items.EXPERIENCE_BOTTLE))
             return;
-        event.setCost(1);
         event.setMaterialCost(1);
-        ItemStack result = left.copy();
-        CompoundTag tag = result.getOrCreateTag();
-        if (!tag.contains("Enchantments", CompoundTag.TAG_LIST))
-            tag.put("Enchantments", new ListTag());
-        tag.getList("Enchantments", CompoundTag.TAG_COMPOUND).add(new CompoundTag());
-        result.setHoverName(Component.literal("Enchanted Cleansed Lapis").withStyle(ChatFormatting.RESET));
+        ItemStack result = new ItemStack(ENCHANTED_CLEANSED_LAPIS.get());
         event.setOutput(result);
     }
 
@@ -220,30 +212,13 @@ public class EnchantingFeature extends JsonFeature {
             return;
 
         ItemStack right = event.getRight().copy();
-        if (!right.is(CLEANSED_LAPIS.get())
-                || !right.isEnchanted())
+        if (!right.is(ENCHANTED_CLEANSED_LAPIS.get()))
             return;
         event.setCost(0);
         event.setMaterialCost(1);
         ItemStack result = left.copy();
         result.getOrCreateTag().putBoolean(EnchantingFeature.EMPOWERED_ITEM, true);
         event.setOutput(result);
-    }
-
-    @SubscribeEvent
-    public void onRightClick(PlayerInteractEvent.RightClickItem event) {
-        if (event.getLevel().isClientSide
-                || !event.getItemStack().is(ANCIENT_LAPIS.get()))
-            return;
-
-        int count = event.getItemStack().getCount();
-        for (int i = 0; i < count; i++) {
-            event.getEntity().addItem(new ItemStack(CLEANSED_LAPIS.get()));
-            event.getEntity().addItem(new ItemStack(Items.EXPERIENCE_BOTTLE));
-            event.getEntity().addItem(new ItemStack(Items.NETHERITE_SCRAP));
-            event.getLevel().playSound(null, event.getEntity(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 1f, 1f);
-            event.getItemStack().shrink(1);
-        }
     }
 
     @SubscribeEvent
@@ -349,7 +324,6 @@ public class EnchantingFeature extends JsonFeature {
                 || !(event.getEntity() instanceof Player))
             return;
 
-        ancientLapisTooltip(stack, event.getToolTip());
         treasureEnchantmentsEnchantedBooksTooltip(stack, event.getToolTip());
         Minecraft mc = Minecraft.getInstance();
         if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ITEEnchantingTableScreen) && !Screen.hasShiftDown())
@@ -362,12 +336,6 @@ public class EnchantingFeature extends JsonFeature {
             return;
         infusedEmpoweredTooltip(stack, tag, event.getToolTip());
         pendingEnchantmentsTooltip(stack, tag, event.getToolTip());
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static void ancientLapisTooltip(ItemStack stack, List<Component> tooltip) {
-        if (stack.is(ANCIENT_LAPIS.get()))
-            tooltip.add(Component.translatable("item.iguanatweaksexpanded.ancient_lapis.deprecated").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.BOLD));
     }
 
     @OnlyIn(Dist.CLIENT)

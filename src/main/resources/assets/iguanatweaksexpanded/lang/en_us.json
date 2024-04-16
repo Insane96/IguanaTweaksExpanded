@@ -1,7 +1,6 @@
 {
-	"item.iguanatweaksexpanded.ancient_lapis": "Ancient Lapis",
-	"item.iguanatweaksexpanded.ancient_lapis.deprecated": "This item is marked for removal. Right click it to un-craft it",
 	"item.iguanatweaksexpanded.cleansed_lapis": "Cleansed Lapis",
+	"item.iguanatweaksexpanded.enchanted_cleansed_lapis": "Enchanted Cleansed Lapis",
 	"block.iguanatweaksexpanded.enchanting_table": "Enchanting Table",
 	"iguanatweaksexpanded.infused_item": "Enchanting Infused",
 	"iguanatweaksexpanded.empowered_item": "Enchanting Empowered",

@@ -1,5 +1,4 @@
-// 1.20.1	2024-04-07T10:58:32.828092	Item Models: iguanatweaksexpanded
-c55d75529abc060f20c2dc12f6361ea2d4eecd91 assets/iguanatweaksexpanded/models/item/ancient_lapis.json
+// 1.20.1	2024-04-16T09:41:24.0200372	Item Models: iguanatweaksexpanded
 9db8ff6b8f62a90066f9ec6f113f30579ef147b4 assets/iguanatweaksexpanded/models/item/blast_furnace.json
 fc1b6ed013a34c698e33c1afcd94ac79f4c34781 assets/iguanatweaksexpanded/models/item/brown_mushroom_stew.json
 41743aed504cb3d906945743e454f770349cbedc assets/iguanatweaksexpanded/models/item/chained_copper_boots.json
@@ -126,6 +125,7 @@ c156530f4a003d1cc2fa15c11a30d1b1e7f4923c assets/iguanatweaksexpanded/models/item
 313300a16ea7cc01a54c0ec8099ea9bf05edd0ac assets/iguanatweaksexpanded/models/item/durium_shield.json
 c00034174291c67a98858852a134f42de0029f42 assets/iguanatweaksexpanded/models/item/durium_shovel.json
 eadf0eab6e652ea12c0dc892fcea6f428ed4d4db assets/iguanatweaksexpanded/models/item/durium_sword.json
+4626b64001898b730b585c3c57e61d06e6547982 assets/iguanatweaksexpanded/models/item/enchanted_cleansed_lapis.json
 3cc4e7f7f68f60d66c50db78e67238bad3b29f24 assets/iguanatweaksexpanded/models/item/explosive_arrow.json
 74112b46bb7fdf8efba852b908f612d3f00a79ee assets/iguanatweaksexpanded/models/item/explosive_barrel.json
 e0c3044c9a2a65e9fac1438f4730b2fe47681820 assets/iguanatweaksexpanded/models/item/firestarter.json

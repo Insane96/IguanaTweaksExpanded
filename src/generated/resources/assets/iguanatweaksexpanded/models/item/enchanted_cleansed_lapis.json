@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "iguanatweaksexpanded:item/enchanted_cleansed_lapis"
+  }
+}

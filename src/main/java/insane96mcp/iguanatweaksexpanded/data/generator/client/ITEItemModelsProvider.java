@@ -92,7 +92,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         withExistingParent("polished_flint_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/polished_flint_block"));
 
         basicItem(EnchantingFeature.CLEANSED_LAPIS.get());
-        basicItem(EnchantingFeature.ANCIENT_LAPIS.get());
+        basicItem(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
 
         trimmedArmorItem(CopperExpansion.BOOTS);
         trimmedArmorItem(CopperExpansion.LEGGINGS);

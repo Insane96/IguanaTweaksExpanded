@@ -227,6 +227,7 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND, Keego.GEM.get());
             addAfter(event, Items.GOLD_INGOT, Quaron.INGOT.get());
             addAfter(event, Items.GOLD_NUGGET, Quaron.NUGGET.get());
+            addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
             addAfter(event, Items.CHARCOAL, CoalCharcoal.HELLISH_COAL.get());
             addBefore(event, Items.LEATHER, Cloth.CLOTH.get());
@@ -248,6 +249,10 @@ public class ClientSetup {
 
     private static void addAfter(BuildCreativeModeTabContentsEvent event, Item after, Item itemToAdd) {
         event.getEntries().putAfter(new ItemStack(after), new ItemStack(itemToAdd), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+    }
+
+    private static void addAfter(BuildCreativeModeTabContentsEvent event, Item after, ItemStack itemToAdd) {
+        event.getEntries().putAfter(new ItemStack(after), itemToAdd, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
     }
 
     public static void init(FMLClientSetupEvent event) {

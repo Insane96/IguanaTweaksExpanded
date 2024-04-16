@@ -9,6 +9,7 @@ import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEItemModelsProvi
 import insane96mcp.iguanatweaksexpanded.modifier.ITEModifiers;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ITEArrowDispenseBehaviour;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.setup.ITECommonConfig;
@@ -41,6 +42,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.MissingMappingsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -142,5 +145,12 @@ public class IguanaTweaksExpanded
         }
         if (hasDisabledPack)
             event.getServer().reloadResources(list.stream().map(Pack::getId).collect(Collectors.toList()));
+    }
+
+    @SubscribeEvent
+    public void onMissingMappings(MissingMappingsEvent event) {
+        event.getMappings(ForgeRegistries.Keys.ITEMS, MOD_ID).stream()
+                .filter(mapping -> mapping.getKey().getPath().contains("ancient_lapis"))
+                .forEach(mapping -> mapping.remap(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get()));
     }
 }

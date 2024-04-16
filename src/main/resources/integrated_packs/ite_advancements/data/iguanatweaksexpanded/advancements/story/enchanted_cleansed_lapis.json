@@ -1,8 +1,7 @@
 {
 	"display": {
 		"icon": {
-			"item": "iguanatweaksexpanded:cleansed_lapis",
-			"nbt": "{Enchantments:[{}]}"
+			"item": "iguanatweaksexpanded:enchanted_cleansed_lapis"
 		},
 		"title": {
 			"translate": "advancements.sr_story.enchanted_cleansed_lapis.title"
