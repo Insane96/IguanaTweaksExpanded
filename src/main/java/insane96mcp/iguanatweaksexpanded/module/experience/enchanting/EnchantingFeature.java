@@ -171,7 +171,8 @@ public class EnchantingFeature extends JsonFeature {
         if (!noEnchantmentMerge)
             return;
 
-        if ((event.getRight().isEnchanted() && !event.getRight().is(CLEANSED_LAPIS.get())) || (event.getLeft().isEnchanted() && event.getRight().is(Items.ENCHANTED_BOOK)))
+        boolean isValidEnchantedBook = event.getRight().is(Items.ENCHANTED_BOOK) && !hasOnlyCurses(event.getRight());
+        if ((event.getRight().isEnchanted() && !event.getRight().is(CLEANSED_LAPIS.get())) || (event.getLeft().isEnchanted() && isValidEnchantedBook))
             event.setCanceled(true);
     }
 
@@ -282,9 +283,10 @@ public class EnchantingFeature extends JsonFeature {
     }
 
     public static boolean hasOnlyCurses(ItemStack stack) {
-        if (!stack.isEnchanted())
+        Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
+        if (enchantments.isEmpty())
             return false;
-        for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
+        for (Map.Entry<Enchantment, Integer> enchantment : enchantments.entrySet()) {
             if (!enchantment.getKey().isCurse())
                 return false;
         }
