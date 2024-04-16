@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import insane96mcp.iguanatweaksexpanded.event.ITEEventFactory;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.items.itemstats.ItemStats;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -28,7 +29,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.DiggingEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LevelEvent;
@@ -41,7 +41,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.client.model.data.ModelData;
-import net.minecraftforge.common.ForgeHooks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,17 +82,12 @@ public class Veining extends Enchantment {
                 BlockState minedBlockState = level.getBlockState(minedBlock);
                 BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(minedBlock) : null;
                 boolean blockRemoved = removeBlock(serverLevel, minedBlock, player, true);
+                int exp = ITEEventFactory.onEnchantmentBlockBreak(player, level, minedBlock, minedBlockState);
+                if (exp == -1)
+                    continue;
                 if (blockRemoved) {
                     serverLevel.destroyBlock(minedBlock, false, entity);
                     minedBlockState.getBlock().playerDestroy(serverLevel, player, minedBlock, minedBlockState, blockEntity, heldStack);
-                    int exp;
-                    if (!ForgeHooks.isCorrectToolForDrops(state, player)) // Handle empty block or player unable to break block scenario
-                        exp = 0;
-                    else {
-                        int fortuneLevel = player.getMainHandItem().getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
-                        int silkTouchLevel = player.getMainHandItem().getEnchantmentLevel(Enchantments.SILK_TOUCH);
-                        exp = state.getExpDrop(level, level.random, pos, fortuneLevel, silkTouchLevel);
-                    }
                     minedBlockState.getBlock().popExperience(serverLevel, minedBlock, exp);
                     level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, minedBlock, Block.getId(minedBlockState));
                 }

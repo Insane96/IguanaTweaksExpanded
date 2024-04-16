@@ -6,6 +6,7 @@ import insane96mcp.insanelib.util.MathHelper;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -13,7 +14,6 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.LootBonusEnchantment;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
-import net.minecraftforge.event.level.BlockEvent;
 
 public class Smartness extends Enchantment {
     public static TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_smartness");
@@ -54,10 +54,11 @@ public class Smartness extends Enchantment {
             event.setDroppedExperience(Smartness.getIncreasedExperience(event.getEntity().getRandom(), lvl, event.getDroppedExperience()));
     }
 
-    public static void applyToBlockDrops(BlockEvent.BreakEvent event) {
-        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.SMARTNESS.get(), event.getPlayer());
+    public static int applyToBlockDrops(Player player, int expToDrop) {
+        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.SMARTNESS.get(), player);
         if (lvl > 0)
-            event.setExpToDrop(Smartness.getIncreasedExperience(event.getLevel().getRandom(), lvl, event.getExpToDrop()));
+            return Smartness.getIncreasedExperience(player.getRandom(), lvl, expToDrop);
+        return expToDrop;
     }
 
     public static int applyToFishing(FishingHook hook, int exp) {

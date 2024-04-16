@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import insane96mcp.iguanatweaksexpanded.event.ITEEventFactory;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.items.itemstats.ItemStats;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -30,7 +31,6 @@ import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.enchantment.DiggingEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LevelEvent;
@@ -43,13 +43,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.client.model.data.ModelData;
-import net.minecraftforge.common.ForgeHooks;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Expanded extends Enchantment {
-    static EnchantmentCategory PICKAXE_AND_SHOVELS = EnchantmentCategory.create("pickaxe", item -> item instanceof PickaxeItem || item instanceof ShovelItem);
+    static EnchantmentCategory PICKAXE_AND_SHOVELS = EnchantmentCategory.create("pickaxe_or_shovel", item -> item instanceof PickaxeItem || item instanceof ShovelItem);
     public Expanded() {
         super(Rarity.RARE, PICKAXE_AND_SHOVELS, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
@@ -74,6 +73,9 @@ public class Expanded extends Enchantment {
     }
 
     public static void tryApply(LivingEntity entity, Level level, BlockPos pos, Direction face, BlockState state) {
+        if (!(level instanceof ServerLevel serverLevel) ||
+                !(entity instanceof ServerPlayer player))
+            return;
         ItemStack heldStack = entity.getMainHandItem();
         if (!heldStack.isCorrectToolForDrops(state))
             return;
@@ -82,34 +84,29 @@ public class Expanded extends Enchantment {
             return;
         List<BlockPos> minedBlocks = getMinedBlocks(heldStack, enchLevel, level, entity, pos, face);
         for (BlockPos minedBlock : minedBlocks) {
-            if (level instanceof ServerLevel serverLevel && (entity instanceof ServerPlayer player && !player.getAbilities().flying)) {
-                BlockState minedBlockState = level.getBlockState(minedBlock);
-                BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(minedBlock) : null;
-                boolean blockRemoved = removeBlock(serverLevel, minedBlock, player, true);
-                if (blockRemoved) {
-                    serverLevel.destroyBlock(minedBlock, false, entity);
+            BlockState minedBlockState = level.getBlockState(minedBlock);
+            BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(minedBlock) : null;
+            int exp = ITEEventFactory.onEnchantmentBlockBreak(player, level, minedBlock, minedBlockState);
+            if (exp == -1)
+                continue;
+            boolean blockRemoved = removeBlock(serverLevel, minedBlock, player);
+            if (blockRemoved) {
+                serverLevel.destroyBlock(minedBlock, false, entity);
+                if (!player.isCreative()) {
                     minedBlockState.getBlock().playerDestroy(serverLevel, player, minedBlock, minedBlockState, blockEntity, heldStack);
-                    int exp;
-                    if (!ForgeHooks.isCorrectToolForDrops(state, player)) // Handle empty block or player unable to break block scenario
-                        exp = 0;
-                    else {
-                        int fortuneLevel = player.getMainHandItem().getEnchantmentLevel(Enchantments.BLOCK_FORTUNE);
-                        int silkTouchLevel = player.getMainHandItem().getEnchantmentLevel(Enchantments.SILK_TOUCH);
-                        exp = state.getExpDrop(level, level.random, pos, fortuneLevel, silkTouchLevel);
-                    }
                     minedBlockState.getBlock().popExperience(serverLevel, minedBlock, exp);
-                    level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, minedBlock, Block.getId(minedBlockState));
                 }
-                heldStack.hurtAndBreak(1, entity, livingEntity -> livingEntity.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, minedBlock, Block.getId(minedBlockState));
             }
+            heldStack.hurtAndBreak(1, entity, livingEntity -> livingEntity.broadcastBreakEvent(InteractionHand.MAIN_HAND));
             if (ItemStats.isBroken(heldStack) || heldStack.isEmpty())
                 break;
         }
     }
 
-    private static boolean removeBlock(Level level, BlockPos pos, ServerPlayer player, boolean canHarvest) {
+    private static boolean removeBlock(Level level, BlockPos pos, ServerPlayer player) {
         BlockState state = level.getBlockState(pos);
-        boolean removed = state.onDestroyedByPlayer(level, pos, player, canHarvest, level.getFluidState(pos));
+        boolean removed = state.onDestroyedByPlayer(level, pos, player, true, level.getFluidState(pos));
         if (removed)
             state.getBlock().destroy(level, pos, state);
         return removed;
@@ -249,13 +246,10 @@ public class Expanded extends Enchantment {
         return minedBlocks;
     }
 
-    private static boolean addIfCanBeMined(ItemStack stack, List<BlockPos> blockPos, Level level, BlockPos targetPos, BlockPos minedPos) {
+    private static void addIfCanBeMined(ItemStack stack, List<BlockPos> blockPos, Level level, BlockPos targetPos, BlockPos minedPos) {
         BlockState targetState = level.getBlockState(targetPos);
         BlockState minedState = level.getBlockState(minedPos);
-        if (minedState.getDestroySpeed(level, minedPos) > 0 && stack.isCorrectToolForDrops(minedState) && targetState.getDestroySpeed(level, targetPos) >= minedState.getDestroySpeed(level, minedPos) - 0.5d) {
+        if (minedState.getDestroySpeed(level, minedPos) > 0 && stack.isCorrectToolForDrops(minedState) && targetState.getDestroySpeed(level, targetPos) >= minedState.getDestroySpeed(level, minedPos) - 0.5d)
             blockPos.add(minedPos);
-            return true;
-        }
-        return false;
     }
 }

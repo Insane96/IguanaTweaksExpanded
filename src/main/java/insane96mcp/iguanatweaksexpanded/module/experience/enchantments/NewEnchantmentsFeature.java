@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import insane96mcp.iguanatweaksexpanded.event.EnchantmentBlockBreakEvent;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.*;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.*;
@@ -206,8 +207,14 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBlockExperienceDropped(BlockEvent.BreakEvent event) {
-		Smartness.applyToBlockDrops(event);
-		CurseOfDumbness.applyToBlockDrops(event);
+		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
+		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
+	}
+
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public void onBlockExperienceDropped(EnchantmentBlockBreakEvent event) {
+		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
+		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 	}
 
 	//Priority high: run before Timber Trees

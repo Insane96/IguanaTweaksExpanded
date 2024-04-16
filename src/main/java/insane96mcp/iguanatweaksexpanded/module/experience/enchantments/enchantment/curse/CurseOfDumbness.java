@@ -6,13 +6,13 @@ import insane96mcp.insanelib.util.MathHelper;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
-import net.minecraftforge.event.level.BlockEvent;
 
 public class CurseOfDumbness extends Enchantment {
     public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITRItemTagsProvider.create("enchanting/accepts_dumbness_curse");
@@ -51,10 +51,11 @@ public class CurseOfDumbness extends Enchantment {
             event.setDroppedExperience(getDecreasedExperience(event.getEntity().getRandom(), event.getDroppedExperience()));
     }
 
-    public static void applyToBlockDrops(BlockEvent.BreakEvent event) {
-        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_DUMBNESS.get(), event.getPlayer());
+    public static int applyToBlockDrops(Player player, int expToDrop) {
+        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_DUMBNESS.get(), player);
         if (lvl > 0)
-            event.setExpToDrop(getDecreasedExperience(event.getPlayer().getRandom(), event.getExpToDrop()));
+            return getDecreasedExperience(player.getRandom(), expToDrop);
+        return expToDrop;
     }
 
     public static int applyToFishing(FishingHook hook, int exp) {

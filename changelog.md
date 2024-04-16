@@ -5,7 +5,9 @@
   * Was too strong, and nerfing it to the ground would make it useless on its own and too strong with M.A. Jump
 * Added an actual Enchanted Cleansed Lapis item
   * I have no idea why I wanted to get myself into trouble by using an "enchanted" cleansed lapis
-  * Also Ancient Lapis will now be transformed to Enchanted Cleansed Lapis
+  * Also, Ancient Lapis will now be transformed to Enchanted Cleansed Lapis
+* Expanded and Veining now have a new event called when breaking blocks
+  * This makes Smartness and Curse of Dumbness work with blocks broken from the enchantments
 * Refactored enchanting feature tooltip
   * It was becoming spaghetti and there were untranslatable strings
   * Also fixed Base Enchantability showing on non-enchantable items
