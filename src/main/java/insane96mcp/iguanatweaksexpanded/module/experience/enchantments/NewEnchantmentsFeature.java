@@ -68,6 +68,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
 	public static final RegistryObject<Enchantment> MA_JUMP = ITERegistries.ENCHANTMENTS.register("ma_jump", DoubleJump::new);
 	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ITERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
+	public static final RegistryObject<Enchantment> STEADY_FALL = ITERegistries.ENCHANTMENTS.register("steady_fall", SteadyFall::new);
 
 	//Weapons
 	public static final RegistryObject<Enchantment> WATER_COOLANT = ITERegistries.ENCHANTMENTS.register("water_coolant", WaterCoolant::new);
@@ -140,6 +141,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onDamaged(LivingDamageEvent event) {
 		Vindication.tryStackDamage(event.getEntity(), event.getSource(), event.getAmount());
 		CurseOfEnder.onHurt(event);
+		SteadyFall.onFall(event);
 	}
 
 	//Run after hoes, shovels and Knockback feature
@@ -156,7 +158,6 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onFall(LivingFallEvent event) {
 		CurseOfSteelFall.onFall(event);
-		GravityDefying.applyFallDamageReduction(event);
 	}
 
 	@OnlyIn(Dist.CLIENT)
