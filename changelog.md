@@ -13,6 +13,7 @@
 * Refactored enchanting feature tooltip
   * It was becoming spaghetti and there were untranslatable strings
   * Also fixed Base Enchantability showing on non-enchantable items
+* Increased cleansed lapis drop rate
 * Fixed Curses not being appliable to enchanted items
   * You still have to disenchant the item to use the bonus enchantability, but you do you
 
