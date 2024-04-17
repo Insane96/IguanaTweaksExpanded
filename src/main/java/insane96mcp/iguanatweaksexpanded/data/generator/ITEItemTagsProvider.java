@@ -64,6 +64,8 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
                 .addTag(Tags.Items.ARMORS_CHESTPLATES);
         tag(PartBreaker.ACCEPTS_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+        tag(ArmorPiercer.ACCEPTS_ENCHANTMENT)
+                .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(Padding.ACCEPTS_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(AirStealer.ACCEPTS_ENCHANTMENT)

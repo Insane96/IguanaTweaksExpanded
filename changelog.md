@@ -5,6 +5,8 @@
   * Was too strong, and nerfing it to the ground would make it useless on its own and too strong with M.A. Jump
 * Added Ice Arrow
   * Applies freeze to hit entities
+* Added Armor Piercer enchantment
+  * Increases tool's piercing damage
 * Added an actual Enchanted Cleansed Lapis item
   * I have no idea why I wanted to get myself into trouble by using an "enchanted" cleansed lapis
   * Also, Ancient Lapis will now be transformed to Enchanted Cleansed Lapis
