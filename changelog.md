@@ -3,6 +3,8 @@
 ## Upcoming
 * Removed Gravity Defying
   * Was too strong, and nerfing it to the ground would make it useless on its own and too strong with M.A. Jump
+* Added Ice Arrow
+  * Applies freeze to hit entities
 * Added an actual Enchanted Cleansed Lapis item
   * I have no idea why I wanted to get myself into trouble by using an "enchanted" cleansed lapis
   * Also, Ancient Lapis will now be transformed to Enchanted Cleansed Lapis
@@ -21,8 +23,8 @@
 ## 1.8.6
 * Changed how mobs spawn with equipment
   * Armor: Zombies and Skeletons have 15% chance (more with Full Moon) to spawn with an armor set.  
-  Each armor piece has 50% chance (more in Hard) to actually be equipped.  
-  Then the equipment has 40% chance (more with Full Moon) to be enchanted with 5 to 15 levels (5~22 in hard).
+    Each armor piece has 50% chance (more in Hard) to actually be equipped.  
+    Then the equipment has 40% chance (more with Full Moon) to be enchanted with 5 to 15 levels (5~22 in hard).
   * Weapons: Zombies have 15% chance (more with Full Moon) to spawn with a weapon (pickaxe, axe, shovel, hoe and sword)  
     Then the equipment has 40% chance (more with Full Moon) to be enchanted with 5 to 15 levels (5~22 in hard).
 * Nerfed soul steel armor

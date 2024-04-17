@@ -94,6 +94,7 @@ public class IguanaTweaksExpanded
             DispenserBlock.registerBehavior(Fletching.DIAMOND_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
             DispenserBlock.registerBehavior(Fletching.EXPLOSIVE_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
             DispenserBlock.registerBehavior(Fletching.TORCH_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.ICE_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
         });
     }
 

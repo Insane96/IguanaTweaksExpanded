@@ -1,0 +1,13 @@
+{
+    "type": "iguanatweaksexpanded:fletching",
+    "category": "fletching_misc",
+    "ingredient": {
+        "item": "minecraft:arrow",
+        "count": 4
+    },
+    "catalyst1": "minecraft:blue_ice",
+    "result": {
+        "item": "iguanatweaksexpanded:ice_arrow",
+        "count": 4
+    }
+}

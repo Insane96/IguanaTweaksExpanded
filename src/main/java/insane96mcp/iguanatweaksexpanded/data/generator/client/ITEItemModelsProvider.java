@@ -217,6 +217,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(Fletching.DIAMOND_ARROW_ITEM.get());
         basicItem(Fletching.EXPLOSIVE_ARROW_ITEM.get());
         basicItem(Fletching.TORCH_ARROW_ITEM.get());
+        basicItem(Fletching.ICE_ARROW_ITEM.get());
 
         //basicItem(RecallIdol.ITEM.get());
     }

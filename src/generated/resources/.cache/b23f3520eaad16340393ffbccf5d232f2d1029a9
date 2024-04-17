@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-16T09:41:24.0200372	Item Models: iguanatweaksexpanded
+// 1.20.1	2024-04-17T09:30:01.0855604	Item Models: iguanatweaksexpanded
 9db8ff6b8f62a90066f9ec6f113f30579ef147b4 assets/iguanatweaksexpanded/models/item/blast_furnace.json
 fc1b6ed013a34c698e33c1afcd94ac79f4c34781 assets/iguanatweaksexpanded/models/item/brown_mushroom_stew.json
 41743aed504cb3d906945743e454f770349cbedc assets/iguanatweaksexpanded/models/item/chained_copper_boots.json
@@ -140,6 +140,7 @@ feca065e7fb11d6b449957e6a65cbc98a38de704 assets/iguanatweaksexpanded/models/item
 aaa7a493a97da9108a50718810e6cc4eac94dc5b assets/iguanatweaksexpanded/models/item/golden_hammer.json
 8f8e524dd9d1a92041b0b63398c2acf3a2a9c503 assets/iguanatweaksexpanded/models/item/golden_powered_rail.json
 547c3346d6cab0b76051ea74e9bfbac539673df3 assets/iguanatweaksexpanded/models/item/hellish_coal.json
+bf806676fdf5502bd99d77395835e939c3c00c37 assets/iguanatweaksexpanded/models/item/ice_arrow.json
 9441a53e9e1f8521f7da9ad2891bad18265008b5 assets/iguanatweaksexpanded/models/item/iron_hammer.json
 4b0aca420af61852e9a012308fbbbae161b21e08 assets/iguanatweaksexpanded/models/item/keego.json
 9883031aec9b97d6282277c1c14ca4bef254a8e9 assets/iguanatweaksexpanded/models/item/keego_axe.json

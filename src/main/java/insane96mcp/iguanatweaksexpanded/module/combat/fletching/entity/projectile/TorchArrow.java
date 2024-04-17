@@ -15,7 +15,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
 
 public class TorchArrow extends Arrow {
     public TorchArrow(EntityType<? extends Arrow> pEntityType, Level pLevel) {
@@ -53,9 +52,9 @@ public class TorchArrow extends Arrow {
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult pResult) {
-        super.onHitEntity(pResult);
-        pResult.getEntity().setRemainingFireTicks(pResult.getEntity().getRemainingFireTicks() + 30);
+    protected void doPostHurtEffects(LivingEntity pLiving) {
+        super.doPostHurtEffects(pLiving);
+        pLiving.setRemainingFireTicks(pLiving.getRemainingFireTicks() + 30);
     }
 
     @Override

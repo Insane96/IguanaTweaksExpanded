@@ -4,10 +4,7 @@ import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.block.ITEFletchingTableBlock;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.data.FletchingRecipeSerializer;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.DiamondArrow;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.ExplosiveArrow;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.QuartzArrow;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.TorchArrow;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.*;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.inventory.FletchingMenu;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.ITEArrowItem;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
@@ -74,10 +71,18 @@ public class Fletching extends Feature {
 					.updateInterval(3)
 					.build("torch_arrow"));
 
+	public static final RegistryObject<EntityType<IceArrow>> ICE_ARROW = ITERegistries.ENTITY_TYPES.register("ice_arrow", () ->
+			EntityType.Builder.<IceArrow>of(IceArrow::new, MobCategory.MISC)
+					.sized(0.5F, 0.5F)
+					.clientTrackingRange(4)
+					.updateInterval(3)
+					.build("ice_arrow"));
+
 	public static final RegistryObject<ITEArrowItem> QUARTZ_ARROW_ITEM = ITERegistries.ITEMS.register("quartz_arrow", () -> new ITEArrowItem(QUARTZ_ARROW::get, 2f, new Item.Properties()));
 	public static final RegistryObject<ITEArrowItem> DIAMOND_ARROW_ITEM = ITERegistries.ITEMS.register("diamond_arrow", () -> new ITEArrowItem(DIAMOND_ARROW::get, 3f, new Item.Properties()));
 	public static final RegistryObject<ITEArrowItem> EXPLOSIVE_ARROW_ITEM = ITERegistries.ITEMS.register("explosive_arrow", () -> new ITEArrowItem(EXPLOSIVE_ARROW::get, 0f, new Item.Properties()));
 	public static final RegistryObject<ITEArrowItem> TORCH_ARROW_ITEM = ITERegistries.ITEMS.register("torch_arrow", () -> new ITEArrowItem(TORCH_ARROW::get, 2f, new Item.Properties()));
+	public static final RegistryObject<ITEArrowItem> ICE_ARROW_ITEM = ITERegistries.ITEMS.register("ice_arrow", () -> new ITEArrowItem(ICE_ARROW::get, 1f, new Item.Properties()));
 
 	@Config
 	@Label(name = "Fletching Data Pack", description = """

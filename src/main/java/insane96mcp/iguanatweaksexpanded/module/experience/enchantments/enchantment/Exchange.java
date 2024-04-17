@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.mixin.BlockItemInvoker;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -39,7 +38,7 @@ public class Exchange extends Enchantment {
 
     public static void tryApply(LivingEntity entity, Level level, BlockPos pos, BlockHitResult blockHitResult, BlockState state) {
         ItemStack heldStack = entity.getMainHandItem();
-        int enchLevel = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.EXCHANGE.get());
+        int enchLevel = 0;//heldStack.getEnchantmentLevel(NewEnchantmentsFeature.EXCHANGE.get());
         if (enchLevel == 0)
             return;
         ItemStack offhandItem = entity.getOffhandItem();

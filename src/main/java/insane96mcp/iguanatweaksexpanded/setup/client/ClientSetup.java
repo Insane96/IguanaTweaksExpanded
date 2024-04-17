@@ -167,6 +167,7 @@ public class ClientSetup {
             addAfter(event, Items.ARROW, Fletching.EXPLOSIVE_ARROW_ITEM.get());
             addAfter(event, Items.ARROW, Fletching.DIAMOND_ARROW_ITEM.get());
             addAfter(event, Items.ARROW, Fletching.QUARTZ_ARROW_ITEM.get());
+            addAfter(event, Items.ARROW, Fletching.ICE_ARROW_ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             addBefore(event, Items.GOLD_BLOCK, Durium.BLOCK.item().get());
@@ -288,6 +289,7 @@ public class ClientSetup {
         event.registerEntityRenderer(Fletching.DIAMOND_ARROW.get(), ITEArrowRenderer::new);
         event.registerEntityRenderer(Fletching.EXPLOSIVE_ARROW.get(), ITEArrowRenderer::new);
         event.registerEntityRenderer(Fletching.TORCH_ARROW.get(), ITEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.ICE_ARROW.get(), ITEArrowRenderer::new);
         event.registerEntityRenderer(MiningCharge.PRIMED_MINING_CHARGE.get(), MiningChargeRenderer::new);
 
         event.registerBlockEntityRenderer(Forging.FORGE_BLOCK_ENTITY_TYPE.get(), ForgeRenderer::new);
