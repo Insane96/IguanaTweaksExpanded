@@ -6,17 +6,20 @@
 * Added Armor Piercer enchantment
   * Increases tool's piercing damage
 * Added Steady Fall enchantment
-  * New Treasure enchantment that negates fall damage but redirects twice of it to the boots
+  * New Treasure enchantment that negates fall damage but redirects twice of it to the boots]
+* Added Exchange Enchantment
+  * A new enchantment that replaces blocks mined with the ones in the offhand
 * Removed Gravity Defying
   * Was too strong, and nerfing it to the ground would make it useless on its own and too strong with M.A. Jump
 * Added an actual Enchanted Cleansed Lapis item
   * I have no idea why I wanted to get myself into trouble by using an "enchanted" cleansed lapis
-  * Also, Ancient Lapis will now be transformed to Enchanted Cleansed Lapis
+  * Also, Ancient Lapis should now be transformed to Enchanted Cleansed Lapis
 * Expanded and Veining now have a new event called when breaking blocks
   * This makes Smartness and Curse of Dumbness work with blocks broken from the enchantments
 * Refactored enchanting feature tooltip
   * It was becoming spaghetti and there were untranslatable strings
   * Also fixed Base Enchantability showing on non-enchantable items
+  * Also base enchantability and empowered/infused are now visible outside the enchanting screen with shift
 * Mob's equipment
   * Skeletons and zombies items' chance to be enchanted has been reduced (40% -> 30%)
   * Diamond armor chance has been halved
