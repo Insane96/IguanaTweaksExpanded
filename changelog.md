@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed supplementaries urn rare loot table broken
+
 ## 1.9.0
 * Added Ice Arrow
   * Applies freeze to hit entities

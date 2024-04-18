@@ -168,7 +168,7 @@
                 {
                     "type": "minecraft:item",
                     "weight": 10,
-                    "name": "iguanatweaksexpanded:durium_scrap",
+                    "name": "iguanatweaksexpanded:durium_scrap_piece",
                     "functions": [
                         {
                             "function": "minecraft:set_count",
