@@ -23,14 +23,12 @@ public class Reach extends Enchantment implements IAttributeEnchantment {
         super(Rarity.VERY_RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.CHEST});
     }
 
-    @Override
-    public int getMinCost(int level) {
-        return 20;
+    public int getMinCost(int pEnchantmentLevel) {
+        return pEnchantmentLevel * 25;
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return 40;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return this.getMinCost(pEnchantmentLevel) + 50;
     }
 
     @Override

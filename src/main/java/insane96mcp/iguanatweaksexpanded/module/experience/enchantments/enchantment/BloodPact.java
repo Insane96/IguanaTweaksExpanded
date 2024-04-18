@@ -18,14 +18,15 @@ public class BloodPact extends Enchantment {
         super(Rarity.VERY_RARE, EnchantmentCategory.VANISHABLE, EquipmentSlot.values());
     }
 
-    @Override
-    public int getMinCost(int level) {
-        return 2 + 10 * (level - 1);
+    /**
+     * Returns the minimal value of enchantability needed on the enchantment level passed.
+     */
+    public int getMinCost(int pEnchantmentLevel) {
+        return pEnchantmentLevel * 25;
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 50;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return this.getMinCost(pEnchantmentLevel) + 50;
     }
 
     @Override

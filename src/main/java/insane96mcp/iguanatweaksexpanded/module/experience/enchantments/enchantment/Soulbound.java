@@ -24,17 +24,15 @@ public class Soulbound extends Enchantment {
         return item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT) || EnchantmentCategory.VANISHABLE.canEnchant(item);
     });
     public Soulbound() {
-        super(Rarity.RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.CHEST});
+        super(Rarity.RARE, CATEGORY, EquipmentSlot.values());
     }
 
-    @Override
-    public int getMinCost(int level) {
-        return 2 + 10 * (level - 1);
+    public int getMinCost(int pEnchantmentLevel) {
+        return pEnchantmentLevel * 20;
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 50;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return this.getMinCost(pEnchantmentLevel) + 40;
     }
 
     @Override

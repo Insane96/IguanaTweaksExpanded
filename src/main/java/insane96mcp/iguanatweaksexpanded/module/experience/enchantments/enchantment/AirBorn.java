@@ -13,14 +13,12 @@ public class AirBorn extends Enchantment {
         super(Rarity.RARE, EnchantmentCategory.ARMOR_CHEST, new EquipmentSlot[]{EquipmentSlot.CHEST});
     }
 
-    @Override
-    public int getMinCost(int level) {
-        return 2 + 10 * (level - 1);
+    public int getMinCost(int pEnchantmentLevel) {
+        return 1;
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 50;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return this.getMinCost(pEnchantmentLevel) + 40;
     }
 
     public static float getMiningSpeedMultiplier(LivingEntity entity, BlockState state) {

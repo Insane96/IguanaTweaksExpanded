@@ -21,14 +21,12 @@ public class Padding extends Enchantment {
         super(Rarity.RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
-    @Override
-    public int getMinCost(int level) {
-        return 20;
+    public int getMinCost(int pEnchantmentLevel) {
+        return 1;
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return 40;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return this.getMinCost(pEnchantmentLevel) + 40;
     }
 
     public static void shouldApply(LivingHurtEvent event) {

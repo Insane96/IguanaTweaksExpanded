@@ -31,15 +31,15 @@ public class PartBreaker extends Enchantment {
     public int getMaxLevel() {
         return 3;
     }
-
-    @Override
-    public int getMinCost(int level) {
-        return 22 * level;
+    /**
+     * Returns the minimal value of enchantability needed on the enchantment level passed.
+     */
+    public int getMinCost(int pEnchantmentLevel) {
+        return 15 + (pEnchantmentLevel - 1) * 9;
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 22;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return super.getMinCost(pEnchantmentLevel) + 50;
     }
 
     public static float getChance(int lvl) {

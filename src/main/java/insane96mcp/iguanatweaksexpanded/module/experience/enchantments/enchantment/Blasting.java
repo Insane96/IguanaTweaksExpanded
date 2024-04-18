@@ -23,15 +23,15 @@ public class Blasting extends Enchantment {
     public int getMaxLevel() {
         return 5;
     }
-
-    @Override
-    public int getMinCost(int level) {
-        return 2 + 10 * (level - 1);
+    /**
+     * Returns the minimal value of enchantability needed on the enchantment level passed.
+     */
+    public int getMinCost(int pEnchantmentLevel) {
+        return 1 + 10 * (pEnchantmentLevel - 1);
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 50;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return super.getMinCost(pEnchantmentLevel) + 50;
     }
 
     public boolean checkCompatibility(Enchantment other) {

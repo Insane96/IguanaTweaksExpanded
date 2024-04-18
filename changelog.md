@@ -28,6 +28,8 @@
 * Increased cleansed lapis drop rate
 * Reduced Depth Strider and Megnetic cost
 * Slightly increased Diamond Arrows damage and slightly decreased torch arrows damage
+* Fixed enchantments cost when enchanting with levels
+  * This should make different enchantments show up in treasure fishing loot or on mobs
 * Fixed Curses not being appliable to enchanted items
   * You still have to disenchant the item to use the bonus enchantability, but you do you
 

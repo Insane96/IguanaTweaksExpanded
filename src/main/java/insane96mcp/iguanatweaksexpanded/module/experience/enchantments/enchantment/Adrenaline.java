@@ -33,14 +33,13 @@ public class Adrenaline extends Enchantment implements IAttributeEnchantment {
         return 5;
     }
 
-    @Override
-    public int getMinCost(int level) {
-        return 2 + 10 * (level - 1);
+
+    public int getMinCost(int lvl) {
+        return 4 + (lvl - 1) * 8;
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 50;
+    public int getMaxCost(int lvl) {
+        return this.getMinCost(lvl) + 20;
     }
 
     public boolean checkCompatibility(Enchantment other) {

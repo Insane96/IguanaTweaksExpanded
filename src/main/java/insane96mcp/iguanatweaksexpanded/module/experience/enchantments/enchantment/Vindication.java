@@ -23,14 +23,12 @@ public class Vindication extends Enchantment {
         return 3;
     }
 
-    @Override
-    public int getMinCost(int level) {
-        return 5 + (level - 1) * 8;
+    public int getMinCost(int pEnchantmentLevel) {
+        return 12 + (pEnchantmentLevel - 1) * 20;
     }
 
-    @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 8;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return 50;
     }
 
     public static float maxStackedDamage(int lvl) {

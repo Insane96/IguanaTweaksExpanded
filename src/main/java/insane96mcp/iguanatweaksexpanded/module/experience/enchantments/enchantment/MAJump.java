@@ -12,8 +12,8 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 
-public class DoubleJump extends Enchantment {
-    public DoubleJump() {
+public class MAJump extends Enchantment {
+    public MAJump() {
         super(Rarity.RARE, EnchantmentCategory.ARMOR_FEET, new EquipmentSlot[] {EquipmentSlot.FEET});
     }
 

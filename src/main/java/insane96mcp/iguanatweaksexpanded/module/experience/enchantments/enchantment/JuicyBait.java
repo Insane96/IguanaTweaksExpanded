@@ -33,7 +33,9 @@ public class JuicyBait extends Enchantment {
     public int getMaxLevel() {
         return 3;
     }
-
+    /**
+     * Returns the minimal value of enchantability needed on the enchantment level passed.
+     */
     public int getMinCost(int pEnchantmentLevel) {
         return 15 + (pEnchantmentLevel - 1) * 9;
     }
