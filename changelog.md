@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Slightly reduced Quaron efficiency on wrong blocks with efficiency enchantment
+* Increased Quaron enchantability by 1
 
 ## 1.9.1
 * Supplementaries urns can now be empty
