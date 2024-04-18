@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Fixed supplementaries urn rare loot table broken
+* Fixed cleansed lapis drop chance being too high
 
 ## 1.9.0
 * Added Ice Arrow
