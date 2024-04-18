@@ -84,7 +84,7 @@ public class Quaron extends Feature {
 			return;
 
 		int effLevel = event.getEntity().getMainHandItem().getEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY);
-		float bonus = EnchantmentsFeature.applyMiningSpeedModifiers(1f + (effLevel * 0.25f), false, event.getEntity());
+		float bonus = EnchantmentsFeature.applyMiningSpeedModifiers(1f + (effLevel * 0.2f), false, event.getEntity());
 		event.setNewSpeed(event.getOriginalSpeed() + bonus);
 	}
 

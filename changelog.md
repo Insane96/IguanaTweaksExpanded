@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Slightly reduced Quaron efficiency on wrong blocks with efficiency enchantment
+
 ## 1.9.1
 * Supplementaries urns can now be empty
 * Fixed supplementaries urn rare loot table broken
