@@ -1,6 +1,7 @@
 # Changelog
 
-## Upcoming
+## 1.9.1
+* Supplementaries urns can now be empty
 * Fixed supplementaries urn rare loot table broken
 * Fixed cleansed lapis drop chance being too high
 
