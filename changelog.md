@@ -17,6 +17,10 @@
 * Refactored enchanting feature tooltip
   * It was becoming spaghetti and there were untranslatable strings
   * Also fixed Base Enchantability showing on non-enchantable items
+* Mob's equipment
+  * Skeletons and zombies items' chance to be enchanted has been reduced (40% -> 30%)
+  * Diamond armor chance has been halved
+  * Fixed zombies having way too high chance to have diamond weapons
 * Soulbound can now be applied to Recovery compasses, Compasses, Bundles, Crates and Quark's Backpack
 * Increased cleansed lapis drop rate
 * Slightly increased Diamond Arrows damage and slightly decreased torch arrows damage

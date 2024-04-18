@@ -33,7 +33,7 @@
             "enchantments": [
                 {
                     "chance": {
-                        "value": 0.4,
+                        "value": 0.3,
                         "condition_modifier": {
                             "operation": "multiply",
                             "amount": 1.5,
@@ -60,7 +60,7 @@
             "enchantments": [
                 {
                     "chance": {
-                        "value": 0.4,
+                        "value": 0.3,
                         "condition_modifier": {
                             "operation": "multiply",
                             "amount": 1.5,
@@ -87,7 +87,7 @@
             "enchantments": [
                 {
                     "chance": {
-                        "value": 0.4,
+                        "value": 0.3,
                         "condition_modifier": {
                             "operation": "multiply",
                             "amount": 1.5,
@@ -114,7 +114,7 @@
             "enchantments": [
                 {
                     "chance": {
-                        "value": 0.4,
+                        "value": 0.3,
                         "condition_modifier": {
                             "operation": "multiply",
                             "amount": 1.5,
@@ -155,27 +155,27 @@
         "list": [
             {
                 "id": "iguanatweaksexpanded:leather_armor",
-                "weight": 90
+                "weight": 180
             },
             {
                 "id": "iguanatweaksexpanded:chained_copper_armor",
-                "weight": 60
+                "weight": 120
             },
             {
                 "id": "iguanatweaksexpanded:chainmail_armor",
-                "weight": 20
+                "weight": 40
             },
             {
                 "id": "iguanatweaksexpanded:golden_armor",
-                "weight": 110
+                "weight": 220
             },
             {
                 "id": "iguanatweaksexpanded:iron_armor",
-                "weight": 4
+                "weight": 8
             },
             {
                 "id": "iguanatweaksexpanded:durium_armor",
-                "weight": 4
+                "weight": 8
             },
             {
                 "id": "iguanatweaksexpanded:diamond_armor",
