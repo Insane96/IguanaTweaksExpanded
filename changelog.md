@@ -6,7 +6,7 @@
 * Added Armor Piercer enchantment
   * Increases tool's piercing damage
 * Added Steady Fall enchantment
-  * New Treasure enchantment that negates fall damage but redirects twice of it to the boots]
+  * New Treasure enchantment that negates fall damage but redirects twice of it to the boots
 * Added Exchange Enchantment
   * A new enchantment that replaces blocks mined with the ones in the offhand
 * Removed Gravity Defying
