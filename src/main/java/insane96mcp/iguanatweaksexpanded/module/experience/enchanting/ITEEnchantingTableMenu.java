@@ -115,14 +115,17 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             }
             if (enchantingPower > 15f)
                 enchantingPower = 15f;
-            float p = 0.5f;
+            int baseTableEnchantability = 4;
+            float enchantabilityModifier = 0.5f;
             if (stack.getTag() != null) {
                 if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM))
-                    p = 1f;
-                if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
-                    p *= 1.4f;
+                    enchantabilityModifier = 1f;
+                if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM)) {
+                    enchantabilityModifier *= 1.2f;
+                    baseTableEnchantability += 4;
+                }
             }
-            float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack) + EnchantingFeature.getCurseCost(stack)) * p * (enchantingPower / 15f) + 4;
+            float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack) + EnchantingFeature.getCurseCost(stack)) * enchantabilityModifier * (enchantingPower / 15f) + baseTableEnchantability;
             this.maxCost.set(Math.round(maxCost));
         }
         this.broadcastChanges();
