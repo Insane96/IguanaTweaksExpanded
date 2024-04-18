@@ -17,6 +17,7 @@
 * Refactored enchanting feature tooltip
   * It was becoming spaghetti and there were untranslatable strings
   * Also fixed Base Enchantability showing on non-enchantable items
+* Soulbound can now be applied to Recovery compasses, Compasses, Bundles, Crates and Quark's Backpack
 * Increased cleansed lapis drop rate
 * Slightly increased Diamond Arrows damage and slightly decreased torch arrows damage
 * Fixed Curses not being appliable to enchanted items

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:recovery_compass",
+    "minecraft:compass",
+    {
+      "id": "quark:backpack",
+      "required": false
+    }
+  ]
+}
