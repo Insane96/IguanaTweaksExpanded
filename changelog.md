@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+* Solarium
+  * Increased base Mining Speed (2 -> 4.5)
+  * Decreased Bonus Mining Speed under sun (up to +~~100%~~->+50% speed)
 * Increased Quaron enchantability by 1
 
 ## 1.9.1
