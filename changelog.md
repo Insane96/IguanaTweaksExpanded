@@ -23,6 +23,7 @@
   * Fixed zombies having way too high chance to have diamond weapons
 * Soulbound can now be applied to Recovery compasses, Compasses, Bundles, Crates and Quark's Backpack
 * Increased cleansed lapis drop rate
+* Reduced Depth Strider cost
 * Slightly increased Diamond Arrows damage and slightly decreased torch arrows damage
 * Fixed Curses not being appliable to enchanted items
   * You still have to disenchant the item to use the bonus enchantability, but you do you
