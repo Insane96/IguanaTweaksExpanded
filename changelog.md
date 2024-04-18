@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.9.0
 * Added Ice Arrow
   * Applies freeze to hit entities
 * Added Armor Piercer enchantment
@@ -31,7 +31,6 @@
 * Fixed enchantments cost when enchanting with levels
   * This should make different enchantments show up in treasure fishing loot or on mobs
 * Fixed Curses not being appliable to enchanted items
-  * You still have to disenchant the item to use the bonus enchantability, but you do you
 
 ## 1.8.7
 * Fixed Gravity Defying applying fall damage reduction even without the enchantment 
