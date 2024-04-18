@@ -5,6 +5,7 @@
   * Increased base Mining Speed (2 -> 4.5)
   * Decreased Bonus Mining Speed under sun (up to +~~100%~~->+50% speed)
 * Increased Quaron enchantability by 1
+* Fixed non-enchantable items (e.g. Books) showing enchantability
 
 ## 1.9.1
 * Supplementaries urns can now be empty

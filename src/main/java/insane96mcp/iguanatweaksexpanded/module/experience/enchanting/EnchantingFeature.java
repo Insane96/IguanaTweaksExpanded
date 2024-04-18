@@ -359,7 +359,7 @@ public class EnchantingFeature extends JsonFeature {
     @OnlyIn(Dist.CLIENT)
     private static void enchantabilityTooltip(ItemStack stack, List<Component> tooltip) {
         int enchantmentValue = EnchantmentsFeature.getEnchantmentValue(stack);
-        if (enchantmentValue <= 0)
+        if (enchantmentValue <= 0 || stack.is(EnchantingFeature.NOT_ENCHANTABLE))
             return;
         tooltip.add(Component.translatable("iguanatweaksexpanded.base_enchantability", enchantmentValue).withStyle(ChatFormatting.LIGHT_PURPLE));
     }
