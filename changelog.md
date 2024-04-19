@@ -6,9 +6,10 @@
   * Redeuced bonus enchantability (+40% -> +10%)
 * Emi now shows infos and craftings for Cleansed Lapis
 * Solarium
-  * Increased base Mining Speed (2 -> 4.5)
+  * Increased efficiency (2 -> 4.5)
   * Decreased Bonus Mining Speed under sun (up to +~~100%~~->+50% speed)
 * Increased Quaron enchantability by 1
+* Increased Durium (2.5 -> 3), Quaron (2.5 -> 3) and Soul Steel (3.5 -> 4) efficiency
 * Items can no longer be repaired with nuggets (check ITR for more info)
 * Fixed non-enchantable items (e.g. Books) showing enchantability
 
