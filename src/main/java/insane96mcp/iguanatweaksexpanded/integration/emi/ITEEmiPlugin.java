@@ -22,10 +22,14 @@ import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.base.Feature;
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -101,6 +105,32 @@ public class ITEEmiPlugin implements EmiPlugin {
 					List.of(Component.translatable(key, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f)),
 							Component.translatable(key2, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f))),
 					new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "info_grindstone")));
+
+			registry.addRecipe(createSimpleInfo(EnchantingFeature.CLEANSED_LAPIS.get(), "info_cleansed_lapis", Component.translatable("emi.info.iguanatweaksexpanded.cleansed_lapis")));
+			registry.addRecipe(createSimpleInfo(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), "info_enchanted_cleansed_lapis", Component.translatable("emi.info.iguanatweaksexpanded.enchanted_cleansed_lapis")));
+			CompoundTag tag = new CompoundTag();
+			ListTag lore = new ListTag();
+			lore.add(StringTag.valueOf(""));
+			lore.add(StringTag.valueOf(Component.Serializer.toJson(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE))));
+			CompoundTag display = new CompoundTag();
+			display.put("Lore", lore);
+			tag.put("display", display);
+
+			ItemStack output = new ItemStack(Items.DIAMOND_SWORD, 1);
+			output.setTag(tag);
+			registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "cleansed_lapis_use"), Items.DIAMOND_SWORD, EnchantingFeature.CLEANSED_LAPIS.get(), output));
+
+			registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchanted_cleansed_lapis_use"), EnchantingFeature.CLEANSED_LAPIS.get(), Items.EXPERIENCE_BOTTLE, new ItemStack(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get())));
+			tag = new CompoundTag();
+			lore = new ListTag();
+			lore.add(StringTag.valueOf(""));
+			lore.add(StringTag.valueOf(Component.Serializer.toJson(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE))));
+			display = new CompoundTag();
+			display.put("Lore", lore);
+			tag.put("display", display);
+			output = new ItemStack(Items.DIAMOND_PICKAXE, 1);
+			output.setTag(tag);
+			registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchanted_cleansed_lapis_use"), Items.DIAMOND_PICKAXE, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), output));
 		}
 		if (Feature.isEnabled(MultiBlockFurnaces.class)) {
 			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);

@@ -4,6 +4,7 @@
 * Enchanted Cleansed Lapis has been buffed
   * Now gives +5 base table enchantability (so not affected by tools' status (empowered/infused))
   * Redeuced bonus enchantability (+40% -> +10%)
+* Emi now shows infos and craftings for Cleansed Lapis
 * Solarium
   * Increased base Mining Speed (2 -> 4.5)
   * Decreased Bonus Mining Speed under sun (up to +~~100%~~->+50% speed)
