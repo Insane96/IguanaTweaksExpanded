@@ -4,6 +4,8 @@
 * Enchanted Cleansed Lapis has been buffed
   * Now gives +5 base table enchantability (so not affected by tools' status (empowered/infused))
   * Redeuced bonus enchantability (+40% -> +10%)
+* Reworked Blood Pact
+  * No longer makes the tool indestructible, instead makes the tool have only 1 in 8 chance to lose duratility, when it does, you're damaged too
 * Emi now shows infos and craftings for Cleansed Lapis
 * Solarium
   * Increased efficiency (2 -> 4.5)
