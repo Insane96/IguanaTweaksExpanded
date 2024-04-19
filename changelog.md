@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Fixed supplementaries urn loot table
+* Fixed Burst of Arrows' arrows being pickupable
 * Increased Vigour cost
 
 ## 1.9.2

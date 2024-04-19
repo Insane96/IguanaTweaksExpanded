@@ -40,6 +40,7 @@ public class BurstOfArrows extends Enchantment {
         for (int i = 0; i < 360; i += 60) {
             Arrow newArrow = new Arrow(arrow.level(), arrow.getX(), arrow.getY(), arrow.getZ());
             newArrow.setOwner(arrow.getOwner());
+            newArrow.pickup = Arrow.Pickup.CREATIVE_ONLY;
             newArrow.setPierceLevel(arrow.getPierceLevel());
             newArrow.setBaseDamage(arrow.getBaseDamage());
             newArrow.setKnockback(arrow.getKnockback());
