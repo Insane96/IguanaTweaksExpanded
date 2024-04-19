@@ -9,6 +9,7 @@
   * Increased base Mining Speed (2 -> 4.5)
   * Decreased Bonus Mining Speed under sun (up to +~~100%~~->+50% speed)
 * Increased Quaron enchantability by 1
+* Items can no longer be repaired with nuggets (check ITR for more info)
 * Fixed non-enchantable items (e.g. Books) showing enchantability
 
 ## 1.9.1
