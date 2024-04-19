@@ -99,7 +99,7 @@
                             "add": false
                         }
                     ],
-                    "name": "iguanatweaksreborn:wheat_seeds"
+                    "name": "minecraft:wheat_seeds"
                 },
                 {
                     "type": "minecraft:item",
@@ -115,7 +115,7 @@
                             "add": false
                         }
                     ],
-                    "name": "iguanatweaksreborn:beetroot_seeds"
+                    "name": "minecraft:beetroot_seeds"
                 },
                 {
                     "type": "minecraft:item",

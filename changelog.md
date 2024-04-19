@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Fixed supplementaries urn loot table
+* Increased Vigour cost
+
 ## 1.9.2
 * Enchanted Cleansed Lapis has been buffed
   * Now gives +5 base table enchantability (so not affected by tools' status (empowered/infused))
