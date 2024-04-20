@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Increased Piercing, Vigour and Soulbound cost
+* Added infos to Powered Rails
 * Fixed supplementaries urn loot table
 * Fixed Burst of Arrows' arrows being pickupable
 * Fixed Grindstone consuming multiple books (if more are placed in the slot the recipe will not work)

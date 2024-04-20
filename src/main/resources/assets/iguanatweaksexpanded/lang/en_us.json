@@ -451,5 +451,8 @@
 	"emi.info.iguanatweaksexpanded.enchanted_cleansed_lapis": "Apply to an item to increase enchantability",
 	"emi.info.grindstone": "Can be used to disenchant items",
 	"emi.info.iguanatweaksexpanded.altimeter": "Roughly shows your height with a precision of 16 blocks",
-	"emi.info.charcoal": "Can be obtained by burning logs"
+	"emi.info.charcoal": "Can be obtained by burning logs",
+	"emi.info.iguanatweaksexpanded.copper_powered_rail": "Slowest powered rail, can be used everywhere",
+	"emi.info.iguanatweaksexpanded.golden_powered_rail": "Medium speed powered rail, should not be used for slopes due to Minecarts being wonky",
+	"emi.info.iguanatweaksexpanded.nether_infused_powered_rail": "Fastest speed powered rail, should definitely not be used for slopes and you should slowdown the minecart when approaching slopes"
 }

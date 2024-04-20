@@ -18,6 +18,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
+import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.base.Feature;
@@ -138,6 +139,12 @@ public class ITEEmiPlugin implements EmiPlugin {
 		}
 		if (Feature.isEnabled(Fletching.class)) {
 			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.FLETCHING_TABLE));
+		}
+		if (Feature.isEnabled(Minecarts.class)) {
+			registry.addRecipe(createSimpleInfo(Minecarts.COPPER_POWERED_RAIL.item().get(), "info_copper_powered_rail", Component.translatable("emi.info.iguanatweaksexpanded.copper_powered_rail")));
+			registry.addRecipe(createSimpleInfo(Minecarts.GOLDEN_POWERED_RAIL.item().get(), "info_golden_powered_rail", Component.translatable("emi.info.iguanatweaksexpanded.golden_powered_rail")));
+			registry.addRecipe(createSimpleInfo(Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get(), "info_nether_infused_powered_rail", Component.translatable("emi.info.iguanatweaksexpanded.nether_infused_powered_rail")));
+			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.POWERED_RAIL));
 		}
 		registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), "info_altimeter", Component.translatable("emi.info.iguanatweaksexpanded.altimeter")));
 	}
