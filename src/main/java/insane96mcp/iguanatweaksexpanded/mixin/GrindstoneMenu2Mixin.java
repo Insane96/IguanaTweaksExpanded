@@ -9,11 +9,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(targets = "net.minecraft.world.inventory.GrindstoneMenu$3")
-public class GrindstoneMenuMixin {
+@Mixin(targets = "net.minecraft.world.inventory.GrindstoneMenu$2")
+public class GrindstoneMenu2Mixin {
     @Inject(method = "mayPlace", at = @At(value = "RETURN"), cancellable = true)
     public void canPlace(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (Feature.isEnabled(EnchantingFeature.class) && EnchantingFeature.grindstoneEnchantmentExtraction && stack.is(Items.BOOK))
+        if (Feature.isEnabled(EnchantingFeature.class) && stack.is(Items.COMPASS))
             cir.setReturnValue(true);
     }
 }

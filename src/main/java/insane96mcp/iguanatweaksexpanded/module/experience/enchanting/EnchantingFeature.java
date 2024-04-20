@@ -35,10 +35,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.EnchantedBookItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
@@ -256,8 +253,15 @@ public class EnchantingFeature extends JsonFeature {
 
     @SubscribeEvent
     public void onGrindstoneUpdate(GrindstoneEvent.OnPlaceItem event) {
-        if (!this.isEnabled()
-                || !grindstoneEnchantmentExtraction
+        if (!this.isEnabled())
+            return;
+
+        extractTrasureEnchantments(event);
+        resetLodestoneCompass(event);
+    }
+
+    public static void extractTrasureEnchantments(GrindstoneEvent.OnPlaceItem event) {
+        if (!grindstoneEnchantmentExtraction
                 || !event.getTopItem().isEnchanted()
                 || !event.getBottomItem().is(Items.BOOK)
                 || event.getBottomItem().getCount() > 1)
@@ -269,6 +273,17 @@ public class EnchantingFeature extends JsonFeature {
                 continue;
             EnchantedBookItem.addEnchantment(output, new EnchantmentInstance(enchantmentInstance.getKey(), enchantmentInstance.getValue()));
         }
+        event.setOutput(output);
+        event.setXp(0);
+    }
+
+    public static void resetLodestoneCompass(GrindstoneEvent.OnPlaceItem event) {
+        if (!event.getTopItem().is(Items.COMPASS)
+                || !CompassItem.isLodestoneCompass(event.getTopItem())
+                || !event.getBottomItem().isEmpty())
+            return;
+
+        ItemStack output = new ItemStack(Items.COMPASS);
         event.setOutput(output);
         event.setXp(0);
     }

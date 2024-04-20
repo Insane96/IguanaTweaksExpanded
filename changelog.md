@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Lodestone compasses can now be "reset" in a Grindstone
 * Increased Piercing, Vigour and Soulbound cost
 * Added infos to Powered Rails
 * Fixed supplementaries urn loot table
