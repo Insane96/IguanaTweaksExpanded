@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.9.3
 * When spawners end being empowered now drop an enchanted book with a curse on it
 * Lodestone compasses can now be "reset" in a Grindstone
 * Increased Piercing, Vigour and Soulbound cost
