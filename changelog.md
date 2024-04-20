@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* When spawners end being empowered now drop an enchanted book with a curse on it (plus the echo shard)
 * Lodestone compasses can now be "reset" in a Grindstone
 * Increased Piercing, Vigour and Soulbound cost
 * Added infos to Powered Rails

@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.setup;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.data.condition.LootItemCurrentSeasonCondition;
+import insane96mcp.iguanatweaksexpanded.data.function.EnchantWithCurseFunction;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.SoliumBoulderFeature;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
@@ -31,6 +32,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -56,9 +58,14 @@ public class ITERegistries {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = createRegistry(ForgeRegistries.PARTICLE_TYPES);
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = createRegistry(ForgeRegistries.RECIPE_SERIALIZERS);
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = createRegistry(ForgeRegistries.RECIPE_TYPES);
+
+    public static final DeferredRegister<LootItemFunctionType> LOOT_FUNCTIONS = createRegistry(Registries.LOOT_FUNCTION_TYPE.location());
+    public static final RegistryObject<LootItemFunctionType> ENCHANT_WITH_CURSE = LOOT_FUNCTIONS.register("enchant_with_curse", () -> new LootItemFunctionType(new EnchantWithCurseFunction.Serializer()));
+
     public static final DeferredRegister<Feature<?>> FEATURES = createRegistry(ForgeRegistries.FEATURES);
     public static final RegistryObject<SoliumBoulderFeature> SOLIUM_BOUDLER_FEATURE = FEATURES.register("solium_boulder_feature", () -> new SoliumBoulderFeature(BlockStateConfiguration.CODEC));
     public static final RegistryObject<BeegOreVeinFeature> ORE_WITH_SURFACE_FEATURE = FEATURES.register("ore_with_surface_feature", () -> new BeegOreVeinFeature(OreWithRandomPatchConfiguration.CODEC));
+
     public static final DeferredRegister<LootItemConditionType> LOOT_CONDITION_TYPES = createRegistry(Registries.LOOT_CONDITION_TYPE.location());
 
     public static final RegistryObject<LootItemConditionType> CURRENT_SEASON = LOOT_CONDITION_TYPES.register("current_season", () -> new LootItemConditionType(new LootItemCurrentSeasonCondition.Serializer()));
