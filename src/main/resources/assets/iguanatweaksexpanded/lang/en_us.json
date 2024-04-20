@@ -18,6 +18,8 @@
 	"enchantment.iguanatweaksexpanded.blasting": "Blasting",
 	"enchantment.iguanatweaksexpanded.air_born": "Air Born",
 	"enchantment.iguanatweaksexpanded.blood_pact": "Blood Pact",
+	"death.attack.attack": "%s was consumed by the Blood Pact",
+	"death.attack.attack.player": "%s was consumed by the Blood Pact",
 	"enchantment.iguanatweaksexpanded.air_stealer": "Air Stealer",
 	"enchantment.iguanatweaksexpanded.armor_piercer": "Armor Piercer",
 	"enchantment.iguanatweaksexpanded.adrenaline": "Adrenaline",
