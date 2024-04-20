@@ -110,7 +110,7 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId("minecraft:multishot", 5f),
             IdTagValue.newId("minecraft:quick_charge", 3f),
             IdTagValue.newId("minecraft:power", 2.2f),
-            IdTagValue.newId("minecraft:piercing", 1.4f),
+            IdTagValue.newId("minecraft:piercing", 1.7f),
             IdTagValue.newId("minecraft:infinity", 2.5f),
             IdTagValue.newId("minecraft:soul_speed", 3f),
             IdTagValue.newId("minecraft:efficiency", 1.8f),
