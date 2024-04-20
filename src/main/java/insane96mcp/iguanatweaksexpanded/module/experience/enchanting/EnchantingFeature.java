@@ -258,7 +258,8 @@ public class EnchantingFeature extends JsonFeature {
         if (!this.isEnabled()
                 || !grindstoneEnchantmentExtraction
                 || !event.getTopItem().isEnchanted()
-                || !event.getBottomItem().is(Items.BOOK))
+                || !event.getBottomItem().is(Items.BOOK)
+                || event.getBottomItem().getCount() > 1)
             return;
 
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);

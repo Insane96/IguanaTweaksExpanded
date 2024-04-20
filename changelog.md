@@ -1,9 +1,10 @@
 # Changelog
 
 ## Upcoming
+* Increased Vigour cost
 * Fixed supplementaries urn loot table
 * Fixed Burst of Arrows' arrows being pickupable
-* Increased Vigour cost
+* Fixed Grindstone consuming multiple books (if more are placed in the slot the recipe will not work)
 
 ## 1.9.2
 * Enchanted Cleansed Lapis has been buffed
