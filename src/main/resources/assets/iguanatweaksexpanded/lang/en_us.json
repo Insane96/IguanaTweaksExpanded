@@ -61,7 +61,7 @@
 	"enchantment.iguanatweaksexpanded.melee_protection.info": "Reduced Melee Damage",
 	"enchantment.iguanatweaksexpanded.expanded.info": "Mine multiple blocks in columns",
 	"enchantment.iguanatweaksexpanded.veining.info": "Mine multiple connected blocks",
-	"enchantment.iguanatweaksexpanded.exchange.info": "Replaces blocks broken",
+	"enchantment.iguanatweaksexpanded.exchange.info": "Replaces blocks broken with the ones in the off-hand",
 	"enchantment.iguanatweaksexpanded.blasting.info": "Increases mining speed on blocks with low blast resistance",
 	"enchantment.iguanatweaksexpanded.air_born.info": "Ignores the mining speed penalty when not on ground",
 	"enchantment.iguanatweaksexpanded.blood_pact.info": "Item becomes really resistant but will hurt the user",

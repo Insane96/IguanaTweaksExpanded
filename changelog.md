@@ -4,6 +4,8 @@
 * Exchange 
   * Now consumes blocks in the inventory first
   * Fixed the sound of block placing being heard only server side
+* Curse of Fragility
+  * Changed 2x durability consumed to +1 durability consumed
 * Fixed missing blood pact death message
 
 ## 1.9.3

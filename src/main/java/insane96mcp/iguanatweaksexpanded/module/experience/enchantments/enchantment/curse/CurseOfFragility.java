@@ -34,9 +34,6 @@ public class CurseOfFragility extends Enchantment {
         if (event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_FRAGILITY.get()) <= 0)
             return;
 
-        if (event.getAmount() <= 0)
-            event.setAmount(1);
-        else
-            event.setAmount(event.getAmount() * 2);
+        event.setAmount(event.getAmount() + 1);
     }
 }
