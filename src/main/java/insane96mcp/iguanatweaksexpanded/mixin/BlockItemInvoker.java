@@ -11,6 +11,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
+import javax.annotation.Nullable;
+
 @Mixin(BlockItem.class)
 public interface BlockItemInvoker {
     @Invoker("getPlaceSound")
@@ -18,6 +20,10 @@ public interface BlockItemInvoker {
 
     @Invoker("getPlacementState")
     BlockState invokeGetPlacementState(BlockPlaceContext pContext);
+    @Invoker("placeBlock")
+    boolean invokePlaceBlock(BlockPlaceContext pContext, BlockState pState);
     @Invoker("updateBlockStateFromTag")
     BlockState invokeUpdateBlockStateFromTag(BlockPos pPos, Level pLevel, ItemStack pStack, BlockState pState);
+    @Invoker("updateCustomBlockEntityTag")
+    boolean invokeUpdateCustomBlockEntityTag(BlockPos pPos, Level pLevel, @Nullable Player pPlayer, ItemStack pStack, BlockState pState);
 }

@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+* Exchange 
+  * Now consumes blocks in the inventory first
+  * Fixed the sound of block placing being heard only server side
 * Fixed missing blood pact death message
 
 ## 1.9.3
