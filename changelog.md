@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Reduced Enchanted Cleansed Lapis base table enchantability bonus (5 -> 4)
 * Revert Exhange's 'Fixed the sound of block placing being heard only server side'
   * Should now work again with Quark's rotation lock
 

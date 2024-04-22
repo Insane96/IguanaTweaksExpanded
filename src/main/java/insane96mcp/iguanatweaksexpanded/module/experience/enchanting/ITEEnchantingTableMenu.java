@@ -122,7 +122,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
                     enchantabilityModifier = 1f;
                 if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM)) {
                     enchantabilityModifier *= 1.1f;
-                    baseTableEnchantability += 5;
+                    baseTableEnchantability += 4;
                 }
             }
             float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack) + EnchantingFeature.getCurseCost(stack)) * enchantabilityModifier * (enchantingPower / 15f) + baseTableEnchantability;
