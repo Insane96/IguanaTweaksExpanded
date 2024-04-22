@@ -10,8 +10,6 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantme
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfSlowStrike;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfTheVoid;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.CrateItem;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -86,9 +84,7 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(Allurement.ACCEPTS_LAUNCH_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(Soulbound.ACCEPTS_ENCHANTMENT)
-                .add(Items.RECOVERY_COMPASS, Items.COMPASS, Items.BUNDLE)
-                .add(Crate.ITEM.get())
-                .addOptional(new ResourceLocation("quark:backpack"));
+                .add(Items.RECOVERY_COMPASS, Items.COMPASS);
         tag(FORGE_HAMMERS)
                 .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         //ITR

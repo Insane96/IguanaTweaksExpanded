@@ -1,12 +1,6 @@
 {
   "values": [
     "minecraft:recovery_compass",
-    "minecraft:compass",
-    "minecraft:bundle",
-    "iguanatweaksexpanded:crate",
-    {
-      "id": "quark:backpack",
-      "required": false
-    }
+    "minecraft:compass"
   ]
 }
