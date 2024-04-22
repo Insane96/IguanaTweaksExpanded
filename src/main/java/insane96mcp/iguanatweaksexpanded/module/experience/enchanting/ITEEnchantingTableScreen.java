@@ -304,7 +304,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         }
 
         private void updateActiveState() {
-            this.levelUpBtn.active = this.enchantmentDisplay.lvl < this.enchantmentDisplay.enchantment.getMaxLevel() || (this.enchantmentDisplay.enchantment.getMaxLevel() > 1 && this.enchantmentDisplay.lvl <= this.enchantmentDisplay.enchantment.getMaxLevel() && ITEEnchantingTableScreen.this.isItemEmpowered());
+            this.levelUpBtn.active = this.enchantmentDisplay.lvl < this.enchantmentDisplay.enchantment.getMaxLevel() || (this.enchantmentDisplay.enchantment.getMaxLevel() > 1 && this.enchantmentDisplay.lvl <= this.enchantmentDisplay.enchantment.getMaxLevel() && ITEEnchantingTableScreen.this.isItemEmpowered() && !EnchantingFeature.isEnchantmentOverLevelBlacklisted(this.enchantmentDisplay.enchantment));
             this.levelDownBtn.active = this.enchantmentDisplay.lvl > 0;
         }
 

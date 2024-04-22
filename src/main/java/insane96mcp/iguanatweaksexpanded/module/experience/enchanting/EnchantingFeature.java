@@ -18,6 +18,7 @@ import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.base.config.LoadFeature;
+import insane96mcp.insanelib.data.IdTagMatcher;
 import insane96mcp.insanelib.data.IdTagValue;
 import insane96mcp.insanelib.data.lootmodifier.InjectLootTableModifier;
 import net.minecraft.ChatFormatting;
@@ -123,11 +124,18 @@ public class EnchantingFeature extends JsonFeature {
     );
     public static final ArrayList<IdTagValue> enchantmentBaseCost = new ArrayList<>();
 
+    public static final List<IdTagMatcher> DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST = List.of(
+            IdTagMatcher.newId("minecraft:depth_strider")
+    );
+    public static final ArrayList<IdTagMatcher> overLevelEnchantmentBlacklist = new ArrayList<>();
+
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
         addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost"), new SyncType(json -> loadAndReadJson(json, enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("enchantments_base_cost.json", enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "enchantments_base_cost")));
+        JSON_CONFIGS.add(new JsonConfig<>("enchantments_base_cost.json", enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost")));
+        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist")));
 	}
 
     @Override
@@ -338,6 +346,14 @@ public class EnchantingFeature extends JsonFeature {
         if (enchantments.isEmpty())
             return false;
         return enchantments.size() == 1 && enchantments.getCompound(0).isEmpty();
+    }
+
+    public static boolean isEnchantmentOverLevelBlacklisted(Enchantment enchantment) {
+        for (IdTagMatcher idTagMatcher : overLevelEnchantmentBlacklist) {
+            if (idTagMatcher.matchesEnchantment(enchantment))
+                return true;
+        }
+        return false;
     }
 
     @SubscribeEvent

@@ -34,6 +34,6 @@ public class Zippy extends Enchantment implements IAttributeEnchantment {
 
     @Override
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
-        event.addModifier(Attributes.MOVEMENT_SPEED, new AttributeModifier(MODIFIER_UUID, "Zippy Enchantment Modifier", 0.1d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+        event.addModifier(Attributes.MOVEMENT_SPEED, new AttributeModifier(MODIFIER_UUID, "Zippy Enchantment Modifier", 0.07d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
     }
 }

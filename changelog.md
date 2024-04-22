@@ -6,6 +6,7 @@
   * Fixed the sound of block placing being heard only server side
 * Curse of Fragility
   * Changed 2x durability consumed to +1 durability consumed
+* Nerfed Zippy (+10% -> +7% movement speed per level)
 * Soulbound can no longer be applied to bundles, crates and Quark's backpacks
 * Fixed missing blood pact death message
 
