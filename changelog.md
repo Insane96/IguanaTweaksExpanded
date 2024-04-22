@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.9.4
 * Exchange 
   * Now consumes blocks in the inventory first
   * Fixed the sound of block placing being heard only server side
