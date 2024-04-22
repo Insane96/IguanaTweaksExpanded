@@ -36,7 +36,7 @@ public class Vindication extends Enchantment {
     }
 
     public static void tryStackDamage(LivingEntity attacked, DamageSource source, float damageAmount) {
-        if (!(source.getEntity() instanceof LivingEntity))
+        if (!(source.getDirectEntity() instanceof LivingEntity))
             return;
 
         int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.VINDICATION.get(), attacked);

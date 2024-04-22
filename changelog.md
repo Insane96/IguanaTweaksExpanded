@@ -9,6 +9,7 @@
 * Nerfed Zippy (+10% -> +7% movement speed per level)
 * Soulbound can no longer be applied to bundles, crates and Quark's backpacks
 * Fixed missing blood pact death message
+* Fixed vindication working with ranged weapons
 
 ## 1.9.3
 * When spawners end being empowered now drop an enchanted book with a curse on it
