@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Revert Exhange's 'Fixed the sound of block placing being heard only server side'
+  * Should now work again with Quark's rotation lock
+
 ## 1.9.4
 * Exchange 
   * Now consumes blocks in the inventory first
