@@ -2,11 +2,12 @@
 
 ## Upcoming
 * Reduced Enchanted Cleansed Lapis base table enchantability bonus (5 -> 4)
-* Revert Exhange's 'Fixed the sound of block placing being heard only server side'
+* Revert Exchange's 'Fixed the sound of block placing being heard only server side'
   * Should now work again with Quark's rotation lock
 * Reduced Keego total armor (11 -> 8)
 * Increased Keego ore generation
 * Reduced Blasting effectiveness and changed formula
+* Fixed enchanting table learning
 
 ## 1.9.4
 * Exchange 

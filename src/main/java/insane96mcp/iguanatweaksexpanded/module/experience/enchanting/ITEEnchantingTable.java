@@ -76,23 +76,26 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                     boolean hasTreasure = false;
                     for (int i = 0; i < list.size(); i++) {
                         Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(list.getCompound(i)));
-                        if (enchantment == null || !enchantment.isTreasureOnly() || enchantment.isCurse() || enchantingTableBE.knowsEnchantment(enchantment))
+                        if (enchantment == null || !enchantment.isTreasureOnly())
                             continue;
+                        if (enchantingTableBE.knowsEnchantment(enchantment)) {
+                            player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.already_knows").append(Component.translatable(enchantment.getDescriptionId())));
+                            continue;
+                        }
                         hasTreasure = true;
                         enchantingTableBE.learnEnchantment(enchantment);
-                        player.sendSystemMessage(Component.literal("Learned: ").append(Component.translatable(enchantment.getDescriptionId())));
+                        player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.learned_enchantment").append(Component.translatable(enchantment.getDescriptionId())));
                     }
                     if (hasTreasure)
                         player.getItemInHand(hand).shrink(1);
                     else
-                        player.sendSystemMessage(Component.literal("This enchanted book has no treasure enchantments on it"));
+                        player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.no_valid_enchantments"));
                 }
-                return InteractionResult.CONSUME;
             }
             else {
                 this.openContainer(pLevel, pPos, player);
-                return InteractionResult.CONSUME;
             }
+            return InteractionResult.CONSUME;
         }
     }
 
