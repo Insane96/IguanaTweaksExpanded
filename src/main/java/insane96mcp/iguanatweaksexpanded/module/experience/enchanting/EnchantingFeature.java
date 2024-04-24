@@ -154,6 +154,7 @@ public class EnchantingFeature extends JsonFeature {
             AllurementConfig.COMMON.enchantableHorseArmor.set(false);
             AllurementConfig.COMMON.enchantedHorseArmorGenerates.set(false);
             AllurementConfig.COMMON.enableVengeance.set(false);
+            AllurementConfig.COMMON.reformingTickRate.set(1200);
         }
         /*for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
             if (EnchantmentsFeature.isEnchantmentDisabled(enchantment))

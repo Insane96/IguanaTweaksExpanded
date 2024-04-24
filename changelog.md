@@ -5,6 +5,7 @@
 * Revert Exhange's 'Fixed the sound of block placing being heard only server side'
   * Should now work again with Quark's rotation lock
 * Reduced Keego total armor (11 -> 8)
+* Reforming now works once every minute instead of 30 seconds
 
 ## 1.9.4
 * Exchange 
