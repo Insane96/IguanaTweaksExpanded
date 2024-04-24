@@ -151,24 +151,25 @@ public class FletchingMenu extends RecipeBookMenu<CraftingContainer> {
     }
 
     protected static void slotChangedCraftingGrid(AbstractContainerMenu pMenu, Level pLevel, Player pPlayer, CraftingContainer pContainer, ResultContainer pResult) {
-        if (!pLevel.isClientSide) {
-            ServerPlayer serverplayer = (ServerPlayer)pPlayer;
-            ItemStack resultStack = ItemStack.EMPTY;
-            Optional<FletchingRecipe> oFletchingRecipe = pLevel.getServer().getRecipeManager().getRecipeFor(Fletching.FLETCHING_RECIPE_TYPE.get(), pContainer, pLevel);
-            if (oFletchingRecipe.isPresent()) {
-                FletchingRecipe fletchingRecipe = oFletchingRecipe.get();
-                if (pResult.setRecipeUsed(pLevel, serverplayer, fletchingRecipe)) {
-                    ItemStack itemstack1 = fletchingRecipe.assemble(pContainer, pLevel.registryAccess());
-                    if (itemstack1.isItemEnabled(pLevel.enabledFeatures())) {
-                        resultStack = itemstack1;
-                    }
+        if (pLevel.isClientSide)
+            return;
+
+        ServerPlayer serverplayer = (ServerPlayer)pPlayer;
+        ItemStack resultStack = ItemStack.EMPTY;
+        Optional<FletchingRecipe> oFletchingRecipe = pLevel.getServer().getRecipeManager().getRecipeFor(Fletching.FLETCHING_RECIPE_TYPE.get(), pContainer, pLevel);
+        if (oFletchingRecipe.isPresent()) {
+            FletchingRecipe fletchingRecipe = oFletchingRecipe.get();
+            if (pResult.setRecipeUsed(pLevel, serverplayer, fletchingRecipe)) {
+                ItemStack itemstack1 = fletchingRecipe.assemble(pContainer, pLevel.registryAccess());
+                if (itemstack1.isItemEnabled(pLevel.enabledFeatures())) {
+                    resultStack = itemstack1;
                 }
             }
-
-            pResult.setItem(RESULT_SLOT, resultStack);
-            pMenu.setRemoteSlot(RESULT_SLOT, resultStack);
-            serverplayer.connection.send(new ClientboundContainerSetSlotPacket(pMenu.containerId, pMenu.incrementStateId(), RESULT_SLOT, resultStack));
         }
+
+        pResult.setItem(RESULT_SLOT, resultStack);
+        pMenu.setRemoteSlot(RESULT_SLOT, resultStack);
+        serverplayer.connection.send(new ClientboundContainerSetSlotPacket(pMenu.containerId, pMenu.incrementStateId(), RESULT_SLOT, resultStack));
     }
 
     @Override

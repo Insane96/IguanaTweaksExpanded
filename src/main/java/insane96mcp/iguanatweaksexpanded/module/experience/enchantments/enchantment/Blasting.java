@@ -48,7 +48,8 @@ public class Blasting extends Enchantment {
         if (!(heldStack.getItem() instanceof DiggerItem diggerItem))
             return 0f;
 
-        float miningSpeedBoost = (float) (lvl * Math.min(10f, Math.pow(3d, (6f - state.getBlock().getExplosionResistance()) / 1.5f))) / 6f * diggerItem.speed;
+        float miningSpeedBoost = (float) ((lvl * lvl + 1) * Math.max(0.01f, (6.5 - state.getBlock().getExplosionResistance()) * 0.05) * diggerItem.speed);
+        //float miningSpeedBoost = (float) (lvl * Math.min(10f, Math.pow(3d, (6f - state.getBlock().getExplosionResistance()) / 1.5f))) / 6f * diggerItem.speed;
         return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, false, entity);
     }
 }
