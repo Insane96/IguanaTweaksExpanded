@@ -188,7 +188,8 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
         ItemStack gearSlotStack = slotStacks.get(ForgeMenu.GEAR_SLOT);
         if (gearSlotStack.hasTag())
             resultStack.setTag(gearSlotStack.getTag());
-        resultStack.setDamageValue(0);
+        if (resultStack.getItem().canBeDepleted())
+            resultStack.setDamageValue(0);
         ItemStack resultSlotStack = slotStacks.get(ForgeMenu.RESULT_SLOT);
         if (resultSlotStack.isEmpty()) {
             slotStacks.set(ForgeMenu.RESULT_SLOT, resultStack.copy());
