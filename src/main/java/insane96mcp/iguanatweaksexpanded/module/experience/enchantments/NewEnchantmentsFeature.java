@@ -22,7 +22,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.CrossbowItem;
-import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
@@ -117,8 +116,6 @@ public class NewEnchantmentsFeature extends Feature {
     @SubscribeEvent
 	public void onAttributeModifiers(ItemAttributeModifierEvent event) {
 		event.getItemStack().getAllEnchantments().forEach((enchantment, lvl) -> {
-			if (!(event.getItemStack().getItem() instanceof Vanishable))
-				return;
 			if (event.getItemStack().getItem() instanceof ArmorItem armorItem
 				&& armorItem.getEquipmentSlot() != event.getSlotType())
 				return;
