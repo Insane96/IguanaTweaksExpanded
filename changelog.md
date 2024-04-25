@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Fixed soulbound duplicating armor
+* Reduced Soul Steel total Armor (12 -> 11)
 
 ## 1.9.5
 * Reduced Enchanted Cleansed Lapis base table enchantability bonus (5 -> 4)
