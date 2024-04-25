@@ -9,6 +9,7 @@
 * Increased Keego ore generation
 * Reduced Blasting effectiveness and changed formula
 * Fixed enchanting table learning
+* Fixed enchantments changing attribute modifiers showing up on non-damageable items (e.g. enchanted books)
 
 ## 1.9.4
 * Exchange 
