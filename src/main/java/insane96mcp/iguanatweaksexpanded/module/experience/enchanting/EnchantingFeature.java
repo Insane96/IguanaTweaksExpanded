@@ -105,6 +105,7 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "soulbound", 4f),
             IdTagValue.newId(IguanaTweaksReborn.RESOURCE_PREFIX + "luck", 3.2f),
             IdTagValue.newId(IguanaTweaksReborn.RESOURCE_PREFIX + "vigour", 3.45f),
+            IdTagValue.newId(IguanaTweaksReborn.RESOURCE_PREFIX + "protection", 5f),
             IdTagValue.newId("minecraft:multishot", 5f),
             IdTagValue.newId("minecraft:quick_charge", 3f),
             IdTagValue.newId("minecraft:power", 2.2f),
