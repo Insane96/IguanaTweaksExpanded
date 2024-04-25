@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed soulbound duplicating armor
+
 ## 1.9.5
 * Reduced Enchanted Cleansed Lapis base table enchantability bonus (5 -> 4)
 * Revert Exchange's 'Fixed the sound of block placing being heard only server side'

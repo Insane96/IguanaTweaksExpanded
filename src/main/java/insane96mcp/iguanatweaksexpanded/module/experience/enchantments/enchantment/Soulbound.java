@@ -50,21 +50,21 @@ public class Soulbound extends Enchantment {
         for (int i = 0; i < player.getInventory().items.size(); ++i) {
             CompoundTag compoundTag = saveWithSlot(player.getInventory().items.get(i), (byte) i);
             if (compoundTag != null) {
-                player.getInventory().setItem(i, ItemStack.EMPTY);
+                player.getInventory().removeItem(player.getInventory().items.get(i));
                 list.add(compoundTag);
             }
         }
         for (int j = 0; j < player.getInventory().armor.size(); ++j) {
             CompoundTag compoundTag = saveWithSlot(player.getInventory().armor.get(j), (byte) j);
             if (compoundTag != null) {
-                player.getInventory().setItem(j, ItemStack.EMPTY);
+                player.getInventory().removeItem(player.getInventory().armor.get(j));
                 list.add(compoundTag);
             }
         }
         for (int k = 0; k < player.getInventory().offhand.size(); ++k) {
             CompoundTag compoundTag = saveWithSlot(player.getInventory().offhand.get(k), (byte) k);
             if (compoundTag != null) {
-                player.getInventory().setItem(k, ItemStack.EMPTY);
+                player.getInventory().removeItem(player.getInventory().offhand.get(k));
                 list.add(compoundTag);
             }
         }
