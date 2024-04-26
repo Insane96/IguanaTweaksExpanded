@@ -9,6 +9,7 @@
 * Items can now be repaired again with nuggets
 * Passable foliage's Leaf Walker curse is now an enchantment
 * Fixed dupe glitch with soulbound
+* Fixed enchanted books from spawners having fake Curses
 
 ## 1.9.5
 * Reduced Enchanted Cleansed Lapis base table enchantability bonus (5 -> 4)
