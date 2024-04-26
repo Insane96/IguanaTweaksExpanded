@@ -69,7 +69,7 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(Padding.ACCEPTS_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(AirStealer.ACCEPTS_ENCHANTMENT)
-                .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
+                .add(Items.TRIDENT);
         tag(Adrenaline.ACCEPTS_ENCHANTMENT)
                 .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(CurseOfDumbness.ACCEPTS_ENCHANTMENT)

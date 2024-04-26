@@ -1,9 +1,10 @@
 # Changelog
 
 ## Upcoming
-* Fixed soulbound duplicating armor
+* Air Stealer is now a Trident exclusive enchantment
 * Reduced Soul Steel total Armor (12 -> 11)
 * Added a new Damage Type Tag `iguanatweaksexpanded:enchantments/protection/magic` defining which damage types are reduced by Magic Protection enchantment
+* Fixed dupe glitch with soulbound
 
 ## 1.9.5
 * Reduced Enchanted Cleansed Lapis base table enchantability bonus (5 -> 4)
