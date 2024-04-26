@@ -7,7 +7,8 @@
 			"repair_material": {
 				"id": "iguanatweaksexpanded:quaron_nugget"
 			},
-			"amount": 9
+			"amount": 9,
+			"cost_multiplier": 9
 		}
 	]
 }

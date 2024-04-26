@@ -8,6 +8,13 @@
 				"id": "iguanatweaksexpanded:durium_ingot"
 			},
 			"amount": 7
+		},
+		{
+			"repair_material": {
+				"id": "iguanatweaksexpanded:durium_nugget"
+			},
+			"amount": 63,
+			"cost_multiplier": 9
 		}
 	]
 }
