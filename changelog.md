@@ -7,6 +7,7 @@
 * Reduced Soul Steel total Armor (12 -> 11)
 * Added a new Damage Type Tag `iguanatweaksexpanded:enchantments/protection/magic` defining which damage types are reduced by Magic Protection enchantment
 * Items can now be repaired again with nuggets
+* Passable foliage's Leaf Walker curse is now an enchantment
 * Fixed dupe glitch with soulbound
 
 ## 1.9.5

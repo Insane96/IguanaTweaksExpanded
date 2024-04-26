@@ -56,9 +56,11 @@ public class EnchantWithCurseFunction extends LootItemConditionalFunction {
         if (pStack.is(Items.BOOK)) {
             pStack = new ItemStack(Items.ENCHANTED_BOOK);
             EnchantedBookItem.addEnchantment(pStack, new EnchantmentInstance(pEnchantment, i));
-        } else {
-            pStack.enchant(pEnchantment, i);
         }
+        else if (pStack.is(Items.ENCHANTED_BOOK))
+            EnchantedBookItem.addEnchantment(pStack, new EnchantmentInstance(pEnchantment, i));
+        else
+            pStack.enchant(pEnchantment, i);
 
         return pStack;
     }

@@ -121,7 +121,8 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId("shieldsplus:shield_bash", 4f),
             IdTagValue.newId("allurement:alleviating", 5f),
             IdTagValue.newId("allurement:reforming", 5f),
-            IdTagValue.newId("allurement:launch", 3.2f)
+            IdTagValue.newId("allurement:launch", 3.2f),
+            IdTagValue.newId("passablefoliage:leaf_walker", 3.2f)
     );
     public static final ArrayList<IdTagValue> enchantmentBaseCost = new ArrayList<>();
 

@@ -1,16 +1,18 @@
 {
-    "type": "minecraft:chest",
     "pools": [
         {
             "rolls": 1,
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "minecraft:iron_helmet",
+                    "name": "minecraft:book",
                     "functions": [
                         {
                             "function": "minecraft:enchant_with_levels",
-                            "levels": 30
+                            "levels": 25
+                        },
+                        {
+                            "function": "iguanatweaksexpanded:enchant_with_curse"
                         }
                     ]
                 }
