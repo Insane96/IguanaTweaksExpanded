@@ -1,7 +1,9 @@
 # Changelog
 
 ## Upcoming
-* Air Stealer is now a Trident exclusive enchantment
+* Air Stealer 
+  * Is now a Trident exclusive enchantment
+  * Air stealed scales with attack cooldown
 * Reduced Soul Steel total Armor (12 -> 11)
 * Added a new Damage Type Tag `iguanatweaksexpanded:enchantments/protection/magic` defining which damage types are reduced by Magic Protection enchantment
 * Fixed dupe glitch with soulbound

@@ -5,6 +5,7 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchan
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -39,7 +40,12 @@ public class AirStealer extends Enchantment {
         if (lvl <= 0)
             return;
 
-        int ticksStolen = 10 * lvl;
+        float attackCooldown = 1f;
+        if (attacker instanceof Player player) {
+            float f = player.getAttackStrengthScale(0.5f);
+            attackCooldown = f * f;
+        }
+        int ticksStolen = (int) (10 * lvl * attackCooldown);
         attacked.setAirSupply(attacked.getAirSupply() - ticksStolen);
         attacker.setAirSupply(attacker.getAirSupply() + ticksStolen);
     }
