@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.9.6
 * Air Stealer 
   * Is now a Trident exclusive enchantment
   * Air stealed scales with attack cooldown
