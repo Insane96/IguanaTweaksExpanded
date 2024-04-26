@@ -1,0 +1,13 @@
+{
+    "block": "#farmersdelight:rice_crops",
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER",
+                "SPRING"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

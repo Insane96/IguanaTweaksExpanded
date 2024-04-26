@@ -1,0 +1,14 @@
+{
+    "block": "#farmersdelight:tomato_crops",
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "SPRING",
+                "WINTER",
+                "AUTUMN"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

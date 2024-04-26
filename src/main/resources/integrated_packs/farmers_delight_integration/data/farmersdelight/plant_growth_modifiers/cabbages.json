@@ -1,0 +1,13 @@
+{
+    "block": "farmersdelight:cabbages",
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "SPRING",
+                "SUMMER"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

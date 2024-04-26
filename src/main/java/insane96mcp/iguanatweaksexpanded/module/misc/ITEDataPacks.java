@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.misc;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
+import insane96mcp.iguanatweaksreborn.module.misc.DataPacks;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
@@ -48,6 +49,7 @@ public class ITEDataPacks extends Feature {
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "plant_growth_modifiers", Component.literal("IguanaTweaks Expanded Plant Growth modifiers"), () -> this.isEnabled() && !disableAllDataPacks && plantGrowthMultipliersDataPack));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "livestock_changes", Component.literal("IguanaTweaks Expanded Livestock Changes"), () -> this.isEnabled() && !disableAllDataPacks && livestockDataPack));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "block_data", Component.literal("IguanaTweaks Expanded Block Data"), () -> this.isEnabled() && !disableAllDataPacks && blockData));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "farmers_delight_integration", Component.literal("IguanaTweaks Expanded Farmer's Delight integration"), () -> this.isEnabled() && !disableAllDataPacks && DataPacks.farmersDelight));
         IntegratedPack.addPack(new IntegratedPack(PackType.CLIENT_RESOURCES, "assets_override", Component.literal("IguanaTweaks Expanded Assets Override"), () -> assetsOverride));
     }
 }

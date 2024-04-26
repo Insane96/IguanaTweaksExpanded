@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +17,7 @@ public class Rage extends BonusDamageEnchantment {
     }
 
     @Override
-    public float getDamageBonus(LivingEntity attacker, LivingEntity target, ItemStack stack, int lvl) {
+    public float getDamageBonus(LivingEntity attacker, Entity target, ItemStack stack, int lvl) {
         if (!this.isAffectedByEnchantment(target))
             return 0f;
         float ratio = Math.min(1f, 1f - ((attacker.getHealth() - 1) / attacker.getMaxHealth()));

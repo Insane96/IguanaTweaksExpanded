@@ -19,14 +19,14 @@ public class WaterCoolant extends BonusDamageEnchantment {
     }
 
     @Override
-    public float getDamageBonus(LivingEntity attacker, LivingEntity target, ItemStack stack, int lvl) {
+    public float getDamageBonus(LivingEntity attacker, Entity target, ItemStack stack, int lvl) {
         if (!target.getType().is(AFFECTED_BY_WATER_COOLANT))
             return 0f;
         return this.getDamageBonus(stack, lvl);
     }
 
     @Override
-    public boolean isAffectedByEnchantment(LivingEntity target) {
+    public boolean isAffectedByEnchantment(Entity target) {
         return target.getType().is(AFFECTED_BY_WATER_COOLANT);
     }
 
