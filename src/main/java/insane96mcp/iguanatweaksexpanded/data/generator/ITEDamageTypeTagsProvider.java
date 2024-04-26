@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.BloodPact;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.MagicProtection;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfExperience;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksreborn.module.combat.PiercingDamage;
@@ -13,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,6 +34,8 @@ public class ITEDamageTypeTagsProvider extends DamageTypeTagsProvider {
 
         tag(DamageTypeTags.BYPASSES_ARMOR).add(CurseOfExperience.DAMAGE_TYPE, BloodPact.DAMAGE_TYPE);
         tag(DamageTypeTags.BYPASSES_COOLDOWN).add(BloodPact.DAMAGE_TYPE);
+
+        tag(MagicProtection.SOURCES_REDUCED).add(DamageTypes.MAGIC, DamageTypes.INDIRECT_MAGIC);
     }
 
     public static TagKey<DamageType> create(String tagName) {
