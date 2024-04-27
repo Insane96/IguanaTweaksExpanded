@@ -6,6 +6,7 @@
   * Increased minimum mining effect time (0.75 -> 1 seconds)
   * Added infos in EMI
 * You can now use a lava bucket directly on a Soul Blast Furnace to lit it up
+* Spawners that finish spawning can now give either a treasure or a curse enchanted book
 * Vanilla blast furnace recipes are now hidden from EMI
 * Detector Rails no longer need redstone
 

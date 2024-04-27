@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.setup;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.data.condition.LootItemCurrentSeasonCondition;
-import insane96mcp.iguanatweaksexpanded.data.function.EnchantWithCurseFunction;
+import insane96mcp.iguanatweaksexpanded.data.function.EnchantWithTreasureFunction;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.SoliumBoulderFeature;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
@@ -60,7 +60,7 @@ public class ITERegistries {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = createRegistry(ForgeRegistries.RECIPE_TYPES);
 
     public static final DeferredRegister<LootItemFunctionType> LOOT_FUNCTIONS = createRegistry(Registries.LOOT_FUNCTION_TYPE.location());
-    public static final RegistryObject<LootItemFunctionType> ENCHANT_WITH_CURSE = LOOT_FUNCTIONS.register("enchant_with_curse", () -> new LootItemFunctionType(new EnchantWithCurseFunction.Serializer()));
+    public static final RegistryObject<LootItemFunctionType> ENCHANT_WITH_TREASURE = LOOT_FUNCTIONS.register("enchant_with_treasure", () -> new LootItemFunctionType(new EnchantWithTreasureFunction.Serializer()));
 
     public static final DeferredRegister<Feature<?>> FEATURES = createRegistry(ForgeRegistries.FEATURES);
     public static final RegistryObject<SoliumBoulderFeature> SOLIUM_BOUDLER_FEATURE = FEATURES.register("solium_boulder_feature", () -> new SoliumBoulderFeature(BlockStateConfiguration.CODEC));

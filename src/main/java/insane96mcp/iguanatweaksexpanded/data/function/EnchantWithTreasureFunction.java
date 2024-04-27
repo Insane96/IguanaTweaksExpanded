@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.EnchantedBookItem;
@@ -20,35 +21,38 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
-public class EnchantWithCurseFunction extends LootItemConditionalFunction {
-    protected EnchantWithCurseFunction(LootItemCondition[] pPredicates) {
+public class EnchantWithTreasureFunction extends LootItemConditionalFunction {
+    final boolean allowCurses;
+
+    protected EnchantWithTreasureFunction(LootItemCondition[] pPredicates, boolean allowCurses) {
         super(pPredicates);
+        this.allowCurses = allowCurses;
     }
 
     @Override
-    protected ItemStack run(ItemStack pStack, LootContext pContext) {
-        RandomSource random = pContext.getRandom();
+    protected ItemStack run(ItemStack stack, LootContext context) {
+        RandomSource random = context.getRandom();
         Enchantment enchantment;
-        boolean isBook = pStack.is(Items.BOOK) || pStack.is(Items.ENCHANTED_BOOK);
+        boolean isBook = stack.is(Items.BOOK) || stack.is(Items.ENCHANTED_BOOK);
         List<Enchantment> list = ForgeRegistries.ENCHANTMENTS.getValues()
                 .stream()
-                .filter(Enchantment::isCurse)
-                .filter((ench) -> isBook || ench.canEnchant(pStack))
+                .filter(ench -> ench.isTreasureOnly() && (!ench.isCurse() || this.allowCurses))
+                .filter(ench -> isBook || ench.canEnchant(stack))
                 .toList();
 
         if (list.isEmpty()) {
-            IguanaTweaksExpanded.LOGGER.warn("Couldn't find a compatible curse for {}", pStack);
-            return pStack;
+            IguanaTweaksExpanded.LOGGER.warn("Couldn't find a compatible treasure enchantment for {}", stack);
+            return stack;
         }
 
         enchantment = list.get(random.nextInt(list.size()));
 
-        return enchantItem(pStack, enchantment, random);
+        return enchantItem(stack, enchantment, random);
     }
 
     @Override
     public LootItemFunctionType getType() {
-        return ITERegistries.ENCHANT_WITH_CURSE.get();
+        return ITERegistries.ENCHANT_WITH_TREASURE.get();
     }
 
     private static ItemStack enchantItem(ItemStack pStack, Enchantment pEnchantment, RandomSource pRandom) {
@@ -65,13 +69,15 @@ public class EnchantWithCurseFunction extends LootItemConditionalFunction {
         return pStack;
     }
 
-    public static class Serializer extends LootItemConditionalFunction.Serializer<EnchantWithCurseFunction> {
-        public void serialize(JsonObject pJson, EnchantWithCurseFunction pValue, JsonSerializationContext pSerializationContext) {
+    public static class Serializer extends LootItemConditionalFunction.Serializer<EnchantWithTreasureFunction> {
+        public void serialize(JsonObject pJson, EnchantWithTreasureFunction pValue, JsonSerializationContext pSerializationContext) {
+            pJson.addProperty("allow_curses", pValue.allowCurses);
             super.serialize(pJson, pValue, pSerializationContext);
         }
 
-        public EnchantWithCurseFunction deserialize(JsonObject pObject, JsonDeserializationContext pDeserializationContext, LootItemCondition[] pConditions) {
-            return new EnchantWithCurseFunction(pConditions);
+        public EnchantWithTreasureFunction deserialize(JsonObject pObject, JsonDeserializationContext pDeserializationContext, LootItemCondition[] pConditions) {
+            boolean allowCurses = GsonHelper.getAsBoolean(pObject, "allow_curses", true);
+            return new EnchantWithTreasureFunction(pConditions, allowCurses);
         }
     }
 }
