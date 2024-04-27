@@ -16,6 +16,7 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingF
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
+import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
@@ -29,6 +30,7 @@ import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -146,14 +148,28 @@ public class ITEEmiPlugin implements EmiPlugin {
 			registry.addRecipe(createSimpleInfo(Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get(), "info_nether_infused_powered_rail", Component.translatable("emi.info.iguanatweaksexpanded.nether_infused_powered_rail")));
 			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.POWERED_RAIL));
 		}
+		if (Feature.isEnabled(MultiBlockFurnaces.class) && MultiBlockFurnaces.hideBlastingCategoryInEMI) {
+			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);
+		}
 		registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), "info_altimeter", Component.translatable("emi.info.iguanatweaksexpanded.altimeter")));
+		registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, "info_keego_mining", Component.translatable("emi.info.iguanatweaksexpanded.keego_mining")));
+		registry.addRecipe(createSimpleInfo(Keego.KEEGO_HAND_EQUIPMENT, "info_keego_attacking", Component.translatable("emi.info.iguanatweaksexpanded.keego_attacking")));
+		registry.addRecipe(createSimpleInfo(Keego.KEEGO_ARMOR_EQUIPMENT, "info_keego_moving", Component.translatable("emi.info.iguanatweaksexpanded.keego_moving")));
 	}
 
 	public EmiInfoRecipe createSimpleInfo(Item item, String id, Component component) {
 		return new EmiInfoRecipe(List.of(emiIngredientOf(item)), List.of(component), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, id));
 	}
 
+	public EmiInfoRecipe createSimpleInfo(TagKey<Item> itemTag, String id, Component component) {
+		return new EmiInfoRecipe(List.of(emiIngredientOf(itemTag)), List.of(component), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, id));
+	}
+
 	public static EmiIngredient emiIngredientOf(Item item) {
 		return EmiIngredient.of(Ingredient.of(item));
+	}
+
+	public static EmiIngredient emiIngredientOf(TagKey<Item> itemTag) {
+		return EmiIngredient.of(Ingredient.of(itemTag));
 	}
 }

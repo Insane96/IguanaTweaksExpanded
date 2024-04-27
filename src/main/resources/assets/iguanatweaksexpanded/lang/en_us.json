@@ -457,5 +457,8 @@
 	"emi.info.charcoal": "Can be obtained by burning logs",
 	"emi.info.iguanatweaksexpanded.copper_powered_rail": "Slowest powered rail, can be used everywhere",
 	"emi.info.iguanatweaksexpanded.golden_powered_rail": "Medium speed powered rail, should not be used for slopes due to Minecarts being wonky",
-	"emi.info.iguanatweaksexpanded.nether_infused_powered_rail": "Fastest speed powered rail, should definitely not be used for slopes and you should slowdown the minecart when approaching slopes"
+	"emi.info.iguanatweaksexpanded.nether_infused_powered_rail": "Fastest speed powered rail, should definitely not be used for slopes and you should slowdown the minecart when approaching slopes",
+	"emi.info.iguanatweaksexpanded.keego_mining": "Keego Tools are based off momentum. Each block broken increases mining speed",
+	"emi.info.iguanatweaksexpanded.keego_attacking": "Keego Weapons are based off momentum. Each attack increases attack speed",
+	"emi.info.iguanatweaksexpanded.keego_moving": "Keego Armor is based off momentum. Each blocks moved increases movement speed"
 }

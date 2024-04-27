@@ -76,6 +76,10 @@ public class MultiBlockFurnaces extends Feature {
 	public static final RegistryObject<MenuType<MultiBlockSoulBlastFurnaceMenu>> SOUL_BLAST_FURNACE_MENU_TYPE = ITERegistries.MENU_TYPES.register("soul_blast_furnace", () -> new MenuType<>(MultiBlockSoulBlastFurnaceMenu::new, FeatureFlags.VANILLA_SET));
 
 	@Config
+	@Label(name = "Hide Blasting category in EMI", description = "If true, the Blasting category will be hidden in EMI.")
+	public static Boolean hideBlastingCategoryInEMI = true;
+
+	@Config
 	@Label(name = "Blast Furnace Data pack", description = "Enables a data pack that changes the vanilla Blast Furnace recipe to give the multi block blast furnace.")
 	public static Boolean blastFurnaceDataPack = true;
 
