@@ -96,7 +96,7 @@ public class Keego extends Feature {
 
 		//noinspection DataFlowIssue
 		int lvl = event.getEntity().getEffect(MINING_MOMENTUM.get()).getAmplifier() + 1;
-		event.setNewSpeed(event.getNewSpeed() * (1 + lvl * 0.10f));
+		event.setNewSpeed(event.getNewSpeed() * (1 + lvl * 0.15f));
 	}
 
 	@SubscribeEvent
@@ -111,7 +111,7 @@ public class Keego extends Feature {
 			amplifier = event.getPlayer().getEffect(MINING_MOMENTUM.get()).getAmplifier() + 1;
 
 		int duration = (int) (1f / event.getState().getDestroyProgress(event.getPlayer(), event.getLevel(), event.getPos()) + 5) * 3 + 1;
-		event.getPlayer().addEffect(new MobEffectInstance(MINING_MOMENTUM.get(), Math.max(duration, 15), Math.min(amplifier, 31), false, false, true));
+		event.getPlayer().addEffect(new MobEffectInstance(MINING_MOMENTUM.get(), Math.max(duration, 20), Math.min(amplifier, 23), false, false, true));
 	}
 
 	@SubscribeEvent
