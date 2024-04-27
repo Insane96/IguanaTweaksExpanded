@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.toolbelt;
 
+import dev.gigaherz.toolbelt.ToolBelt;
 import dev.gigaherz.toolbelt.belt.ToolBeltItem;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
@@ -16,15 +17,15 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 
-@Label(name = "ToolBelt", description = "Integration with Tool Belt")
+@Label(name = "Tool Belt Integration")
 @LoadFeature(module = Modules.Ids.ITEMS)
-public class ToolBelt extends Feature {
+public class ToolBeltIntegration extends Feature {
 
 	@Config
 	@Label(name = "Bigger ToolBelt", description = "Enables a data pack that changes the crafting of the Tool Belt to give more slots (2 -> 4). Also makes the cost to upgrade start from 4 instead of 2")
 	public static Boolean biggerToolbelt = true;
 
-	public ToolBelt(Module module, boolean enabledByDefault, boolean canBeDisabled) {
+	public ToolBeltIntegration(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "toolbelt_integration", Component.literal("IguanaTweaks Expanded Tool Belt"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && biggerToolbelt));
 	}
@@ -38,8 +39,8 @@ public class ToolBelt extends Feature {
 	public void onAnvilUpdate(AnvilUpdateEvent event) {
 		if (!this.isEnabled()
 				|| !biggerToolbelt
-				|| !event.getLeft().is(dev.gigaherz.toolbelt.ToolBelt.BELT.get())
-				|| !event.getRight().is(dev.gigaherz.toolbelt.ToolBelt.POUCH.get()))
+				|| !event.getLeft().is(ToolBelt.BELT.get())
+				|| !event.getRight().is(ToolBelt.POUCH.get()))
 			return;
 
 		int slots = ToolBeltItem.getSlotsCount(event.getLeft()) - 4;
