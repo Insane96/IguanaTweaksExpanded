@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Detector Rails no longer need redstone
+
 ## 1.9.6
 * Air Stealer 
   * Is now a Trident exclusive enchantment
