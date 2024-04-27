@@ -12,14 +12,19 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.AbstractMap;
@@ -73,6 +78,27 @@ public class MultiBlockSoulBlastFurnaceBlock extends AbstractMultiBlockFurnace {
     @javax.annotation.Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
         return createTicker(pLevel, pBlockEntityType, MultiBlockFurnaces.SOUL_BLAST_FURNACE_BLOCK_ENTITY_TYPE.get());
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        ItemStack itemInHand = player.getItemInHand(hand);
+        if (!itemInHand.is(Items.LAVA_BUCKET))
+            return super.use(state, level, pos, player, hand, hit);
+        BlockEntity blockentity = level.getBlockEntity(pos);
+        if (blockentity instanceof MultiBlockSoulBlastFurnaceBlockEntity multiBlockSoulBlastFurnaceBlockEntity && !multiBlockSoulBlastFurnaceBlockEntity.isLit()) {
+            if (multiBlockSoulBlastFurnaceBlockEntity.lit(itemInHand, level, pos, state)) {
+                if (!player.isCreative()) {
+                    if (itemInHand.hasCraftingRemainingItem())
+                        player.setItemInHand(hand, itemInHand.getCraftingRemainingItem());
+                    else
+                        itemInHand.shrink(1);
+                }
+                level.playSound(player, pos, SoundEvents.BUCKET_EMPTY_LAVA, SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.SUCCESS;
+            }
+        }
+        return super.use(state, level, pos, player, hand, hit);
     }
 
     @Override

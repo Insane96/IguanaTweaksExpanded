@@ -5,6 +5,7 @@
   * Mining Momentum now requires 24 stacks to be fully stacked instead of 32 (~~+10%~~ -> +15% mining speed per stack)
   * Increased minimum mining effect time (0.75 -> 1 seconds)
   * Added infos in EMI
+* You can now use a lava bucket directly on a Soul Blast Furnace to lit it up
 * Vanilla blast furnace recipes are now hidden from EMI
 * Detector Rails no longer need redstone
 

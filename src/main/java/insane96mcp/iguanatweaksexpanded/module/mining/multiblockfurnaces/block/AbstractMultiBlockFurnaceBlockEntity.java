@@ -99,8 +99,17 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         this.recipeType = pRecipeType;
     }
 
-    private boolean isLit() {
+    public boolean isLit() {
         return this.litTime > 0;
+    }
+
+    public boolean lit(ItemStack stack, Level level, BlockPos pos, BlockState state) {
+        this.litTime = this.getBurnDuration(stack);
+        this.litDuration = this.litTime;
+        state = state.setValue(AbstractFurnaceBlock.LIT, this.isLit());
+        level.setBlock(pos, state, 3);
+        setChanged(level, pos, state);
+        return this.isLit();
     }
 
     public void load(CompoundTag pTag) {
@@ -138,9 +147,8 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
 
         boolean isLit = blockEntity.isLit();
         boolean setChanged = false;
-        if (blockEntity.isLit()) {
+        if (isLit)
             --blockEntity.litTime;
-        }
 
         ItemStack fuelStack = blockEntity.items.get(FUEL_SLOT);
         boolean hasInputItem = false;
@@ -153,12 +161,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         }
         boolean hasFuel = !fuelStack.isEmpty();
         if ((blockEntity.isLit() || hasFuel) && hasInputItem) {
-            Recipe<?> recipe;
-            if (hasInputItem) {
-                recipe = blockEntity.quickCheck.getRecipeFor(blockEntity, pLevel).orElse(null);
-            } else {
-                recipe = null;
-            }
+            Recipe<?> recipe = blockEntity.quickCheck.getRecipeFor(blockEntity, pLevel).orElse(null);
 
             int i = blockEntity.getMaxStackSize();
             if (!blockEntity.isLit() && blockEntity.canBurn(pLevel.registryAccess(), recipe, inputSlots, blockEntity.items, i)) {
@@ -168,8 +171,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
                     setChanged = true;
                     if (fuelStack.hasCraftingRemainingItem())
                         blockEntity.items.set(FUEL_SLOT, fuelStack.getCraftingRemainingItem());
-                    else
-                    if (hasFuel) {
+                    else if (hasFuel) {
                         fuelStack.shrink(1);
                         if (fuelStack.isEmpty()) {
                             blockEntity.items.set(FUEL_SLOT, fuelStack.getCraftingRemainingItem());
