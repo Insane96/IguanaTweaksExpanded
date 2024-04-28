@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Netherized stew now requires Pot if Farmer's Delight is installed
+* Reduced Keego durability
 
 ## 1.9.7
 * Keego
