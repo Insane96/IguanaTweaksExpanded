@@ -3,6 +3,7 @@
 ## Upcoming
 * Netherized stew now requires Pot if Farmer's Delight is installed
 * Reduced Keego durability
+* Reduced Alleviating healing (0.25 -> 0.2 per XP)
 
 ## 1.9.7
 * Keego
