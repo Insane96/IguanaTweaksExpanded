@@ -4,6 +4,7 @@
 * Netherized stew now requires Pot if Farmer's Delight is installed
 * Reduced Keego durability
 * Reduced Alleviating healing (0.25 -> 0.2 per XP)
+* Sweet berries now grow only in winter and autumn
 
 ## 1.9.7
 * Keego
