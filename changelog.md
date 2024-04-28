@@ -3,6 +3,7 @@
 ## Upcoming
 * Netherized stew now requires Pot if Farmer's Delight is installed
 * Reduced Keego durability
+* Heavily reduced Quaron armor durability
 * Reduced Alleviating healing (0.25 -> 0.2 per XP)
 * Sweet berries now grow only in winter and autumn
 
