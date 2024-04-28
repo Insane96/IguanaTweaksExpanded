@@ -41,6 +41,14 @@
             "id": "quark:shiba",
             "required": false
         },
+        {
+            "id": "autumnity:turkey",
+            "required": false
+        },
+        {
+            "id": "autumnity:snail",
+            "required": false
+        },
         "minecraft:skeleton",
         "minecraft:spider",
         "minecraft:cave_spider",
