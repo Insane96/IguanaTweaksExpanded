@@ -1,0 +1,20 @@
+{
+    "target": "#iguanatweaksexpanded:follow_range_bonus",
+    "attributes": [
+        {
+            "id": "minecraft:generic.follow_range",
+            "modifier_name": "More Follow Range for non-zombie mobs",
+            "amount": {
+                "value": 24,
+                "condition_modifier": {
+                    "operation": "multiply",
+                    "condition": {
+                        "spawner_behaviour": "spawner_only"
+                    },
+                    "amount": 0.5
+                }
+            },
+            "operation": "addition"
+        }
+    ]
+}

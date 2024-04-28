@@ -3,7 +3,7 @@
         "minecraft:pig",
         "minecraft:chicken",
         "minecraft:sheep",
-        "minecraft:cow",
+        "#iguanatweaksreborn:cows",
         "minecraft:fox",
         "minecraft:cod",
         "minecraft:salmon",

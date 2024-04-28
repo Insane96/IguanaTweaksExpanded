@@ -13,7 +13,7 @@
                     "condition": {
                         "spawner_behaviour": "spawner_only"
                     },
-                    "amount": 0.35
+                    "amount": 0.75
                 }
             },
             "operation": "addition"

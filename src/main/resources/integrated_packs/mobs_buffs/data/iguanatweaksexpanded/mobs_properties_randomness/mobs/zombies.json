@@ -5,13 +5,13 @@
             "id": "minecraft:generic.movement_speed",
             "modifier_name": "More Speed for Zombies",
             "amount": {
-                "value": 0.13,
+                "value": 0.02,
                 "condition_modifier": {
                     "operation": "multiply",
                     "condition": {
                         "spawner_behaviour": "spawner_only"
                     },
-                    "amount": 0.35
+                    "amount": 0.5
                 }
             },
             "operation": "multiply_base"
@@ -26,7 +26,7 @@
                     "condition": {
                         "spawner_behaviour": "spawner_only"
                     },
-                    "amount": 0.35
+                    "amount": 0.5
                 }
             },
             "operation": "addition"
