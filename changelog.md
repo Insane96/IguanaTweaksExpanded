@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Netherized stew now requires Pot if Farmer's Delight is installed
+
 ## 1.9.7
 * Keego
   * Mining Momentum now requires 24 stacks to be fully stacked instead of 32 (~~+10%~~ -> +15% mining speed per stack)
