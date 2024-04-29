@@ -15,6 +15,7 @@
   * The xray range is now 12 if spawned from spawners instead of 6
   * Blazes no longer get bonus follow range
   * Added a few modded mobs to the tags
+* Removed Organic Compost with Rotten Flesh recipe
 * Pet Cemetery's zombie and skelly wolves are now affected by the attribute changes in Enhanced AI
 
 ## 1.9.7
