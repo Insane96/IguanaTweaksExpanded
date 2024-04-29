@@ -239,8 +239,6 @@ public class ClientSetup {
             addAfter(event, Items.MUSHROOM_STEW, FoodDrinks.RED_MUSHROOM_STEW.get());
             addAfter(event, Items.COOKIE, FoodDrinks.OVER_EASY_EGG.get());
             addBefore(event, Items.PUMPKIN_PIE, FoodDrinks.PUMPKIN_PULP.get());
-            addBefore(event, Items.PUMPKIN_PIE, FoodDrinks.CHEESE_SLICE.get());
-            addBefore(event, Items.PUMPKIN_PIE, FoodDrinks.MILK_BOTTLE.get());
         }
     }
 

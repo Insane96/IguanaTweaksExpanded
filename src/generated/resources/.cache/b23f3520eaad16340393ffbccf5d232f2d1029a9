@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-17T09:30:01.0855604	Item Models: iguanatweaksexpanded
+// 1.20.1	2024-04-29T09:10:04.9583668	Item Models: iguanatweaksexpanded
 9db8ff6b8f62a90066f9ec6f113f30579ef147b4 assets/iguanatweaksexpanded/models/item/blast_furnace.json
 fc1b6ed013a34c698e33c1afcd94ac79f4c34781 assets/iguanatweaksexpanded/models/item/brown_mushroom_stew.json
 41743aed504cb3d906945743e454f770349cbedc assets/iguanatweaksexpanded/models/item/chained_copper_boots.json
@@ -46,7 +46,6 @@ b6931004c01af2e4ed8451c7c15b8d229c5009b8 assets/iguanatweaksexpanded/models/item
 8fb4a58189317f3d45febd338753e8cfcbc6ade2 assets/iguanatweaksexpanded/models/item/chained_copper_leggings_quartz_trim.json
 5b3f09848b2ae6d4d7af19e2818774110982bd2a assets/iguanatweaksexpanded/models/item/chained_copper_leggings_redstone_trim.json
 5aac21574d35522bc56e0df1eb79e5ef22a62540 assets/iguanatweaksexpanded/models/item/charcoal_layer.json
-6b266936940da352dd0b0683fe33e71e9fc7b830 assets/iguanatweaksexpanded/models/item/cheese_slice.json
 584c0d36157b44e3127a22da9839923d18f3d613 assets/iguanatweaksexpanded/models/item/cleansed_lapis.json
 1e56a7a20ed823922869a60dc2a6a368ac3ce8d6 assets/iguanatweaksexpanded/models/item/cloth.json
 a12f5a6c474211c0273887b169b8d95a28e4953e assets/iguanatweaksexpanded/models/item/coated_copper_axe.json
@@ -196,7 +195,6 @@ f6cbafb4d77dbf412d1df1d46361be756c915029 assets/iguanatweaksexpanded/models/item
 313300a16ea7cc01a54c0ec8099ea9bf05edd0ac assets/iguanatweaksexpanded/models/item/keego_shield.json
 7ad54388427ab2863ffa63063a62b71b432fa783 assets/iguanatweaksexpanded/models/item/keego_shovel.json
 52a2be895ffa1b8a2651a54177fc73af9334a258 assets/iguanatweaksexpanded/models/item/keego_sword.json
-ac72e4628448e498007b3ea7307a20184c190085 assets/iguanatweaksexpanded/models/item/milk_bottle.json
 ebfd978a8d01aa100cf4cfe25cb4dbb7a6c03b74 assets/iguanatweaksexpanded/models/item/netherite_hammer.json
 8fa78f3f4db01e6cc2c386b9fec576a4800d7410 assets/iguanatweaksexpanded/models/item/netherized_stew.json
 32502d681596fdcca8f69c1e06b70b080ae5f60b assets/iguanatweaksexpanded/models/item/nether_infused_powered_rail.json

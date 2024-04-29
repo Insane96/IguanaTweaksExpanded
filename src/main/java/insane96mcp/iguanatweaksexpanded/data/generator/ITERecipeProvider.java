@@ -476,23 +476,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 )
                 .build(writer, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_easy_egg_from_smoking"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodDrinks.MILK_BOTTLE.get(), 3)
-                .requires(Ingredient.of(Items.MILK_BUCKET))
-                .requires(Ingredient.of(Items.GLASS_BOTTLE), 3)
-                .unlockedBy("has_milk", has(Items.MILK_BUCKET))
-                .save(writer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodDrinks.UNCOOKED_CHEESE_SLICE.get(), 3)
-                .requires(Ingredient.of(FoodDrinks.MILK_BOTTLE.get()), 3)
-                .requires(Ingredient.of(FoodDrinks.RENNET.get()))
-                .unlockedBy("has_milk_bottle", has(FoodDrinks.MILK_BOTTLE.get()))
-                .save(writer);
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(FoodDrinks.UNCOOKED_CHEESE_SLICE.get()), RecipeCategory.FOOD, FoodDrinks.CHEESE_SLICE.get(), 0.35f, 200)
-                .unlockedBy("has_milk", has(FoodDrinks.MILK_BOTTLE.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "cheese_slice_from_smelting");
-        SimpleCookingRecipeBuilder.smoking(Ingredient.of(FoodDrinks.UNCOOKED_CHEESE_SLICE.get()), RecipeCategory.FOOD, FoodDrinks.CHEESE_SLICE.get(), 0.35f, 100)
-                .unlockedBy("has_milk", has(FoodDrinks.MILK_BOTTLE.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "cheese_slice_from_smoking");
-
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, CoalCharcoal.FIRESTARTER.get())
                 .requires(Items.FLINT, 2)
                 .requires(Items.IRON_INGOT, 1)
