@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Milk Bottle, Rennet, Cheese and Uncooked cheese have been removed
 * Netherized stew now requires Pot if Farmer's Delight is installed
 * Reduced Keego durability
 * Heavily reduced Quaron armor durability
@@ -33,7 +34,7 @@
 * Items can now be repaired again with nuggets
 * Passable foliage's Leaf Walker curse is now an enchantment
 * Farmer's delight integration (Season plant growth)
-* Fixed dupe glitch with soulbound
+* Fixed dupe glitch with soulbound****
 * Fixed enchanted books from spawners having fake Curses
 
 ## 1.9.5
