@@ -8,6 +8,7 @@
 * Reduced Alleviating healing (0.25 -> 0.2 per XP)
 * Sweet berries now grow only in winter and autumn
 * Reduced Soul Steel enchantability
+* Beeg veins are now slightly rarer
 * Mobs buffs
   * Mobs from spawners now have 50% of (most of) the original buff instead of 35%
   * The xray range is now 12 if spawned from spawners instead of 6
