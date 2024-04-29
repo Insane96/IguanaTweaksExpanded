@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Season bone meal use has been moved to ITR
+
 ## 1.9.8
 * Milk Bottle, Rennet, Cheese and Uncooked cheese have been removed
 * Netherized stew now requires Pot if Farmer's Delight is installed
