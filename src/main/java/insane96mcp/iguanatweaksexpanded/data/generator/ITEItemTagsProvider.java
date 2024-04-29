@@ -99,7 +99,7 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.AXES).add(FlintExpansion.AXE.get(), Solarium.AXE.get(), Durium.AXE.get(), CopperExpansion.COPPER_AXE.get(), CopperExpansion.COATED_AXE.get(), SoulSteel.AXE.get(), Keego.AXE.get(), Quaron.AXE.get());
         tag(ItemTags.SHOVELS).add(FlintExpansion.SHOVEL.get(), Solarium.SHOVEL.get(), Durium.SHOVEL.get(), CopperExpansion.COPPER_SHOVEL.get(), CopperExpansion.COATED_SHOVEL.get(), SoulSteel.SHOVEL.get(), Keego.SHOVEL.get(), Quaron.SHOVEL.get());
         tag(ItemTags.SWORDS).add(FlintExpansion.SWORD.get(), Solarium.SWORD.get(), Durium.SWORD.get(), CopperExpansion.COPPER_SWORD.get(), CopperExpansion.COATED_SWORD.get(), SoulSteel.SWORD.get(), Keego.SWORD.get(), Quaron.SWORD.get());
-        tag(ItemTags.HOES).add(FlintExpansion.HOE.get(), Solarium.HOE.get(), Durium.HOE.get(), CopperExpansion.COPPER_HOE.get(), CopperExpansion.COATED_HOE.get(), SoulSteel.HOE.get(), Keego.HOE.get(), Quaron.SHOVEL.get());
+        tag(ItemTags.HOES).add(FlintExpansion.HOE.get(), Solarium.HOE.get(), Durium.HOE.get(), CopperExpansion.COPPER_HOE.get(), CopperExpansion.COATED_HOE.get(), SoulSteel.HOE.get(), Keego.HOE.get(), Quaron.HOE.get());
 
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(Solarium.HELMET.get(), Solarium.CHESTPLATE.get(), Solarium.LEGGINGS.get(), Solarium.BOOTS.get())

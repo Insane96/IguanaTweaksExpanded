@@ -9,6 +9,7 @@
 * Sweet berries now grow only in winter and autumn
 * Reduced Soul Steel enchantability
 * Beeg veins are now slightly rarer
+* Fixed Quark Shovels being Hoes
 * Mobs buffs
   * Mobs from spawners now have 50% of (most of) the original buff instead of 35%
   * The xray range is now 12 if spawned from spawners instead of 6
