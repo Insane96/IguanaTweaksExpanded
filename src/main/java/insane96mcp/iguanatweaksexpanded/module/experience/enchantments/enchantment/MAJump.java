@@ -41,7 +41,8 @@ public class MAJump extends Enchantment {
     public static boolean extraJump(Player entity) {
         if (entity.onGround()
                 || entity.onClimbable()
-                || entity.isInWaterOrBubble())
+                || entity.isInWaterOrBubble()
+                || entity.getVehicle() != null)
             return false;
 
         int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.MA_JUMP.get(), entity);

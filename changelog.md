@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Season bone meal use has been moved to ITR
+* Fixed M.A. Jump working while mounted
 
 ## 1.9.8
 * Milk Bottle, Rennet, Cheese and Uncooked cheese have been removed
