@@ -113,6 +113,7 @@ dependencies {
 
     compileOnly fg.deobf("dev.emi:emi-forge:${emi_version}:api")
     runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
+    implementation fg.deobf("curse.maven:jei-238222:5101366")
 
     runtimeOnly fg.deobf("curse.maven:selene-499980:5201144")
     runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:5051316")
@@ -134,7 +135,10 @@ dependencies {
     implementation fg.deobf("curse.maven:supplementaries-412082:5211386")
 
     implementation fg.deobf("curse.maven:blueprint-382216:5228040")
+    implementation fg.deobf("curse.maven:autumnity-365045:5229021")
+    implementation fg.deobf("curse.maven:berry-good-355589:5228437")
     implementation fg.deobf("curse.maven:allurement-438003:5228059")
+    implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
 
     //runtimeOnly fg.deobf("curse.maven:corail-woodcutter-331983:4685515")
 

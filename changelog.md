@@ -4,6 +4,7 @@
 * Season bone meal use has been moved to ITR
 * Fixed M.A. Jump working while mounted
 * Fixed Farmers delight data pack being loaded even if there was no farmers delight
+* Fixed Farmers Delight crops growing out of season
 
 ## 1.9.8
 * Milk Bottle, Rennet, Cheese and Uncooked cheese have been removed
