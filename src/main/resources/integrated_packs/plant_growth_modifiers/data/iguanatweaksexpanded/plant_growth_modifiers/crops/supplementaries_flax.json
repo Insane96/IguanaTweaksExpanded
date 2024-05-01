@@ -1,0 +1,13 @@
+{
+    "block": "supplementaries:flax",
+    "modifiers": [
+        {
+            "id": "iguanatweaksexpanded:season",
+            "seasons": [
+                "WINTER",
+                "AUTUMN"
+            ],
+            "multiplier": 0
+        }
+    ]
+}

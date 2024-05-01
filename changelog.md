@@ -3,11 +3,14 @@
 ## Upcoming
 * Spectral arrows are now made in the fletching table
 * Season bone meal use has been moved to ITR
+* Flax no longer grows in winter and autumn
+* Reduced Spiders movement speed by 3%
 * Fixed M.A. Jump working while mounted
 * Fixed Farmers delight data pack being loaded even if there was no farmers delight
 * Fixed Farmers Delight crops growing out of season
 * Fixed Farmers Delight dog food not craftable
 * Fixed mixins loading only if mods were missing
+* Fixed enchant with treasure giving special enchantements such as swift sneak
 
 ## 1.9.8
 * Milk Bottle, Rennet, Cheese and Uncooked cheese have been removed

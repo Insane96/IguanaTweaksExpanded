@@ -36,7 +36,7 @@ public class EnchantWithTreasureFunction extends LootItemConditionalFunction {
         boolean isBook = stack.is(Items.BOOK) || stack.is(Items.ENCHANTED_BOOK);
         List<Enchantment> list = ForgeRegistries.ENCHANTMENTS.getValues()
                 .stream()
-                .filter(ench -> ench.isTreasureOnly() && (!ench.isCurse() || this.allowCurses))
+                .filter(ench -> ench.isDiscoverable() && ench.isTreasureOnly() && (!ench.isCurse() || this.allowCurses))
                 .filter(ench -> isBook || ench.canEnchant(stack))
                 .toList();
 
