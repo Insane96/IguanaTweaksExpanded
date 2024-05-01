@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.mixin;
+package insane96mcp.iguanatweaksexpanded.mixin.integration.passablefoliage;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.insanelib.base.Feature;

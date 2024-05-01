@@ -13,12 +13,12 @@
         "GrindstoneMenu3Mixin",
         "IceBlockInvoker",
         "ItemMixin",
-        "LeafWalkerEnchantmentMixin",
         "LivingEntityMixin",
         "ProjectileMixin",
         "RandomUpdateHandlerMixin",
         "SmithingTransformRecipeMixin",
-        "integration.allurement.LaunchEnchantmentMixin"
+        "integration.allurement.LaunchEnchantmentMixin",
+        "integration.passablefoliage.LeafWalkerEnchantmentMixin"
     ],
     "minVersion": "0.8"
 }
