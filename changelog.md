@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Spectral arrows are now made in the fletching table
 * Season bone meal use has been moved to ITR
 * Fixed M.A. Jump working while mounted
 * Fixed Farmers delight data pack being loaded even if there was no farmers delight
