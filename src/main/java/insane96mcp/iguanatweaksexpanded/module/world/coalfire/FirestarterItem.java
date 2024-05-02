@@ -63,7 +63,7 @@ public class FirestarterItem extends FlintAndSteelItem implements Vanishable {
         else {
             super.useOn(new UseOnContext(player, player.getUsedItemHand(), blockHitResult));
         }
-        player.getCooldowns().addCooldown(stack.getItem(), 20);
+        //player.getCooldowns().addCooldown(stack.getItem(), 20);
         return stack;
     }
 

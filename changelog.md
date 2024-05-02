@@ -7,6 +7,8 @@
 * Reduced Spiders movement speed by 3%
 * Fixed M.A. Jump working while mounted
 * Hopefully fixed Pumpkin pulp being overwritten by ITR
+* Removed cooldown from firestarter
+  * This fixes firestarters extinguishing candles as soon as lit
 * Fixed Farmers delight data pack being loaded even if there was no farmers delight
 * Fixed Farmers Delight crops growing out of season
 * Fixed Farmers Delight dog food not craftable
