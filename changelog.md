@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.9.9
 * Spectral arrows are now made in the fletching table
 * Season bone meal use has been moved to ITR
 * Flax no longer grows in winter and autumn
