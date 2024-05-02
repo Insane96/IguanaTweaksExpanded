@@ -12,6 +12,7 @@
 * Fixed Farmers Delight dog food not craftable
 * Fixed mixins loading only if mods were missing
 * Fixed enchant with treasure giving special enchantements such as swift sneak
+* Fixed (again) enchanting table learning curses
 
 ## 1.9.8
 * Milk Bottle, Rennet, Cheese and Uncooked cheese have been removed

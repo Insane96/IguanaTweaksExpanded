@@ -76,7 +76,7 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                     boolean hasTreasure = false;
                     for (int i = 0; i < list.size(); i++) {
                         Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(list.getCompound(i)));
-                        if (enchantment == null || !enchantment.isTreasureOnly())
+                        if (enchantment == null || !enchantment.isTreasureOnly() || enchantment.isCurse())
                             continue;
                         if (enchantingTableBE.knowsEnchantment(enchantment)) {
                             player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.already_knows").append(Component.translatable(enchantment.getDescriptionId())));
