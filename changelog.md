@@ -6,6 +6,7 @@
 * Flax no longer grows in winter and autumn
 * Reduced Spiders movement speed by 3%
 * Fixed M.A. Jump working while mounted
+* Hopefully fixed Pumpkin pulp being overwritten by ITR
 * Fixed Farmers delight data pack being loaded even if there was no farmers delight
 * Fixed Farmers Delight crops growing out of season
 * Fixed Farmers Delight dog food not craftable
@@ -43,7 +44,7 @@
 ## 1.9.6
 * Air Stealer 
   * Is now a Trident exclusive enchantment
-  * Air stealed scales with attack cooldown
+  * Air stolen scales with attack cooldown
 * Reduced Soul Steel total Armor (12 -> 11)
 * Added a new Damage Type Tag `iguanatweaksexpanded:enchantments/protection/magic` defining which damage types are reduced by Magic Protection enchantment
 * Items can now be repaired again with nuggets
