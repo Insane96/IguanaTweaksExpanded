@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Removed soul steel ingots from end city treasures
+
 ## 1.9.9
 * Spectral arrows are now made in the fletching table
 * Season bone meal use has been moved to ITR
