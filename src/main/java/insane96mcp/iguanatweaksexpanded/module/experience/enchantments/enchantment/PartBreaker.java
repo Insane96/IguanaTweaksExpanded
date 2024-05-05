@@ -42,6 +42,11 @@ public class PartBreaker extends Enchantment {
         return super.getMinCost(pEnchantmentLevel) + 50;
     }
 
+    @Override
+    public boolean isTreasureOnly() {
+        return true;
+    }
+
     public static float getChance(int lvl) {
         return lvl * 0.05f;
     }
