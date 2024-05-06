@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Slowed down Reforming (1 durability every 1 -> 2 minutes)
+
 ## 1.9.10
 * Removed soul steel ingots from end city treasures
 * Part breaker is now a treasure enchantment
