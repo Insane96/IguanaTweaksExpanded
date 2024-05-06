@@ -1,8 +1,9 @@
 # Changelog
 
-## Upcoming
+## 1.9.10
 * Removed soul steel ingots from end city treasures
 * Part breaker is now a treasure enchantment
+* Supplementaries integration has been moved to its own data pack
 
 ## 1.9.9
 * Spectral arrows are now made in the fletching table
