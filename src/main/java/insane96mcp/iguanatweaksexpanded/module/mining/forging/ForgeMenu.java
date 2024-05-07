@@ -131,11 +131,11 @@ public class ForgeMenu extends RecipeBookMenu<Container> {
             //If inventory slots
             else if (pSlot > RESULT_SLOT) {
                 if (this.isIngredient(itemStackInSlot)) {
-                    if (!this.moveItemStackTo(itemStackInSlot, INGREDIENT_SLOT, GEAR_SLOT, false)) {
+                    if (!this.moveItemStackTo(itemStackInSlot, INGREDIENT_SLOT, GEAR_SLOT, false) && !this.canForge(itemStackInSlot)) {
                         return ItemStack.EMPTY;
                     }
                 }
-                else if (this.canForge(itemStackInSlot)) {
+                if (this.canForge(itemStackInSlot)) {
                     if (!this.moveItemStackTo(itemStackInSlot, GEAR_SLOT, RESULT_SLOT, false)) {
                         return ItemStack.EMPTY;
                     }
