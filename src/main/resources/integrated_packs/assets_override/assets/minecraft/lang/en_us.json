@@ -1,5 +1,6 @@
 {
     "item.minecraft.netherite_scrap": "Ancient Scrap",
     "item.minecraft.arrow": "Flint arrow",
-    "container.grindstone_title": "Repair, Disenchant & Extract"
+    "container.grindstone_title": "Repair, Disenchant & Extract",
+    "sleep.skipping_night": "Someone's sleeping"
 }
