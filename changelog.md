@@ -5,6 +5,7 @@
 * Fixed items with Soulbound in toolbelt not getting kept
 * Fixed armor and offhand items with Soulbound not staying in their respective slots on respawn
 * Fixed not being able to shift-click items into forge bottom slot if the item was both an ingredient and a bottom item (e.g. durium ingots)
+* Fixed Piercing and electrocution damage killing entities twice
 * ~~Removed M.A. Jump~~
 
 ## 1.9.10

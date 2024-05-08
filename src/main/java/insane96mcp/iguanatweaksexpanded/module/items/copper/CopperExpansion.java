@@ -152,8 +152,7 @@ public class CopperExpansion extends Feature {
 	public void onAttack(LivingHurtEvent event) {
 		if (!this.isEnabled()
 				|| event.getSource().is(DOESNT_TRIGGER_ELECTROCUTION)
-				|| !(event.getSource().getEntity() instanceof Player player)
-				|| !(event.getSource().getDirectEntity() instanceof Player)
+				|| !(event.getSource().getDirectEntity() instanceof Player player)
 				|| player.getAttackStrengthScale(1f) < 0.9f
 				|| !(player.getMainHandItem().getItem() instanceof TieredItem tieredItem)
 				|| tieredItem.getTier() != COATED_ITEM_TIER)
@@ -167,6 +166,8 @@ public class CopperExpansion extends Feature {
 		if (++hits >= 4) {
 			hits = 0;
 			electrocute(player, event.getEntity(), (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 2f);
+			if (event.getEntity().isDeadOrDying())
+				event.setCanceled(true);
 		}
 		tag.putInt(COATED_TIMES_HIT, hits);
 	}
