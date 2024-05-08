@@ -2,7 +2,10 @@
 
 ## Upcoming
 * Slowed down Reforming (1 durability every 1 -> 2 minutes)
+* Fixed items with Soulbound in toolbelt not getting kept
+* Fixed armor and offhand items with Soulbound not staying in their respective slots on respawn
 * Fixed not being able to shift-click items into forge bottom slot if the item was both an ingredient and a bottom item (e.g. durium ingots)
+* ~~Removed M.A. Jump~~
 
 ## 1.9.10
 * Removed soul steel ingots from end city treasures
