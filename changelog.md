@@ -1,6 +1,7 @@
 # Changelog
 
-## Upcoming
+## 1.9.11
+* Mining Charges now break blocks in a 3x3x6 area (from 3x3x3)
 * Slowed down Reforming (1 durability every 1 -> 2 minutes)
 * Fixed items with Soulbound in toolbelt not getting kept
 * Fixed armor and offhand items with Soulbound not staying in their respective slots on respawn
