@@ -42,6 +42,11 @@ public class GravityDefying extends Enchantment implements IAttributeEnchantment
         return false;
     }
 
+    @Override
+    public boolean isDiscoverable() {
+        return false;
+    }
+
     public static void applyFallDamageReduction(LivingFallEvent event) {
         if (event.getEntity().getItemBySlot(EquipmentSlot.FEET).getEnchantmentLevel(NewEnchantmentsFeature.GRAVITY_DEFYING.get()) <= 0)
             return;

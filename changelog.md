@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed ~~Gravity Defying~~ Removed enchantment popping out on books
+
 ## 1.9.11
 * Mining Charges now break blocks in a 3x3x6 area (from 3x3x3)
 * Slowed down Reforming (1 durability every 1 -> 2 minutes)
