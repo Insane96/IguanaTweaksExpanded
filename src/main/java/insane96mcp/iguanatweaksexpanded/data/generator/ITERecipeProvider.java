@@ -419,7 +419,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ExplosiveBarrel.BLOCK.item().get())
                 .requires(Items.TNT, 1)
                 .requires(Items.BARREL, 1)
-                .requires(Items.GUNPOWDER, 2)
+                .requires(Items.GUNPOWDER, 1)
                 .unlockedBy("has_tnt", has(Items.TNT))
                 .unlockedBy("has_barrel", has(Items.BARREL))
                 .save(writer);

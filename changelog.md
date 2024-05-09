@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Explosive Barrels now require 1 less gunpowder
 * Fixed ~~Gravity Defying~~ Removed enchantment popping out on books
 
 ## 1.9.11

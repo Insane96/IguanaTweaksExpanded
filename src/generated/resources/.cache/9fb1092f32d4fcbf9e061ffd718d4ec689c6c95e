@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-29T09:10:04.9463661	Recipes
+// 1.20.1	2024-05-09T08:29:13.1878975	Recipes
 526370693a4951624cbf8285db04c56cdc7523cf data/iguanatweaksexpanded/advancements/recipes/building_blocks/durium_block.json
 354b2d1d1780cbf99af3957561d45cd439edcb4e data/iguanatweaksexpanded/advancements/recipes/building_blocks/keego_block.json
 c245ac737c4ae3ba93103337c55fcf4fe4bd0c0b data/iguanatweaksexpanded/advancements/recipes/building_blocks/quaron_block.json
@@ -654,7 +654,7 @@ b36ff5d9585b89a56fd68729997bb83bb6edc49a data/iguanatweaksexpanded/recipes/duriu
 37e98e14b8cbb6ce8a5b05e40956b966cffbc7cf data/iguanatweaksexpanded/recipes/durium_shield.json
 13aa5939cab4c1e12ae4ac1db301ee98073b35ee data/iguanatweaksexpanded/recipes/durium_shovel.json
 1e16dbd2782512111d38126787387452a889d345 data/iguanatweaksexpanded/recipes/durium_sword.json
-8ef8f8b7dcdb6677cb735d4d23dc13ccaac5998b data/iguanatweaksexpanded/recipes/explosive_barrel.json
+d5239d69e115f3e3b6f9c7bc0fd6b54842b40079 data/iguanatweaksexpanded/recipes/explosive_barrel.json
 01d6a815d2bfca3f7a0c2d09e96acb92f7b1698b data/iguanatweaksexpanded/recipes/firestarter.json
 6733063a69480358ba1aa81649bc6b23d5f15ae7 data/iguanatweaksexpanded/recipes/flint_axe.json
 8c6df819eda2bb07b407d39b9c8bc3c7c89e1de6 data/iguanatweaksexpanded/recipes/flint_from_gravel.json
