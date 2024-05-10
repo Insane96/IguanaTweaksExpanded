@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.9.12
 * Blast furnace
   * Raw ores no longer have 30% chance to be doubled
   * Ore blocks no longer take half the time to be smelted (also applies to Soul Blast Furnace)
