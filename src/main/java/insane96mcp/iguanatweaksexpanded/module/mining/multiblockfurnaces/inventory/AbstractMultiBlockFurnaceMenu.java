@@ -180,12 +180,22 @@ public abstract class AbstractMultiBlockFurnaceMenu extends RecipeBookMenu<Conta
     }
 
     public int getLitProgress() {
-        int i = this.data.get(1);
-        if (i == 0) {
-            i = 200;
-        }
+        int burnDuration = this.data.get(1);
+        if (burnDuration == 0)
+            burnDuration = 200;
+        int burnTime = this.data.get(0);
+        if (burnTime > burnDuration)
+            burnTime = burnDuration;
 
-        return this.data.get(0) * 13 / i;
+        return burnTime * 13 / burnDuration;
+    }
+
+    public int getBurnTime() {
+        return this.data.get(0);
+    }
+
+    public int getBurnDuration() {
+        return this.data.get(1);
     }
 
     public boolean isLit() {

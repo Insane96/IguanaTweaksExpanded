@@ -86,7 +86,7 @@ public class MultiBlockSoulBlastFurnaceBlock extends AbstractMultiBlockFurnace {
         if (!itemInHand.is(Items.LAVA_BUCKET))
             return super.use(state, level, pos, player, hand, hit);
         BlockEntity blockentity = level.getBlockEntity(pos);
-        if (blockentity instanceof MultiBlockSoulBlastFurnaceBlockEntity multiBlockSoulBlastFurnaceBlockEntity && !multiBlockSoulBlastFurnaceBlockEntity.isLit()) {
+        if (blockentity instanceof MultiBlockSoulBlastFurnaceBlockEntity multiBlockSoulBlastFurnaceBlockEntity && multiBlockSoulBlastFurnaceBlockEntity.canLit(itemInHand)) {
             if (multiBlockSoulBlastFurnaceBlockEntity.lit(itemInHand, level, pos, state)) {
                 if (!player.isCreative()) {
                     if (itemInHand.hasCraftingRemainingItem())

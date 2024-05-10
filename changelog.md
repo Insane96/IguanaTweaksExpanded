@@ -6,6 +6,7 @@
   * Ore blocks no longer take half the time to be smelted (also applies to Soul Blast Furnace)
   * Increased copper ingots from smelting ore blocks (7 -> 8)
   * Reduced copper ingots from smelting ore rocks (7 -> 2)
+* Soul Blast Furnace now accepts 4 lava buckets and will burn for all of them
 * Explosive Barrels now require 1 less gunpowder
 * Fixed ~~Gravity Defying~~ Removed enchantment popping out on books
 

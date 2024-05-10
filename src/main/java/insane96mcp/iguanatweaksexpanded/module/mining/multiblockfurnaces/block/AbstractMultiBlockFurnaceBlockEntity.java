@@ -104,8 +104,10 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
     }
 
     public boolean lit(ItemStack stack, Level level, BlockPos pos, BlockState state) {
-        this.litTime = this.getBurnDuration(stack);
-        this.litDuration = this.litTime;
+        boolean wasLit = this.isLit();
+        this.litTime += this.getBurnDuration(stack);
+        if (!wasLit)
+            this.litDuration = this.litTime;
         state = state.setValue(AbstractFurnaceBlock.LIT, this.isLit());
         level.setBlock(pos, state, 3);
         setChanged(level, pos, state);
@@ -119,7 +121,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         this.litTime = pTag.getInt("BurnTime");
         this.cookingProgress = pTag.getInt("CookTime");
         this.cookingTotalTime = pTag.getInt("CookTimeTotal");
-        this.litDuration = this.getBurnDuration(this.items.get(FUEL_SLOT));
+        this.litDuration = pTag.getInt("LitDuration");
         CompoundTag compoundtag = pTag.getCompound("RecipesUsed");
 
         for(String s : compoundtag.getAllKeys()) {
@@ -132,6 +134,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         pTag.putInt("BurnTime", this.litTime);
         pTag.putInt("CookTime", this.cookingProgress);
         pTag.putInt("CookTimeTotal", this.cookingTotalTime);
+        pTag.putInt("LitDuration", this.litDuration);
         ContainerHelper.saveAllItems(pTag, this.items);
         CompoundTag compoundtag = new CompoundTag();
         this.recipesUsed.forEach((p_187449_, p_187450_) -> compoundtag.putInt(p_187449_.toString(), p_187450_));
@@ -159,14 +162,18 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
                 break;
             }
         }
-        boolean hasFuel = !fuelStack.isEmpty();
+        int burnDuration = blockEntity.getBurnDuration(fuelStack);
+        boolean hasFuel = !fuelStack.isEmpty() && burnDuration > 0;
         if ((blockEntity.isLit() || hasFuel) && hasInputItem) {
             Recipe<?> recipe = blockEntity.quickCheck.getRecipeFor(blockEntity, pLevel).orElse(null);
 
             int i = blockEntity.getMaxStackSize();
-            if (!blockEntity.isLit() && blockEntity.canBurn(pLevel.registryAccess(), recipe, inputSlots, blockEntity.items, i)) {
-                blockEntity.litTime = blockEntity.getBurnDuration(fuelStack);
-                blockEntity.litDuration = blockEntity.litTime;
+            boolean canOverflow = blockEntity.canOverflowFuel() && blockEntity.litTime + burnDuration < blockEntity.maxOverflow();
+            if ((!blockEntity.isLit() || canOverflow) && blockEntity.canBurn(pLevel.registryAccess(), recipe, inputSlots, blockEntity.items, i)) {
+                blockEntity.litTime += burnDuration;
+                //Here isLit becomes wasLit
+                if (!isLit)
+                    blockEntity.litDuration = blockEntity.litTime;
                 if (blockEntity.isLit()) {
                     setChanged = true;
                     if (fuelStack.hasCraftingRemainingItem())
@@ -266,6 +273,10 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         }
     }
 
+    protected abstract boolean canOverflowFuel();
+
+    protected abstract int maxOverflow();
+
     private boolean canBurn(RegistryAccess registryAccess, @javax.annotation.Nullable Recipe<?> recipe, int[] inputSlots, NonNullList<ItemStack> slotsStacks, int stackSize) {
         boolean hasIngredient = false;
         for (int slot : inputSlots) {
@@ -309,6 +320,10 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
             slotStacks.get(slot).shrink(1);
         }
         return true;
+    }
+
+    public boolean canLit(ItemStack stack) {
+        return !this.isLit() || (this.canOverflowFuel() && this.litTime + this.getBurnDuration(stack) < this.maxOverflow());
     }
 
     protected int getBurnDuration(ItemStack pFuel) {

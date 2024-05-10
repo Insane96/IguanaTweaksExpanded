@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class MultiBlockSoulBlastFurnaceBlockEntity extends AbstractMultiBlockFurnaceBlockEntity {
@@ -28,6 +29,16 @@ public class MultiBlockSoulBlastFurnaceBlockEntity extends AbstractMultiBlockFur
     @Override
     public int[] getIngredientSlots() {
         return  MultiBlockSoulBlastFurnaceMenu.getIngredientSlots();
+    }
+
+    @Override
+    protected boolean canOverflowFuel() {
+        return true;
+    }
+
+    @Override
+    protected int maxOverflow() {
+        return (super.getBurnDuration(new ItemStack(Items.LAVA_BUCKET)) / 2) * 4;
     }
 
     protected int getBurnDuration(ItemStack pFuel) {
