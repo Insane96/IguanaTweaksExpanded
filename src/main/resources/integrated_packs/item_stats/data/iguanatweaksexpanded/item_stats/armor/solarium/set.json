@@ -3,6 +3,6 @@
     "enchantability": 11,
     "knockback_resistance": 0.03,
     "armor_toughness": 0,
-    "regenerating_absorption": 1,
+    "regenerating_absorption": 0.75,
     "movement_speed_penalty": 0.05
 }

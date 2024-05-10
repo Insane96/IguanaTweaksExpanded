@@ -2,6 +2,6 @@
     "item": "#iguanatweaksexpanded:equipment/armor/quaron",
     "enchantability": 8,
     "armor_toughness": 0,
-    "regenerating_absorption": 0.5,
+    "regenerating_absorption": 0.4,
     "movement_speed_penalty": 0.1
 }
