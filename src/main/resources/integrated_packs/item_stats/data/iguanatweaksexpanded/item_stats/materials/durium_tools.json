@@ -1,7 +1,7 @@
 {
 	"item": "#iguanatweaksexpanded:equipment/hand/durium",
 	"durability": 765,
-	"efficiency": 3,
+	"efficiency": 3.5,
 	"enchantability": 12,
 	"modifiers": [
 		{

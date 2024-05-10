@@ -7,6 +7,10 @@
   * Increased copper ingots from smelting ore blocks (7 -> 8)
   * Reduced copper ingots from smelting ore rocks (7 -> 2)
 * Soul Blast Furnace now accepts 4 lava buckets and will burn for all of them
+* Keego
+  * Increased base efficiency (3.5 -> 5)
+  * Decreased bonus efficiency with Momentum (~~+15%~~ -> +10% per level)
+  * Reduced durability (~~1007~~ -> 937)
 * Explosive Barrels now require 1 less gunpowder
 * Fixed ~~Gravity Defying~~ Removed enchantment popping out on books
 
