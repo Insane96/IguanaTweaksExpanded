@@ -96,7 +96,7 @@ public class Keego extends Feature {
 
 		//noinspection DataFlowIssue
 		int lvl = event.getEntity().getEffect(MINING_MOMENTUM.get()).getAmplifier() + 1;
-		event.setNewSpeed(event.getNewSpeed() * (1 + lvl * 0.15f));
+		event.setNewSpeed(event.getNewSpeed() * (1 + lvl * 0.1f));
 	}
 
 	@SubscribeEvent
