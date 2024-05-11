@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Hopefully fixed leaf walker still being a curse
+* Reduced beeg gold ore veins and increased beeg copper ore veins
 
 ## 1.9.12
 * Blast furnace
