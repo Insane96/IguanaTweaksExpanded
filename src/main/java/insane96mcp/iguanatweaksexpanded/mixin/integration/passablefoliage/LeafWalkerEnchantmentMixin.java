@@ -10,21 +10,21 @@ import snownee.passablefoliage.enchantment.LeafWalkerEnchantment;
 
 @Mixin(LeafWalkerEnchantment.class)
 public class LeafWalkerEnchantmentMixin {
-    @Inject(method = "isCurse", at = @At("RETURN"), remap = false, cancellable = true)
+    @Inject(method = "isCurse", at = @At("RETURN"), cancellable = true)
     public void isCurse(CallbackInfoReturnable<Boolean> cir) {
         if (Feature.isEnabled(EnchantingFeature.class)) {
             cir.setReturnValue(false);
         }
     }
 
-    @Inject(method = "isDiscoverable", at = @At("RETURN"), remap = false, cancellable = true)
+    @Inject(method = "isDiscoverable", at = @At("RETURN"), cancellable = true)
     public void isDiscoverable(CallbackInfoReturnable<Boolean> cir) {
         if (Feature.isEnabled(EnchantingFeature.class)) {
             cir.setReturnValue(true);
         }
     }
 
-    @Inject(method = "isTradeable", at = @At("RETURN"), remap = false, cancellable = true)
+    @Inject(method = "isTradeable", at = @At("RETURN"), cancellable = true)
     public void isTradeable(CallbackInfoReturnable<Boolean> cir) {
         if (Feature.isEnabled(EnchantingFeature.class)) {
             cir.setReturnValue(true);

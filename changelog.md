@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Hopefully fixed leaf walker still being a curse
+
 ## 1.9.12
 * Blast furnace
   * Raw ores no longer have 30% chance to be doubled
