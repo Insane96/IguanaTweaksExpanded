@@ -3,7 +3,7 @@
 ## Upcoming
 * Hopefully fixed leaf walker still being a curse
 * Reduced beeg gold ore veins and increased beeg copper ore veins
-* Slightly increased bees size
+* Bees size is now always 80%
 
 ## 1.9.12
 * Blast furnace
