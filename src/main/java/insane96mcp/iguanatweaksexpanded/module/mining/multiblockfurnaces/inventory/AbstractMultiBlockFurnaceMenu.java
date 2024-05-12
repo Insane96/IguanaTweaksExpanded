@@ -180,10 +180,10 @@ public abstract class AbstractMultiBlockFurnaceMenu extends RecipeBookMenu<Conta
     }
 
     public int getLitProgress() {
-        int burnDuration = this.data.get(1);
+        int burnDuration = getBurnDuration();
         if (burnDuration == 0)
             burnDuration = 200;
-        int burnTime = this.data.get(0);
+        int burnTime = getBurnTime();
         if (burnTime > burnDuration)
             burnTime = burnDuration;
 
@@ -191,7 +191,10 @@ public abstract class AbstractMultiBlockFurnaceMenu extends RecipeBookMenu<Conta
     }
 
     public int getBurnTime() {
-        return this.data.get(0);
+        int burnTime = this.data.get(0);
+        if (burnTime < 0)
+            burnTime += 65536;
+        return burnTime;
     }
 
     public int getBurnDuration() {
@@ -199,6 +202,6 @@ public abstract class AbstractMultiBlockFurnaceMenu extends RecipeBookMenu<Conta
     }
 
     public boolean isLit() {
-        return this.data.get(0) > 0;
+        return this.getBurnTime() > 0;
     }
 }

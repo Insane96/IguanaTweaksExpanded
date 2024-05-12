@@ -4,6 +4,7 @@
 * Hopefully fixed leaf walker still being a curse
 * Reduced beeg gold ore veins and increased beeg copper ore veins
 * Bees size is now always 80%
+* Fixed soul furnace showing no fire on servers
 
 ## 1.9.12
 * Blast furnace
