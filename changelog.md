@@ -1,8 +1,8 @@
 # Changelog
 
-## Upcoming
+## 1.9.13
 * Hopefully fixed leaf walker still being a curse
-* Reduced beeg gold ore veins and increased beeg copper ore veins
+* Reduced beeg gold ore veins and increased beeg copper ore veins (generation chance)
 * Bees size is now always 80%
 * Fixed soul furnace showing no fire on servers
 
