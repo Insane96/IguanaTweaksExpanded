@@ -18,6 +18,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
@@ -50,10 +51,17 @@ public class Recall extends Feature {
 	@SubscribeEvent
 	public void onEffectExpire(MobEffectEvent.Expired event) {
         if (!event.getEffectInstance().getEffect().equals(BACK_TO_SPAWN.get())
-				|| !(event.getEntity() instanceof ServerPlayer player)
-				|| player.isDeadOrDying())
+				|| event.getEntity().level().isClientSide
+				|| event.getEntity().isDeadOrDying())
             return;
 
+		ServerPlayer player;
+		if (event.getEntity() instanceof ServerPlayer)
+			player = (ServerPlayer) event.getEntity();
+		else if (event.getEntity() instanceof OwnableEntity tamableAnimal && tamableAnimal.getOwner() instanceof ServerPlayer)
+			player = (ServerPlayer) tamableAnimal.getOwner();
+		else
+			return;
         BlockPos respawnPos = player.getRespawnPosition();
 		float respawnAngle = player.getRespawnAngle();
 		boolean forcedRespawn = player.isRespawnForced();
@@ -65,12 +73,12 @@ public class Recall extends Feature {
 			optional = Optional.empty();
 		optional.ifPresent(vec3 -> {
 			if (player.level() != serverLevel)
-				player.changeDimension(serverLevel);
-			player.teleportTo(vec3.x, vec3.y, vec3.z);
+				event.getEntity().changeDimension(serverLevel);
+			event.getEntity().teleportTo(vec3.x, vec3.y, vec3.z);
 			ScheduledTasks.schedule(new ScheduledTickTask(2) {
 				@Override
 				public void run() {
-					serverLevel.playSound(null, player, SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 0.6f, 1f);
+					serverLevel.playSound(null, event.getEntity(), SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 0.6f, 1f);
 					//serverLevel.broadcastEntityEvent(entity, (byte)35);
 				}
 			});
