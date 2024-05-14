@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Supplementaries' Speaker Block now requires a durium ingot instead of emerald
+
 ## 1.9.13
 * Hopefully fixed leaf walker still being a curse
 * Reduced beeg gold ore veins and increased beeg copper ore veins (generation chance)
