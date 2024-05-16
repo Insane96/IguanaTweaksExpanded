@@ -5,6 +5,7 @@
 * Potion of recall now works on owned entities (dogs, etc)
   * Please note that if the owner is teleported before the animal, the animal's effect will not end and will not get tpd
 * Supplementaries' Speaker Block now requires a durium ingot instead of emerald
+* Vanilla Absorption has been renamed to Vitality and ITR Regenerating Absorption to Absorption 
 
 ## 1.9.13
 * Hopefully fixed leaf walker still being a curse
