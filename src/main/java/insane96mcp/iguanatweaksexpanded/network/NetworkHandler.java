@@ -7,7 +7,7 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public class NetworkHandler {
-	private static final String PROTOCOL_VERSION = Integer.toString(3);
+	private static final String PROTOCOL_VERSION = Integer.toString(4);
 	public static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
 			.named(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "network_channel"))
 			.clientAcceptedVersions(s -> true)
@@ -19,7 +19,6 @@ public class NetworkHandler {
 
 	public static void init() {
 		CHANNEL.registerMessage(++index, JumpMidAirMessage.class, JumpMidAirMessage::encode, JumpMidAirMessage::decode, JumpMidAirMessage::handle);
-		CHANNEL.registerMessage(++index, SyncForgeStatus.class, SyncForgeStatus::encode, SyncForgeStatus::decode, SyncForgeStatus::handle);
 		CHANNEL.registerMessage(++index, ElectrocutionParticleMessage.class, ElectrocutionParticleMessage::encode, ElectrocutionParticleMessage::decode, ElectrocutionParticleMessage::handle);
 		CHANNEL.registerMessage(++index, SyncITEEnchantingTableStatus.class, SyncITEEnchantingTableStatus::encode, SyncITEEnchantingTableStatus::decode, SyncITEEnchantingTableStatus::handle);
 		CHANNEL.registerMessage(++index, SyncITEEnchantingTableUnlockedEnchantments.class, SyncITEEnchantingTableUnlockedEnchantments::encode, SyncITEEnchantingTableUnlockedEnchantments::decode, SyncITEEnchantingTableUnlockedEnchantments::handle);

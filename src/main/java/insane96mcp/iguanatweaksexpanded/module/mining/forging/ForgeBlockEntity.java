@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import com.google.common.collect.Lists;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.network.message.SyncForgeStatus;
+import insane96mcp.insanelib.util.MathHelper;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -11,12 +11,14 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
@@ -88,7 +90,7 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
         this.smashes = pTag.getInt("Smashes");
         CompoundTag compoundtag = pTag.getCompound("RecipesUsed");
 
-        for(String s : compoundtag.getAllKeys()) {
+        for (String s : compoundtag.getAllKeys()) {
             this.recipesUsed.put(new ResourceLocation(s), compoundtag.getInt(s));
         }
     }
@@ -106,6 +108,12 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
     @Override
     public CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     public static boolean onUse(Level pLevel, BlockPos pPos, BlockState pState, ForgeBlockEntity pBlockEntity, int smashes) {
@@ -137,21 +145,21 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
                 }
                 pLevel.playSound(null, pPos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.5f, 0.8f);
 
-                setChanged(pLevel, pPos, pState);
             }
             else {
                 pLevel.playSound(null, pPos, SoundEvents.ANVIL_PLACE, SoundSource.BLOCKS, 0.5f, 1.7f);
             }
 
-            if (pLevel instanceof ServerLevel serverLevel)
-                SyncForgeStatus.sync(serverLevel, pBlockEntity.getBlockPos(), pBlockEntity);
+            //if (pLevel instanceof ServerLevel serverLevel)
+                //SyncForgeStatus.sync(serverLevel, pBlockEntity.getBlockPos(), pBlockEntity);
+            pLevel.sendBlockUpdated(pPos, pState, pState, 3);
             return true;
         }
         else {
             pBlockEntity.smashes = 0;
 
-            if (pLevel instanceof ServerLevel serverLevel)
-                SyncForgeStatus.sync(serverLevel, pBlockEntity.getBlockPos(), pBlockEntity);
+            //if (pLevel instanceof ServerLevel serverLevel)
+                //SyncForgeStatus.sync(serverLevel, pBlockEntity.getBlockPos(), pBlockEntity);
             return false;
         }
     }
@@ -207,7 +215,6 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
         return pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel).map(ForgeRecipe::getSmashesRequired).orElse(10);
     }
 
-    //TODO Allow automatic forging via Dispenser
     @Override
     public int[] getSlotsForFace(Direction pSide) {
         if (pSide == Direction.DOWN) {
@@ -265,7 +272,10 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
 
     @Override
     public ItemStack removeItem(int pSlot, int pAmount) {
-        return ContainerHelper.removeItem(this.items, pSlot, pAmount);
+        ItemStack ret = ContainerHelper.removeItem(this.items, pSlot, pAmount);
+        if (this.level != null)
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        return ret;
     }
 
     @Override
@@ -285,11 +295,12 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
         if (pSlot < ForgeMenu.RESULT_SLOT && !flag) {
             this.smashesRequired = getSmashesRequired(this.level, this);
             this.smashes = 0;
-            this.setChanged();
         }
+        if (this.level != null)
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
 
-        if (this.level instanceof ServerLevel serverLevel)
-            SyncForgeStatus.sync(serverLevel, this.getBlockPos(), this);
+        //if (this.level instanceof ServerLevel serverLevel)
+        //    SyncForgeStatus.sync(serverLevel, this.getBlockPos(), this);
     }
 
     @Override
@@ -330,12 +341,7 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
     }
 
     private void createExperience(ServerLevel pLevel, Vec3 pPopVec, int recipeAmount, float experience) {
-        int xp = Mth.floor((float)recipeAmount * experience);
-        float mod = Mth.frac((float)recipeAmount * experience);
-        if (mod != 0.0F && Math.random() < (double)mod) {
-            ++xp;
-        }
-
+        int xp = MathHelper.getAmountWithDecimalChance(pLevel.getRandom(), recipeAmount * experience);
         ExperienceOrb.award(pLevel, pPopVec, xp);
     }
 
@@ -347,7 +353,7 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
 
     @Override
     public void fillStackedContents(StackedContents pHelper) {
-        for(ItemStack itemstack : this.items) {
+        for (ItemStack itemstack : this.items) {
             pHelper.accountStack(itemstack);
         }
     }
