@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.9.14
 * Soul blast furnaces now take 50% more time to smelt stuff (compared to blast furnaces) instead of 100%
 * Potion of recall now works on owned entities (dogs, etc)
   * Please note that if the owner is teleported before the animal, the animal's effect will not end and will not get tpd
