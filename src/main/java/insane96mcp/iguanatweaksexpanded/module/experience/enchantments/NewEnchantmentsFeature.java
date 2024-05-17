@@ -66,7 +66,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> STEP_UP = ITERegistries.ENCHANTMENTS.register("step_up", StepUp::new);
 	public static final RegistryObject<Enchantment> ZIPPY = ITERegistries.ENCHANTMENTS.register("zippy", Zippy::new);
 	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
-	public static final RegistryObject<Enchantment> MA_JUMP = ITERegistries.ENCHANTMENTS.register("ma_jump", MAJump::new);
+	public static final RegistryObject<Enchantment> DOUBLE_JUMP = ITERegistries.ENCHANTMENTS.register("double_jump", DoubleJump::new);
 	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ITERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
 	public static final RegistryObject<Enchantment> STEADY_FALL = ITERegistries.ENCHANTMENTS.register("steady_fall", SteadyFall::new);
 
@@ -295,7 +295,7 @@ public class NewEnchantmentsFeature extends Feature {
 			return;
 
 		LocalPlayer player = Minecraft.getInstance().player;
-		if (MAJump.extraJump(player))
+		if (DoubleJump.extraJump(player))
 			JumpMidAirMessage.jumpMidAir(player);
 	}
 

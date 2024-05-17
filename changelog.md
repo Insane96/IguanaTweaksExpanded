@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Reworked M.A. Jump
+  * Now called Double Jump, it's one level only and is a treasure enchantment
+
 ## 1.9.14
 * Soul blast furnaces now take 50% more time to smelt stuff (compared to blast furnaces) instead of 100%
 * Potion of recall now works on owned entities (dogs, etc)

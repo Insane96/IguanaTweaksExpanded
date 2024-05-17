@@ -12,14 +12,9 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 
-public class MAJump extends Enchantment {
-    public MAJump() {
+public class DoubleJump extends Enchantment {
+    public DoubleJump() {
         super(Rarity.RARE, EnchantmentCategory.ARMOR_FEET, new EquipmentSlot[] {EquipmentSlot.FEET});
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 2;
     }
 
     @Override
@@ -30,6 +25,11 @@ public class MAJump extends Enchantment {
     @Override
     public int getMaxCost(int level) {
         return this.getMinCost(level) + 20;
+    }
+
+    @Override
+    public boolean isTreasureOnly() {
+        return true;
     }
 
     public boolean checkCompatibility(Enchantment other) {
@@ -45,7 +45,9 @@ public class MAJump extends Enchantment {
                 || entity.getVehicle() != null)
             return false;
 
-        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.MA_JUMP.get(), entity);
+        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.DOUBLE_JUMP.get(), entity);
+        if (lvl > 1)
+            lvl = 1;
         if (getRemainingJumps(entity, lvl) <= 0)
             return false;
 
