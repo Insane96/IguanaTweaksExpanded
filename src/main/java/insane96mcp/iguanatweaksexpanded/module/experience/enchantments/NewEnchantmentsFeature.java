@@ -36,7 +36,6 @@ import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
-import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
@@ -73,7 +72,6 @@ public class NewEnchantmentsFeature extends Feature {
 	//Weapons
 	public static final RegistryObject<Enchantment> WATER_COOLANT = ITERegistries.ENCHANTMENTS.register("water_coolant", WaterCoolant::new);
 	public static final RegistryObject<Enchantment> RAGE = ITERegistries.ENCHANTMENTS.register("rage", Rage::new);
-	public static final RegistryObject<Enchantment> CRITICAL = ITERegistries.ENCHANTMENTS.register("critical", Critical::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ITERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
 	public static final RegistryObject<Enchantment> PADDING = ITERegistries.ENCHANTMENTS.register("padding", Padding::new);
 	public static final RegistryObject<Enchantment> PART_BREAKER = ITERegistries.ENCHANTMENTS.register("part_breaker", PartBreaker::new);
@@ -233,13 +231,6 @@ public class NewEnchantmentsFeature extends Feature {
 			Expanded.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
 			Exchange.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult, event.getState());
 		}
-	}
-
-	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void onCriticalHit(CriticalHitEvent event) {
-		int lvl = event.getEntity().getMainHandItem().getEnchantmentLevel(CRITICAL.get());
-		if (lvl > 0)
-			event.setDamageModifier(Critical.getCritAmount(lvl, event.getDamageModifier()));
 	}
 
 	@SubscribeEvent
