@@ -23,10 +23,12 @@ import java.util.List;
 
 public class EnchantWithTreasureFunction extends LootItemConditionalFunction {
     final boolean allowCurses;
+    final boolean allowTreasure;
 
-    protected EnchantWithTreasureFunction(LootItemCondition[] pPredicates, boolean allowCurses) {
+    protected EnchantWithTreasureFunction(LootItemCondition[] pPredicates, boolean allowCurses, boolean allowTreasure) {
         super(pPredicates);
         this.allowCurses = allowCurses;
+        this.allowTreasure = allowTreasure;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class EnchantWithTreasureFunction extends LootItemConditionalFunction {
         boolean isBook = stack.is(Items.BOOK) || stack.is(Items.ENCHANTED_BOOK);
         List<Enchantment> list = ForgeRegistries.ENCHANTMENTS.getValues()
                 .stream()
-                .filter(ench -> ench.isDiscoverable() && ench.isTreasureOnly() && (!ench.isCurse() || this.allowCurses))
+                .filter(ench -> ench.isDiscoverable() && (!ench.isTreasureOnly() || this.allowTreasure) && (!ench.isCurse() || this.allowCurses))
                 .filter(ench -> isBook || ench.canEnchant(stack))
                 .toList();
 
@@ -72,12 +74,14 @@ public class EnchantWithTreasureFunction extends LootItemConditionalFunction {
     public static class Serializer extends LootItemConditionalFunction.Serializer<EnchantWithTreasureFunction> {
         public void serialize(JsonObject pJson, EnchantWithTreasureFunction pValue, JsonSerializationContext pSerializationContext) {
             pJson.addProperty("allow_curses", pValue.allowCurses);
+            pJson.addProperty("allow_treasure", pValue.allowTreasure);
             super.serialize(pJson, pValue, pSerializationContext);
         }
 
         public EnchantWithTreasureFunction deserialize(JsonObject pObject, JsonDeserializationContext pDeserializationContext, LootItemCondition[] pConditions) {
             boolean allowCurses = GsonHelper.getAsBoolean(pObject, "allow_curses", true);
-            return new EnchantWithTreasureFunction(pConditions, allowCurses);
+            boolean allowTreasure = GsonHelper.getAsBoolean(pObject, "allow_treasure", true);
+            return new EnchantWithTreasureFunction(pConditions, allowCurses, allowTreasure);
         }
     }
 }

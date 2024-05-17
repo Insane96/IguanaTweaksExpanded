@@ -147,25 +147,11 @@
                 {
                     "type": "minecraft:item",
                     "name": "minecraft:book",
-                    "weight": 10,
+                    "weight": 20,
                     "functions": [
                         {
-                            "function": "minecraft:enchant_randomly",
-                            "enchantments": [
-                                "minecraft:vanishing_curse",
-                                "minecraft:binding_curse",
-                                "iguanatweaksexpanded:experience_curse",
-                                "iguanatweaksexpanded:tear_curse",
-                                "iguanatweaksexpanded:unhurried_curse",
-                                "iguanatweaksexpanded:slow_strike_curse",
-                                "iguanatweaksexpanded:inefficiency_curse",
-                                "iguanatweaksexpanded:short_arm_curse",
-                                "iguanatweaksexpanded:fragility_curse",
-                                "iguanatweaksexpanded:ender_curse",
-                                "iguanatweaksexpanded:steel_fall_curse",
-                                "iguanatweaksexpanded:void_curse",
-                                "iguanatweaksexpanded:dumbness_curse"
-                            ]
+                            "function": "iguanatweaksexpanded:enchant_with_treasure",
+                            "allow_treasure": false
                         }
                     ]
                 },
