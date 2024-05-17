@@ -165,7 +165,8 @@ public class Solarium extends Feature {
 	}
 
 	public static float getCalculatedSkyLight(Level level, BlockPos pos) {
-		if (!level.isDay())
+		if (!level.isDay()
+				|| level.isThundering())
 			return 0f;
 		float skyLight = level.getBrightness(LightLayer.SKY, pos) - level.getSkyDarken();
 		if (level.isRaining())

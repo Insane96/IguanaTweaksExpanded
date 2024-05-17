@@ -3,7 +3,9 @@
 ## Upcoming
 * Reworked M.A. Jump
   * Now called Double Jump, it's one level only and is a treasure enchantment
+  * Any equipment with it should be disenchanted as it has an invalid enchantment now
 * Moved Critical enchantment to Reborn
+* Solarium tools no longer have bonuses when there's a thunderstorm
 
 ## 1.9.14
 * Soul blast furnaces now take 50% more time to smelt stuff (compared to blast furnaces) instead of 100%
