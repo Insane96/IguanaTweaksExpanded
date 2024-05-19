@@ -19,10 +19,14 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
@@ -46,6 +50,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Optional;
+import java.util.function.Predicate;
 
 @Label(name = "New Enchantments", description = "Change some enchantments related stuff and adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
@@ -265,19 +270,46 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent
 	public void onProjectileShoot(EntityJoinLevelEvent event) {
-		if (!(event.getEntity() instanceof Projectile projectile)
+		onCrossbowProjectileShot(event.getEntity());
+		onBowProjectileShot(event.getEntity());
+	}
+
+	private static void onCrossbowProjectileShot(Entity entity) {
+		if (!(entity instanceof Projectile projectile)
 				|| !(projectile.getOwner() instanceof LivingEntity owner)
 				|| (projectile.getPersistentData().contains(BurstOfArrows.BURST) && !projectile.getPersistentData().getBoolean(BurstOfArrows.BURST)))
 			return;
 
-		boolean hasCrossbow = owner.getMainHandItem().getItem() instanceof CrossbowItem;
-		boolean hasCrossbowInOffHand = owner.getOffhandItem().getItem() instanceof CrossbowItem;
-		if (!hasCrossbow && !hasCrossbowInOffHand)
+		Optional<InteractionHand> activeHand = getActiveHand(owner, (stack) -> stack.getItem() instanceof CrossbowItem);
+		if (activeHand.isEmpty())
 			return;
-		int lvl = hasCrossbow ? owner.getMainHandItem().getEnchantmentLevel(BURST_OF_ARROWS.get()) : owner.getOffhandItem().getEnchantmentLevel(BURST_OF_ARROWS.get());
+		int lvl = activeHand.get() == InteractionHand.MAIN_HAND ? owner.getMainHandItem().getEnchantmentLevel(BURST_OF_ARROWS.get()) : owner.getOffhandItem().getEnchantmentLevel(BURST_OF_ARROWS.get());
 		if (lvl == 0)
 			return;
 		projectile.getPersistentData().putBoolean(BurstOfArrows.BURST, true);
+	}
+
+	private static void onBowProjectileShot(Entity entity) {
+		if (!(entity instanceof Projectile projectile)
+				|| !(projectile.getOwner() instanceof LivingEntity owner))
+			return;
+
+		Optional<InteractionHand> activeHand = getActiveHand(owner, (stack) -> stack.getItem() instanceof BowItem);
+		if (activeHand.isEmpty())
+			return;
+		int lvl = activeHand.get() == InteractionHand.MAIN_HAND ? owner.getMainHandItem().getEnchantmentLevel(GRAVITY_DEFYING.get()) : owner.getOffhandItem().getEnchantmentLevel(GRAVITY_DEFYING.get());
+		if (lvl == 0)
+			return;
+		projectile.setNoGravity(true);
+		projectile.getPersistentData().putBoolean(GravityDefying.NBT_TAG, true);
+	}
+
+	public static Optional<InteractionHand> getActiveHand(LivingEntity entity, Predicate<ItemStack> stackPredicate) {
+		boolean hasBow = stackPredicate.test(entity.getMainHandItem());
+		boolean hasBowInOffHand = stackPredicate.test(entity.getOffhandItem());
+		if (!hasBow && !hasBowInOffHand)
+			return Optional.empty();
+		return Optional.of(hasBow ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND);
 	}
 
 	@SubscribeEvent

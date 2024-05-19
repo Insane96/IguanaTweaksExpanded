@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* Added Gravity defying
+  * A bow enchantment that makes arrows ignore gravity for a while
 * Reworked M.A. Jump
   * Now called Double Jump, it's one level only and is a treasure enchantment
   * Any equipment with it should be disenchanted as it has an invalid enchantment now
