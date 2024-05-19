@@ -72,6 +72,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public static final RegistryObject<Enchantment> STEP_UP = ITERegistries.ENCHANTMENTS.register("step_up", StepUp::new);
 	public static final RegistryObject<Enchantment> ZIPPY = ITERegistries.ENCHANTMENTS.register("zippy", Zippy::new);
+	public static final RegistryObject<Enchantment> HOPPY = ITERegistries.ENCHANTMENTS.register("hoppy", Hoppy::new);
 	public static final RegistryObject<Enchantment> SPRINT_PACT = ITERegistries.ENCHANTMENTS.register("sprint_pact", SprintPact::new);
 	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
 	public static final RegistryObject<Enchantment> DOUBLE_JUMP = ITERegistries.ENCHANTMENTS.register("double_jump", DoubleJump::new);
@@ -166,6 +167,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent
 	public void onFall(LivingFallEvent event) {
+		Hoppy.onFall(event);
 		CurseOfSteelFall.onFall(event);
 	}
 

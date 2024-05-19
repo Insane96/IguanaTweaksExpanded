@@ -5,6 +5,8 @@
   * A bow enchantment that makes arrows ignore gravity for a while
 * Added Sprint pact
   * A new pants treasure enchantment that greatly increases movement speed at the cost of not being able to run anymore
+* Added Hoppy
+  * A new boots enchantment that increases jump height. Basically works like Jump Boost effect
 * Added Curse of Slow charge
   * Opposite of Quick Charge
 * Added Curse of Walking
