@@ -111,6 +111,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_SHORT_ARM = ITERegistries.ENCHANTMENTS.register("short_arm_curse", CurseOfShortArm::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_FRAGILITY = ITERegistries.ENCHANTMENTS.register("fragility_curse", CurseOfFragility::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_ENDER = ITERegistries.ENCHANTMENTS.register("ender_curse", CurseOfEnder::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_WALKING = ITERegistries.ENCHANTMENTS.register("walking_curse", CurseOfWalking::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_STEEL_FALL = ITERegistries.ENCHANTMENTS.register("steel_fall_curse", CurseOfSteelFall::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_THE_VOID = ITERegistries.ENCHANTMENTS.register("void_curse", CurseOfTheVoid::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_SLOW_CHARGE = ITERegistries.ENCHANTMENTS.register("slow_charge_curse", CurseOfSlowCharge::new);
@@ -326,7 +327,8 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public void onSprint(PlayerSprintEvent event) {
-		if (EnchantmentHelper.getEnchantmentLevel(SPRINT_PACT.get(), event.getPlayer()) <= 0)
+		if (EnchantmentHelper.getEnchantmentLevel(SPRINT_PACT.get(), event.getPlayer()) <= 0
+				&& EnchantmentHelper.getEnchantmentLevel(CURSE_OF_WALKING.get(), event.getPlayer()) <= 0)
 			return;
 
 		event.setCanceled(true);
