@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import insane96mcp.iguanatweaksexpanded.event.DestroyBlockPostEvent;
 import insane96mcp.iguanatweaksexpanded.event.EnchantmentBlockBreakEvent;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.*;
@@ -212,13 +213,15 @@ public class NewEnchantmentsFeature extends Feature {
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 	}
 
+	static BlockHitResult blockHitResult;
+
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onEnchantmentBlockBreak(EnchantmentBlockBreakEvent event) {
 		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
-		if (pick instanceof BlockHitResult blockHitResult) {
-			Exchange.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult, event.getState());
+		if (pick instanceof BlockHitResult) {
+			blockHitResult = (BlockHitResult) pick;
 		}
 	}
 
@@ -226,11 +229,18 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBlockBreak(BlockEvent.BreakEvent event) {
 		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
-		if (pick instanceof BlockHitResult blockHitResult) {
+		if (pick instanceof BlockHitResult) {
+			blockHitResult = (BlockHitResult) pick;
 			Veining.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
 			Expanded.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
-			Exchange.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult, event.getState());
 		}
+	}
+
+	@SubscribeEvent
+	public void onPostBlockBreak(DestroyBlockPostEvent event) {
+		if (blockHitResult == null)
+			return;
+		Exchange.tryApply(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult, event.getState());
 	}
 
 	@SubscribeEvent

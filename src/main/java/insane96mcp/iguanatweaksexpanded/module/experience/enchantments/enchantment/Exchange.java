@@ -1,8 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.insanelib.world.scheduled.ScheduledTasks;
-import insane96mcp.insanelib.world.scheduled.ScheduledTickTask;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -47,12 +45,7 @@ public class Exchange extends Enchantment {
         offhandItem = tryGetAnotherBlockItem(player, offhandItem);
         Direction direction = blockHitResult.getDirection().getOpposite();
         ItemStack finalOffhandItem = offhandItem;
-        ScheduledTasks.schedule(new ScheduledTickTask(0) {
-            @Override
-            public void run() {
-                ((BlockItem)finalOffhandItem.getItem()).place(new BlockPlaceContext(level, player, InteractionHand.OFF_HAND, finalOffhandItem, new BlockHitResult(blockHitResult.getLocation().add(direction.getStepX(), direction.getStepY(), direction.getStepZ()), direction, pos, blockHitResult.isInside())));
-            }
-        });
+        ((BlockItem)finalOffhandItem.getItem()).place(new BlockPlaceContext(level, player, InteractionHand.OFF_HAND, finalOffhandItem, new BlockHitResult(blockHitResult.getLocation().add(direction.getStepX(), direction.getStepY(), direction.getStepZ()), direction, pos, blockHitResult.isInside())));
     }
 
     public static ItemStack tryGetAnotherBlockItem(Player player, ItemStack stack) {

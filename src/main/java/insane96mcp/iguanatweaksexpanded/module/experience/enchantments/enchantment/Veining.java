@@ -81,15 +81,18 @@ public class Veining extends Enchantment {
             if (level instanceof ServerLevel serverLevel && (entity instanceof ServerPlayer player && !player.getAbilities().flying)) {
                 BlockState minedBlockState = level.getBlockState(minedBlock);
                 BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(minedBlock) : null;
-                boolean blockRemoved = removeBlock(serverLevel, minedBlock, player, true);
                 int exp = ITEEventFactory.onEnchantmentBlockBreak(player, level, minedBlock, minedBlockState);
                 if (exp == -1)
                     continue;
+                boolean blockRemoved = removeBlock(serverLevel, minedBlock, player, true);
                 if (blockRemoved) {
                     serverLevel.destroyBlock(minedBlock, false, entity);
-                    minedBlockState.getBlock().playerDestroy(serverLevel, player, minedBlock, minedBlockState, blockEntity, heldStack);
-                    minedBlockState.getBlock().popExperience(serverLevel, minedBlock, exp);
+                    if (!player.isCreative()) {
+                        minedBlockState.getBlock().playerDestroy(serverLevel, player, minedBlock, minedBlockState, blockEntity, heldStack);
+                        minedBlockState.getBlock().popExperience(serverLevel, minedBlock, exp);
+                    }
                     level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, minedBlock, Block.getId(minedBlockState));
+                    ITEEventFactory.onBlockDestroyPosts(serverLevel, minedBlock, minedBlockState, player);
                 }
                 heldStack.hurtAndBreak(1, entity, livingEntity -> livingEntity.broadcastBreakEvent(InteractionHand.MAIN_HAND));
             }

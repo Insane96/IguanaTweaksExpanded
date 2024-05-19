@@ -97,6 +97,7 @@ public class Expanded extends Enchantment {
                     minedBlockState.getBlock().popExperience(serverLevel, minedBlock, exp);
                 }
                 level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, minedBlock, Block.getId(minedBlockState));
+                ITEEventFactory.onBlockDestroyPosts(serverLevel, minedBlock, minedBlockState, player);
             }
             heldStack.hurtAndBreak(1, entity, livingEntity -> livingEntity.broadcastBreakEvent(InteractionHand.MAIN_HAND));
             if (ItemStats.isBroken(heldStack) || heldStack.isEmpty())

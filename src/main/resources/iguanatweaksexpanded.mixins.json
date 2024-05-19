@@ -16,6 +16,7 @@
         "LivingEntityMixin",
         "ProjectileMixin",
         "RandomUpdateHandlerMixin",
+        "ServerPlayerGameModeMixin",
         "SmithingTransformRecipeMixin",
         "integration.allurement.LaunchEnchantmentMixin",
         "integration.passablefoliage.LeafWalkerEnchantmentMixin"

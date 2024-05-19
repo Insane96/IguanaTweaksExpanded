@@ -4,7 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,5 +36,10 @@ public class ITEEventFactory {
             }
         }
         return event.isCanceled() ? -1 : event.getExpToDrop();
+    }
+
+    public static void onBlockDestroyPosts(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
+        DestroyBlockPostEvent event = new DestroyBlockPostEvent(level, pos, state, player);
+        MinecraftForge.EVENT_BUS.post(event);
     }
 }
