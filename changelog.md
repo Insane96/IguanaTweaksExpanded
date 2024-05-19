@@ -8,7 +8,7 @@
 * Added Curse of Slow charge
   * Opposite of Quick Charge
 * Added Curse of Walking
-  * You can no longer walk
+  * You can no longer sprint
 * Reworked M.A. Jump
   * Now called Double Jump, it's one level only and is a treasure enchantment
   * Any equipment with it should be disenchanted as it has an invalid enchantment now
