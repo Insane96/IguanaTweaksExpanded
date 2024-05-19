@@ -3,6 +3,8 @@
 ## Upcoming
 * Added Gravity defying
   * A bow enchantment that makes arrows ignore gravity for a while
+* Added Sprint pact
+  * A new pants treasure enchantment that greatly increases movement speed at the cost of not being able to run anymore
 * Reworked M.A. Jump
   * Now called Double Jump, it's one level only and is a treasure enchantment
   * Any equipment with it should be disenchanted as it has an invalid enchantment now
@@ -13,6 +15,7 @@
 * Solarium tools no longer have bonuses when there's a thunderstorm
 * Enchanted Soul Steel items now require much less Soul Steel to be repaired
 * Fixed Veining block breaking not being the same as expanded
+* Fixed M.A. jump working when GUIs were open
 
 ## 1.9.14
 * Soul blast furnaces now take 50% more time to smelt stuff (compared to blast furnaces) instead of 100%

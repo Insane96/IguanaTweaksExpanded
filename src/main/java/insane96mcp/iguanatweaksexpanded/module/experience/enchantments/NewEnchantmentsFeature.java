@@ -14,6 +14,7 @@ import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
+import insane96mcp.insanelib.event.PlayerSprintEvent;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
@@ -28,6 +29,7 @@ import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
@@ -70,6 +72,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public static final RegistryObject<Enchantment> STEP_UP = ITERegistries.ENCHANTMENTS.register("step_up", StepUp::new);
 	public static final RegistryObject<Enchantment> ZIPPY = ITERegistries.ENCHANTMENTS.register("zippy", Zippy::new);
+	public static final RegistryObject<Enchantment> SPRINT_PACT = ITERegistries.ENCHANTMENTS.register("sprint_pact", SprintPact::new);
 	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
 	public static final RegistryObject<Enchantment> DOUBLE_JUMP = ITERegistries.ENCHANTMENTS.register("double_jump", DoubleJump::new);
 	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ITERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
@@ -319,10 +322,20 @@ public class NewEnchantmentsFeature extends Feature {
 		Veining.applyOutlineAndDestroyAnimation(event);
 	}
 
+	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
+	public void onSprint(PlayerSprintEvent event) {
+		if (EnchantmentHelper.getEnchantmentLevel(SPRINT_PACT.get(), event.getPlayer()) <= 0)
+			return;
+
+		event.setCanceled(true);
+	}
+
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
 	public void onJump(InputEvent.Key event) {
 		if (Minecraft.getInstance().player == null
+				|| Minecraft.getInstance().screen != null
 				|| event.getAction() != InputConstants.PRESS
 				|| event.getKey() != Minecraft.getInstance().options.keyJump.getKey().getValue())
 			return;
