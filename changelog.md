@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.10.0
 * Added Gravity defying
   * A bow enchantment that makes arrows ignore gravity for a while
 * Added Sprint pact
