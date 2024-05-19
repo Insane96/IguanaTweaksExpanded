@@ -8,6 +8,8 @@
 * Reworked M.A. Jump
   * Now called Double Jump, it's one level only and is a treasure enchantment
   * Any equipment with it should be disenchanted as it has an invalid enchantment now
+* Removed Burst of Arrows
+  * Quite useless against mobs and too op against the Ender Dragon
 * Enhanced Exchance enchantment
   * blocks are now placed instantly so you no longer fall through the ground before the block is placed
 * Moved Critical enchantment to Reborn

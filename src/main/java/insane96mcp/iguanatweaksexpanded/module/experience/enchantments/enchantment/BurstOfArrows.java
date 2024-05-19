@@ -23,9 +23,13 @@ public class BurstOfArrows extends Enchantment {
         return this.getMinCost(pEnchantmentLevel) + 50;
     }
 
+    @Override
+    public boolean isDiscoverable() {
+        return false;
+    }
 
     public static void trySummonArrows(Projectile projectile) {
-        if (projectile.level().isClientSide)
+        /*if (projectile.level().isClientSide)
             return;
         if (!(projectile instanceof Arrow arrow))
             return;
@@ -33,7 +37,7 @@ public class BurstOfArrows extends Enchantment {
             return;
 
         summonArrows(arrow);
-        arrow.getPersistentData().putBoolean(BURST, false);
+        arrow.getPersistentData().putBoolean(BURST, false);*/
     }
 
     public static void summonArrows(Arrow arrow) {
