@@ -113,6 +113,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_ENDER = ITERegistries.ENCHANTMENTS.register("ender_curse", CurseOfEnder::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_STEEL_FALL = ITERegistries.ENCHANTMENTS.register("steel_fall_curse", CurseOfSteelFall::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_THE_VOID = ITERegistries.ENCHANTMENTS.register("void_curse", CurseOfTheVoid::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_SLOW_CHARGE = ITERegistries.ENCHANTMENTS.register("slow_charge_curse", CurseOfSlowCharge::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_DUMBNESS = ITERegistries.ENCHANTMENTS.register("dumbness_curse", CurseOfDumbness::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_ANCHOR = ITERegistries.ENCHANTMENTS.register("anchor_curse", CurseOfAnchor::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
