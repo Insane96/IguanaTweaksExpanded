@@ -11,6 +11,7 @@
 * Moved Critical enchantment to Reborn
 * Increased chance for cursed books from monster boxes
 * Solarium tools no longer have bonuses when there's a thunderstorm
+* Enchanted Soul Steel items now require much less Soul Steel to be repaired
 * Fixed Veining block breaking not being the same as expanded
 
 ## 1.9.14
