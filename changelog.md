@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Curse of Walking now increases max cost by 5 instead of 3
+* Heavily reduced swift sneak cost
 
 ## 1.10.0
 * Added Gravity defying
@@ -19,7 +20,7 @@
   * Any equipment with it should be disenchanted as it has an invalid enchantment now
 * Removed Burst of Arrows
   * Quite useless against mobs and too op against the Ender Dragon
-* Enhanced Exchance enchantment
+* Enhanced Exchange enchantment
   * blocks are now placed instantly so you no longer fall through the ground before the block is placed
 * Moved Critical enchantment to Reborn
 * Increased chance for cursed books from monster boxes

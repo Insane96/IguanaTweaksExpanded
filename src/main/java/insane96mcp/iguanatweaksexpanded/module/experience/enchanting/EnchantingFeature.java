@@ -9,6 +9,7 @@ import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
+import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
 import insane96mcp.iguanatweaksreborn.module.experience.PlayerExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
@@ -112,6 +113,7 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId("minecraft:piercing", 1.7f),
             IdTagValue.newId("minecraft:infinity", 2.5f),
             IdTagValue.newId("minecraft:soul_speed", 3f),
+            IdTagValue.newId("minecraft:swift_sneak", 2f),
             IdTagValue.newId("minecraft:efficiency", 1.8f),
             IdTagValue.newId("minecraft:depth_strider", 2.4f),
             IdTagValue.newId("minecraft:mending", 5f),
@@ -159,7 +161,7 @@ public class EnchantingFeature extends JsonFeature {
             AllurementConfig.COMMON.reformingTickRate.set(2400);
             AllurementConfig.COMMON.alleviatingHealingFactor.set(0.2d);
         }
-        /*for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
+        for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS.getValues()) {
             if (EnchantmentsFeature.isEnchantmentDisabled(enchantment))
                 continue;
             int maxLvl = enchantment.getMaxLevel();
@@ -168,7 +170,7 @@ public class EnchantingFeature extends JsonFeature {
             for (int i = 1; i <= maxLvl; i++) {
                 LogHelper.debug("%s %d: %.1f", ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString(), i, getCost(enchantment, i));
             }
-        }*/
+        }
     }
 
     @SubscribeEvent
