@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Curse of Walking now increases max cost by 5 instead of 3
+
 ## 1.10.0
 * Added Gravity defying
   * A bow enchantment that makes arrows ignore gravity for a while
