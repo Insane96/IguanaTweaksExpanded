@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.10.1
 * Curse of Walking now increases max cost by 5 instead of 3
 * Heavily reduced swift sneak cost
 * Fixed enchant_with_treasure always giving all the enchantments instead of treasure only 
