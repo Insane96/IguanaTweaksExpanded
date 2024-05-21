@@ -10,6 +10,7 @@ import insane96mcp.iguanatweaksexpanded.modifier.ITEModifiers;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ITEArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
+import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.setup.ITECommonConfig;
@@ -78,6 +79,7 @@ public class IguanaTweaksExpanded
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::gatherData);
         modEventBus.addListener(this::addPackFinders);
+        modEventBus.addListener(Crate::onRegisterCustomTooltips);
         ITERegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
 
         ITETriggers.init();

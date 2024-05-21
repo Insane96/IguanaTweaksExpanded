@@ -3,7 +3,6 @@ package insane96mcp.iguanatweaksexpanded.module.items.crate;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.world.inventory.tooltip.BundleTooltip;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -27,7 +26,7 @@ public class CrateItem extends BlockItem {
     public Optional<TooltipComponent> getTooltipImage(ItemStack p_150775_) {
         NonNullList<ItemStack> nonnulllist = NonNullList.create();
         getContents(p_150775_).forEach(nonnulllist::add);
-        return Optional.of(new BundleTooltip(nonnulllist, 1));
+        return Optional.of(new CrateTooltip(nonnulllist));
     }
 
     private static Stream<ItemStack> getContents(ItemStack stack) {

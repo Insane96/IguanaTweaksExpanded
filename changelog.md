@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Reduced unbreaking cost
+* Portable crates no longer use bundles tooltips
 * Fixed skeletons (strays and wither too) not affected by the follow range and movement speed buffs
 
 ## 1.10.1
