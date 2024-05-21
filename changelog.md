@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed skeletons (strays and wither too) not affected by the follow range buffs
+
 ## 1.10.1
 * Curse of Walking now increases max cost by 5 instead of 3
 * Heavily reduced swift sneak cost

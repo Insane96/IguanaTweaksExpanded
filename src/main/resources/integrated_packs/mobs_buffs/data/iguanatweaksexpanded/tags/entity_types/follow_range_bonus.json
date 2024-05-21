@@ -73,6 +73,7 @@
         "minecraft:vindicator",
         "minecraft:warden",
         "minecraft:witch",
+        "#iguanatweaksexpanded:skeletons",
         "minecraft:zoglin",
         {
             "id": "quark:foxhound",
