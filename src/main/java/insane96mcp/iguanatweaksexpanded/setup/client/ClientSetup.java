@@ -12,7 +12,9 @@ import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrink
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.ElectrocutionSparkParticle;
+import insane96mcp.iguanatweaksexpanded.module.items.crate.ClientCrateTooltip;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
+import insane96mcp.iguanatweaksexpanded.module.items.crate.CrateTooltip;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
@@ -41,6 +43,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -327,5 +330,9 @@ public class ClientSetup {
 
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(CopperExpansion.ELECTROCUTION_SPARKS.get(), ElectrocutionSparkParticle.Provider::new);
+    }
+
+    public static void registerTooltips(RegisterClientTooltipComponentFactoriesEvent event) {
+        event.register(CrateTooltip.class, ClientCrateTooltip::new);
     }
 }

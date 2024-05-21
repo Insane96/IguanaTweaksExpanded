@@ -18,9 +18,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -64,10 +61,5 @@ public class Crate extends Feature {
 			if (event.player.tickCount % 20 == 4 && event.player instanceof ServerPlayer serverPlayer)
 				ITETriggers.OVERWEIGHT_CREATE_CARRY.trigger(serverPlayer);
 		}
-	}
-
-	@OnlyIn(Dist.CLIENT)
-	public static void onRegisterCustomTooltips(RegisterClientTooltipComponentFactoriesEvent event) {
-		event.register(CrateTooltip.class, ClientCrateTooltip::new);
 	}
 }

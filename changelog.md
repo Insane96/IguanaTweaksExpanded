@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.10.3
+* Fixed server crash
+
 ## 1.10.2
 * Reduced unbreaking cost
 * Portable crates no longer use bundles tooltips
