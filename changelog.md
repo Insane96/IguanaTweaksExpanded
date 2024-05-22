@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Increased Shields Blocking time by ~50%
+* Reduced Protection enchantment cost (5 -> 4)
 
 ## 1.10.3
 * Fixed server crash
