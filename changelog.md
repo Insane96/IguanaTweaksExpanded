@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Increased Shields Blocking time by ~50%
+
 ## 1.10.3
 * Fixed server crash
 
