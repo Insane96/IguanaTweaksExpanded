@@ -5,6 +5,7 @@
 * Reduced Protection enchantment cost (5 -> 4)
 * Spiders now attack much slower (like enderman)
 * Grindstone now gives back 75% experience instead of 80%
+* Slightly increased blasting bonus mining speed
 
 ## 1.10.3
 * Fixed server crash
