@@ -6,7 +6,7 @@
 * Spiders now attack much slower (like enderman)
 * Grindstone now gives back 75% experience instead of 80%
 * Slightly increased blasting bonus mining speed
-* Heavily decreased Keego durability but slightly increased efficiency 
+* Decreased Keego durability and mining level but slightly increased efficiency 
 
 ## 1.10.3
 * Fixed server crash

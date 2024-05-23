@@ -60,7 +60,7 @@ public class Keego extends Feature {
 
 	public static final RegistryObject<Item> GEM = ITERegistries.ITEMS.register("keego", () -> new Item(new Item.Properties()));
 
-	public static final ILItemTier ITEM_TIER = new ILItemTier(3, 937, 6.5f, 2.5f, 8, () -> Ingredient.of(GEM.get()));
+	public static final ILItemTier ITEM_TIER = new ILItemTier(2, 937, 6.5f, 2.5f, 8, () -> Ingredient.of(GEM.get()));
 
 	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("keego_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties()));
 	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("keego_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
