@@ -263,7 +263,7 @@ public class EnchantingFeature extends JsonFeature {
     }
 
     public static float getGrindstonePercentageXpGiven() {
-        return 0.8f;
+        return 0.75f;
     }
 
     @SubscribeEvent
