@@ -8,7 +8,9 @@
   * Fixed copper shields not having bonus unbreaking when used underground
 * Blood Pact is now Curse of Blood Pact
   * +6 max enchanting cost the user has 1/10 chance to take 1 true damage whenever the tool takes damage
-* Soul Blast Furnaces current fuel no longer consumes if not smelting anything
+* Soul Blast Furnaces 
+  * Current fuel no longer consumes if not smelting anything
+  * Enhanced the texture a bit
 * Reduced Protection enchantment cost (5 -> 4)
 * Spiders now attack much slower (like enderman)
 * Grindstone now gives back 75% experience instead of 80%
