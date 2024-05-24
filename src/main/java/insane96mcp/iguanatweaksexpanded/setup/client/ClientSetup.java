@@ -52,6 +52,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import java.util.List;
 
 public class ClientSetup {
+    //TODO Add a lower priority for modded items (e.g. Shields+)
     public static void onBuildCreativeModeTabContents(final BuildCreativeModeTabContentsEvent event)
     {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
@@ -133,7 +134,7 @@ public class ClientSetup {
             addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
 
             addAfter(event, SPItems.STONE_SHIELD.get(), FlintExpansion.SHIELD.get());
-            addAfter(event, FlintExpansion.SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
+            addAfter(event, SPItems.STONE_SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
             addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.SHIELD.get());
             addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());
             addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.SHIELD.get());

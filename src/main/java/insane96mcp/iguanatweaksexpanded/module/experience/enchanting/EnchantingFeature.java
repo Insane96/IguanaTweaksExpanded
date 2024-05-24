@@ -122,6 +122,7 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId("shieldsplus:aegis", 2f),
             IdTagValue.newId("shieldsplus:reinforced", 2f),
             IdTagValue.newId("shieldsplus:shield_bash", 4f),
+            IdTagValue.newId("shieldsplus:perfect_parry", 4f),
             IdTagValue.newId("allurement:alleviating", 5f),
             IdTagValue.newId("allurement:reforming", 5f),
             IdTagValue.newId("allurement:launch", 3.2f),

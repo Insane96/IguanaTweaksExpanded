@@ -66,8 +66,8 @@ public class CopperExpansion extends Feature {
 	public static final RegistryObject<Item> COPPER_PICKAXE = ITERegistries.ITEMS.register("copper_pickaxe", () -> new PickaxeItem(COPPER_ITEM_TIER, 1, -2.8F, new Item.Properties()));
 	public static final RegistryObject<Item> COPPER_AXE = ITERegistries.ITEMS.register("copper_axe", () -> new AxeItem(COPPER_ITEM_TIER, 7.0F, -3.1F, new Item.Properties()));
 	public static final RegistryObject<Item> COPPER_HOE = ITERegistries.ITEMS.register("copper_hoe", () -> new HoeItem(COPPER_ITEM_TIER, -1, -2.0F, new Item.Properties()));
-	public static final SPShieldMaterial COPPER_SHIELD_MATERIAL = new SPShieldMaterial("copper", 134, () -> Items.COPPER_INGOT, 10, Rarity.COMMON);
-	public static final RegistryObject<SPShieldItem> COPPER_SHIELD = ITERegistries.registerShield("copper_shield", COPPER_SHIELD_MATERIAL);
+
+	public static final RegistryObject<SPShieldItem> COPPER_SHIELD = CopperShield.registerShield("copper_shield");
 
 	public static final ILItemTier COATED_ITEM_TIER = new ILItemTier(3, 170, 7f, 1.5f, 5, () -> Ingredient.of(Items.OBSIDIAN));
 	public static final RegistryObject<Item> COATED_SWORD = ITERegistries.ITEMS.register("coated_copper_sword", () -> new SwordItem(COATED_ITEM_TIER, 3, -2.4F, new Item.Properties()));
@@ -125,7 +125,7 @@ public class CopperExpansion extends Feature {
 	@SubscribeEvent
 	public void onHurtItemStack(HurtItemStackEvent event) {
 		if (!this.isEnabled()
-				|| !event.getStack().is(COPPER_TOOLS_EQUIPMENT)
+				|| (!event.getStack().is(COPPER_TOOLS_EQUIPMENT) && !event.getStack().is(COPPER_SHIELD.get()))
 				|| event.getPlayer() == null)
 			return;
 
