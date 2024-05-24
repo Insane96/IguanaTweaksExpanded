@@ -56,7 +56,10 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         ListTag listtag = tag.getList("treasure_enchantments", CompoundTag.TAG_STRING);
         for (int i = 0; i < listtag.size(); i++) {
             String enchantment = listtag.getString(i);
-            this.treasureEnchantments.add(ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment)));
+            Enchantment enchantment1 = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment));
+            if (enchantment1 == null)
+                continue;
+            this.treasureEnchantments.add(enchantment1);
         }
     }
 
@@ -65,7 +68,10 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         ContainerHelper.saveAllItems(tag, this.items);
         ListTag treasureEnchantmentsListTag = new ListTag();
         for (Enchantment enchantment : this.treasureEnchantments) {
-            StringTag stringTag = StringTag.valueOf(ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString());
+            ResourceLocation enchantmentId = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
+            if (enchantmentId == null)
+                continue;
+            StringTag stringTag = StringTag.valueOf(enchantmentId.toString());
             treasureEnchantmentsListTag.add(stringTag);
         }
         tag.put("treasure_enchantments", treasureEnchantmentsListTag);
