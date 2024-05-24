@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
+package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
@@ -12,9 +12,9 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.MendingEnchantment;
 
-public class BloodPact extends Enchantment {
+public class CurseOfBloodPact extends Enchantment {
     public static ResourceKey<DamageType> DAMAGE_TYPE = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "blood_pact"));
-    public BloodPact() {
+    public CurseOfBloodPact() {
         super(Rarity.VERY_RARE, EnchantmentCategory.VANISHABLE, EquipmentSlot.values());
     }
 
@@ -34,6 +34,11 @@ public class BloodPact extends Enchantment {
         return true;
     }
 
+    @Override
+    public boolean isCurse() {
+        return true;
+    }
+
     public boolean checkCompatibility(Enchantment other) {
         return !(other instanceof MendingEnchantment) && super.checkCompatibility(other);
     }
@@ -46,11 +51,11 @@ public class BloodPact extends Enchantment {
 
         float damageThrough = 0f;
         for (int i = 0; i < event.getAmount(); i++) {
-            if (event.getPlayer().getRandom().nextInt(8) == 0)
+            if (event.getPlayer().getRandom().nextInt(10) == 0)
                 damageThrough++;
         }
         if (damageThrough > 0)
             event.getPlayer().hurt(event.getPlayer().damageSources().source(DAMAGE_TYPE), damageThrough);
-        event.setAmount((int) damageThrough);
+        //event.setAmount((int) damageThrough);
     }
 }

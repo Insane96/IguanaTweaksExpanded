@@ -90,7 +90,6 @@ public class NewEnchantmentsFeature extends Feature {
 
 	//Tools and weapons
 	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
-	public static final RegistryObject<Enchantment> BLOOD_PACT = ITERegistries.ENCHANTMENTS.register("blood_pact", BloodPact::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 	public static final RegistryObject<Enchantment> ADRENALINE = ITERegistries.ENCHANTMENTS.register("adrenaline", Adrenaline::new);
 
@@ -106,6 +105,7 @@ public class NewEnchantmentsFeature extends Feature {
 	//Curses
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ITERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_TEAR = ITERegistries.ENCHANTMENTS.register("tear_curse", CurseOfTear::new);
+	public static final RegistryObject<Enchantment> BLOOD_PACT = ITERegistries.ENCHANTMENTS.register("blood_pact_curse", CurseOfBloodPact::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_UNHURRIED = ITERegistries.ENCHANTMENTS.register("unhurried_curse", CurseOfUnhurried::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_SLOW_STRIKE = ITERegistries.ENCHANTMENTS.register("slow_strike_curse", CurseOfSlowStrike::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_INEFFICIENCY = ITERegistries.ENCHANTMENTS.register("inefficiency_curse", CurseOfInefficiency::new);
@@ -138,7 +138,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onHurtItemStack(HurtItemStackEvent event) {
 		CurseOfExperience.consumePlayerExperience(event);
 		CurseOfFragility.increaseItemHurt(event);
-		BloodPact.trySuckingAndRepairing(event);
+		CurseOfBloodPact.trySuckingAndRepairing(event);
 	}
 
 	@SubscribeEvent
