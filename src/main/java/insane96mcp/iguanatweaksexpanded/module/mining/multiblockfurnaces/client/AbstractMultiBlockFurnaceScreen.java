@@ -16,7 +16,7 @@ public abstract class AbstractMultiBlockFurnaceScreen<T extends AbstractMultiBlo
     private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
     public final AbstractMultiBlockFurnaceRecipeBookComponent recipeBookComponent;
     private boolean widthTooNarrow;
-    private final ResourceLocation texture;
+    protected final ResourceLocation texture;
 
     public AbstractMultiBlockFurnaceScreen(T pMenu, AbstractMultiBlockFurnaceRecipeBookComponent pRecipeBookComponent, Inventory pPlayerInventory, Component pTitle, ResourceLocation pTexture) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -64,9 +64,6 @@ public abstract class AbstractMultiBlockFurnaceScreen<T extends AbstractMultiBlo
         if (this.menu.isLit()) {
             int k = this.menu.getLitProgress();
             guiGraphics.blit(this.texture, leftPos + 16, topPos + 35 + 12 - k, 176, 12 - k, 14, k + 1);
-            if (this.menu.getBurnDuration() > 0 && this.menu.getBurnTime() > this.menu.getBurnDuration()) {
-                guiGraphics.drawString(this.font, Component.literal("%d".formatted(this.menu.getBurnTime() / this.menu.getBurnDuration() + 1)), leftPos + 28, topPos + 41, 0x00FF0000, true);
-            }
         }
 
         int l = this.menu.getBurnProgress();
