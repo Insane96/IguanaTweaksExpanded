@@ -150,7 +150,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
 
         boolean isLit = blockEntity.isLit();
         boolean setChanged = false;
-        if (isLit)
+        if (isLit && blockEntity.shouldBurnTimeTick())
             --blockEntity.litTime;
 
         ItemStack fuelStack = blockEntity.items.get(FUEL_SLOT);
@@ -222,7 +222,6 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         if (setChanged) {
             setChanged(pLevel, pPos, pState);
         }
-
     }
 
     protected static void tryGetItemFromLevel(BlockPos pPos, BlockState pState, Level pLevel, AbstractMultiBlockFurnaceBlockEntity pBlockEntity) {
@@ -276,6 +275,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
     protected abstract boolean canOverflowFuel();
 
     protected abstract int maxOverflow();
+    protected abstract boolean shouldBurnTimeTick();
 
     private boolean canBurn(RegistryAccess registryAccess, @javax.annotation.Nullable Recipe<?> recipe, int[] inputSlots, NonNullList<ItemStack> slotsStacks, int stackSize) {
         boolean hasIngredient = false;
@@ -323,7 +323,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
     }
 
     public boolean canLit(ItemStack stack) {
-        return !this.isLit() || (this.canOverflowFuel() && this.litTime + this.getBurnDuration(stack) < this.maxOverflow());
+        return !this.isLit() || (this.canOverflowFuel() && this.litTime + this.getBurnDuration(stack) <= this.maxOverflow());
     }
 
     protected int getBurnDuration(ItemStack pFuel) {

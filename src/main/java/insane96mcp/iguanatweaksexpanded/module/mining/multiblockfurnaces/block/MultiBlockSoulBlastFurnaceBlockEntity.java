@@ -41,6 +41,11 @@ public class MultiBlockSoulBlastFurnaceBlockEntity extends AbstractMultiBlockFur
         return (super.getBurnDuration(new ItemStack(Items.LAVA_BUCKET)) / 2) * 4;
     }
 
+    @Override
+    protected boolean shouldBurnTimeTick() {
+        return this.cookingProgress > 0;
+    }
+
     protected int getBurnDuration(ItemStack pFuel) {
         return super.getBurnDuration(pFuel) / 2;
     }

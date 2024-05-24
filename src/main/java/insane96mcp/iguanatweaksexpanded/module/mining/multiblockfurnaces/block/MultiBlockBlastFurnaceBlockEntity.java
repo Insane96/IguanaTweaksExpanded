@@ -39,6 +39,11 @@ public class MultiBlockBlastFurnaceBlockEntity extends AbstractMultiBlockFurnace
         return 0;
     }
 
+    @Override
+    protected boolean shouldBurnTimeTick() {
+        return true;
+    }
+
     protected int getBurnDuration(ItemStack pFuel) {
         return super.getBurnDuration(pFuel) / 2;
     }

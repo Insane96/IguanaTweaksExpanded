@@ -4,8 +4,9 @@
 * Shields should be great again
   * Rebalanced, overall they all block 1 more damage and can block for 50% more time
   * Reduced Perfect Parry cost
-  * Solarium shields now give +3 blocked damage in the sun
+  * Solarium shields now give +3 blocked damage in the sun (was 2)
   * Fixed copper shields not having bonus unbreaking when used underground
+* Soul Blast Furnaces current fuel no longer consumes if not smelting anything
 * Reduced Protection enchantment cost (5 -> 4)
 * Spiders now attack much slower (like enderman)
 * Grindstone now gives back 75% experience instead of 80%

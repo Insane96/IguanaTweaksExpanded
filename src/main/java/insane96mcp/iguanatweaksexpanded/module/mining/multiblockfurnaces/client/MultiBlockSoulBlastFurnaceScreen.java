@@ -22,7 +22,7 @@ public class MultiBlockSoulBlastFurnaceScreen extends AbstractMultiBlockFurnaceS
             int k = this.menu.getLitProgress();
             guiGraphics.blit(this.texture, leftPos + 16, topPos + 35 + 12 - k, 176, 12 - k, 14, k + 1);
             if (this.menu.getBurnDuration() > 0 && this.menu.getBurnTime() > this.menu.getBurnDuration()) {
-                guiGraphics.drawString(this.font, Component.literal("%d".formatted(this.menu.getBurnTime() / this.menu.getBurnDuration() + 1)), leftPos + 28, topPos + 41, 0x00FF0000, true);
+                guiGraphics.drawString(this.font, Component.literal("%d".formatted((this.menu.getBurnTime() - 1) / this.menu.getBurnDuration() + 1)), leftPos + 28, topPos + 41, 0x00FF0000, true);
             }
         }
 
