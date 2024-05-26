@@ -1,6 +1,10 @@
 # Changelog
 
 ## Upcoming
+* Keego
+  * No longer generates on the top of the Nether
+  * Heavily increased generation
+  * Slightly reduced drops
 * Reduced Adrenaline cost
 
 ## 1.10.4
