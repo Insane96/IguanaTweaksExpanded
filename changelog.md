@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Reduced Adrenaline cost
+
 ## 1.10.4
 * Shields should be great again
   * Rebalanced, overall they all block 1 more damage and can block for 50% more time
