@@ -5,6 +5,7 @@
   * No longer generates on the top of the Nether
   * Heavily increased generation
   * Slightly reduced drops
+* Soul Steel is no longer fire resistant like Netherite
 * Reduced Adrenaline cost
 
 ## 1.10.4

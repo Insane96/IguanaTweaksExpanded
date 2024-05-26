@@ -32,11 +32,11 @@ import java.util.List;
 @Label(name = "Soul Steel", description = "Add Soul Steel, a new metal made by alloying Iron, Soul Sand and Hellish Coal")
 @LoadFeature(module = Modules.Ids.MINING)
 public class SoulSteel extends Feature {
-	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("soul_steel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), new Item.Properties().fireResistant());
+	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("soul_steel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), new Item.Properties());
 
-	public static final RegistryObject<Item> INGOT = ITERegistries.ITEMS.register("soul_steel_ingot", () -> new Item(new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> INGOT = ITERegistries.ITEMS.register("soul_steel_ingot", () -> new Item(new Item.Properties()));
 
-	public static final RegistryObject<Item> NUGGET = ITERegistries.ITEMS.register("soul_steel_nugget", () -> new Item(new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> NUGGET = ITERegistries.ITEMS.register("soul_steel_nugget", () -> new Item(new Item.Properties()));
 
 	private static final ChatFormatting TITLE_FORMAT = ChatFormatting.GRAY;
 	private static final ChatFormatting DESCRIPTION_FORMAT = ChatFormatting.BLUE;
@@ -59,11 +59,11 @@ public class SoulSteel extends Feature {
 
     public static final ILItemTier ITEM_TIER = new ILItemTier(4, 2356, 8f, 3.0f, 10, () -> Ingredient.of(INGOT.get()));
 
-	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("soul_steel_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("soul_steel_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> PICKAXE = ITERegistries.ITEMS.register("soul_steel_pickaxe", () -> new PickaxeItem(ITEM_TIER, 1, -2.8F, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("soul_steel_axe", () -> new AxeItem(ITEM_TIER, 5.0F, -3.1F, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("soul_steel_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("soul_steel_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("soul_steel_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
+	public static final RegistryObject<Item> PICKAXE = ITERegistries.ITEMS.register("soul_steel_pickaxe", () -> new PickaxeItem(ITEM_TIER, 1, -2.8F, new Item.Properties()));
+	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("soul_steel_axe", () -> new AxeItem(ITEM_TIER, 5.0F, -3.1F, new Item.Properties()));
+	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("soul_steel_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties()));
 
 	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 4);
@@ -72,10 +72,10 @@ public class SoulSteel extends Feature {
 		p_266652_.put(ArmorItem.Type.HELMET, 3);
 	}), 18, SoundEvents.ARMOR_EQUIP_IRON, 1f, 0.05f, () -> Ingredient.of(INGOT.get()));
 
-	public static final RegistryObject<Item> HELMET = ITERegistries.ITEMS.register("soul_steel_helmet", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> CHESTPLATE = ITERegistries.ITEMS.register("soul_steel_chestplate", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("soul_steel_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
-	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("soul_steel_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> HELMET = ITERegistries.ITEMS.register("soul_steel_helmet", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> CHESTPLATE = ITERegistries.ITEMS.register("soul_steel_chestplate", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("soul_steel_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("soul_steel_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
 	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("soul_steel", 756, INGOT, 3, Rarity.COMMON);
 
