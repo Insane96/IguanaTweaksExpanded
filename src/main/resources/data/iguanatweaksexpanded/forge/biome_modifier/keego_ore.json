@@ -1,6 +1,6 @@
 {
     "type": "forge:add_features",
     "biomes": "#minecraft:is_nether",
-    "features": "iguanatweaksexpanded:keego_ore_top",
+    "features": "iguanatweaksexpanded:keego_ore",
     "step": "underground_ores"
 }

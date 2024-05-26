@@ -1,4 +1,4 @@
-// 1.20.1	2024-04-29T09:10:04.9583668	Item Models: iguanatweaksexpanded
+// 1.20.1	2024-05-26T20:56:56.4947631	Item Models: iguanatweaksexpanded
 9db8ff6b8f62a90066f9ec6f113f30579ef147b4 assets/iguanatweaksexpanded/models/item/blast_furnace.json
 fc1b6ed013a34c698e33c1afcd94ac79f4c34781 assets/iguanatweaksexpanded/models/item/brown_mushroom_stew.json
 41743aed504cb3d906945743e454f770349cbedc assets/iguanatweaksexpanded/models/item/chained_copper_boots.json
@@ -263,6 +263,7 @@ ccaebbde79fcd88a3432424f556e4ce0fdbe69aa assets/iguanatweaksexpanded/models/item
 6b781b703c33157ecacc823478af2de6e6ad94c5 assets/iguanatweaksexpanded/models/item/quaron_sword.json
 46f1a607634385455d29cd5743c959137acd02fa assets/iguanatweaksexpanded/models/item/quartz_arrow.json
 dd7c5438fd6bdfb4c92a8148d3f6cebfd97aee79 assets/iguanatweaksexpanded/models/item/red_mushroom_stew.json
+bcb89adb9e05bf11263fb26696059be00bdb2dc1 assets/iguanatweaksexpanded/models/item/repair_kit.json
 f5a21f3713ee248d13ca440ec881ab130b5dd6c9 assets/iguanatweaksexpanded/models/item/respawn_obelisk.json
 47875b61e50a90b3046d6b8d3f81c491e1077a49 assets/iguanatweaksexpanded/models/item/rich_copper_ore.json
 8690af74d46b0f21b5c19cdb82b4733c194d2514 assets/iguanatweaksexpanded/models/item/rich_deepslate_copper_ore.json

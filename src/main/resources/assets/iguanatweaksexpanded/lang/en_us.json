@@ -248,6 +248,8 @@
 	"item.iguanatweaksexpanded.keego_hammer": "Keego Forge Hammer",
 	"item.iguanatweaksexpanded.quaron_hammer": "Quaron Hammer",
 
+	"item.iguanatweaksexpanded.repair_kit": "%s Repair Kit",
+
 	"block.iguanatweaksexpanded.mining_charge": "Mining Charge",
 
 	"iguanatweaksexpanded.multi_block_structure": "Requires a multi block structure to work",
@@ -466,5 +468,6 @@
 	"emi.info.iguanatweaksexpanded.nether_infused_powered_rail": "Fastest speed powered rail, should definitely not be used for slopes and you should slowdown the minecart when approaching slopes",
 	"emi.info.iguanatweaksexpanded.keego_mining": "Keego Tools are based off momentum. Each block broken increases mining speed",
 	"emi.info.iguanatweaksexpanded.keego_attacking": "Keego Weapons are based off momentum. Each attack increases attack speed",
-	"emi.info.iguanatweaksexpanded.keego_moving": "Keego Armor is based off momentum. Each blocks moved increases movement speed"
+	"emi.info.iguanatweaksexpanded.keego_moving": "Keego Armor is based off momentum. Each blocks moved increases movement speed",
+	"emi.info.iguanatweaksexpanded.repair_kit": "Can be used in a crafting grid to repair items, like when repairing with Anvils"
 }

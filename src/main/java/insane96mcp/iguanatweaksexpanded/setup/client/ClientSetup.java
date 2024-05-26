@@ -30,6 +30,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBl
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.MultiBlockBlastFurnaceScreen;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.MultiBlockSoulBlastFurnaceScreen;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
+import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn.RespawnObeliskFeature;
@@ -39,13 +40,11 @@ import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.client.event.RegisterRecipeBookCategoriesEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -284,6 +283,19 @@ public class ClientSetup {
         MenuScreens.register(Forging.FORGE_MENU_TYPE.get(), ForgeScreen::new);
         MenuScreens.register(EnchantingFeature.ENCHANTING_TABLE_MENU_TYPE.get(), ITEEnchantingTableScreen::new);
         MenuScreens.register(Fletching.FLETCHING_MENU_TYPE.get(), FletchingScreen::new);
+    }
+
+    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
+        event.register((stack, tintIndex) -> {
+            if (stack.getTag() == null)
+                return -1;
+            CompoundTag color = stack.getTag().getCompound("color");
+            byte a = color.getByte("a");
+            byte r = color.getByte("r");
+            byte g = color.getByte("g");
+            byte b = color.getByte("b");
+            return (0xFF & a) << 24 | (0xFF & r) << 16 | (0xFF & g) << 8 | (0xFF & b);
+        }, RepairKits.REPAIR_KIT.get());
     }
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {

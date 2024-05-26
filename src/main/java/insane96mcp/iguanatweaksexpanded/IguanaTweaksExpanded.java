@@ -74,6 +74,7 @@ public class IguanaTweaksExpanded
             modEventBus.addListener(ClientSetup::registerRecipeBookCategories);
             modEventBus.addListener(ClientSetup::registerParticleFactories);
             modEventBus.addListener(ClientSetup::registerTooltips);
+            modEventBus.addListener(ClientSetup::registerItemColorHandlers);
         }
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);

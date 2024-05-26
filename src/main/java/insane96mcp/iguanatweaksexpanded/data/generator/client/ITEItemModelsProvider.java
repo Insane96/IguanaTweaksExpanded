@@ -12,6 +12,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
+import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
@@ -217,6 +218,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(Fletching.TORCH_ARROW_ITEM.get());
         basicItem(Fletching.ICE_ARROW_ITEM.get());
 
+        basicItem(RepairKits.REPAIR_KIT.get());
         //basicItem(RecallIdol.ITEM.get());
     }
 

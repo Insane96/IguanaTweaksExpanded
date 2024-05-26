@@ -19,6 +19,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
+import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.insanelib.InsaneLib;
@@ -155,6 +156,7 @@ public class ITEEmiPlugin implements EmiPlugin {
 		registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, "info_keego_mining", Component.translatable("emi.info.iguanatweaksexpanded.keego_mining")));
 		registry.addRecipe(createSimpleInfo(Keego.KEEGO_HAND_EQUIPMENT, "info_keego_attacking", Component.translatable("emi.info.iguanatweaksexpanded.keego_attacking")));
 		registry.addRecipe(createSimpleInfo(Keego.KEEGO_ARMOR_EQUIPMENT, "info_keego_moving", Component.translatable("emi.info.iguanatweaksexpanded.keego_moving")));
+		registry.addRecipe(createSimpleInfo(RepairKits.REPAIR_KIT.get(), "info_repair_kit", Component.translatable("emi.info.iguanatweaksexpanded.repair_kit")));
 	}
 
 	public EmiInfoRecipe createSimpleInfo(Item item, String id, Component component) {
