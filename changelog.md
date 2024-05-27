@@ -5,7 +5,8 @@
   * No longer generates on the top of the Nether
   * Heavily increased generation
   * Slightly reduced drops
-* Soul Steel is no longer fire resistant like Netherite
+* Soul Steel is no longer fire-resistant like Netherite
+* Shears now require an iron nugget instead of flint to be crafted
 * Reduced Adrenaline cost
 
 ## 1.10.4
