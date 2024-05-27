@@ -165,7 +165,7 @@ public class CopperExpansion extends Feature {
 		int hits = tag.getInt(COATED_TIMES_HIT);
 		if (++hits >= 4) {
 			hits = 0;
-			electrocute(player, event.getEntity(), (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 2f);
+			electrocute(player, event.getEntity(), (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE));
 			if (event.getEntity().isDeadOrDying())
 				event.setCanceled(true);
 		}

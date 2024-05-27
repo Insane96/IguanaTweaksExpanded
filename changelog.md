@@ -7,6 +7,7 @@
   * Slightly reduced drops
 * Soul Steel is no longer fire-resistant like Netherite
 * Shears now require an iron nugget instead of flint to be crafted
+* Doubled electrocution damage (was 50% of Attack Damage, it's now 100%)
 * Reduced Adrenaline cost
 
 ## 1.10.4
