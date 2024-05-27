@@ -1,0 +1,17 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 3,
+  "category": "forge_misc",
+  "experience": 10.0,
+  "gear": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "ingredient": {
+    "item": "iguanatweaksexpanded:keego"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:repair_kit",
+    "nbt": "{color:{b:213,g:133,r:0},repair_item:\"iguanatweaksexpanded:keego\"}"
+  },
+  "smashes_required": 10
+}

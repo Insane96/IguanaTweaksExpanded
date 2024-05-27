@@ -9,6 +9,9 @@
   "ingredient": {
     "item": "iguanatweaksexpanded:solarium_ball"
   },
-  "result": "iguanatweaksexpanded:solarium_leggings",
+  "result": {
+    "item": "iguanatweaksexpanded:solarium_leggings",
+    "nbt": "{Damage:0}"
+  },
   "smashes_required": 5
 }

@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* Added Repair Kits
+  * Forged with an amethyst shard and some materials will let you repair your items in the crafting grid
 * Keego
   * No longer generates on the top of the Nether
   * Heavily increased generation

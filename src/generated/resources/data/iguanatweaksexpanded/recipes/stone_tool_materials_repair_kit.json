@@ -1,0 +1,17 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 3,
+  "category": "forge_misc",
+  "experience": 10.0,
+  "gear": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "ingredient": {
+    "tag": "minecraft:stone_tool_materials"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:repair_kit",
+    "nbt": "{color:{b:136,g:135,r:136},repair_item:\"minecraft:cobblestone\"}"
+  },
+  "smashes_required": 10
+}

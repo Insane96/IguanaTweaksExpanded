@@ -9,6 +9,9 @@
   "ingredient": {
     "item": "minecraft:diamond"
   },
-  "result": "iguanatweaksexpanded:diamond_hammer",
+  "result": {
+    "item": "iguanatweaksexpanded:diamond_hammer",
+    "nbt": "{Damage:0}"
+  },
   "smashes_required": 16
 }

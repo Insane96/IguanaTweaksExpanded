@@ -9,6 +9,9 @@
   "ingredient": {
     "item": "minecraft:gold_ingot"
   },
-  "result": "iguanatweaksexpanded:golden_hammer",
+  "result": {
+    "item": "iguanatweaksexpanded:golden_hammer",
+    "nbt": "{Damage:0}"
+  },
   "smashes_required": 6
 }

@@ -9,6 +9,9 @@
   "ingredient": {
     "item": "iguanatweaksexpanded:keego"
   },
-  "result": "iguanatweaksexpanded:keego_hoe",
+  "result": {
+    "item": "iguanatweaksexpanded:keego_hoe",
+    "nbt": "{Damage:0}"
+  },
   "smashes_required": 13
 }

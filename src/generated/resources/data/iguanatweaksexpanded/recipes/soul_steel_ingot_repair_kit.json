@@ -1,0 +1,17 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 3,
+  "category": "forge_misc",
+  "experience": 10.0,
+  "gear": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "ingredient": {
+    "item": "iguanatweaksexpanded:soul_steel_ingot"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:repair_kit",
+    "nbt": "{color:{b:44,g:55,r:73},repair_item:\"iguanatweaksexpanded:soul_steel_ingot\"}"
+  },
+  "smashes_required": 10
+}

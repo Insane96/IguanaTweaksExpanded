@@ -9,6 +9,9 @@
   "ingredient": {
     "item": "minecraft:iron_ingot"
   },
-  "result": "iguanatweaksexpanded:iron_hammer",
+  "result": {
+    "item": "iguanatweaksexpanded:iron_hammer",
+    "nbt": "{Damage:0}"
+  },
   "smashes_required": 10
 }

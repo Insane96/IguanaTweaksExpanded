@@ -9,6 +9,9 @@
   "ingredient": {
     "item": "minecraft:obsidian"
   },
-  "result": "iguanatweaksexpanded:coated_copper_hoe",
+  "result": {
+    "item": "iguanatweaksexpanded:coated_copper_hoe",
+    "nbt": "{Damage:0}"
+  },
   "smashes_required": 12
 }

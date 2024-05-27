@@ -9,6 +9,9 @@
   "ingredient": {
     "item": "iguanatweaksexpanded:quaron_ingot"
   },
-  "result": "iguanatweaksexpanded:quaron_boots",
+  "result": {
+    "item": "iguanatweaksexpanded:quaron_boots",
+    "nbt": "{Damage:0}"
+  },
   "smashes_required": 11
 }

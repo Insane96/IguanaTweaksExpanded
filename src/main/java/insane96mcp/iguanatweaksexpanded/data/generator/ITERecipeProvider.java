@@ -17,6 +17,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.miningcharge.MiningCharge;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.MultiItemSmeltingRecipeBuilder;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
+import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreGeneration;
@@ -25,17 +26,21 @@ import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
 import java.util.function.Consumer;
 
 public class ITERecipeProvider extends RecipeProvider implements IConditionBuilder {
@@ -851,9 +856,48 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGear(writer, Forging.SOUL_STEEL_HAMMER.get(), SoulSteel.NUGGET.get(), 200, 9);
         //</editor-fold>
 
+        //<editor-fold desc="Repair Kits">
+        appendMaterialToName = true;
+        addRepairKitRecipe(writer, ItemTags.PLANKS, Items.OAK_PLANKS, new Color(184, 148, 95));
+        addRepairKitRecipe(writer, ItemTags.STONE_TOOL_MATERIALS, Items.COBBLESTONE, new Color(136, 135, 136));
+        addRepairKitRecipe(writer, Items.FLINT, new Color(61, 60, 60));
+        addRepairKitRecipe(writer, Items.COPPER_INGOT, new Color(209, 104, 69));
+        addRepairKitRecipe(writer, Items.GOLD_INGOT, new Color(253, 245, 95));
+        addRepairKitRecipe(writer, Items.IRON_INGOT, new Color(216, 216, 216));
+        addRepairKitRecipe(writer, Solarium.SOLARIUM_BALL.get(), new Color(164, 162, 10));
+        addRepairKitRecipe(writer, Durium.INGOT.get(), new Color(20, 90, 111));
+        addRepairKitRecipe(writer, Items.OBSIDIAN, new Color(16, 12, 28));
+        addRepairKitRecipe(writer, Keego.GEM.get(), new Color(0, 133, 213));
+        addRepairKitRecipe(writer, Quaron.INGOT.get(), new Color(227, 190, 255));
+        addRepairKitRecipe(writer, Items.DIAMOND, new Color(161, 251, 232));
+        addRepairKitRecipe(writer, SoulSteel.INGOT.get(), new Color(73, 55, 44));
+        addRepairKitRecipe(writer, Items.NETHERITE_INGOT, new Color(76, 65, 67));
+        appendMaterialToName = false;
+        //</editor-fold>
+
         addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_COPPER_ORE, Items.COPPER_INGOT, 0.75f, 100, 7f);
         addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_IRON_ORE, Items.IRON_INGOT, 1f, 200, 1f);
         addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
+    }
+
+    private ItemStack generateRepairKitStack(ItemLike material, Color color) {
+        ItemStack resultStack = new ItemStack(RepairKits.REPAIR_KIT.get(), 1);
+        resultStack.getOrCreateTag().putString("repair_item", ForgeRegistries.ITEMS.getKey(material.asItem()).toString());
+        CompoundTag colorNbt = new CompoundTag();
+        colorNbt.putInt("r", color.getRed());
+        colorNbt.putInt("g", color.getGreen());
+        colorNbt.putInt("b", color.getBlue());
+        //noinspection DataFlowIssue
+        resultStack.getTag().put("color", colorNbt);
+        return resultStack;
+    }
+
+    private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, ItemLike material, Color color) {
+        forgeRecipe(writer, material, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 10);
+    }
+
+    private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, ItemLike material, Color color) {
+        forgeRecipe(writer, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 10);
     }
 
     private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, OreGeneration.PoorRichOre poorRichOre, Item smeltOutput, float experience, int cookingTime, float baseOutputIncrease) {
@@ -995,31 +1039,48 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(writer);
     }
 
-    private void forgeRecipe(Consumer<FinishedRecipe> writer, Item material, int amount, Item gear, Item result, int smashesRequired) {
+    private boolean appendMaterialToName = false;
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, ItemLike material, int amount, ItemLike gear, ItemStack result, int smashesRequired) {
+        ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
+        if (appendMaterialToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_");
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(material), amount, Ingredient.of(gear), result, smashesRequired)
                 .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(material))
-                .save(writer);
+                .save(writer, recipeId);
     }
 
-    private void forgeRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, int amount, Item gear, Item result, int smashesRequired) {
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, int amount, ItemLike gear, ItemStack result, int smashesRequired) {
+        ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
+        if (appendMaterialToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(materialTag.location().getPath() + "_");
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
                 .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(materialTag))
-                .save(writer);
+                .save(writer, recipeId);
     }
 
-    private void forgeRecipe(Consumer<FinishedRecipe> writer, Item materialTag, int amount, TagKey<Item> gear, Item result, int smashesRequired) {
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, Item material, int amount, TagKey<Item> gear, ItemStack result, int smashesRequired) {
+        ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
+        if (appendMaterialToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_");
+        ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(material), amount, Ingredient.of(gear), result, smashesRequired)
+                .awardExperience(smashesRequired)
+                .unlockedBy("has_material", has(material))
+                .save(writer, recipeId);
+    }
+
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, int amount, TagKey<Item> gear, ItemStack result, int smashesRequired) {
+        ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
+        if (appendMaterialToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(materialTag.location().getPath() + "_");
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
                 .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(materialTag))
-                .save(writer);
+                .save(writer, recipeId);
     }
 
-    private void forgeRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, int amount, TagKey<Item> gear, Item result, int smashesRequired) {
-        ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
-                .awardExperience(smashesRequired)
-                .unlockedBy("has_material", has(materialTag))
-                .save(writer);
+    private void forgeRecipe(Consumer<FinishedRecipe> writer, ItemLike material, int amount, ItemLike gear, ItemLike result, int smashesRequired) {
+        forgeRecipe(writer, material, amount, gear, new ItemStack(result), smashesRequired);
     }
 }

@@ -1,0 +1,17 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "amount": 3,
+  "category": "forge_misc",
+  "experience": 10.0,
+  "gear": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "ingredient": {
+    "item": "iguanatweaksexpanded:solarium_ball"
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:repair_kit",
+    "nbt": "{color:{b:10,g:162,r:164},repair_item:\"iguanatweaksexpanded:solarium_ball\"}"
+  },
+  "smashes_required": 10
+}

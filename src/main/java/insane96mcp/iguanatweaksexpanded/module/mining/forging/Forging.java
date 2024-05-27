@@ -41,7 +41,7 @@ public class Forging extends Feature {
 			return "forging";
 		}
 	});
-	public static final RegistryObject<ForgeRecipeSerializer> FORGE_RECIPE_SERIALIZER = ITERegistries.RECIPE_SERIALIZERS.register("forging", ForgeRecipeSerializer::new);
+	public static final RegistryObject<ForgeRecipe.ForgeRecipeSerializer> FORGE_RECIPE_SERIALIZER = ITERegistries.RECIPE_SERIALIZERS.register("forging", ForgeRecipe.ForgeRecipeSerializer::new);
 	public static final RegistryObject<MenuType<ForgeMenu>> FORGE_MENU_TYPE = ITERegistries.MENU_TYPES.register("forge", () -> new MenuType<>(ForgeMenu::new, FeatureFlags.VANILLA_SET));
 
 	public static final RegistryObject<ForgeHammerItem> WOODEN_HAMMER = ITERegistries.ITEMS.register("wooden_hammer", () -> new ForgeHammerItem(Tiers.WOOD, 35, new Item.Properties()));

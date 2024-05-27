@@ -12,9 +12,9 @@ import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,24 +26,24 @@ public class ForgeRecipeBuilder implements RecipeBuilder {
     final Ingredient ingredient;
     final int ingredientAmount;
     final Ingredient gear;
-    private final Item result;
+    private final ItemStack result;
     protected final int smashesRequired;
     protected float experience;
     private final RecipeSerializer<? extends ForgeRecipe> serializer;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public ForgeRecipeBuilder(RecipeCategory pCategory, ITEBookCategory pBookCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemLike pResult, int smashesRequired, RecipeSerializer<? extends ForgeRecipe> pSerializer) {
+    public ForgeRecipeBuilder(RecipeCategory pCategory, ITEBookCategory pBookCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, RecipeSerializer<? extends ForgeRecipe> pSerializer) {
         this.category = pCategory;
         this.bookCategory = pBookCategory;
         this.ingredient = ingredient;
         this.ingredientAmount = ingredientAmount;
         this.gear = gear;
-        this.result = pResult.asItem();
+        this.result = pResult;
         this.smashesRequired = smashesRequired;
         this.serializer = pSerializer;
     }
 
-    public static ForgeRecipeBuilder forging(RecipeCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemLike pResult, int smashesRequired) {
+    public static ForgeRecipeBuilder forging(RecipeCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired) {
         return new ForgeRecipeBuilder(pCategory, ITEBookCategory.FORGE_MISC, ingredient, ingredientAmount, gear, pResult, smashesRequired, Forging.FORGE_RECIPE_SERIALIZER.get());
     }
 
@@ -65,7 +65,7 @@ public class ForgeRecipeBuilder implements RecipeBuilder {
 
     @Override
     public Item getResult() {
-        return this.result;
+        return this.result.getItem();
     }
 
     @Override
@@ -90,20 +90,20 @@ public class ForgeRecipeBuilder implements RecipeBuilder {
         private final Ingredient ingredient;
         private final int ingredientAmount;
         private final Ingredient gear;
-        private final Item result;
+        private final ItemStack result;
         private final int smashesRequired;
         private final float experience;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
         private final RecipeSerializer<? extends ForgeRecipe> serializer;
 
-        public Result(ResourceLocation id, ITEBookCategory bookCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemLike pResult, int smashesRequired, float experience, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId, RecipeSerializer<? extends ForgeRecipe> pSerializer) {
+        public Result(ResourceLocation id, ITEBookCategory bookCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId, RecipeSerializer<? extends ForgeRecipe> pSerializer) {
             this.id = id;
             this.category = bookCategory;
             this.ingredient = ingredient;
             this.ingredientAmount = ingredientAmount;
             this.gear = gear;
-            this.result = pResult.asItem();
+            this.result = pResult;
             this.smashesRequired = smashesRequired;
             this.experience = experience;
             this.serializer = pSerializer;
@@ -111,15 +111,24 @@ public class ForgeRecipeBuilder implements RecipeBuilder {
             this.advancementId = pAdvancementId;
         }
 
-        public void serializeRecipeData(JsonObject pJson) {
-            pJson.addProperty("category", this.category.getSerializedName());
-            pJson.add("ingredient", this.ingredient.toJson());
-            pJson.addProperty("amount", this.ingredientAmount);
-            pJson.add("gear", this.gear.toJson());
-            pJson.addProperty("result", ForgeRegistries.ITEMS.getKey(this.result).toString());
-            pJson.addProperty("smashes_required", this.smashesRequired);
+        public void serializeRecipeData(JsonObject jObject) {
+            jObject.addProperty("category", this.category.getSerializedName());
+            jObject.add("ingredient", this.ingredient.toJson());
+            jObject.addProperty("amount", this.ingredientAmount);
+            jObject.add("gear", this.gear.toJson());
+            if (this.result.getTag() != null)
+            {
+                JsonObject resultObj = new JsonObject();
+                resultObj.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result.getItem()).toString());
+                resultObj.addProperty("nbt", this.result.getTag().toString());
+                jObject.add("result", resultObj);
+            }
+            else {
+                jObject.addProperty("result", ForgeRegistries.ITEMS.getKey(this.result.getItem()).toString());
+            }
+            jObject.addProperty("smashes_required", this.smashesRequired);
             if (this.experience > 0)
-                pJson.addProperty("experience", this.experience);
+                jObject.addProperty("experience", this.experience);
         }
 
         public RecipeSerializer<?> getType() {

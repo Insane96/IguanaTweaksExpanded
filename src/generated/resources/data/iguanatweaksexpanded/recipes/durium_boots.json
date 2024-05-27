@@ -9,6 +9,9 @@
   "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"
   },
-  "result": "iguanatweaksexpanded:durium_boots",
+  "result": {
+    "item": "iguanatweaksexpanded:durium_boots",
+    "nbt": "{Damage:0}"
+  },
   "smashes_required": 9
 }
