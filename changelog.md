@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed reach not applicable to chestplates
+
 ## 1.11.0
 * Added Repair Kits
   * Forged with an amethyst shard and some materials will let you repair your items in the crafting grid

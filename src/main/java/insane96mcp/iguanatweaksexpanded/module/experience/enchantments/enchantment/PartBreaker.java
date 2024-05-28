@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.data.generator.ITRItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -21,7 +21,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class PartBreaker extends Enchantment {
 
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITRItemTagsProvider.create("enchanting/accepts_part_breaker");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_part_breaker");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("part_breaker", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public PartBreaker() {
         super(Rarity.RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});

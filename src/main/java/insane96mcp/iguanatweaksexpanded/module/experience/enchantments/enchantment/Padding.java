@@ -1,8 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.data.generator.ITRItemTagsProvider;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,8 +15,8 @@ import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 public class Padding extends Enchantment {
     public static final String SHOULD_APPLY = IguanaTweaksExpanded.RESOURCE_PREFIX + "should_padding_apply";
 
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITRItemTagsProvider.create("enchanting/accepts_padding");
-    static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("reach", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_padding");
+    static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("padding", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public Padding() {
         super(Rarity.RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }

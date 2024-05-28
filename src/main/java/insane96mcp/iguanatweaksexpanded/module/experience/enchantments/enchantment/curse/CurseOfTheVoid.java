@@ -1,8 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
+import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.JuicyBait;
-import insane96mcp.iguanatweaksreborn.data.generator.ITRItemTagsProvider;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -16,7 +16,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
 
 public class CurseOfTheVoid extends Enchantment {
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITRItemTagsProvider.create("enchanting/accepts_void_curse");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_void_curse");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("void_curse", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public CurseOfTheVoid() {
         super(Rarity.UNCOMMON, CATEGORY, EquipmentSlot.values());
