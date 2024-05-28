@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.11.1
 * Fixed reach not applicable to chestplates
 * Fixed blood pact missing lang
 * Fixed obsidian repair kit being too dark
