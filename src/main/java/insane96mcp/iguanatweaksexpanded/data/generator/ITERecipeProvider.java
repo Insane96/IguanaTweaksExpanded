@@ -866,7 +866,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addRepairKitRecipe(writer, Items.IRON_INGOT, new Color(216, 216, 216));
         addRepairKitRecipe(writer, Solarium.SOLARIUM_BALL.get(), new Color(164, 162, 10));
         addRepairKitRecipe(writer, Durium.INGOT.get(), new Color(20, 90, 111));
-        addRepairKitRecipe(writer, Items.OBSIDIAN, new Color(16, 12, 28));
+        addRepairKitRecipe(writer, Items.OBSIDIAN, new Color(26, 19, 47));
         addRepairKitRecipe(writer, Keego.GEM.get(), new Color(0, 133, 213));
         addRepairKitRecipe(writer, Quaron.INGOT.get(), new Color(227, 190, 255));
         addRepairKitRecipe(writer, Items.DIAMOND, new Color(161, 251, 232));

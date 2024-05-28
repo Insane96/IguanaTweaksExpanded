@@ -11,7 +11,7 @@
   },
   "result": {
     "item": "iguanatweaksexpanded:repair_kit",
-    "nbt": "{color:{b:28,g:12,r:16},repair_item:\"minecraft:obsidian\"}"
+    "nbt": "{color:{b:47,g:19,r:26},repair_item:\"minecraft:obsidian\"}"
   },
   "smashes_required": 10
 }

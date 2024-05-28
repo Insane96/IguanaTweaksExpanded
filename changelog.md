@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Fixed reach not applicable to chestplates
+* Fixed obsidian repair kit being too dark
 
 ## 1.11.0
 * Added Repair Kits
