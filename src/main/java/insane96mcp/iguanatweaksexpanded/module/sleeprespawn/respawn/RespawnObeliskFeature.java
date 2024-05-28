@@ -113,6 +113,7 @@ public class RespawnObeliskFeature extends JsonFeature {
 			return;
 
 		if (player.getRespawnPosition() != null
+				&& player.level().dimension().equals(player.getRespawnDimension())
 				&& player.level().getBlockState(player.getRespawnPosition()).is(RESPAWN_OBELISK.block().get())
 				&& player.level().getBlockState(player.getRespawnPosition()).getValue(RespawnObeliskBlock.ENABLED)
 				&& event.getNewSpawn() != null
