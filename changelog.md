@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Added logs to investigate why Time Control doesn't seem to work properly
+
 ## 1.11.1
 * Fixed reach not applicable to chestplates
 * Fixed blood pact missing lang
