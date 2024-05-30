@@ -38,7 +38,7 @@ public class TimeControlIntegration {
                 Config.night_length_seconds.set((int) ((10 - Seasons.timeControlDayNightShift * 3) * 60));
             }
         }
-        LogHelper.info("Updated Time Control day length to %s and night length to %s", Config.day_length_seconds.get(), Config.night_length_seconds.get());
+        LogHelper.info("Updated Time Control day length to %s and night length to %s due to season being %s", Config.day_length_seconds.get(), Config.night_length_seconds.get(), season);
         ModNetworkDispatcher.send(new ConfigS2CPacket());
     }
 }

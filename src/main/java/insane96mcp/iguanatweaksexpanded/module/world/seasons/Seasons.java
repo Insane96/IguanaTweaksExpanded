@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
+import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
 import insane96mcp.iguanatweaksreborn.event.HookTickToHookLureEvent;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -46,10 +47,7 @@ import sereneseasons.handler.season.SeasonHandler;
 import sereneseasons.season.SeasonSavedData;
 import sereneseasons.season.SeasonTime;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Label(name = "Seasons", description = "Change a few things relative to Serene Seasons")
 @LoadFeature(module = Modules.Ids.WORLD)
@@ -111,6 +109,10 @@ public class Seasons extends Feature {
 
 		if (ModList.get().isLoaded("timecontrol"))
 			TimeControlIntegration.updateDayNightLength(event.getNewSeason());
+		SeasonSavedData seasonData = SeasonHandler.getSeasonSavedData(event.getLevel());
+		SeasonTime time = new SeasonTime(seasonData.seasonCycleTicks);
+		int subSeasonDuration = ServerConfig.subSeasonDuration.get();
+		LogHelper.info(time.getSubSeason().toString().toLowerCase(Locale.ROOT) + " " + (time.getDay() % subSeasonDuration) + 1 + " " + subSeasonDuration + " " + time.getSeasonCycleTicks() % time.getDayDuration() + " " + time.getDayDuration());
 	}
 
 	@SubscribeEvent
