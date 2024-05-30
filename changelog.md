@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.11.2
 * Added logs to investigate why Time Control doesn't seem to work properly
 
 ## 1.11.1
