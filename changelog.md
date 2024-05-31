@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Respawn obelisk only accepts blocks 4 blocks away
+
 ## 1.11.2
 * Added logs to investigate why Time Control doesn't seem to work properly
 

@@ -45,14 +45,14 @@ public class RespawnObeliskBlock extends Block {
     public static final BooleanProperty ENABLED = BlockStateProperties.ENABLED;
 
     private static final ImmutableList<Vec3i> CATALYST_RELATIVE_POSITIONS = ImmutableList.of(
-            new Vec3i(-2, 0, 0),
+            /*new Vec3i(-2, 0, 0),
             new Vec3i(2, 0, 0),
             new Vec3i(0, 0, -2),
             new Vec3i(0, 0, 2),
             new Vec3i(-3, 0, 0),
             new Vec3i(3, 0, 0),
             new Vec3i(0, 0, -3),
-            new Vec3i(0, 0, 3),
+            new Vec3i(0, 0, 3),*/
             new Vec3i(-4, 0, 0),
             new Vec3i(4, 0, 0),
             new Vec3i(0, 0, -4),
