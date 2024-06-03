@@ -110,7 +110,6 @@ dependencies {
     runtimeOnly fg.deobf("blank:MobsPropertiesRandomness:${mpr_version}-mc${mc_version}")
     implementation fg.deobf("blank:Shields+:${shields_plus_version}-mc${mc_version}")
     implementation fg.deobf("blank:EnhancedAI:${enhancedai_version}-mc${mc_version}")
-    implementation fg.deobf("curse.maven:progressive-bosses-289466:5389019")
 
     compileOnly fg.deobf("dev.emi:emi-forge:${emi_version}:api")
     runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
