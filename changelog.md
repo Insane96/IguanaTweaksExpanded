@@ -1,7 +1,9 @@
 # Changelog
 
-## Upcoming
+## 1.11.3
 * Respawn obelisk only accepts blocks 4 blocks away
+* Time Control support for seasons has been disabled by default. I've expanded the log to understand what's going on
+  * The serene season event doesn't seem to work properly. On a server it runs even when no player's online
 
 ## 1.11.2
 * Added logs to investigate why Time Control doesn't seem to work properly

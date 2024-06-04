@@ -81,8 +81,8 @@ public class Seasons extends Feature {
 	public static Season.SubSeason startingSeason = Season.SubSeason.EARLY_SUMMER;
 
 	@Config(min = 0, max = 3d)
-	@Label(name = "Time Control day night shift", description = "How many minutes will day and night duration be shifted based off seasons? E.g. in Mid spring / autumn the duration of day and night is vanilla, when moving off those seasons day and night will last this many minutes more/less. In mid summer / winter the duration of day and night duration will be more / less by 3 times this value.")
-	public static Double timeControlDayNightShift = 1d;
+	@Label(name = "Time Control day night shift", description = "How many minutes will day and night duration be shifted based off seasons? E.g. in Mid spring / autumn the duration of day and night is vanilla, when moving off those seasons day and night will last this many minutes more/less. In mid summer / winter the duration of day and night duration will be more / less by 3 times this value. Set to 0 to disable")
+	public static Double timeControlDayNightShift = 0d;
 
 	@Config
 	@Label(name = "Season based fishing time")
@@ -107,12 +107,15 @@ public class Seasons extends Feature {
 		if (!this.isEnabled())
 			return;
 
-		if (ModList.get().isLoaded("timecontrol"))
+		if (timeControlDayNightShift != 0 && ModList.get().isLoaded("timecontrol"))
 			TimeControlIntegration.updateDayNightLength(event.getNewSeason());
+
+		//Debug
 		SeasonSavedData seasonData = SeasonHandler.getSeasonSavedData(event.getLevel());
 		SeasonTime time = new SeasonTime(seasonData.seasonCycleTicks);
 		int subSeasonDuration = ServerConfig.subSeasonDuration.get();
-		LogHelper.info(time.getSubSeason().toString().toLowerCase(Locale.ROOT) + " " + (time.getDay() % subSeasonDuration) + 1 + " " + subSeasonDuration + " " + time.getSeasonCycleTicks() % time.getDayDuration() + " " + time.getDayDuration());
+		LogHelper.info("season from saved data: %s, season: %s, prevSeason: %s, seasonDay MOD subSeasonDuration: %d, subSeasonDuration: %d, seasonCycleTicks MOD seasonDayDuration: %d, dayDuration: %d", time.getSubSeason().toString().toLowerCase(Locale.ROOT), event.getNewSeason().toString().toLowerCase(Locale.ROOT), event.getPrevSeason().toString().toLowerCase(Locale.ROOT), time.getDay() % subSeasonDuration, subSeasonDuration, time.getSeasonCycleTicks() % time.getDayDuration(), time.getDayDuration());
+		LogHelper.debug(Arrays.toString(Thread.currentThread().getStackTrace()));
 	}
 
 	@SubscribeEvent

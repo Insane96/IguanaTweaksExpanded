@@ -34,14 +34,14 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="insanelib"
     mandatory=true
-    versionRange="[1.13.2,)"
+    versionRange="[1.13.5,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="iguanatweaksreborn"
     mandatory=true
-    versionRange="[3.10.0,)"
+    versionRange="[3.11.1,)"
     ordering="BEFORE"
     side="BOTH"
 
