@@ -19,6 +19,7 @@
         "RandomUpdateHandlerMixin",
         "ServerPlayerGameModeMixin",
         "SmithingTransformRecipeMixin",
+        "TimeSkipHandlerMixin",
         "integration.allurement.LaunchEnchantmentMixin",
         "integration.passablefoliage.LeafWalkerEnchantmentMixin"
     ],

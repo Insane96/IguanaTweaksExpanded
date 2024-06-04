@@ -10,6 +10,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import sereneseasons.api.season.Season;
 import sereneseasons.api.season.SeasonChangedEvent;
+import sereneseasons.config.ServerConfig;
 
 @Label(name = "Spawning", description = "Changes to mob spawn")
 @LoadFeature(module = Modules.Ids.MOBS)
@@ -51,7 +52,8 @@ public class Spawning extends Feature {
 
     @SubscribeEvent
     public void onSeasonChanged(SeasonChangedEvent.Standard event) {
-        if (!this.isEnabled())
+        if (!this.isEnabled()
+				|| !ServerConfig.isDimensionWhitelisted(event.getLevel().dimension()))
             return;
 
         update(event.getNewSeason().getSeason());

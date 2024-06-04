@@ -82,7 +82,11 @@ public class Seasons extends Feature {
 
 	@Config(min = 0, max = 3d)
 	@Label(name = "Time Control day night shift", description = "How many minutes will day and night duration be shifted based off seasons? E.g. in Mid spring / autumn the duration of day and night is vanilla, when moving off those seasons day and night will last this many minutes more/less. In mid summer / winter the duration of day and night duration will be more / less by 3 times this value. Set to 0 to disable")
-	public static Double timeControlDayNightShift = 0d;
+	public static Double timeControlDayNightShift = 1d;
+
+	/*@Config
+	@Label(name = "Remove SS TimeSkipHandler", description = "There's a strange bug with the TimeSkipHandler in Serene Seasons where on server the season changed event is still triggered even if no player's online and with random seasons. If this is enabled, the progress_season_while_offline config option is set to false and there's no player online, the TimeSkipHandler will not be triggered.")
+	public static Boolean changeTimeControl = true;*/
 
 	@Config
 	@Label(name = "Season based fishing time")
@@ -104,10 +108,12 @@ public class Seasons extends Feature {
 
 	@SubscribeEvent
 	public void onSeasonChanged(SeasonChangedEvent.Standard event) {
-		if (!this.isEnabled())
+		if (!this.isEnabled()
+				|| timeControlDayNightShift == 0
+				|| !ServerConfig.isDimensionWhitelisted(event.getLevel().dimension()))
 			return;
 
-		if (timeControlDayNightShift != 0 && ModList.get().isLoaded("timecontrol"))
+		if (ModList.get().isLoaded("timecontrol"))
 			TimeControlIntegration.updateDayNightLength(event.getNewSeason());
 
 		//Debug

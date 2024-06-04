@@ -15,6 +15,7 @@ public class ModLoadedPlugin implements IMixinConfigPlugin {
     private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
             "insane96mcp.iguanatweaksreborn.mixin.integration.allurement.LaunchEnchantmentMixin", () -> LoadingModList.get().getModFileById("allurement") != null,
             "insane96mcp.iguanatweaksreborn.mixin.RandomUpdateHandlerMixin", () -> LoadingModList.get().getModFileById("sereneseasons") != null,
+            "insane96mcp.iguanatweaksreborn.mixin.TimeSkipHandlerMixin", () -> LoadingModList.get().getModFileById("sereneseasons") != null,
             "insane96mcp.iguanatweaksreborn.mixin.LeafWalkerEnchantmentMixin", () -> LoadingModList.get().getModFileById("passablefoliage") != null
     );
     @Override

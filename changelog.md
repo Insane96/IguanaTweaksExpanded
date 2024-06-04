@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.11.4
+* Hopefully fixed Time control + Serene Seasons support (has been re-enabled)
+  * Serene Season events aren't checking for whitelisted dimensions
+
 ## 1.11.3
 * Respawn obelisk only accepts blocks 4 blocks away
 * Time Control support for seasons has been disabled by default. I've expanded the log to understand what's going on
