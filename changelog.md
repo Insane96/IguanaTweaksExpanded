@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Repair Kits now show up in EMI
+
 ## 1.11.4
 * Hopefully fixed Time control + Serene Seasons support (has been re-enabled)
   * Serene Season events aren't checking for whitelisted dimensions

@@ -19,6 +19,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
+import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKitItem;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
@@ -66,6 +67,9 @@ public class ITEEmiPlugin implements EmiPlugin {
 		registry.addWorkstation(FORGE_RECIPE_CATEGORY, FORGE_WORKSTATION);
 		for (ForgeRecipe forgeRecipe : manager.getAllRecipesFor(Forging.FORGE_RECIPE_TYPE.get())) {
 			registry.addRecipe(new EmiForgeRecipe(forgeRecipe));
+			if (forgeRecipe.getResult().getItem() instanceof RepairKitItem) {
+				registry.addEmiStack(EmiStack.of(forgeRecipe.getResult()));
+			}
 		}
 
 		registry.addCategory(BLAST_FURNACE_CATEGORY);
