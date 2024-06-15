@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Repair Kits now show up in EMI
+* Disable the "Invalid block" message if the data pack that replaces the vanilla furnace is disabled
 
 ## 1.11.4
 * Hopefully fixed Time control + Serene Seasons support (has been re-enabled)

@@ -80,7 +80,7 @@ public class MultiBlockFurnaces extends Feature {
 	public static Boolean hideBlastingCategoryInEMI = true;
 
 	@Config
-	@Label(name = "Blast Furnace Data pack", description = "Enables a data pack that changes the vanilla Blast Furnace recipe to give the multi block blast furnace.")
+	@Label(name = "Blast Furnace Data pack", description = "Enables a data pack that changes the vanilla Blast Furnace recipe to give the multi block blast furnace. Also prevents using the vanilla Blast Furnace (break it to get ITR one)")
 	public static Boolean blastFurnaceDataPack = true;
 
 	public MultiBlockFurnaces(Module module, boolean enabledByDefault, boolean canBeDisabled) {
@@ -91,7 +91,8 @@ public class MultiBlockFurnaces extends Feature {
 	@SubscribeEvent
 	public void onRightClickBlastFurnace(PlayerInteractEvent.RightClickBlock event) {
 		if (!this.isEnabled()
-				|| !event.getLevel().getBlockState(event.getHitVec().getBlockPos()).is(Blocks.BLAST_FURNACE))
+				|| !event.getLevel().getBlockState(event.getHitVec().getBlockPos()).is(Blocks.BLAST_FURNACE)
+				|| !blastFurnaceDataPack)
 			return;
 
 		event.getEntity().sendSystemMessage(Component.translatable(INVALID_FURNACE_LANG));
