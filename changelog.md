@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.11.6
+* Fixed possible startup crash
+
 ## 1.11.5
 * Repair Kits now show up in EMI
 * Disable the "Invalid block" message if the data pack that replaces the vanilla furnace is disabled
