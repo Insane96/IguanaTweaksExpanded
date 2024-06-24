@@ -10,6 +10,7 @@ import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
+import net.minecraftforge.fml.ModList;
 
 @Label(name = "Shields+", description = "Changes to Shields+.")
 @LoadFeature(module = Modules.Ids.COMBAT)
@@ -20,6 +21,6 @@ public class ShieldsPlus extends Feature {
 
 	public ShieldsPlus(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "shields", Component.literal("IguanaTweaks Expanded Shields"), () -> super.isEnabled() && !ITEDataPacks.disableAllDataPacks && shieldsPlusCompatDataPack));
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "shields", Component.literal("IguanaTweaks Expanded Shields"), () -> super.isEnabled() && !ITEDataPacks.disableAllDataPacks && shieldsPlusCompatDataPack && ModList.get().isLoaded("shieldsplus")));
 	}
 }

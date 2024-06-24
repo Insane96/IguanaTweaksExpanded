@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Shields plus data pack no longer enables itself if the mod is not present
+
 ## 1.11.6
 * Fixed possible startup crash
 
