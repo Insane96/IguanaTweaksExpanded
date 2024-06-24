@@ -6,7 +6,6 @@ import insane96mcp.iguanatweaksexpanded.data.generator.*;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockModelsProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockStatesProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEItemModelsProvider;
-import insane96mcp.iguanatweaksexpanded.modifier.ITEModifiers;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ITEArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
@@ -89,7 +88,6 @@ public class IguanaTweaksExpanded
     private void commonSetup(final FMLCommonSetupEvent event) {
         NetworkHandler.init();
         Recall.onLoadComplete();
-        ITEModifiers.init();
 
         event.enqueueWork(() -> {
             DispenserBlock.registerBehavior(Fletching.QUARTZ_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
