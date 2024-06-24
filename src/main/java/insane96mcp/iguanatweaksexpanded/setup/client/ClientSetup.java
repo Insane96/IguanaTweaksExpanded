@@ -46,6 +46,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.List;
@@ -132,14 +133,16 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_AXE, Quaron.AXE.get());
             addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
 
-            addAfter(event, SPItems.STONE_SHIELD.get(), FlintExpansion.SHIELD.get());
-            addAfter(event, SPItems.STONE_SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
-            addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.SHIELD.get());
-            addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());
-            addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.SHIELD.get());
-            addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.COATED_SHIELD.get());
-            addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.SHIELD.get());
-            addAfter(event, SPItems.NETHERITE_SHIELD.get(), SoulSteel.SHIELD.get());
+            if (ModList.get().isLoaded("shieldsplus")) {
+                addAfter(event, SPItems.STONE_SHIELD.get(), FlintExpansion.SHIELD.get());
+                addAfter(event, SPItems.STONE_SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
+                addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.SHIELD.get());
+                addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());
+                addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.SHIELD.get());
+                addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.COATED_SHIELD.get());
+                addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.SHIELD.get());
+                addAfter(event, SPItems.NETHERITE_SHIELD.get(), SoulSteel.SHIELD.get());
+            }
 
             addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.BOOTS.get());
             addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.LEGGINGS.get());
