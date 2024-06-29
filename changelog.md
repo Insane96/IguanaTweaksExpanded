@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* Reworked Durium generation
+  * Durium now generates in rivers inside soils (sand, gravel, etc) instead of underground
 * Shields plus data pack no longer enables itself if the mod is not present
 * Moved Season plant growth modifier and livestock to ITR
 
