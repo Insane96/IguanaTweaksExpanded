@@ -172,8 +172,12 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(Durium.SCRAP_PIECE.get());
         shield(Durium.SHIELD.get());
         withExistingParent("durium_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/durium_block"));
-        withExistingParent("deepslate_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/deepslate_durium_ore"));
         withExistingParent("durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/durium_ore"));
+        withExistingParent("deepslate_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/deepslate_durium_ore"));
+        withExistingParent("sand_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/sand_durium_ore"));
+        withExistingParent("gravel_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/gravel_durium_ore"));
+        withExistingParent("clay_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/clay_durium_ore"));
+        withExistingParent("dirt_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/dirt_durium_ore"));
         withExistingParent("durium_scrap_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/durium_scrap_block"));
 
         basicItemWithTexture(Minecarts.COPPER_POWERED_RAIL.item().get(), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/copper_powered_rail"));

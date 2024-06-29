@@ -202,6 +202,10 @@ public class ClientSetup {
         else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.DEEPSLATE_ORE.item().get());
             addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.ORE.item().get());
+            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.DIRT_ORE.item().get());
+            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.CLAY_ORE.item().get());
+            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.GRAVEL_ORE.item().get());
+            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.SAND_ORE.item().get());
             addAfter(event, Items.DEEPSLATE_DIAMOND_ORE, Keego.ORE.item().get());
             addAfter(event, Items.VINE, Solarium.SOLIUM_MOSS.item().get());
             addAfter(event, Items.DEEPSLATE_COPPER_ORE, OreGeneration.COPPER_ORE_ROCK.item().get());

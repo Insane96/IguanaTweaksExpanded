@@ -225,6 +225,10 @@
 	"block.iguanatweaksexpanded.durium_block": "Block of Durium",
 	"block.iguanatweaksexpanded.durium_ore": "Durium Ore",
 	"block.iguanatweaksexpanded.deepslate_durium_ore": "Deepslate Durium Ore",
+	"block.iguanatweaksexpanded.sand_durium_ore": "Sand Durium Ore",
+	"block.iguanatweaksexpanded.gravel_durium_ore": "Gravel Durium Ore",
+	"block.iguanatweaksexpanded.clay_durium_ore": "Clay Durium Ore",
+	"block.iguanatweaksexpanded.dirt_durium_ore": "Dirt Durium Ore",
 
 	"iguanatweaksexpanded.cant_forge": "Can't forge, no recipe found or output slot occupied",
 	"iguanatweaksexpanded.cant_forge_enchanted": "Can't forge enchanted items",

@@ -54,7 +54,8 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(CoalCharcoal.CHARCOAL_LAYER.block().get())
-                .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
+                .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get())
+                .add(Durium.SAND_ORE.block().get(), Durium.GRAVEL_ORE.block().get(), Durium.CLAY_ORE.block().get(), Durium.DIRT_ORE.block().get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(Durium.BLOCK.block().get(), Durium.ORE.block().get(), Durium.DEEPSLATE_ORE.block().get(), Durium.SCRAP_BLOCK.block().get())
@@ -77,7 +78,7 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(OreGeneration.POOR_RICH_GOLD_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get())
-                .add(Durium.BLOCK.block().get(), Durium.ORE.block().get(), Durium.DEEPSLATE_ORE.block().get(), Durium.SCRAP_BLOCK.block().get())
+                .addTag(Durium.BLOCK_ORES)
                 .add(SoulSteel.BLOCK.block().get())
                 .add(Quaron.BLOCK.block().get())
                 .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
@@ -119,6 +120,9 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(Blocks.RED_NETHER_BRICKS);
         tag(MultiBlockSoulBlastFurnaceBlock.TOP_BLOCKS_TAG)
                 .add(Blocks.RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICK_STAIRS);
+
+        tag(Durium.BLOCK_ORES)
+                .add(Durium.ORE.block().get(), Durium.DEEPSLATE_ORE.block().get(), Durium.SAND_ORE.block().get(), Durium.GRAVEL_ORE.block().get(), Durium.CLAY_ORE.block().get(), Durium.DIRT_ORE.block().get());
 
         tag(COPPER_ORES).add(Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, OreGeneration.POOR_RICH_COPPER_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get());
         tag(IRON_ORES).add(Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, OreGeneration.POOR_RICH_IRON_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().block().get());

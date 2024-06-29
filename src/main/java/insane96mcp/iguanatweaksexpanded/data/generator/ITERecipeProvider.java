@@ -530,8 +530,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
         addBlastingRecipe(writer, OreGeneration.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 200, 1f);
         //Durium
-        addBlastingRecipe(writer, Durium.ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 200, 3f);
-        addBlastingRecipe(writer, Durium.DEEPSLATE_ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 200, 3f);
+        addBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 200, 3f);
         //Other
         addBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 400);
         addBlastingRecipe(writer, Items.COAL_ORE, Items.COAL, 0.7f, 100, 1f);
@@ -913,6 +912,21 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
 
     public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
         addBlastingRecipe(writer, item, result, experience, cookingTime, 0f);
+    }
+
+    public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> itemTag, Item result, float experience, int cookingTime, float outputIncrease) {
+        String resultPath = ForgeRegistries.ITEMS.getKey(result).getPath();
+        MultiItemSmeltingRecipeBuilder.blasting(
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(itemTag)),
+                        RecipeCategory.MISC,
+                        result,
+                        cookingTime
+                )
+                .experience(experience)
+                .outputIncrease(outputIncrease)
+                .group(resultPath)
+                .unlockedBy("has_" + itemTag.location().getPath(), has(itemTag))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
     }
 
     public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {

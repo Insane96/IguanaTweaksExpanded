@@ -20,6 +20,10 @@ public class ITEBlockStatesProvider extends BlockStateProvider {
         simpleBlock(Durium.BLOCK.block().get());
         simpleBlock(Durium.ORE.block().get());
         simpleBlock(Durium.DEEPSLATE_ORE.block().get());
+        simpleBlock(Durium.SAND_ORE.block().get());
+        simpleBlock(Durium.GRAVEL_ORE.block().get());
+        simpleBlock(Durium.CLAY_ORE.block().get());
+        simpleBlock(Durium.DIRT_ORE.block().get());
         simpleBlock(SoulSteel.BLOCK.block().get());
         simpleBlock(Keego.ORE.block().get());
         simpleBlock(Keego.BLOCK.block().get());

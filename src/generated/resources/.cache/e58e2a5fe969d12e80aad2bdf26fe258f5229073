@@ -1,8 +1,9 @@
-// 1.20.1	2024-02-23T15:02:10.3468929	Tags for minecraft:block mod id iguanatweaksexpanded
+// 1.20.1	2024-06-29T10:14:07.4488763	Tags for minecraft:block mod id iguanatweaksexpanded
 2cb22637ec612d1ef4afb26b2a1a345fce7cc04e data/iguanatweaksexpanded/tags/blocks/blast_furnace/bottom_blocks.json
 78324d910f5cc8784b4ebcd3728d920fa0ab2e6d data/iguanatweaksexpanded/tags/blocks/blast_furnace/middle_blocks.json
 a8607b824def8e491631b4ca5d6969fe654262ad data/iguanatweaksexpanded/tags/blocks/blast_furnace/top_blocks.json
 580185e88ace441121c7d836dcb44133a31e4acc data/iguanatweaksexpanded/tags/blocks/copper_ores.json
+8f54b552cda1f7670077e441aa0de17aac29e71e data/iguanatweaksexpanded/tags/blocks/durium_ores.json
 02bd6b9084068c7ea131acec0ab3a4d7fccd538c data/iguanatweaksexpanded/tags/blocks/gold_ores.json
 274de66e70df3570b9b32bb25a74033fdc4b989a data/iguanatweaksexpanded/tags/blocks/iron_ores.json
 06b7323cde486f1b5b40ebd4c127e41888258634 data/iguanatweaksexpanded/tags/blocks/soul_blast_furnace/bottom_blocks.json
@@ -16,8 +17,8 @@ a1078c15e8660e4937bb63754e023e259f369d72 data/minecraft/tags/blocks/beacon_base_
 6e5c10a3a3fc7c1a3011bc982572d527d09d20ba data/minecraft/tags/blocks/iron_ores.json
 16ed06d9f01dc4cfde40c5f7ab2b2ee5fbe3d9da data/minecraft/tags/blocks/mineable/axe.json
 bf7c498bf537d838d86ffb417c12ce311bf520ea data/minecraft/tags/blocks/mineable/pickaxe.json
-a915da958906b8856cd2faaf3ea979da040b8ee4 data/minecraft/tags/blocks/mineable/shovel.json
-82e280cfbe9e0f713c8d906940c58e24a5f3ca82 data/minecraft/tags/blocks/needs_iron_tool.json
+b5a65a5dbccd1cbfdfec403fd181acce7bc3a0b2 data/minecraft/tags/blocks/mineable/shovel.json
+35af18c0e91d6b269ee50b2e9afe3757a87c610e data/minecraft/tags/blocks/needs_iron_tool.json
 93bb1813563f30342b90e034607d18b58fa55c27 data/minecraft/tags/blocks/needs_stone_tool.json
 e6ef6c138102c42f346b2b088b17f514f1d53537 data/minecraft/tags/blocks/rails.json
 a9a73aeeb83ce0398b06b296c97db2e0ed9724bd data/minecraft/tags/blocks/replaceable_by_trees.json
