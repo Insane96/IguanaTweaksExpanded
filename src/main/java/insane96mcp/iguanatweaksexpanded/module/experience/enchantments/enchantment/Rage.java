@@ -13,7 +13,7 @@ public class Rage extends BonusDamageEnchantment {
 
     @Override
     public float getDamageBonusPerLevel() {
-        return 2f;
+        return 1.5f;
     }
 
     @Override
