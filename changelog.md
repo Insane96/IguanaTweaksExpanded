@@ -10,6 +10,8 @@
   * Removed Nether Infused Powered Rails
 * Shields plus data pack no longer enables itself if the mod is not present
 * Moved Season plant growth modifier and livestock to ITR
+* Fixed again time control not working on world creation
+* Minor fixes
 
 ## 1.11.6
 * Fixed possible startup crash
