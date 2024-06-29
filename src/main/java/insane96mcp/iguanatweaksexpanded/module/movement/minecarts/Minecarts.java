@@ -23,8 +23,8 @@ import net.minecraftforge.common.data.GlobalLootModifierProvider;
 public class Minecarts extends Feature {
 
 	public static final SimpleBlockWithItem NETHER_INFUSED_POWERED_RAIL = SimpleBlockWithItem.register("nether_infused_powered_rail", () -> new ITEPoweredRail(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL), 1f, 0.18f));
-	public static final SimpleBlockWithItem GOLDEN_POWERED_RAIL = SimpleBlockWithItem.register("golden_powered_rail", () -> new ITEPoweredRail(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL), 0.7f, 0.10f));
-	public static final SimpleBlockWithItem COPPER_POWERED_RAIL = SimpleBlockWithItem.register("copper_powered_rail", () -> new ITEPoweredRail(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL).sound(SoundType.COPPER), 0.35f, 0.05f));
+	public static final SimpleBlockWithItem GOLDEN_POWERED_RAIL = SimpleBlockWithItem.register("golden_powered_rail", () -> new ITEPoweredRail(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL), 1f, 0.18f));
+	public static final SimpleBlockWithItem COPPER_POWERED_RAIL = SimpleBlockWithItem.register("copper_powered_rail", () -> new ITEPoweredRail(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL).sound(SoundType.COPPER), 0.4f, 0.05f));
 
 	@Config
 	@Label(name = "Data Pack", description = "If true, enables a data pack that makes rails cheaper and adds recipes for new rails.")

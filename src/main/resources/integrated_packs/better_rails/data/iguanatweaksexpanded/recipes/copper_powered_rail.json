@@ -11,9 +11,6 @@
             "item": "minecraft:rail"
         },
         {
-            "item": "minecraft:rail"
-        },
-        {
             "item": "minecraft:redstone"
         },
         {
@@ -22,6 +19,6 @@
     ],
     "result": {
         "item": "iguanatweaksexpanded:copper_powered_rail",
-        "count": 4
+        "count": 3
     }
 }

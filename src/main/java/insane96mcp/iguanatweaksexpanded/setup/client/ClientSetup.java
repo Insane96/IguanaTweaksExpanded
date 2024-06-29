@@ -111,7 +111,7 @@ public class ClientSetup {
             addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
 
-            addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());
+            //addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());
             addAfter(event, Items.RAIL, Minecarts.GOLDEN_POWERED_RAIL.item().get());
             addAfter(event, Items.RAIL, Minecarts.COPPER_POWERED_RAIL.item().get());
         }
@@ -193,7 +193,7 @@ public class ClientSetup {
             addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENCHANTING_TABLE.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
-            addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());
+            //addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());
             addAfter(event, Items.RAIL, Minecarts.GOLDEN_POWERED_RAIL.item().get());
             addAfter(event, Items.RAIL, Minecarts.COPPER_POWERED_RAIL.item().get());
             addAfter(event, Items.TNT, MiningCharge.MINING_CHARGE.item().get());

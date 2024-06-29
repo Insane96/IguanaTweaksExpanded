@@ -3,6 +3,11 @@
 ## Upcoming
 * Reworked Durium generation
   * Durium now generates in rivers inside soils (sand, gravel, etc) instead of underground
+* Mini-rework for rails
+  * Golden Powered Rails now go as fast as Nether Infused Powered rails
+  * Copper Powered Rails are slightly faster
+  * Reduced rails crafting
+  * Removed Nether Infused Powered Rails
 * Shields plus data pack no longer enables itself if the mod is not present
 * Moved Season plant growth modifier and livestock to ITR
 
