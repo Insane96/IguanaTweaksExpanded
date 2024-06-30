@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.12.0
 * Reworked Durium generation
   * Durium now generates in rivers inside soils (sand, gravel, etc) instead of underground
 * Mini-rework for rails
@@ -9,8 +9,7 @@
   * Reduced rails crafting
   * Removed Nether Infused Powered Rails
 * Shields plus data pack no longer enables itself if the mod is not present
-* Increased items base damage by 0.5 but reduced enchantments damage
-  * Rage (2 -> 1.5 max damage per level)
+* Increased items base damage by 0.5
 * Moved Season plant growth modifier and livestock to ITR
 * Fixed again time control not working on world creation
 * Minor fixes
