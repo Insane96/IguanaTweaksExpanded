@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.12.0
+## Upcoming
+* Beeg ore veins are now disabled by default
+* Fixed clay durium ore dropping the block instead of balls
+
+##** 1.12.0
 * Reworked Durium generation
   * Durium now generates in rivers inside soils (sand, gravel, etc) instead of underground
 * Mini-rework for rails
@@ -13,9 +17,6 @@
 * Moved Season plant growth modifier and livestock to ITR
 * Fixed again time control not working on world creation
 * Minor fixes
-
-## Upcoming
-* Fixed clay durium ore dropping the block instead of balls
 
 ## 1.11.6
 * Fixed possible startup crash
