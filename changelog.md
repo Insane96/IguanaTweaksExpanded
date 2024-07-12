@@ -14,6 +14,9 @@
 * Fixed again time control not working on world creation
 * Minor fixes
 
+## Upcoming
+* Fixed clay durium ore dropping the block instead of balls
+
 ## 1.11.6
 * Fixed possible startup crash
 
