@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.12.1
 * Mobs now gain more Follow Range, XRay Range and movement speed the farther they spawn from world spawn
 * Beeg ore veins are now disabled by default
 * Fixed clay durium ore dropping the block instead of balls
