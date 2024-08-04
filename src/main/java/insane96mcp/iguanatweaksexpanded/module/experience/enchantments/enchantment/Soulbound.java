@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Soulbound extends Enchantment {
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_soulbound_enchantments");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_soulbound");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("soulbound_enchantment",
             (item) -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT) || EnchantmentCategory.VANISHABLE.canEnchant(item));
     public Soulbound() {

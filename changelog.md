@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Removed `iguanatweaksexpanded:iron_ores`, `gold_ores` and `copper_ores` block tags. These tags already exist in minecraft
+* Fixed name of item tag that makes items accept the soulbound enchantment (~~`enchanting/accepts_soulbound_enchantments`~~ -> `enchanting/accepts_soulbound`)
 
 ## 1.12.1
 * Mobs now gain more Follow Range, XRay Range and movement speed the farther they spawn from world spawn
