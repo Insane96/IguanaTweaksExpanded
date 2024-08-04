@@ -33,11 +33,6 @@ import java.util.concurrent.CompletableFuture;
 
 public class ITEBlockTagsProvider extends BlockTagsProvider {
     public static final TagKey<Block> RESPAWN_OBELISK_BLOCKS_TO_ROT = create("structures/respawn_obelisk/blocks_to_rot");
-    public static final TagKey<Block> TALL_GRASS = create("tall_grass");
-    public static final TagKey<Block> GRASS_BLOCKS = create("grass_blocks");
-    public static final TagKey<Block> COPPER_ORES = create("copper_ores");
-    public static final TagKey<Block> GOLD_ORES = create("gold_ores");
-    public static final TagKey<Block> IRON_ORES = create("iron_ores");
 
     public ITEBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, String modId, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, modId, existingFileHelper);
@@ -104,9 +99,6 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
         tag(RESPAWN_OBELISK_BLOCKS_TO_ROT)
                 .add(Blocks.COBBLESTONE).add(Blocks.MOSSY_COBBLESTONE).add(Blocks.STONE_BRICKS).add(Blocks.STONE_BRICK_SLAB).add(Blocks.SANDSTONE).add(Blocks.SANDSTONE_SLAB).add(Blocks.ORANGE_TERRACOTTA).add(Blocks.COBBLESTONE_SLAB).add(Blocks.SNOW_BLOCK).add(Blocks.SNOW).add(Blocks.BLUE_ICE).add(Blocks.DEEPSLATE_BRICKS).add(Blocks.DEEPSLATE_BRICK_SLAB).add(Blocks.COBBLED_DEEPSLATE).add(Blocks.BIRCH_PLANKS).add(Blocks.BIRCH_SLAB).add(Blocks.BIRCH_LOG).add(Blocks.PRISMARINE).add(Blocks.PRISMARINE_BRICKS).add(Blocks.PRISMARINE_BRICK_SLAB);
 
-        tag(TALL_GRASS)
-                .add(Blocks.GRASS).add(Blocks.TALL_GRASS).add(Blocks.FERN).add(Blocks.DEAD_BUSH);
-
         tag(MultiBlockBlastFurnaceBlock.BOTTOM_BLOCKS_TAG)
                 .add(Blocks.SMOOTH_STONE, Blocks.SMOOTH_STONE_SLAB);
         tag(MultiBlockBlastFurnaceBlock.MIDDLE_BLOCKS_TAG)
@@ -123,10 +115,6 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
 
         tag(Durium.BLOCK_ORES)
                 .add(Durium.ORE.block().get(), Durium.DEEPSLATE_ORE.block().get(), Durium.SAND_ORE.block().get(), Durium.GRAVEL_ORE.block().get(), Durium.CLAY_ORE.block().get(), Durium.DIRT_ORE.block().get());
-
-        tag(COPPER_ORES).add(Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, OreGeneration.POOR_RICH_COPPER_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get());
-        tag(IRON_ORES).add(Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, OreGeneration.POOR_RICH_IRON_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().block().get());
-        tag(GOLD_ORES).add(Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, OreGeneration.POOR_RICH_GOLD_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get());
     }
 
     public static TagKey<Block> create(String tagName) {

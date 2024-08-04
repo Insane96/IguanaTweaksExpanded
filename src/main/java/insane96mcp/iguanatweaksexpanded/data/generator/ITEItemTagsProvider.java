@@ -39,12 +39,12 @@ import java.util.concurrent.CompletableFuture;
 
 public class ITEItemTagsProvider extends ItemTagsProvider {
 
-    public static final TagKey<Item> WOODEN_HAND_EQUIPMENT = ITEItemTagsProvider.create("equipment/hand/wooden");
-    public static final TagKey<Item> STONE_HAND_EQUIPMENT = ITEItemTagsProvider.create("equipment/hand/stone");
-    public static final TagKey<Item> FLINT_HAND_EQUIPMENT = ITEItemTagsProvider.create("equipment/hand/flint");
-    public static final TagKey<Item> COPPER_HAND_EQUIPMENT = ITEItemTagsProvider.create("equipment/hand/copper");
-    public static final TagKey<Item> CHAINED_COPPER_ARMOR = ITEItemTagsProvider.create("equipment/armor/chained_copper");
-    public static final TagKey<Item> FORGE_HAMMERS = ITEItemTagsProvider.create("equipment/forge_hammers");
+    public static final TagKey<Item> WOODEN_HAND_EQUIPMENT = create("equipment/hand/wooden");
+    public static final TagKey<Item> STONE_HAND_EQUIPMENT = create("equipment/hand/stone");
+    public static final TagKey<Item> FLINT_HAND_EQUIPMENT = create("equipment/hand/flint");
+    public static final TagKey<Item> COPPER_HAND_EQUIPMENT = create("equipment/hand/copper");
+    public static final TagKey<Item> CHAINED_COPPER_ARMOR = create("equipment/armor/chained_copper");
+    public static final TagKey<Item> FORGE_HAMMERS = create("equipment/forge_hammers");
 
     public ITEItemTagsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture, CompletableFuture<TagLookup<Block>> tagLookupCompletableFuture, String modId, @Nullable ExistingFileHelper existingFileHelper) {
         super(packOutput, completableFuture, tagLookupCompletableFuture, modId, existingFileHelper);
