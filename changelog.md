@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Removed `iguanatweaksexpanded:iron_ores`, `gold_ores` and `copper_ores` block tags. These tags already exist in minecraft
+* Added tooltip to the firestarter
 * Fixed name of item tag that makes items accept the soulbound enchantment (~~`enchanting/accepts_soulbound_enchantments`~~ -> `enchanting/accepts_soulbound`)
 
 ## 1.12.1

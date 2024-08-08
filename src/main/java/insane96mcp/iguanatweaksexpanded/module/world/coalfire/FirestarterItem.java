@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.world.coalfire;
 import insane96mcp.iguanatweaksexpanded.module.mining.miningcharge.MiningCharge;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -19,6 +20,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 
 public class FirestarterItem extends FlintAndSteelItem implements Vanishable {
@@ -106,5 +110,11 @@ public class FirestarterItem extends FlintAndSteelItem implements Vanishable {
 
     public UseAnim getUseAnimation(ItemStack p_40678_) {
         return UseAnim.BOW;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        pTooltipComponents.add(Component.translatable("item.iguanatweaksexpanded.firestarter.tooltip"));
     }
 }

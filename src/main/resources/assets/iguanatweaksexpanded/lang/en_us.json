@@ -310,6 +310,7 @@
 	"item.iguanatweaksexpanded.cloth": "Cloth",
 
 	"item.iguanatweaksexpanded.firestarter": "Firestarter",
+	"item.iguanatweaksexpanded.firestarter.tooltip": "Hold right click to use",
 	"block.iguanatweaksexpanded.charcoal_layer": "Charcoal Layer",
 	"block.iguanatweaksexpanded.soul_sand_hellish_coal_ore": "Soul Sand Hellish Coal Ore",
 	"block.iguanatweaksexpanded.soul_soil_hellish_coal_ore": "Soul Soil Hellish Coal Ore",
