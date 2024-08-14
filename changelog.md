@@ -1,6 +1,11 @@
 # Changelog
 
 ## Upcoming
+* Updated advancements
+  * Nether, End and Farmers' Delight advancements are now merged into the main advancements of the mod (no longer have their own tab)
+  * Renamed some advancements
+  * Moved some others
+  * Removed Ore Rocks advancement
 * Removed `iguanatweaksexpanded:iron_ores`, `gold_ores` and `copper_ores` block tags. These tags already exist in minecraft
 * Added tooltip to the firestarter
 * Fixed cleansed lapis drop with Fortune I being too high
