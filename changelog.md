@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.12.2
 * Updated advancements
   * Nether, End and Farmers' Delight advancements are now merged into the main advancements of the mod (no longer have their own tab)
   * Renamed some advancements
