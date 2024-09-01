@@ -412,7 +412,7 @@
 	"advancements.sr_story.diamond_arrow.title": "Diamond tip",
 	"advancements.sr_story.diamond_arrow.description": "Make Diamond arrows that deal much more damage than base arrows",
 	"advancements.sr_story.quartz_arrow.title": "White tip",
-	"advancements.sr_story.quartz_arrow.description": "Make Quartz arrows that deal more damage than base arrows",
+	"advancements.sr_story.quartz_arrow.description": "Make Quartz arrows that deal piercing damage (ignore armor)",
 	"advancements.sr_story.explosive_arrow.title": "Arrow goes boom",
 	"advancements.sr_story.explosive_arrow.description": "Make explosive arrows",
 	"advancements.sr_story.torch_arrow.title": "Big caves require torching",
