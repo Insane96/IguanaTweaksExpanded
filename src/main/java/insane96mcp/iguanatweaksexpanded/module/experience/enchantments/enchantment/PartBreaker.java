@@ -72,8 +72,14 @@ public class PartBreaker extends Enchantment {
         LootTable lootTable = level.getServer().getLootData().getLootTable(lootTableLocation);
         lootTable.getRandomItems(lootParams)
                 .forEach(stack -> {
-                    if (level.getRandom().nextFloat() < PartBreaker.getChance(lvl))
+                    for (ItemEntity itemEntity : event.getDrops()) {
+                        if (itemEntity.getItem().getItem() == stack.getItem()) {
+                            stack.shrink(itemEntity.getItem().getCount());
+                        }
+                    }
+                    if (level.getRandom().nextFloat() < PartBreaker.getChance(lvl)) {
                         event.getDrops().add(new ItemEntity(level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), stack));
+                    }
                 });
     }
 }
