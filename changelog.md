@@ -7,6 +7,7 @@
   * No longer fly faster and farther
 * Fixed part breaker dropping multiple items that already dropped naturally
   * E.g. Wither Skeletons can no longer drop 2 skulls
+* Decreased Gravity Defying cost (~~5~~ -> 4)
 * Serene Seasons' seasonal_crops is no longer set to false, as it's done in ITR
 
 ## 1.12.2

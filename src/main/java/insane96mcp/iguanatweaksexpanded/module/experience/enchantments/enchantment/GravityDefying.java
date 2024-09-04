@@ -9,7 +9,7 @@ public class GravityDefying extends Enchantment {
     public static final String NBT_TAG = IguanaTweaksExpanded.RESOURCE_PREFIX + "gravity_defying";
 
     public GravityDefying() {
-        super(Rarity.VERY_RARE, EnchantmentCategory.BOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
+        super(Rarity.RARE, EnchantmentCategory.BOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     }
 
     @Override
