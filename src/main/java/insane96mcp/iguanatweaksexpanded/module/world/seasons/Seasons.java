@@ -37,11 +37,9 @@ import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 import sereneseasons.api.season.Season;
 import sereneseasons.api.season.SeasonChangedEvent;
 import sereneseasons.api.season.SeasonHelper;
-import sereneseasons.config.FertilityConfig;
 import sereneseasons.config.ServerConfig;
 import sereneseasons.handler.season.SeasonHandler;
 import sereneseasons.season.SeasonSavedData;
@@ -70,8 +68,6 @@ public class Seasons extends Feature {
 	@Config
 	@Label(name = "Serene Seasons changes", description = """
 			Makes the following changes to Serene Seasons config:
-			Makes the following changes to Serene Seasons config:
-			* seasonal_crops is set to false, as it's controlled by Plants Growth
 			* Sets the starting season to the one in 'Starting season'
 			""")
 	public static Boolean changeSereneSeasonsConfig = true;
@@ -100,14 +96,6 @@ public class Seasons extends Feature {
 		super(module, enabledByDefault, canBeDisabled);
 		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "serene_seasons_changes", Component.literal("IguanaTweaks Expanded Serene Seasons Changes"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noGreenHouseGlass));
 		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "no_saplings_in_winter", Component.literal("IguanaTweaks Expanded No Saplings in Winter"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && noSaplingsInWinter));
-	}
-
-	@Override
-	public void readConfig(ModConfigEvent event) {
-		super.readConfig(event);
-
-		if (changeSereneSeasonsConfig)
-			FertilityConfig.seasonalCrops.set(false);
 	}
 
 	@SubscribeEvent
