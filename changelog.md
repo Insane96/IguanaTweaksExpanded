@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.12.3
 * Added new Enchantments
   * Knowledgeable: 20% chance for mobs hit or blocks mined to drop xp (treasure)
   * Recovery: Recover 50% of damage taken back when hit
