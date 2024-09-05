@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* Added new Enchantments
+  * Knowledgeable: Chance for mobs hit or blocks mined to drop xp
 * Quartz arrows 
   * Now deal bonus piercing damage 
   * Base damage: ~~2~~ -> 1

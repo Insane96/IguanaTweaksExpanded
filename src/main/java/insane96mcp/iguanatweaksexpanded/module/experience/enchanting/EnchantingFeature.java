@@ -104,6 +104,7 @@ public class EnchantingFeature extends JsonFeature {
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "gravity_defying", 4f),
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "magnetic", 2.6f),
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "soulbound", 4f),
+            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "knowledgeable", 4f),
             IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "walking_curse", 5f),
             IdTagValue.newId(IguanaTweaksReborn.RESOURCE_PREFIX + "luck", 3.2f),
             IdTagValue.newId(IguanaTweaksReborn.RESOURCE_PREFIX + "vigour", 3.45f),

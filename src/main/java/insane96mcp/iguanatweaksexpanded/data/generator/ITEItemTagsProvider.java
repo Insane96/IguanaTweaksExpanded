@@ -59,6 +59,8 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
         tag(Smartness.ACCEPTS_ENCHANTMENT)
                 .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
+        tag(Knowledgeable.ACCEPTS_ENCHANTMENT)
+                .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(Reach.ACCEPTS_ENCHANTMENT)
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .addTag(Tags.Items.ARMORS_CHESTPLATES);

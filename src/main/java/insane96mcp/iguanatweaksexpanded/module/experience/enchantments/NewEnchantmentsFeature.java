@@ -93,6 +93,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
 	public static final RegistryObject<Enchantment> REACH = ITERegistries.ENCHANTMENTS.register("reach", Reach::new);
 	public static final RegistryObject<Enchantment> ADRENALINE = ITERegistries.ENCHANTMENTS.register("adrenaline", Adrenaline::new);
+	public static final RegistryObject<Enchantment> KNOWLEDGEABLE = ITERegistries.ENCHANTMENTS.register("knowledgeable", Knowledgeable::new);
 
 	//Fishing rods
 	public static final RegistryObject<Enchantment> JUICY_BAIT = ITERegistries.ENCHANTMENTS.register("lucky_hook", JuicyBait::new);
@@ -222,6 +223,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBlockBreakLowest(BlockEvent.BreakEvent event) {
+		event.setExpToDrop(Knowledgeable.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 	}
@@ -230,6 +232,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onEnchantmentBlockBreak(EnchantmentBlockBreakEvent event) {
+		event.setExpToDrop(Knowledgeable.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
