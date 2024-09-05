@@ -87,6 +87,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> PART_BREAKER = ITERegistries.ENCHANTMENTS.register("part_breaker", PartBreaker::new);
 	public static final RegistryObject<Enchantment> AIR_STEALER = ITERegistries.ENCHANTMENTS.register("air_stealer", AirStealer::new);
 	public static final RegistryObject<Enchantment> ARMOR_PIERCER = ITERegistries.ENCHANTMENTS.register("armor_piercer", ArmorPiercer::new);
+	//public static final RegistryObject<Enchantment> EXPLOSIVE = ITERegistries.ENCHANTMENTS.register("explosive", Explosive::new);
 
 	//Tools and weapons
 	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
