@@ -2,7 +2,8 @@
 
 ## Upcoming
 * Added new Enchantments
-  * Knowledgeable: Chance for mobs hit or blocks mined to drop xp
+  * Knowledgeable: 20% chance for mobs hit or blocks mined to drop xp (treasure)
+  * Recovery: Recover 50% of damage taken back when hit
 * Quartz arrows 
   * Now deal bonus piercing damage 
   * Base damage: ~~2~~ -> 1

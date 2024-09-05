@@ -70,6 +70,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> MELEE_PROTECTION = ITERegistries.ENCHANTMENTS.register("melee_protection", MeleeProtection::new);
 	public static final RegistryObject<Enchantment> HEALTHY = ITERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ITERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
+	public static final RegistryObject<Enchantment> RECOVERY = ITERegistries.ENCHANTMENTS.register("recovery", Recovery::new);
 	public static final RegistryObject<Enchantment> STEP_UP = ITERegistries.ENCHANTMENTS.register("step_up", StepUp::new);
 	public static final RegistryObject<Enchantment> ZIPPY = ITERegistries.ENCHANTMENTS.register("zippy", Zippy::new);
 	public static final RegistryObject<Enchantment> HOPPY = ITERegistries.ENCHANTMENTS.register("hoppy", Hoppy::new);
@@ -152,6 +153,7 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onDamaged(LivingDamageEvent event) {
 		Vindication.tryStackDamage(event.getEntity(), event.getSource(), event.getAmount());
+		Recovery.storeDamageToRegen(event.getEntity(), event.getSource(), event.getAmount());
 		CurseOfEnder.onHurt(event);
 		SteadyFall.onFall(event);
 	}
@@ -268,6 +270,7 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onLivingTick(LivingEvent.LivingTickEvent event) {
 		CurseOfSinking.sink(event);
+		Recovery.regen(event);
 	}
 
 	@SubscribeEvent

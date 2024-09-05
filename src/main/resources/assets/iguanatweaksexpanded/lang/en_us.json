@@ -13,6 +13,7 @@
 
 	"enchantment.iguanatweaksexpanded.magnetic": "Magnetic",
 	"enchantment.iguanatweaksexpanded.vindication": "Vindication",
+	"enchantment.iguanatweaksexpanded.recovery": "Recovery",
 	"enchantment.iguanatweaksexpanded.magic_protection": "Magic Protection",
 	"enchantment.iguanatweaksexpanded.melee_protection": "Melee Protection",
 	"enchantment.iguanatweaksexpanded.expanded": "Expanded",
@@ -65,6 +66,7 @@
 
 	"enchantment.iguanatweaksexpanded.magnetic.info": "Pulls items towards the wearer",
 	"enchantment.iguanatweaksexpanded.vindication.info": "Stack damage when attacked and deal it back with the next strike",
+	"enchantment.iguanatweaksexpanded.recovery.info": "Recover some health back overtime when attacked",
 	"enchantment.iguanatweaksexpanded.magic_protection.info": "Reduced Magic Damage",
 	"enchantment.iguanatweaksexpanded.melee_protection.info": "Reduced Melee Damage",
 	"enchantment.iguanatweaksexpanded.expanded.info": "Mine multiple blocks in columns",
