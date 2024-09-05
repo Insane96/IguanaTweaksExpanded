@@ -171,6 +171,11 @@ tasks.named('jar', Jar).configure {
     }
 
     finalizedBy 'reobfJar'
+    archiveClassifier = 'no-jar-jar'
+}
+
+tasks.named('jarJar') {
+    archiveClassifier = ''
 }
 
 tasks.withType(JavaCompile).configureEach {
