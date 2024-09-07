@@ -1,6 +1,5 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ITRProtectionEnchantment;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -13,7 +12,7 @@ import java.util.UUID;
 public class SprintPact extends Enchantment implements IAttributeEnchantment {
     public static final UUID MODIFIER_UUID = UUID.fromString("532b9dee-e3c6-4c1d-9eb5-0e15010e5a58");
     public SprintPact() {
-        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR, ITRProtectionEnchantment.ARMOR_SLOTS);
+        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR_LEGS, new EquipmentSlot[]{EquipmentSlot.LEGS});
     }
 
     @Override

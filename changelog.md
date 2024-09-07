@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed Sprint Pact applyable to any armor piece instead of just leggings
+
 ## 1.12.3
 * Added new Enchantments
   * Knowledgeable: 20% chance for mobs hit or blocks mined to drop xp (treasure)
