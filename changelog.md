@@ -1,7 +1,7 @@
 # Changelog
 
 ## Upcoming
-* Rebalanced Quartz arrows
+* Rebalanced Armor Piercer
   * +0.35 -> +1 armor piercing damage per level
   * [NEW] -10% attack damage
 * Rebalanced Quartz arrows
