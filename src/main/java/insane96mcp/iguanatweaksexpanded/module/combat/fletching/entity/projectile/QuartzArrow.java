@@ -34,7 +34,7 @@ public class QuartzArrow extends ITEArrow {
                 ((LivingEntity)entity1).setLastHurtMob(entity);
             }
         }
-        float damage = (float) ((0.15f + this.getBaseDamage() * 0.15f) * this.getDeltaMovement().length());
+        float damage = (float) ((0.8f + this.getBaseDamage() * 0.12f) * this.getDeltaMovement().length());
 
         MCUtils.attackEntityIgnoreInvFrames(damageSource, damage, entity, null, true);
     }

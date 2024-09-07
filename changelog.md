@@ -3,6 +3,8 @@
 ## Upcoming
 * Fixed Sprint Pact applyable to any armor piece instead of just leggings
 * Sprint pact no longer prevents players in creative from flying
+* Rebalanced Quartz arrows
+  * More piercing damage
 
 ## 1.12.3
 * Added new Enchantments
