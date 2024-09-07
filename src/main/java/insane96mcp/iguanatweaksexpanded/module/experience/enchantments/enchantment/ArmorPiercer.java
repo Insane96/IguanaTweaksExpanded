@@ -5,6 +5,7 @@ import insane96mcp.iguanatweaksreborn.module.combat.PiercingDamage;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -41,6 +42,7 @@ public class ArmorPiercer extends Enchantment implements IAttributeEnchantment {
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
         if (event.getSlotType() != EquipmentSlot.MAINHAND)
             return;
-        event.addModifier(PiercingDamage.PIERCING_DAMAGE.get(), new AttributeModifier(MODIFIER_UUID, "Armor Piercier Enchantment Modifier", 0.35d * enchantmentLvl, AttributeModifier.Operation.ADDITION));
+        event.addModifier(PiercingDamage.PIERCING_DAMAGE.get(), new AttributeModifier(MODIFIER_UUID, "Armor Piercier Enchantment Modifier", 1d * enchantmentLvl, AttributeModifier.Operation.ADDITION));
+        event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(MODIFIER_UUID, "Armor Piercier Enchantment Modifier", -0.10d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
     }
 }
