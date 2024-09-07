@@ -79,9 +79,9 @@ public class Fletching extends Feature {
 					.build("ice_arrow"));
 
 	public static final RegistryObject<ITEArrowItem> QUARTZ_ARROW_ITEM = ITERegistries.ITEMS.register("quartz_arrow", () -> new ITEArrowItem(QUARTZ_ARROW::get, 0.5f, new Item.Properties()));
-	public static final RegistryObject<ITEArrowItem> DIAMOND_ARROW_ITEM = ITERegistries.ITEMS.register("diamond_arrow", () -> new ITEArrowItem(DIAMOND_ARROW::get, 3.5f, new Item.Properties()));
+	public static final RegistryObject<ITEArrowItem> DIAMOND_ARROW_ITEM = ITERegistries.ITEMS.register("diamond_arrow", () -> new ITEArrowItem(DIAMOND_ARROW::get, 3f, new Item.Properties()));
 	public static final RegistryObject<ITEArrowItem> EXPLOSIVE_ARROW_ITEM = ITERegistries.ITEMS.register("explosive_arrow", () -> new ITEArrowItem(EXPLOSIVE_ARROW::get, 0f, new Item.Properties()));
-	public static final RegistryObject<ITEArrowItem> TORCH_ARROW_ITEM = ITERegistries.ITEMS.register("torch_arrow", () -> new ITEArrowItem(TORCH_ARROW::get, 1.5f, new Item.Properties()));
+	public static final RegistryObject<ITEArrowItem> TORCH_ARROW_ITEM = ITERegistries.ITEMS.register("torch_arrow", () -> new ITEArrowItem(TORCH_ARROW::get, 1f, new Item.Properties()));
 	public static final RegistryObject<ITEArrowItem> ICE_ARROW_ITEM = ITERegistries.ITEMS.register("ice_arrow", () -> new ITEArrowItem(ICE_ARROW::get, 1f, new Item.Properties()));
 
 	@Config

@@ -4,10 +4,11 @@
 * Rebalanced Armor Piercer
   * +0.35 -> +1 armor piercing damage per level
   * [NEW] -10% attack damage
-* Rebalanced Quartz arrows
-  * More piercing damage
+* Rebalanced Arrows due to changes to Power enchantment
+  * Quartz Arrows: much more piercing damage
+  * Diamond and torch arrows: reduced base damage
 * Fixed Sprint Pact applyable to any armor piece instead of just leggings
-* Sprint pact no longer prevents players in creative from flying
+* Sprint pact no longer prevents players in creative from sprint flying
 
 ## 1.12.3
 * Added new Enchantments
