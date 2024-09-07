@@ -336,6 +336,8 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public void onSprint(PlayerSprintEvent event) {
+		if (event.getPlayer().getAbilities().flying)
+			return;
 		if (EnchantmentHelper.getEnchantmentLevel(SPRINT_PACT.get(), event.getPlayer()) <= 0
 				&& EnchantmentHelper.getEnchantmentLevel(CURSE_OF_WALKING.get(), event.getPlayer()) <= 0)
 			return;
