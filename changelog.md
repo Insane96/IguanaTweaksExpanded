@@ -9,6 +9,7 @@
   * Diamond and torch arrows: reduced base damage
 * Fixed Sprint Pact applyable to any armor piece instead of just leggings
 * Sprint pact no longer prevents players in creative from sprint flying
+* Removed enchantability tooltips when the disableExperience gamerule is enabled
 
 ## 1.12.3
 * Added new Enchantments

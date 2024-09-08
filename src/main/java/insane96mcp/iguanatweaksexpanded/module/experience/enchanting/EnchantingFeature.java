@@ -11,6 +11,7 @@ import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
 import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
+import insane96mcp.iguanatweaksreborn.module.experience.Experience;
 import insane96mcp.iguanatweaksreborn.module.experience.PlayerExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
@@ -370,7 +371,8 @@ public class EnchantingFeature extends JsonFeature {
     public void onTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
         if (!isEnabled(EnchantingFeature.class)
-                || !(event.getEntity() instanceof Player))
+                || !(event.getEntity() instanceof Player)
+                || event.getEntity().level().getGameRules().getBoolean(Experience.RULE_DISABLEEXPERIENCE))
             return;
 
         treasureEnchantmentsEnchantedBooksTooltip(stack, event.getToolTip());
