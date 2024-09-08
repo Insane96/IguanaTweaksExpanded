@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.world.coalfire;
 
 import insane96mcp.iguanatweaksexpanded.module.mining.miningcharge.MiningCharge;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -115,6 +116,6 @@ public class FirestarterItem extends FlintAndSteelItem implements Vanishable {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-        pTooltipComponents.add(Component.translatable("item.iguanatweaksexpanded.firestarter.tooltip"));
+        pTooltipComponents.add(Component.translatable("item.iguanatweaksexpanded.firestarter.tooltip").withStyle(ChatFormatting.GRAY));
     }
 }
