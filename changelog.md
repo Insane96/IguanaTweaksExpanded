@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.12.4
 * Rebalanced Armor Piercer
   * +0.35 -> +1 armor piercing damage per level
   * [NEW] -10% attack damage
