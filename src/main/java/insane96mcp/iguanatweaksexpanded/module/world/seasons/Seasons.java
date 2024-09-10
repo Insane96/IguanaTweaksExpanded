@@ -82,7 +82,7 @@ public class Seasons extends Feature {
 
 	@Config(min = 0)
 	@Label(name = "Time Control day night shift", description = "How many minutes will day and night duration be shifted based off seasons? E.g. in Mid spring / autumn the duration of day and night is vanilla, when moving off those seasons day and night will last this many minutes more/less. In mid summer / winter the duration of day and night duration will be more / less by 3 times this value. Set to 0 to disable")
-	public static Double timeControlDayNightShift = 2d;
+	public static Double timeControlDayNightShift = 1.5d;
 
 	/*@Config
 	@Label(name = "Remove SS TimeSkipHandler", description = "There's a strange bug with the TimeSkipHandler in Serene Seasons where on server the season changed event is still triggered even if no player's online and with random seasons. If this is enabled, the progress_season_while_offline config option is set to false and there's no player online, the TimeSkipHandler will not be triggered.")

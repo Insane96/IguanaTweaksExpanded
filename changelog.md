@@ -11,6 +11,7 @@
 * Sprint pact no longer prevents players in creative from sprint flying
 * Slightly increased respawn obelisks generation rate
 * Removed enchantability tooltips when the disableExperience gamerule is enabled
+* Reduced time shift due to seasons
 
 ## 1.12.3
 * Added new Enchantments
