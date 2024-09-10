@@ -7,6 +7,7 @@
 * Rebalanced Arrows due to changes to Power enchantment
   * Quartz Arrows: much more piercing damage
   * Diamond and torch arrows: reduced base damage
+* Repair kits now stack to 16
 * Fixed Sprint Pact applyable to any armor piece instead of just leggings
 * Sprint pact no longer prevents players in creative from sprint flying
 * Slightly increased respawn obelisks generation rate

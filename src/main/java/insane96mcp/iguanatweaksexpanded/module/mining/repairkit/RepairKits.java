@@ -16,7 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class RepairKits extends Feature {
 
 	public static final RegistryObject<SimpleCraftingRecipeSerializer<RepairKitRepairRecipe>> RECIPE_SERIALIZER = ITERegistries.RECIPE_SERIALIZERS.register("crafting_special_repairingkit", () -> new SimpleCraftingRecipeSerializer<>(RepairKitRepairRecipe::new));
-	public static final RegistryObject<Item> REPAIR_KIT = ITERegistries.ITEMS.register("repair_kit", () -> new RepairKitItem(new Item.Properties()));
+	public static final RegistryObject<Item> REPAIR_KIT = ITERegistries.ITEMS.register("repair_kit", () -> new RepairKitItem(new Item.Properties().stacksTo(16)));
 
 	@Config(min = 1)
 	@Label(name = "Repair Kit Ingot Ratio", description = "How many ingots does a repair kit repair")
