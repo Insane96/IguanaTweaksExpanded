@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Angry Creepers now use the EAI default sound
+
 ## 1.12.4
 * Rebalanced Armor Piercer
   * +0.35 -> +1 armor piercing damage per level

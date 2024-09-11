@@ -15,7 +15,7 @@ import insane96mcp.insanelib.base.config.LoadFeature;
 import insane96mcp.insanelib.base.config.MinMax;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 
-@Label(name = "EnhancedAI", description = "Changes to EnhancedAI config")
+@Label(name = "EnhancedAI", description = "Changes some values in EnhancedAI config")
 @LoadFeature(module = Modules.Ids.MOBS)
 public class EnhancedAI extends Feature {
 
@@ -36,7 +36,6 @@ public class EnhancedAI extends Feature {
         Module.getFeature(CreeperSwell.class).setConfigOption("Breach Chance", 0.4d);
         Module.getFeature(CreeperSwell.class).setConfigOption("Angry Creeper.Explosion power", 3.0d);
         Module.getFeature(CreeperSwell.class).setConfigOption("Angry Creeper.Forced Explosion", false);
-        Module.getFeature(CreeperSwell.class).setConfigOption("Angry Creeper.Sounds", CreeperSwell.AngryCreeperSounds.NONE);
         Module.getFeature(CreeperSwell.class).readConfig(event);
 
         Module.getFeature(FisherMobs.class).setConfigOption("Equip Fishing Rod Chance", 0.05d);
