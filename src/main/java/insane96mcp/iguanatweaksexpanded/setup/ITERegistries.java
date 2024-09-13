@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.setup;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.data.condition.LootItemCurrentSeasonCondition;
 import insane96mcp.iguanatweaksexpanded.data.function.EnchantWithTreasureFunction;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.SoliumBoulderFeature;
@@ -33,7 +32,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -65,10 +63,6 @@ public class ITERegistries {
     public static final DeferredRegister<Feature<?>> FEATURES = createRegistry(ForgeRegistries.FEATURES);
     public static final RegistryObject<SoliumBoulderFeature> SOLIUM_BOUDLER_FEATURE = FEATURES.register("solium_boulder_feature", () -> new SoliumBoulderFeature(BlockStateConfiguration.CODEC));
     public static final RegistryObject<BeegOreVeinFeature> ORE_WITH_SURFACE_FEATURE = FEATURES.register("ore_with_surface_feature", () -> new BeegOreVeinFeature(OreWithRandomPatchConfiguration.CODEC));
-
-    public static final DeferredRegister<LootItemConditionType> LOOT_CONDITION_TYPES = createRegistry(Registries.LOOT_CONDITION_TYPE.location());
-
-    public static final RegistryObject<LootItemConditionType> CURRENT_SEASON = LOOT_CONDITION_TYPES.register("current_season", () -> new LootItemConditionType(new LootItemCurrentSeasonCondition.Serializer()));
 
     public static DeferredRegister<PoiType> POI_TYPES = createRegistry("minecraft", ForgeRegistries.POI_TYPES);
     public static RegistryObject<PoiType> ARMORER = POI_TYPES.register("armorer", () -> {

@@ -3,6 +3,7 @@
 ## Upcoming
 * Angry Creepers now use the EAI default sound
 * Sea creatures size adjusted (0.4x\~1.75x -> 0.5x\~1.6x)
+* Moved Serene Seasons integration in IguanaTweaks Reborn
 
 ## 1.12.4
 * Rebalanced Armor Piercer

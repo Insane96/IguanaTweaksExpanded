@@ -1,35 +1,50 @@
 {
-	"display": {
-		"icon": {
-			"item": "sereneseasons:ss_icon"
-		},
-		"title": {
-			"translate": "advancements.sr_story.winter_is_coming.title"
-		},
-		"description": {
-			"translate": "advancements.sr_story.winter_is_coming.description"
-		},
-		"frame": "task",
-		"show_toast": true,
-		"announce_to_chat": true,
-		"hidden": true
-	},
-	"parent": "iguanatweaksexpanded:story/seeds",
-	"criteria": {
-		"autumn": {
-			"trigger": "iguanatweaksexpanded:season_changed",
-			"conditions": {
-				"seasons": [
-					"EARLY_AUTUMN",
-					"MID_AUTUMN",
-					"LATE_AUTUMN"
+	"type": "forge:conditional",
+
+	"advancements": [
+		{
+			"conditions": [
+				{
+					"type": "forge:mod_loaded",
+					// Returns true if 'examplemod' is loaded
+					"modid": "sereneseasons"
+				}
+			],
+			"advancement": {
+				"display": {
+					"icon": {
+						"item": "sereneseasons:ss_icon"
+					},
+					"title": {
+						"translate": "advancements.sr_story.winter_is_coming.title"
+					},
+					"description": {
+						"translate": "advancements.sr_story.winter_is_coming.description"
+					},
+					"frame": "task",
+					"show_toast": true,
+					"announce_to_chat": true,
+					"hidden": true
+				},
+				"parent": "iguanatweaksexpanded:story/seeds",
+				"criteria": {
+					"autumn": {
+						"trigger": "iguanatweaksreborn:season_changed",
+						"conditions": {
+							"seasons": [
+								"EARLY_AUTUMN",
+								"MID_AUTUMN",
+								"LATE_AUTUMN"
+							]
+						}
+					}
+				},
+				"requirements": [
+					[
+						"autumn"
+					]
 				]
 			}
 		}
-	},
-	"requirements": [
-		[
-			"autumn"
-		]
 	]
 }
