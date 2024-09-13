@@ -6,7 +6,6 @@
 			"conditions": [
 				{
 					"type": "forge:mod_loaded",
-					// Returns true if 'examplemod' is loaded
 					"modid": "sereneseasons"
 				}
 			],
