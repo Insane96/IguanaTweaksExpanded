@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.combat.fletching;
 
+import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.block.ITEFletchingTableBlock;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
@@ -18,6 +19,7 @@ import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -27,11 +29,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 @Label(name = "Fletching table", description = "Gives a use to the fletching table.")
 @LoadFeature(module = Modules.Ids.COMBAT)
 public class Fletching extends Feature {
+	public static final String INVALID_FLETCHING_LANG = IguanaTweaksExpanded.MOD_ID + ".invalid_fletching_table";
 	public static final SimpleBlockWithItem FLETCHING_TABLE = SimpleBlockWithItem.register("fletching_table", () -> new ITEFletchingTableBlock(BlockBehaviour.Properties.copy(Blocks.FLETCHING_TABLE)));
 
 	public static final RegistryObject<RecipeType<FletchingRecipe>> FLETCHING_RECIPE_TYPE = ITERegistries.RECIPE_TYPES.register("fletching", () -> new RecipeType<>() {
@@ -94,5 +99,18 @@ public class Fletching extends Feature {
 	public Fletching(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "fletching", Component.literal("IguanaTweaks Expanded Fletching"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && dataPack));
+	}
+
+	@SubscribeEvent
+	public void onRightClickFletchingTable(PlayerInteractEvent.RightClickBlock event) {
+		if (!this.isEnabled()
+				|| event.getLevel().isClientSide()
+				|| event.getHand() == InteractionHand.OFF_HAND
+				|| !event.getLevel().getBlockState(event.getHitVec().getBlockPos()).is(Blocks.FLETCHING_TABLE)
+				|| !dataPack)
+			return;
+
+		event.getEntity().sendSystemMessage(Component.translatable(INVALID_FLETCHING_LANG));
+		event.setCanceled(true);
 	}
 }

@@ -127,6 +127,7 @@
 	"item.iguanatweaksexpanded.cheese_slice": "Cheese Slice",
 
 	"container.fletching": "Fletching",
+	"iguanatweaksexpanded.invalid_fletching_table": "This block is not valid. Break and place it back.",
 
 	"item.iguanatweaksexpanded.altimeter": "Altimeter",
 

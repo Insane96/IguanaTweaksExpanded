@@ -26,6 +26,7 @@ import insane96mcp.insanelib.base.config.LoadFeature;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -91,6 +92,8 @@ public class MultiBlockFurnaces extends Feature {
 	@SubscribeEvent
 	public void onRightClickBlastFurnace(PlayerInteractEvent.RightClickBlock event) {
 		if (!this.isEnabled()
+				|| event.getLevel().isClientSide()
+				|| event.getHand() == InteractionHand.OFF_HAND
 				|| !event.getLevel().getBlockState(event.getHitVec().getBlockPos()).is(Blocks.BLAST_FURNACE)
 				|| !blastFurnaceDataPack)
 			return;
