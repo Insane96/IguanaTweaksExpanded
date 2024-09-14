@@ -1,6 +1,19 @@
 # Changelog
 
+* Nerf mobs in normal and easy
+
 ## Upcoming
+* Rebalanced mob buffs so normal and easy difficulty are slightly easier
+  * Adjusted Non-zombies bonus follow range (~~24 at any difficulty~~ -> 16, 24 in hard)
+  * Horses no longer have 5% bonus movement speed
+  * Adjusted xray chance and range (~~50% at any difficulty~~ -> 40% chance, 60% in hard) (~~16 range at any difficulty~~ -> 16 range, 24 in hard))
+  * Adjusted movement speed bonus (~~+11% at any difficulty~~ -> +9%, +12% in hard)
+  * Skeleton inaccuracy is no longer lower in easy
+  * Skeleton and zombies chance to get equipment has been increased in hard (~~15% at any difficulty~~ -> 15%, 20% in hard)
+  * Increased speed nerf for spiders (~~-8%~~ -> -9%)
+  * Increased bonus movement speed for zombies in hard (~~+2% at any difficulty~~ -> +2%, +5% in hard)
+  * Increased bonus follow range for zombies in hard (~~+12 at any difficulty~~ -> +12, +16 in hard)
+  * Adjusted zombies chance to be a miner (~~15% at any difficulty~~ -> 10%, 15% in hard)
 * Angry Creepers now use the EAI default sound
 * Sea creatures size adjusted (0.4x\~1.75x -> 0.5x\~1.6x)
 * Moved Serene Seasons integration in IguanaTweaks Reborn

@@ -12,6 +12,10 @@
                             "moon_phases": "full_moon"
                         }
                     }
+                },
+                "difficulty_modifier": {
+                    "operation": "add",
+                    "hard": 0.05
                 }
             },
             "enchantments": [

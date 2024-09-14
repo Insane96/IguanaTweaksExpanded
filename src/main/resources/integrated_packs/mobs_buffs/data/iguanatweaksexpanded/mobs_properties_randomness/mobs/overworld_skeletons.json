@@ -9,7 +9,6 @@
                 "max": 10,
                 "difficulty_modifier": {
                     "operation": "multiply",
-                    "easy": 1.3333333,
                     "hard": 0.5
                 }
             },
@@ -147,6 +146,10 @@
                         "moon_phases": "full_moon"
                     }
                 }
+            },
+            "difficulty_modifier": {
+                "operation": "add",
+                "hard": 0.05
             }
         },
         "list": [
