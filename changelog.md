@@ -1,12 +1,11 @@
 # Changelog
 
-* Break vanilla fletching + message on right click
-
 ## Upcoming
 * Angry Creepers now use the EAI default sound
 * Sea creatures size adjusted (0.4x\~1.75x -> 0.5x\~1.6x)
 * Moved Serene Seasons integration in IguanaTweaks Reborn
 * Curse of Unhurried is now appliable only to leggings
+* Removed diamond and quaron armor from supplementaries urn epic loot table
 * Vanilla Fletching tables now show an error when right-clicked and will drop ITE's one when broken
 * Fixed Vanilla blast furnaces showing the "invalid block" message 4 times
 
