@@ -1,8 +1,6 @@
 # Changelog
 
-* Nerf mobs in normal and easy
-
-## Upcoming
+## 1.13.0
 * Rebalanced mob buffs so normal and easy difficulty are slightly easier
   * Adjusted Non-zombies bonus follow range (~~24 at any difficulty~~ -> 16, 24 in hard)
   * Horses no longer have 5% bonus movement speed
