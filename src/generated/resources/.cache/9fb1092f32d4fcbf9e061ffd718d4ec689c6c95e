@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-18T10:46:59.9021973	Recipes
+// 1.20.1	2024-09-18T19:12:32.4095313	Recipes
 526370693a4951624cbf8285db04c56cdc7523cf data/iguanatweaksexpanded/advancements/recipes/building_blocks/durium_block.json
 354b2d1d1780cbf99af3957561d45cd439edcb4e data/iguanatweaksexpanded/advancements/recipes/building_blocks/keego_block.json
 c245ac737c4ae3ba93103337c55fcf4fe4bd0c0b data/iguanatweaksexpanded/advancements/recipes/building_blocks/quaron_block.json
@@ -664,7 +664,7 @@ c26ec116d1d4b8a100a171fa95fb11dbcb578153 data/iguanatweaksexpanded/recipes/duriu
 6824f526e23e76b2a3982459533ed613225b3ec0 data/iguanatweaksexpanded/recipes/durium_pickaxe.json
 62e1c96835cfae54928ca4630d5234a70e771b24 data/iguanatweaksexpanded/recipes/durium_scrap_block.json
 42bb3864279bf7836121875eac5f7ca025344959 data/iguanatweaksexpanded/recipes/durium_scrap_piece.json
-3fc21341cb3c6763f35aba12930d98cec1c90555 data/iguanatweaksexpanded/recipes/durium_shears.json
+2586aafac4d632e473e462ea1c3e8ceccecded37 data/iguanatweaksexpanded/recipes/durium_shears.json
 d25c8f5fdf4e31f0ca4be9892e820a137650f72d data/iguanatweaksexpanded/recipes/durium_shield.json
 fe137e3cd5b31b042ab95bfb559f806a4f31d653 data/iguanatweaksexpanded/recipes/durium_shovel.json
 e539ae9f61b80bf9fb15b8570b28d75c9d8de765 data/iguanatweaksexpanded/recipes/durium_sword.json

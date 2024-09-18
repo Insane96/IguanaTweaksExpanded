@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Durium shears are now made with an iron nugget instead of iron shears
+
 ## 1.14.0
 * Removed stone tools
   * Early game tools are now only wood, flint and copper. Having another material was too much.
