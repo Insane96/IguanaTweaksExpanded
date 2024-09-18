@@ -6,7 +6,7 @@
   },
   "amount": 3,
   "gear": {
-    "item": "minecraft:stone_pickaxe"
+    "item": "iguanatweaksexpanded:flint_pickaxe"
   },
   "result": "minecraft:iron_pickaxe",
   "smashes_required": 10,

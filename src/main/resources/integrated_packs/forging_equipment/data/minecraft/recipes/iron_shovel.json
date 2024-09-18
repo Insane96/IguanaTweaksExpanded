@@ -6,7 +6,7 @@
   },
   "amount": 1,
   "gear": {
-    "item": "minecraft:stone_shovel"
+    "item": "iguanatweaksexpanded:flint_shovel"
   },
   "result": "minecraft:iron_shovel",
   "smashes_required": 10,

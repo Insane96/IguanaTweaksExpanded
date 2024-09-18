@@ -6,7 +6,7 @@
   },
   "amount": 3,
   "gear": {
-    "item": "minecraft:stone_axe"
+    "item": "iguanatweaksexpanded:flint_axe"
   },
   "result": "minecraft:iron_axe",
   "smashes_required": 10,

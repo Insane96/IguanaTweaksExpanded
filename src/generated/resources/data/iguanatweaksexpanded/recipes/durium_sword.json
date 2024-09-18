@@ -4,7 +4,7 @@
   "category": "forge_misc",
   "experience": 14.0,
   "gear": {
-    "item": "minecraft:stone_sword"
+    "item": "iguanatweaksexpanded:flint_sword"
   },
   "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"

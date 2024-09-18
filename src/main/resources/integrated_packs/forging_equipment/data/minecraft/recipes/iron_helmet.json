@@ -6,7 +6,7 @@
   },
   "amount": 5,
   "gear": {
-    "item": "iguanatweaksexpanded:chained_copper_helmet"
+    "item": "minecraft:chainmail_helmet"
   },
   "result": "minecraft:iron_helmet",
   "smashes_required": 7,

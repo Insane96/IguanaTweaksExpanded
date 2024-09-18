@@ -6,7 +6,7 @@
 			"name": "Material modifier",
 			"slot": "mainhand",
 			"attribute": "iguanatweaksreborn:piercing_damage",
-			"amount": 2,
+			"amount": 1,
 			"operation": "addition"
 		}
 	]

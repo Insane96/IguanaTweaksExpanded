@@ -1,15 +1,20 @@
 package insane96mcp.iguanatweaksexpanded.module.items.flintexpansion;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.Module;
+import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.base.config.LoadFeature;
 import insane96mcp.insanelib.item.ILItemTier;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -35,7 +40,12 @@ public class FlintExpansion extends Feature {
 
 	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("flint_shield", SHIELD_MATERIAL);
 
+	@Config
+	@Label(name = "Disable Stone Tools", description = "If true, a data pack will be enabled that disables stone tools crafting and generation in chests will be replaced with flint ones")
+	public static Boolean disableStoneTools = true;
+
 	public FlintExpansion(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "disable_stone_tools", Component.literal("IguanaTweaks Expanded Disable Stone Tools"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && disableStoneTools));
 	}
 }

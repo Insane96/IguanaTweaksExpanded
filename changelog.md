@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.14.0
+* Removed stone tools
+  * Early game tools are now only wood, flint and copper. Having another material was too much.
+  * Iron and durium equipment is now made from flint and chainmail
+  * Keego is now made from (chained) copper
+
 ## 1.13.0
 * Rebalanced mob buffs so normal and easy difficulty are slightly easier
   * Adjusted Non-zombies bonus follow range (~~24 at any difficulty~~ -> 16, 24 in hard)

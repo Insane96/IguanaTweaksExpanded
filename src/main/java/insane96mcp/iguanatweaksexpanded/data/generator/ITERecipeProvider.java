@@ -300,29 +300,29 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)), Durium.SCRAP_PIECE.get(), Durium.INGOT.get(), 5f, 800);
         addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Durium.SCRAP_BLOCK.item().get()), Ingredient.of(ItemTags.SAND), Ingredient.of(Items.CLAY_BALL)), Durium.SCRAP_PIECE.get(), Durium.INGOT.get(), 5f, 1200, 0.3f);
 
-        forgeRecipe(writer, Durium.INGOT.get(), 3, Items.STONE_PICKAXE, Durium.PICKAXE.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 3, Items.STONE_AXE, Durium.AXE.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 2, Items.STONE_SWORD, Durium.SWORD.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 2, Items.STONE_HOE, Durium.HOE.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 1, Items.STONE_SHOVEL, Durium.SHOVEL.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 3, FlintExpansion.PICKAXE.get(), Durium.PICKAXE.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 3, FlintExpansion.AXE.get(), Durium.AXE.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 2, FlintExpansion.SWORD.get(), Durium.SWORD.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 2, FlintExpansion.HOE.get(), Durium.HOE.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 1, FlintExpansion.SHOVEL.get(), Durium.SHOVEL.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 2, Items.SHEARS, Durium.SHEARS.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 4, SPItems.STONE_SHIELD.get(), Durium.SHIELD.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 5, CopperExpansion.HELMET.get(), Durium.HELMET.get(), 10);
-        forgeRecipe(writer, Durium.INGOT.get(), 8, CopperExpansion.CHESTPLATE.get(), Durium.CHESTPLATE.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 7, CopperExpansion.LEGGINGS.get(), Durium.LEGGINGS.get(), 12);
-        forgeRecipe(writer, Durium.INGOT.get(), 4, CopperExpansion.BOOTS.get(), Durium.BOOTS.get(), 9);
+        forgeRecipe(writer, Durium.INGOT.get(), 4, FlintExpansion.SHIELD.get(), Durium.SHIELD.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 5, Items.CHAINMAIL_HELMET, Durium.HELMET.get(), 10);
+        forgeRecipe(writer, Durium.INGOT.get(), 8, Items.CHAINMAIL_CHESTPLATE, Durium.CHESTPLATE.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 7, Items.CHAINMAIL_LEGGINGS, Durium.LEGGINGS.get(), 12);
+        forgeRecipe(writer, Durium.INGOT.get(), 4, Items.CHAINMAIL_BOOTS, Durium.BOOTS.get(), 9);
 
         //Keego
-        forgeRecipe(writer, Keego.GEM.get(), 3, FlintExpansion.PICKAXE.get(), Keego.PICKAXE.get(), 13);
-        forgeRecipe(writer, Keego.GEM.get(), 3, FlintExpansion.AXE.get(), Keego.AXE.get(), 13);
-        forgeRecipe(writer, Keego.GEM.get(), 2, FlintExpansion.SWORD.get(), Keego.SWORD.get(), 13);
-        forgeRecipe(writer, Keego.GEM.get(), 2, FlintExpansion.HOE.get(), Keego.HOE.get(), 13);
-        forgeRecipe(writer, Keego.GEM.get(), 1, FlintExpansion.SHOVEL.get(), Keego.SHOVEL.get(), 13);
-        forgeRecipe(writer, Keego.GEM.get(), 4, FlintExpansion.SHIELD.get(), Keego.SHIELD.get(), 13);
-        forgeRecipe(writer, Keego.GEM.get(), 5, Items.CHAINMAIL_HELMET, Keego.HELMET.get(), 9);
-        forgeRecipe(writer, Keego.GEM.get(), 8, Items.CHAINMAIL_CHESTPLATE, Keego.CHESTPLATE.get(), 13);
-        forgeRecipe(writer, Keego.GEM.get(), 7, Items.CHAINMAIL_LEGGINGS, Keego.LEGGINGS.get(), 11);
-        forgeRecipe(writer, Keego.GEM.get(), 4, Items.CHAINMAIL_BOOTS, Keego.BOOTS.get(), 8);
+        forgeRecipe(writer, Keego.GEM.get(), 3, CopperExpansion.COPPER_PICKAXE.get(), Keego.PICKAXE.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 3, CopperExpansion.COPPER_AXE.get(), Keego.AXE.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 2, CopperExpansion.COPPER_SWORD.get(), Keego.SWORD.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 2, CopperExpansion.COPPER_HOE.get(), Keego.HOE.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 1, CopperExpansion.COPPER_SHOVEL.get(), Keego.SHOVEL.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 4, CopperExpansion.COPPER_SHIELD.get(), Keego.SHIELD.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 5, CopperExpansion.HELMET.get(), Keego.HELMET.get(), 9);
+        forgeRecipe(writer, Keego.GEM.get(), 8, CopperExpansion.CHESTPLATE.get(), Keego.CHESTPLATE.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 7, CopperExpansion.LEGGINGS.get(), Keego.LEGGINGS.get(), 11);
+        forgeRecipe(writer, Keego.GEM.get(), 4, CopperExpansion.BOOTS.get(), Keego.BOOTS.get(), 8);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Keego.BLOCK.block().get(), 1)
                 .requires(Keego.GEM.get(), 9)
                 .unlockedBy("has_keego", has(Keego.GEM.get()))
@@ -858,7 +858,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         //<editor-fold desc="Repair Kits">
         appendMaterialToName = true;
         addRepairKitRecipe(writer, ItemTags.PLANKS, Items.OAK_PLANKS, new Color(184, 148, 95));
-        addRepairKitRecipe(writer, ItemTags.STONE_TOOL_MATERIALS, Items.COBBLESTONE, new Color(136, 135, 136));
+        //addRepairKitRecipe(writer, ItemTags.STONE_TOOL_MATERIALS, Items.COBBLESTONE, new Color(136, 135, 136));
         addRepairKitRecipe(writer, Items.FLINT, new Color(61, 60, 60));
         addRepairKitRecipe(writer, Items.COPPER_INGOT, new Color(209, 104, 69));
         addRepairKitRecipe(writer, Items.GOLD_INGOT, new Color(253, 245, 95));

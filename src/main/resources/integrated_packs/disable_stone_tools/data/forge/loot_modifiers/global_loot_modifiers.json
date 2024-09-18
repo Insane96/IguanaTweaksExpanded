@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "entries": [
+        "iguanatweaksexpanded:replace_stone_pickaxe_with_flint",
+        "iguanatweaksexpanded:replace_stone_axe_with_flint",
+        "iguanatweaksexpanded:replace_stone_shovel_with_flint",
+        "iguanatweaksexpanded:replace_stone_sword_with_flint",
+        "iguanatweaksexpanded:replace_stone_hoe_with_flint",
+        "iguanatweaksexpanded:replace_stone_hammer_with_flint"
+    ]
+}

@@ -4,7 +4,7 @@
   "category": "forge_misc",
   "experience": 14.0,
   "gear": {
-    "item": "minecraft:stone_pickaxe"
+    "item": "iguanatweaksexpanded:flint_pickaxe"
   },
   "ingredient": {
     "item": "iguanatweaksexpanded:durium_ingot"

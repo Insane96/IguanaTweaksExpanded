@@ -6,7 +6,7 @@
   },
   "amount": 4,
   "gear": {
-    "item": "iguanatweaksexpanded:chained_copper_boots"
+    "item": "minecraft:chainmail_boots"
   },
   "result": "minecraft:iron_boots",
   "smashes_required": 6,
