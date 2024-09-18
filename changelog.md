@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Durium shears are now made with an iron nugget instead of iron shears
+* Removed stone shields (forgot them)
 
 ## 1.14.0
 * Removed stone tools
