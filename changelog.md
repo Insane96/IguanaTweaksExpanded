@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Durium shears are now made with an iron nugget instead of iron shears
+* Forgot to slightly increase Copper Durability
 * Removed stone shields (forgot them)
 
 ## 1.14.0
@@ -9,6 +10,7 @@
   * Early game tools are now only wood, flint and copper. Having another material was too much.
   * Iron and durium equipment is now made from flint and chainmail
   * Keego is now made from (chained) copper
+  * Flint has been buffed a bit
 
 ## 1.13.0
 * Rebalanced mob buffs so normal and easy difficulty are slightly easier
