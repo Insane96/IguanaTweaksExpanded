@@ -10,8 +10,8 @@ import insane96mcp.enhancedai.modules.witch.ThirstyWitches;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
+import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
-import insane96mcp.insanelib.base.config.LoadFeature;
 import insane96mcp.insanelib.base.config.MinMax;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 

@@ -1,6 +1,7 @@
 # Changelog
 
-## Upcoming
+## 1.14.1
+* ITR 3.15.1 & InsaneLib 1.15.0
 * Durium shears are now made with an iron nugget instead of iron shears
 * Forgot to slightly increase Copper Durability
 * Removed stone shields (forgot them)

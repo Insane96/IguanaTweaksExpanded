@@ -34,28 +34,28 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="insanelib"
     mandatory=true
-    versionRange="[1.14.0,)"
+    versionRange="[1.15.0,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="iguanatweaksreborn"
     mandatory=true
-    versionRange="[3.15.0,)"
+    versionRange="[3.15.1,)"
     ordering="BEFORE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="shieldsplus"
     mandatory=false
-    versionRange="[1.9.0,)"
+    versionRange="[1.10.2,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="enhancedai"
     mandatory=true
-    versionRange="[2.4.2,)"
+    versionRange="[2.5.1,)"
     ordering="AFTER"
     side="BOTH"
 
@@ -83,7 +83,7 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="mobspropertiesrandomness"
     mandatory=false
-    versionRange="[4.10.4,)"
+    versionRange="[4.10.12,)"
     ordering="NONE"
     side="BOTH"
 
