@@ -1,15 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:chained_copper_chestplate",
 	"durability": 48,
-	"armor": 3.1,
+	"armor": 3,
+	"regenerating_absorption": 0.5,
 	"modifiers": [
-		{
-			"uuid": "e5ca3f97-f7a0-439b-8c94-b1af3bdf3828",
-			"name": "Armor slowdown",
-			"slot": "chest",
-			"attribute": "minecraft:generic.movement_speed",
-			"amount": 0,
-			"operation": "multiply_base"
-		}
 	]
 }

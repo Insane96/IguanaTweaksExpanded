@@ -1,7 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:quaron_boots",
 	"durability": 108,
-	"armor": 1.4,
+	"armor": 1.5,
+	"regenerating_absorption": 0.25,
 	"modifiers": [
 
 	]

@@ -1,7 +1,7 @@
 {
     "item": "#iguanatweaksexpanded:equipment/armor/soul_steel",
     "enchantability": 8,
-    "knockback_resistance": 0.06,
+    "knockback_resistance": 0.12,
     "armor_toughness": 0,
     "regenerating_absorption": 0,
     "movement_speed_penalty": 0.20

@@ -1,7 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:solarium_chestplate",
 	"durability": 64,
-	"armor": 2.8,
+	"armor": 3,
+	"regenerating_absorption": 1,
 	"modifiers": [
 
 	]

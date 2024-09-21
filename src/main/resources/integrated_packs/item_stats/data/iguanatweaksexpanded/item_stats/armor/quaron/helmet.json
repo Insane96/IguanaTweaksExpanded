@@ -1,7 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:quaron_helmet",
 	"durability": 117,
-	"armor": 1.8,
+	"armor": 2,
+	"regenerating_absorption": 0.25,
 	"modifiers": [
 
 	]

@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Cat, Foxes, Rabbits and Chickens now deal 30% less damage
+* Rebalanced Armors like base mod
 * Fixed enchantability on shift not hiding if experience disabled
 
 ## 1.14.1

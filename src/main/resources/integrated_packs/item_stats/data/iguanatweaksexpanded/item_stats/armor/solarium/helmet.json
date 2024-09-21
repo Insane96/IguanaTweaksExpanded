@@ -1,7 +1,8 @@
 {
 	"item": "iguanatweaksexpanded:solarium_helmet",
 	"durability": 52,
-	"armor": 1.6,
+	"armor": 1.5,
+	"regenerating_absorption": 0.5,
 	"modifiers": [
 
 	]
