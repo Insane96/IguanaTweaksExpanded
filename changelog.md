@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Cat, Foxes, Rabbits and Chickens now deal 30% less damage
+* Fixed enchantability on shift not hiding if experience disabled
 
 ## 1.14.1
 * ITR 3.15.1 & InsaneLib 1.15.0

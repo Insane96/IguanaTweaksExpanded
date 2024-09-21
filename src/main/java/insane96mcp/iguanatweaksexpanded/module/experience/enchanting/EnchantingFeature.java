@@ -372,7 +372,7 @@ public class EnchantingFeature extends JsonFeature {
         ItemStack stack = event.getItemStack();
         if (!isEnabled(EnchantingFeature.class)
                 || !(event.getEntity() instanceof Player)
-                || event.getEntity().level().getGameRules().getBoolean(Experience.RULE_DISABLEEXPERIENCE))
+                || Experience.disableExperience)
             return;
 
         treasureEnchantmentsEnchantedBooksTooltip(stack, event.getToolTip());
