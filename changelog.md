@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Durium ores now require stone tools instead of iron
+
 ## 1.14.2
 * Cat, Foxes, Rabbits and Chickens now deal 30% less damage
 * Rebalanced Armors like base mod

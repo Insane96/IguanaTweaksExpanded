@@ -69,11 +69,11 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(Crate.BLOCK.get())
                 .add(OreGeneration.POOR_RICH_IRON_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().block().get())
                 .add(OreGeneration.POOR_RICH_COPPER_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get())
-                .add(EnchantingFeature.ENCHANTING_TABLE.block().get());
+                .add(EnchantingFeature.ENCHANTING_TABLE.block().get())
+                .addTag(Durium.BLOCK_ORES);
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(OreGeneration.POOR_RICH_GOLD_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get())
-                .addTag(Durium.BLOCK_ORES)
                 .add(SoulSteel.BLOCK.block().get())
                 .add(Quaron.BLOCK.block().get())
                 .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
