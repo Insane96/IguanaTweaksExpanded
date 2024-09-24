@@ -90,7 +90,7 @@ public class Solarium extends Feature {
 
 	public static void healGear(ItemStack stack, Entity entity, Level level) {
 		if (level.isClientSide
-				|| entity.tickCount % 200 != 22)
+				|| entity.tickCount % 80 != 22)
 			return;
 
 		float chance = getCalculatedSkyLight(entity);

@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Durium ores now require stone tools instead of iron
+* Solarium equipment now regenerates one durability more often (once every ~~10~~ -> 4 seconds)
 * Slight increased Copper durability below sea level
 
 ## 1.14.2
