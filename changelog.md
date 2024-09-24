@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Durium ores now require stone tools instead of iron
+* Slight increased Copper durability below sea level
 
 ## 1.14.2
 * Cat, Foxes, Rabbits and Chickens now deal 30% less damage

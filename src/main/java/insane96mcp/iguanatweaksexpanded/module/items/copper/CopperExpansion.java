@@ -140,9 +140,9 @@ public class CopperExpansion extends Feature {
 			return;
 		//Normalize y to go from sea level to world depth (0~128 usually)
 		y = (level.getSeaLevel() - level.getMinBuildHeight()) - (y + level.getSeaLevel());
+		double chance = 1 - 1 / (1 + 0.38f * Math.pow(y, 0.67f));
 		for (int i = 0; i < amount; i++) {
-			//+224% at y=16, +356% at y=32, +568% at y=0 and +855% at y=-54
-			if (event.getRandom().nextFloat() >= 1 - 1 / (1 + 0.35f * Math.pow(y, 0.67f)))
+			if (event.getRandom().nextFloat() >= chance)
 				++newAmount;
 		}
 		event.setAmount(newAmount);
