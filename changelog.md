@@ -4,6 +4,7 @@
 * Durium ores now require stone tools instead of iron
 * Solarium equipment now regenerates one durability more often (once every ~~10~~ -> 3 seconds)
   * Fixed light levels below 12 not affecting the regeneration
+* Increased efficiency of most tool materials
 * Slight increased Copper durability below sea level
 
 ## 1.14.2
