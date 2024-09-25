@@ -1,0 +1,38 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:coal_ore"
+        },
+        "title": {
+            "translate": "advancements.sr_story.ores.coal.title"
+        },
+        "description": {
+            "translate": "advancements.sr_story.ores.coal.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "iguanatweaksexpanded:story/iron_pickaxe",
+    "criteria": {
+        "coal": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:coal"
+                        ],
+                        "count": 64
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "coal"
+        ]
+    ]
+}

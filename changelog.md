@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.15.1
+* Added biome compass advancement
+* Added ores advancements telling the player where to find great quantities of them
+
 ## 1.15.0
 * Enchanting Feature
   * Added a config option so the enchanting table knows no enchantments at the start and must learn all of them

@@ -1,0 +1,38 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:lapis_ore"
+        },
+        "title": {
+            "translate": "advancements.sr_story.ores.lapis.title"
+        },
+        "description": {
+            "translate": "advancements.sr_story.ores.lapis.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "minecraft:story/mine_diamond",
+    "criteria": {
+        "lapis": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:lapislazzuli"
+                        ],
+                        "count": 64
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "lapis"
+        ]
+    ]
+}

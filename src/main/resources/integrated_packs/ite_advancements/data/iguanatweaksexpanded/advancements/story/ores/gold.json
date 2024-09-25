@@ -1,0 +1,38 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:gold_ore"
+        },
+        "title": {
+            "translate": "advancements.sr_story.ores.gold.title"
+        },
+        "description": {
+            "translate": "advancements.sr_story.ores.gold.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "iguanatweaksexpanded:story/furnace",
+    "criteria": {
+        "gold": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "minecraft:raw_gold"
+                        ],
+                        "count": 64
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "gold"
+        ]
+    ]
+}
