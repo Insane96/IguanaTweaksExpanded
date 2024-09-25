@@ -234,14 +234,14 @@ public class Expanded extends Enchantment {
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, false, face));
         }
         if (lvl >= 2) {
-            for (int i = lvl - 1; i > 0; i--) {
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getClockWise(), i));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getCounterClockWise(), i));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), i), playerRelative, true, face));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), i), playerRelative, true, face));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), i), playerRelative, false, face));
-                addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), i), playerRelative, false, face));
-            }
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getClockWise()));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getCounterClockWise()));
+        }
+        if (lvl == 3) {
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), 1), playerRelative, true, face));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), 1), playerRelative, true, face));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), 1), playerRelative, false, face));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), 1), playerRelative, false, face));
         }
 
         return minedBlocks;

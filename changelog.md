@@ -6,6 +6,9 @@
   * Added a config option that lets you can extract any enchantment from items in the Grindstone (not only treasures)
   * Enchantments now always cost x per level (e.g. Luck is no longer 3, 6, 10, 14, instead is 3 per level). Each cost is now configurable
   * Hidden vanilla enchanting table from EMI and added a new one with all the enchantments learned
+* Enchantments
+  * Reduced Veining mined blocks (~~4/9/16~~ -> 4 per level)
+  * Reduced Expanded mined blocks (~~3x3~~ -> plus shape at lvl II, ~~5x3~~ -> 3x3 at lvl III)
 * Reduced items enchantability
 * Durium ores now require stone tools instead of iron
 * Solarium equipment now regenerates one durability more often (once every ~~10~~ -> 3 seconds)
