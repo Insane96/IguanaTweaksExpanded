@@ -9,7 +9,7 @@
 * Enchantments
   * Reduced Veining mined blocks (~~4/9/16~~ -> 4 per level)
   * Reduced Expanded mined blocks (~~3x3~~ -> plus shape at lvl II, ~~5x3~~ -> 3x3 at lvl III)
-  * Changed Blasting efficiency to be linear (on ores, the increase is 50% per level now)
+  * Changed Blasting efficiency to be linear (on ores, the increase is 80% per level now)
 * Reduced items enchantability
 * Durium ores now require stone tools instead of iron
 * Solarium equipment now regenerates one durability more often (once every ~~10~~ -> 3 seconds)
