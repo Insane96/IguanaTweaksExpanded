@@ -36,6 +36,7 @@ import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn.RespawnObeliskFeature;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreGeneration;
+import insane96mcp.insanelib.base.Feature;
 import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -190,7 +191,10 @@ public class ClientSetup {
             addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.BLAST_FURNACE.item().get());
             addBefore(event, Items.ANVIL, Forging.FORGE.item().get());
             addAfter(event, Items.FLETCHING_TABLE, Fletching.FLETCHING_TABLE.item().get());
-            addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENCHANTING_TABLE.item().get());
+            if (Feature.isEnabled(EnchantingFeature.class)) {
+                addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENCHANTING_TABLE.item().get());
+                event.getEntries().remove(new ItemStack(Items.ENCHANTING_TABLE));
+            }
         }
         else if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             //addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());

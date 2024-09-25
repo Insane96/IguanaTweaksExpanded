@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.15.0
 * Enchanting Feature
   * Added a config option so the enchanting table knows no enchantments at the start and must learn all of them
   * Added a config option that lets you can extract any enchantment from items in the Grindstone (not only treasures)
