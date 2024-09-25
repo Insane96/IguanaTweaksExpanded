@@ -44,7 +44,7 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     public float tRot;
     private static final RandomSource RANDOM = RandomSource.create();
     protected NonNullList<ItemStack> items = NonNullList.withSize(ITEEnchantingTableMenu.SLOT_COUNT, ItemStack.EMPTY);
-    public List<Enchantment> treasureEnchantments = new ArrayList<>();
+    public List<Enchantment> learnedEnchantments = new ArrayList<>();
     protected ITEEnchantingTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
     }
@@ -59,7 +59,7 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
             Enchantment enchantment1 = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment));
             if (enchantment1 == null)
                 continue;
-            this.treasureEnchantments.add(enchantment1);
+            this.learnedEnchantments.add(enchantment1);
         }
     }
 
@@ -67,7 +67,7 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         super.saveAdditional(tag);
         ContainerHelper.saveAllItems(tag, this.items);
         ListTag treasureEnchantmentsListTag = new ListTag();
-        for (Enchantment enchantment : this.treasureEnchantments) {
+        for (Enchantment enchantment : this.learnedEnchantments) {
             ResourceLocation enchantmentId = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
             if (enchantmentId == null)
                 continue;
@@ -78,7 +78,7 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     }
 
     public boolean knowsEnchantment(Enchantment enchantment) {
-        for (Enchantment treasureEnchantment : this.treasureEnchantments) {
+        for (Enchantment treasureEnchantment : this.learnedEnchantments) {
             if (treasureEnchantment.equals(enchantment))
                 return true;
         }
@@ -86,9 +86,9 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     }
 
     public void learnEnchantment(Enchantment enchantment) {
-        if (treasureEnchantments.contains(enchantment))
+        if (learnedEnchantments.contains(enchantment))
             return;
-        this.treasureEnchantments.add(enchantment);
+        this.learnedEnchantments.add(enchantment);
         this.setChanged();
     }
 

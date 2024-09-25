@@ -6,8 +6,8 @@
 	"iguanatweaksexpanded.empowered_item": "Enchanting Empowered",
 	"iguanatweaksexpanded.apply_to_enchanting_table": "Treasure enchantments can be applied to enchanting tables to let them learn it",
 	"iguanatweaksexpanded.enchanting_table.already_knows": "The enchanting table already knows this enchantment: ",
-	"iguanatweaksexpanded.enchanting_table.learned_enchantment": "The enchanting has learned: ",
-	"iguanatweaksexpanded.enchanting_table.no_valid_enchantments": "This enchanted book has no treasure enchantments on it",
+	"iguanatweaksexpanded.enchanting_table.learned_enchantment": "The enchanting table has learned: ",
+	"iguanatweaksexpanded.enchanting_table.no_valid_enchantments": "This enchanted book has no valid enchantments on it",
 	"iguanatweaksexpanded.has_pending_enchantments": "Has Pending Enchantments",
 	"iguanatweaksexpanded.base_enchantability": "Base Enchantability: %d",
 

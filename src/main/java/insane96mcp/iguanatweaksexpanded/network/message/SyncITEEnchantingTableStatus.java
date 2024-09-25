@@ -55,7 +55,7 @@ public class SyncITEEnchantingTableStatus {
 				return;
 
 			blockEntity.setItem(0, message.item);
-			blockEntity.treasureEnchantments.clear();
+			blockEntity.learnedEnchantments.clear();
 			for (Enchantment enchantment : message.treasureEnchantments) {
 				blockEntity.learnEnchantment(enchantment);
 			}
@@ -64,7 +64,7 @@ public class SyncITEEnchantingTableStatus {
 	}
 
 	public static void sync(ServerLevel level, BlockPos pos, ITEEnchantingTableBlockEntity blockEntity) {
-		Object msg = new SyncITEEnchantingTableStatus(pos, blockEntity.getItem(0), blockEntity.treasureEnchantments);
+		Object msg = new SyncITEEnchantingTableStatus(pos, blockEntity.getItem(0), blockEntity.learnedEnchantments);
 		level.players().forEach(player -> CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT));
 	}
 }

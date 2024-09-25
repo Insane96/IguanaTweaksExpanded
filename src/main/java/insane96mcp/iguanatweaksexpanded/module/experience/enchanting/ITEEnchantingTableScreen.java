@@ -69,12 +69,12 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
     static final int ENCH_ENTRY_W = LVL_BTN_W + ENCH_DISPLAY_W + ENCH_LVL_W + LVL_BTN_W;
     static final int ENCH_ENTRY_H = 14;
 
-    private List<EnchantmentEntry> enchantmentEntries = new ArrayList<>();
+    private final List<EnchantmentEntry> enchantmentEntries = new ArrayList<>();
     private ScrollButton scrollUpBtn;
     private ScrollButton scrollDownBtn;
     private ItemStack lastStack = ItemStack.EMPTY;
     private int maxCost = 0;
-    public List<Enchantment> unlockedEnchantments = new ArrayList<>();
+    public List<Enchantment> learnedEnchantments = new ArrayList<>();
     public boolean forceUpdateEnchantmentsList;
 
     private int scroll = 0;
@@ -118,9 +118,11 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         }
 
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
-            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || (this.unlockedEnchantments.contains(enchantment) && enchantment.canApplyAtEnchantingTable(stack))) {
+            if (enchantment.isCurse()
+                    || EnchantingFeature.enchantingTableRequiresLearning && !this.learnedEnchantments.contains(enchantment))
+                continue;
+            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || (this.learnedEnchantments.contains(enchantment) && enchantment.canApplyAtEnchantingTable(stack)))
                 availableEnchantments.add(enchantment);
-            }
         }
         availableEnchantments
                 .stream()
@@ -241,9 +243,14 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
         updatePossibleEnchantments();
-        List<EnchantmentEntry> entries = this.enchantmentEntries;
-        for (EnchantmentEntry entry : entries) {
+        for (EnchantmentEntry entry : this.enchantmentEntries) {
             entry.render(guiGraphics, mouseX, mouseY, partialTick);
+        }
+        if (EnchantingFeature.canBeEnchanted(this.menu.getSlot(0).getItem()) && this.enchantmentEntries.isEmpty()) {
+            guiGraphics.drawCenteredString(this.font, Component.literal("No enchantments available").withStyle(ChatFormatting.UNDERLINE), topLeftCornerX + LIST_X +  + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y, 0xFFaa00);
+            if (mouseX >= topLeftCornerX + LIST_X && mouseX <= topLeftCornerX + LIST_X + ENCH_ENTRY_W && mouseY >= topLeftCornerY + LIST_Y && mouseY <= topLeftCornerY + LIST_Y + ENCH_ENTRY_H) {
+                guiGraphics.renderTooltip(this.font, Component.literal("Apply enchanted books to the table to let it learn enchantments").withStyle(ChatFormatting.GRAY), mouseX, mouseY);
+            }
         }
         if (this.maxCost > 0) {
             float cost = this.getCurrentCost();

@@ -44,15 +44,15 @@ public class SyncITEEnchantingTableUnlockedEnchantments {
 			if (!(Minecraft.getInstance().screen instanceof ITEEnchantingTableScreen iteEnchantingTableScreen))
 				return;
 
-			iteEnchantingTableScreen.unlockedEnchantments.clear();
-			iteEnchantingTableScreen.unlockedEnchantments.addAll(message.treasureEnchantments);
+			iteEnchantingTableScreen.learnedEnchantments.clear();
+			iteEnchantingTableScreen.learnedEnchantments.addAll(message.treasureEnchantments);
 			iteEnchantingTableScreen.forceUpdateEnchantmentsList = true;
 		});
 		ctx.get().setPacketHandled(true);
 	}
 
 	public static void sync(ServerLevel level, ITEEnchantingTableBlockEntity blockEntity) {
-		Object msg = new SyncITEEnchantingTableUnlockedEnchantments(blockEntity.treasureEnchantments);
+		Object msg = new SyncITEEnchantingTableUnlockedEnchantments(blockEntity.learnedEnchantments);
 		level.players().forEach(player -> CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT));
 	}
 }

@@ -21,7 +21,6 @@ import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.data.IdTagMatcher;
-import insane96mcp.insanelib.data.IdTagValue;
 import insane96mcp.insanelib.data.lootmodifier.InjectLootTableModifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -77,11 +76,14 @@ public class EnchantingFeature extends JsonFeature {
     @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
     public static Boolean noEnchantedSmithing = true;
     @Config
-    @Label(name = "Better grindstone xp", description = "If true, grindstone will give XP based off the new enchanting table. This is based off the ITR levelScalingFormula set to a fixed value")
-    public static Boolean betterGrindstoneXp = true;
+    @Label(name = "Grindstone.Better XP", description = "If true, grindstone will give XP based off the new enchanting table. This is based off the ITR levelScalingFormula set to a fixed value")
+    public static Boolean grindstoneBetterXp = true;
     @Config
-    @Label(name = "Grindstone trasure enchantment extraction", description = "If true, grindstone will be able to extract treasure enchantments (and curses) from items onto books. Please note this feature is incompatible with Forgery, so you should ban the \"Grindstone disenchantment\" feature from it.")
-    public static Boolean grindstoneEnchantmentExtraction = true;
+    @Label(name = "Grindstone.Treasure enchantment extraction", description = "If true, grindstone will be able to extract treasure enchantments (and curses) from items onto books. Please note this feature is incompatible with Forgery, so you should ban the \"Grindstone disenchantment\" feature from it.")
+    public static Boolean grindstoneTreasureEnchantmentExtraction = true;
+    @Config
+    @Label(name = "Grindstone.Enchantment extraction", description = "If true, grindstone will be able to extract all enchantments, not only treasure enchantments.")
+    public static Boolean grindstoneEnchantmentExtraction = false;
     @Config
     @Label(name = "Allurement integration", description = """
             If true, some mixins are used on Allurement to make the enchantments work on more things and configs are changed to not overlap with ITE.
@@ -89,49 +91,136 @@ public class EnchantingFeature extends JsonFeature {
             PLEASE NOTE that due to config limitation, some things cannot be disabled, so better use item tags. E.g. Launch enchantment uses a new iguanatweaksexpanded:enchanting/allurement/accepts_launch_enchantments item tag to decide which item accepts the enchantment.
             """)
     public static Boolean allurementIntegration = true;
+    @Config
+    @Label(name = "Enchanting Table requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
+    public static Boolean enchantingTableRequiresLearning = false;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ITERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ITEItem(new Item.Properties(), true));
 
-    public static final List<IdTagValue> DEFAULT_ENCHANTMENT_BASE_COST = List.of(
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "reach", 5f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "expanded", 5f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "veining", 4f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting", 1.8f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "adrenaline", 1.8f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "blood_pact", 5f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "steady_fall", 5f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "double_jump", 5f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "gravity_defying", 4f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "magnetic", 2.6f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "soulbound", 4f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "knowledgeable", 4f),
-            IdTagValue.newId(IguanaTweaksExpanded.RESOURCE_PREFIX + "walking_curse", 5f),
-            IdTagValue.newId(IguanaTweaksReborn.RESOURCE_PREFIX + "luck", 3.2f),
-            IdTagValue.newId(IguanaTweaksReborn.RESOURCE_PREFIX + "vigour", 3.45f),
-            IdTagValue.newId(IguanaTweaksReborn.RESOURCE_PREFIX + "protection", 4f),
-            IdTagValue.newId("minecraft:multishot", 5f),
-            IdTagValue.newId("minecraft:quick_charge", 3f),
-            IdTagValue.newId("minecraft:power", 2.2f),
-            IdTagValue.newId("minecraft:piercing", 1.7f),
-            IdTagValue.newId("minecraft:infinity", 2.5f),
-            IdTagValue.newId("minecraft:soul_speed", 3f),
-            IdTagValue.newId("minecraft:swift_sneak", 2f),
-            IdTagValue.newId("minecraft:efficiency", 1.8f),
-            IdTagValue.newId("minecraft:unbreaking", 1.8f),
-            IdTagValue.newId("minecraft:depth_strider", 2.4f),
-            IdTagValue.newId("minecraft:mending", 5f),
-            IdTagValue.newId("minecraft:vanishing_curse", 2f),
-            IdTagValue.newId("shieldsplus:aegis", 2f),
-            IdTagValue.newId("shieldsplus:reinforced", 2f),
-            IdTagValue.newId("shieldsplus:shield_bash", 4f),
-            IdTagValue.newId("shieldsplus:perfect_parry", 4f),
-            IdTagValue.newId("allurement:alleviating", 5f),
-            IdTagValue.newId("allurement:reforming", 5f),
-            IdTagValue.newId("allurement:launch", 3.2f),
-            IdTagValue.newId("passablefoliage:leaf_walker", 3f)
+    public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
+            new EnchantmentData("allurement:alleviating", 5),
+            new EnchantmentData("allurement:ascension_curse", 6),
+            new EnchantmentData("allurement:fleeting_curse", 6),
+            new EnchantmentData("allurement:launch", 2, 4, 6),
+            new EnchantmentData("allurement:obedience", 3),
+            new EnchantmentData("allurement:reeling", 3, 6, 9),
+            new EnchantmentData("allurement:reforming", 3),
+            new EnchantmentData("allurement:shockwave", 2, 4, 6, 8, 10),
+            new EnchantmentData("allurement:spread_of_ailments", 3, 6, 9, 12),
+            new EnchantmentData("allurement:vengeance", 3, 6, 9, 12),
+            new EnchantmentData("farmersdelight:backstabbing", 2, 4, 6, 8),
+            new EnchantmentData("iguanatweaksexpanded:adrenaline", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:air_born", 3),
+            new EnchantmentData("iguanatweaksexpanded:air_stealer", 2, 4, 6),
+            new EnchantmentData("iguanatweaksexpanded:armor_piercer", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:blasting", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:blood_pact_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:burst_of_arrows", 6),
+            new EnchantmentData("iguanatweaksexpanded:double_jump", 3),
+            new EnchantmentData("iguanatweaksexpanded:dumbness_curse", 2),
+            new EnchantmentData("iguanatweaksexpanded:ender_curse", 3),
+            new EnchantmentData("iguanatweaksexpanded:exchange", 3),
+            new EnchantmentData("iguanatweaksexpanded:expanded", 3, 6, 9),
+            new EnchantmentData("iguanatweaksexpanded:experience_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:fragility_curse", 2),
+            new EnchantmentData("iguanatweaksexpanded:gravity_defying", 3),
+            new EnchantmentData("iguanatweaksexpanded:healthy", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:hoppy", 2, 4, 6),
+            new EnchantmentData("iguanatweaksexpanded:inefficiency_curse", 2),
+            new EnchantmentData("iguanatweaksexpanded:knowledgeable", 6),
+            new EnchantmentData("iguanatweaksexpanded:lucky_hook", 3, 6, 9, 12),
+            new EnchantmentData("iguanatweaksexpanded:magic_protection", 2, 4, 6, 8, 10),
+            new EnchantmentData("iguanatweaksexpanded:magnetic", 3, 6, 9, 12),
+            new EnchantmentData("iguanatweaksexpanded:melee_protection", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:padding", 3),
+            new EnchantmentData("iguanatweaksexpanded:part_breaker", 3, 6, 9, 12),
+            new EnchantmentData("iguanatweaksexpanded:rage", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:reach", 6),
+            new EnchantmentData("iguanatweaksexpanded:recovery", 3),
+            new EnchantmentData("iguanatweaksexpanded:short_arm_curse", 2),
+            new EnchantmentData("iguanatweaksexpanded:slow_charge_curse", 3),
+            new EnchantmentData("iguanatweaksexpanded:slow_strike_curse", 3),
+            new EnchantmentData("iguanatweaksexpanded:smartness", 3, 6, 9, 12),
+            new EnchantmentData("iguanatweaksexpanded:soulbound", 3),
+            new EnchantmentData("iguanatweaksexpanded:sprint_pact", 6),
+            new EnchantmentData("iguanatweaksexpanded:steady_fall", 6),
+            new EnchantmentData("iguanatweaksexpanded:steel_fall_curse", 3),
+            new EnchantmentData("iguanatweaksexpanded:step_up", 3),
+            new EnchantmentData("iguanatweaksexpanded:swift_strike", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:tear_curse", 3),
+            new EnchantmentData("iguanatweaksexpanded:unhurried_curse", 3),
+            new EnchantmentData("iguanatweaksexpanded:veining", 3, 6, 9),
+            new EnchantmentData("iguanatweaksexpanded:vindication", 3, 6, 9, 12),
+            new EnchantmentData("iguanatweaksexpanded:void_curse", 2),
+            new EnchantmentData("iguanatweaksexpanded:walking_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:water_coolant", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:zippy", 2, 4, 6),
+            new EnchantmentData("iguanatweaksreborn:bane_of_sssss", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksreborn:blast_protection", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksreborn:critical", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksreborn:feather_falling", 2, 4, 6, 8, 10),
+            new EnchantmentData("iguanatweaksreborn:fire_aspect", 3, 6, 9),
+            new EnchantmentData("iguanatweaksreborn:fire_protection", 2, 4, 6, 8, 10),
+            new EnchantmentData("iguanatweaksreborn:knockback", 2, 4, 6),
+            new EnchantmentData("iguanatweaksreborn:luck", 3, 6, 9, 12),
+            new EnchantmentData("iguanatweaksreborn:projectile_protection", 2, 4, 6, 8, 10),
+            new EnchantmentData("iguanatweaksreborn:protection", 6),
+            new EnchantmentData("iguanatweaksreborn:sharpness", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksreborn:smite", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("minecraft:aqua_affinity", 3),
+            new EnchantmentData("minecraft:bane_of_arthropods", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("minecraft:binding_curse", 6),
+            new EnchantmentData("minecraft:blast_protection", 2, 4, 6, 8, 10),
+            new EnchantmentData("minecraft:channeling", 6),
+            new EnchantmentData("minecraft:depth_strider", 3, 6, 9),
+            new EnchantmentData("minecraft:efficiency", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("minecraft:feather_falling", 2, 4, 6, 8, 10),
+            new EnchantmentData("minecraft:fire_aspect", 3, 6, 9),
+            new EnchantmentData("minecraft:fire_protection", 2, 4, 6, 8, 10),
+            new EnchantmentData("minecraft:flame", 3),
+            new EnchantmentData("minecraft:fortune", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:frost_walker", 3, 6, 9),
+            new EnchantmentData("minecraft:impaling", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("minecraft:infinity", 3, 6, 9, 12, 15),
+            new EnchantmentData("minecraft:knockback", 2, 4, 6),
+            new EnchantmentData("minecraft:looting", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:loyalty", 2, 4, 6, 8),
+            new EnchantmentData("minecraft:luck_of_the_sea", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:lure", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:mending", 3),
+            new EnchantmentData("minecraft:multishot", 3),
+            new EnchantmentData("minecraft:piercing", 2, 4, 6, 8, 10),
+            new EnchantmentData("minecraft:power", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("minecraft:projectile_protection", 2, 4, 6, 8, 10),
+            new EnchantmentData("minecraft:protection", 3, 6, 9, 12, 15),
+            new EnchantmentData("minecraft:punch", 3, 6, 9),
+            new EnchantmentData("minecraft:quick_charge", 2, 4, 6, 8),
+            new EnchantmentData("minecraft:respiration", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:riptide", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:sharpness", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("minecraft:silk_touch", 6),
+            new EnchantmentData("minecraft:smite", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("minecraft:soul_speed", 4, 8, 12, 16),
+            new EnchantmentData("minecraft:sweeping", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:swift_sneak", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:thorns", 3, 6, 9, 12),
+            new EnchantmentData("minecraft:unbreaking", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("minecraft:vanishing_curse", 6),
+            new EnchantmentData("passablefoliage:leaf_walker", 1),
+            new EnchantmentData("shieldsplus:ablaze", 2, 4, 6),
+            new EnchantmentData("shieldsplus:aegis", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("shieldsplus:celestial_guardian", 6),
+            new EnchantmentData("shieldsplus:fast_recovery", 3),
+            new EnchantmentData("shieldsplus:lightweight", 3),
+            new EnchantmentData("shieldsplus:perfect_parry", 6),
+            new EnchantmentData("shieldsplus:recoil", 2, 4, 6),
+            new EnchantmentData("shieldsplus:reflection", 3, 6, 9, 12, 15),
+            new EnchantmentData("shieldsplus:reinforced", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("shieldsplus:shield_bash", 3, 6, 9, 12),
+            new EnchantmentData("supplementaries:stasis", 5)
     );
-    public static final ArrayList<IdTagValue> enchantmentBaseCost = new ArrayList<>();
+    public static final ArrayList<EnchantmentData> enchantmentsData = new ArrayList<>();
 
     public static final List<IdTagMatcher> DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST = List.of(
             IdTagMatcher.newId("minecraft:depth_strider")
@@ -141,8 +230,8 @@ public class EnchantingFeature extends JsonFeature {
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
-        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost"), new SyncType(json -> loadAndReadJson(json, enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("enchantments_base_cost.json", enchantmentBaseCost, DEFAULT_ENCHANTMENT_BASE_COST, IdTagValue.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost")));
+        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("enchantments_base_cost.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost")));
         addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
         JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist")));
 	}
@@ -170,11 +259,13 @@ public class EnchantingFeature extends JsonFeature {
             if (EnchantmentsFeature.isEnchantmentDisabled(enchantment))
                 continue;
             int maxLvl = enchantment.getMaxLevel();
-            if (maxLvl > 1)
+            if (maxLvl > 1 && !isEnchantmentOverLevelBlacklisted(enchantment))
                 maxLvl++;
+            StringBuilder costs = new StringBuilder();
             for (int i = 1; i <= maxLvl; i++) {
-                LogHelper.debug("%s %d: %d", ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString(), i, getCost(enchantment, i));
+                costs.append(getCost(enchantment, i)).append(" ");
             }
+            LogHelper.debug("%s %d (%s)", ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString(), maxLvl, costs);
         }
     }
 
@@ -246,8 +337,8 @@ public class EnchantingFeature extends JsonFeature {
     @SubscribeEvent
     public void onGrindstoneTake(GrindstoneEvent.OnTakeItem event) {
         if (!this.isEnabled()
-                || !betterGrindstoneXp
-                || (grindstoneEnchantmentExtraction && event.getTopItem().isEnchanted() && event.getBottomItem().is(Items.BOOK)))
+                || !grindstoneBetterXp
+                || (grindstoneTreasureEnchantmentExtraction && event.getTopItem().isEnchanted() && event.getBottomItem().is(Items.BOOK)))
             return;
 
         float lvl = 0;
@@ -280,7 +371,7 @@ public class EnchantingFeature extends JsonFeature {
     }
 
     public static void extractTrasureEnchantments(GrindstoneEvent.OnPlaceItem event) {
-        if (!grindstoneEnchantmentExtraction
+        if (!grindstoneTreasureEnchantmentExtraction
                 || !event.getTopItem().isEnchanted()
                 || !event.getBottomItem().is(Items.BOOK)
                 || event.getBottomItem().getCount() > 1)
@@ -288,7 +379,7 @@ public class EnchantingFeature extends JsonFeature {
 
         ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
         for (Map.Entry<Enchantment, Integer> enchantmentInstance : EnchantmentHelper.getEnchantments(event.getTopItem()).entrySet()) {
-            if (!enchantmentInstance.getKey().isTreasureOnly())
+            if (!enchantmentInstance.getKey().isTreasureOnly() && !grindstoneEnchantmentExtraction)
                 continue;
             EnchantedBookItem.addEnchantment(output, new EnchantmentInstance(enchantmentInstance.getKey(), enchantmentInstance.getValue()));
         }
@@ -310,12 +401,19 @@ public class EnchantingFeature extends JsonFeature {
     public static int getCost(Enchantment enchantment, int lvl) {
         if (lvl <= 0)
             return 0;
-        float baseCost = Anvils.getRarityCost(enchantment);
-        for (IdTagValue enchantmentCost : enchantmentBaseCost) {
-            if (enchantmentCost.id.matchesEnchantment(enchantment))
-                baseCost = (float) enchantmentCost.value;
+        float vanillaCost = Anvils.getRarityCost(enchantment);
+        EnchantmentData enchantmentData = enchantmentsData.stream()
+                .filter(data -> data.enchantment.matchesEnchantment(enchantment))
+                .findFirst()
+                .orElse(null);
+
+        if (enchantmentData != null) {
+            if (enchantmentData.cost.length < lvl)
+                LogHelper.warn("Enchantment data for %s is missing cost for level %d. Using default formula", enchantmentData.enchantment.location, lvl);
+            else
+                return enchantmentData.cost[lvl - 1];
         }
-        return (int) Math.round(baseCost * Math.pow(lvl, 1.11));
+        return (int) Math.round(vanillaCost * Math.pow(lvl, 1.11));
     }
 
     public static boolean canBeEnchanted(ItemStack stack) {
@@ -393,7 +491,7 @@ public class EnchantingFeature extends JsonFeature {
     private static void treasureEnchantmentsEnchantedBooksTooltip(ItemStack stack, List<Component> tooltip) {
         if (stack.is(Items.ENCHANTED_BOOK)) {
             for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(stack).entrySet()) {
-                if (enchantment.getKey().isTreasureOnly() && !enchantment.getKey().isCurse()) {
+                if ((enchantment.getKey().isTreasureOnly() || enchantingTableRequiresLearning) && !enchantment.getKey().isCurse()) {
                     tooltip.add(Component.empty());
                     tooltip.add(Component.translatable("iguanatweaksexpanded.apply_to_enchanting_table").withStyle(ChatFormatting.GREEN));
                     break;

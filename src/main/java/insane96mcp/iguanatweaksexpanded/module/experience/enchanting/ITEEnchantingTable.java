@@ -7,6 +7,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
@@ -74,9 +76,12 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                 if (compoundtag != null) {
                     ListTag list = compoundtag.getList("StoredEnchantments", 10);
                     boolean hasTreasure = false;
+                    boolean hasLearned = false;
                     for (int i = 0; i < list.size(); i++) {
                         Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(list.getCompound(i)));
-                        if (enchantment == null || !enchantment.isTreasureOnly() || enchantment.isCurse())
+                        if (enchantment == null || enchantment.isCurse())
+                            continue;
+                        if (!enchantment.isTreasureOnly() && !EnchantingFeature.enchantingTableRequiresLearning)
                             continue;
                         hasTreasure = true;
                         if (enchantingTableBE.knowsEnchantment(enchantment)) {
@@ -85,10 +90,13 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                         }
                         enchantingTableBE.learnEnchantment(enchantment);
                         player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.learned_enchantment").append(Component.translatable(enchantment.getDescriptionId())));
+                        hasLearned = true;
                     }
-                    if (hasTreasure)
+                    if (hasTreasure && hasLearned) {
                         player.getItemInHand(hand).shrink(1);
-                    else
+                        pLevel.playSound(null, pPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, 1.5F);
+                    }
+                    else if (!hasTreasure)
                         player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.no_valid_enchantments"));
                 }
             }

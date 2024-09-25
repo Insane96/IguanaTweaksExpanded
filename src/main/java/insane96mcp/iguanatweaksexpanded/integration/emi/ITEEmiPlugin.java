@@ -106,8 +106,16 @@ public class ITEEmiPlugin implements EmiPlugin {
 		//registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.ANVIL_REPAIRING);
 		if (Feature.isEnabled(EnchantingFeature.class)) {
 			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.GRINDING);
-			String key = EnchantingFeature.betterGrindstoneXp ? "emi.info.iguanatweaksexpanded.grindstone" : "emi.info.grindstone";
-			String key2 = EnchantingFeature.grindstoneEnchantmentExtraction ? "emi.info.iguanatweaksexpanded.grindstone2" : "";
+			String key = EnchantingFeature.grindstoneBetterXp ? "emi.info.iguanatweaksexpanded.grindstone" : "emi.info.grindstone";
+			String key2 = "";
+			if (EnchantingFeature.grindstoneTreasureEnchantmentExtraction) {
+				if (EnchantingFeature.grindstoneEnchantmentExtraction) {
+					key2 = "emi.info.iguanatweaksexpanded.grindstone2";
+				}
+				else {
+					key2 = "emi.info.iguanatweaksexpanded.grindstone3";
+				}
+			}
 			registry.addRecipe(new EmiInfoRecipe(
 					List.of(emiIngredientOf(Items.GRINDSTONE)),
 					List.of(Component.translatable(key, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f)),
