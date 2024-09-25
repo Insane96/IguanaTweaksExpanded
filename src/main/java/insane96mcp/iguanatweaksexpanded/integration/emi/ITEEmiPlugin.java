@@ -38,6 +38,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
@@ -147,6 +148,26 @@ public class ITEEmiPlugin implements EmiPlugin {
 			output = new ItemStack(Items.DIAMOND_PICKAXE, 1);
 			output.setTag(tag);
 			registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchanted_cleansed_lapis_use"), Items.DIAMOND_PICKAXE, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), output));
+
+			if (EnchantingFeature.enchantingTableRequiresLearning) {
+				ItemStack stack = new ItemStack(EnchantingFeature.ENCHANTING_TABLE.item().get());
+				CompoundTag nbt = new CompoundTag();
+				CompoundTag blockEntityTag = new CompoundTag();
+				ListTag listTag = new ListTag();
+				for (var enchantment : ForgeRegistries.ENCHANTMENTS.getEntries()) {
+					if (enchantment.getValue().isCurse())
+						continue;
+					StringTag stringTag = StringTag.valueOf(enchantment.getKey().location().toString());
+					listTag.add(stringTag);
+				}
+				blockEntityTag.put("treasure_enchantments", listTag);
+				nbt.put("BlockEntityTag", blockEntityTag);
+				stack.setTag(nbt);
+				stack.setHoverName(Component.literal("Enchanting Table with every enchantment learned"));
+				registry.addEmiStackAfter(EmiStack.of(stack), emiStack -> emiStack.getItemStack().is(EnchantingFeature.ENCHANTING_TABLE.item().get()));
+			}
+
+			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.ENCHANTING_TABLE));
 		}
 		if (Feature.isEnabled(MultiBlockFurnaces.class)) {
 			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);

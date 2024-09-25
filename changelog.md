@@ -1,6 +1,12 @@
 # Changelog
 
 ## Upcoming
+* Enchanting Feature
+  * Added a config option so the enchanting table knows no enchantments at the start and must learn all of them
+  * Added a config option that lets you can extract any enchantment from items in the Grindstone (not only treasures)
+  * Enchantments now always cost x per level (e.g. Luck is no longer 3, 6, 10, 14, instead is 3 per level). Each cost is now configurable
+  * Hidden vanilla enchanting table from EMI and added a new one with all the enchantments learned
+* Reduced items enchantability
 * Durium ores now require stone tools instead of iron
 * Solarium equipment now regenerates one durability more often (once every ~~10~~ -> 3 seconds)
   * Fixed light levels below 12 not affecting the regeneration
