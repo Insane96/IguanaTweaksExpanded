@@ -543,7 +543,7 @@ public class EnchantingFeature extends JsonFeature {
         }
     }
 
-    private static final String path = "experience/enchanting";
+    private static final String path = "experience/enchanting/";
     public static void addGlobalLoot(GlobalLootModifierProvider provider) {
         provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
         provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
