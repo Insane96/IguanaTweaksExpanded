@@ -41,6 +41,12 @@ public class Forging extends Feature {
 			return "forging";
 		}
 	});
+	public static final RegistryObject<RecipeType<ForgeRecipe>> FORGE_REPAIR_TYPE = ITERegistries.RECIPE_TYPES.register("forge_repairing", () -> new RecipeType<>() {
+		@Override
+		public String toString() {
+			return "forge_repairing";
+		}
+	});
 	public static final RegistryObject<ForgeRecipe.ForgeRecipeSerializer> FORGE_RECIPE_SERIALIZER = ITERegistries.RECIPE_SERIALIZERS.register("forging", ForgeRecipe.ForgeRecipeSerializer::new);
 	public static final RegistryObject<MenuType<ForgeMenu>> FORGE_MENU_TYPE = ITERegistries.MENU_TYPES.register("forge", () -> new MenuType<>(ForgeMenu::new, FeatureFlags.VANILLA_SET));
 
@@ -67,9 +73,6 @@ public class Forging extends Feature {
 	@Label(name = "Forging Equipment Crafting Data Pack", description = """
 			Enables the following changes to vanilla data pack:
 			* All metal gear requires a forge to be made
-			* Diamond Gear requires Gold gear to be forged
-			* Gold Gear requires Flint / Leather gear to be forged
-			* Iron Gear requires Stone / Chained Copper gear to be forged
 			* Buckets, Flint and Steel and Shears require a forge to be made""")
 	public static Boolean forgingEquipment = true;
 

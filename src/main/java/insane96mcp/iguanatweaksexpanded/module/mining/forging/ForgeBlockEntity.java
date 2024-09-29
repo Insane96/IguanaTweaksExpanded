@@ -74,7 +74,7 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
         }
     };
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
-    private final RecipeManager.CachedCheck<Container, ? extends ForgeRecipe> quickCheck;
+    private final RecipeManager.CachedCheck<Container, ForgeRecipe> quickCheck;
 
     public ForgeBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(Forging.FORGE_BLOCK_ENTITY_TYPE.get(), pPos, pBlockState);
@@ -132,7 +132,7 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
             return false;
         }
 
-        Recipe<?> recipe = pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel).orElse(null);
+        Recipe<?> recipe = pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel).orElse(ForgeRepairRecipe.fromLeftAndRightAnvil(gearStack, ingredientStack));
 
         int maxStackSize = pBlockEntity.getMaxStackSize();
         if (pBlockEntity.canForge(pLevel.registryAccess(), recipe, pBlockEntity.items, maxStackSize)) {
@@ -150,16 +150,11 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
                 pLevel.playSound(null, pPos, SoundEvents.ANVIL_PLACE, SoundSource.BLOCKS, 0.5f, 1.7f);
             }
 
-            //if (pLevel instanceof ServerLevel serverLevel)
-                //SyncForgeStatus.sync(serverLevel, pBlockEntity.getBlockPos(), pBlockEntity);
             pLevel.sendBlockUpdated(pPos, pState, pState, 3);
             return true;
         }
         else {
             pBlockEntity.smashes = 0;
-
-            //if (pLevel instanceof ServerLevel serverLevel)
-                //SyncForgeStatus.sync(serverLevel, pBlockEntity.getBlockPos(), pBlockEntity);
             return false;
         }
     }
@@ -193,11 +188,14 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
         if (!this.canForge(registryAccess, recipe, slotStacks, stackSize))
             return false;
         ItemStack resultStack = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
+        int damage = resultStack.getDamageValue();
         ItemStack gearSlotStack = slotStacks.get(ForgeMenu.GEAR_SLOT);
         if (gearSlotStack.hasTag())
             resultStack.setTag(gearSlotStack.getTag());
-        if (resultStack.getItem().canBeDepleted())
+        if (!(recipe instanceof ForgeRepairRecipe) && resultStack.getItem().canBeDepleted())
             resultStack.setDamageValue(0);
+        else if (recipe instanceof ForgeRepairRecipe)
+            resultStack.setDamageValue(damage);
         ItemStack resultSlotStack = slotStacks.get(ForgeMenu.RESULT_SLOT);
         if (resultSlotStack.isEmpty()) {
             slotStacks.set(ForgeMenu.RESULT_SLOT, resultStack.copy());
@@ -298,9 +296,6 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
         }
         if (this.level != null)
             this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
-
-        //if (this.level instanceof ServerLevel serverLevel)
-        //    SyncForgeStatus.sync(serverLevel, this.getBlockPos(), this);
     }
 
     @Override

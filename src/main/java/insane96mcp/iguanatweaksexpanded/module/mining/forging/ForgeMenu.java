@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -43,7 +44,7 @@ public class ForgeMenu extends RecipeBookMenu<Container> {
         this.data = pData;
         this.level = pPlayerInventory.player.level();
 
-        this.addSlot(new Slot(pContainer, INGREDIENT_SLOT, 56, 17));
+        this.addSlot(new ForgeIngredientSlot(pContainer, INGREDIENT_SLOT, 56, 17));
         this.addSlot(new Slot(pContainer, GEAR_SLOT, 56, 53));
         this.addSlot(new ForgeResultSlot(pPlayerInventory.player, pContainer, RESULT_SLOT, 116, 35));
 
@@ -176,11 +177,13 @@ public class ForgeMenu extends RecipeBookMenu<Container> {
     }
 
     protected boolean canForge(ItemStack pStack) {
-        return this.level.getRecipeManager().getAllRecipesFor((RecipeType<ForgeRecipe>)this.recipeType).stream().anyMatch(recipe -> recipe.getGear().test(pStack));
+        return this.level.getRecipeManager().getAllRecipesFor((RecipeType<ForgeRecipe>)this.recipeType).stream().anyMatch(recipe -> recipe.getGear().test(pStack))
+                || Anvils.getCustomAnvilRepair(pStack).isPresent();
     }
 
     protected boolean isIngredient(ItemStack pStack) {
         return this.level.getRecipeManager().getAllRecipesFor((RecipeType<ForgeRecipe>)this.recipeType).stream().anyMatch(recipe -> recipe.getIngredient().test(pStack));
+        //TODO Shift-click repair items
     }
 
     public int getForgeProgress() {

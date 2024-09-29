@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.gui.screens.recipebook.RecipeUpdateListener;
@@ -14,10 +15,12 @@ import net.minecraft.world.inventory.Slot;
 
 public class ForgeScreen extends AbstractContainerScreen<ForgeMenu> implements RecipeUpdateListener {
     private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
+    private static final ResourceLocation RENAME_BUTTON_LOCATION = new ResourceLocation(IguanaTweaksExpanded.MOD_ID,"textures/gui/rename_button.png");
     public static final ResourceLocation TEXTURE = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/forge.png");
     public final ForgeRecipeBookComponent recipeBookComponent;
     private boolean widthTooNarrow;
     private final ResourceLocation texture;
+    private ImageButton renameButton;
 
     public ForgeScreen(ForgeMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -30,11 +33,15 @@ public class ForgeScreen extends AbstractContainerScreen<ForgeMenu> implements R
         this.widthTooNarrow = this.width < 379;
         this.recipeBookComponent.init(this.width, this.height, this.minecraft, this.widthTooNarrow, this.menu);
         this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-        this.addRenderableWidget(new ImageButton(this.leftPos + 20, this.height / 2 - 49, 20, 18, 0, 0, 19, RECIPE_BUTTON_LOCATION, (p_274677_) -> {
+        this.addRenderableWidget(new ImageButton(this.leftPos + 20, this.height / 2 - 49, 20, 18, 0, 0, 19, RECIPE_BUTTON_LOCATION, (button) -> {
             this.recipeBookComponent.toggleVisibility();
             this.leftPos = this.recipeBookComponent.updateScreenPosition(this.width, this.imageWidth);
-            ((ImageButton)p_274677_).setPosition(this.leftPos + 20, this.height / 2 - 49);
+            button.setPosition(this.leftPos + 20, this.height / 2 - 49);
         }));
+        this.renameButton = new ImageButton(this.leftPos + 140, this.height / 2 - 45, 11, 11, 0, 0, 19, RENAME_BUTTON_LOCATION, (button) -> {
+            //this.recipeBookComponent.renameRecipe();
+        });
+        this.renameButton.setTooltip(Tooltip.create(Component.translatable("gui.forge.raname_item")));
         this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
     }
 
@@ -54,6 +61,7 @@ public class ForgeScreen extends AbstractContainerScreen<ForgeMenu> implements R
             this.recipeBookComponent.renderGhostRecipeAmount(guiGraphics, this.leftPos, this.topPos, true, pPartialTick);
         }
 
+        this.renameButton.render(guiGraphics, pMouseX, pMouseY, pPartialTick);
         this.renderTooltip(guiGraphics, pMouseX, pMouseY);
         this.recipeBookComponent.renderTooltip(guiGraphics, this.leftPos, this.topPos, pMouseX, pMouseY);
     }
@@ -69,6 +77,9 @@ public class ForgeScreen extends AbstractContainerScreen<ForgeMenu> implements R
 
     public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
         if (this.recipeBookComponent.mouseClicked(pMouseX, pMouseY, pButton)) {
+            return true;
+        }
+        else if (this.renameButton.mouseClicked(pMouseX, pMouseY, pButton)) {
             return true;
         }
         else {
