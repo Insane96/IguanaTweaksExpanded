@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Fixed Durium hammer taking almost no enchantments
+* Fixed Serene Seasons being a mandatory mod
 
 ## 1.15.1
 * Added biome compass advancement

@@ -61,7 +61,7 @@ license="All rights reserved"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="sereneseasons"
-    mandatory=true
+    mandatory=false
     versionRange="[9.0.0.46,)"
     ordering="AFTER"
     side="BOTH"
