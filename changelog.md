@@ -1,7 +1,5 @@
 # Changelog
 
-* Advancements for extracting enchantments from items and applying to enchanting table.
-
 ## Upcoming
 * Enchanting Feature 
   * Enchanting tables now knows no enchantments by default, it must learn them

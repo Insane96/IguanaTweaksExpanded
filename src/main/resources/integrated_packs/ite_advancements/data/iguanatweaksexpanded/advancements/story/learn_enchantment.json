@@ -1,20 +1,20 @@
 {
     "display": {
         "icon": {
-            "item": "minecraft:enchanted_book"
+            "item": "minecraft:enchanting_table"
         },
         "title": {
-            "translate": "advancements.story.enchant_item.title"
+            "translate": "advancements.sr_story.learn_enchantment.title"
         },
         "description": {
-            "translate": "advancements.story.enchant_item.description"
+            "translate": "advancements.sr_story.learn_enchantment.description"
         },
         "frame": "task",
         "show_toast": true,
         "announce_to_chat": true,
         "hidden": false
     },
-    "parent": "iguanatweaksexpanded:story/learn_enchantment",
+    "parent": "minecraft:story/form_obsidian",
     "criteria": {
         "enchanted_item": {
             "trigger": "minecraft:item_used_on_block",
@@ -24,6 +24,14 @@
                         "condition": "minecraft:block_state_property",
                         "block": "iguanatweaksexpanded:enchanting_table",
                         "properties": {}
+                    },
+                    {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "items": [
+                                "minecraft:enchanted_book"
+                            ]
+                        }
                     }
                 ]
             }

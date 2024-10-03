@@ -386,6 +386,8 @@
 	"advancements.sr_story.seeds.description": "Obtain seeds from wild crops",
 	"advancements.sr_story.cleansed_lapis.title": "Infusing Items",
 	"advancements.sr_story.cleansed_lapis.description": "Use a Cleansed Lapis to infuse an item and enchant it to it's maximum power",
+	"advancements.sr_story.learn_enchantment.title": "Learning enchantments",
+	"advancements.sr_story.learn_enchantment.description": "Use an enchanted book on an enchanting table to make the enchantment(s) available in the table",
 	"advancements.sr_story.enchanted_cleansed_lapis.title": "Over 9000",
 	"advancements.sr_story.enchanted_cleansed_lapis.description": "Empower an item with an Enchanted Cleansed Lapis (made in an anvil with Experience Bottle) to get even better enchanting power and over max level enchantments",
 	"advancements.sr_story.respawn_obelisk.title": "The ancients respawned here",
