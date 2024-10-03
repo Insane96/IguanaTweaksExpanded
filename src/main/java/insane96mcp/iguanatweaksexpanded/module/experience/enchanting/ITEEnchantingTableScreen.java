@@ -14,7 +14,6 @@ import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -26,10 +25,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static insane96mcp.insanelib.InsaneLib.ONE_DECIMAL_FORMATTER;
 
@@ -74,7 +70,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
     private ScrollButton scrollDownBtn;
     private ItemStack lastStack = ItemStack.EMPTY;
     private int maxCost = 0;
-    public List<Enchantment> learnedEnchantments = new ArrayList<>();
+    public Map<Enchantment, Integer> learnedEnchantments = new HashMap<>();
     public boolean forceUpdateEnchantmentsList;
 
     private int scroll = 0;
@@ -93,7 +89,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
 
-        this.maxCost = this.menu.maxCost.get();
+        this.updateMaxCost();
         this.scrollUpBtn = new ScrollButton(topLeftCornerX + LIST_X + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y - SCROLL_BUTTON_H - 2, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.UP);
         this.scrollUpBtn.active = false;
         this.scrollDownBtn = new ScrollButton(topLeftCornerX + LIST_X + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y + ENCH_ENTRY_H * 4 + 2, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.DOWN);
@@ -102,7 +98,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
 
     private void updatePossibleEnchantments() {
         ItemStack stack = this.menu.getSlot(0).getItem();
-        this.maxCost = this.menu.maxCost.get();
+        this.updateMaxCost();
         if ((ItemStack.isSameItem(stack, this.lastStack) || !EnchantingFeature.canBeEnchanted(stack)) && !this.forceUpdateEnchantmentsList)
             return;
         this.forceUpdateEnchantmentsList = false;
@@ -113,42 +109,33 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         if (stack.isEmpty() || !EnchantingFeature.canBeEnchanted(stack)) {
             this.scrollUpBtn.active = false;
             this.scrollDownBtn.active = false;
-            this.enchantmentEntries.clear();
+            //this.enchantmentEntries.clear();
             return;
         }
 
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
-            if (enchantment.isCurse()
-                    || EnchantingFeature.enchantingTableRequiresLearning && !this.learnedEnchantments.contains(enchantment))
+            if (/*enchantment.isCurse()
+                    || */EnchantingFeature.enchantingTableRequiresLearning && !this.learnedEnchantments.containsKey(enchantment))
                 continue;
-            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || (this.learnedEnchantments.contains(enchantment) && enchantment.canApplyAtEnchantingTable(stack)))
+            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || (this.learnedEnchantments.containsKey(enchantment) && enchantment.canApplyAtEnchantingTable(stack)))
                 availableEnchantments.add(enchantment);
         }
         availableEnchantments
                 .stream()
-                .sorted(Comparator.comparing(ench -> ForgeRegistries.ENCHANTMENTS.getKey(ench).getPath()))
-                .forEach(enchantment -> enchantments.add(new EnchantmentInstance(enchantment, 0)));
+                .sorted(Comparator.comparing(enchantment -> ForgeRegistries.ENCHANTMENTS.getKey(enchantment).getPath()))
+                .forEach(enchantment -> enchantments.add(new EnchantmentInstance(enchantment, this.learnedEnchantments.getOrDefault(enchantment, 0))));
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
         for (int i = 0; i < enchantments.size(); i++) {
             EnchantmentInstance instance = enchantments.get(i);
             this.enchantmentEntries.add(new EnchantmentEntry(topLeftCornerX + LIST_X, topLeftCornerY + LIST_Y + (i * ENCH_ENTRY_H), instance.enchantment, instance.level));
         }
-
-        if (stack.getTag() != null && stack.getTag().contains("PendingEnchantments")) {
-            List<EnchantmentInstance> pendingEnchantments = new ArrayList<>();
-            ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
-            for (int i = 0; i < enchantmentsListTag.size(); ++i) {
-                CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
-                Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
-                if (enchantment != null) {
-                    pendingEnchantments.add(new EnchantmentInstance(enchantment, compoundtag.getShort("lvl")));
-                }
-            }
+        List<EnchantmentInstance> pendingEnchantments = EnchantingFeature.getPendingEnchantments(stack);
+        if (!pendingEnchantments.isEmpty()) {
             for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
                 Optional<EnchantmentInstance> instanceOptional = pendingEnchantments.stream().filter(pendingEnchantment -> enchantmentEntry.enchantmentDisplay.enchantment.equals(pendingEnchantment.enchantment)).findAny();
                 instanceOptional.ifPresent(pendingEnchantment -> {
-                    enchantmentEntry.enchantmentDisplay.lvl = pendingEnchantment.level;
+                    enchantmentEntry.enchantmentDisplay.setLvl(pendingEnchantment.level);
                     enchantmentEntry.updateActiveState();
                 });
             }
@@ -175,6 +162,18 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries)
             cost += enchantmentEntry.enchantmentDisplay.lvl;
         return cost;
+    }
+
+    private void updateMaxCost() {
+        this.maxCost = this.menu.maxCost.get();
+        ItemStack stack = this.menu.getSlot(0).getItem();
+        if (!EnchantingFeature.canBeEnchanted(stack) && !this.forceUpdateEnchantmentsList)
+            return;
+        EnchantingFeature.getPendingEnchantments(stack)
+                .forEach(enchantmentInstance -> {
+                    if (enchantmentInstance.enchantment.isCurse())
+                        this.maxCost += EnchantingFeature.getCost(enchantmentInstance.enchantment, enchantmentInstance.level, true);
+                });
     }
 
     private boolean isItemEmpowered() {
@@ -226,14 +225,16 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         float cost = this.getCurrentCost();
         if (cost <= 0f)
             return false;
-        if (!this.isItemEmpowered()) {
+        if (!this.minecraft.player.getAbilities().instabuild) {
             for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
-                if (enchantmentEntry.enchantmentDisplay.lvl > enchantmentEntry.enchantmentDisplay.enchantment.getMaxLevel())
+                if (enchantmentEntry.enchantmentDisplay.lvl > enchantmentEntry.enchantmentDisplay.getMaxLvl())
                     return false;
             }
         }
-        return ((this.minecraft.player.experienceLevel >= cost && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild)
-                && (this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= this.getLapisCost() || this.minecraft.player.getAbilities().instabuild);
+
+        boolean hasEnoughExp = this.minecraft.player.experienceLevel >= cost && cost <= this.maxCost;
+        boolean hasEnoughLapis = this.menu.getSlot(ITEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= this.getLapisCost();
+        return (hasEnoughExp && hasEnoughLapis) || this.minecraft.player.getAbilities().instabuild;
     }
 
     @Override
@@ -302,16 +303,16 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         public EnchantmentDisplay enchantmentDisplay;
         public LevelBtn levelUpBtn;
 
-        public EnchantmentEntry(int pX, int pY, Enchantment enchantment, int lvl) {
+        public EnchantmentEntry(int pX, int pY, Enchantment enchantment, int maxLvl) {
             super(pX, pY, ENCH_ENTRY_W, ENCH_ENTRY_H, Component.empty());
-            this.enchantmentDisplay = new EnchantmentDisplay(pX + LVL_BTN_W, pY, enchantment, lvl);
+            this.enchantmentDisplay = new EnchantmentDisplay(pX + LVL_BTN_W, pY, enchantment, maxLvl);
             this.levelDownBtn = new LevelBtn(pX, pY, LevelBtn.Type.LOWER, this);
             this.levelUpBtn = new LevelBtn(pX + RISE_LVL_BTN_U, pY, LevelBtn.Type.RISE, this);
             this.updateActiveState();
         }
 
         private void updateActiveState() {
-            this.levelUpBtn.active = this.enchantmentDisplay.lvl < this.enchantmentDisplay.enchantment.getMaxLevel() || (this.enchantmentDisplay.enchantment.getMaxLevel() > 1 && this.enchantmentDisplay.lvl <= this.enchantmentDisplay.enchantment.getMaxLevel() && ITEEnchantingTableScreen.this.isItemEmpowered() && !EnchantingFeature.isEnchantmentOverLevelBlacklisted(this.enchantmentDisplay.enchantment));
+            this.levelUpBtn.active = this.enchantmentDisplay.canRiseLevel();
             this.levelDownBtn.active = this.enchantmentDisplay.lvl > 0;
         }
 
@@ -368,6 +369,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             else
                 this.enchantmentEntry.enchantmentDisplay.rise();
             this.enchantmentEntry.updateActiveState();
+            ITEEnchantingTableScreen.this.updateMaxCost();
             syncEnchantments();
         }
 
@@ -412,10 +414,16 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
 
         public Enchantment enchantment;
         public int lvl;
-        public EnchantmentDisplay(int pX, int pY, Enchantment enchantment, int lvl) {
+        private final int maxLvl;
+
+        /**
+         * A maxLvl of 0 means unbound max level, otherwise the level is capped
+         */
+        public EnchantmentDisplay(int pX, int pY, Enchantment enchantment, int maxLvl) {
             super(pX, pY, ENCH_DISPLAY_W, ENCH_ENTRY_H, Component.translatable(enchantment.getDescriptionId()));
             this.enchantment = enchantment;
-            this.lvl = lvl;
+            this.lvl = 0;
+            this.maxLvl = maxLvl;
         }
 
         @Override
@@ -430,7 +438,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             Component lvlTxt = Component.empty();
             if (this.lvl > 0)
                 lvlTxt = Component.translatable("enchantment.level." + this.lvl);
-            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.enchantment.getMaxLevel() ? 16733695 : 0xDDDDDD);
+            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
             MutableComponent component = Component.empty();
             if (Screen.hasShiftDown()) {
                 component.append(Component.translatable(this.enchantment.getDescriptionId() + ".info").withStyle(ChatFormatting.LIGHT_PURPLE));
@@ -447,12 +455,26 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             renderScrollingString(pGuiGraphics, pFont, this.getMessage(), i, this.getY(), j, this.getY() + this.getHeight(), pColor);
         }
 
+        public int getMaxLvl() {
+            int maxLvl = this.maxLvl;
+            if (this.enchantment.getMaxLevel() > 1
+                    && ITEEnchantingTableScreen.this.isItemEmpowered()
+                    && EnchantingFeature.canOverLevel(this.enchantment))
+                maxLvl++;
+            return maxLvl;
+        }
+
         /**
          * Returns if the button should be disabled
          */
         public void rise() {
-            if (this.lvl < this.enchantment.getMaxLevel() || (this.enchantment.getMaxLevel() > 1 && this.lvl <= this.enchantment.getMaxLevel() && ITEEnchantingTableScreen.this.isItemEmpowered()))
+            if (this.canRiseLevel())
                 this.lvl++;
+        }
+
+        public boolean canRiseLevel() {
+            int maxLvl = getMaxLvl();
+            return this.lvl < maxLvl;
         }
 
         /**
@@ -461,6 +483,10 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         public void lower() {
             if (this.lvl > 0)
                 this.lvl--;
+        }
+
+        public void setLvl(int lvl) {
+            this.lvl = this.maxLvl > 0 ? Math.min(lvl, this.maxLvl) : lvl;
         }
 
         private int getYOffset() {

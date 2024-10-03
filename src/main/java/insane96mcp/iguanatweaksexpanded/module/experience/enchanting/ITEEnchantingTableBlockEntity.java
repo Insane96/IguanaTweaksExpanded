@@ -6,7 +6,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -28,8 +27,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
     public int time;
@@ -44,7 +43,7 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     public float tRot;
     private static final RandomSource RANDOM = RandomSource.create();
     protected NonNullList<ItemStack> items = NonNullList.withSize(ITEEnchantingTableMenu.SLOT_COUNT, ItemStack.EMPTY);
-    public List<Enchantment> learnedEnchantments = new ArrayList<>();
+    public Map<Enchantment, Integer> learnedEnchantments = new HashMap<>();
     protected ITEEnchantingTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
     }
@@ -53,20 +52,30 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         super.load(tag);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.items);
-        ListTag listtag = tag.getList("treasure_enchantments", CompoundTag.TAG_STRING);
+        /*ListTag listtag = tag.getList("treasure_enchantments", CompoundTag.TAG_STRING);
         for (int i = 0; i < listtag.size(); i++) {
             String enchantment = listtag.getString(i);
             Enchantment enchantment1 = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment));
             if (enchantment1 == null)
                 continue;
             this.learnedEnchantments.add(enchantment1);
+        }*/
+        ListTag listTag = tag.getList("learned_enchantments", CompoundTag.TAG_COMPOUND);
+        for (int i = 0; i < listTag.size(); i++) {
+            CompoundTag compoundTag = listTag.getCompound(i);
+            String enchantmentId = compoundTag.getString("id");
+            Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantmentId));
+            if (enchantment == null)
+                continue;
+            int lvl = compoundTag.getInt("lvl");
+            this.learnedEnchantments.put(enchantment, lvl);
         }
     }
 
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         ContainerHelper.saveAllItems(tag, this.items);
-        ListTag treasureEnchantmentsListTag = new ListTag();
+        /*ListTag treasureEnchantmentsListTag = new ListTag();
         for (Enchantment enchantment : this.learnedEnchantments) {
             ResourceLocation enchantmentId = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
             if (enchantmentId == null)
@@ -74,21 +83,28 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
             StringTag stringTag = StringTag.valueOf(enchantmentId.toString());
             treasureEnchantmentsListTag.add(stringTag);
         }
-        tag.put("treasure_enchantments", treasureEnchantmentsListTag);
-    }
-
-    public boolean knowsEnchantment(Enchantment enchantment) {
-        for (Enchantment treasureEnchantment : this.learnedEnchantments) {
-            if (treasureEnchantment.equals(enchantment))
-                return true;
+        tag.put("treasure_enchantments", treasureEnchantmentsListTag);*/
+        ListTag listTag = new ListTag();
+        for (Map.Entry<Enchantment, Integer> learnedEnchantment : this.learnedEnchantments.entrySet()) {
+            ResourceLocation enchantmentId = ForgeRegistries.ENCHANTMENTS.getKey(learnedEnchantment.getKey());
+            if (enchantmentId == null)
+                continue;
+            CompoundTag compoundTag = new CompoundTag();
+            compoundTag.putString("id", enchantmentId.toString());
+            compoundTag.putInt("lvl", learnedEnchantment.getValue());
+            listTag.add(compoundTag);
         }
-        return false;
+        tag.put("learned_enchantments", listTag);
     }
 
-    public void learnEnchantment(Enchantment enchantment) {
-        if (learnedEnchantments.contains(enchantment))
+    public boolean knowsEnchantment(Enchantment enchantment, int lvl) {
+        return this.learnedEnchantments.containsKey(enchantment) && this.learnedEnchantments.get(enchantment) >= lvl;
+    }
+
+    public void learnEnchantment(Enchantment enchantment, int lvl) {
+        if (this.knowsEnchantment(enchantment, lvl))
             return;
-        this.learnedEnchantments.add(enchantment);
+        this.learnedEnchantments.put(enchantment, lvl);
         this.setChanged();
     }
 

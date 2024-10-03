@@ -1,14 +1,17 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import com.google.gson.*;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.reflect.TypeToken;
 import insane96mcp.insanelib.data.IdTagMatcher;
 import net.minecraft.util.GsonHelper;
 
 import java.util.ArrayList;
 
+@JsonAdapter(EnchantmentData.Serializer.class)
 public class EnchantmentData {
     public IdTagMatcher enchantment;
+    public int maxLvl;
     public int[] cost;
 
     public EnchantmentData(IdTagMatcher enchantment, int... cost) {
@@ -28,7 +31,7 @@ public class EnchantmentData {
             JsonObject jObject = json.getAsJsonObject();
             IdTagMatcher idTagMatcher = context.deserialize(jObject.get("enchantment"), IdTagMatcher.class);
             if (jObject.get("cost").isJsonPrimitive())
-                return new EnchantmentData(idTagMatcher, new int[]{GsonHelper.getAsInt(jObject, "cost")});
+                return new EnchantmentData(idTagMatcher, GsonHelper.getAsInt(jObject, "cost"));
             else {
                 JsonArray jsonArray = jObject.get("cost").getAsJsonArray();
                 int[] cost = new int[jsonArray.size()];

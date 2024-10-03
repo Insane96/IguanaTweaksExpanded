@@ -56,10 +56,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-@Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled a data pack is also enabled that changes the enchanting table recipe. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
+@Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled, a data pack is also enabled that changes the enchanting table recipe to give the new one and replaces xp bottles with enchanted cleansed lapis. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class EnchantingFeature extends JsonFeature {
     public static final TagKey<Item> NOT_ENCHANTABLE = ITEItemTagsProvider.create("not_enchantable");
@@ -83,7 +84,10 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean grindstoneTreasureEnchantmentExtraction = true;
     @Config
     @Label(name = "Grindstone.Enchantment extraction", description = "If true, grindstone will be able to extract all enchantments, not only treasure enchantments.")
-    public static Boolean grindstoneEnchantmentExtraction = false;
+    public static Boolean grindstoneEnchantmentExtraction = true;
+    @Config
+    @Label(name = "Grindstone.Curse removal", description = "If true, grindstone will also remove curses when disenchanting.")
+    public static Boolean grindstoneCurseRemoval = true;
     @Config
     @Label(name = "Allurement integration", description = """
             If true, some mixins are used on Allurement to make the enchantments work on more things and configs are changed to not overlap with ITE.
@@ -93,7 +97,10 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean allurementIntegration = true;
     @Config
     @Label(name = "Enchanting Table requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
-    public static Boolean enchantingTableRequiresLearning = false;
+    public static Boolean enchantingTableRequiresLearning = true;
+    @Config
+    @Label(name = "Allow learning Curses", description = "If true, the new enchanting table can learn curses.")
+    public static Boolean allowLearningCurses = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ITERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ITEItem(new Item.Properties(), true));
@@ -259,7 +266,7 @@ public class EnchantingFeature extends JsonFeature {
             if (EnchantmentsFeature.isEnchantmentDisabled(enchantment))
                 continue;
             int maxLvl = enchantment.getMaxLevel();
-            if (maxLvl > 1 && !isEnchantmentOverLevelBlacklisted(enchantment))
+            if (maxLvl > 1 && canOverLevel(enchantment))
                 maxLvl++;
             StringBuilder costs = new StringBuilder();
             for (int i = 1; i <= maxLvl; i++) {
@@ -343,13 +350,13 @@ public class EnchantingFeature extends JsonFeature {
 
         float lvl = 0;
         for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getTopItem()).entrySet()) {
-            if (enchantment.getKey().isCurse())
-                continue;
+            /*if (enchantment.getKey().isCurse())
+                continue;*/
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
         }
         for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getBottomItem()).entrySet()) {
-            if (enchantment.getKey().isCurse())
-                continue;
+            /*if (enchantment.getKey().isCurse())
+                continue;*/
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
         }
         lvl = (int)Math.floor(lvl);
@@ -368,6 +375,11 @@ public class EnchantingFeature extends JsonFeature {
 
         extractTrasureEnchantments(event);
         resetLodestoneCompass(event);
+        /*if (grindstoneCurseRemoval && hasCurses(event.getOutput())) {
+            ItemStack output = event.getOutput();
+            output.getTag().remove("Enchantments");
+            event.setOutput(output);
+        }*/
     }
 
     public static void extractTrasureEnchantments(GrindstoneEvent.OnPlaceItem event) {
@@ -398,8 +410,8 @@ public class EnchantingFeature extends JsonFeature {
         event.setXp(0);
     }
 
-    public static int getCost(Enchantment enchantment, int lvl) {
-        if (lvl <= 0)
+    public static int getCost(Enchantment enchantment, int lvl, boolean checkCurses) {
+        if (lvl <= 0 || (enchantment.isCurse() && !checkCurses))
             return 0;
         float vanillaCost = Anvils.getRarityCost(enchantment);
         EnchantmentData enchantmentData = enchantmentsData.stream()
@@ -414,6 +426,10 @@ public class EnchantingFeature extends JsonFeature {
                 return enchantmentData.cost[lvl - 1];
         }
         return (int) Math.round(vanillaCost * Math.pow(lvl, 1.11));
+    }
+
+    public static int getCost(Enchantment enchantment, int lvl) {
+        return getCost(enchantment, lvl, false);
     }
 
     public static boolean canBeEnchanted(ItemStack stack) {
@@ -445,7 +461,7 @@ public class EnchantingFeature extends JsonFeature {
         float cost = 0f;
         for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
             if (enchantment.getKey().isCurse())
-                cost += getCost(enchantment.getKey(), 1);
+                cost += getCost(enchantment.getKey(), 1, true);
         }
         return cost;
     }
@@ -457,12 +473,28 @@ public class EnchantingFeature extends JsonFeature {
         return enchantments.size() == 1 && enchantments.getCompound(0).isEmpty();
     }
 
-    public static boolean isEnchantmentOverLevelBlacklisted(Enchantment enchantment) {
+    public static boolean canOverLevel(Enchantment enchantment) {
         for (IdTagMatcher idTagMatcher : overLevelEnchantmentBlacklist) {
             if (idTagMatcher.matchesEnchantment(enchantment))
-                return true;
+                return false;
         }
-        return false;
+        return true;
+    }
+
+    public static List<EnchantmentInstance> getPendingEnchantments(ItemStack stack) {
+        if (stack.getTag() == null)
+            return Collections.emptyList();
+        List<EnchantmentInstance> pendingEnchantments = new ArrayList<>();
+        ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+        for (int i = 0; i < enchantmentsListTag.size(); ++i) {
+            CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
+            Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
+            short lvl = compoundtag.getShort("lvl");
+            if (enchantment != null) {
+                pendingEnchantments.add(new EnchantmentInstance(enchantment, lvl));
+            }
+        }
+        return pendingEnchantments;
     }
 
     @SubscribeEvent
