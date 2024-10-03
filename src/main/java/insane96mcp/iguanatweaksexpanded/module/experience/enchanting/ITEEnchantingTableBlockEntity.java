@@ -52,14 +52,17 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         super.load(tag);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.items);
-        /*ListTag listtag = tag.getList("treasure_enchantments", CompoundTag.TAG_STRING);
-        for (int i = 0; i < listtag.size(); i++) {
-            String enchantment = listtag.getString(i);
-            Enchantment enchantment1 = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment));
-            if (enchantment1 == null)
-                continue;
-            this.learnedEnchantments.add(enchantment1);
-        }*/
+        if (tag.contains("treasure_enchantments")) {
+            ListTag listtag = tag.getList("treasure_enchantments", CompoundTag.TAG_STRING);
+            for (int i = 0; i < listtag.size(); i++) {
+                String enchantment = listtag.getString(i);
+                Enchantment enchantment1 = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment));
+                if (enchantment1 == null)
+                    continue;
+                this.learnedEnchantments.put(enchantment1, enchantment1.getMaxLevel() / 2);
+            }
+            tag.remove("treasure_enchantments");
+        }
         ListTag listTag = tag.getList("learned_enchantments", CompoundTag.TAG_COMPOUND);
         for (int i = 0; i < listTag.size(); i++) {
             CompoundTag compoundTag = listTag.getCompound(i);
@@ -75,15 +78,6 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         ContainerHelper.saveAllItems(tag, this.items);
-        /*ListTag treasureEnchantmentsListTag = new ListTag();
-        for (Enchantment enchantment : this.learnedEnchantments) {
-            ResourceLocation enchantmentId = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
-            if (enchantmentId == null)
-                continue;
-            StringTag stringTag = StringTag.valueOf(enchantmentId.toString());
-            treasureEnchantmentsListTag.add(stringTag);
-        }
-        tag.put("treasure_enchantments", treasureEnchantmentsListTag);*/
         ListTag listTag = new ListTag();
         for (Map.Entry<Enchantment, Integer> learnedEnchantment : this.learnedEnchantments.entrySet()) {
             ResourceLocation enchantmentId = ForgeRegistries.ENCHANTMENTS.getKey(learnedEnchantment.getKey());

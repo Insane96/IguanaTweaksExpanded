@@ -122,7 +122,11 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         }
         availableEnchantments
                 .stream()
-                .sorted(Comparator.comparing(enchantment -> ForgeRegistries.ENCHANTMENTS.getKey(enchantment).getPath()))
+                .sorted(Comparator.comparing(enchantment -> {
+                    String comparator = ForgeRegistries.ENCHANTMENTS.getKey(enchantment).getPath();
+                    if (enchantment.isCurse()) comparator = "_" + comparator;
+                    return comparator;
+                }))
                 .forEach(enchantment -> enchantments.add(new EnchantmentInstance(enchantment, this.learnedEnchantments.getOrDefault(enchantment, 0))));
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
@@ -384,11 +388,13 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             RenderSystem.enableDepthTest();
             guiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), this.type == Type.LOWER ? LOWER_LVL_BTN_U : RISE_LVL_BTN_U, ENCH_ENTRY_V + this.getYOffset(), this.width, this.height);
             guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-            if (this.type == Type.LOWER)
+            //TODO bonus max cost tooltip
+            if (this.enchantmentEntry.enchantmentDisplay.enchantment.isCurse())
+                this.setTooltip(null);
+            else if (this.type == Type.LOWER)
                 this.setTooltip(Tooltip.create(Component.literal("Previous level cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(this.enchantmentEntry.enchantmentDisplay.enchantment, this.enchantmentEntry.enchantmentDisplay.lvl - 1))))));
             else if (this.type == Type.RISE)
                 this.setTooltip(Tooltip.create(Component.literal("Next level cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(this.enchantmentEntry.enchantmentDisplay.enchantment, this.enchantmentEntry.enchantmentDisplay.lvl + 1))))));
-            else this.setTooltip(null);
         }
 
         private int getYOffset() {
@@ -444,7 +450,10 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
                 component.append(Component.translatable(this.enchantment.getDescriptionId() + ".info").withStyle(ChatFormatting.LIGHT_PURPLE));
                 component.append(CommonComponents.NEW_LINE);
             }
-            this.setTooltip(Tooltip.create(component.append(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl)))))));
+            if (!enchantment.isCurse())
+                this.setTooltip(Tooltip.create(component.append(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl)))))));
+            else
+                this.setTooltip(Tooltip.create(component.append(Component.literal("Bonus max cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, 1, true)))))));
             //this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;
         }
 
@@ -456,7 +465,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         }
 
         public int getMaxLvl() {
-            int maxLvl = this.maxLvl;
+            int maxLvl = this.maxLvl == 0 ? this.enchantment.getMaxLevel() : this.maxLvl;
             if (this.enchantment.getMaxLevel() > 1
                     && ITEEnchantingTableScreen.this.isItemEmpowered()
                     && EnchantingFeature.canOverLevel(this.enchantment))
@@ -486,7 +495,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         }
 
         public void setLvl(int lvl) {
-            this.lvl = this.maxLvl > 0 ? Math.min(lvl, this.maxLvl) : lvl;
+            this.lvl = this.maxLvl > 0 ? Math.min(lvl, this.getMaxLvl()) : lvl;
         }
 
         private int getYOffset() {

@@ -16,8 +16,8 @@
                             "ops": [
                                 {
                                     "op": "replace",
-                                    "source": "treasure_enchantments",
-                                    "target": "BlockEntityTag.treasure_enchantments"
+                                    "source": "learned_enchantments",
+                                    "target": "BlockEntityTag.learned_enchantments"
                                 }
                             ],
                             "source": "block_entity"

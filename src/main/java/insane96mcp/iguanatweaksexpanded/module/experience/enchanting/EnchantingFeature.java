@@ -107,8 +107,8 @@ public class EnchantingFeature extends JsonFeature {
 
     public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
             new EnchantmentData("allurement:alleviating", 5),
-            new EnchantmentData("allurement:ascension_curse", 6),
-            new EnchantmentData("allurement:fleeting_curse", 6),
+            new EnchantmentData("allurement:ascension_curse", 5),
+            new EnchantmentData("allurement:fleeting_curse", 5),
             new EnchantmentData("allurement:launch", 2, 4, 6),
             new EnchantmentData("allurement:obedience", 3),
             new EnchantmentData("allurement:reeling", 3, 6, 9),
@@ -122,14 +122,14 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:air_stealer", 2, 4, 6),
             new EnchantmentData("iguanatweaksexpanded:armor_piercer", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:blasting", 2, 4, 6, 8, 10, 12),
-            new EnchantmentData("iguanatweaksexpanded:blood_pact_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:blood_pact_curse", 5),
             new EnchantmentData("iguanatweaksexpanded:burst_of_arrows", 6),
             new EnchantmentData("iguanatweaksexpanded:double_jump", 3),
             new EnchantmentData("iguanatweaksexpanded:dumbness_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:ender_curse", 3),
             new EnchantmentData("iguanatweaksexpanded:exchange", 3),
             new EnchantmentData("iguanatweaksexpanded:expanded", 4, 8, 12),
-            new EnchantmentData("iguanatweaksexpanded:experience_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:experience_curse", 5),
             new EnchantmentData("iguanatweaksexpanded:fragility_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:gravity_defying", 3),
             new EnchantmentData("iguanatweaksexpanded:healthy", 2, 4, 6, 8, 10, 12),
@@ -147,7 +147,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:recovery", 3),
             new EnchantmentData("iguanatweaksexpanded:short_arm_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:slow_charge_curse", 3),
-            new EnchantmentData("iguanatweaksexpanded:slow_strike_curse", 3),
+            new EnchantmentData("iguanatweaksexpanded:slow_strike_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:smartness", 3, 6, 9, 12),
             new EnchantmentData("iguanatweaksexpanded:soulbound", 3),
             new EnchantmentData("iguanatweaksexpanded:sprint_pact", 6),
@@ -160,7 +160,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:veining", 4, 8, 12),
             new EnchantmentData("iguanatweaksexpanded:vindication", 3, 6, 9, 12),
             new EnchantmentData("iguanatweaksexpanded:void_curse", 2),
-            new EnchantmentData("iguanatweaksexpanded:walking_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:walking_curse", 5),
             new EnchantmentData("iguanatweaksexpanded:water_coolant", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:zippy", 2, 4, 6),
             new EnchantmentData("iguanatweaksreborn:bane_of_sssss", 2, 4, 6, 8, 10, 12),
@@ -177,7 +177,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksreborn:smite", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("minecraft:aqua_affinity", 3),
             new EnchantmentData("minecraft:bane_of_arthropods", 2, 4, 6, 8, 10, 12),
-            new EnchantmentData("minecraft:binding_curse", 6),
+            new EnchantmentData("minecraft:binding_curse", 5),
             new EnchantmentData("minecraft:blast_protection", 2, 4, 6, 8, 10),
             new EnchantmentData("minecraft:channeling", 6),
             new EnchantmentData("minecraft:depth_strider", 3, 6, 9),
@@ -213,8 +213,8 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("minecraft:swift_sneak", 3, 6, 9, 12),
             new EnchantmentData("minecraft:thorns", 3, 6, 9, 12),
             new EnchantmentData("minecraft:unbreaking", 2, 4, 6, 8, 10, 12),
-            new EnchantmentData("minecraft:vanishing_curse", 6),
-            new EnchantmentData("passablefoliage:leaf_walker", 1),
+            new EnchantmentData("minecraft:vanishing_curse", 5),
+            new EnchantmentData("passablefoliage:leaf_walker", 2),
             new EnchantmentData("shieldsplus:ablaze", 2, 4, 6),
             new EnchantmentData("shieldsplus:aegis", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("shieldsplus:celestial_guardian", 6),
@@ -236,9 +236,12 @@ public class EnchantingFeature extends JsonFeature {
 
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
-        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("enchantments_base_cost.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost")));
+
+        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_data")));
+
         addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
         JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist")));
 	}
@@ -270,7 +273,7 @@ public class EnchantingFeature extends JsonFeature {
                 maxLvl++;
             StringBuilder costs = new StringBuilder();
             for (int i = 1; i <= maxLvl; i++) {
-                costs.append(getCost(enchantment, i)).append(" ");
+                costs.append(getCost(enchantment, i, true)).append(" ");
             }
             LogHelper.debug("%s %d (%s)", ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString(), maxLvl, costs);
         }
