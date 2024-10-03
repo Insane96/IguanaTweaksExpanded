@@ -1,0 +1,8 @@
+{
+    "type": "iguanatweaksreborn:replace_drop",
+    "conditions": [
+    ],
+    "item_to_replace": "minecraft:experience_bottle",
+    "new_item": "iguanatweaksexpanded:enchanted_cleansed_lapis",
+    "multipliers": [0.5]
+}

@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* Enchanting Feature 
+  * Data pack now replaces experience bottles with enchanted cleansed lapis
 * Fixed Durium hammer taking almost no enchantments
 * Fixed Serene Seasons being a mandatory mod
 
