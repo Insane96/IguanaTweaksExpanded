@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.items.solarium;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.items.solarium.integration.BuzzierBeesIntegration;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.item.*;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
@@ -154,17 +155,20 @@ public class Solarium extends Feature {
 		if (!event.getEntity().getMainHandItem().is(SOLARIUM_EQUIPMENT)
 				|| !event.getEntity().getMainHandItem().isCorrectToolForDrops(event.getState()))
 			return;
-		float calculatedSkyLightRatio = getCalculatedSkyLightRatio(event.getEntity().level(), event.getEntity().blockPosition());
+		float calculatedSkyLightRatio = getCalculatedSkyLightRatio(event.getEntity());
 		if (calculatedSkyLightRatio <= 0f)
 			return;
 		event.setNewSpeed(event.getNewSpeed() * (1 + (calculatedSkyLightRatio * 0.5f)));
 	}
 
 	public static float getCalculatedSkyLight(Entity entity) {
-		return getCalculatedSkyLight(entity.level(), entity.blockPosition());
+		float calculatedSkyLight = getCalculatedSkyLight(entity.level(), entity.blockPosition());
+		if (ModList.get().isLoaded("buzzier_bees") && BuzzierBeesIntegration.hasSunny(entity))
+			calculatedSkyLight = 15f;
+		return calculatedSkyLight;
 	}
 
-	public static float getCalculatedSkyLight(Level level, BlockPos pos) {
+	private static float getCalculatedSkyLight(Level level, BlockPos pos) {
 		if (!level.isDay()
 				|| level.isThundering())
 			return 0f;
@@ -178,11 +182,7 @@ public class Solarium extends Feature {
 	 * Returns a value between 0 and 1 where 0 is total darkness and 1 is 15 light level
 	 */
 	public static float getCalculatedSkyLightRatio(Entity entity) {
-		return getCalculatedSkyLightRatio(entity.level(), entity.blockPosition());
-	}
-
-	public static float getCalculatedSkyLightRatio(Level level, BlockPos pos) {
-		return Math.min(getCalculatedSkyLight(level, pos), 12f) / 12f;
+        return Math.min(getCalculatedSkyLight(entity), 12f) / 12f;
 	}
 
 	@SubscribeEvent
