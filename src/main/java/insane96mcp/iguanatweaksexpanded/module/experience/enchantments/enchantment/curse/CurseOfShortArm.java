@@ -43,7 +43,7 @@ public class CurseOfShortArm extends Enchantment implements IAttributeEnchantmen
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
         if (event.getSlotType() != EquipmentSlot.MAINHAND)
             return;
-        event.addModifier(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(MODIFIER_UUID, "Short Arm Curse Modifier", -0.2d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
-        event.addModifier(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(MODIFIER_UUID, "Short Arm Curse Modifier", -0.2d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+        event.addModifier(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(MODIFIER_UUID, "Short Arm Curse Modifier", -0.25d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+        event.addModifier(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(MODIFIER_UUID, "Short Arm Curse Modifier", -0.25d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
     }
 }
