@@ -1,7 +1,6 @@
 # Changelog
 
 * Advancements for extracting enchantments from items and applying to enchanting table.
-* Curses disenchanting 
 
 ## Upcoming
 * Enchanting Feature 
@@ -10,6 +9,7 @@
   * Enchanting table can now learn curses, they cost 0 and increase the max cost
   * Empowered items now increase the max level of enchantments by one over the maximum of the enchanting table
     * This means that you can increase the max level above the limit on the enchanting table by using commands
+  * Grindstone now also removes curses
   * Data pack now replaces experience bottles with enchanted cleansed lapis
 * Fixed Durium hammer taking almost no enchantments
 * Fixed Serene Seasons being a mandatory mod

@@ -373,16 +373,12 @@ public class EnchantingFeature extends JsonFeature {
         if (!this.isEnabled())
             return;
 
-        extractTrasureEnchantments(event);
+        extractTreasureEnchantments(event);
         resetLodestoneCompass(event);
-        /*if (grindstoneCurseRemoval && hasCurses(event.getOutput())) {
-            ItemStack output = event.getOutput();
-            output.getTag().remove("Enchantments");
-            event.setOutput(output);
-        }*/
+        removeAllEnchantments(event);
     }
 
-    public static void extractTrasureEnchantments(GrindstoneEvent.OnPlaceItem event) {
+    public static void extractTreasureEnchantments(GrindstoneEvent.OnPlaceItem event) {
         if (!grindstoneTreasureEnchantmentExtraction
                 || !event.getTopItem().isEnchanted()
                 || !event.getBottomItem().is(Items.BOOK)
@@ -408,6 +404,23 @@ public class EnchantingFeature extends JsonFeature {
         ItemStack output = new ItemStack(Items.COMPASS);
         event.setOutput(output);
         event.setXp(0);
+    }
+
+    public static void removeAllEnchantments(GrindstoneEvent.OnPlaceItem event) {
+        if (!grindstoneCurseRemoval)
+            return;
+
+        if (event.getBottomItem().isEmpty() && event.getTopItem().isEmpty())
+            return;
+        if (!event.getBottomItem().isEmpty() && !event.getTopItem().isEmpty())
+            return;
+        ItemStack output = event.getBottomItem().isEmpty() ? event.getTopItem().copy() : event.getBottomItem().copy();
+        if (output.isEmpty()
+                || !output.isEnchanted())
+            return;
+
+        output.getTag().remove("Enchantments");
+        event.setOutput(output);
     }
 
     public static int getCost(Enchantment enchantment, int lvl, boolean checkCurses) {
