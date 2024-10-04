@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed iron shields crafting requiring stone shield
+
 ## 1.16.0
 * Enchanting Feature 
   * Enchanting tables now knows no enchantments by default, it must learn them
