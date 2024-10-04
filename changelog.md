@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.16.0
 * Enchanting Feature 
   * Enchanting tables now knows no enchantments by default, it must learn them
   * Enchantments learned now also learn the level, making it the maximum for that enchantment, so if you give them an Efficiency 3 book, the max level for Efficiency will be 3.
