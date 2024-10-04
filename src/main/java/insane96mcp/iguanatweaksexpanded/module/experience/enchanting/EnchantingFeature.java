@@ -539,7 +539,7 @@ public class EnchantingFeature extends JsonFeature {
     private static void treasureEnchantmentsEnchantedBooksTooltip(ItemStack stack, List<Component> tooltip) {
         if (stack.is(Items.ENCHANTED_BOOK)) {
             for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(stack).entrySet()) {
-                if ((enchantment.getKey().isTreasureOnly() || enchantingTableRequiresLearning) && !enchantment.getKey().isCurse()) {
+                if ((enchantment.getKey().isTreasureOnly() || enchantingTableRequiresLearning) && (!enchantment.getKey().isCurse() || allowLearningCurses)) {
                     tooltip.add(Component.empty());
                     tooltip.add(Component.translatable("iguanatweaksexpanded.apply_to_enchanting_table").withStyle(ChatFormatting.GREEN));
                     break;

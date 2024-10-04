@@ -4,7 +4,7 @@
 	"block.iguanatweaksexpanded.enchanting_table": "Enchanting Table",
 	"iguanatweaksexpanded.infused_item": "Enchanting Infused",
 	"iguanatweaksexpanded.empowered_item": "Enchanting Empowered",
-	"iguanatweaksexpanded.apply_to_enchanting_table": "Treasure enchantments can be applied to enchanting tables to let them learn it",
+	"iguanatweaksexpanded.apply_to_enchanting_table": "This book can be applied to enchanting tables to let them learn the enchantments",
 	"iguanatweaksexpanded.enchanting_table.already_knows": "The enchanting table already knows this enchantment: %s up to level %s",
 	"iguanatweaksexpanded.enchanting_table.learned_enchantment": "The enchanting table has learned %s up to level %s",
 	"iguanatweaksexpanded.enchanting_table.upgrade_known_enchantment": "The enchanting table has upgraded the max level of %s from %s to %s",

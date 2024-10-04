@@ -2,6 +2,8 @@
 
 ## Upcoming
 * Fixed iron shields crafting requiring stone shield
+* Fixed cursed books not getting apply to enchanting table tooltip
+  * Also changed the tooltip text
 
 ## 1.16.0
 * Enchanting Feature 
