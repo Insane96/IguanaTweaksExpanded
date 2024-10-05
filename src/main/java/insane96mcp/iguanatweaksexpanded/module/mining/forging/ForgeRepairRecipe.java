@@ -88,6 +88,40 @@ public class ForgeRepairRecipe extends ForgeRecipe {
         return this.gear.getItems()[0];
     }
 
+    public int getAmountUsed(ItemStack repairMaterial, ItemStack gear) {
+        int repairItemCountCost;
+        int maxPartialRepairDmg = Mth.ceil(gear.getMaxDamage() * (1f - maxRepair));
+        float amountRequired = ingredientAmount;
+        if (Anvils.moreMaterialIfEnchanted > 0f && gear.isEnchanted()) {
+            float increase = 0f;
+            for (Integer lvl : EnchantmentHelper.getEnchantments(gear).values()) {
+                increase += Anvils.moreMaterialIfEnchanted.floatValue() * lvl;
+            }
+            amountRequired *= 1 + increase;
+        }
+        if (Anvils.moreMaterialIfEnchantedFlat > 0f && gear.isEnchanted()) {
+            float increase = 0f;
+            for (Integer lvl : EnchantmentHelper.getEnchantments(gear).values()) {
+                increase += Anvils.moreMaterialIfEnchantedFlat.floatValue() * lvl;
+            }
+            amountRequired += (increase * costMultiplier);
+        }
+        float repairSteps = Math.min(gear.getDamageValue(), gear.getMaxDamage() / amountRequired);
+        if (repairSteps <= 0 || gear.getDamageValue() <= maxPartialRepairDmg)
+            return 0;
+
+        float damageValue = gear.getDamageValue();
+        for (repairItemCountCost = 0; repairSteps > 0 && repairItemCountCost < repairMaterial.getCount() && damageValue > maxPartialRepairDmg; ++repairItemCountCost) {
+            damageValue -= repairSteps;
+            repairSteps = Math.min(damageValue, gear.getMaxDamage() / amountRequired);
+        }
+        return repairItemCountCost;
+    }
+
+    private int getRepairItemCount() {
+        return 0;
+    }
+
     @Override
     public RecipeSerializer<?> getSerializer() {
         return Forging.FORGE_RECIPE_SERIALIZER.get();

@@ -60,7 +60,7 @@ public class ForgeBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         ItemStack stack = pPlayer.getItemInHand(pHand);
         if (stack.getItem() instanceof ForgeHammerItem forgeHammerItem && pLevel.getBlockEntity(pPos) instanceof ForgeBlockEntity forgeBlockEntity && pHit.getDirection() == Direction.UP) {
-            if (Forging.unforgableEnchantedItems && forgeBlockEntity.getItem(1).isEnchanted()) {
+            if (Forging.unforgableEnchantedItems && forgeBlockEntity.getItem(1).isEnchanted() && ForgeRepairRecipe.fromLeftAndRightAnvil(forgeBlockEntity.getItem(1), forgeBlockEntity.getItem(0)) == null) {
                 pPlayer.displayClientMessage(Component.translatable(CANT_FORGE_ENCHANTED), true);
                 return InteractionResult.PASS;
             }

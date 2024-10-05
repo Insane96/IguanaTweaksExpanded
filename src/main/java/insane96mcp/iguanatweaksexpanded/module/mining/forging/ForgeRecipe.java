@@ -82,6 +82,10 @@ public class ForgeRecipe implements Recipe<Container> {
         return this.ingredientAmount;
     }
 
+    public int getUsedMaterials() {
+        return this.ingredientAmount;
+    }
+
     public Ingredient getGear() {
         return this.gear;
     }

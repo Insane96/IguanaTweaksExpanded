@@ -41,6 +41,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ForgeBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeHolder, StackedContentsCompatible {
     private static final int[] SLOTS_FOR_UP = new int[]{ForgeMenu.INGREDIENT_SLOT};
@@ -191,7 +192,7 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
         int damage = resultStack.getDamageValue();
         ItemStack gearSlotStack = slotStacks.get(ForgeMenu.GEAR_SLOT);
         if (gearSlotStack.hasTag())
-            resultStack.setTag(gearSlotStack.getTag());
+            resultStack.setTag(gearSlotStack.getTag().copy());
         if (!(recipe instanceof ForgeRepairRecipe) && resultStack.getItem().canBeDepleted())
             resultStack.setDamageValue(0);
         else if (recipe instanceof ForgeRepairRecipe)
@@ -204,13 +205,20 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
             resultSlotStack.grow(resultStack.getCount());
         }
 
-        slotStacks.get(ForgeMenu.INGREDIENT_SLOT).shrink(((ForgeRecipe)recipe).getIngredientAmount());
-        gearSlotStack.shrink(1);
+        int usedMaterials = ((ForgeRecipe)recipe).getIngredientAmount();
+        if (recipe instanceof ForgeRepairRecipe forgeRepairRecipe) {
+            usedMaterials = forgeRepairRecipe.getAmountUsed(slotStacks.get(ForgeMenu.INGREDIENT_SLOT), gearSlotStack);
+        }
+        slotStacks.get(ForgeMenu.INGREDIENT_SLOT).shrink(usedMaterials);
+        slotStacks.set(1, ItemStack.EMPTY);
         return true;
     }
 
     private static int getSmashesRequired(Level pLevel, ForgeBlockEntity pBlockEntity) {
-        return pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel).map(ForgeRecipe::getSmashesRequired).orElse(10);
+        Optional<ForgeRecipe> recipe = pBlockEntity.quickCheck.getRecipeFor(pBlockEntity, pLevel);
+        if (recipe.isEmpty())
+            recipe = Optional.ofNullable(ForgeRepairRecipe.fromLeftAndRightAnvil(pBlockEntity.getItem(ForgeMenu.GEAR_SLOT), pBlockEntity.getItem(ForgeMenu.INGREDIENT_SLOT)));
+        return recipe.map(ForgeRecipe::getSmashesRequired).orElse(10);
     }
 
     @Override

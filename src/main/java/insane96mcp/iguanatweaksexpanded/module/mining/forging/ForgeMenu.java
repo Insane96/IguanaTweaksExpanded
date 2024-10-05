@@ -45,7 +45,12 @@ public class ForgeMenu extends RecipeBookMenu<Container> {
         this.level = pPlayerInventory.player.level();
 
         this.addSlot(new ForgeIngredientSlot(pContainer, INGREDIENT_SLOT, 56, 17));
-        this.addSlot(new Slot(pContainer, GEAR_SLOT, 56, 53));
+        this.addSlot(new Slot(pContainer, GEAR_SLOT, 56, 53) {
+            @Override
+            public int getMaxStackSize() {
+                return 1;
+            }
+        });
         this.addSlot(new ForgeResultSlot(pPlayerInventory.player, pContainer, RESULT_SLOT, 116, 35));
 
         for(int i = 0; i < 3; ++i) {
