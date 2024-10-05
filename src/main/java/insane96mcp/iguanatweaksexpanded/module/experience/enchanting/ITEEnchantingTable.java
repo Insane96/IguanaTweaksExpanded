@@ -1,11 +1,12 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
-import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableUnlockedEnchantments;
+import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableLearnedEnchantments;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -61,7 +62,7 @@ public class ITEEnchantingTable extends BaseEntityBlock {
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof ITEEnchantingTableBlockEntity) {
             player.openMenu((MenuProvider)blockentity);
-            SyncITEEnchantingTableUnlockedEnchantments.sync((ServerLevel) level, (ITEEnchantingTableBlockEntity) level.getBlockEntity(pos));
+            SyncITEEnchantingTableLearnedEnchantments.sync((ServerLevel) level, (ITEEnchantingTableBlockEntity) level.getBlockEntity(pos));
         }
     }
 
@@ -72,24 +73,37 @@ public class ITEEnchantingTable extends BaseEntityBlock {
         else {
             if (player.getItemInHand(hand).is(Items.ENCHANTED_BOOK)) {
                 ITEEnchantingTableBlockEntity enchantingTableBE = (ITEEnchantingTableBlockEntity) pLevel.getBlockEntity(pPos);
+                if (enchantingTableBE == null)
+                    return InteractionResult.SUCCESS;
                 CompoundTag compoundtag = player.getItemInHand(hand).getTag();
                 if (compoundtag != null) {
                     ListTag list = compoundtag.getList("StoredEnchantments", 10);
                     boolean hasTreasure = false;
                     boolean hasLearned = false;
                     for (int i = 0; i < list.size(); i++) {
-                        Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(list.getCompound(i)));
-                        if (enchantment == null || enchantment.isCurse())
+                        CompoundTag compound = list.getCompound(i);
+                        Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(compound));
+                        int lvl = EnchantmentHelper.getEnchantmentLevel(compound);
+                        if (enchantment == null)
+                            continue;
+                        if (enchantment.isCurse() && !EnchantingFeature.allowLearningCurses)
                             continue;
                         if (!enchantment.isTreasureOnly() && !EnchantingFeature.enchantingTableRequiresLearning)
                             continue;
                         hasTreasure = true;
-                        if (enchantingTableBE.knowsEnchantment(enchantment)) {
-                            player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.already_knows").append(Component.translatable(enchantment.getDescriptionId())));
+                        MutableComponent enchantmentDescId = Component.translatable(enchantment.getDescriptionId());
+                        Integer lvlKnown = enchantingTableBE.learnedEnchantments.getOrDefault(enchantment, 0);
+                        MutableComponent lvlKnownDescId = Component.translatable("enchantment.level." + lvlKnown);
+                        if (enchantingTableBE.knowsEnchantment(enchantment, lvl)) {
+                            player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.already_knows", enchantmentDescId, lvlKnownDescId));
                             continue;
                         }
-                        enchantingTableBE.learnEnchantment(enchantment);
-                        player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.learned_enchantment").append(Component.translatable(enchantment.getDescriptionId())));
+                        MutableComponent newLvlDescId = Component.translatable("enchantment.level." + lvl);
+                        enchantingTableBE.learnEnchantment(enchantment, lvl);
+                        if (lvlKnown == 0)
+                            player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.learned_enchantment", enchantmentDescId, newLvlDescId));
+                        else
+                            player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.upgrade_known_enchantment", enchantmentDescId, lvlKnownDescId, newLvlDescId));
                         hasLearned = true;
                     }
                     if (hasTreasure && hasLearned) {

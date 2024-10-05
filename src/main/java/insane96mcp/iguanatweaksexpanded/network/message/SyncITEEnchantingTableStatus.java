@@ -11,8 +11,7 @@ import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 import static insane96mcp.iguanatweaksexpanded.network.NetworkHandler.CHANNEL;
@@ -20,33 +19,31 @@ import static insane96mcp.iguanatweaksexpanded.network.NetworkHandler.CHANNEL;
 public class SyncITEEnchantingTableStatus {
 	BlockPos pos;
 	ItemStack item;
-	List<Enchantment> treasureEnchantments;
+	Map<Enchantment, Integer> knownEnchantments;
 
-	public SyncITEEnchantingTableStatus(BlockPos pos, ItemStack itemToEnchant, List<Enchantment> treasureEnchantments) {
+	public SyncITEEnchantingTableStatus(BlockPos pos, ItemStack itemToEnchant, Map<Enchantment, Integer> knownEnchantments) {
 		this.pos = pos;
 		this.item = itemToEnchant;
-		this.treasureEnchantments = treasureEnchantments;
+		this.knownEnchantments = knownEnchantments;
 	}
 
 	public static void encode(SyncITEEnchantingTableStatus pkt, FriendlyByteBuf buf) {
 		buf.writeBlockPos(pkt.pos);
 		buf.writeItem(pkt.item);
 
-		buf.writeInt(pkt.treasureEnchantments.size());
-		for (Enchantment enchantment : pkt.treasureEnchantments) {
-			buf.writeResourceLocation(ForgeRegistries.ENCHANTMENTS.getKey(enchantment));
-		}
+		buf.writeMap(pkt.knownEnchantments,
+				(buf1, enchantment) -> buf1.writeResourceLocation(ForgeRegistries.ENCHANTMENTS.getKey(enchantment)),
+                FriendlyByteBuf::writeInt);
 	}
 
 	public static SyncITEEnchantingTableStatus decode(FriendlyByteBuf buf) {
 		BlockPos pos = buf.readBlockPos();
 		ItemStack stack = buf.readItem();
-		List<Enchantment> enchantments = new ArrayList<>();
-		int size = buf.readInt();
-		for (int i = 0; i < size; i++) {
-			enchantments.add(ForgeRegistries.ENCHANTMENTS.getValue(buf.readResourceLocation()));
-		}
-		return new SyncITEEnchantingTableStatus(pos, stack, enchantments);
+		Map<Enchantment, Integer> knownEnchantments = buf.readMap(
+				buf1 -> ForgeRegistries.ENCHANTMENTS.getValue(buf1.readResourceLocation()),
+				FriendlyByteBuf::readInt
+		);
+		return new SyncITEEnchantingTableStatus(pos, stack, knownEnchantments);
 	}
 
 	public static void handle(final SyncITEEnchantingTableStatus message, Supplier<NetworkEvent.Context> ctx) {
@@ -56,8 +53,8 @@ public class SyncITEEnchantingTableStatus {
 
 			blockEntity.setItem(0, message.item);
 			blockEntity.learnedEnchantments.clear();
-			for (Enchantment enchantment : message.treasureEnchantments) {
-				blockEntity.learnEnchantment(enchantment);
+			for (var knownEnchantment : message.knownEnchantments.entrySet()) {
+				blockEntity.learnEnchantment(knownEnchantment.getKey(), knownEnchantment.getValue());
 			}
 		});
 		ctx.get().setPacketHandled(true);

@@ -155,15 +155,24 @@ public class ITEEmiPlugin implements EmiPlugin {
 				CompoundTag blockEntityTag = new CompoundTag();
 				ListTag listTag = new ListTag();
 				for (var enchantment : ForgeRegistries.ENCHANTMENTS.getEntries()) {
-					if (enchantment.getValue().isCurse())
-						continue;
-					StringTag stringTag = StringTag.valueOf(enchantment.getKey().location().toString());
-					listTag.add(stringTag);
+					/*if (enchantment.getValue().isCurse())
+						continue;*/
+					CompoundTag compoundTag = new CompoundTag();
+					String id = enchantment.getKey().location().toString();
+					int lvl = enchantment.getValue().getMaxLevel();
+					compoundTag.putString("id", id);
+					compoundTag.putInt("lvl", lvl);
+					listTag.add(compoundTag);
 				}
-				blockEntityTag.put("treasure_enchantments", listTag);
-				nbt.put("BlockEntityTag", blockEntityTag);
-				stack.setTag(nbt);
-				stack.setHoverName(Component.literal("Enchanting Table with every enchantment learned"));
+				blockEntityTag.put("learned_enchantments", listTag);
+				stack.getOrCreateTag().put("BlockEntityTag", blockEntityTag);
+
+				CompoundTag displayTag = new CompoundTag();
+				ListTag loreTag = new ListTag();
+				loreTag.add(StringTag.valueOf(""));
+				loreTag.add(StringTag.valueOf(Component.Serializer.toJson(Component.literal("With every enchantment learned"))));
+				displayTag.put("Lore", loreTag);
+				stack.getOrCreateTag().put("display", displayTag);
 				registry.addEmiStackAfter(EmiStack.of(stack), emiStack -> emiStack.getItemStack().is(EnchantingFeature.ENCHANTING_TABLE.item().get()));
 			}
 

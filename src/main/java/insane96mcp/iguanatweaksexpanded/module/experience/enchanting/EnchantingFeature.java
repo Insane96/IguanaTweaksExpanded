@@ -56,10 +56,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-@Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled a data pack is also enabled that changes the enchanting table recipe. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
+@Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled, a data pack is also enabled that changes the enchanting table recipe to give the new one and replaces xp bottles with enchanted cleansed lapis. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class EnchantingFeature extends JsonFeature {
     public static final TagKey<Item> NOT_ENCHANTABLE = ITEItemTagsProvider.create("not_enchantable");
@@ -83,7 +84,10 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean grindstoneTreasureEnchantmentExtraction = true;
     @Config
     @Label(name = "Grindstone.Enchantment extraction", description = "If true, grindstone will be able to extract all enchantments, not only treasure enchantments.")
-    public static Boolean grindstoneEnchantmentExtraction = false;
+    public static Boolean grindstoneEnchantmentExtraction = true;
+    @Config
+    @Label(name = "Grindstone.Curse removal", description = "If true, grindstone will also remove curses when disenchanting.")
+    public static Boolean grindstoneCurseRemoval = true;
     @Config
     @Label(name = "Allurement integration", description = """
             If true, some mixins are used on Allurement to make the enchantments work on more things and configs are changed to not overlap with ITE.
@@ -93,15 +97,18 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean allurementIntegration = true;
     @Config
     @Label(name = "Enchanting Table requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
-    public static Boolean enchantingTableRequiresLearning = false;
+    public static Boolean enchantingTableRequiresLearning = true;
+    @Config
+    @Label(name = "Allow learning Curses", description = "If true, the new enchanting table can learn curses.")
+    public static Boolean allowLearningCurses = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ITERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ITEItem(new Item.Properties(), true));
 
     public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
             new EnchantmentData("allurement:alleviating", 5),
-            new EnchantmentData("allurement:ascension_curse", 6),
-            new EnchantmentData("allurement:fleeting_curse", 6),
+            new EnchantmentData("allurement:ascension_curse", 5),
+            new EnchantmentData("allurement:fleeting_curse", 5),
             new EnchantmentData("allurement:launch", 2, 4, 6),
             new EnchantmentData("allurement:obedience", 3),
             new EnchantmentData("allurement:reeling", 3, 6, 9),
@@ -115,14 +122,14 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:air_stealer", 2, 4, 6),
             new EnchantmentData("iguanatweaksexpanded:armor_piercer", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:blasting", 2, 4, 6, 8, 10, 12),
-            new EnchantmentData("iguanatweaksexpanded:blood_pact_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:blood_pact_curse", 5),
             new EnchantmentData("iguanatweaksexpanded:burst_of_arrows", 6),
             new EnchantmentData("iguanatweaksexpanded:double_jump", 3),
             new EnchantmentData("iguanatweaksexpanded:dumbness_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:ender_curse", 3),
             new EnchantmentData("iguanatweaksexpanded:exchange", 3),
             new EnchantmentData("iguanatweaksexpanded:expanded", 4, 8, 12),
-            new EnchantmentData("iguanatweaksexpanded:experience_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:experience_curse", 5),
             new EnchantmentData("iguanatweaksexpanded:fragility_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:gravity_defying", 3),
             new EnchantmentData("iguanatweaksexpanded:healthy", 2, 4, 6, 8, 10, 12),
@@ -140,7 +147,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:recovery", 3),
             new EnchantmentData("iguanatweaksexpanded:short_arm_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:slow_charge_curse", 3),
-            new EnchantmentData("iguanatweaksexpanded:slow_strike_curse", 3),
+            new EnchantmentData("iguanatweaksexpanded:slow_strike_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:smartness", 3, 6, 9, 12),
             new EnchantmentData("iguanatweaksexpanded:soulbound", 3),
             new EnchantmentData("iguanatweaksexpanded:sprint_pact", 6),
@@ -153,7 +160,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:veining", 4, 8, 12),
             new EnchantmentData("iguanatweaksexpanded:vindication", 3, 6, 9, 12),
             new EnchantmentData("iguanatweaksexpanded:void_curse", 2),
-            new EnchantmentData("iguanatweaksexpanded:walking_curse", 6),
+            new EnchantmentData("iguanatweaksexpanded:walking_curse", 5),
             new EnchantmentData("iguanatweaksexpanded:water_coolant", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:zippy", 2, 4, 6),
             new EnchantmentData("iguanatweaksreborn:bane_of_sssss", 2, 4, 6, 8, 10, 12),
@@ -170,7 +177,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksreborn:smite", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("minecraft:aqua_affinity", 3),
             new EnchantmentData("minecraft:bane_of_arthropods", 2, 4, 6, 8, 10, 12),
-            new EnchantmentData("minecraft:binding_curse", 6),
+            new EnchantmentData("minecraft:binding_curse", 5),
             new EnchantmentData("minecraft:blast_protection", 2, 4, 6, 8, 10),
             new EnchantmentData("minecraft:channeling", 6),
             new EnchantmentData("minecraft:depth_strider", 3, 6, 9),
@@ -206,8 +213,8 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("minecraft:swift_sneak", 3, 6, 9, 12),
             new EnchantmentData("minecraft:thorns", 3, 6, 9, 12),
             new EnchantmentData("minecraft:unbreaking", 2, 4, 6, 8, 10, 12),
-            new EnchantmentData("minecraft:vanishing_curse", 6),
-            new EnchantmentData("passablefoliage:leaf_walker", 1),
+            new EnchantmentData("minecraft:vanishing_curse", 5),
+            new EnchantmentData("passablefoliage:leaf_walker", 2),
             new EnchantmentData("shieldsplus:ablaze", 2, 4, 6),
             new EnchantmentData("shieldsplus:aegis", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("shieldsplus:celestial_guardian", 6),
@@ -229,9 +236,12 @@ public class EnchantingFeature extends JsonFeature {
 
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
-        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("enchantments_base_cost.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_base_cost")));
+
+        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_data")));
+
         addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
         JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist")));
 	}
@@ -259,11 +269,11 @@ public class EnchantingFeature extends JsonFeature {
             if (EnchantmentsFeature.isEnchantmentDisabled(enchantment))
                 continue;
             int maxLvl = enchantment.getMaxLevel();
-            if (maxLvl > 1 && !isEnchantmentOverLevelBlacklisted(enchantment))
+            if (maxLvl > 1 && canOverLevel(enchantment))
                 maxLvl++;
             StringBuilder costs = new StringBuilder();
             for (int i = 1; i <= maxLvl; i++) {
-                costs.append(getCost(enchantment, i)).append(" ");
+                costs.append(getCost(enchantment, i, true)).append(" ");
             }
             LogHelper.debug("%s %d (%s)", ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString(), maxLvl, costs);
         }
@@ -343,13 +353,13 @@ public class EnchantingFeature extends JsonFeature {
 
         float lvl = 0;
         for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getTopItem()).entrySet()) {
-            if (enchantment.getKey().isCurse())
-                continue;
+            /*if (enchantment.getKey().isCurse())
+                continue;*/
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
         }
         for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(event.getBottomItem()).entrySet()) {
-            if (enchantment.getKey().isCurse())
-                continue;
+            /*if (enchantment.getKey().isCurse())
+                continue;*/
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
         }
         lvl = (int)Math.floor(lvl);
@@ -366,11 +376,12 @@ public class EnchantingFeature extends JsonFeature {
         if (!this.isEnabled())
             return;
 
-        extractTrasureEnchantments(event);
+        extractTreasureEnchantments(event);
         resetLodestoneCompass(event);
+        removeAllEnchantments(event);
     }
 
-    public static void extractTrasureEnchantments(GrindstoneEvent.OnPlaceItem event) {
+    public static void extractTreasureEnchantments(GrindstoneEvent.OnPlaceItem event) {
         if (!grindstoneTreasureEnchantmentExtraction
                 || !event.getTopItem().isEnchanted()
                 || !event.getBottomItem().is(Items.BOOK)
@@ -398,8 +409,25 @@ public class EnchantingFeature extends JsonFeature {
         event.setXp(0);
     }
 
-    public static int getCost(Enchantment enchantment, int lvl) {
-        if (lvl <= 0)
+    public static void removeAllEnchantments(GrindstoneEvent.OnPlaceItem event) {
+        if (!grindstoneCurseRemoval)
+            return;
+
+        if (event.getBottomItem().isEmpty() && event.getTopItem().isEmpty())
+            return;
+        if (!event.getBottomItem().isEmpty() && !event.getTopItem().isEmpty())
+            return;
+        ItemStack output = event.getBottomItem().isEmpty() ? event.getTopItem().copy() : event.getBottomItem().copy();
+        if (output.isEmpty()
+                || !output.isEnchanted())
+            return;
+
+        output.getTag().remove("Enchantments");
+        event.setOutput(output);
+    }
+
+    public static int getCost(Enchantment enchantment, int lvl, boolean checkCurses) {
+        if (lvl <= 0 || (enchantment.isCurse() && !checkCurses))
             return 0;
         float vanillaCost = Anvils.getRarityCost(enchantment);
         EnchantmentData enchantmentData = enchantmentsData.stream()
@@ -414,6 +442,10 @@ public class EnchantingFeature extends JsonFeature {
                 return enchantmentData.cost[lvl - 1];
         }
         return (int) Math.round(vanillaCost * Math.pow(lvl, 1.11));
+    }
+
+    public static int getCost(Enchantment enchantment, int lvl) {
+        return getCost(enchantment, lvl, false);
     }
 
     public static boolean canBeEnchanted(ItemStack stack) {
@@ -445,7 +477,7 @@ public class EnchantingFeature extends JsonFeature {
         float cost = 0f;
         for (Map.Entry<Enchantment, Integer> enchantment : stack.getAllEnchantments().entrySet()) {
             if (enchantment.getKey().isCurse())
-                cost += getCost(enchantment.getKey(), 1);
+                cost += getCost(enchantment.getKey(), 1, true);
         }
         return cost;
     }
@@ -457,12 +489,28 @@ public class EnchantingFeature extends JsonFeature {
         return enchantments.size() == 1 && enchantments.getCompound(0).isEmpty();
     }
 
-    public static boolean isEnchantmentOverLevelBlacklisted(Enchantment enchantment) {
+    public static boolean canOverLevel(Enchantment enchantment) {
         for (IdTagMatcher idTagMatcher : overLevelEnchantmentBlacklist) {
             if (idTagMatcher.matchesEnchantment(enchantment))
-                return true;
+                return false;
         }
-        return false;
+        return true;
+    }
+
+    public static List<EnchantmentInstance> getPendingEnchantments(ItemStack stack) {
+        if (stack.getTag() == null)
+            return Collections.emptyList();
+        List<EnchantmentInstance> pendingEnchantments = new ArrayList<>();
+        ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+        for (int i = 0; i < enchantmentsListTag.size(); ++i) {
+            CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
+            Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
+            short lvl = compoundtag.getShort("lvl");
+            if (enchantment != null) {
+                pendingEnchantments.add(new EnchantmentInstance(enchantment, lvl));
+            }
+        }
+        return pendingEnchantments;
     }
 
     @SubscribeEvent
@@ -491,7 +539,7 @@ public class EnchantingFeature extends JsonFeature {
     private static void treasureEnchantmentsEnchantedBooksTooltip(ItemStack stack, List<Component> tooltip) {
         if (stack.is(Items.ENCHANTED_BOOK)) {
             for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(stack).entrySet()) {
-                if ((enchantment.getKey().isTreasureOnly() || enchantingTableRequiresLearning) && !enchantment.getKey().isCurse()) {
+                if ((enchantment.getKey().isTreasureOnly() || enchantingTableRequiresLearning) && (!enchantment.getKey().isCurse() || allowLearningCurses)) {
                     tooltip.add(Component.empty());
                     tooltip.add(Component.translatable("iguanatweaksexpanded.apply_to_enchanting_table").withStyle(ChatFormatting.GREEN));
                     break;

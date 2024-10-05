@@ -1,7 +1,25 @@
 # Changelog
 
 ## Upcoming
+* Fixed iron shields crafting requiring stone shield
+* Fixed cursed books not getting apply to enchanting table tooltip
+  * Also changed the tooltip text
+
+## 1.16.0
+* Enchanting Feature 
+  * Enchanting tables now knows no enchantments by default, it must learn them
+  * Enchantments learned now also learn the level, making it the maximum for that enchantment, so if you give them an Efficiency 3 book, the max level for Efficiency will be 3.
+  * Enchanting table can now learn curses, they cost 0 and increase the max cost
+  * Empowered items now increase the max level of enchantments by one over the maximum of the enchanting table
+    * This means that you can increase the max level above the limit on the enchanting table by using commands
+  * Grindstone now also removes curses
+  * Decreased some curses max cost bonus
+  * Increased Curse of Short Arm reach reduction (-20% -> -25%)
+  * Data pack now replaces experience bottles with enchanted cleansed lapis
+* Player with Buzzier Bees effect's Sunny now count as if under sunlight for Solarium calculations
 * Fixed Durium hammer taking almost no enchantments
+* Fixed Solarium not repairing in tool belts
+* Fixed Serene Seasons being a mandatory mod
 
 ## 1.15.1
 * Added biome compass advancement

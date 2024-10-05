@@ -1,12 +1,11 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
-import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableUnlockedEnchantments;
+import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableLearnedEnchantments;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,14 +18,12 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantmentTableBlock;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ITEEnchantingTableMenu extends AbstractContainerMenu {
@@ -97,7 +94,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
     public void slotsChanged(Container pContainer) {
         this.access.execute((level, blockPos) -> {
             this.updateMaxCost(this.container.getItem(0), level, blockPos);
-            SyncITEEnchantingTableUnlockedEnchantments.sync((ServerLevel) level, (ITEEnchantingTableBlockEntity) level.getBlockEntity(blockPos));
+            SyncITEEnchantingTableLearnedEnchantments.sync((ServerLevel) level, (ITEEnchantingTableBlockEntity) level.getBlockEntity(blockPos));
         });
     }
 
@@ -125,7 +122,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
                     baseTableEnchantability += 4;
                 }
             }
-            float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack) + EnchantingFeature.getCurseCost(stack)) * enchantabilityModifier * (enchantingPower / 15f) + baseTableEnchantability;
+            float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)/* + EnchantingFeature.getCurseCost(stack)*/) * enchantabilityModifier * (enchantingPower / 15f) + baseTableEnchantability;
             this.maxCost.set(Math.round(maxCost));
         }
         this.broadcastChanges();
@@ -158,34 +155,37 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
         }
         this.access.execute((level, blockPos) -> {
             ItemStack stack = this.container.getItem(ITEM_SLOT);
-            if (stack.getTag() == null || !stack.getTag().contains("PendingEnchantments"))
+            List<EnchantmentInstance> enchantmentInstances = EnchantingFeature.getPendingEnchantments(stack);
+            if (enchantmentInstances.isEmpty())
                 return;
-            ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
             int cost = 0;
             int lapisCost = 0;
-            List<EnchantmentInstance> enchantmentInstances = new ArrayList<>();
-            for (int i = 0; i < enchantmentsListTag.size(); ++i) {
-                CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
-                Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
-                short lvl = compoundtag.getShort("lvl");
-                if (enchantment != null)
-                    enchantmentInstances.add(new EnchantmentInstance(enchantment, lvl));
-                cost += EnchantingFeature.getCost(enchantment, lvl);
-                lapisCost += lvl;
+            for (EnchantmentInstance instance : enchantmentInstances) {
+                cost += EnchantingFeature.getCost(instance.enchantment, instance.level);
+                lapisCost += instance.level;
             }
-            if (cost > this.maxCost.get() && !player.getAbilities().instabuild)
+            if (cost > this.getMaxCost(enchantmentInstances) && !player.getAbilities().instabuild)
                 return;
             enchantmentInstances.forEach(enchantmentInstance -> stack.enchant(enchantmentInstance.enchantment, enchantmentInstance.level));
             if (!player.getAbilities().instabuild) {
-                player.onEnchantmentPerformed(stack, (int) cost);
-                ItemStack lapis = this.container.getItem(CATALYST_SLOT);
-                lapis.shrink(lapisCost);
+                player.onEnchantmentPerformed(stack, cost);
             }
+            ItemStack lapis = this.container.getItem(CATALYST_SLOT);
+            lapis.shrink(lapisCost);
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             this.updateMaxCost(stack, level, blockPos);
         });
         this.broadcastChanges();
         return true;
+    }
+
+    private int getMaxCost(List<EnchantmentInstance> enchantmentInstances) {
+        int maxCost = this.maxCost.get();
+        for (EnchantmentInstance enchantmentInstance : enchantmentInstances) {
+            if (enchantmentInstance.enchantment.isCurse())
+                maxCost += EnchantingFeature.getCost(enchantmentInstance.enchantment, enchantmentInstance.level, true);
+        }
+        return maxCost;
     }
 
     @Override

@@ -147,6 +147,7 @@ dependencies {
     implementation fg.deobf("curse.maven:berry-good-355589:5228437")
     implementation fg.deobf("curse.maven:allurement-438003:5228059")
     implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
+    implementation fg.deobf("curse.maven:buzzier-bees-355458:5229011")
 
     //runtimeOnly fg.deobf("curse.maven:corail-woodcutter-331983:4685515")
 
