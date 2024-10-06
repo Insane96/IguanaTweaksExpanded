@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Heavily increased experience from challenge advancements
 * Reduced Armor enchantability by ~20%
 * Enchanting
   * Further Reduced Curses max cost bonus
