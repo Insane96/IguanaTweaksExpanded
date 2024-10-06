@@ -426,7 +426,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
          * A maxLvl of 0 means unbound max level, otherwise the level is capped
          */
         public EnchantmentDisplay(int pX, int pY, Enchantment enchantment, int maxLvl) {
-            super(pX, pY, ENCH_DISPLAY_W, ENCH_ENTRY_H, Component.translatable(enchantment.getDescriptionId()));
+            super(pX, pY, ENCH_DISPLAY_W, ENCH_ENTRY_H, !enchantment.isCurse() ? Component.translatable(enchantment.getDescriptionId()) : Component.translatable(enchantment.getDescriptionId()).withStyle(ChatFormatting.RED));
             this.enchantment = enchantment;
             this.lvl = 0;
             this.maxLvl = maxLvl;
@@ -441,7 +441,7 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             pGuiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), ENCH_DISPLAY_U, ENCH_ENTRY_V + this.getYOffset(), this.getWidth(), this.getHeight());
             //pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V + this.getYOffset(), ENCH_LVL_W, this.getHeight());
             this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 1, 0xDDDDDD);
-            Component lvlTxt = Component.empty();
+            MutableComponent lvlTxt = Component.empty();
             if (this.lvl > 0)
                 lvlTxt = Component.translatable("enchantment.level." + this.lvl);
             pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
