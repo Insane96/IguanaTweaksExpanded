@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.16.1
 * Heavily increased experience from challenge advancements
 * Reduced Armor enchantability by ~20%
 * Enchanting
