@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Reduced Armor enchantability by ~20%
 * Enchanting
   * Further Reduced Curses max cost bonus
   * Reduced base enchanting table enchantability (4 -> 3)
