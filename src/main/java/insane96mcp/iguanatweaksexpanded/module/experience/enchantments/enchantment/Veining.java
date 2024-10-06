@@ -193,7 +193,7 @@ public class Veining extends Enchantment {
     }
 
     public static int getAmountMined(int lvl) {
-        return lvl * 4;
+        return lvl * 3;
     }
 
     public static List<BlockPos> getMinedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face) {

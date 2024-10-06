@@ -22,7 +22,7 @@ public class Padding extends Enchantment {
     }
 
     public int getMinCost(int pEnchantmentLevel) {
-        return 1;
+        return 5;
     }
 
     public int getMaxCost(int pEnchantmentLevel) {
