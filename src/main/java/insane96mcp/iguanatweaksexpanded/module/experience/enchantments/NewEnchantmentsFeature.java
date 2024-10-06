@@ -24,7 +24,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
@@ -40,7 +39,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
-import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
@@ -124,17 +122,6 @@ public class NewEnchantmentsFeature extends Feature {
 	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-	}
-
-    @SubscribeEvent
-	public void onAttributeModifiers(ItemAttributeModifierEvent event) {
-		event.getItemStack().getAllEnchantments().forEach((enchantment, lvl) -> {
-			if (event.getItemStack().getItem() instanceof ArmorItem armorItem
-				&& armorItem.getEquipmentSlot() != event.getSlotType())
-				return;
-			if (enchantment instanceof IAttributeEnchantment attributeEnchantment)
-				attributeEnchantment.applyAttributeModifier(event, lvl);
-		});
 	}
 
 	@SubscribeEvent
