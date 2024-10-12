@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.world.coalfire;
 
+import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
@@ -20,6 +21,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -45,6 +47,7 @@ import net.minecraftforge.registries.RegistryObject;
 @Label(name = "Coal & Charcoal", description = "If this feature is enabled, 'Unlit campfire' from IguanaTweaks Reborn is set to true")
 @LoadFeature(module = Modules.Ids.WORLD)
 public class CoalCharcoal extends Feature {
+    public static final TagKey<Item> ITEM_ORES = ITEItemTagsProvider.create("durium_ores");
 
     public static final SimpleBlockWithItem CHARCOAL_LAYER = SimpleBlockWithItem.register("charcoal_layer", () -> new PilableLayerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).strength(0.4F).sound(SoundType.MOSS_CARPET).isViewBlocking((state, blockGetter, pos) -> state.getValue(PilableLayerBlock.LAYERS) >= 8), Items.CHARCOAL));
 
