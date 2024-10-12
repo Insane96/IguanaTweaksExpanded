@@ -48,6 +48,24 @@
                     "type": "minecraft:loot_table",
                     "name": "minecraft:blocks/gravel"
                 }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:inverted",
+                    "term": {
+                        "condition": "minecraft:match_tool",
+                        "predicate": {
+                            "enchantments": [
+                                {
+                                    "enchantment": "minecraft:silk_touch",
+                                    "levels": {
+                                        "min": 1
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
             ]
         }
     ]
