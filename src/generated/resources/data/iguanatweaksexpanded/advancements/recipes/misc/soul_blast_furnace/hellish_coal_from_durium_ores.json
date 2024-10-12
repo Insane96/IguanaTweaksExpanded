@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hellish_coal_ore": {
+    "has_durium_ores": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "iguanatweaksexpanded:soul_soil_hellish_coal_ore"
-            ]
+            "tag": "iguanatweaksexpanded:durium_ores"
           }
         ]
       },
@@ -15,21 +13,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:hellish_coal_from_blasting_soul_soil_ore"
+        "recipe": "iguanatweaksexpanded:soul_blast_furnace/hellish_coal_from_durium_ores"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_hellish_coal_ore",
+      "has_durium_ores",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:hellish_coal_from_blasting_soul_soil_ore"
+      "iguanatweaksexpanded:soul_blast_furnace/hellish_coal_from_durium_ores"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

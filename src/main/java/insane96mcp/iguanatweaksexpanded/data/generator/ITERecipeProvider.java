@@ -657,7 +657,9 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         //</editor-fold>
 
         //Hellish Coal
-        SimpleCookingRecipeBuilder.smelting(
+        addBlastingRecipe(writer, CoalCharcoal.ITEM_ORES, CoalCharcoal.HELLISH_COAL.get(), 1.2f, 200, 1f);
+        addSoulBlastingRecipe(writer, CoalCharcoal.ITEM_ORES, CoalCharcoal.HELLISH_COAL.get(), 1.2f, 150, 0.3f);
+        /*SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get()),
                         RecipeCategory.MISC,
                         CoalCharcoal.HELLISH_COAL.get(),
@@ -692,7 +694,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_hellish_coal_ore", has(CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "hellish_coal_from_blasting_soul_soil_ore");
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "hellish_coal_from_blasting_soul_soil_ore");*/
 
         //<editor-fold desc="Recycle recipes">
         recycleGear(writer, CopperExpansion.HELMET.get(), Items.IRON_NUGGET, 200, 6);

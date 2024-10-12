@@ -1,11 +1,11 @@
-// 1.20.1	2024-09-29T09:38:38.6672926	Tags for minecraft:item mod id iguanatweaksexpanded
+// 1.20.1	2024-10-12T15:53:16.5068503	Tags for minecraft:item mod id iguanatweaksexpanded
 1729cefbc3d047169d44bb423a94bf12c65260a0 data/forge/tags/items/armors/boots.json
 ee90d46b0c7b8cdef93a1709fa75a6a1c26517f5 data/forge/tags/items/armors/chestplates.json
 1f5f6bccde68c5ec5075bd9664644e3cae217907 data/forge/tags/items/armors/helmets.json
 6cd74b8797aaf3bca86fcd6fdd5883b2deafc521 data/forge/tags/items/armors/leggings.json
 0dcaa030a82367fdf5edfbd383bced929b46f41f data/forge/tags/items/shears.json
 d9d9ced81ca834a50065e4a1f46638021f231bbe data/forge/tags/items/tools/fishing_rods.json
-8f54b552cda1f7670077e441aa0de17aac29e71e data/iguanatweaksexpanded/tags/items/durium_ores.json
+324e847af096e38b8a6d839f9c464764c6c17732 data/iguanatweaksexpanded/tags/items/durium_ores.json
 c714a3598bc7b25fbf276b461fb8ebc6a6da17c4 data/iguanatweaksexpanded/tags/items/enchanting/accepts_adrenaline.json
 2bf3a7eafd69c022433bc4f2776944d90e7c7cbf data/iguanatweaksexpanded/tags/items/enchanting/accepts_air_stealer.json
 c714a3598bc7b25fbf276b461fb8ebc6a6da17c4 data/iguanatweaksexpanded/tags/items/enchanting/accepts_armor_piercer.json

@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 150,
+  "experience": 1.2,
+  "group": "hellish_coal",
+  "ingredients": [
+    {
+      "tag": "iguanatweaksexpanded:durium_ores"
+    }
+  ],
+  "output_increase": 0.3,
+  "result": "iguanatweaksexpanded:hellish_coal"
+}

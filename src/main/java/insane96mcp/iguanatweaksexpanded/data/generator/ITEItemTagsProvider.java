@@ -91,6 +91,8 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
                 .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.DURIUM_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         tag(Durium.ITEM_ORES)
                 .add(Durium.ORE.item().get(), Durium.DEEPSLATE_ORE.item().get(), Durium.SAND_ORE.item().get(), Durium.GRAVEL_ORE.item().get(), Durium.CLAY_ORE.item().get(), Durium.DIRT_ORE.item().get());
+        tag(CoalCharcoal.ITEM_ORES)
+                .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get());
         //ITR
         tag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .addTag(FORGE_HAMMERS);

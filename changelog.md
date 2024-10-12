@@ -8,6 +8,7 @@
   * Sand and Gravel Ores now fall
   * Ores now have the same drops as the non-ore counterparts (so Gravel Durium Ore can now drop flint)
   * Fixed durium ores not blastable in soul blast furnace
+* Fixed hellish coal ore smeltable in a furnace
 
 ## 1.16.1
 * Heavily increased experience from challenge advancements
