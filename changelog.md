@@ -6,6 +6,7 @@
   * Sand and Gravel Ores now fall and break
   * Ores now have the same drops as the non-ore counterparts (so Gravel Durium Ore can now drop flint)
   * Fixed durium ores not blastable in soul blast furnace
+  * Fixed dirt, clay and gravel ores dropping stone ore
 * Fixed hellish coal ore smeltable in a furnace
 
 ## 1.16.1

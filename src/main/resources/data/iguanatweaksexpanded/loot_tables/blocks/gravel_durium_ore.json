@@ -10,7 +10,7 @@
                     "children": [
                         {
                             "type": "minecraft:item",
-                            "name": "iguanatweaksexpanded:durium_ore",
+                            "name": "iguanatweaksexpanded:gravel_durium_ore",
                             "conditions": [
                                 {
                                     "condition": "minecraft:match_tool",
