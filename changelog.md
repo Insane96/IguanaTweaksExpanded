@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Added back enchant glint for cursed only items
+
 ## 1.16.1
 * Heavily increased experience from challenge advancements
 * Reduced Armor enchantability by ~20%
