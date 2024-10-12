@@ -565,8 +565,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_INGOT, 2f, 300, 0.3f);
         addSoulBlastingRecipe(writer, OreGeneration.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 300, 0.3f);
         //Durium
-        addSoulBlastingRecipe(writer, Durium.ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 300, 1f);
-        addSoulBlastingRecipe(writer, Durium.DEEPSLATE_ORE.item().get(), Durium.SCRAP_PIECE.get(), 2f, 300, 1f);
+        addSoulBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 300, 1f);
         //Other
         addSoulBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 600);
         addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT)), Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, 8f, 1200, 0.3f);
@@ -969,6 +968,21 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
 
     public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
         addSoulBlastingRecipe(writer, item, result, experience, cookingTime, 0f);
+    }
+
+    public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> itemTag, Item result, float experience, int cookingTime, float outputIncrease) {
+        String resultPath = ForgeRegistries.ITEMS.getKey(result).getPath();
+        MultiItemSmeltingRecipeBuilder.soulBlasting(
+                        NonNullList.of(Ingredient.EMPTY, Ingredient.of(itemTag)),
+                        RecipeCategory.MISC,
+                        result,
+                        cookingTime
+                )
+                .experience(experience)
+                .outputIncrease(outputIncrease)
+                .group(resultPath)
+                .unlockedBy("has_" + itemTag.location().getPath(), has(itemTag))
+                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
     }
 
     public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {

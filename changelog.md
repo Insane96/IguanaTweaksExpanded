@@ -1,13 +1,13 @@
 # Changelog
 
 * Hellish coal ore can be smelted in a furnace
-* Durium ore cannot be smelted in a soul blast furnace
 
 ## Upcoming
 * Added back enchant glint for cursed only items
 * Durium
   * Sand and Gravel Ores now fall
   * Ores now have the same drops as the non-ore counterparts (so Gravel Durium Ore can now drop flint)
+  * Fixed durium ores not blastable in soul blast furnace
 
 ## 1.16.1
 * Heavily increased experience from challenge advancements

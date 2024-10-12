@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_deepslate_durium_ore": {
+    "has_durium_ores": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "iguanatweaksexpanded:deepslate_durium_ore"
-            ]
+            "tag": "iguanatweaksexpanded:durium_ores"
           }
         ]
       },
@@ -15,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:soul_blast_furnace/durium_scrap_piece_from_deepslate_durium_ore"
+        "recipe": "iguanatweaksexpanded:soul_blast_furnace/durium_scrap_piece_from_durium_ores"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_deepslate_durium_ore",
+      "has_durium_ores",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:soul_blast_furnace/durium_scrap_piece_from_deepslate_durium_ore"
+      "iguanatweaksexpanded:soul_blast_furnace/durium_scrap_piece_from_durium_ores"
     ]
   },
   "sends_telemetry_event": true

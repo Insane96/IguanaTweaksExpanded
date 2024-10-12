@@ -6,7 +6,7 @@
   "group": "durium_scrap_piece",
   "ingredients": [
     {
-      "item": "iguanatweaksexpanded:durium_ore"
+      "tag": "iguanatweaksexpanded:durium_ores"
     }
   ],
   "output_increase": 1.0,
