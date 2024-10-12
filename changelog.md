@@ -2,6 +2,8 @@
 
 ## Upcoming
 * Added back enchant glint for cursed only items
+* Durium
+  * Ores now have the same drops as the non-ore counterparts (so Gravel Durium Ore can now drop flint)
 
 ## 1.16.1
 * Heavily increased experience from challenge advancements
