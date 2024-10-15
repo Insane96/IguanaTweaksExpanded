@@ -124,6 +124,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_OBSCURITY = ITERegistries.ENCHANTMENTS.register("obscurity_curse", CurseOfObscurity::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_FRENZY = ITERegistries.ENCHANTMENTS.register("frenzy_curse", CurseOfFrenzy::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_UNSTABLE_MOTION = ITERegistries.ENCHANTMENTS.register("unstable_motion_curse", CurseOfUnstableMotion::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_STATIC_CHARGE = ITERegistries.ENCHANTMENTS.register("static_charge_curse", CurseOfStaticCharge::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_EXPLOSION = ITERegistries.ENCHANTMENTS.register("explosion_curse", CurseOfExplosion::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_ANCHOR = ITERegistries.ENCHANTMENTS.register("anchor_curse", CurseOfAnchor::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
@@ -146,6 +147,7 @@ public class NewEnchantmentsFeature extends Feature {
 		CurseOfHop.tick(event);
 		Recovery.regen(event);
 		CurseOfUnstableMotion.tick(event);
+		CurseOfStaticCharge.tick(event);
 	}
 
 	@SubscribeEvent

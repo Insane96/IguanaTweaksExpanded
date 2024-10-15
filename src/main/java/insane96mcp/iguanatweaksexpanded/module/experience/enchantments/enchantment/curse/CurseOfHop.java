@@ -12,7 +12,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class CurseOfHop extends Enchantment {
     public CurseOfHop() {
-        super(Rarity.RARE, EnchantmentCategory.ARMOR_FEET, EquipmentSlot.values());
+        super(Rarity.RARE, EnchantmentCategory.ARMOR_FEET, new EquipmentSlot[] {EquipmentSlot.FEET});
     }
 
     @Override

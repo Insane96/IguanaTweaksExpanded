@@ -12,7 +12,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 public class CurseOfFrenzy extends Enchantment {
     public CurseOfFrenzy() {
-        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR_CHEST, EquipmentSlot.values());
+        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});
     }
 
     @Override

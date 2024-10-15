@@ -11,7 +11,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 public class CurseOfObscurity extends Enchantment {
     public CurseOfObscurity() {
-        super(Rarity.RARE, EnchantmentCategory.ARMOR_HEAD, EquipmentSlot.values());
+        super(Rarity.RARE, EnchantmentCategory.ARMOR_HEAD, new EquipmentSlot[] {EquipmentSlot.HEAD});
     }
 
     @Override

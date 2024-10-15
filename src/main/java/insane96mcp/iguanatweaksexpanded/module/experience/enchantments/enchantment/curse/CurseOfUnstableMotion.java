@@ -18,7 +18,7 @@ import java.util.UUID;
 public class CurseOfUnstableMotion extends Enchantment {
     public static final UUID MODIFIER_UUID = UUID.fromString("7567b3ad-a4c6-4700-8bf0-cd8c4356c155");
     public CurseOfUnstableMotion() {
-        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR_LEGS, EquipmentSlot.values());
+        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR_LEGS, new EquipmentSlot[] {EquipmentSlot.LEGS});
     }
 
     @Override
