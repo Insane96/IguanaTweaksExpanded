@@ -72,6 +72,8 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(AirStealer.ACCEPTS_ENCHANTMENT)
                 .add(Items.TRIDENT);
+        tag(CryoAspect.ACCEPTS_ENCHANTMENT)
+                .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(Adrenaline.ACCEPTS_ENCHANTMENT)
                 .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(CurseOfDumbness.ACCEPTS_ENCHANTMENT)

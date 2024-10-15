@@ -52,7 +52,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-@Label(name = "New Enchantments", description = "Change some enchantments related stuff and adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'")
+@Label(name = "New Enchantments", description = "Adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class NewEnchantmentsFeature extends Feature {
 
@@ -86,6 +86,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> PART_BREAKER = ITERegistries.ENCHANTMENTS.register("part_breaker", PartBreaker::new);
 	public static final RegistryObject<Enchantment> AIR_STEALER = ITERegistries.ENCHANTMENTS.register("air_stealer", AirStealer::new);
 	public static final RegistryObject<Enchantment> ARMOR_PIERCER = ITERegistries.ENCHANTMENTS.register("armor_piercer", ArmorPiercer::new);
+	public static final RegistryObject<Enchantment> CRYO_ASPECT = ITERegistries.ENCHANTMENTS.register("cryo_aspect", CryoAspect::new);
 	//public static final RegistryObject<Enchantment> EXPLOSIVE = ITERegistries.ENCHANTMENTS.register("explosive", Explosive::new);
 
 	//Tools and weapons

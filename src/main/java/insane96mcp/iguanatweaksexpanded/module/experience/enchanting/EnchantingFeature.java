@@ -441,7 +441,7 @@ public class EnchantingFeature extends JsonFeature {
             else
                 return enchantmentData.cost[lvl - 1];
         }
-        return (int) Math.round(vanillaCost * Math.pow(lvl, 1.11));
+        return (int) Math.round(vanillaCost * lvl);
     }
 
     public static int getCost(Enchantment enchantment, int lvl) {

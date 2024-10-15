@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* New Enchantments and Curses 
+  * Cryo Aspect: Freezes mobs
 * Added back enchant glint for cursed only items
 * Durium
   * Sand and Gravel Ores now fall and break
