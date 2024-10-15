@@ -5,6 +5,7 @@
   * Cryo Aspect: Freezes mobs (weapons)
   * Curse of Hop: Randomly jump forward / backwards (armor)
   * Curse of Obscurity: Blinds you when you take damage (helmet)
+  * Curse of Frenzy: Mobs hit gain speed, resistance and strength (chestplate)
 * Added back enchant glint for cursed only items
 * Durium
   * Sand and Gravel Ores now fall and break
