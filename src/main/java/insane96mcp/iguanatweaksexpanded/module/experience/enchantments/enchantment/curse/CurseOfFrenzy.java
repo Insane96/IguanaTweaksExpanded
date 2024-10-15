@@ -33,7 +33,7 @@ public class CurseOfFrenzy extends Enchantment {
         return 50;
     }
 
-    public static void tick(LivingDamageEvent event) {
+    public static void onDamage(LivingDamageEvent event) {
         if (event.getEntity().level().isClientSide
                 || !(event.getSource().getEntity() instanceof LivingEntity attacker)
                 || EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_FRENZY.get(), attacker) <= 0)

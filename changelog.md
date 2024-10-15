@@ -6,6 +6,7 @@
   * Curse of Hop: Randomly jump forward / backwards (armor)
   * Curse of Obscurity: Blinds you when you take damage (helmet)
   * Curse of Frenzy: Mobs hit gain speed, resistance and strength (chestplate)
+  * Curse of Unstable Motion: Gain / lose movement speed at random
 * Added back enchant glint for cursed only items
 * Durium
   * Sand and Gravel Ores now fall and break

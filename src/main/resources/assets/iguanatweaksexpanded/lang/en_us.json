@@ -67,6 +67,7 @@
 	"enchantment.iguanatweaksexpanded.obscurity_curse": "Curse of Obscurity",
 	"enchantment.iguanatweaksexpanded.frenzy_curse": "Curse of Frenzy",
 	"enchantment.iguanatweaksexpanded.blood_pact_curse": "Curse of Blood Pact",
+	"enchantment.iguanatweaksexpanded.unstable_motion_curse": "Curse of Unstable Motion",
 	"death.attack.blood_pact": "%s was consumed by the Blood Pact",
 	"death.attack.blood_pact.player": "%s was consumed by the Blood Pact",
 
@@ -121,6 +122,7 @@
 	"enchantment.iguanatweaksexpanded.hop_curse.info": "Randomly jump",
 	"enchantment.iguanatweaksexpanded.obscurity_curse.info": "Gain Blindness on hit",
 	"enchantment.iguanatweaksexpanded.frenzy_curse.info": "Mobs hit gain some buffs",
+	"enchantment.iguanatweaksexpanded.unstable_motion_curse.info": "Randomly gain / lose movement speed",
 	"enchantment.iguanatweaksexpanded.blood_pact_curse.info": "Using the item can hurt the user",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",

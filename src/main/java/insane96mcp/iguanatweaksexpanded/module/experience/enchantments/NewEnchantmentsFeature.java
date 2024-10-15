@@ -123,6 +123,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_HOP = ITERegistries.ENCHANTMENTS.register("hop_curse", CurseOfHop::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_OBSCURITY = ITERegistries.ENCHANTMENTS.register("obscurity_curse", CurseOfObscurity::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_FRENZY = ITERegistries.ENCHANTMENTS.register("frenzy_curse", CurseOfFrenzy::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_UNSTABLE_MOTION = ITERegistries.ENCHANTMENTS.register("unstable_motion_curse", CurseOfUnstableMotion::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_EXPLOSION = ITERegistries.ENCHANTMENTS.register("explosion_curse", CurseOfExplosion::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_ANCHOR = ITERegistries.ENCHANTMENTS.register("anchor_curse", CurseOfAnchor::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
@@ -144,6 +145,7 @@ public class NewEnchantmentsFeature extends Feature {
 		CurseOfSinking.sink(event);
 		CurseOfHop.tick(event);
 		Recovery.regen(event);
+		CurseOfUnstableMotion.tick(event);
 	}
 
 	@SubscribeEvent
@@ -153,7 +155,7 @@ public class NewEnchantmentsFeature extends Feature {
 		CurseOfEnder.onHurt(event);
 		SteadyFall.onFall(event);
 		CurseOfObscurity.apply(event);
-		CurseOfFrenzy.tick(event);
+		CurseOfFrenzy.onDamage(event);
 	}
 
 	//Run after hoes, shovels and Knockback feature
