@@ -2,8 +2,9 @@
 
 ## Upcoming
 * New Enchantments and Curses 
-  * Cryo Aspect: Freezes mobs
-  * Curse of Hop: Randomly jump forward / backwards
+  * Cryo Aspect: Freezes mobs (weapons)
+  * Curse of Hop: Randomly jump forward / backwards (armor)
+  * Curse of Obscurity: Blinds you when you take damage (helmet)
 * Added back enchant glint for cursed only items
 * Durium
   * Sand and Gravel Ores now fall and break

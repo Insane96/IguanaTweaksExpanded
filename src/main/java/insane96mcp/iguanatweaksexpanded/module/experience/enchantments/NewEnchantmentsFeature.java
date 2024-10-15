@@ -121,6 +121,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_SLOW_CHARGE = ITERegistries.ENCHANTMENTS.register("slow_charge_curse", CurseOfSlowCharge::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_DUMBNESS = ITERegistries.ENCHANTMENTS.register("dumbness_curse", CurseOfDumbness::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_HOP = ITERegistries.ENCHANTMENTS.register("hop_curse", CurseOfHop::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_OBSCURITY = ITERegistries.ENCHANTMENTS.register("obscurity_curse", CurseOfObscurity::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_EXPLOSION = ITERegistries.ENCHANTMENTS.register("explosion_curse", CurseOfExplosion::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_ANCHOR = ITERegistries.ENCHANTMENTS.register("anchor_curse", CurseOfAnchor::new);
 	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
@@ -150,6 +151,7 @@ public class NewEnchantmentsFeature extends Feature {
 		Recovery.storeDamageToRegen(event.getEntity(), event.getSource(), event.getAmount());
 		CurseOfEnder.onHurt(event);
 		SteadyFall.onFall(event);
+		CurseOfObscurity.apply(event);
 	}
 
 	//Run after hoes, shovels and Knockback feature

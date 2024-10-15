@@ -1,11 +1,13 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class CurseOfHop extends Enchantment {
@@ -32,7 +34,8 @@ public class CurseOfHop extends Enchantment {
     }
 
     public static void tick(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity().tickCount % 20 != 8)
+        if (event.getEntity().tickCount % 20 != 8
+                || EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_HOP.get(), event.getEntity()) <= 0)
             return;
 
         if (event.getEntity().getRandom().nextInt(60) == 0) {
