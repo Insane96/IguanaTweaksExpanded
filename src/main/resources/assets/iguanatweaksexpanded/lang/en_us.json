@@ -62,6 +62,8 @@
 	"enchantment.iguanatweaksexpanded.void_curse": "Curse of The Void",
 	"enchantment.iguanatweaksexpanded.dumbness_curse": "Curse of Dumbness",
 	"enchantment.iguanatweaksexpanded.anchor_curse": "Curse of Anchor",
+	"enchantment.iguanatweaksexpanded.explosion_curse": "Curse of Explosion",
+	"enchantment.iguanatweaksexpanded.hop_curse": "Curse of Hop",
 	"enchantment.iguanatweaksexpanded.blood_pact_curse": "Curse of Blood Pact",
 	"death.attack.blood_pact": "%s was consumed by the Blood Pact",
 	"death.attack.blood_pact.player": "%s was consumed by the Blood Pact",
@@ -113,6 +115,8 @@
 	"enchantment.iguanatweaksexpanded.steel_fall_curse.info": "Increased fall damage",
 	"enchantment.iguanatweaksexpanded.void_curse.info": "Chance to void drops",
 	"enchantment.iguanatweaksexpanded.dumbness_curse.info": "Reduced experience drop",
+	"enchantment.iguanatweaksexpanded.explosion_curse.info": "Blow up on death",
+	"enchantment.iguanatweaksexpanded.hop_curse.info": "Randomly jump",
 	"enchantment.iguanatweaksexpanded.blood_pact_curse.info": "Using the item can hurt the user",
 
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
