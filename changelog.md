@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.17.0
 * New Enchantments and Curses 
   * Cryo Aspect: Freezes mobs (weapons)
   * Curse of Hop: Randomly jump forward / backwards (armor)
