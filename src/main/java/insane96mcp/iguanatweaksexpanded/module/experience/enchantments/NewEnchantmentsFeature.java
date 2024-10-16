@@ -88,7 +88,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> AIR_STEALER = ITERegistries.ENCHANTMENTS.register("air_stealer", AirStealer::new);
 	public static final RegistryObject<Enchantment> ARMOR_PIERCER = ITERegistries.ENCHANTMENTS.register("armor_piercer", ArmorPiercer::new);
 	public static final RegistryObject<Enchantment> CRYO_ASPECT = ITERegistries.ENCHANTMENTS.register("cryo_aspect", CryoAspect::new);
-	//public static final RegistryObject<Enchantment> EXPLOSIVE = ITERegistries.ENCHANTMENTS.register("explosive", Explosive::new);
+	public static final RegistryObject<Enchantment> EXPLOSIVE = ITERegistries.ENCHANTMENTS.register("explosive", Explosive::new);
 
 	//Tools and weapons
 	public static final RegistryObject<Enchantment> SMARTNESS = ITERegistries.ENCHANTMENTS.register("smartness", Smartness::new);
@@ -273,10 +273,11 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onLivingDeath(LivingDeathEvent event) {
 		Soulbound.onPlayerDeath(event);
 		CurseOfExplosion.onDeath(event);
+		Explosive.onKill(event);
 	}
 
 	@SubscribeEvent
-	public void onLivingDeath(EntityLeaveLevelEvent event) {
+	public void onLeaveEvent(EntityLeaveLevelEvent event) {
 		CurseOfExplosion.onEntityRemoved(event);
 	}
 

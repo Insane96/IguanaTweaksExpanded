@@ -45,7 +45,7 @@ public class CurseOfUnstableMotion extends Enchantment {
 
         if (EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_UNSTABLE_MOTION.get(), event.getEntity()) <= 0) {
             if (event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).getModifier(MODIFIER_UUID) != null)
-            event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(MODIFIER_UUID);
+                event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(MODIFIER_UUID);
         }
         else {
             RandomSource random = event.getEntity().getRandom();

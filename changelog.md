@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Added Explosive enchantment: killed entities will blow up
 * Fixed Curse of Unstable Motion applying for one tick if the entity didn't have the enchantment
 
 ## 1.17.0
