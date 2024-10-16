@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed Curse of Unstable Motion applying for one tick if the entity didn't have the enchantment
+
 ## 1.17.0
 * New Enchantments and Curses 
   * Cryo Aspect: Freezes mobs (weapons)
