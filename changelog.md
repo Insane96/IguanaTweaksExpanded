@@ -1,7 +1,8 @@
 # Changelog
 
 ## Upcoming
-* Added Explosive enchantment: killed entities will blow up
+* Added Explosive enchantment (weapons): killed entities will blow up
+* Added Retreat enchantent (leggings): Increases movement speed the lower the health
 * Fixed Curse of Unstable Motion applying for one tick if the entity didn't have the enchantment
 
 ## 1.17.0

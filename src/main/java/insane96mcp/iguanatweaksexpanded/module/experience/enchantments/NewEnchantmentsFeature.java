@@ -75,6 +75,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> HOPPY = ITERegistries.ENCHANTMENTS.register("hoppy", Hoppy::new);
 	public static final RegistryObject<Enchantment> SPRINT_PACT = ITERegistries.ENCHANTMENTS.register("sprint_pact", SprintPact::new);
 	public static final RegistryObject<Enchantment> MAGNETIC = ITERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
+	public static final RegistryObject<Enchantment> RETREAT = ITERegistries.ENCHANTMENTS.register("retreat", Retreat::new);
 	public static final RegistryObject<Enchantment> DOUBLE_JUMP = ITERegistries.ENCHANTMENTS.register("double_jump", DoubleJump::new);
 	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ITERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
 	public static final RegistryObject<Enchantment> STEADY_FALL = ITERegistries.ENCHANTMENTS.register("steady_fall", SteadyFall::new);
@@ -148,6 +149,7 @@ public class NewEnchantmentsFeature extends Feature {
 		Recovery.regen(event);
 		CurseOfUnstableMotion.tick(event);
 		CurseOfStaticCharge.tick(event);
+		Retreat.applyMovementSpeedModifier(event);
 	}
 
 	@SubscribeEvent
