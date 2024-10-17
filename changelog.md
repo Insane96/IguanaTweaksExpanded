@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.17.1
 * Enchanting
   * Curses learned by enchanting tables can now be applied only once
   * Grindstone no longer removes curses from items
