@@ -33,7 +33,7 @@ public class EnhancedAI extends Feature {
         Module.getFeature(Spawning.class).setConfigOption("Monsters Despawning Distance", 128);
 
         Module.getFeature(CreeperSwell.class).setConfigOption("Walking Fuse Chance", 0.75d);
-        Module.getFeature(CreeperSwell.class).setConfigOption("Breach Chance", 0.4d);
+        Module.getFeature(CreeperSwell.class).setConfigOption("Breach.Chance", 0.4d);
         Module.getFeature(CreeperSwell.class).setConfigOption("Angry Creeper.Explosion power", 3.0d);
         Module.getFeature(CreeperSwell.class).setConfigOption("Angry Creeper.Forced Explosion", false);
         Module.getFeature(CreeperSwell.class).readConfig(event);
