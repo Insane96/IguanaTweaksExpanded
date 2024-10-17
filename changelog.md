@@ -1,6 +1,11 @@
 # Changelog
 
 ## Upcoming
+* Enchanting
+  * Curses learned by enchanting tables can now be applied only once
+  * Grindstone no longer removes curses from items
+  * Applying enchanted books to enchanting tables now only consumes the eligible enchantments. If all enchantments are applied, a book is left
+  * Items no longer have (again) the enchantment glint if only curses are on them
 * Added Explosive enchantment (weapons): killed entities will blow up
 * Added Retreat enchantent (leggings): Increases movement speed the lower the health
 * Fixed Curse of Unstable Motion applying for one tick if the entity didn't have the enchantment

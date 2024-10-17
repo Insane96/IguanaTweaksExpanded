@@ -6,6 +6,7 @@ import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -122,7 +123,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
                     //baseTableEnchantability += 4;
                 }
             }
-            float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)/* + EnchantingFeature.getCurseCost(stack)*/) * enchantabilityModifier * (enchantingPower / 15f) + baseTableEnchantability;
+            float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * (enchantingPower / 15f) + baseTableEnchantability + EnchantingFeature.getCurseCost(stack);
             this.maxCost.set(Math.round(maxCost));
         }
         this.broadcastChanges();
@@ -158,14 +159,21 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             List<EnchantmentInstance> enchantmentInstances = EnchantingFeature.getPendingEnchantments(stack);
             if (enchantmentInstances.isEmpty())
                 return;
+            ITEEnchantingTableBlockEntity table = (ITEEnchantingTableBlockEntity) level.getBlockEntity(blockPos);
             int cost = 0;
             int lapisCost = 0;
             for (EnchantmentInstance instance : enchantmentInstances) {
+                if (!table.learnedEnchantments.containsKey(instance.enchantment)) {
+                    player.sendSystemMessage(Component.literal("The table doesn't know " + Component.translatable(instance.enchantment.getDescriptionId()) + " enchantment"));
+                    return;
+                }
                 cost += EnchantingFeature.getCost(instance.enchantment, instance.level);
                 lapisCost += instance.level;
             }
-            if (cost > this.getMaxCost(enchantmentInstances) && !player.getAbilities().instabuild)
+            if (cost > this.getMaxCost(enchantmentInstances) && !player.getAbilities().instabuild) {
+                player.sendSystemMessage(Component.literal("Cost higher than max cost: " + cost + " > " + this.getMaxCost(enchantmentInstances)));
                 return;
+            }
             enchantmentInstances.forEach(enchantmentInstance -> stack.enchant(enchantmentInstance.enchantment, enchantmentInstance.level));
             if (!player.getAbilities().instabuild) {
                 player.onEnchantmentPerformed(stack, cost);
@@ -173,6 +181,10 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             ItemStack lapis = this.container.getItem(CATALYST_SLOT);
             lapis.shrink(lapisCost);
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
+            for (EnchantmentInstance instance : enchantmentInstances) {
+                if (instance.enchantment.isCurse())
+                    table.forgetEnchantment(instance.enchantment);
+            }
             this.updateMaxCost(stack, level, blockPos);
         });
         this.broadcastChanges();

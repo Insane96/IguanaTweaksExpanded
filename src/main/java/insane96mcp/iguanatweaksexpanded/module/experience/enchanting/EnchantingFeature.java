@@ -87,7 +87,7 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean grindstoneEnchantmentExtraction = true;
     @Config
     @Label(name = "Grindstone.Curse removal", description = "If true, grindstone will also remove curses when disenchanting.")
-    public static Boolean grindstoneCurseRemoval = true;
+    public static Boolean grindstoneCurseRemoval = false;
     @Config
     @Label(name = "Allurement integration", description = """
             If true, some mixins are used on Allurement to make the enchantments work on more things and configs are changed to not overlap with ITE.
@@ -98,9 +98,6 @@ public class EnchantingFeature extends JsonFeature {
     @Config
     @Label(name = "Enchanting Table requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
     public static Boolean enchantingTableRequiresLearning = true;
-    @Config
-    @Label(name = "Allow learning Curses", description = "If true, the new enchanting table can learn curses.")
-    public static Boolean allowLearningCurses = true;
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ITERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ITEItem(new Item.Properties(), true));
@@ -542,7 +539,7 @@ public class EnchantingFeature extends JsonFeature {
     private static void treasureEnchantmentsEnchantedBooksTooltip(ItemStack stack, List<Component> tooltip) {
         if (stack.is(Items.ENCHANTED_BOOK)) {
             for (Map.Entry<Enchantment, Integer> enchantment : EnchantmentHelper.getEnchantments(stack).entrySet()) {
-                if ((enchantment.getKey().isTreasureOnly() || enchantingTableRequiresLearning) && (!enchantment.getKey().isCurse() || allowLearningCurses)) {
+                if ((enchantment.getKey().isTreasureOnly() || enchantingTableRequiresLearning)) {
                     tooltip.add(Component.empty());
                     tooltip.add(Component.translatable("iguanatweaksexpanded.apply_to_enchanting_table").withStyle(ChatFormatting.GREEN));
                     break;

@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.network.message;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableBlockEntity;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -55,6 +56,10 @@ public class SyncITEEnchantingTableStatus {
 			blockEntity.learnedEnchantments.clear();
 			for (var knownEnchantment : message.knownEnchantments.entrySet()) {
 				blockEntity.learnEnchantment(knownEnchantment.getKey(), knownEnchantment.getValue());
+			}
+
+			if (Minecraft.getInstance().screen instanceof ITEEnchantingTableScreen iteEnchantingTableScreen) {
+				iteEnchantingTableScreen.forceUpdateEnchantmentsList = true;
 			}
 		});
 		ctx.get().setPacketHandled(true);

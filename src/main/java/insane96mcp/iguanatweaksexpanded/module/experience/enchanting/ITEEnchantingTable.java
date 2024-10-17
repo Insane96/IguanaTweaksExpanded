@@ -15,6 +15,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -37,6 +38,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ITEEnchantingTable extends BaseEntityBlock {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
@@ -78,19 +82,18 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                 CompoundTag compoundtag = player.getItemInHand(hand).getTag();
                 if (compoundtag != null) {
                     ListTag list = compoundtag.getList("StoredEnchantments", 10);
-                    boolean hasTreasure = false;
+                    boolean hasOneEligibleEnchantment = false;
                     boolean hasLearned = false;
+                    List<Integer> toRemove = new ArrayList<>();
                     for (int i = 0; i < list.size(); i++) {
                         CompoundTag compound = list.getCompound(i);
                         Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(compound));
                         int lvl = EnchantmentHelper.getEnchantmentLevel(compound);
                         if (enchantment == null)
                             continue;
-                        if (enchantment.isCurse() && !EnchantingFeature.allowLearningCurses)
-                            continue;
                         if (!enchantment.isTreasureOnly() && !EnchantingFeature.enchantingTableRequiresLearning)
                             continue;
-                        hasTreasure = true;
+                        hasOneEligibleEnchantment = true;
                         MutableComponent enchantmentDescId = Component.translatable(enchantment.getDescriptionId());
                         Integer lvlKnown = enchantingTableBE.learnedEnchantments.getOrDefault(enchantment, 0);
                         MutableComponent lvlKnownDescId = Component.translatable("enchantment.level." + lvlKnown);
@@ -105,12 +108,19 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                         else
                             player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.upgrade_known_enchantment", enchantmentDescId, lvlKnownDescId, newLvlDescId));
                         hasLearned = true;
+                        toRemove.add(i);
                     }
-                    if (hasTreasure && hasLearned) {
-                        player.getItemInHand(hand).shrink(1);
+                    for (Integer i : toRemove) {
+                        list.remove(i.intValue());
+                    }
+                    if (hasOneEligibleEnchantment && hasLearned) {
+                        if (list.isEmpty()) {
+                            player.getItemInHand(hand).shrink(1);
+                            player.setItemSlot(hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, new ItemStack(Items.BOOK));
+                        }
                         pLevel.playSound(null, pPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.0F, 1.5F);
                     }
-                    else if (!hasTreasure)
+                    else if (!hasOneEligibleEnchantment)
                         player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.no_valid_enchantments"));
                 }
             }

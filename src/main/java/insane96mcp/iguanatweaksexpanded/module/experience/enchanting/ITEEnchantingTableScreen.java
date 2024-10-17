@@ -22,6 +22,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -183,6 +184,10 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
     private boolean isItemEmpowered() {
         CompoundTag tag = this.menu.getSlot(0).getItem().getTag();
         return tag != null && tag.contains(EnchantingFeature.EMPOWERED_ITEM);
+    }
+
+    private boolean hasEnchantment(Enchantment enchantment) {
+        return EnchantmentHelper.getTagEnchantmentLevel(enchantment, this.menu.getSlot(0).getItem()) > 0;
     }
 
     @Override
@@ -483,7 +488,8 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
 
         public boolean canRiseLevel() {
             int maxLvl = getMaxLvl();
-            return this.lvl < maxLvl;
+            boolean hasAlreadyEnchantment = ITEEnchantingTableScreen.this.hasEnchantment(this.enchantment);
+            return this.lvl < maxLvl && !hasAlreadyEnchantment;
         }
 
         /**

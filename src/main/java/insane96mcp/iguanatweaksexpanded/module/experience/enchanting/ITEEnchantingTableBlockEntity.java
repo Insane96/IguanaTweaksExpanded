@@ -102,6 +102,11 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         this.setChanged();
     }
 
+    public void forgetEnchantment(Enchantment enchantment) {
+        this.learnedEnchantments.remove(enchantment);
+        this.setChanged();
+    }
+
     @Override
     public CompoundTag getUpdateTag() {
         return this.saveWithoutMetadata();
