@@ -5,6 +5,7 @@
 
 ## Upcoming
 * Stone tools are now removed from creative inventory
+* Fixed books with multiple enchantments not consuming properly when applied to enchanting table
 
 ## 1.17.1
 * Enchanting

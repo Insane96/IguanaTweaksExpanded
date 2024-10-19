@@ -84,7 +84,7 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                     ListTag list = compoundtag.getList("StoredEnchantments", 10);
                     boolean hasOneEligibleEnchantment = false;
                     boolean hasLearned = false;
-                    List<Integer> toRemove = new ArrayList<>();
+                    List<CompoundTag> toRemove = new ArrayList<>();
                     for (int i = 0; i < list.size(); i++) {
                         CompoundTag compound = list.getCompound(i);
                         Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(EnchantmentHelper.getEnchantmentId(compound));
@@ -108,10 +108,10 @@ public class ITEEnchantingTable extends BaseEntityBlock {
                         else
                             player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.upgrade_known_enchantment", enchantmentDescId, lvlKnownDescId, newLvlDescId));
                         hasLearned = true;
-                        toRemove.add(i);
+                        toRemove.add(compound);
                     }
-                    for (Integer i : toRemove) {
-                        list.remove(i.intValue());
+                    for (CompoundTag tag : toRemove) {
+                        list.remove(tag);
                     }
                     if (hasOneEligibleEnchantment && hasLearned) {
                         if (list.isEmpty()) {
