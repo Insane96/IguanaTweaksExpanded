@@ -1,11 +1,9 @@
 # Changelog
 
-* Cursed books don't consume the curse
-* Cursed items with pending curses increase max cost twice
-
 ## Upcoming
 * Stone tools are now removed from creative inventory
 * Fixed books with multiple enchantments not consuming properly when applied to enchanting table
+* Fixed items with curses being wonky when re-enchanted
 
 ## 1.17.1
 * Enchanting

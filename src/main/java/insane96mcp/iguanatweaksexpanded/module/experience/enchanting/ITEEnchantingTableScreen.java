@@ -138,8 +138,8 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
         List<EnchantmentInstance> pendingEnchantments = EnchantingFeature.getPendingEnchantments(stack);
         if (!pendingEnchantments.isEmpty()) {
             for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
-                Optional<EnchantmentInstance> instanceOptional = pendingEnchantments.stream().filter(pendingEnchantment -> enchantmentEntry.enchantmentDisplay.enchantment.equals(pendingEnchantment.enchantment)).findAny();
-                instanceOptional.ifPresent(pendingEnchantment -> {
+                Optional<EnchantmentInstance> oInstance = pendingEnchantments.stream().filter(pendingEnchantment -> enchantmentEntry.enchantmentDisplay.enchantment.equals(pendingEnchantment.enchantment)).findAny();
+                oInstance.ifPresent(pendingEnchantment -> {
                     enchantmentEntry.enchantmentDisplay.setLvl(pendingEnchantment.level);
                     enchantmentEntry.updateActiveState();
                 });
@@ -176,6 +176,15 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
             return;
         EnchantingFeature.getPendingEnchantments(stack)
                 .forEach(enchantmentInstance -> {
+                    boolean found = false;
+                    for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
+                        if (enchantmentEntry.enchantmentDisplay.enchantment.equals(enchantmentInstance.enchantment)) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                        return;
                     if (enchantmentInstance.enchantment.isCurse())
                         this.maxCost += EnchantingFeature.getCost(enchantmentInstance.enchantment, enchantmentInstance.level, true);
                 });

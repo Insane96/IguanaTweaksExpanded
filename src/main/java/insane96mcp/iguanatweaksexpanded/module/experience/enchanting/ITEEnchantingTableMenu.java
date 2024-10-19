@@ -164,7 +164,7 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             int lapisCost = 0;
             for (EnchantmentInstance instance : enchantmentInstances) {
                 if (!table.learnedEnchantments.containsKey(instance.enchantment)) {
-                    player.sendSystemMessage(Component.literal("The table doesn't know " + Component.translatable(instance.enchantment.getDescriptionId()) + " enchantment"));
+                    player.sendSystemMessage(Component.literal("The table doesn't know ").append(Component.translatable(instance.enchantment.getDescriptionId())).append(Component.literal(" enchantment")));
                     return;
                 }
                 cost += EnchantingFeature.getCost(instance.enchantment, instance.level);
@@ -182,8 +182,10 @@ public class ITEEnchantingTableMenu extends AbstractContainerMenu {
             lapis.shrink(lapisCost);
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             for (EnchantmentInstance instance : enchantmentInstances) {
-                if (instance.enchantment.isCurse())
+                if (instance.enchantment.isCurse()) {
                     table.forgetEnchantment(instance.enchantment);
+                    EnchantingFeature.removePendingEnchantment(stack, instance.enchantment);
+                }
             }
             this.updateMaxCost(stack, level, blockPos);
         });

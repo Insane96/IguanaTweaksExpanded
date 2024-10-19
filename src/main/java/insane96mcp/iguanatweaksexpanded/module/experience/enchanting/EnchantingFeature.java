@@ -513,6 +513,29 @@ public class EnchantingFeature extends JsonFeature {
         return pendingEnchantments;
     }
 
+    public static void removePendingEnchantment(ItemStack stack, Enchantment enchantment) {
+        if (stack.getTag() == null)
+            return;
+        CompoundTag toRemove = null;
+        ListTag enchantmentsListTag = stack.getTag().getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
+        for (int i = 0; i < enchantmentsListTag.size(); ++i) {
+            CompoundTag compoundtag = enchantmentsListTag.getCompound(i);
+            Enchantment ench = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(compoundtag.getString("id")));
+            if (ench != null && ench == enchantment) {
+                toRemove = compoundtag;
+                break;
+            }
+        }
+        if (toRemove != null)
+            enchantmentsListTag.remove(toRemove);
+    }
+
+    public static void clearPendingEnchantments(ItemStack stack) {
+        if (stack.getTag() == null)
+            return;
+        stack.getTag().remove("PendingEnchantments");
+    }
+
     @SubscribeEvent
     public void onTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
