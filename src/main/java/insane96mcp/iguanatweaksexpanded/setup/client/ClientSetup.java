@@ -56,12 +56,25 @@ public class ClientSetup {
     //TODO Add a lower priority for modded items (e.g. Shields+)
     public static void onBuildCreativeModeTabContents(final BuildCreativeModeTabContentsEvent event)
     {
+        if (Feature.isEnabled(FlintExpansion.class) && FlintExpansion.disableStoneTools)
+        {
+            event.getEntries().remove(new ItemStack(Items.STONE_SWORD));
+            event.getEntries().remove(new ItemStack(Items.STONE_AXE));
+            event.getEntries().remove(new ItemStack(Items.STONE_SHOVEL));
+            event.getEntries().remove(new ItemStack(Items.STONE_PICKAXE));
+            event.getEntries().remove(new ItemStack(Items.STONE_HOE));
+            event.getEntries().remove(new ItemStack(Forging.STONE_HAMMER.get()));
+
+            if (ModList.get().isLoaded("shieldsplus")) {
+                addAfter(event, SPItems.STONE_SHIELD.get(), SPItems.STONE_SHIELD.get());
+            }
+        }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
-            addAfter(event, Items.STONE_HOE, FlintExpansion.HOE.get());
-            addAfter(event, Items.STONE_HOE, FlintExpansion.AXE.get());
-            addAfter(event, Items.STONE_HOE, FlintExpansion.PICKAXE.get());
-            addAfter(event, Items.STONE_HOE, FlintExpansion.SHOVEL.get());
+            addAfter(event, Items.WOODEN_HOE, FlintExpansion.HOE.get());
+            addAfter(event, Items.WOODEN_HOE, FlintExpansion.AXE.get());
+            addAfter(event, Items.WOODEN_HOE, FlintExpansion.PICKAXE.get());
+            addAfter(event, Items.WOODEN_HOE, FlintExpansion.SHOVEL.get());
             addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_HOE.get());
             addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_AXE.get());
             addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_PICKAXE.get());
@@ -117,7 +130,7 @@ public class ClientSetup {
             addAfter(event, Items.RAIL, Minecarts.COPPER_POWERED_RAIL.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            addAfter(event, Items.STONE_SWORD, FlintExpansion.SWORD.get());
+            addAfter(event, Items.WOODEN_SWORD, FlintExpansion.SWORD.get());
             addAfter(event, FlintExpansion.SWORD.get(), CopperExpansion.COPPER_SWORD.get());
             addAfter(event, Items.IRON_SWORD, Solarium.SWORD.get());
             addAfter(event, Items.IRON_SWORD, Durium.SWORD.get());
@@ -125,7 +138,7 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
             addAfter(event, Items.NETHERITE_SWORD, SoulSteel.SWORD.get());
 
-            addAfter(event, Items.STONE_AXE, FlintExpansion.AXE.get());
+            addAfter(event, Items.WOODEN_AXE, FlintExpansion.AXE.get());
             addAfter(event, FlintExpansion.AXE.get(), CopperExpansion.COPPER_AXE.get());
             addAfter(event, Items.IRON_AXE, Solarium.AXE.get());
             addAfter(event, Items.IRON_AXE, Durium.AXE.get());
@@ -135,7 +148,7 @@ public class ClientSetup {
             addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
 
             if (ModList.get().isLoaded("shieldsplus")) {
-                addAfter(event, SPItems.STONE_SHIELD.get(), FlintExpansion.SHIELD.get());
+                addAfter(event, SPItems.WOODEN_SHIELD.get(), FlintExpansion.SHIELD.get());
                 addAfter(event, SPItems.STONE_SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
                 addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.SHIELD.get());
                 addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());

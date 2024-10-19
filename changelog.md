@@ -1,5 +1,11 @@
 # Changelog
 
+* Cursed books don't consume the curse
+* Cursed items with pending curses increase max cost twice
+
+## Upcoming
+* Stone tools are now removed from creative inventory
+
 ## 1.17.1
 * Enchanting
   * Curses learned by enchanting tables can now be applied only once
