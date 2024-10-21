@@ -16,11 +16,11 @@ import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.miningcharge.MiningCharge;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.MultiItemSmeltingRecipeBuilder;
+import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
-import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreGeneration;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.Death;
 import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.core.NonNullList;
@@ -515,12 +515,12 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, Items.RAW_COPPER, Items.COPPER_INGOT, 0.7f, 100);
         addBlastingRecipe(writer, Items.COPPER_ORE, Items.COPPER_INGOT, 0.7f, 100, 7f);
         addBlastingRecipe(writer, Items.DEEPSLATE_COPPER_ORE, Items.COPPER_INGOT, 0.7f, 100, 7f);
-        addBlastingRecipe(writer, OreGeneration.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 100, 2f);
+        addBlastingRecipe(writer, BeegOreVeins.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 100, 2f);
         //Iron
         addBlastingRecipe(writer, Items.RAW_IRON, Items.IRON_INGOT, 1f, 200);
         addBlastingRecipe(writer, Items.IRON_ORE, Items.IRON_INGOT, 1f, 200, 1f);
         addBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.IRON_INGOT, 1f, 200, 1f);
-        addBlastingRecipe(writer, OreGeneration.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 200, 1f);
+        addBlastingRecipe(writer, BeegOreVeins.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 200, 1f);
         addBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 200, 4.4f);
         addBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 200);
         //Gold
@@ -528,7 +528,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, Items.GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
         addBlastingRecipe(writer, Items.DEEPSLATE_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
         addBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
-        addBlastingRecipe(writer, OreGeneration.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 200, 1f);
+        addBlastingRecipe(writer, BeegOreVeins.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 200, 1f);
         //Durium
         addBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 200, 3f);
         //Other
@@ -550,12 +550,12 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Items.RAW_COPPER, Items.COPPER_INGOT, 0.7f, 150);
         addSoulBlastingRecipe(writer, Items.COPPER_ORE, Items.COPPER_INGOT, 0.7f, 150, 2f);
         addSoulBlastingRecipe(writer, Items.DEEPSLATE_COPPER_ORE, Items.COPPER_INGOT, 0.7f, 150, 2f);
-        addSoulBlastingRecipe(writer, OreGeneration.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 150, 2f);
+        addSoulBlastingRecipe(writer, BeegOreVeins.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 150, 2f);
         //Iron
         addSoulBlastingRecipe(writer, Items.RAW_IRON, Items.IRON_INGOT, 1f, 300);
         addSoulBlastingRecipe(writer, Items.IRON_ORE, Items.IRON_INGOT, 1f, 300, 0.3f);
         addSoulBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.IRON_INGOT, 1f, 300, 0.3f);
-        addSoulBlastingRecipe(writer, OreGeneration.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 300, 0.3f);
+        addSoulBlastingRecipe(writer, BeegOreVeins.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 300, 0.3f);
         addSoulBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 300, 8f);
         addSoulBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 150);
         //Gold
@@ -563,7 +563,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Items.GOLD_ORE, Items.GOLD_INGOT, 2f, 300, 0.3f);
         addSoulBlastingRecipe(writer, Items.DEEPSLATE_GOLD_ORE, Items.GOLD_INGOT, 2f, 300, 0.3f);
         addSoulBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_INGOT, 2f, 300, 0.3f);
-        addSoulBlastingRecipe(writer, OreGeneration.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 300, 0.3f);
+        addSoulBlastingRecipe(writer, BeegOreVeins.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 300, 0.3f);
         //Durium
         addSoulBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 300, 1f);
         //Other
@@ -875,9 +875,9 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         appendMaterialToName = false;
         //</editor-fold>
 
-        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_COPPER_ORE, Items.COPPER_INGOT, 0.75f, 100, 7f);
-        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_IRON_ORE, Items.IRON_INGOT, 1f, 200, 1f);
-        addPoorRichOreRecipes(writer, OreGeneration.POOR_RICH_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
+        addPoorRichOreRecipes(writer, BeegOreVeins.POOR_RICH_COPPER_ORE, Items.COPPER_INGOT, 0.75f, 100, 7f);
+        addPoorRichOreRecipes(writer, BeegOreVeins.POOR_RICH_IRON_ORE, Items.IRON_INGOT, 1f, 200, 1f);
+        addPoorRichOreRecipes(writer, BeegOreVeins.POOR_RICH_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
     }
 
     private ItemStack generateRepairKitStack(ItemLike material, Color color) {
@@ -900,7 +900,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 10);
     }
 
-    private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, OreGeneration.PoorRichOre poorRichOre, Item smeltOutput, float experience, int cookingTime, float baseOutputIncrease) {
+    private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, BeegOreVeins.PoorRichOre poorRichOre, Item smeltOutput, float experience, int cookingTime, float baseOutputIncrease) {
         addBlastingRecipe(writer, poorRichOre.poorOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f);
         addBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f);
         addBlastingRecipe(writer, poorRichOre.richOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f);

@@ -98,6 +98,9 @@ public class EnchantingFeature extends JsonFeature {
     @Config
     @Label(name = "Enchanting Table requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
     public static Boolean enchantingTableRequiresLearning = true;
+    /*@Config
+    @Label(name = "All enchantments are one time use", description = "If true, enchantments in the enchanting table are one time use.")
+    public static Boolean allEnchantmentsAreOneTimeUse = true;*/
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ITERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ITEItem(new Item.Properties(), true));

@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+* Added config option (under Mining) to enable Beeg Ore Veins
+* Removed Poor/Rich ore generation data pack and removed Ore Generation feature
+  * Was outdated
 * Stone tools are now removed from creative inventory
 * Fixed books with multiple enchantments not consuming properly when applied to enchanting table
 * Fixed items with curses being wonky when re-enchanted

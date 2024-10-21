@@ -13,10 +13,10 @@ import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockBlastFurnaceBlock;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockSoulBlastFurnaceBlock;
+import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
-import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreGeneration;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -55,10 +55,10 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(Durium.BLOCK.block().get(), Durium.ORE.block().get(), Durium.DEEPSLATE_ORE.block().get(), Durium.SCRAP_BLOCK.block().get())
                 .add(SoulSteel.BLOCK.block().get())
-                .add(OreGeneration.IRON_ORE_ROCK.block().get()).add(OreGeneration.COPPER_ORE_ROCK.block().get()).add(OreGeneration.GOLD_ORE_ROCK.block().get())
-                .add(OreGeneration.POOR_RICH_IRON_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().block().get())
-                .add(OreGeneration.POOR_RICH_GOLD_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get())
-                .add(OreGeneration.POOR_RICH_COPPER_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get())
+                .add(BeegOreVeins.IRON_ORE_ROCK.block().get()).add(BeegOreVeins.COPPER_ORE_ROCK.block().get()).add(BeegOreVeins.GOLD_ORE_ROCK.block().get())
+                .add(BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().block().get())
+                .add(BeegOreVeins.POOR_RICH_GOLD_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get())
+                .add(BeegOreVeins.POOR_RICH_COPPER_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get())
                 .add(MultiBlockFurnaces.BLAST_FURNACE.block().get(), MultiBlockFurnaces.SOUL_BLAST_FURNACE.block().get())
                 .add(Forging.FORGE.block().get())
                 .add(FlintExpansion.FLINT_ROCK.block().get())
@@ -67,13 +67,13 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(Crate.BLOCK.get())
-                .add(OreGeneration.POOR_RICH_IRON_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().block().get())
-                .add(OreGeneration.POOR_RICH_COPPER_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get())
+                .add(BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().block().get())
+                .add(BeegOreVeins.POOR_RICH_COPPER_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get())
                 .add(EnchantingFeature.ENCHANTING_TABLE.block().get())
                 .addTag(Durium.BLOCK_ORES);
 
         tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(OreGeneration.POOR_RICH_GOLD_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get())
+                .add(BeegOreVeins.POOR_RICH_GOLD_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get())
                 .add(SoulSteel.BLOCK.block().get())
                 .add(Quaron.BLOCK.block().get())
                 .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
@@ -82,17 +82,17 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(Minecarts.COPPER_POWERED_RAIL.block().get(), Minecarts.GOLDEN_POWERED_RAIL.block().get(), Minecarts.NETHER_INFUSED_POWERED_RAIL.block().get());
 
         tag(BlockTags.IRON_ORES)
-                .add(OreGeneration.POOR_RICH_IRON_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_IRON_ORE.richDeepslateOre().block().get());
+                .add(BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().block().get());
         tag(BlockTags.GOLD_ORES)
-                .add(OreGeneration.POOR_RICH_GOLD_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get());
+                .add(BeegOreVeins.POOR_RICH_GOLD_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get());
         tag(BlockTags.COPPER_ORES)
-                .add(OreGeneration.POOR_RICH_COPPER_ORE.poorOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), OreGeneration.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get());
+                .add(BeegOreVeins.POOR_RICH_COPPER_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get());
 
         tag(BlockTags.BEACON_BASE_BLOCKS)
                 .add(Durium.BLOCK.block().get(), SoulSteel.BLOCK.block().get(), Quaron.BLOCK.block().get(), Keego.BLOCK.block().get());
 
         tag(BlockTags.REPLACEABLE_BY_TREES)
-                .add(OreGeneration.COPPER_ORE_ROCK.block().get(), OreGeneration.IRON_ORE_ROCK.block().get(), OreGeneration.GOLD_ORE_ROCK.block().get())
+                .add(BeegOreVeins.COPPER_ORE_ROCK.block().get(), BeegOreVeins.IRON_ORE_ROCK.block().get(), BeegOreVeins.GOLD_ORE_ROCK.block().get())
                 .add(FlintExpansion.FLINT_ROCK.block().get());
 
         //Mod's tags

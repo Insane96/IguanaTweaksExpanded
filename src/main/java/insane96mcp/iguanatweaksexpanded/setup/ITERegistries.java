@@ -5,8 +5,8 @@ import insane96mcp.iguanatweaksexpanded.data.function.EnchantWithTreasureFunctio
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.SoliumBoulderFeature;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
-import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.BeegOreVeinFeature;
-import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.OreWithRandomPatchConfiguration;
+import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeinFeature;
+import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.OreWithRandomPatchConfiguration;
 import insane96mcp.shieldsplus.setup.SPItems;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import insane96mcp.shieldsplus.world.item.SPShieldMaterial;

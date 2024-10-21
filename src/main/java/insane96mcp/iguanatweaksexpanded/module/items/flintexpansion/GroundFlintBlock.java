@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.flintexpansion;
 
-import insane96mcp.iguanatweaksexpanded.module.world.oregeneration.GroundRockBlock;
+import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.GroundRockBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;

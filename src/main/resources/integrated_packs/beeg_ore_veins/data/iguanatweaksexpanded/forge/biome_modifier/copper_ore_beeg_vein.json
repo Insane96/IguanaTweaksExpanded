@@ -1,6 +1,6 @@
 {
     "type": "forge:add_features",
-    "biomes": "#iguanatweaksreborn:disabled",
+    "biomes": "#forge:is_cold/overworld",
     "features": "iguanatweaksexpanded:copper_ore_beeg_vein",
     "step": "underground_ores"
 }

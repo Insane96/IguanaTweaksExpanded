@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.world.oregeneration;
+package insane96mcp.iguanatweaksexpanded.module.mining.oregeneration;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

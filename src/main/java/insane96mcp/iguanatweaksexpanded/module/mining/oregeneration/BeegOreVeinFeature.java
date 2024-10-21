@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.world.oregeneration;
+package insane96mcp.iguanatweaksexpanded.module.mining.oregeneration;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;

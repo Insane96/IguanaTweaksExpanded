@@ -1,4 +1,4 @@
-package insane96mcp.iguanatweaksexpanded.module.world.oregeneration;
+package insane96mcp.iguanatweaksexpanded.module.mining.oregeneration;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
@@ -8,7 +8,6 @@ import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
-import insane96mcp.insanelib.base.config.Config;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
@@ -19,9 +18,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.List;
 
-@Label(name = "Ore Generation", description = "Changes ore generation of many ores. Also adds poor and rich Iron, Gold and Copper")
-@LoadFeature(module = Modules.Ids.WORLD)
-public class OreGeneration extends Feature {
+@Label(name = "Beeg Ore Veins", description = "Enables a Data Pack that makes Beeg Ore Veins generate. On the surface of the overworld you can now find ore rocks. These indicate that underground there's a huge vein of that ore")
+@LoadFeature(module = Modules.Ids.MINING, enabledByDefault = false)
+public class BeegOreVeins extends Feature {
 
     public static final SimpleBlockWithItem IRON_ORE_ROCK = SimpleBlockWithItem.register("iron_ore_rock", () -> new GroundRockBlock(BlockBehaviour.Properties.of().strength(0.5F, 2.0F).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape()));
     public static final SimpleBlockWithItem GOLD_ORE_ROCK = SimpleBlockWithItem.register("gold_ore_rock", () -> new GroundRockBlock(BlockBehaviour.Properties.of().strength(0.5F, 2.0F).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape()));
@@ -31,13 +30,9 @@ public class OreGeneration extends Feature {
     public static final PoorRichOre POOR_RICH_COPPER_ORE = PoorRichOre.register("copper", Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE);
     public static final PoorRichOre POOR_RICH_GOLD_ORE = PoorRichOre.register("gold", Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE);
 
-    @Config
-    @Label(name = "Poor and Rich Ore Generation", description = "Enables a Data Pack that changes Iron, Gold and Copper generation to include Poor and Rich Ores.")
-    public static Boolean poorRichOreGenerationDataPack = false;
-
-    public OreGeneration(Module module, boolean enabledByDefault, boolean canBeDisabled) {
+    public BeegOreVeins(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "poor_rich_natural_generation", Component.literal("IguanaTweaks Expanded Poor and Rich Ore Generation"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && poorRichOreGenerationDataPack));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "beeg_ore_veins", Component.literal("IguanaTweaks Expanded Beeg Ore Veins"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
     }
 
     public record PoorRichOre(SimpleBlockWithItem poorOre, SimpleBlockWithItem poorDeepslateOre, SimpleBlockWithItem richOre, SimpleBlockWithItem richDeepslateOre) {
