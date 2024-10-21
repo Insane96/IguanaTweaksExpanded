@@ -1,6 +1,6 @@
 {
     "type": "forge:add_features",
-    "biomes": "#forge:is_forest",
+    "biomes": "#iguanatweaksreborn:has_more_iron_ore",
     "features": "iguanatweaksexpanded:iron_ore_beeg_vein",
     "step": "underground_ores"
 }

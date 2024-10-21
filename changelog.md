@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Added config option (under Mining) to enable Beeg Ore Veins
+  * Now generate in biomes where more ores generate
 * Removed Poor/Rich ore generation data pack and removed Ore Generation feature
   * Was outdated
 * Stone tools are now removed from creative inventory

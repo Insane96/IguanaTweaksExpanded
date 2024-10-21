@@ -1,6 +1,6 @@
 {
     "type": "forge:add_features",
-    "biomes": "#forge:is_hot/overworld",
+    "biomes": "#minecraft:is_badlands",
     "features": "iguanatweaksexpanded:gold_ore_beeg_vein",
     "step": "underground_ores"
 }
