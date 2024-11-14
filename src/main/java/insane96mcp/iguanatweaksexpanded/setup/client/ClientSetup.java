@@ -66,7 +66,7 @@ public class ClientSetup {
             event.getEntries().remove(new ItemStack(Forging.STONE_HAMMER.get()));
 
             if (ModList.get().isLoaded("shieldsplus")) {
-                addAfter(event, SPItems.STONE_SHIELD.get(), SPItems.STONE_SHIELD.get());
+                event.getEntries().remove(new ItemStack(SPItems.STONE_SHIELD.get()));
             }
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
