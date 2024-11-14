@@ -53,7 +53,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import java.util.List;
 
 public class ClientSetup {
-    //TODO Add a lower priority for modded items (e.g. Shields+)
+
     public static void onBuildCreativeModeTabContents(final BuildCreativeModeTabContentsEvent event)
     {
         if (Feature.isEnabled(FlintExpansion.class) && FlintExpansion.disableStoneTools)
