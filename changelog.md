@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.17.3
+* Compatibility with latest ITR
+  * Crash fix on respawn
+
 ## 1.17.2
 * Added config option (under Mining) to enable Beeg Ore Veins
   * Now generate in biomes where more ores generate
