@@ -56,18 +56,16 @@ public class ClientSetup {
 
     public static void onBuildCreativeModeTabContents(final BuildCreativeModeTabContentsEvent event)
     {
-        if (Feature.isEnabled(FlintExpansion.class) && FlintExpansion.disableStoneTools)
+        if (FlintExpansion.areStoneToolsDisabled())
         {
             event.getEntries().remove(new ItemStack(Items.STONE_SWORD));
             event.getEntries().remove(new ItemStack(Items.STONE_AXE));
             event.getEntries().remove(new ItemStack(Items.STONE_SHOVEL));
             event.getEntries().remove(new ItemStack(Items.STONE_PICKAXE));
             event.getEntries().remove(new ItemStack(Items.STONE_HOE));
-            event.getEntries().remove(new ItemStack(Forging.STONE_HAMMER.get()));
 
-            if (ModList.get().isLoaded("shieldsplus")) {
+            if (ModList.get().isLoaded("shieldsplus"))
                 event.getEntries().remove(new ItemStack(SPItems.STONE_SHIELD.get()));
-            }
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
@@ -108,7 +106,8 @@ public class ClientSetup {
             addBefore(event, Items.FLINT_AND_STEEL, CoalCharcoal.FIRESTARTER.get());
 
             addAfter(event, Items.WOODEN_HOE, Forging.WOODEN_HAMMER.get());
-            addAfter(event, Items.STONE_HOE, Forging.STONE_HAMMER.get());
+            if (!FlintExpansion.areStoneToolsDisabled())
+                addAfter(event, Items.STONE_HOE, Forging.STONE_HAMMER.get());
             addAfter(event, FlintExpansion.HOE.get(), Forging.FLINT_HAMMER.get());
             addAfter(event, CopperExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
             addAfter(event, CopperExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
@@ -149,7 +148,7 @@ public class ClientSetup {
 
             if (ModList.get().isLoaded("shieldsplus")) {
                 addAfter(event, SPItems.WOODEN_SHIELD.get(), FlintExpansion.SHIELD.get());
-                addAfter(event, SPItems.STONE_SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
+                addAfter(event, FlintExpansion.areStoneToolsDisabled() ? SPItems.WOODEN_SHIELD.get() : SPItems.STONE_SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
                 addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.SHIELD.get());
                 addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());
                 addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.SHIELD.get());

@@ -48,4 +48,8 @@ public class FlintExpansion extends Feature {
 		super(module, enabledByDefault, canBeDisabled);
 		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "disable_stone_tools", Component.literal("IguanaTweaks Expanded Disable Stone Tools"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && disableStoneTools));
 	}
+
+	public static boolean areStoneToolsDisabled() {
+		return Feature.isEnabled(FlintExpansion.class) && disableStoneTools;
+	}
 }

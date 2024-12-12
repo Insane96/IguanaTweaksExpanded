@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Hopefully fixed (again) shields going places in the creative menu
+
 ## 1.17.3
 * Hopully fixed shields going places in the Creative Menu
 * Compatibility with latest ITR
