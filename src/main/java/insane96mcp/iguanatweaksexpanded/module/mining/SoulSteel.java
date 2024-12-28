@@ -29,7 +29,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.EnumMap;
 import java.util.List;
 
-@Label(name = "Soul Steel", description = "Add Soul Steel, a new metal made by alloying Iron, Soul Sand and Hellish Coal")
+@Label(name = "Soul Steel", description = "Add Soul Steel, a new metal made by alloying Iron, Soul Sand and Hellish Coal. DISABLING THIS DOES NOTHING. use datapacks to remove soul steel from the game, with recipes, loot table modifiers and world gen.")
 @LoadFeature(module = Modules.Ids.MINING)
 public class SoulSteel extends Feature {
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("soul_steel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), new Item.Properties());
