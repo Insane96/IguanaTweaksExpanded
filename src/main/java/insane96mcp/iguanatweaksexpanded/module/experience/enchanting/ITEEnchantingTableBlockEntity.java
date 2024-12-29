@@ -52,6 +52,7 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         super.load(tag);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.items);
+        //Remove legacy stored enchantments
         if (tag.contains("treasure_enchantments")) {
             ListTag listtag = tag.getList("treasure_enchantments", CompoundTag.TAG_STRING);
             for (int i = 0; i < listtag.size(); i++) {
@@ -63,6 +64,7 @@ public class ITEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
             }
             tag.remove("treasure_enchantments");
         }
+        //Load stored enchantments
         ListTag listTag = tag.getList("learned_enchantments", CompoundTag.TAG_COMPOUND);
         for (int i = 0; i < listTag.size(); i++) {
             CompoundTag compoundTag = listTag.getCompound(i);

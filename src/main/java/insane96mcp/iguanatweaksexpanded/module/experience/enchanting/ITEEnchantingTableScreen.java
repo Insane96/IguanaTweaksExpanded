@@ -116,7 +116,9 @@ public class ITEEnchantingTableScreen extends AbstractContainerScreen<ITEEnchant
 
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
             if (/*enchantment.isCurse()
-                    || */EnchantingFeature.enchantingTableRequiresLearning && !this.learnedEnchantments.containsKey(enchantment))
+                    || */EnchantingFeature.enchantingTableRequiresLearning
+                    && !this.learnedEnchantments.containsKey(enchantment)
+                    /*&& !EnchantingFeature.isStartingEnchantment(enchantment)*/)
                 continue;
             if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || (this.learnedEnchantments.containsKey(enchantment) && enchantment.canApplyAtEnchantingTable(stack)))
                 availableEnchantments.add(enchantment);

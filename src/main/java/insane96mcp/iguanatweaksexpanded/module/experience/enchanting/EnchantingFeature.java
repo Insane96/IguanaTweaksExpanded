@@ -21,6 +21,7 @@ import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.data.IdTagMatcher;
+import insane96mcp.insanelib.data.IdTagValue;
 import insane96mcp.insanelib.data.lootmodifier.InjectLootTableModifier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -237,6 +238,11 @@ public class EnchantingFeature extends JsonFeature {
     );
     public static final ArrayList<IdTagMatcher> overLevelEnchantmentBlacklist = new ArrayList<>();
 
+    public static final List<IdTagValue> DEFAULT_STARTING_ENCHANTMENTS = List.of(
+
+    );
+    public static final ArrayList<IdTagValue> startingEnchantments = new ArrayList<>();
+
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 
@@ -247,6 +253,9 @@ public class EnchantingFeature extends JsonFeature {
 
         addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
         JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist")));
+
+        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "starting_enchantments"), new SyncType(json -> loadAndReadJson(json, startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("starting_enchantments.json", startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist")));
 	}
 
     @Override
@@ -537,6 +546,14 @@ public class EnchantingFeature extends JsonFeature {
         if (stack.getTag() == null)
             return;
         stack.getTag().remove("PendingEnchantments");
+    }
+
+    public static boolean isStartingEnchantment(Enchantment enchantment) {
+        for (IdTagValue idTagValue : startingEnchantments) {
+            if (idTagValue.id.matchesEnchantment(enchantment))
+                return true;
+        }
+        return false;
     }
 
     @SubscribeEvent

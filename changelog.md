@@ -1,6 +1,8 @@
 # Changelog
 
 ## Upcoming
+* You can now specify starting enchantments of the new enchanting table in `Experience/Enchanting/starting_enchantments.json`
+  * Empty by default
 * Hopefully fixed (again) shields going places in the creative menu
 
 ## 1.17.3

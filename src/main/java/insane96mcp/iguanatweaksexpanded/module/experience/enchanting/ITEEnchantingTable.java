@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import insane96mcp.iguanatweaksexpanded.network.message.SyncITEEnchantingTableLearnedEnchantments;
+import insane96mcp.insanelib.data.IdTagValue;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -51,7 +52,11 @@ public class ITEEnchantingTable extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new ITEEnchantingTableBlockEntity(pPos, pState);
+        ITEEnchantingTableBlockEntity iteEnchantingTableBlockEntity = new ITEEnchantingTableBlockEntity(pPos, pState);
+        for (IdTagValue idTagValue : EnchantingFeature.startingEnchantments) {
+            iteEnchantingTableBlockEntity.learnEnchantment(ForgeRegistries.ENCHANTMENTS.getValue(idTagValue.id.location), (int) idTagValue.value);
+        }
+        return iteEnchantingTableBlockEntity;
     }
 
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
