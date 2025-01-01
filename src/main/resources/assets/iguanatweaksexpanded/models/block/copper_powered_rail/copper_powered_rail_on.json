@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/rail_flat",
-  "render_type": "cutout",
-  "textures": {
-    "rail": "iguanatweaksexpanded:block/copper_powered_rail_on"
-  }
-}
