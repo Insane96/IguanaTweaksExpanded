@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
-import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrinks;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
@@ -428,58 +427,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_tnt", has(Items.TNT))
                 .unlockedBy("has_barrel", has(Items.BARREL))
                 .save(writer);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodDrinks.BROWN_MUSHROOM_STEW.get())
-                .requires(Items.BOWL, 1)
-                .requires(Items.BROWN_MUSHROOM, 2)
-                .unlockedBy("has_bowl", has(Items.BOWL))
-                .unlockedBy("has_mushroom", has(Items.BROWN_MUSHROOM))
-                .save(writer);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodDrinks.RED_MUSHROOM_STEW.get())
-                .requires(Items.BOWL, 1)
-                .requires(Items.RED_MUSHROOM, 2)
-                .unlockedBy("has_bowl", has(Items.BOWL))
-                .unlockedBy("has_mushroom", has(Items.RED_MUSHROOM))
-                .save(writer);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodDrinks.NETHERIZED_STEW.get())
-                .requires(Items.BOWL, 1)
-                .requires(Items.RED_MUSHROOM, 1)
-                .requires(Items.BROWN_MUSHROOM, 1)
-                .requires(Items.CRIMSON_FUNGUS, 1)
-                .requires(Items.WARPED_FUNGUS, 1)
-                .unlockedBy("has_bowl", has(Items.BOWL))
-                .unlockedBy("has_red_mushroom", has(Items.RED_MUSHROOM))
-                .unlockedBy("has_brown_mushroom", has(Items.BROWN_MUSHROOM))
-                .unlockedBy("has_crimson_fungus", has(Items.CRIMSON_FUNGUS))
-                .unlockedBy("has_warped_fungus", has(Items.WARPED_FUNGUS))
-                .save(writer);
-
-        ConditionalRecipe.builder()
-                .addCondition(not(modLoaded("incubation")))
-                .addRecipe(
-                        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 600)
-                                .unlockedBy("has_egg", has(Items.EGG))
-                                ::save
-                )
-                .build(writer, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_easy_egg_from_campfire"));
-        ConditionalRecipe.builder()
-                .addCondition(not(modLoaded("incubation")))
-                .addRecipe(
-                        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 600)
-                                .unlockedBy("has_egg", has(Items.EGG))
-                                ::save
-                )
-                .build(writer, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_easy_egg_from_smelting"));
-        ConditionalRecipe.builder()
-                .addCondition(not(modLoaded("incubation")))
-                .addRecipe(
-                        SimpleCookingRecipeBuilder.smoking(Ingredient.of(Items.EGG), RecipeCategory.FOOD, FoodDrinks.OVER_EASY_EGG.get(), 0.35f, 600)
-                                .unlockedBy("has_egg", has(Items.EGG))
-                                ::save
-                )
-                .build(writer, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_easy_egg_from_smoking"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, CoalCharcoal.FIRESTARTER.get())
                 .requires(Items.FLINT, 2)

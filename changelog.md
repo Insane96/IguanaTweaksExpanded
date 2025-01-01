@@ -1,6 +1,7 @@
 # Changelog
 
 ## Upcoming
+* Changed so much stuff to accomodate new Insane Survival Tweaks
 * You can now specify starting enchantments of the new enchanting table in `Experience/Enchanting/starting_enchantments.json`
   * Empty by default
 * Hopefully fixed (again) shields going places in the creative menu

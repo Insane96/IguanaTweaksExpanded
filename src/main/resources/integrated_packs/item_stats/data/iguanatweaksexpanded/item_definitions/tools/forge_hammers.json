@@ -1,5 +1,6 @@
 {
 	"item": "#iguanatweaksexpanded:equipment/forge_hammers",
+	"knockback_multiplier": 1,
 	"modifiers": [
 		{
 			"uuid": "9091eb15-6701-4c63-8603-16c5de7ddc86",

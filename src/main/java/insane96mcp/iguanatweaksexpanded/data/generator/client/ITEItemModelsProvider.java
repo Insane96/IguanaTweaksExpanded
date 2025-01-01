@@ -3,7 +3,6 @@ package insane96mcp.iguanatweaksexpanded.data.generator.client;
 import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.hungerhealth.fooddrinks.FoodDrinks;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
@@ -183,12 +182,6 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItemWithTexture(Minecarts.COPPER_POWERED_RAIL.item().get(), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/copper_powered_rail"));
         withExistingParent("golden_powered_rail", new ResourceLocation("item/powered_rail"));
         basicItemWithTexture(Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get(), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/nether_infused_powered_rail"));
-
-        basicItem(FoodDrinks.OVER_EASY_EGG.get());
-        basicItem(FoodDrinks.BROWN_MUSHROOM_STEW.get());
-        basicItem(FoodDrinks.RED_MUSHROOM_STEW.get());
-        basicItem(FoodDrinks.NETHERIZED_STEW.get());
-        basicItem(FoodDrinks.PUMPKIN_PULP.get());
 
         withExistingParent("explosive_barrel", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/explosive_barrel"));
 
