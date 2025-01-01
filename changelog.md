@@ -2,8 +2,8 @@
 
 ## Upcoming
 * Changed so much stuff to accomodate new Insane Survival Tweaks
-  * Moved some features to main mod
-  * Enhanced AI is no longer required. It's mandatory in IST
+  * Moved some features to main mod (Food Drinks, Tool Belt Integration)
+  * Enhanced AI is no longer required. It's optional in IST
 * You can now specify starting enchantments of the new enchanting table in `Experience/Enchanting/starting_enchantments.json`
   * Empty by default
 * Hopefully fixed (again) shields going places in the creative menu

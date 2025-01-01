@@ -7,7 +7,6 @@ import insane96mcp.iguanatweaksexpanded.module.items.solarium.item.*;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.module.combat.RegeneratingAbsorption;
-import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.integration.ToolBelt;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
@@ -103,11 +102,8 @@ public class Solarium extends Feature {
 
 	@SubscribeEvent
 	public void onLivingTick(LivingEvent.LivingTickEvent event) {
+		//TODO Move to ItemAttributeEvent?
 		armorBoost(event);
-
-		//Move if any other item needs toolbelt ticking
-		if (ModList.get().isLoaded("toolbelt"))
-			ToolBelt.tryTickItemsIn(event.getEntity());
 	}
 
 	public static void armorBoost(LivingEvent.LivingTickEvent event) {
