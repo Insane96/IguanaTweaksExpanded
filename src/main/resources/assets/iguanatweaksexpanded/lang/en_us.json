@@ -311,10 +311,6 @@
 	"item.iguanatweaksexpanded.quaron_ingot": "Quaron Ingot",
 	"block.iguanatweaksexpanded.quaron_block": "Block of Quaron",
 
-	"block.iguanatweaksexpanded.copper_powered_rail": "Copper Powered Rail",
-	"block.iguanatweaksexpanded.golden_powered_rail": "Golden Powered Rail",
-	"block.iguanatweaksexpanded.nether_infused_powered_rail": "Nether Infused Powered Rail",
-
 	"iguanatweaksexpanded.requires_catalyst": "Can't activate. The Obelisk requires at least one catalyst block",
 	"iguanatweaksexpanded.obelisk_disabled": "Respawn Obelisk disabled. Your respawn point has been set to your last bed, or reset if you didn't have one",
 	"iguanatweaksexpanded.fail_respawn_obelisk": "You couldn't respawn at the obelisk because it was disabled.",
@@ -502,9 +498,6 @@
 	"emi.info.grindstone": "Can be used to disenchant items",
 	"emi.info.iguanatweaksexpanded.altimeter": "Roughly shows your height with a precision of 16 blocks",
 	"emi.info.charcoal": "Can be obtained by burning logs",
-	"emi.info.iguanatweaksexpanded.copper_powered_rail": "Medium speed powered rail",
-	"emi.info.iguanatweaksexpanded.golden_powered_rail": "Fastest speed powered rail, should not be used for slopes due to Minecarts being wonky",
-	"emi.info.iguanatweaksexpanded.nether_infused_powered_rail": "(Legacy item)",
 	"emi.info.iguanatweaksexpanded.keego_mining": "Keego Tools are based off momentum. Each block broken increases mining speed",
 	"emi.info.iguanatweaksexpanded.keego_attacking": "Keego Weapons are based off momentum. Each attack increases attack speed",
 	"emi.info.iguanatweaksexpanded.keego_moving": "Keego Armor is based off momentum. Each blocks moved increases movement speed",

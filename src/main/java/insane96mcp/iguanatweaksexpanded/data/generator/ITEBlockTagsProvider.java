@@ -15,7 +15,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.M
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockSoulBlastFurnaceBlock;
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
-import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -77,9 +76,6 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(SoulSteel.BLOCK.block().get())
                 .add(Quaron.BLOCK.block().get())
                 .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
-
-        tag(BlockTags.RAILS)
-                .add(Minecarts.COPPER_POWERED_RAIL.block().get(), Minecarts.GOLDEN_POWERED_RAIL.block().get(), Minecarts.NETHER_INFUSED_POWERED_RAIL.block().get());
 
         tag(BlockTags.IRON_ORES)
                 .add(BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().block().get());

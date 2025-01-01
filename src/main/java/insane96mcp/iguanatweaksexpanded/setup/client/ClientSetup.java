@@ -31,7 +31,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn.RespawnObeliskFeature;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
@@ -122,10 +121,6 @@ public class ClientSetup {
 
             addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
-
-            //addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());
-            addAfter(event, Items.RAIL, Minecarts.GOLDEN_POWERED_RAIL.item().get());
-            addAfter(event, Items.RAIL, Minecarts.COPPER_POWERED_RAIL.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             addAfter(event, Items.WOODEN_SWORD, FlintExpansion.SWORD.get());
@@ -208,9 +203,6 @@ public class ClientSetup {
             }
         }
         else if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
-            //addAfter(event, Items.RAIL, Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get());
-            addAfter(event, Items.RAIL, Minecarts.GOLDEN_POWERED_RAIL.item().get());
-            addAfter(event, Items.RAIL, Minecarts.COPPER_POWERED_RAIL.item().get());
             addAfter(event, Items.TNT, MiningCharge.MINING_CHARGE.item().get());
             addAfter(event, Items.TNT, ExplosiveBarrel.BLOCK.item().get());
         }

@@ -12,7 +12,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.movement.minecarts.Minecarts;
 import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import net.minecraft.data.PackOutput;
@@ -178,10 +177,6 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         withExistingParent("clay_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/clay_durium_ore"));
         withExistingParent("dirt_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/dirt_durium_ore"));
         withExistingParent("durium_scrap_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/durium_scrap_block"));
-
-        basicItemWithTexture(Minecarts.COPPER_POWERED_RAIL.item().get(), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/copper_powered_rail"));
-        withExistingParent("golden_powered_rail", new ResourceLocation("item/powered_rail"));
-        basicItemWithTexture(Minecarts.NETHER_INFUSED_POWERED_RAIL.item().get(), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/nether_infused_powered_rail"));
 
         withExistingParent("explosive_barrel", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/explosive_barrel"));
 
