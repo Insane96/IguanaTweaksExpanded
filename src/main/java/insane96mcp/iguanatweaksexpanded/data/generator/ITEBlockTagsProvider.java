@@ -5,7 +5,6 @@ import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
-import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
@@ -15,7 +14,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.M
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockSoulBlastFurnaceBlock;
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
-import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -46,8 +44,6 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(Crate.BLOCK.get(), ExplosiveBarrel.BLOCK.block().get(), Fletching.FLETCHING_TABLE.block().get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
-                .add(CoalCharcoal.CHARCOAL_LAYER.block().get())
-                .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get())
                 .add(Durium.SAND_ORE.block().get(), Durium.GRAVEL_ORE.block().get(), Durium.CLAY_ORE.block().get(), Durium.DIRT_ORE.block().get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -59,7 +55,6 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(BeegOreVeins.POOR_RICH_COPPER_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get())
                 .add(MultiBlockFurnaces.BLAST_FURNACE.block().get(), MultiBlockFurnaces.SOUL_BLAST_FURNACE.block().get())
                 .add(Forging.FORGE.block().get())
-                .add(FlintExpansion.FLINT_ROCK.block().get())
                 .add(Quaron.BLOCK.block().get())
                 .add(EnchantingFeature.ENCHANTING_TABLE.block().get());
 
@@ -73,8 +68,7 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(BeegOreVeins.POOR_RICH_GOLD_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_GOLD_ORE.richDeepslateOre().block().get())
                 .add(SoulSteel.BLOCK.block().get())
-                .add(Quaron.BLOCK.block().get())
-                .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
+                .add(Quaron.BLOCK.block().get());
 
         tag(BlockTags.IRON_ORES)
                 .add(BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().block().get());
@@ -87,8 +81,7 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(Durium.BLOCK.block().get(), SoulSteel.BLOCK.block().get(), Quaron.BLOCK.block().get(), Keego.BLOCK.block().get());
 
         tag(BlockTags.REPLACEABLE_BY_TREES)
-                .add(BeegOreVeins.COPPER_ORE_ROCK.block().get(), BeegOreVeins.IRON_ORE_ROCK.block().get(), BeegOreVeins.GOLD_ORE_ROCK.block().get())
-                .add(FlintExpansion.FLINT_ROCK.block().get());
+                .add(BeegOreVeins.COPPER_ORE_ROCK.block().get(), BeegOreVeins.IRON_ORE_ROCK.block().get(), BeegOreVeins.GOLD_ORE_ROCK.block().get());
 
         //Mod's tags
         tag(MultiBlockBlastFurnaceBlock.BOTTOM_BLOCKS_TAG)

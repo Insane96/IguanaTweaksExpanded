@@ -25,10 +25,6 @@ public class ITEBlockModelsProvider extends BlockModelProvider {
             cubeAll("rich_deepslate_%s_ore".formatted(poorRichOre), "block/rich_deepslate_%s_ore".formatted(poorRichOre));
         }
 
-        cubeAll("soul_steel_block", "block/soul_steel_block");
-        cubeAll("soul_sand_hellish_coal_ore", "block/soul_sand_hellish_coal_ore");
-        cubeAll("soul_soil_hellish_coal_ore", "block/soul_soil_hellish_coal_ore");
-
         cubeBottomTop("crate", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_side"), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_bottom"), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_top"));
         cubeBottomTop("crate_open", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_side"), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_bottom"), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_top_open"));
 
@@ -41,6 +37,8 @@ public class ITEBlockModelsProvider extends BlockModelProvider {
         cubeAll("keego_block", "block/keego_block");
 
         cubeAll("quaron_block", "block/quaron_block");
+
+        cubeAll("soul_steel_block", "block/soul_steel_block");
 
         cross("cyan_flower", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/cyan_flower")).renderType("cutout");
         flowerPotCross("potted_cyan_flower", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/cyan_flower"));

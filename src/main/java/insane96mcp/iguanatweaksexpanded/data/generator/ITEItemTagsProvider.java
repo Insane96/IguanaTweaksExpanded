@@ -10,17 +10,15 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantme
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfSlowStrike;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfTheVoid;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
-import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
-import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.Luck;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
-import insane96mcp.iguanatweaksreborn.module.items.itemstats.ItemStats;
+import insane96mcp.iguanatweaksreborn.module.world.coalfire.CoalFire;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -41,7 +39,6 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
 
     public static final TagKey<Item> WOODEN_HAND_EQUIPMENT = create("equipment/hand/wooden");
     public static final TagKey<Item> STONE_HAND_EQUIPMENT = create("equipment/hand/stone");
-    public static final TagKey<Item> FLINT_HAND_EQUIPMENT = create("equipment/hand/flint");
     public static final TagKey<Item> COPPER_HAND_EQUIPMENT = create("equipment/hand/copper");
     public static final TagKey<Item> CHAINED_COPPER_ARMOR = create("equipment/armor/chained_copper");
     public static final TagKey<Item> FORGE_HAMMERS = create("equipment/forge_hammers");
@@ -55,7 +52,7 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         tag(EnchantingFeature.NOT_ENCHANTABLE)
                 .add(Items.BOOK, Items.FLINT_AND_STEEL, Items.SHEARS, Items.BRUSH, Items.ELYTRA)
-                .add(CoalCharcoal.FIRESTARTER.get());
+                .add(CoalFire.FIRESTARTER.get());
         tag(Smartness.ACCEPTS_ENCHANTMENT)
                 .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .add(Items.FISHING_ROD, Quaron.FISHING_ROD.get());
@@ -93,21 +90,17 @@ public class ITEItemTagsProvider extends ItemTagsProvider {
                 .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.DURIUM_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         tag(Durium.ITEM_ORES)
                 .add(Durium.ORE.item().get(), Durium.DEEPSLATE_ORE.item().get(), Durium.SAND_ORE.item().get(), Durium.GRAVEL_ORE.item().get(), Durium.CLAY_ORE.item().get(), Durium.DIRT_ORE.item().get());
-        tag(CoalCharcoal.ITEM_ORES)
-                .add(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get(), CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get());
         //ITR
         tag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
                 .addTag(FORGE_HAMMERS);
         tag(Luck.ACCEPTS_ENCHANTMENT)
                 .add(Quaron.FISHING_ROD.get());
-        tag(ItemStats.NOT_UNBREAKABLE)
-                .add(CoalCharcoal.FIRESTARTER.get());
         //Vanilla
-        tag(ItemTags.PICKAXES).add(FlintExpansion.PICKAXE.get(), Solarium.PICKAXE.get(), Durium.PICKAXE.get(), CopperExpansion.COPPER_PICKAXE.get(), CopperExpansion.COATED_PICKAXE.get(), SoulSteel.PICKAXE.get(), Keego.PICKAXE.get(), Quaron.PICKAXE.get());
-        tag(ItemTags.AXES).add(FlintExpansion.AXE.get(), Solarium.AXE.get(), Durium.AXE.get(), CopperExpansion.COPPER_AXE.get(), CopperExpansion.COATED_AXE.get(), SoulSteel.AXE.get(), Keego.AXE.get(), Quaron.AXE.get());
-        tag(ItemTags.SHOVELS).add(FlintExpansion.SHOVEL.get(), Solarium.SHOVEL.get(), Durium.SHOVEL.get(), CopperExpansion.COPPER_SHOVEL.get(), CopperExpansion.COATED_SHOVEL.get(), SoulSteel.SHOVEL.get(), Keego.SHOVEL.get(), Quaron.SHOVEL.get());
-        tag(ItemTags.SWORDS).add(FlintExpansion.SWORD.get(), Solarium.SWORD.get(), Durium.SWORD.get(), CopperExpansion.COPPER_SWORD.get(), CopperExpansion.COATED_SWORD.get(), SoulSteel.SWORD.get(), Keego.SWORD.get(), Quaron.SWORD.get());
-        tag(ItemTags.HOES).add(FlintExpansion.HOE.get(), Solarium.HOE.get(), Durium.HOE.get(), CopperExpansion.COPPER_HOE.get(), CopperExpansion.COATED_HOE.get(), SoulSteel.HOE.get(), Keego.HOE.get(), Quaron.HOE.get());
+        tag(ItemTags.PICKAXES).add(Solarium.PICKAXE.get(), Durium.PICKAXE.get(), CopperExpansion.COPPER_PICKAXE.get(), CopperExpansion.COATED_PICKAXE.get(), SoulSteel.PICKAXE.get(), Keego.PICKAXE.get(), Quaron.PICKAXE.get());
+        tag(ItemTags.AXES).add(Solarium.AXE.get(), Durium.AXE.get(), CopperExpansion.COPPER_AXE.get(), CopperExpansion.COATED_AXE.get(), SoulSteel.AXE.get(), Keego.AXE.get(), Quaron.AXE.get());
+        tag(ItemTags.SHOVELS).add(Solarium.SHOVEL.get(), Durium.SHOVEL.get(), CopperExpansion.COPPER_SHOVEL.get(), CopperExpansion.COATED_SHOVEL.get(), SoulSteel.SHOVEL.get(), Keego.SHOVEL.get(), Quaron.SHOVEL.get());
+        tag(ItemTags.SWORDS).add(Solarium.SWORD.get(), Durium.SWORD.get(), CopperExpansion.COPPER_SWORD.get(), CopperExpansion.COATED_SWORD.get(), SoulSteel.SWORD.get(), Keego.SWORD.get(), Quaron.SWORD.get());
+        tag(ItemTags.HOES).add(Solarium.HOE.get(), Durium.HOE.get(), CopperExpansion.COPPER_HOE.get(), CopperExpansion.COATED_HOE.get(), SoulSteel.HOE.get(), Keego.HOE.get(), Quaron.HOE.get());
 
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(Solarium.HELMET.get(), Solarium.CHESTPLATE.get(), Solarium.LEGGINGS.get(), Solarium.BOOTS.get())

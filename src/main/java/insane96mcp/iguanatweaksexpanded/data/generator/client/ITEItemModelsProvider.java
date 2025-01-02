@@ -4,7 +4,6 @@ import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
-import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
@@ -12,7 +11,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -80,12 +78,6 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         withExistingParent("blast_furnace", new ResourceLocation("block/blast_furnace"));
         withExistingParent("soul_blast_furnace", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_blast_furnace"));
 
-        handHeld(FlintExpansion.AXE.get());
-        handHeld(FlintExpansion.PICKAXE.get());
-        handHeld(FlintExpansion.SHOVEL.get());
-        handHeld(FlintExpansion.HOE.get());
-        handHeld(FlintExpansion.SWORD.get());
-        shield(FlintExpansion.SHIELD.get());
         withExistingParent("flint_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/flint_block"));
         withExistingParent("polished_flint_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/polished_flint_block"));
 
@@ -109,8 +101,6 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         handHeld(CopperExpansion.COATED_HOE.get());
         handHeld(CopperExpansion.COATED_SWORD.get());
         shield(CopperExpansion.COATED_SHIELD.get());
-
-        withExistingParent("charcoal_layer", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/charcoal_layer/height_2"));
 
         withExistingParent("crate", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate"));
 
@@ -178,11 +168,6 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         withExistingParent("durium_scrap_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/durium_scrap_block"));
 
         withExistingParent("explosive_barrel", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/explosive_barrel"));
-
-        basicItem(CoalCharcoal.FIRESTARTER.get());
-        basicItem(CoalCharcoal.HELLISH_COAL.get());
-        withExistingParent("soul_sand_hellish_coal_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_sand_hellish_coal_ore"));
-        withExistingParent("soul_soil_hellish_coal_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_soil_hellish_coal_ore"));
 
         handHeld(Forging.WOODEN_HAMMER.get());
         handHeld(Forging.STONE_HAMMER.get());

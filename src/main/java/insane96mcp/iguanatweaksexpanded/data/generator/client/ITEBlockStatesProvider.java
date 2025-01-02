@@ -4,7 +4,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
-import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -28,7 +27,5 @@ public class ITEBlockStatesProvider extends BlockStateProvider {
         simpleBlock(Keego.ORE.block().get());
         simpleBlock(Keego.BLOCK.block().get());
         simpleBlock(Quaron.BLOCK.block().get());
-        simpleBlock(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.block().get());
-        simpleBlock(CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.block().get());
     }
 }

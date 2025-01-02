@@ -15,7 +15,6 @@ import insane96mcp.iguanatweaksexpanded.module.items.crate.ClientCrateTooltip;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.CrateTooltip;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
-import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
@@ -31,7 +30,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.client.RecipeBookCategories;
@@ -52,23 +50,8 @@ public class ClientSetup {
 
     public static void onBuildCreativeModeTabContents(final BuildCreativeModeTabContentsEvent event)
     {
-        if (FlintExpansion.areStoneToolsDisabled())
-        {
-            event.getEntries().remove(new ItemStack(Items.STONE_SWORD));
-            event.getEntries().remove(new ItemStack(Items.STONE_AXE));
-            event.getEntries().remove(new ItemStack(Items.STONE_SHOVEL));
-            event.getEntries().remove(new ItemStack(Items.STONE_PICKAXE));
-            event.getEntries().remove(new ItemStack(Items.STONE_HOE));
-
-            if (ModList.get().isLoaded("shieldsplus"))
-                event.getEntries().remove(new ItemStack(SPItems.STONE_SHIELD.get()));
-        }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
-            addAfter(event, Items.WOODEN_HOE, FlintExpansion.HOE.get());
-            addAfter(event, Items.WOODEN_HOE, FlintExpansion.AXE.get());
-            addAfter(event, Items.WOODEN_HOE, FlintExpansion.PICKAXE.get());
-            addAfter(event, Items.WOODEN_HOE, FlintExpansion.SHOVEL.get());
             addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_HOE.get());
             addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_AXE.get());
             addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_PICKAXE.get());
@@ -99,7 +82,6 @@ public class ClientSetup {
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.AXE.get());
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.PICKAXE.get());
             addAfter(event, Items.NETHERITE_HOE, SoulSteel.SHOVEL.get());
-            addBefore(event, Items.FLINT_AND_STEEL, CoalCharcoal.FIRESTARTER.get());
 
             addAfter(event, Items.WOODEN_HOE, Forging.WOODEN_HAMMER.get());
             if (!FlintExpansion.areStoneToolsDisabled())
@@ -121,7 +103,6 @@ public class ClientSetup {
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            addAfter(event, Items.WOODEN_SWORD, FlintExpansion.SWORD.get());
             addAfter(event, FlintExpansion.SWORD.get(), CopperExpansion.COPPER_SWORD.get());
             addAfter(event, Items.IRON_SWORD, Solarium.SWORD.get());
             addAfter(event, Items.IRON_SWORD, Durium.SWORD.get());
@@ -129,7 +110,6 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
             addAfter(event, Items.NETHERITE_SWORD, SoulSteel.SWORD.get());
 
-            addAfter(event, Items.WOODEN_AXE, FlintExpansion.AXE.get());
             addAfter(event, FlintExpansion.AXE.get(), CopperExpansion.COPPER_AXE.get());
             addAfter(event, Items.IRON_AXE, Solarium.AXE.get());
             addAfter(event, Items.IRON_AXE, Durium.AXE.get());
@@ -139,7 +119,6 @@ public class ClientSetup {
             addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
 
             if (ModList.get().isLoaded("shieldsplus")) {
-                addAfter(event, SPItems.WOODEN_SHIELD.get(), FlintExpansion.SHIELD.get());
                 addAfter(event, FlintExpansion.areStoneToolsDisabled() ? SPItems.WOODEN_SHIELD.get() : SPItems.STONE_SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
                 addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.SHIELD.get());
                 addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());
@@ -186,7 +165,6 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_BLOCK, SoulSteel.BLOCK.item().get());
             addBefore(event, Items.NETHERITE_BLOCK, Keego.BLOCK.item().get());
             addBefore(event, Items.DIAMOND_BLOCK, Quaron.BLOCK.item().get());
-            addAfter(event, Items.COAL_BLOCK, CoalCharcoal.CHARCOAL_LAYER.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             addBefore(event, Items.SHULKER_BOX, Crate.ITEM.get());
@@ -227,9 +205,6 @@ public class ClientSetup {
             addBefore(event, Items.DEEPSLATE_GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.poorDeepslateOre().item().get());
             addAfter(event, Items.GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.richOre().item().get());
             addAfter(event, Items.DEEPSLATE_GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.richDeepslateOre().item().get());
-            addAfter(event, Items.NETHER_GOLD_ORE, CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get());
-            addAfter(event, Items.NETHER_GOLD_ORE, CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get());
-            addAfter(event, Items.CACTUS, FlintExpansion.FLINT_ROCK.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             addAfter(event, Items.RAW_GOLD, Durium.SCRAP_PIECE.get());
@@ -244,7 +219,6 @@ public class ClientSetup {
             addAfter(event, Items.GOLD_NUGGET, Quaron.NUGGET.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
-            addAfter(event, Items.CHARCOAL, CoalCharcoal.HELLISH_COAL.get());
         }
     }
 

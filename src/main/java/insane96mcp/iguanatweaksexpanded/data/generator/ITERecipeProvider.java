@@ -5,7 +5,6 @@ import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
-import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
@@ -18,7 +17,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.Mu
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.Death;
 import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.core.NonNullList;
@@ -48,60 +46,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FlintExpansion.AXE.get())
-                .pattern("ff")
-                .pattern("fs")
-                .pattern(" s")
-                .define('f', Items.FLINT)
-                .define('s', Items.STICK)
-                .unlockedBy("has_stick", has(Items.STICK))
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FlintExpansion.SHOVEL.get())
-                .pattern("f")
-                .pattern("s")
-                .pattern("s")
-                .define('f', Items.FLINT)
-                .define('s', Items.STICK)
-                .unlockedBy("has_stick", has(Items.STICK))
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FlintExpansion.PICKAXE.get())
-                .pattern("fff")
-                .pattern(" s ")
-                .pattern(" s ")
-                .define('f', Items.FLINT)
-                .define('s', Items.STICK)
-                .unlockedBy("has_stick", has(Items.STICK))
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, FlintExpansion.HOE.get())
-                .pattern("ff")
-                .pattern(" s")
-                .pattern(" s")
-                .define('f', Items.FLINT)
-                .define('s', Items.STICK)
-                .unlockedBy("has_stick", has(Items.STICK))
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, FlintExpansion.SWORD.get())
-                .pattern("f")
-                .pattern("f")
-                .pattern("s")
-                .define('f', Items.FLINT)
-                .define('s', Items.STICK)
-                .unlockedBy("has_stick", has(Items.STICK))
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(writer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, FlintExpansion.SHIELD.get())
-                .pattern(" f ")
-                .pattern("fWf")
-                .pattern(" f ")
-                .define('f', Items.FLINT)
-                .define('W', SPItems.WOODEN_SHIELD.get())
-                .unlockedBy("has_flint", has(Items.FLINT))
-                .save(writer);
-
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CopperExpansion.COPPER_AXE.get())
                 .pattern("ff")
                 .pattern("fs")
@@ -377,11 +321,11 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.INGOT.get(), 1)
                 .requires(Items.NETHERITE_SCRAP, 4)
                 .requires(Items.IRON_INGOT, 2)
-                .requires(CoalCharcoal.HELLISH_COAL.get(), 2)
+                .requires(CoalFire.HELLISH_COAL.get(), 2)
                 .requires(Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS), 1)
                 .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
                 .save(writer);
-        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.IRON_INGOT), Ingredient.of(CoalCharcoal.HELLISH_COAL.get()), Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS)), CoalCharcoal.HELLISH_COAL.get(), SoulSteel.INGOT.get(), 8f, 1200, 0.3f);
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.IRON_INGOT), Ingredient.of(CoalFire.HELLISH_COAL.get()), Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS)), CoalFire.HELLISH_COAL.get(), SoulSteel.INGOT.get(), 8f, 1200, 0.3f);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ExplosiveBarrel.BLOCK.item().get())
                 .requires(Items.TNT, 1)
@@ -389,12 +333,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Items.GUNPOWDER, 1)
                 .unlockedBy("has_tnt", has(Items.TNT))
                 .unlockedBy("has_barrel", has(Items.BARREL))
-                .save(writer);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, CoalCharcoal.FIRESTARTER.get())
-                .requires(Items.FLINT, 2)
-                .requires(Items.IRON_INGOT, 1)
-                .unlockedBy("has_iron_nugget", has(Items.IRON_NUGGET))
                 .save(writer);
 
         //Mining Charge
@@ -567,44 +505,8 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         //</editor-fold>
 
         //Hellish Coal
-        addBlastingRecipe(writer, CoalCharcoal.ITEM_ORES, CoalCharcoal.HELLISH_COAL.get(), 1.2f, 200, 1f);
-        addSoulBlastingRecipe(writer, CoalCharcoal.ITEM_ORES, CoalCharcoal.HELLISH_COAL.get(), 1.2f, 150, 0.3f);
-        /*SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get()),
-                        RecipeCategory.MISC,
-                        CoalCharcoal.HELLISH_COAL.get(),
-                        1.2f,
-                        200
-                )
-                .unlockedBy("has_hellish_coal_ore", has(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "hellish_coal_from_smelting_soul_sand_ore");
-        SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get()),
-                        RecipeCategory.MISC,
-                        CoalCharcoal.HELLISH_COAL.get(),
-                        1.2f,
-                        200
-                )
-                .unlockedBy("has_hellish_coal_ore", has(CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "hellish_coal_from_smelting_soul_soil_ore");
-        SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get()),
-                        RecipeCategory.MISC,
-                        CoalCharcoal.HELLISH_COAL.get(),
-                        1.2f,
-                        100
-                )
-                .unlockedBy("has_hellish_coal_ore", has(CoalCharcoal.SOUL_SAND_HELLISH_COAL_ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "hellish_coal_from_blasting_soul_sand_ore");
-        SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get()),
-                        RecipeCategory.MISC,
-                        CoalCharcoal.HELLISH_COAL.get(),
-                        1.2f,
-                        100
-                )
-                .unlockedBy("has_hellish_coal_ore", has(CoalCharcoal.SOUL_SOIL_HELLISH_COAL_ORE.item().get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "hellish_coal_from_blasting_soul_soil_ore");*/
+        //addBlastingRecipe(writer, CoalCharcoal.ITEM_ORES, CoalCharcoal.HELLISH_COAL.get(), 1.2f, 200, 1f);
+        //addSoulBlastingRecipe(writer, CoalCharcoal.ITEM_ORES, CoalCharcoal.HELLISH_COAL.get(), 1.2f, 150, 0.3f);
 
         //<editor-fold desc="Recycle recipes">
         recycleGear(writer, CopperExpansion.HELMET.get(), Items.IRON_NUGGET, 200, 6);

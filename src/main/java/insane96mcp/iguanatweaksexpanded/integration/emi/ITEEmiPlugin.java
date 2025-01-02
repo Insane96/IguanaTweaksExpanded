@@ -5,7 +5,6 @@ import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiInfoRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import dev.emi.emi.api.recipe.EmiWorldInteractionRecipe;
 import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
@@ -14,7 +13,6 @@ import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
-import insane96mcp.iguanatweaksexpanded.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
@@ -22,24 +20,20 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBl
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKitItem;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.base.Feature;
-import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -91,20 +85,6 @@ public class ITEEmiPlugin implements EmiPlugin {
 		registry.addWorkstation(FLETCHING_RECIPE_CATEGORY, FLETCHING_WORKSTATION);
 		for (FletchingRecipe fletchingRecipe : manager.getAllRecipesFor(Fletching.FLETCHING_RECIPE_TYPE.get())) {
 			registry.addRecipe(new EmiFletchingRecipe(fletchingRecipe));
-		}
-
-		if (Feature.isEnabled(CoalCharcoal.class) && CoalCharcoal.charcoalFromBurntLogsChance > 0) {
-			Ingredient fire = Ingredient.of(CoalCharcoal.FIRESTARTER.get(), Items.FLINT_AND_STEEL);
-			registry.addRecipe(EmiWorldInteractionRecipe.builder()
-					.id(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "charcoal_from_burning_logs"))
-					.leftInput(EmiIngredient.of(ItemTags.LOGS_THAT_BURN))
-					.rightInput(EmiIngredient.of(fire), false, slotWidget -> slotWidget.appendTooltip(Component.literal("Basically fire").withStyle(ChatFormatting.GREEN)))
-					.output(EmiStack.of(Items.CHARCOAL)).build());
-			registry.addRecipe(EmiWorldInteractionRecipe.builder()
-					.id(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "charcoal_layer_from_burning_logs"))
-					.leftInput(EmiIngredient.of(ItemTags.LOGS_THAT_BURN))
-					.rightInput(EmiIngredient.of(fire), false, slotWidget -> slotWidget.appendTooltip(Component.literal("Basically fire").withStyle(ChatFormatting.GREEN)))
-					.output(EmiStack.of(CoalCharcoal.CHARCOAL_LAYER.item().get())).build());
 		}
 		//registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.ANVIL_REPAIRING);
 		if (Feature.isEnabled(EnchantingFeature.class)) {
@@ -189,15 +169,6 @@ public class ITEEmiPlugin implements EmiPlugin {
 		}
 		if (Feature.isEnabled(MultiBlockFurnaces.class) && MultiBlockFurnaces.hideBlastingCategoryInEMI) {
 			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);
-		}
-		if (Feature.isEnabled(FlintExpansion.class) && FlintExpansion.disableStoneTools) {
-			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.STONE_PICKAXE));
-			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.STONE_AXE));
-			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.STONE_SHOVEL));
-			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.STONE_SWORD));
-			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.STONE_HOE));
-			if (ModList.get().isLoaded("shieldsplus"))
-				registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(SPItems.STONE_SHIELD.get()));
 		}
 		registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), "info_altimeter", Component.translatable("emi.info.iguanatweaksexpanded.altimeter")));
 		registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, "info_keego_mining", Component.translatable("emi.info.iguanatweaksexpanded.keego_mining")));

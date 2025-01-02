@@ -6,7 +6,7 @@
   "group": "hellish_coal",
   "ingredients": [
     {
-      "tag": "iguanatweaksexpanded:durium_ores"
+      "tag": "iguanatweaksexpanded:hellish_coal_ores"
     }
   ],
   "output_increase": 1.0,
