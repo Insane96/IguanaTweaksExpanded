@@ -12,7 +12,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
@@ -201,8 +200,6 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         handHeld(Forging.NETHERITE_HAMMER.get());
         handHeld(Forging.KEEGO_HAMMER.get());
         handHeld(Forging.QUARON_HAMMER.get());
-
-        basicItem(Cloth.CLOTH.get());
 
         basicItem(Fletching.QUARTZ_ARROW_ITEM.get());
         basicItem(Fletching.DIAMOND_ARROW_ITEM.get());

@@ -18,7 +18,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.Mu
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.Cloth;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.Death;
 import insane96mcp.shieldsplus.setup.SPItems;
@@ -197,42 +196,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
                 .unlockedBy("has_chain", has(Items.IRON_NUGGET))
                 .save(writer);
-
-        //Chainmail Armor
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.CHAINMAIL_HELMET)
-                .pattern("CcC")
-                .pattern("c c")
-                .define('c', Items.CHAIN)
-                .define('C', Cloth.CLOTH.get())
-                .unlockedBy("has_cloth", has(Cloth.CLOTH.get()))
-                .unlockedBy("has_chain", has(Items.CHAIN))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "chainmail_helmet");
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.CHAINMAIL_CHESTPLATE)
-                .pattern("C C")
-                .pattern("cCc")
-                .pattern("ccc")
-                .define('c', Items.CHAIN)
-                .define('C', Cloth.CLOTH.get())
-                .unlockedBy("has_cloth", has(Cloth.CLOTH.get()))
-                .unlockedBy("has_chain", has(Items.CHAIN))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "chainmail_chestplate");
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.CHAINMAIL_LEGGINGS)
-                .pattern("CCC")
-                .pattern("c c")
-                .pattern("c c")
-                .define('c', Items.CHAIN)
-                .define('C', Cloth.CLOTH.get())
-                .unlockedBy("has_cloth", has(Cloth.CLOTH.get()))
-                .unlockedBy("has_chain", has(Items.CHAIN))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "chainmail_leggings");
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.CHAINMAIL_BOOTS)
-                .pattern("C C")
-                .pattern("c c")
-                .define('c', Items.CHAIN)
-                .define('C', Cloth.CLOTH.get())
-                .unlockedBy("has_cloth", has(Cloth.CLOTH.get()))
-                .unlockedBy("has_chain", has(Items.CHAIN))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "chainmail_boots");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, Crate.ITEM.get())
                 .pattern("nnn")

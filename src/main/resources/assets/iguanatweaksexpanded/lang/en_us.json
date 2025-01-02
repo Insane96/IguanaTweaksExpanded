@@ -317,8 +317,6 @@
 	"iguanatweaksexpanded.set_old_respawn": "Your old respawn point has been set.",
 	"block.iguanatweaksexpanded.respawn_obelisk": "Respawn Obelisk",
 
-	"item.iguanatweaksexpanded.cloth": "Cloth",
-
 	"item.iguanatweaksexpanded.firestarter": "Firestarter",
 	"item.iguanatweaksexpanded.firestarter.tooltip": "Hold right click to use",
 	"block.iguanatweaksexpanded.charcoal_layer": "Charcoal Layer",
@@ -447,14 +445,8 @@
 	"advancements.sr_story.explosive_arrow.description": "Make explosive arrows",
 	"advancements.sr_story.torch_arrow.title": "Big caves require torching",
 	"advancements.sr_story.torch_arrow.description": "Make torch arrows",
-	"advancements.sr_story.cloth.title": "Give me your dress",
-	"advancements.sr_story.cloth.description": "Obtain Cloth from Zombies",
 	"advancements.sr_story.mining_charge.title": "Controlled explosions",
 	"advancements.sr_story.mining_charge.description": "Make a Mining Charge",
-	"advancements.sr_story.bundle.title": "That one item",
-	"advancements.sr_story.bundle.description": "Make a bundle with Cloth",
-	"advancements.sr_story.chainmail.title": "Forged from fire",
-	"advancements.sr_story.chainmail.description": "Obtain a Chainmail piece of armor",
 	"advancements.sr_story.solarium.title": "Praise the sun",
 	"advancements.sr_story.solarium.description": "Obtain a Solarium Equipment by Smithing Iron with a Solarium Ball",
 	"advancements.sr_story.toolbelt.title": "Steve the builder",
