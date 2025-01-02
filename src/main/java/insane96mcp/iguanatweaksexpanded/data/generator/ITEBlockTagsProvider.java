@@ -31,7 +31,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class ITEBlockTagsProvider extends BlockTagsProvider {
-    public static final TagKey<Block> RESPAWN_OBELISK_BLOCKS_TO_ROT = create("structures/respawn_obelisk/blocks_to_rot");
 
     public ITEBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, String modId, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, modId, existingFileHelper);
@@ -92,9 +91,6 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
                 .add(FlintExpansion.FLINT_ROCK.block().get());
 
         //Mod's tags
-        tag(RESPAWN_OBELISK_BLOCKS_TO_ROT)
-                .add(Blocks.COBBLESTONE).add(Blocks.MOSSY_COBBLESTONE).add(Blocks.STONE_BRICKS).add(Blocks.STONE_BRICK_SLAB).add(Blocks.SANDSTONE).add(Blocks.SANDSTONE_SLAB).add(Blocks.ORANGE_TERRACOTTA).add(Blocks.COBBLESTONE_SLAB).add(Blocks.SNOW_BLOCK).add(Blocks.SNOW).add(Blocks.BLUE_ICE).add(Blocks.DEEPSLATE_BRICKS).add(Blocks.DEEPSLATE_BRICK_SLAB).add(Blocks.COBBLED_DEEPSLATE).add(Blocks.BIRCH_PLANKS).add(Blocks.BIRCH_SLAB).add(Blocks.BIRCH_LOG).add(Blocks.PRISMARINE).add(Blocks.PRISMARINE_BRICKS).add(Blocks.PRISMARINE_BRICK_SLAB);
-
         tag(MultiBlockBlastFurnaceBlock.BOTTOM_BLOCKS_TAG)
                 .add(Blocks.SMOOTH_STONE, Blocks.SMOOTH_STONE_SLAB);
         tag(MultiBlockBlastFurnaceBlock.MIDDLE_BLOCKS_TAG)

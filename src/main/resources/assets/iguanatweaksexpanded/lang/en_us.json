@@ -311,12 +311,6 @@
 	"item.iguanatweaksexpanded.quaron_ingot": "Quaron Ingot",
 	"block.iguanatweaksexpanded.quaron_block": "Block of Quaron",
 
-	"iguanatweaksexpanded.requires_catalyst": "Can't activate. The Obelisk requires at least one catalyst block",
-	"iguanatweaksexpanded.obelisk_disabled": "Respawn Obelisk disabled. Your respawn point has been set to your last bed, or reset if you didn't have one",
-	"iguanatweaksexpanded.fail_respawn_obelisk": "You couldn't respawn at the obelisk because it was disabled.",
-	"iguanatweaksexpanded.set_old_respawn": "Your old respawn point has been set.",
-	"block.iguanatweaksexpanded.respawn_obelisk": "Respawn Obelisk",
-
 	"item.iguanatweaksexpanded.firestarter": "Firestarter",
 	"item.iguanatweaksexpanded.firestarter.tooltip": "Hold right click to use",
 	"block.iguanatweaksexpanded.charcoal_layer": "Charcoal Layer",
@@ -390,10 +384,6 @@
 	"advancements.sr_story.learn_enchantment.description": "Use an enchanted book on an enchanting table to make the enchantment(s) available in the table",
 	"advancements.sr_story.enchanted_cleansed_lapis.title": "Over 9000",
 	"advancements.sr_story.enchanted_cleansed_lapis.description": "Empower an item with an Enchanted Cleansed Lapis (made in an anvil with Experience Bottle) to get even better enchanting power and over max level enchantments",
-	"advancements.sr_story.respawn_obelisk.title": "The ancients respawned here",
-	"advancements.sr_story.respawn_obelisk.description": "Find a Respawn Obelisk.",
-	"advancements.sr_story.activate_respawn_obelisk.title": "A precise respawn",
-	"advancements.sr_story.activate_respawn_obelisk.description": "Activate a Respawn Obelisk with right-click by placing at least a precious block at the same height and set the respawn point. Respawning here will give some buffs, other than a precise respawn.",
 	"advancements.sr_story.crate.title": "This is heavy",
 	"advancements.sr_story.crate.description": "Get a movement speed penalty by transporting more than one Portable Crate.",
 	"advancements.sr_story.bucket.title": "How is water infinite?",

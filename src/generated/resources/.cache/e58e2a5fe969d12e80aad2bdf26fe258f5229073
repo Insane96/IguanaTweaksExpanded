@@ -1,4 +1,4 @@
-// 1.20.1	2025-01-01T22:32:43.2691572	Tags for minecraft:block mod id iguanatweaksexpanded
+// 1.20.1	2025-01-02T12:00:39.1237382	Tags for minecraft:block mod id iguanatweaksexpanded
 2cb22637ec612d1ef4afb26b2a1a345fce7cc04e data/iguanatweaksexpanded/tags/blocks/blast_furnace/bottom_blocks.json
 78324d910f5cc8784b4ebcd3728d920fa0ab2e6d data/iguanatweaksexpanded/tags/blocks/blast_furnace/middle_blocks.json
 a8607b824def8e491631b4ca5d6969fe654262ad data/iguanatweaksexpanded/tags/blocks/blast_furnace/top_blocks.json
@@ -6,7 +6,6 @@ a8607b824def8e491631b4ca5d6969fe654262ad data/iguanatweaksexpanded/tags/blocks/b
 06b7323cde486f1b5b40ebd4c127e41888258634 data/iguanatweaksexpanded/tags/blocks/soul_blast_furnace/bottom_blocks.json
 70eec382418226d039f1a1487a586c6dc5bd387c data/iguanatweaksexpanded/tags/blocks/soul_blast_furnace/middle_blocks.json
 e04549e09a4a1b25ae9b458c2e0cf20d80fb246c data/iguanatweaksexpanded/tags/blocks/soul_blast_furnace/top_blocks.json
-ac37cd654850943fcc007084876459bf0f24c761 data/iguanatweaksexpanded/tags/blocks/structures/respawn_obelisk/blocks_to_rot.json
 a1078c15e8660e4937bb63754e023e259f369d72 data/minecraft/tags/blocks/beacon_base_blocks.json
 0f8a84965fa66524cfb893878cf3dd7e7b890652 data/minecraft/tags/blocks/copper_ores.json
 183b600a3a96722f8971ac72799911d0b4159128 data/minecraft/tags/blocks/gold_ores.json

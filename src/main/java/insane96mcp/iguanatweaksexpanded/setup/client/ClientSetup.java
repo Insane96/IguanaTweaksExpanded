@@ -31,7 +31,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
-import insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn.RespawnObeliskFeature;
 import insane96mcp.iguanatweaksexpanded.module.world.coalfire.CoalCharcoal;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.shieldsplus.setup.SPItems;
@@ -190,7 +189,6 @@ public class ClientSetup {
             addAfter(event, Items.COAL_BLOCK, CoalCharcoal.CHARCOAL_LAYER.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            addBefore(event, Items.RESPAWN_ANCHOR, RespawnObeliskFeature.RESPAWN_OBELISK.item().get());
             addBefore(event, Items.SHULKER_BOX, Crate.ITEM.get());
             addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
             addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.BLAST_FURNACE.item().get());

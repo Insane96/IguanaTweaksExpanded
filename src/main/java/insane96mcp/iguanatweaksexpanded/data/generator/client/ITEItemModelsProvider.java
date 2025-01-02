@@ -179,8 +179,6 @@ public class ITEItemModelsProvider extends ItemModelProvider {
 
         withExistingParent("explosive_barrel", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/explosive_barrel"));
 
-        withExistingParent("respawn_obelisk", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/respawn_obelisk_disabled"));
-
         basicItem(CoalCharcoal.FIRESTARTER.get());
         basicItem(CoalCharcoal.HELLISH_COAL.get());
         withExistingParent("soul_sand_hellish_coal_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_sand_hellish_coal_ore"));
