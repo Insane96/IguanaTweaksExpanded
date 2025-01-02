@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.MagicProtection;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfBloodPact;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfExperience;
@@ -39,6 +39,6 @@ public class ITEDamageTypeTagsProvider extends DamageTypeTagsProvider {
     }
 
     public static TagKey<DamageType> create(String tagName) {
-        return TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, tagName));
+        return TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, tagName));
     }
 }

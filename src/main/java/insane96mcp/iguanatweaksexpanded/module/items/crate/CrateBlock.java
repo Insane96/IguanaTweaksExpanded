@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.crate;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -38,7 +38,7 @@ import java.util.List;
 
 public class CrateBlock extends BaseEntityBlock {
 
-    public static final String WEIGHTED_LANG = IguanaTweaksExpanded.MOD_ID + ".crate_weighted";
+    public static final String WEIGHTED_LANG = InsaneSurvivalExtra.MOD_ID + ".crate_weighted";
 
     public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;

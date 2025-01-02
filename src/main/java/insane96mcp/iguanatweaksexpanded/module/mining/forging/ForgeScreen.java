@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -14,7 +14,7 @@ import net.minecraft.world.inventory.Slot;
 
 public class ForgeScreen extends AbstractContainerScreen<ForgeMenu> implements RecipeUpdateListener {
     private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/forge.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "textures/gui/container/forge.png");
     public final ForgeRecipeBookComponent recipeBookComponent;
     private boolean widthTooNarrow;
     private final ResourceLocation texture;

@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import com.google.common.collect.Lists;
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.insanelib.util.MathHelper;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
@@ -241,7 +241,7 @@ public class ForgeBlockEntity extends BaseContainerBlockEntity implements Worldl
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable(IguanaTweaksExpanded.MOD_ID + ".container.forge");
+        return Component.translatable(InsaneSurvivalExtra.MOD_ID + ".container.forge");
     }
 
     @Override

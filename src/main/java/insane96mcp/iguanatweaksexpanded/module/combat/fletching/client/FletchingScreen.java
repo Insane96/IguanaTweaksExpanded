@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.combat.fletching.client;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.inventory.FletchingMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
@@ -15,7 +15,7 @@ import net.minecraft.world.inventory.Slot;
 
 public class FletchingScreen extends AbstractContainerScreen<FletchingMenu> implements RecipeUpdateListener {
     private static final ResourceLocation RECIPE_BUTTON_LOCATION = new ResourceLocation("textures/gui/recipe_button.png");
-    private static final ResourceLocation TEXTURE = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "textures/gui/container/fletching.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "textures/gui/container/fletching.png");
     public final FletchingRecipeBookComponent recipeBookComponent;
     private boolean widthTooNarrow;
     private final ResourceLocation texture;

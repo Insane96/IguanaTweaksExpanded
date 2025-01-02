@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.setup.ITECommonConfig;
 import insane96mcp.insanelib.base.Module;
 import net.minecraftforge.fml.config.ModConfig;
@@ -32,15 +32,15 @@ public class Modules {
 	}
 
 	public static class Ids {
-		public static final String COMBAT = IguanaTweaksExpanded.RESOURCE_PREFIX + "combat";
-		public static final String EXPERIENCE = IguanaTweaksExpanded.RESOURCE_PREFIX + "experience";
-		public static final String HUNGER_HEALTH = IguanaTweaksExpanded.RESOURCE_PREFIX + "hunger_health";
-		public static final String ITEMS = IguanaTweaksExpanded.RESOURCE_PREFIX + "items";
-		public static final String MINING = IguanaTweaksExpanded.RESOURCE_PREFIX + "mining";
-		public static final String MISC = IguanaTweaksExpanded.RESOURCE_PREFIX + "misc";
-		public static final String MOBS = IguanaTweaksExpanded.RESOURCE_PREFIX + "mobs";
-		public static final String MOVEMENT = IguanaTweaksExpanded.RESOURCE_PREFIX + "movement";
-		public static final String SLEEP_RESPAWN = IguanaTweaksExpanded.RESOURCE_PREFIX + "sleep_respawn";
-		public static final String WORLD = IguanaTweaksExpanded.RESOURCE_PREFIX + "world";
+		public static final String COMBAT = InsaneSurvivalExtra.RESOURCE_PREFIX + "combat";
+		public static final String EXPERIENCE = InsaneSurvivalExtra.RESOURCE_PREFIX + "experience";
+		public static final String HUNGER_HEALTH = InsaneSurvivalExtra.RESOURCE_PREFIX + "hunger_health";
+		public static final String ITEMS = InsaneSurvivalExtra.RESOURCE_PREFIX + "items";
+		public static final String MINING = InsaneSurvivalExtra.RESOURCE_PREFIX + "mining";
+		public static final String MISC = InsaneSurvivalExtra.RESOURCE_PREFIX + "misc";
+		public static final String MOBS = InsaneSurvivalExtra.RESOURCE_PREFIX + "mobs";
+		public static final String MOVEMENT = InsaneSurvivalExtra.RESOURCE_PREFIX + "movement";
+		public static final String SLEEP_RESPAWN = InsaneSurvivalExtra.RESOURCE_PREFIX + "sleep_respawn";
+		public static final String WORLD = InsaneSurvivalExtra.RESOURCE_PREFIX + "world";
 	}
 }

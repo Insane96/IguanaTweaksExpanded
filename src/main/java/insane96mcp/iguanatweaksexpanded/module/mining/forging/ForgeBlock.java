@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -32,8 +32,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class ForgeBlock extends BaseEntityBlock {
-    public static final String CANT_FORGE = IguanaTweaksExpanded.MOD_ID + ".cant_forge";
-    public static final String CANT_FORGE_ENCHANTED = IguanaTweaksExpanded.MOD_ID + ".cant_forge_enchanted";
+    public static final String CANT_FORGE = InsaneSurvivalExtra.MOD_ID + ".cant_forge";
+    public static final String CANT_FORGE_ENCHANTED = InsaneSurvivalExtra.MOD_ID + ".cant_forge_enchanted";
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private static final VoxelShape BASE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D);

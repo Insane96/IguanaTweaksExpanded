@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.durium;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEBlockTagsProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
@@ -66,7 +66,7 @@ public class Durium extends Feature {
 	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("durium_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.1F, new Item.Properties()));
 	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("durium_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties()));
 
-	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "durium", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "durium", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 2);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);

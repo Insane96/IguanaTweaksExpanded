@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.integration.ToolBeltIntegration;
@@ -75,7 +75,7 @@ public class Soulbound extends Enchantment {
         }
         if (ModList.get().isLoaded("toolbelt"))
             ToolBeltIntegration.onSoulBound(player, list);
-        persistedTag.put(IguanaTweaksExpanded.RESOURCE_PREFIX + "soulbound_items", list);
+        persistedTag.put(InsaneSurvivalExtra.RESOURCE_PREFIX + "soulbound_items", list);
     }
 
     @Nullable
@@ -96,7 +96,7 @@ public class Soulbound extends Enchantment {
 
         List<ItemStack> lateStacks = new ArrayList<>();
         CompoundTag persistedTag = MCUtils.getOrCreatePersistedData(player);
-        ListTag list = persistedTag.getList(IguanaTweaksExpanded.RESOURCE_PREFIX + "soulbound_items", CompoundTag.TAG_COMPOUND);
+        ListTag list = persistedTag.getList(InsaneSurvivalExtra.RESOURCE_PREFIX + "soulbound_items", CompoundTag.TAG_COMPOUND);
         for (int i = 0; i < list.size(); i++) {
             ItemStack stack = ItemStack.of(list.getCompound(i));
             int slot = list.getCompound(i).getByte("Slot");
@@ -122,6 +122,6 @@ public class Soulbound extends Enchantment {
                 }
             }
         }
-        persistedTag.remove(IguanaTweaksExpanded.RESOURCE_PREFIX + "soulbound_items");
+        persistedTag.remove(InsaneSurvivalExtra.RESOURCE_PREFIX + "soulbound_items");
     }
 }

@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator.client;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
@@ -29,8 +29,8 @@ public class ITEBlockModelsProvider extends BlockModelProvider {
         cubeAll("soul_sand_hellish_coal_ore", "block/soul_sand_hellish_coal_ore");
         cubeAll("soul_soil_hellish_coal_ore", "block/soul_soil_hellish_coal_ore");
 
-        cubeBottomTop("crate", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/crate_side"), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/crate_bottom"), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/crate_top"));
-        cubeBottomTop("crate_open", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/crate_side"), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/crate_bottom"), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/crate_top_open"));
+        cubeBottomTop("crate", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_side"), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_bottom"), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_top"));
+        cubeBottomTop("crate_open", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_side"), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_bottom"), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate_top_open"));
 
         cubeAll("durium_scrap_block", "block/durium_scrap_block");
         cubeAll("durium_block", "block/durium_block");
@@ -42,8 +42,8 @@ public class ITEBlockModelsProvider extends BlockModelProvider {
 
         cubeAll("quaron_block", "block/quaron_block");
 
-        cross("cyan_flower", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/cyan_flower")).renderType("cutout");
-        flowerPotCross("potted_cyan_flower", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/cyan_flower"));
+        cross("cyan_flower", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/cyan_flower")).renderType("cutout");
+        flowerPotCross("potted_cyan_flower", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/cyan_flower"));
     }
 
     public BlockModelBuilder flowerPotCross(String name, ResourceLocation plant) {
@@ -51,6 +51,6 @@ public class ITEBlockModelsProvider extends BlockModelProvider {
     }
 
     public BlockModelBuilder cubeAll(String name, String texture) {
-        return super.cubeAll(IguanaTweaksExpanded.RESOURCE_PREFIX + name, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, texture));
+        return super.cubeAll(InsaneSurvivalExtra.RESOURCE_PREFIX + name, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, texture));
     }
 }

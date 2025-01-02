@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import com.teamabnormals.allurement.core.AllurementConfig;
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.item.ITEItem;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
@@ -69,8 +69,8 @@ public class EnchantingFeature extends JsonFeature {
 	public static final RegistryObject<BlockEntityType<ITEEnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ITERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(ITEEnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
     public static final RegistryObject<MenuType<ITEEnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ITERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(ITEEnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
 
-    public static final String INFUSED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "infused";
-    public static final String EMPOWERED_ITEM = IguanaTweaksExpanded.RESOURCE_PREFIX + "empowered";
+    public static final String INFUSED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "infused";
+    public static final String EMPOWERED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "empowered";
     @Config
     @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items (also applies to enchanted books).")
     public static Boolean noEnchantmentMerge = true;
@@ -248,14 +248,14 @@ public class EnchantingFeature extends JsonFeature {
 
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
 
-        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "enchantments_data")));
+        addSyncType(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchantments_data")));
 
-        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist")));
+        addSyncType(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "over_level_enchantment_blacklist")));
 
-        addSyncType(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "starting_enchantments"), new SyncType(json -> loadAndReadJson(json, startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("starting_enchantments.json", startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE, true, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "over_level_enchantment_blacklist")));
+        addSyncType(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "starting_enchantments"), new SyncType(json -> loadAndReadJson(json, startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("starting_enchantments.json", startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE, true, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "over_level_enchantment_blacklist")));
 	}
 
     @Override
@@ -636,8 +636,8 @@ public class EnchantingFeature extends JsonFeature {
 
     private static final String path = "experience/enchanting/";
     public static void addGlobalLoot(GlobalLootModifierProvider provider) {
-        provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
-        provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
-        provider.add(path + "curses_from_spawners", new InjectLootTableModifier(new ResourceLocation(IguanaTweaksReborn.RESOURCE_PREFIX + "empowered_spawner"), new ResourceLocation(IguanaTweaksExpanded.RESOURCE_PREFIX + "curses_from_spawners")));
+        provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
+        provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
+        provider.add(path + "curses_from_spawners", new InjectLootTableModifier(new ResourceLocation(IguanaTweaksReborn.RESOURCE_PREFIX + "empowered_spawner"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "curses_from_spawners")));
     }
 }

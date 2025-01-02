@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator.client;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
@@ -56,10 +56,10 @@ public class ITEItemModelsProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         for (String poorRichOre : poorRichOres) {
-            withExistingParent("poor_%s_ore".formatted(poorRichOre), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/poor_%s_ore".formatted(poorRichOre)));
-            withExistingParent("rich_%s_ore".formatted(poorRichOre), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/rich_%s_ore".formatted(poorRichOre)));
-            withExistingParent("poor_deepslate_%s_ore".formatted(poorRichOre), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/poor_deepslate_%s_ore".formatted(poorRichOre)));
-            withExistingParent("rich_deepslate_%s_ore".formatted(poorRichOre), new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/rich_deepslate_%s_ore".formatted(poorRichOre)));
+            withExistingParent("poor_%s_ore".formatted(poorRichOre), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/poor_%s_ore".formatted(poorRichOre)));
+            withExistingParent("rich_%s_ore".formatted(poorRichOre), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/rich_%s_ore".formatted(poorRichOre)));
+            withExistingParent("poor_deepslate_%s_ore".formatted(poorRichOre), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/poor_deepslate_%s_ore".formatted(poorRichOre)));
+            withExistingParent("rich_deepslate_%s_ore".formatted(poorRichOre), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/rich_deepslate_%s_ore".formatted(poorRichOre)));
         }
 
         handHeld(SoulSteel.AXE.get());
@@ -75,10 +75,10 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(SoulSteel.NUGGET.get());
         basicItem(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
         shield(SoulSteel.SHIELD.get());
-        withExistingParent("soul_steel_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/soul_steel_block"));
+        withExistingParent("soul_steel_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_steel_block"));
 
         withExistingParent("blast_furnace", new ResourceLocation("block/blast_furnace"));
-        withExistingParent("soul_blast_furnace", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/soul_blast_furnace"));
+        withExistingParent("soul_blast_furnace", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_blast_furnace"));
 
         handHeld(FlintExpansion.AXE.get());
         handHeld(FlintExpansion.PICKAXE.get());
@@ -86,8 +86,8 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         handHeld(FlintExpansion.HOE.get());
         handHeld(FlintExpansion.SWORD.get());
         shield(FlintExpansion.SHIELD.get());
-        withExistingParent("flint_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/flint_block"));
-        withExistingParent("polished_flint_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/polished_flint_block"));
+        withExistingParent("flint_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/flint_block"));
+        withExistingParent("polished_flint_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/polished_flint_block"));
 
         basicItem(EnchantingFeature.CLEANSED_LAPIS.get());
         basicItem(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
@@ -110,9 +110,9 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         handHeld(CopperExpansion.COATED_SWORD.get());
         shield(CopperExpansion.COATED_SHIELD.get());
 
-        withExistingParent("charcoal_layer", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/charcoal_layer/height_2"));
+        withExistingParent("charcoal_layer", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/charcoal_layer/height_2"));
 
-        withExistingParent("crate", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/crate"));
+        withExistingParent("crate", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate"));
 
         handHeld(Solarium.AXE.get());
         handHeld(Solarium.PICKAXE.get());
@@ -137,8 +137,8 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         trimmedArmorItem(Keego.HELMET);
         basicItem(Keego.GEM.get());
         shield(Keego.SHIELD.get());
-        withExistingParent("keego_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/keego_ore"));
-        withExistingParent("keego_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/keego_block"));
+        withExistingParent("keego_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/keego_ore"));
+        withExistingParent("keego_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/keego_block"));
 
         handHeld(Quaron.AXE.get());
         handHeld(Quaron.PICKAXE.get());
@@ -152,7 +152,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(Quaron.INGOT.get());
         basicItem(Quaron.NUGGET.get());
         shield(Quaron.SHIELD.get());
-        withExistingParent("quaron_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/quaron_block"));
+        withExistingParent("quaron_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/quaron_block"));
 
         handHeld(Durium.AXE.get());
         handHeld(Durium.PICKAXE.get());
@@ -168,23 +168,23 @@ public class ITEItemModelsProvider extends ItemModelProvider {
         basicItem(Durium.NUGGET.get());
         basicItem(Durium.SCRAP_PIECE.get());
         shield(Durium.SHIELD.get());
-        withExistingParent("durium_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/durium_block"));
-        withExistingParent("durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/durium_ore"));
-        withExistingParent("deepslate_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/deepslate_durium_ore"));
-        withExistingParent("sand_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/sand_durium_ore"));
-        withExistingParent("gravel_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/gravel_durium_ore"));
-        withExistingParent("clay_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/clay_durium_ore"));
-        withExistingParent("dirt_durium_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/dirt_durium_ore"));
-        withExistingParent("durium_scrap_block", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/durium_scrap_block"));
+        withExistingParent("durium_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/durium_block"));
+        withExistingParent("durium_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/durium_ore"));
+        withExistingParent("deepslate_durium_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/deepslate_durium_ore"));
+        withExistingParent("sand_durium_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/sand_durium_ore"));
+        withExistingParent("gravel_durium_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/gravel_durium_ore"));
+        withExistingParent("clay_durium_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/clay_durium_ore"));
+        withExistingParent("dirt_durium_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/dirt_durium_ore"));
+        withExistingParent("durium_scrap_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/durium_scrap_block"));
 
-        withExistingParent("explosive_barrel", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/explosive_barrel"));
+        withExistingParent("explosive_barrel", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/explosive_barrel"));
 
-        withExistingParent("respawn_obelisk", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/respawn_obelisk_disabled"));
+        withExistingParent("respawn_obelisk", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/respawn_obelisk_disabled"));
 
         basicItem(CoalCharcoal.FIRESTARTER.get());
         basicItem(CoalCharcoal.HELLISH_COAL.get());
-        withExistingParent("soul_sand_hellish_coal_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/soul_sand_hellish_coal_ore"));
-        withExistingParent("soul_soil_hellish_coal_ore", new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "block/soul_soil_hellish_coal_ore"));
+        withExistingParent("soul_sand_hellish_coal_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_sand_hellish_coal_ore"));
+        withExistingParent("soul_soil_hellish_coal_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_soil_hellish_coal_ore"));
 
         handHeld(Forging.WOODEN_HAMMER.get());
         handHeld(Forging.STONE_HAMMER.get());
@@ -247,7 +247,7 @@ public class ITEItemModelsProvider extends ItemModelProvider {
 
     // Shoutout to El_Redstoniano for making this
     private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
-        final String MOD_ID = IguanaTweaksExpanded.MOD_ID; // Change this to your mod id
+        final String MOD_ID = InsaneSurvivalExtra.MOD_ID; // Change this to your mod id
 
         if (itemRegistryObject.get() instanceof ArmorItem armorItem) {
             trimMaterials.entrySet().forEach(entry -> {

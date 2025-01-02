@@ -53,18 +53,18 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Mod("iguanatweaksexpanded")
-public class IguanaTweaksExpanded
+public class InsaneSurvivalExtra
 {
 	public static final String MOD_ID = "iguanatweaksexpanded";
 	public static final String RESOURCE_PREFIX = MOD_ID + ":";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public static final RecipeBookType MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "multi_item_blasting");
-    public static final RecipeBookType MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "multi_item_soul_blasting");
-    public static final RecipeBookType FORGING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "forging");
-    public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(IguanaTweaksExpanded.RESOURCE_PREFIX + "fletching");
+    public static final RecipeBookType MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "multi_item_blasting");
+    public static final RecipeBookType MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "multi_item_soul_blasting");
+    public static final RecipeBookType FORGING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "forging");
+    public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "fletching");
 
-    public IguanaTweaksExpanded() {
+    public InsaneSurvivalExtra() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ITECommonConfig.CONFIG_SPEC, IguanaTweaksReborn.MOD_ID + "/expanded-common.toml");
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -108,14 +108,14 @@ public class IguanaTweaksExpanded
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         generator.addProvider(event.includeServer(), new ITERecipeProvider(generator.getPackOutput()));
-        generator.addProvider(event.includeServer(), new ITEGlobalLootModifierProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID));
-        ITEBlockTagsProvider blockTags = new ITEBlockTagsProvider(generator.getPackOutput(), lookupProvider, IguanaTweaksExpanded.MOD_ID, existingFileHelper);
+        generator.addProvider(event.includeServer(), new ITEGlobalLootModifierProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID));
+        ITEBlockTagsProvider blockTags = new ITEBlockTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSurvivalExtra.MOD_ID, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new ITEItemTagsProvider(generator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ITEDamageTypeTagsProvider(generator.getPackOutput(), lookupProvider, IguanaTweaksExpanded.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ITEBlockStatesProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ITEBlockModelsProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ITEItemModelsProvider(generator.getPackOutput(), IguanaTweaksExpanded.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ITEItemTagsProvider(generator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ITEDamageTypeTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ITEBlockStatesProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ITEBlockModelsProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ITEItemModelsProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
     }
 
     public void addPackFinders(AddPackFindersEvent event)
@@ -125,7 +125,7 @@ public class IguanaTweaksExpanded
                 continue;
 
             Path resourcePath = ModList.get().getModFileById(MOD_ID).getFile().findResource("integrated_packs/" + integratedPack.getPath());
-            var pack = Pack.readMetaAndCreate(IguanaTweaksExpanded.RESOURCE_PREFIX + integratedPack.getPath(), integratedPack.getDescription(), integratedPack.shouldBeEnabled(),
+            var pack = Pack.readMetaAndCreate(InsaneSurvivalExtra.RESOURCE_PREFIX + integratedPack.getPath(), integratedPack.getDescription(), integratedPack.shouldBeEnabled(),
                     (path) -> new PathPackResources(path, resourcePath, false), PackType.SERVER_DATA, Pack.Position.TOP, integratedPack.shouldBeEnabled() ? PackSource.DEFAULT : ITEPackSource.DISABLED);
             event.addRepositorySource((packConsumer) -> packConsumer.accept(pack));
         }
@@ -138,7 +138,7 @@ public class IguanaTweaksExpanded
         PackRepository packRepository = event.getServer().getPackRepository();
         List<Pack> list = Lists.newArrayList(packRepository.getSelectedPacks());
         for (IntegratedPack dataPack : IntegratedPack.INTEGRATED_PACKS) {
-            String dataPackId = IguanaTweaksExpanded.RESOURCE_PREFIX + dataPack.getPath();
+            String dataPackId = InsaneSurvivalExtra.RESOURCE_PREFIX + dataPack.getPath();
             Pack pack = packRepository.getPack(dataPackId);
             if (pack != null && !dataPack.shouldBeEnabled()) {
                 list.remove(pack);

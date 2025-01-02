@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.setup;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.insanelib.base.Module;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -23,7 +23,7 @@ public class ITECommonConfig {
 	public static class CommonConfig {
 		public CommonConfig(final ForgeConfigSpec.Builder builder) {
 			Modules.init();
-			Module.loadFeatures(ModConfig.Type.COMMON, IguanaTweaksExpanded.MOD_ID, this.getClass().getClassLoader());
+			Module.loadFeatures(ModConfig.Type.COMMON, InsaneSurvivalExtra.MOD_ID, this.getClass().getClassLoader());
 		}
 	}
 }

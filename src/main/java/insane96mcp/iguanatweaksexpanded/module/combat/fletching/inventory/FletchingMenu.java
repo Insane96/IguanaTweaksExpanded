@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.combat.fletching.inventory;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
@@ -44,7 +44,7 @@ public class FletchingMenu extends RecipeBookMenu<CraftingContainer> {
         this.access = pAccess;
         this.player = pPlayerInventory.player;
         this.recipeType = Fletching.FLETCHING_RECIPE_TYPE.get();
-        this.recipeBookType = IguanaTweaksExpanded.FLETCHING_RECIPE_BOOK_TYPE;
+        this.recipeBookType = InsaneSurvivalExtra.FLETCHING_RECIPE_BOOK_TYPE;
         this.level = pPlayerInventory.player.level();
 
         this.addSlot(new Slot(this.craftSlots, INGREDIENT_SLOT, 56, 26));

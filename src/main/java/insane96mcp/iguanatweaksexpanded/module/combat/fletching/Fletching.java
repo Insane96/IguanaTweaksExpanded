@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.combat.fletching;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.block.ITEFletchingTableBlock;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
@@ -36,7 +36,7 @@ import net.minecraftforge.registries.RegistryObject;
 @Label(name = "Fletching table", description = "Gives a use to the fletching table.")
 @LoadFeature(module = Modules.Ids.COMBAT)
 public class Fletching extends Feature {
-	public static final String INVALID_FLETCHING_LANG = IguanaTweaksExpanded.MOD_ID + ".invalid_fletching_table";
+	public static final String INVALID_FLETCHING_LANG = InsaneSurvivalExtra.MOD_ID + ".invalid_fletching_table";
 	public static final SimpleBlockWithItem FLETCHING_TABLE = SimpleBlockWithItem.register("fletching_table", () -> new ITEFletchingTableBlock(BlockBehaviour.Properties.copy(Blocks.FLETCHING_TABLE)));
 
 	public static final RegistryObject<RecipeType<FletchingRecipe>> FLETCHING_RECIPE_TYPE = ITERegistries.RECIPE_TYPES.register("fletching", () -> new RecipeType<>() {

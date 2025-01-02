@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,7 +30,7 @@ public class ExplosiveBarrelBlock extends Block {
 
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
-    public static final String UNSTABLE = IguanaTweaksExpanded.MOD_ID + ".unstable";
+    public static final String UNSTABLE = InsaneSurvivalExtra.MOD_ID + ".unstable";
 
     public ExplosiveBarrelBlock(Properties properties) {
         super(properties);

@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -12,7 +12,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 public class Recovery extends Enchantment {
 
-    public static final String DAMAGE_TO_REGEN = IguanaTweaksExpanded.RESOURCE_PREFIX + "damage_to_regen";
+    public static final String DAMAGE_TO_REGEN = InsaneSurvivalExtra.RESOURCE_PREFIX + "damage_to_regen";
 
     public Recovery() {
         super(Rarity.RARE, EnchantmentCategory.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});

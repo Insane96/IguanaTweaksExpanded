@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.copper;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.data.generator.ITEDamageTypeTagsProvider;
 import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
@@ -56,8 +56,8 @@ import java.util.List;
 @Label(name = "Copper Tools/Armor Expansion", description = "Two new set of tools and a new Armor Set. Disabling this will prevent copper tools from being faster and more durable the deeper are used and will prevent the electrocution effect of coated copper items")
 @LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
 public class CopperExpansion extends Feature {
-	public static final TagKey<Item> COPPER_TOOLS_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/tools/copper"));
-	public static final TagKey<Item> COATED_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/coated_copper"));
+	public static final TagKey<Item> COPPER_TOOLS_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/tools/copper"));
+	public static final TagKey<Item> COATED_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/coated_copper"));
 
 	public static final ILItemTier COPPER_ITEM_TIER = new ILItemTier(0, 65, 8f, 1.0f, 11, () -> Ingredient.of(Items.COPPER_INGOT));
 
@@ -80,11 +80,11 @@ public class CopperExpansion extends Feature {
 
 	public static final RegistryObject<SPShieldItem> COATED_SHIELD = ITERegistries.registerShield("coated_copper_shield", COATED_SHIELD_MATERIAL);
     public static final RegistryObject<SimpleParticleType> ELECTROCUTION_SPARKS = ITERegistries.PARTICLE_TYPES.register("electrocution_sparks", () -> new SimpleParticleType(true));
-	public static final RegistryObject<SoundEvent> ELECTROCUTION = ITERegistries.SOUND_EVENTS.register("electrocution", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "electrocution")));
+	public static final RegistryObject<SoundEvent> ELECTROCUTION = ITERegistries.SOUND_EVENTS.register("electrocution", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "electrocution")));
 	public static final TagKey<DamageType> DOESNT_TRIGGER_ELECTROCUTION = ITEDamageTypeTagsProvider.create("doesnt_trigger_electrocution");
 
 
-	private static final ITEArmorMaterial CHAINED_COPPER = new ITEArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "chained_copper", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ITEArmorMaterial CHAINED_COPPER = new ITEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "chained_copper", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 1);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 3);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 4);
@@ -100,8 +100,8 @@ public class CopperExpansion extends Feature {
 		super(module, enabledByDefault, canBeDisabled);
 	}
 
-	public static final String COATED_TIMES_HIT = IguanaTweaksExpanded.RESOURCE_PREFIX + "coated_times_hit";
-	public static ResourceKey<DamageType> ELECTROCUTION_ATTACK = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "electrocution_attack"));
+	public static final String COATED_TIMES_HIT = InsaneSurvivalExtra.RESOURCE_PREFIX + "coated_times_hit";
+	public static ResourceKey<DamageType> ELECTROCUTION_ATTACK = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "electrocution_attack"));
 
 	@SubscribeEvent
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {

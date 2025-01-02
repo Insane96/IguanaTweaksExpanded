@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.quaron;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
@@ -38,7 +38,7 @@ import java.util.EnumMap;
 @Label(name = "Quaron", description = "Add Quaron, a new metal made by alloying Iron and Amethyst")
 @LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
 public class Quaron extends Feature {
-	public static final TagKey<Item> TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/tools/quaron"));
+	public static final TagKey<Item> TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/tools/quaron"));
 
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("quaron_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 7.0F).sound(SoundType.METAL)));
 
@@ -54,7 +54,7 @@ public class Quaron extends Feature {
 	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("quaron_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.1F, new Item.Properties()));
 	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("quaron_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties()));
 
-	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 2);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);

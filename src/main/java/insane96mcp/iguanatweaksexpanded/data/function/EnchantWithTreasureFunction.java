@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.data.function;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.Mth;
@@ -46,7 +46,7 @@ public class EnchantWithTreasureFunction extends LootItemConditionalFunction {
                 .toList();
 
         if (list.isEmpty()) {
-            IguanaTweaksExpanded.LOGGER.warn("Couldn't find a compatible treasure enchantment for {}", stack);
+            InsaneSurvivalExtra.LOGGER.warn("Couldn't find a compatible treasure enchantment for {}", stack);
             return stack;
         }
 

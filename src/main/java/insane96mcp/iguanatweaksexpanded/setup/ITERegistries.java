@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.setup;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.data.function.EnchantWithTreasureFunction;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.SoliumBoulderFeature;
@@ -88,7 +88,7 @@ public class ITERegistries {
 
 
     static <R> DeferredRegister<R> createRegistry(ResourceKey<? extends Registry<R>> key) {
-        DeferredRegister<R> register = DeferredRegister.create(key, IguanaTweaksExpanded.MOD_ID);
+        DeferredRegister<R> register = DeferredRegister.create(key, InsaneSurvivalExtra.MOD_ID);
         REGISTRIES.add(register);
         return register;
     }
@@ -100,13 +100,13 @@ public class ITERegistries {
     }
 
     static <R> DeferredRegister<R> createRegistry(IForgeRegistry<R> reg) {
-        DeferredRegister<R> register = DeferredRegister.create(reg, IguanaTweaksExpanded.MOD_ID);
+        DeferredRegister<R> register = DeferredRegister.create(reg, InsaneSurvivalExtra.MOD_ID);
         REGISTRIES.add(register);
         return register;
     }
 
     static <R> DeferredRegister<R> createRegistry(ResourceLocation registryName) {
-        DeferredRegister<R> register = DeferredRegister.create(registryName, IguanaTweaksExpanded.MOD_ID);
+        DeferredRegister<R> register = DeferredRegister.create(registryName, InsaneSurvivalExtra.MOD_ID);
         REGISTRIES.add(register);
         return register;
     }

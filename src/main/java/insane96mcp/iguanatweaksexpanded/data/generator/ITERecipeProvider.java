@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
@@ -159,7 +159,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                                 .unlockedBy("has_gravel", has(Items.GRAVEL))
                                 ::save
                 )
-                .build(writer, IguanaTweaksExpanded.MOD_ID, "flint_from_gravel");
+                .build(writer, InsaneSurvivalExtra.MOD_ID, "flint_from_gravel");
 
         //Chained Copper Armor
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CopperExpansion.HELMET.get())
@@ -242,11 +242,11 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Durium.INGOT.get(), 9)
                 .requires(Durium.BLOCK.item().get(), 1)
                 .unlockedBy("has_ingot", has(Durium.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_ingot_from_block");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "durium_ingot_from_block");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Durium.INGOT.get(), 1)
                 .requires(Durium.NUGGET.get(), 9)
                 .unlockedBy("has_nuggets", has(Durium.NUGGET.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "durium_ingot_from_nuggets");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "durium_ingot_from_nuggets");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Durium.NUGGET.get(), 9)
                 .requires(Durium.INGOT.get(), 1)
                 .unlockedBy("has_ingot", has(Durium.INGOT.get()))
@@ -292,7 +292,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Keego.GEM.get(), 9)
                 .requires(Keego.BLOCK.block().get(), 1)
                 .unlockedBy("has_keego", has(Keego.GEM.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "keego_from_block");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "keego_from_block");
 
 
         //Quaron
@@ -303,11 +303,11 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.INGOT.get(), 9)
                 .requires(Quaron.BLOCK.block().get(), 1)
                 .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_block");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron_ingot_from_block");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.INGOT.get(), 1)
                 .requires(Quaron.NUGGET.get(), 9)
                 .unlockedBy("has_nuggets", has(Quaron.NUGGET.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "quaron_ingot_from_nuggets");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron_ingot_from_nuggets");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.NUGGET.get(), 9)
                 .requires(Quaron.INGOT.get(), 1)
                 .unlockedBy("has_ingot", has(Quaron.INGOT.get()))
@@ -330,34 +330,34 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         copySmithingTemplate(writer, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERRACK);
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.AXE.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.AXE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_axe");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_axe");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.PICKAXE.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.PICKAXE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_pickaxe");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_pickaxe");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.SHOVEL.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.SHOVEL.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_shovel");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_shovel");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.HOE.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, SoulSteel.HOE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_hoe");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_hoe");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.SWORD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SWORD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_sword");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_sword");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.SHIELD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SHIELD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_shield");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_shield");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.HELMET.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.HELMET.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_helmet");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_helmet");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.CHESTPLATE.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.CHESTPLATE.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_chestplate");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_chestplate");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.LEGGINGS.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.LEGGINGS.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_leggings");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_leggings");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.BOOTS.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.BOOTS.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_boots");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_boots");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, SoulSteel.BLOCK.block().get(), 1)
                 .requires(SoulSteel.INGOT.get(), 9)
                 .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
@@ -365,11 +365,11 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.INGOT.get(), 9)
                 .requires(SoulSteel.BLOCK.block().get(), 1)
                 .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_ingot_from_block");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_ingot_from_block");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.INGOT.get(), 1)
                 .requires(SoulSteel.NUGGET.get(), 9)
                 .unlockedBy("has_nuggets", has(SoulSteel.NUGGET.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_ingot_from_nuggets");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_ingot_from_nuggets");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.NUGGET.get(), 9)
                 .requires(SoulSteel.INGOT.get(), 1)
                 .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
@@ -500,7 +500,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         200
                 )
                 .unlockedBy("has_chained_armor", has(CopperExpansion.HELMET.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "smelting_chained_copper_helmet");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_helmet");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperExpansion.CHESTPLATE.get()),
                         RecipeCategory.MISC,
@@ -509,7 +509,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         200
                 )
                 .unlockedBy("has_chained_armor", has(CopperExpansion.CHESTPLATE.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "smelting_chained_copper_chestplate");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_chestplate");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperExpansion.LEGGINGS.get()),
                         RecipeCategory.MISC,
@@ -518,7 +518,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         200
                 )
                 .unlockedBy("has_chained_armor", has(CopperExpansion.LEGGINGS.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "smelting_chained_copper_leggings");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_leggings");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperExpansion.BOOTS.get()),
                         RecipeCategory.MISC,
@@ -527,7 +527,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         200
                 )
                 .unlockedBy("has_chained_armor", has(CopperExpansion.BOOTS.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "smelting_chained_copper_boots");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_boots");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperExpansion.HELMET.get()),
                         RecipeCategory.MISC,
@@ -536,7 +536,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_chained_armor", has(CopperExpansion.HELMET.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting_chained_copper_helmet");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_helmet");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperExpansion.CHESTPLATE.get()),
                         RecipeCategory.MISC,
@@ -545,7 +545,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_chained_armor", has(CopperExpansion.CHESTPLATE.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting_chained_copper_chestplate");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_chestplate");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperExpansion.LEGGINGS.get()),
                         RecipeCategory.MISC,
@@ -554,7 +554,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_chained_armor", has(CopperExpansion.LEGGINGS.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting_chained_copper_leggings");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_leggings");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperExpansion.BOOTS.get()),
                         RecipeCategory.MISC,
@@ -563,7 +563,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_chained_armor", has(CopperExpansion.BOOTS.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blasting_chained_copper_boots");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_boots");
         //</editor-fold>
 
         //Hellish Coal
@@ -748,10 +748,10 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Items.DIAMOND, 5, Forging.GOLDEN_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), 16);
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Forging.QUARON_HAMMER.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.TOOLS, Forging.SOUL_STEEL_HAMMER.get())
                 .unlocks("has_material", has(SoulSteel.INGOT.get()))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_steel_hammer");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_hammer");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(Forging.DIAMOND_HAMMER.get()), Ingredient.of(Items.NETHERITE_INGOT), RecipeCategory.TOOLS, Forging.NETHERITE_HAMMER.get())
                 .unlocks("has_material", has(Items.NETHERITE_INGOT))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "netherite_hammer");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "netherite_hammer");
 
         //Recycle Forge Hammers
         recycleGear(writer, Forging.COPPER_HAMMER.get(), Items.COPPER_INGOT, 200, 5);
@@ -837,7 +837,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .outputIncrease(outputIncrease)
                 .group(resultPath)
                 .unlockedBy("has_" + itemTag.location().getPath(), has(itemTag))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
     }
 
     public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {
@@ -853,7 +853,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .outputIncrease(outputIncrease)
                 .group(resultPath)
                 .unlockedBy("has_" + itemPath, has(item))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemPath);
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemPath);
     }
 
     public static void addBlastingAlloy(Consumer<FinishedRecipe> writer, NonNullList<Ingredient> items, Item unlockingItem, Item result, float experience, int cookingTime) {
@@ -875,7 +875,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .experience(experience)
                 .outputIncrease(outputIncrease)
                 .unlockedBy("has_" + itemPath, has(unlockingItem))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/alloy/" + resultPath);
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/alloy/" + resultPath);
     }
 
     public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
@@ -894,7 +894,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .outputIncrease(outputIncrease)
                 .group(resultPath)
                 .unlockedBy("has_" + itemTag.location().getPath(), has(itemTag))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
     }
 
     public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {
@@ -910,7 +910,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .outputIncrease(outputIncrease)
                 .group(resultPath)
                 .unlockedBy("has_" + itemPath, has(item))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemPath);
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemPath);
     }
 
     public static void addSoulBlastingAlloy(Consumer<FinishedRecipe> writer, NonNullList<Ingredient> items, Item unlockingItem, Item result, float experience, int cookingTime) {
@@ -932,7 +932,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .experience(experience)
                 .outputIncrease(outputIncrease)
                 .unlockedBy("has_" + itemPath, has(unlockingItem))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_blast_furnace/alloy/" + resultPath);
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/alloy/" + resultPath);
     }
 
     private void recycleGear(Consumer<FinishedRecipe> writer, Item itemToRecycle, Item output, int baseCookingTime, int amountAtMaxDurability) {
@@ -944,7 +944,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .recycle(amountAtMaxDurability, 0.6f)
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
                 .unlockedBy("has_armor", has(itemToRecycle))
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "blast_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
 
         MultiItemSmeltingRecipeBuilder.soulBlasting(
                         NonNullList.of(Ingredient.EMPTY, Ingredient.of(itemToRecycle)),
@@ -954,7 +954,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
                 .recycle(amountAtMaxDurability)
                 .unlockedBy("has_armor", has(itemToRecycle))
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
-                .save(writer, IguanaTweaksExpanded.RESOURCE_PREFIX + "soul_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
     }
 
     private void hammerCraftingRecipe(Consumer<FinishedRecipe> writer, Item hammer, Item material) {

@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.keego;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
@@ -46,9 +46,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
 public class Keego extends Feature {
 
-	public static final TagKey<Item> KEEGO_TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/tools/keego"));
-	public static final TagKey<Item> KEEGO_HAND_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/hand/keego"));
-	public static final TagKey<Item> KEEGO_ARMOR_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "equipment/armor/keego"));
+	public static final TagKey<Item> KEEGO_TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/tools/keego"));
+	public static final TagKey<Item> KEEGO_HAND_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/keego"));
+	public static final TagKey<Item> KEEGO_ARMOR_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/armor/keego"));
 
 	public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ITERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.06d, AttributeModifier.Operation.MULTIPLY_BASE));
 	public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ITERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.06d, AttributeModifier.Operation.ADDITION));
@@ -68,7 +68,7 @@ public class Keego extends Feature {
 	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("keego_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.2F, new Item.Properties()));
 	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("keego_hoe", () -> new KeegoHoeItem(ITEM_TIER, -2, -1.1F, new Item.Properties()));
 
-	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "keego", 22, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "keego", 22, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 4);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);

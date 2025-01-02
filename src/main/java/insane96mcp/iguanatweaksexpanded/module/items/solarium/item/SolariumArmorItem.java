@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.solarium.item;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import net.minecraft.Util;
@@ -15,7 +15,7 @@ import java.util.EnumMap;
 
 public class SolariumArmorItem extends ArmorItem {
 
-	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(IguanaTweaksExpanded.RESOURCE_PREFIX + "solarium", 12, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "solarium", 12, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 2);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 4);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 5);

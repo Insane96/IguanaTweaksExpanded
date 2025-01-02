@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.sleeprespawn.respawn;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
@@ -29,7 +29,7 @@ import java.util.List;
 @Label(name = "Respawn Obelisk", description = "Generate Respawn Obelisks around the world where a precise respawn can be set")
 @LoadFeature(module = Modules.Ids.SLEEP_RESPAWN)
 public class RespawnObeliskFeature extends JsonFeature {
-	public static final String FAIL_RESPAWN_OBELISK_LANG = IguanaTweaksExpanded.MOD_ID + ".fail_respawn_obelisk";
+	public static final String FAIL_RESPAWN_OBELISK_LANG = InsaneSurvivalExtra.MOD_ID + ".fail_respawn_obelisk";
 
 	public static final SimpleBlockWithItem RESPAWN_OBELISK = SimpleBlockWithItem.register("respawn_obelisk", () -> new RespawnObeliskBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(50.0F, 1200.0F).lightLevel(RespawnObeliskBlock::lightLevel)));
 

@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
@@ -114,6 +114,6 @@ public class ITEBlockTagsProvider extends BlockTagsProvider {
     }
 
     public static TagKey<Block> create(String tagName) {
-        return TagKey.create(Registries.BLOCK, new ResourceLocation(IguanaTweaksExpanded.MOD_ID, tagName));
+        return TagKey.create(Registries.BLOCK, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, tagName));
     }
 }

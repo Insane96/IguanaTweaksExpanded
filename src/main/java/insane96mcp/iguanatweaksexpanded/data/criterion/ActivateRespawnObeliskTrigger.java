@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.data.criterion;
 
 import com.google.gson.JsonObject;
-import insane96mcp.iguanatweaksexpanded.IguanaTweaksExpanded;
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import net.minecraft.advancements.critereon.AbstractCriterionTriggerInstance;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.DeserializationContext;
@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
 public class ActivateRespawnObeliskTrigger extends SimpleCriterionTrigger<ActivateRespawnObeliskTrigger.TriggerInstance> {
-	static final ResourceLocation ID = new ResourceLocation(IguanaTweaksExpanded.MOD_ID, "activate_respawn_obelisk");
+	static final ResourceLocation ID = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "activate_respawn_obelisk");
 
 	@Override
 	protected TriggerInstance createInstance(JsonObject pJson, ContextAwarePredicate pPredicate, DeserializationContext pDeserializationContext) {
