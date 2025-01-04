@@ -30,6 +30,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
+import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.client.RecipeBookCategories;

@@ -112,7 +112,7 @@ dependencies {
     }
 
     implementation fg.deobf("blank:InsaneLib:${lib_version}-mc${mc_version}")
-    implementation fg.deobf("blank:IguanaTweaksReborn:${itr_version}-mc${mc_version}")
+    implementation fg.deobf("blank:InsaneSurvivalOverhaul:${itr_version}-mc${mc_version}")
     runtimeOnly fg.deobf("blank:MobsPropertiesRandomness:${mpr_version}-mc${mc_version}")
     implementation fg.deobf("blank:Shields+:${shields_plus_version}-mc${mc_version}")
     implementation fg.deobf("blank:EnhancedAI:${enhancedai_version}-mc${mc_version}")
@@ -130,7 +130,7 @@ dependencies {
     implementation fg.deobf("com.github.Virtuoel:Pehkui:${pehkui_version}-${mc_version}-forge")
     implementation fg.deobf("curse.maven:kiwi-303657:4592974")
     implementation fg.deobf("curse.maven:passable-foliage-379887:4593677")
-    implementation fg.deobf("curse.maven:tool-belt-260262:4581167")
+    implementation fg.deobf("curse.maven:tool-belt-260262:5929061")
     //Needed for data gen
     //Hardcoded MC version as there is no 1.20.1 version
     runtimeOnly fg.deobf("dev.gigaherz.sewingkit:SewingKit-1.20:1.8.0")

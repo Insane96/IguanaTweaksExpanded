@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import insane96mcp.iguanatweaksexpanded.event.ITEEventFactory;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.items.itemstats.ItemStats;
+import insane96mcp.iguanatweaksreborn.module.items.UnbreakableItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -96,7 +96,7 @@ public class Veining extends Enchantment {
                 }
                 heldStack.hurtAndBreak(1, entity, livingEntity -> livingEntity.broadcastBreakEvent(InteractionHand.MAIN_HAND));
             }
-            if (ItemStats.isBroken(heldStack) || heldStack.isEmpty())
+            if (UnbreakableItems.isBroken(heldStack) || heldStack.isEmpty())
                 break;
         }
     }

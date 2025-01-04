@@ -2,7 +2,7 @@
     "type": "iguanatweaksexpanded:fletching",
     "category": "fletching_misc",
     "ingredient": "minecraft:stick",
-    "catalyst1": "iguanatweaksexpanded:cloth",
+    "catalyst1": "iguanatweaksreborn:cloth",
     "catalyst2": "minecraft:flint",
     "result": {
         "item": "minecraft:arrow",

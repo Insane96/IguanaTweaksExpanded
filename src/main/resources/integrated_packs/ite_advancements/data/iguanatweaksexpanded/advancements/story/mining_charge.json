@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/furnace",
+	"parent": "iguanatweaksreborn:story/furnace",
 	"criteria": {
 		"mining_charge": {
 			"trigger": "minecraft:inventory_changed",

@@ -24,7 +24,7 @@
 					"announce_to_chat": true,
 					"hidden": false
 				},
-				"parent": "iguanatweaksexpanded:story/furnace",
+				"parent": "iguanatweaksreborn:story/furnace",
 				"criteria": {
 					"sawmill": {
 						"trigger": "minecraft:inventory_changed",

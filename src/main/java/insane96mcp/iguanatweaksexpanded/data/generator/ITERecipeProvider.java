@@ -17,7 +17,9 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.Mu
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
+import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.Death;
+import insane96mcp.iguanatweaksreborn.module.world.coalfire.CoalFire;
 import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
@@ -31,7 +33,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
@@ -94,16 +95,6 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Items.OBSIDIAN, 2, CopperExpansion.COPPER_HOE.get(), CopperExpansion.COATED_HOE.get(), 12);
         forgeRecipe(writer, Items.OBSIDIAN, 1, CopperExpansion.COPPER_SHOVEL.get(), CopperExpansion.COATED_SHOVEL.get(), 12);
         forgeRecipe(writer, Items.OBSIDIAN, 4, CopperExpansion.COPPER_SHIELD.get(), CopperExpansion.COATED_SHIELD.get(), 12);
-
-        ConditionalRecipe.builder()
-                .addCondition(not(modLoaded("tconstruct")))
-                .addRecipe(
-                        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.FLINT)
-                                .requires(Items.GRAVEL, 3)
-                                .unlockedBy("has_gravel", has(Items.GRAVEL))
-                                ::save
-                )
-                .build(writer, InsaneSurvivalExtra.MOD_ID, "flint_from_gravel");
 
         //Chained Copper Armor
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CopperExpansion.HELMET.get())
@@ -212,7 +203,7 @@ public class ITERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Durium.INGOT.get(), 2, FlintExpansion.HOE.get(), Durium.HOE.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 1, FlintExpansion.SHOVEL.get(), Durium.SHOVEL.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 2, Items.IRON_NUGGET, Durium.SHEARS.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 4, FlintExpansion.SHIELD.get(), Durium.SHIELD.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 4, FlintExpansion.ShieldsPlusIntegration.SHIELD.get(), Durium.SHIELD.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 5, Items.CHAINMAIL_HELMET, Durium.HELMET.get(), 10);
         forgeRecipe(writer, Durium.INGOT.get(), 8, Items.CHAINMAIL_CHESTPLATE, Durium.CHESTPLATE.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 7, Items.CHAINMAIL_LEGGINGS, Durium.LEGGINGS.get(), 12);

@@ -34,20 +34,20 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="insanelib"
     mandatory=true
-    versionRange="[1.15.1,)"
+    versionRange="[1.16.0,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="iguanatweaksreborn"
     mandatory=true
-    versionRange="[3.21.3,)"
+    versionRange="[4.0.0,)"
     ordering="BEFORE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="shieldsplus"
-    mandatory=false
+    mandatory=true
     versionRange="[1.10.2,)"
     ordering="NONE"
     side="BOTH"
@@ -63,20 +63,6 @@ license="All rights reserved"
     modId="timecontrol"
     mandatory=false
     versionRange="[1.6.0,)"
-    ordering="NONE"
-    side="BOTH"
-
-[[dependencies.iguanatweaksexpanded]]
-    modId="maxhealthfix"
-    mandatory=true
-    versionRange="[12.0.2,)"
-    ordering="NONE"
-    side="BOTH"
-
-[[dependencies.iguanatweaksexpanded]]
-    modId="mobspropertiesrandomness"
-    mandatory=false
-    versionRange="[4.10.12,)"
     ordering="NONE"
     side="BOTH"
 

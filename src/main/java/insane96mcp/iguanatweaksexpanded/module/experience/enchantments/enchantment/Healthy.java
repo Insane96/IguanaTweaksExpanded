@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.IProtectionEnchantment;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ITRProtectionEnchantment;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ISOProtectionEnchantment;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -20,7 +20,7 @@ public class Healthy extends Enchantment implements IAttributeEnchantment {
             UUID.fromString("13225ef2-359e-4efa-9b64-122f26da388a")
     };
     public Healthy() {
-        super(Rarity.UNCOMMON, EnchantmentCategory.ARMOR, ITRProtectionEnchantment.ARMOR_SLOTS);
+        super(Rarity.UNCOMMON, EnchantmentCategory.ARMOR, ISOProtectionEnchantment.ARMOR_SLOTS);
     }
 
     @Override

@@ -1,6 +1,5 @@
-// 1.20.1	2025-01-01T22:32:43.2671448	Global Loot Modifiers : iguanatweaksexpanded
-97e085d8c05802d6777c9caa75060c976fd45e11 data/forge/loot_modifiers/global_loot_modifiers.json
-b76fed28ae8fdd1fbf6d747c9bcaf159d9862eff data/iguanatweaksexpanded/loot_modifiers/coal_fire/replace_flint_and_steel.json
+// 1.20.1	2025-01-04T12:17:42.1581535	Global Loot Modifiers : iguanatweaksexpanded
+d00a715a52e0c0611bfb9555f41c6ebd46591497 data/forge/loot_modifiers/global_loot_modifiers.json
 2efa3fb69c4ed25b6a0c009bca322030447f23e6 data/iguanatweaksexpanded/loot_modifiers/experience/enchanting/blocks/deepslate_lapis_ore.json
 e1aeb103b2e0dc392dfdb6cfcbd335ce2809a459 data/iguanatweaksexpanded/loot_modifiers/experience/enchanting/blocks/lapis_ore.json
 e50a5b5f5833f680bebd0abe008feedf9fb4122d data/iguanatweaksexpanded/loot_modifiers/experience/enchanting/curses_from_spawners.json

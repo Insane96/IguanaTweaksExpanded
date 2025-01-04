@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.miningcharge;
 
-import insane96mcp.iguanatweaksreborn.module.world.explosionoverhaul.ITRExplosion;
+import insane96mcp.iguanatweaksreborn.module.world.explosionoverhaul.ISOExplosion;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -65,7 +65,7 @@ public class MiningChargeBlock extends TntBlock {
     public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction face, @Nullable LivingEntity igniter) {
         if (!level.isClientSide) {
             PrimedMiningCharge primedMiningCharge = new PrimedMiningCharge(level, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, igniter, state.getValue(FACING));
-            primedMiningCharge.getPersistentData().putFloat(ITRExplosion.RAY_STRENGTH_MULTIPLIER_TAG, 0.075f);
+            primedMiningCharge.getPersistentData().putFloat(ISOExplosion.RAY_STRENGTH_MULTIPLIER_TAG, 0.075f);
             level.addFreshEntity(primedMiningCharge);
             level.playSound(null, primedMiningCharge.getX(), primedMiningCharge.getY(), primedMiningCharge.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.2F);
             level.gameEvent(igniter, GameEvent.PRIME_FUSE, pos);
@@ -82,7 +82,7 @@ public class MiningChargeBlock extends TntBlock {
     public void onBlockExploded(BlockState state, Level level, BlockPos pos, Explosion explosion) {
         if (!level.isClientSide) {
             PrimedMiningCharge primedMiningCharge = new PrimedMiningCharge(level, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, explosion.getIndirectSourceEntity(), state.getValue(FACING));
-            primedMiningCharge.getPersistentData().putFloat(ITRExplosion.RAY_STRENGTH_MULTIPLIER_TAG, 0.09f);
+            primedMiningCharge.getPersistentData().putFloat(ISOExplosion.RAY_STRENGTH_MULTIPLIER_TAG, 0.09f);
             int fuse = primedMiningCharge.getFuse();
             primedMiningCharge.setFuse((short)(level.random.nextInt(fuse / 4) + fuse / 8));
             level.addFreshEntity(primedMiningCharge);

@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/furnace",
+	"parent": "iguanatweaksreborn:story/furnace",
 	"criteria": {
 		"chained_copper_helmet": {
 			"trigger": "minecraft:inventory_changed",

@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/wooden_pickaxe",
+	"parent": "minecraft:story/mine_stone",
 	"criteria": {
 		"shield": {
 			"trigger": "minecraft:inventory_changed",
@@ -24,7 +24,7 @@
 						"items": [
 							"shieldsplus:wooden_shield",
 							"shieldsplus:stone_shield",
-							"iguanatweaksexpanded:flint_shield",
+							"iguanatweaksreborn:flint_shield",
 							"iguanatweaksexpanded:copper_shield"
 						]
 					}

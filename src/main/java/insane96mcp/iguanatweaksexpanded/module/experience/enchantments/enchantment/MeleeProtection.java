@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ITRProtectionEnchantment;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ISOProtectionEnchantment;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -10,7 +10,7 @@ import net.minecraftforge.event.ItemAttributeModifierEvent;
 
 import java.util.UUID;
 
-public class MeleeProtection extends ITRProtectionEnchantment implements IAttributeEnchantment {
+public class MeleeProtection extends ISOProtectionEnchantment implements IAttributeEnchantment {
     public static final UUID[] ATTACK_SPEED_MODIFIER_UUIDS = new UUID[] {
             UUID.fromString("2f42e9bd-0537-403b-96b1-2a1d67029729"),
             UUID.fromString("5455c8d5-2e83-4da2-a698-2aa4333e8347"),

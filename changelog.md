@@ -1,7 +1,7 @@
 # Changelog
 
-## Upcoming
-* Changed so much stuff to accomodate new Insane Survival Tweaks
+## 1.18.0
+* Changed so much stuff to accomodate new Insane Survival Overhaul
   * Moved some features to main mod (Stats Buffs, Enhanced AI, Food Drinks, Tool Belt Integration, Minecarts, Cloth, Respawn Obelisk)
   * Enhanced AI is no longer required. It's optional in IST
 * You can now specify starting enchantments of the new enchanting table in `Experience/Enchanting/starting_enchantments.json`

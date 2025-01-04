@@ -1,4 +1,4 @@
-// 1.20.1	2025-01-01T22:32:43.2864286	Block Models: iguanatweaksexpanded
+// 1.20.1	2025-01-04T12:17:42.1814912	Block Models: iguanatweaksexpanded
 b3d0ee7bf427215ee94c343649a1fcb984ab2a9c assets/iguanatweaksexpanded/models/block/crate.json
 6942e93876f48fb8fad4464efa2652ca27ba40c2 assets/iguanatweaksexpanded/models/block/crate_open.json
 2437a1b02ed98191eff004a3dc46113e51efe1ad assets/iguanatweaksexpanded/models/block/cyan_flower.json
@@ -22,6 +22,4 @@ d855973ed0d5e141ce5d5d429ce6368370dcae96 assets/iguanatweaksexpanded/models/bloc
 0bf6f73ddf5405d15812d2022837be5a9aedc157 assets/iguanatweaksexpanded/models/block/rich_deepslate_iron_ore.json
 a086972e8a1815a9e59e694e9241fdb2cf4f9b28 assets/iguanatweaksexpanded/models/block/rich_gold_ore.json
 14d115649866ab1160ab92d093ca6fc6ef5398ce assets/iguanatweaksexpanded/models/block/rich_iron_ore.json
-567302b66c3af29ff46bffda875302530855aa22 assets/iguanatweaksexpanded/models/block/soul_sand_hellish_coal_ore.json
-5c4ad170ebf488f3cdbdc2a427535202c145e4af assets/iguanatweaksexpanded/models/block/soul_soil_hellish_coal_ore.json
 ec753a92726b2443a2d7cf6ac462fec098a27f4a assets/iguanatweaksexpanded/models/block/soul_steel_block.json

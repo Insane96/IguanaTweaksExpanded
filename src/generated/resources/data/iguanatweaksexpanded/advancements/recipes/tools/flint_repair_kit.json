@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:flint_repair_kit"
+        "recipe": "iguanatweaksreborn:flint_repair_kit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:flint_repair_kit"
+      "iguanatweaksreborn:flint_repair_kit"
     ]
   },
   "sends_telemetry_event": true

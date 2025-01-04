@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.items.itemstats.ItemStats;
+import insane96mcp.iguanatweaksreborn.module.items.UnbreakableItems;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
@@ -36,13 +36,13 @@ public class CurseOfTear extends Enchantment {
     }
 
     public static void tearPlayerItems(PlayerXpEvent.PickupXp event) {
-        Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(NewEnchantmentsFeature.CURSE_OF_TEAR.get(), event.getEntity(), stack -> !ItemStats.isUnbreakable(stack) || stack.getDamageValue() < stack.getMaxDamage());
+        Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(NewEnchantmentsFeature.CURSE_OF_TEAR.get(), event.getEntity(), stack -> !UnbreakableItems.isUnbreakable(stack) || stack.getDamageValue() < stack.getMaxDamage());
         if (entry == null)
             return;
 
         ItemStack stack = entry.getValue();
         int durabilityLeft = stack.getMaxDamage() - stack.getDamageValue();
-        if (ItemStats.isUnbreakable(stack))
+        if (UnbreakableItems.isUnbreakable(stack))
             durabilityLeft--;
         int tearAmount = Math.min(event.getOrb().value, durabilityLeft);
         if (tearAmount == 0)

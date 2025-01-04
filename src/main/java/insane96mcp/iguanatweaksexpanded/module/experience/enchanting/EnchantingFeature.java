@@ -10,8 +10,8 @@ import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
-import insane96mcp.iguanatweaksreborn.IguanaTweaksReborn;
-import insane96mcp.iguanatweaksreborn.module.experience.Experience;
+import insane96mcp.iguanatweaksreborn.InsaneSurvivalOverhaul;
+import insane96mcp.iguanatweaksreborn.module.experience.DroppedExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.PlayerExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
@@ -260,7 +260,7 @@ public class EnchantingFeature extends JsonFeature {
 
     @Override
     public String getModConfigFolder() {
-        return IguanaTweaksReborn.CONFIG_FOLDER;
+        return InsaneSurvivalOverhaul.CONFIG_FOLDER;
     }
 
     @Override
@@ -561,7 +561,7 @@ public class EnchantingFeature extends JsonFeature {
         ItemStack stack = event.getItemStack();
         if (!isEnabled(EnchantingFeature.class)
                 || !(event.getEntity() instanceof Player)
-                || Experience.disableExperience)
+                || DroppedExperience.disableExperience)
             return;
 
         treasureEnchantmentsEnchantedBooksTooltip(stack, event.getToolTip());
@@ -638,6 +638,6 @@ public class EnchantingFeature extends JsonFeature {
     public static void addGlobalLoot(GlobalLootModifierProvider provider) {
         provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
         provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
-        provider.add(path + "curses_from_spawners", new InjectLootTableModifier(new ResourceLocation(IguanaTweaksReborn.RESOURCE_PREFIX + "empowered_spawner"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "curses_from_spawners")));
+        provider.add(path + "curses_from_spawners", new InjectLootTableModifier(new ResourceLocation(InsaneSurvivalOverhaul.RESOURCE_PREFIX + "empowered_spawner"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "curses_from_spawners")));
     }
 }

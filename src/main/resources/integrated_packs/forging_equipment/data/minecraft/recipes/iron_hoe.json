@@ -6,7 +6,7 @@
   },
   "amount": 2,
   "gear": {
-    "item": "iguanatweaksexpanded:flint_hoe"
+    "item": "iguanatweaksreborn:flint_hoe"
   },
   "result": "minecraft:iron_hoe",
   "smashes_required": 10,
