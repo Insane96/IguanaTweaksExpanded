@@ -65,7 +65,7 @@ public class InsaneSurvivalExtra
     public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "fletching");
 
     public InsaneSurvivalExtra() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ITECommonConfig.CONFIG_SPEC, InsaneSurvivalOverhaul.MOD_ID + "/expanded-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ITECommonConfig.CONFIG_SPEC, InsaneSurvivalOverhaul.NEW_MOD_ID + "/expanded-common.toml");
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         if (FMLLoader.getDist().isClient()) {
