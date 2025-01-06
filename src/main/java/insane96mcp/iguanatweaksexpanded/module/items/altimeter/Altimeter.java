@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.items.altimeter;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
@@ -18,7 +18,7 @@ import net.minecraftforge.registries.RegistryObject;
 @Label(name = "Altimeter", description = "Check your altitude")
 @LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
 public class Altimeter extends Feature {
-	public static final RegistryObject<Item> ITEM = ITERegistries.ITEMS.register("altimeter", () -> new AltimeterItem(new Item.Properties()));
+	public static final RegistryObject<Item> ITEM = ISERegistries.ITEMS.register("altimeter", () -> new AltimeterItem(new Item.Properties()));
 
 	@Config
 	@Label(name = "Show approx altitude in tooltip")

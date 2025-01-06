@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class Reach extends Enchantment implements IAttributeEnchantment {
 
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_reach");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_reach");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("reach", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
 
     public static final UUID REACH_MODIFIER_UUID = UUID.fromString("75f2bcd4-4f76-43b8-b75c-0c2a825cec8a");

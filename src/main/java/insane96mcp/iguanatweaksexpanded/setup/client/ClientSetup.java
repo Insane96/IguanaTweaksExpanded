@@ -4,10 +4,10 @@ import com.google.common.collect.ImmutableList;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.FletchingScreen;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.ITEArrowRenderer;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.ISEArrowRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableRenderer;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ITEEnchantingTableScreen;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableRenderer;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableScreen;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.ElectrocutionSparkParticle;
@@ -259,7 +259,7 @@ public class ClientSetup {
         MenuScreens.register(MultiBlockFurnaces.BLAST_FURNACE_MENU_TYPE.get(), MultiBlockBlastFurnaceScreen::new);
         MenuScreens.register(MultiBlockFurnaces.SOUL_BLAST_FURNACE_MENU_TYPE.get(), MultiBlockSoulBlastFurnaceScreen::new);
         MenuScreens.register(Forging.FORGE_MENU_TYPE.get(), ForgeScreen::new);
-        MenuScreens.register(EnchantingFeature.ENCHANTING_TABLE_MENU_TYPE.get(), ITEEnchantingTableScreen::new);
+        MenuScreens.register(EnchantingFeature.ENCHANTING_TABLE_MENU_TYPE.get(), ISEEnchantingTableScreen::new);
         MenuScreens.register(Fletching.FLETCHING_MENU_TYPE.get(), FletchingScreen::new);
     }
 
@@ -277,15 +277,15 @@ public class ClientSetup {
     }
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(Fletching.QUARTZ_ARROW.get(), ITEArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.DIAMOND_ARROW.get(), ITEArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.EXPLOSIVE_ARROW.get(), ITEArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.TORCH_ARROW.get(), ITEArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.ICE_ARROW.get(), ITEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.QUARTZ_ARROW.get(), ISEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.DIAMOND_ARROW.get(), ISEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.EXPLOSIVE_ARROW.get(), ISEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.TORCH_ARROW.get(), ISEArrowRenderer::new);
+        event.registerEntityRenderer(Fletching.ICE_ARROW.get(), ISEArrowRenderer::new);
         event.registerEntityRenderer(MiningCharge.PRIMED_MINING_CHARGE.get(), MiningChargeRenderer::new);
 
         event.registerBlockEntityRenderer(Forging.FORGE_BLOCK_ENTITY_TYPE.get(), ForgeRenderer::new);
-        event.registerBlockEntityRenderer(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), ITEEnchantingTableRenderer::new);
+        event.registerBlockEntityRenderer(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), ISEEnchantingTableRenderer::new);
     }
 
     static RecipeBookCategories BLAST_FURNACE_SEARCH = RecipeBookCategories.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace_search", new ItemStack(Items.COMPASS));

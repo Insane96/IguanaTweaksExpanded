@@ -2,14 +2,14 @@ package insane96mcp.iguanatweaksexpanded.module.combat.fletching;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.block.ITEFletchingTableBlock;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.block.ISEFletchingTableBlock;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.data.FletchingRecipeSerializer;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.entity.projectile.*;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.inventory.FletchingMenu;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.ITEArrowItem;
-import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.ISEArrowItem;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
@@ -37,57 +37,57 @@ import net.minecraftforge.registries.RegistryObject;
 @LoadFeature(module = Modules.Ids.COMBAT)
 public class Fletching extends Feature {
 	public static final String INVALID_FLETCHING_LANG = InsaneSurvivalExtra.MOD_ID + ".invalid_fletching_table";
-	public static final SimpleBlockWithItem FLETCHING_TABLE = SimpleBlockWithItem.register("fletching_table", () -> new ITEFletchingTableBlock(BlockBehaviour.Properties.copy(Blocks.FLETCHING_TABLE)));
+	public static final SimpleBlockWithItem FLETCHING_TABLE = SimpleBlockWithItem.register("fletching_table", () -> new ISEFletchingTableBlock(BlockBehaviour.Properties.copy(Blocks.FLETCHING_TABLE)));
 
-	public static final RegistryObject<RecipeType<FletchingRecipe>> FLETCHING_RECIPE_TYPE = ITERegistries.RECIPE_TYPES.register("fletching", () -> new RecipeType<>() {
+	public static final RegistryObject<RecipeType<FletchingRecipe>> FLETCHING_RECIPE_TYPE = ISERegistries.RECIPE_TYPES.register("fletching", () -> new RecipeType<>() {
 		@Override
 		public String toString() {
 			return "fletching";
 		}
 	});
-	public static final RegistryObject<FletchingRecipeSerializer> FLETCHING_RECIPE_SERIALIZER = ITERegistries.RECIPE_SERIALIZERS.register("fletching", FletchingRecipeSerializer::new);
-	public static final RegistryObject<MenuType<FletchingMenu>> FLETCHING_MENU_TYPE = ITERegistries.MENU_TYPES.register("fletching", () -> new MenuType<>(FletchingMenu::new, FeatureFlags.VANILLA_SET));
+	public static final RegistryObject<FletchingRecipeSerializer> FLETCHING_RECIPE_SERIALIZER = ISERegistries.RECIPE_SERIALIZERS.register("fletching", FletchingRecipeSerializer::new);
+	public static final RegistryObject<MenuType<FletchingMenu>> FLETCHING_MENU_TYPE = ISERegistries.MENU_TYPES.register("fletching", () -> new MenuType<>(FletchingMenu::new, FeatureFlags.VANILLA_SET));
 
-	public static final RegistryObject<EntityType<Arrow>> QUARTZ_ARROW = ITERegistries.ENTITY_TYPES.register("quartz_arrow", () ->
+	public static final RegistryObject<EntityType<Arrow>> QUARTZ_ARROW = ISERegistries.ENTITY_TYPES.register("quartz_arrow", () ->
 			EntityType.Builder.<Arrow>of(QuartzArrow::new, MobCategory.MISC)
 					.sized(0.5F, 0.5F)
 					.clientTrackingRange(4)
 					.updateInterval(3)
 					.build("quartz_arrow"));
 
-	public static final RegistryObject<EntityType<Arrow>> DIAMOND_ARROW = ITERegistries.ENTITY_TYPES.register("diamond_arrow", () ->
+	public static final RegistryObject<EntityType<Arrow>> DIAMOND_ARROW = ISERegistries.ENTITY_TYPES.register("diamond_arrow", () ->
 			EntityType.Builder.<Arrow>of(DiamondArrow::new, MobCategory.MISC)
 					.sized(0.5F, 0.5F)
 					.clientTrackingRange(4)
 					.updateInterval(3)
 					.build("diamond_arrow"));
 
-	public static final RegistryObject<EntityType<ExplosiveArrow>> EXPLOSIVE_ARROW = ITERegistries.ENTITY_TYPES.register("explosive_arrow", () ->
+	public static final RegistryObject<EntityType<ExplosiveArrow>> EXPLOSIVE_ARROW = ISERegistries.ENTITY_TYPES.register("explosive_arrow", () ->
 			EntityType.Builder.<ExplosiveArrow>of(ExplosiveArrow::new, MobCategory.MISC)
 					.sized(0.5F, 0.5F)
 					.clientTrackingRange(4)
 					.updateInterval(3)
 					.build("explosive_arrow"));
 
-	public static final RegistryObject<EntityType<TorchArrow>> TORCH_ARROW = ITERegistries.ENTITY_TYPES.register("torch_arrow", () ->
+	public static final RegistryObject<EntityType<TorchArrow>> TORCH_ARROW = ISERegistries.ENTITY_TYPES.register("torch_arrow", () ->
 			EntityType.Builder.<TorchArrow>of(TorchArrow::new, MobCategory.MISC)
 					.sized(0.5F, 0.5F)
 					.clientTrackingRange(4)
 					.updateInterval(3)
 					.build("torch_arrow"));
 
-	public static final RegistryObject<EntityType<IceArrow>> ICE_ARROW = ITERegistries.ENTITY_TYPES.register("ice_arrow", () ->
+	public static final RegistryObject<EntityType<IceArrow>> ICE_ARROW = ISERegistries.ENTITY_TYPES.register("ice_arrow", () ->
 			EntityType.Builder.<IceArrow>of(IceArrow::new, MobCategory.MISC)
 					.sized(0.5F, 0.5F)
 					.clientTrackingRange(4)
 					.updateInterval(3)
 					.build("ice_arrow"));
 
-	public static final RegistryObject<ITEArrowItem> QUARTZ_ARROW_ITEM = ITERegistries.ITEMS.register("quartz_arrow", () -> new ITEArrowItem(QUARTZ_ARROW::get, 0.5f, new Item.Properties()));
-	public static final RegistryObject<ITEArrowItem> DIAMOND_ARROW_ITEM = ITERegistries.ITEMS.register("diamond_arrow", () -> new ITEArrowItem(DIAMOND_ARROW::get, 3f, new Item.Properties()));
-	public static final RegistryObject<ITEArrowItem> EXPLOSIVE_ARROW_ITEM = ITERegistries.ITEMS.register("explosive_arrow", () -> new ITEArrowItem(EXPLOSIVE_ARROW::get, 0f, new Item.Properties()));
-	public static final RegistryObject<ITEArrowItem> TORCH_ARROW_ITEM = ITERegistries.ITEMS.register("torch_arrow", () -> new ITEArrowItem(TORCH_ARROW::get, 1f, new Item.Properties()));
-	public static final RegistryObject<ITEArrowItem> ICE_ARROW_ITEM = ITERegistries.ITEMS.register("ice_arrow", () -> new ITEArrowItem(ICE_ARROW::get, 1f, new Item.Properties()));
+	public static final RegistryObject<ISEArrowItem> QUARTZ_ARROW_ITEM = ISERegistries.ITEMS.register("quartz_arrow", () -> new ISEArrowItem(QUARTZ_ARROW::get, 0.5f, new Item.Properties()));
+	public static final RegistryObject<ISEArrowItem> DIAMOND_ARROW_ITEM = ISERegistries.ITEMS.register("diamond_arrow", () -> new ISEArrowItem(DIAMOND_ARROW::get, 3f, new Item.Properties()));
+	public static final RegistryObject<ISEArrowItem> EXPLOSIVE_ARROW_ITEM = ISERegistries.ITEMS.register("explosive_arrow", () -> new ISEArrowItem(EXPLOSIVE_ARROW::get, 0f, new Item.Properties()));
+	public static final RegistryObject<ISEArrowItem> TORCH_ARROW_ITEM = ISERegistries.ITEMS.register("torch_arrow", () -> new ISEArrowItem(TORCH_ARROW::get, 1f, new Item.Properties()));
+	public static final RegistryObject<ISEArrowItem> ICE_ARROW_ITEM = ISERegistries.ITEMS.register("ice_arrow", () -> new ISEArrowItem(ICE_ARROW::get, 1f, new Item.Properties()));
 
 	@Config
 	@Label(name = "Fletching Data Pack", description = """
@@ -98,7 +98,7 @@ public class Fletching extends Feature {
 
 	public Fletching(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "fletching", Component.literal("IguanaTweaks Expanded Fletching"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && dataPack));
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "fletching", Component.literal("IguanaTweaks Expanded Fletching"), () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && dataPack));
 	}
 
 	@SubscribeEvent

@@ -1,19 +1,19 @@
 package insane96mcp.iguanatweaksexpanded;
 
 import com.google.common.collect.Lists;
-import insane96mcp.iguanatweaksexpanded.data.criterion.ITETriggers;
+import insane96mcp.iguanatweaksexpanded.data.criterion.ISETriggers;
 import insane96mcp.iguanatweaksexpanded.data.generator.*;
-import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockModelsProvider;
-import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEBlockStatesProvider;
-import insane96mcp.iguanatweaksexpanded.data.generator.client.ITEItemModelsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEBlockModelsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEBlockStatesProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEItemModelsProvider;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ITEArrowDispenseBehaviour;
+import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ISEArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
-import insane96mcp.iguanatweaksexpanded.setup.ITECommonConfig;
-import insane96mcp.iguanatweaksexpanded.setup.ITEPackSource;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISECommonConfig;
+import insane96mcp.iguanatweaksexpanded.setup.ISEPackSource;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.InsaneSurvivalOverhaul;
@@ -65,7 +65,7 @@ public class InsaneSurvivalExtra
     public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "fletching");
 
     public InsaneSurvivalExtra() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ITECommonConfig.CONFIG_SPEC, InsaneSurvivalOverhaul.NEW_MOD_ID + "/expanded-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ISECommonConfig.CONFIG_SPEC, InsaneSurvivalOverhaul.NEW_MOD_ID + "/expanded-common.toml");
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         if (FMLLoader.getDist().isClient()) {
@@ -80,9 +80,9 @@ public class InsaneSurvivalExtra
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::gatherData);
         modEventBus.addListener(this::addPackFinders);
-        ITERegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
+        ISERegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
 
-        ITETriggers.init();
+        ISETriggers.init();
 
     }
 
@@ -91,11 +91,11 @@ public class InsaneSurvivalExtra
         Recall.onLoadComplete();
 
         event.enqueueWork(() -> {
-            DispenserBlock.registerBehavior(Fletching.QUARTZ_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.DIAMOND_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.EXPLOSIVE_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.TORCH_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.ICE_ARROW_ITEM.get(), new ITEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.QUARTZ_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.DIAMOND_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.EXPLOSIVE_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.TORCH_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
+            DispenserBlock.registerBehavior(Fletching.ICE_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
         });
     }
 
@@ -107,15 +107,15 @@ public class InsaneSurvivalExtra
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        generator.addProvider(event.includeServer(), new ITERecipeProvider(generator.getPackOutput()));
-        generator.addProvider(event.includeServer(), new ITEGlobalLootModifierProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID));
-        ITEBlockTagsProvider blockTags = new ITEBlockTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSurvivalExtra.MOD_ID, existingFileHelper);
+        generator.addProvider(event.includeServer(), new ISERecipeProvider(generator.getPackOutput()));
+        generator.addProvider(event.includeServer(), new ISEGlobalLootModifierProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID));
+        ISEBlockTagsProvider blockTags = new ISEBlockTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSurvivalExtra.MOD_ID, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new ITEItemTagsProvider(generator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ITEDamageTypeTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSurvivalExtra.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ITEBlockStatesProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ITEBlockModelsProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ITEItemModelsProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ISEItemTagsProvider(generator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ISEDamageTypeTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ISEBlockStatesProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ISEBlockModelsProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ISEItemModelsProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
     }
 
     public void addPackFinders(AddPackFindersEvent event)
@@ -126,7 +126,7 @@ public class InsaneSurvivalExtra
 
             Path resourcePath = ModList.get().getModFileById(MOD_ID).getFile().findResource("integrated_packs/" + integratedPack.getPath());
             var pack = Pack.readMetaAndCreate(InsaneSurvivalExtra.RESOURCE_PREFIX + integratedPack.getPath(), integratedPack.getDescription(), integratedPack.shouldBeEnabled(),
-                    (path) -> new PathPackResources(path, resourcePath, false), PackType.SERVER_DATA, Pack.Position.TOP, integratedPack.shouldBeEnabled() ? PackSource.DEFAULT : ITEPackSource.DISABLED);
+                    (path) -> new PathPackResources(path, resourcePath, false), PackType.SERVER_DATA, Pack.Position.TOP, integratedPack.shouldBeEnabled() ? PackSource.DEFAULT : ISEPackSource.DISABLED);
             event.addRepositorySource((packConsumer) -> packConsumer.accept(pack));
         }
     }

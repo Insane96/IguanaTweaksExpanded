@@ -1,8 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.items.crate;
 
-import insane96mcp.iguanatweaksexpanded.data.criterion.ITETriggers;
+import insane96mcp.iguanatweaksexpanded.data.criterion.ISETriggers;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
@@ -30,10 +30,10 @@ public class Crate extends Feature {
 
 	public static final UUID CRATE_WEIGHT_UUID = UUID.fromString("4ce89c45-a011-43fa-b9a8-7f2bd0ea2fc3");
 
-	public static final RegistryObject<CrateBlock> BLOCK = ITERegistries.BLOCKS.register("crate", () -> new CrateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().instrument(NoteBlockInstrument.BASS).strength(2.5f)));
-	public static final RegistryObject<CrateItem> ITEM = ITERegistries.ITEMS.register("crate", () -> new CrateItem(BLOCK.get(), new Item.Properties().stacksTo(1)));
+	public static final RegistryObject<CrateBlock> BLOCK = ISERegistries.BLOCKS.register("crate", () -> new CrateBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().instrument(NoteBlockInstrument.BASS).strength(2.5f)));
+	public static final RegistryObject<CrateItem> ITEM = ISERegistries.ITEMS.register("crate", () -> new CrateItem(BLOCK.get(), new Item.Properties().stacksTo(1)));
 
-	public static final RegistryObject<BlockEntityType<?>> BLOCK_ENTITY_TYPE = ITERegistries.BLOCK_ENTITY_TYPES.register("crate", () -> BlockEntityType.Builder.of(CrateBlockEntity::new, BLOCK.get()).build(null));
+	public static final RegistryObject<BlockEntityType<?>> BLOCK_ENTITY_TYPE = ISERegistries.BLOCK_ENTITY_TYPES.register("crate", () -> BlockEntityType.Builder.of(CrateBlockEntity::new, BLOCK.get()).build(null));
 
 	@Config(min = 0)
 	@Label(name = "Max crates without slowdown")
@@ -59,7 +59,7 @@ public class Crate extends Feature {
 			double slowness = ((cratesInInventory - maxCratesWithoutSlowdown) * slownessPerCrate) * Math.max(1, cratesInInventory - maxCratesWithoutSlowdown);
 			MCUtils.applyModifier(event.player, Attributes.MOVEMENT_SPEED, CRATE_WEIGHT_UUID, "Crate weight penalty", -slowness, AttributeModifier.Operation.MULTIPLY_BASE, false);
 			if (event.player.tickCount % 20 == 4 && event.player instanceof ServerPlayer serverPlayer)
-				ITETriggers.OVERWEIGHT_CREATE_CARRY.trigger(serverPlayer);
+				ISETriggers.OVERWEIGHT_CREATE_CARRY.trigger(serverPlayer);
 		}
 	}
 }

@@ -1,9 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.keego;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
-import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
+import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -50,35 +50,35 @@ public class Keego extends Feature {
 	public static final TagKey<Item> KEEGO_HAND_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/keego"));
 	public static final TagKey<Item> KEEGO_ARMOR_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/armor/keego"));
 
-	public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ITERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.06d, AttributeModifier.Operation.MULTIPLY_BASE));
-	public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ITERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.06d, AttributeModifier.Operation.ADDITION));
-	public static final RegistryObject<MobEffect> MINING_MOMENTUM = ITERegistries.MOB_EFFECTS.register("mining_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false));
+	public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ISERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.06d, AttributeModifier.Operation.MULTIPLY_BASE));
+	public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ISERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.06d, AttributeModifier.Operation.ADDITION));
+	public static final RegistryObject<MobEffect> MINING_MOMENTUM = ISERegistries.MOB_EFFECTS.register("mining_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false));
 
 	public static final SimpleBlockWithItem ORE = SimpleBlockWithItem.register("keego_ore", () -> new KeegoOreBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK).strength(-1f, 10f), UniformInt.of(10, 15)));
 
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("keego_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 7.0F).sound(SoundType.METAL)));
 
-	public static final RegistryObject<Item> GEM = ITERegistries.ITEMS.register("keego", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> GEM = ISERegistries.ITEMS.register("keego", () -> new Item(new Item.Properties()));
 
 	public static final ILItemTier ITEM_TIER = new ILItemTier(2, 937, 6.5f, 2.5f, 8, () -> Ingredient.of(GEM.get()));
 
-	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("keego_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties()));
-	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("keego_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
-	public static final RegistryObject<Item> PICKAXE = ITERegistries.ITEMS.register("keego_pickaxe", () -> new PickaxeItem(ITEM_TIER, 1, -2.8F, new Item.Properties()));
-	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("keego_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.2F, new Item.Properties()));
-	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("keego_hoe", () -> new KeegoHoeItem(ITEM_TIER, -2, -1.1F, new Item.Properties()));
+	public static final RegistryObject<Item> SWORD = ISERegistries.ITEMS.register("keego_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> SHOVEL = ISERegistries.ITEMS.register("keego_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
+	public static final RegistryObject<Item> PICKAXE = ISERegistries.ITEMS.register("keego_pickaxe", () -> new PickaxeItem(ITEM_TIER, 1, -2.8F, new Item.Properties()));
+	public static final RegistryObject<Item> AXE = ISERegistries.ITEMS.register("keego_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.2F, new Item.Properties()));
+	public static final RegistryObject<Item> HOE = ISERegistries.ITEMS.register("keego_hoe", () -> new KeegoHoeItem(ITEM_TIER, -2, -1.1F, new Item.Properties()));
 
-	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "keego", 22, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ISEArmorMaterial ARMOR_MATERIAL = new ISEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "keego", 22, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 4);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);
 		p_266652_.put(ArmorItem.Type.HELMET, 3);
 	}), 6, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(GEM.get()));
 
-	public static final RegistryObject<Item> HELMET = ITERegistries.ITEMS.register("keego_helmet", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties()));
-	public static final RegistryObject<Item> CHESTPLATE = ITERegistries.ITEMS.register("keego_chestplate", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("keego_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("keego_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
+	public static final RegistryObject<Item> HELMET = ISERegistries.ITEMS.register("keego_helmet", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> CHESTPLATE = ISERegistries.ITEMS.register("keego_chestplate", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("keego_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("keego_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
 
 	public static final RegistryObject<SPShieldItem> SHIELD = KeegoShield.registerShield("keego_shield");

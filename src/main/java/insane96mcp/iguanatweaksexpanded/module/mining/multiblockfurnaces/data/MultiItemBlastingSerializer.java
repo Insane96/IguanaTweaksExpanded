@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data;
 
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.MultiItemBlastingRecipe;
-import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ISEBookCategory;
 
 public class MultiItemBlastingSerializer extends AbstractMultiItemSmeltingSerializer {
 
@@ -10,8 +10,8 @@ public class MultiItemBlastingSerializer extends AbstractMultiItemSmeltingSerial
     }
 
     @Override
-    protected ITEBookCategory getDefaultBookCategory() {
-        return ITEBookCategory.BLAST_FURNACE_MISC;
+    protected ISEBookCategory getDefaultBookCategory() {
+        return ISEBookCategory.BLAST_FURNACE_MISC;
     }
 
     @Override

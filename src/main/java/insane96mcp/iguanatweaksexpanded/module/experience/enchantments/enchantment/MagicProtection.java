@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEDamageTypeTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEDamageTypeTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ISOProtectionEnchantment;
 import net.minecraft.tags.TagKey;
@@ -11,7 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class MagicProtection extends ISOProtectionEnchantment {
-    public static TagKey<DamageType> SOURCES_REDUCED = ITEDamageTypeTagsProvider.create("enchantments/protection/magic");
+    public static TagKey<DamageType> SOURCES_REDUCED = ISEDamageTypeTagsProvider.create("enchantments/protection/magic");
     public MagicProtection() {
         super(Rarity.UNCOMMON);
     }

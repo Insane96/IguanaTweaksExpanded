@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.insanelib.util.MathHelper;
 import net.minecraft.tags.TagKey;
@@ -15,7 +15,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 
 public class CurseOfDumbness extends Enchantment {
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_dumbness_curse");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_dumbness_curse");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("dumbness_curse", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public CurseOfDumbness() {
         super(Rarity.UNCOMMON, CATEGORY, EquipmentSlot.values());

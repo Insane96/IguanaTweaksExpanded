@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import insane96mcp.iguanatweaksexpanded.event.ITEEventFactory;
+import insane96mcp.iguanatweaksexpanded.event.ISEEventFactory;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.items.UnbreakableItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -86,7 +86,7 @@ public class Expanded extends Enchantment {
         for (BlockPos minedBlock : minedBlocks) {
             BlockState minedBlockState = level.getBlockState(minedBlock);
             BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(minedBlock) : null;
-            int exp = ITEEventFactory.onEnchantmentBlockBreak(player, level, minedBlock, minedBlockState);
+            int exp = ISEEventFactory.onEnchantmentBlockBreak(player, level, minedBlock, minedBlockState);
             if (exp == -1)
                 continue;
             boolean blockRemoved = removeBlock(serverLevel, minedBlock, player);
@@ -97,7 +97,7 @@ public class Expanded extends Enchantment {
                     minedBlockState.getBlock().popExperience(serverLevel, minedBlock, exp);
                 }
                 level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, minedBlock, Block.getId(minedBlockState));
-                ITEEventFactory.onBlockDestroyPosts(serverLevel, minedBlock, minedBlockState, player);
+                ISEEventFactory.onBlockDestroyPosts(serverLevel, minedBlock, minedBlockState, player);
             }
             heldStack.hurtAndBreak(1, entity, livingEntity -> livingEntity.broadcastBreakEvent(InteractionHand.MAIN_HAND));
             if (UnbreakableItems.isBroken(heldStack) || heldStack.isEmpty())

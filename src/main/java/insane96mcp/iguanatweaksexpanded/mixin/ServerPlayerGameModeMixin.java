@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.mixin;
 
-import insane96mcp.iguanatweaksexpanded.event.ITEEventFactory;
+import insane96mcp.iguanatweaksexpanded.event.ISEEventFactory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,6 +31,6 @@ public class ServerPlayerGameModeMixin {
     public void onDestroyBlockReturn(BlockPos pPos, CallbackInfoReturnable<Boolean> cir) {
         if (!cir.getReturnValue())
             return;
-        ITEEventFactory.onBlockDestroyPosts(this.level, pPos, this.iguanaTweaksExpanded$oldState, this.player);
+        ISEEventFactory.onBlockDestroyPosts(this.level, pPos, this.iguanaTweaksExpanded$oldState, this.player);
     }
 }

@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksreborn.module.combat.PiercingDamage;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import net.minecraft.tags.TagKey;
@@ -15,7 +15,7 @@ import net.minecraftforge.event.ItemAttributeModifierEvent;
 import java.util.UUID;
 
 public class ArmorPiercer extends Enchantment implements IAttributeEnchantment {
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_armor_piercer");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_armor_piercer");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("armor_piercer_enchantment", (item) -> {
         return item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT);
     });

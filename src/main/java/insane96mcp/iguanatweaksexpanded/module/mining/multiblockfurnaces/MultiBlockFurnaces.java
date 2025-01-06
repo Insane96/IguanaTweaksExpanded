@@ -13,8 +13,8 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.Mu
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.MultiItemSoulBlastingSerializer;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.inventory.MultiBlockBlastFurnaceMenu;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.inventory.MultiBlockSoulBlastFurnaceMenu;
-import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksexpanded.utils.ClientUtils;
@@ -53,28 +53,28 @@ public class MultiBlockFurnaces extends Feature {
 	public static final String INVALID_FURNACE_LANG = InsaneSurvivalExtra.MOD_ID + ".invalid_blast_furnace";
 
 	public static final SimpleBlockWithItem BLAST_FURNACE = SimpleBlockWithItem.register("blast_furnace", () -> new MultiBlockBlastFurnaceBlock(BlockBehaviour.Properties.copy(Blocks.BLAST_FURNACE)));
-	public static final RegistryObject<BlockEntityType<MultiBlockBlastFurnaceBlockEntity>> BLAST_FURNACE_BLOCK_ENTITY_TYPE = ITERegistries.BLOCK_ENTITY_TYPES.register("blast_furnace", () -> BlockEntityType.Builder.of(MultiBlockBlastFurnaceBlockEntity::new, BLAST_FURNACE.block().get()).build(null));
+	public static final RegistryObject<BlockEntityType<MultiBlockBlastFurnaceBlockEntity>> BLAST_FURNACE_BLOCK_ENTITY_TYPE = ISERegistries.BLOCK_ENTITY_TYPES.register("blast_furnace", () -> BlockEntityType.Builder.of(MultiBlockBlastFurnaceBlockEntity::new, BLAST_FURNACE.block().get()).build(null));
 
-	public static final RegistryObject<RecipeType<MultiItemBlastingRecipe>> BLASTING_RECIPE_TYPE = ITERegistries.RECIPE_TYPES.register("multi_item_blasting", () -> new RecipeType<>() {
+	public static final RegistryObject<RecipeType<MultiItemBlastingRecipe>> BLASTING_RECIPE_TYPE = ISERegistries.RECIPE_TYPES.register("multi_item_blasting", () -> new RecipeType<>() {
 		@Override
 		public String toString() {
 			return "multi_item_blasting";
 		}
 	});
-	public static final RegistryObject<MultiItemBlastingSerializer> BLASTING_RECIPE_SERIALIZER = ITERegistries.RECIPE_SERIALIZERS.register("multi_item_blasting", MultiItemBlastingSerializer::new);
-	public static final RegistryObject<MenuType<MultiBlockBlastFurnaceMenu>> BLAST_FURNACE_MENU_TYPE = ITERegistries.MENU_TYPES.register("blast_furnace", () -> new MenuType<>(MultiBlockBlastFurnaceMenu::new, FeatureFlags.VANILLA_SET));
+	public static final RegistryObject<MultiItemBlastingSerializer> BLASTING_RECIPE_SERIALIZER = ISERegistries.RECIPE_SERIALIZERS.register("multi_item_blasting", MultiItemBlastingSerializer::new);
+	public static final RegistryObject<MenuType<MultiBlockBlastFurnaceMenu>> BLAST_FURNACE_MENU_TYPE = ISERegistries.MENU_TYPES.register("blast_furnace", () -> new MenuType<>(MultiBlockBlastFurnaceMenu::new, FeatureFlags.VANILLA_SET));
 
 	public static final SimpleBlockWithItem SOUL_BLAST_FURNACE = SimpleBlockWithItem.register("soul_blast_furnace", () -> new MultiBlockSoulBlastFurnaceBlock(BlockBehaviour.Properties.copy(Blocks.BLAST_FURNACE)));
-	public static final RegistryObject<BlockEntityType<MultiBlockSoulBlastFurnaceBlockEntity>> SOUL_BLAST_FURNACE_BLOCK_ENTITY_TYPE = ITERegistries.BLOCK_ENTITY_TYPES.register("soul_blast_furnace", () -> BlockEntityType.Builder.of(MultiBlockSoulBlastFurnaceBlockEntity::new, SOUL_BLAST_FURNACE.block().get()).build(null));
+	public static final RegistryObject<BlockEntityType<MultiBlockSoulBlastFurnaceBlockEntity>> SOUL_BLAST_FURNACE_BLOCK_ENTITY_TYPE = ISERegistries.BLOCK_ENTITY_TYPES.register("soul_blast_furnace", () -> BlockEntityType.Builder.of(MultiBlockSoulBlastFurnaceBlockEntity::new, SOUL_BLAST_FURNACE.block().get()).build(null));
 
-	public static final RegistryObject<RecipeType<MultiItemSoulBlastingRecipe>> SOUL_BLASTING_RECIPE_TYPE = ITERegistries.RECIPE_TYPES.register("multi_item_soul_blasting", () -> new RecipeType<>() {
+	public static final RegistryObject<RecipeType<MultiItemSoulBlastingRecipe>> SOUL_BLASTING_RECIPE_TYPE = ISERegistries.RECIPE_TYPES.register("multi_item_soul_blasting", () -> new RecipeType<>() {
 		@Override
 		public String toString() {
 			return "multi_item_soul_blasting";
 		}
 	});
-	public static final RegistryObject<MultiItemSoulBlastingSerializer> SOUL_BLASTING_RECIPE_SERIALIZER = ITERegistries.RECIPE_SERIALIZERS.register("multi_item_soul_blasting", MultiItemSoulBlastingSerializer::new);
-	public static final RegistryObject<MenuType<MultiBlockSoulBlastFurnaceMenu>> SOUL_BLAST_FURNACE_MENU_TYPE = ITERegistries.MENU_TYPES.register("soul_blast_furnace", () -> new MenuType<>(MultiBlockSoulBlastFurnaceMenu::new, FeatureFlags.VANILLA_SET));
+	public static final RegistryObject<MultiItemSoulBlastingSerializer> SOUL_BLASTING_RECIPE_SERIALIZER = ISERegistries.RECIPE_SERIALIZERS.register("multi_item_soul_blasting", MultiItemSoulBlastingSerializer::new);
+	public static final RegistryObject<MenuType<MultiBlockSoulBlastFurnaceMenu>> SOUL_BLAST_FURNACE_MENU_TYPE = ISERegistries.MENU_TYPES.register("soul_blast_furnace", () -> new MenuType<>(MultiBlockSoulBlastFurnaceMenu::new, FeatureFlags.VANILLA_SET));
 
 	@Config
 	@Label(name = "Hide Blasting category in EMI", description = "If true, the Blasting category will be hidden in EMI.")
@@ -86,7 +86,7 @@ public class MultiBlockFurnaces extends Feature {
 
 	public MultiBlockFurnaces(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "multi_block_blast_furnace", Component.literal("IguanaTweaks Expanded Multi Block Blast Furnace"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks && blastFurnaceDataPack));
+		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "multi_block_blast_furnace", Component.literal("IguanaTweaks Expanded Multi Block Blast Furnace"), () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && blastFurnaceDataPack));
 	}
 
 	@SubscribeEvent

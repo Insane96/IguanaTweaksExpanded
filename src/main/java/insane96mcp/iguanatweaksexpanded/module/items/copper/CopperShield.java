@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.copper;
 
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.shieldsplus.setup.SPItems;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
@@ -16,7 +16,7 @@ public class CopperShield extends SPShieldItem {
 
 	public static RegistryObject<SPShieldItem> registerShield(String id) {
 		Properties properties = new Properties().durability(SHIELD_MATERIAL.durability).rarity(SHIELD_MATERIAL.rarity);
-		RegistryObject<SPShieldItem> shield = ITERegistries.ITEMS.register(id, () -> new CopperShield(properties));
+		RegistryObject<SPShieldItem> shield = ISERegistries.ITEMS.register(id, () -> new CopperShield(properties));
 		SPItems.SHIELDS.add(shield);
 		return shield;
 	}

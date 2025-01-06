@@ -11,7 +11,7 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class QuartzArrow extends ITEArrow {
+public class QuartzArrow extends ISEArrow {
     public QuartzArrow(EntityType<? extends Arrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }

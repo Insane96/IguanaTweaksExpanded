@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.items.recallpotion;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
@@ -34,9 +34,9 @@ import java.util.Optional;
 @Label(name = "Recall Potion", description = "Back to base")
 @LoadFeature(module = Modules.Ids.ITEMS)
 public class Recall extends Feature {
-	public static final RegistryObject<MobEffect> BACK_TO_SPAWN = ITERegistries.MOB_EFFECTS.register("back_to_spawn", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0x6600ff));
-	public static final RegistryObject<Potion> REGEN_WITHER = ITERegistries.POTION.register("regen_wither", () -> new Potion("regen_wither", new MobEffectInstance(MobEffects.REGENERATION, 450), new MobEffectInstance(MobEffects.WITHER, 450)));
-	public static final RegistryObject<Potion> RECALL = ITERegistries.POTION.register("recall", () -> new Potion("recall", new MobEffectInstance(BACK_TO_SPAWN.get(), 300)));
+	public static final RegistryObject<MobEffect> BACK_TO_SPAWN = ISERegistries.MOB_EFFECTS.register("back_to_spawn", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0x6600ff));
+	public static final RegistryObject<Potion> REGEN_WITHER = ISERegistries.POTION.register("regen_wither", () -> new Potion("regen_wither", new MobEffectInstance(MobEffects.REGENERATION, 450), new MobEffectInstance(MobEffects.WITHER, 450)));
+	public static final RegistryObject<Potion> RECALL = ISERegistries.POTION.register("recall", () -> new Potion("recall", new MobEffectInstance(BACK_TO_SPAWN.get(), 300)));
 	//public static final RegistryObject<Item> ITEM = ITERegistries.ITEMS.register("recall_idol", () -> new RecallIdolItem(new Item.Properties().stacksTo(1)));
 
 	public Recall(Module module, boolean enabledByDefault, boolean canBeDisabled) {

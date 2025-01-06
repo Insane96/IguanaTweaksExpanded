@@ -2,11 +2,11 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import com.teamabnormals.allurement.core.AllurementConfig;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
-import insane96mcp.iguanatweaksexpanded.item.ITEItem;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.item.ISEItem;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
@@ -64,10 +64,10 @@ import java.util.Map;
 @Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled, a data pack is also enabled that changes the enchanting table recipe to give the new one and replaces xp bottles with enchanted cleansed lapis. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class EnchantingFeature extends JsonFeature {
-    public static final TagKey<Item> NOT_ENCHANTABLE = ITEItemTagsProvider.create("not_enchantable");
-	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new ITEEnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
-	public static final RegistryObject<BlockEntityType<ITEEnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ITERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(ITEEnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
-    public static final RegistryObject<MenuType<ITEEnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ITERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(ITEEnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
+    public static final TagKey<Item> NOT_ENCHANTABLE = ISEItemTagsProvider.create("not_enchantable");
+	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new ISEEnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
+	public static final RegistryObject<BlockEntityType<ISEEnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ISERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(ISEEnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
+    public static final RegistryObject<MenuType<ISEEnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ISERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(ISEEnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
 
     public static final String INFUSED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "infused";
     public static final String EMPOWERED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "empowered";
@@ -103,8 +103,8 @@ public class EnchantingFeature extends JsonFeature {
     @Label(name = "All enchantments are one time use", description = "If true, enchantments in the enchanting table are one time use.")
     public static Boolean allEnchantmentsAreOneTimeUse = true;*/
 
-    public static final RegistryObject<Item> CLEANSED_LAPIS = ITERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ITERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ITEItem(new Item.Properties(), true));
+    public static final RegistryObject<Item> CLEANSED_LAPIS = ISERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ISERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ISEItem(new Item.Properties(), true));
 
     public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
             new EnchantmentData("allurement:alleviating", 5),
@@ -246,7 +246,7 @@ public class EnchantingFeature extends JsonFeature {
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "new_enchanting_table", Component.literal("IguanaTweaks Expanded New Enchanting Table"), () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks));
 
         addSyncType(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
         JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchantments_data")));
@@ -566,7 +566,7 @@ public class EnchantingFeature extends JsonFeature {
 
         treasureEnchantmentsEnchantedBooksTooltip(stack, event.getToolTip());
         Minecraft mc = Minecraft.getInstance();
-        if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ITEEnchantingTableScreen) && !Screen.hasShiftDown())
+        if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ISEEnchantingTableScreen) && !Screen.hasShiftDown())
             return;
 
         enchantabilityTooltip(stack, event.getToolTip());
@@ -614,7 +614,7 @@ public class EnchantingFeature extends JsonFeature {
     private static void pendingEnchantmentsTooltip(ItemStack stack, CompoundTag tag, List<Component> tooltip) {
         if (tag.contains("PendingEnchantments") && canBeEnchanted(stack)) {
             tooltip.add(Component.translatable("iguanatweaksexpanded.has_pending_enchantments").withStyle(ChatFormatting.DARK_GRAY));
-            if (Minecraft.getInstance().screen instanceof ITEEnchantingTableScreen) {
+            if (Minecraft.getInstance().screen instanceof ISEEnchantingTableScreen) {
                 ListTag enchantmentsListTag = tag.getList("PendingEnchantments", CompoundTag.TAG_COMPOUND);
                 for (int i = 0; i < enchantmentsListTag.size(); ++i) {
                     CompoundTag compoundtag = enchantmentsListTag.getCompound(i);

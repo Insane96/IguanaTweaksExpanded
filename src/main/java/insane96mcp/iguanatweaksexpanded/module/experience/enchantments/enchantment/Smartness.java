@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.insanelib.util.MathHelper;
 import net.minecraft.tags.TagKey;
@@ -16,7 +16,7 @@ import net.minecraft.world.item.enchantment.LootBonusEnchantment;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 
 public class Smartness extends Enchantment {
-    public static TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_smartness");
+    public static TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_smartness");
     public static EnchantmentCategory CATEGORY = EnchantmentCategory.create("accepts_smartness", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public Smartness() {
         super(Rarity.RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});

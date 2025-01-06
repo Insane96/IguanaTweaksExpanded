@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.oregeneration;
 
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.misc.ITEDataPacks;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.GroundRockBlock;
@@ -33,7 +33,7 @@ public class BeegOreVeins extends Feature {
 
     public BeegOreVeins(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "beeg_ore_veins", Component.literal("IguanaTweaks Expanded Beeg Ore Veins"), () -> this.isEnabled() && !ITEDataPacks.disableAllDataPacks));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "beeg_ore_veins", Component.literal("IguanaTweaks Expanded Beeg Ore Veins"), () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks));
     }
 
     public record PoorRichOre(SimpleBlockWithItem poorOre, SimpleBlockWithItem poorDeepslateOre, SimpleBlockWithItem richOre, SimpleBlockWithItem richDeepslateOre) {

@@ -4,7 +4,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -57,7 +57,7 @@ public class EnchantWithTreasureFunction extends LootItemConditionalFunction {
 
     @Override
     public LootItemFunctionType getType() {
-        return ITERegistries.ENCHANT_WITH_TREASURE.get();
+        return ISERegistries.ENCHANT_WITH_TREASURE.get();
     }
 
     private static ItemStack enchantItem(ItemStack pStack, Enchantment pEnchantment, RandomSource pRandom) {

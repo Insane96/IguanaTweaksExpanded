@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.integration.ToolBeltIntegration;
 import insane96mcp.insanelib.util.MCUtils;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Soulbound extends Enchantment {
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_soulbound");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_soulbound");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("soulbound_enchantment",
             (item) -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT) || EnchantmentCategory.VANISHABLE.canEnchant(item));
     public Soulbound() {

@@ -1,0 +1,55 @@
+package insane96mcp.iguanatweaksexpanded.network.message;
+
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableMenu;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
+
+import static insane96mcp.iguanatweaksexpanded.network.NetworkHandler.CHANNEL;
+
+public class SyncISEEnchantingTableEnchantments {
+	List<EnchantmentInstance> enchantmentInstances;
+
+	public SyncISEEnchantingTableEnchantments(List<EnchantmentInstance> enchantmentInstances) {
+		this.enchantmentInstances = enchantmentInstances;
+	}
+
+	public static void encode(SyncISEEnchantingTableEnchantments pkt, FriendlyByteBuf buf) {
+		buf.writeShort(pkt.enchantmentInstances.size());
+		for (EnchantmentInstance enchantmentInstance : pkt.enchantmentInstances) {
+			buf.writeResourceLocation(ForgeRegistries.ENCHANTMENTS.getKey(enchantmentInstance.enchantment));
+			buf.writeShort(enchantmentInstance.level);
+		}
+	}
+
+	public static SyncISEEnchantingTableEnchantments decode(FriendlyByteBuf buf) {
+		List<EnchantmentInstance> enchantments = new ArrayList<>();
+		int size = buf.readShort();
+		for (int i = 0; i < size; i++) {
+			enchantments.add(new EnchantmentInstance(ForgeRegistries.ENCHANTMENTS.getValue(buf.readResourceLocation()), buf.readShort()));
+		}
+		return new SyncISEEnchantingTableEnchantments(enchantments);
+	}
+
+	public static void handle(final SyncISEEnchantingTableEnchantments message, Supplier<NetworkEvent.Context> ctx) {
+		ctx.get().enqueueWork(() -> {
+			//noinspection DataFlowIssue
+			if (ctx.get().getSender().containerMenu instanceof ISEEnchantingTableMenu enchantingTableMenu) {
+				enchantingTableMenu.updateEnchantmentsChosen(message.enchantmentInstances);
+			}
+		});
+		ctx.get().setPacketHandled(true);
+	}
+
+	public static void sync(List<EnchantmentInstance> enchantmentInstances) {
+		Object msg = new SyncISEEnchantingTableEnchantments(enchantmentInstances);
+		CHANNEL.sendTo(msg, Minecraft.getInstance().player.connection.getConnection(), NetworkDirection.PLAY_TO_SERVER);
+	}
+}

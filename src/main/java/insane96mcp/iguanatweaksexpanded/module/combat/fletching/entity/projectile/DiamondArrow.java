@@ -6,7 +6,7 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class DiamondArrow extends ITEArrow {
+public class DiamondArrow extends ISEArrow {
     public DiamondArrow(EntityType<? extends Arrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.gravityForce = 0.08f;

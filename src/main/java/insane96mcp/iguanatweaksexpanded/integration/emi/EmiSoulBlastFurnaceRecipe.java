@@ -11,7 +11,7 @@ public class EmiSoulBlastFurnaceRecipe extends EmiMultiItemSmeltingRecipe {
 
     @Override
     public EmiRecipeCategory getCategory() {
-        return ITEEmiPlugin.SOUL_BLAST_FURNACE_CATEGORY;
+        return ISEEmiPlugin.SOUL_BLAST_FURNACE_CATEGORY;
     }
 
     @Override

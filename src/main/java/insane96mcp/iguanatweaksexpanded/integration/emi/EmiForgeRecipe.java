@@ -31,7 +31,7 @@ public class EmiForgeRecipe implements EmiRecipe {
 
 	@Override
 	public EmiRecipeCategory getCategory() {
-		return ITEEmiPlugin.FORGE_RECIPE_CATEGORY;
+		return ISEEmiPlugin.FORGE_RECIPE_CATEGORY;
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.combat.fletching.data;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
-import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ISEBookCategory;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +23,7 @@ public class FletchingRecipeSerializer implements RecipeSerializer<FletchingReci
     }
 
     public FletchingRecipe fromJson(ResourceLocation pRecipeId, JsonObject pJson) {
-        ITEBookCategory category = ITEBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), ITEBookCategory.FLETCHING_MISC);
+        ISEBookCategory category = ISEBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), ISEBookCategory.FLETCHING_MISC);
         ItemStack ingredient = getItemStack(pJson, "ingredient", true);
         ItemStack catalyst1 = getItemStack(pJson, "catalyst1", true);
         ItemStack catalyst2 = getItemStack(pJson, "catalyst2", false);
@@ -49,7 +49,7 @@ public class FletchingRecipeSerializer implements RecipeSerializer<FletchingReci
     }
 
     public FletchingRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-        ITEBookCategory category = pBuffer.readEnum(ITEBookCategory.class);
+        ISEBookCategory category = pBuffer.readEnum(ISEBookCategory.class);
         ItemStack ingredient = pBuffer.readItem();
         ItemStack catalyst1 = pBuffer.readItem();
         boolean hasCatalyst2 = pBuffer.readBoolean();
@@ -75,6 +75,6 @@ public class FletchingRecipeSerializer implements RecipeSerializer<FletchingReci
     }
 
     public interface CookieBaker<T extends FletchingRecipe> {
-        T create(ResourceLocation pId, ITEBookCategory pCategory, ItemStack baseIngredient, ItemStack catalyst1, @Nullable ItemStack catalyst2, ItemStack pResult);
+        T create(ResourceLocation pId, ISEBookCategory pCategory, ItemStack baseIngredient, ItemStack catalyst1, @Nullable ItemStack catalyst2, ItemStack pResult);
     }
 }

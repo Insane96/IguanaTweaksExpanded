@@ -11,7 +11,7 @@ public class EmiBlastFurnaceRecipe extends EmiMultiItemSmeltingRecipe {
 
     @Override
     public EmiRecipeCategory getCategory() {
-        return ITEEmiPlugin.BLAST_FURNACE_CATEGORY;
+        return ISEEmiPlugin.BLAST_FURNACE_CATEGORY;
     }
 
     @Override

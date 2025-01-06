@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.FireAspect;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
@@ -14,7 +14,7 @@ import net.minecraft.world.item.enchantment.FireAspectEnchantment;
 import org.jetbrains.annotations.NotNull;
 
 public class CryoAspect extends Enchantment {
-    public static TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_cryo_aspect");
+    public static TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_cryo_aspect");
     public static EnchantmentCategory CATEGORY = EnchantmentCategory.create("accepts_cryo_aspect", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public CryoAspect() {
         super(Rarity.RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});

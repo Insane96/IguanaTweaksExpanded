@@ -1,9 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.quaron;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
-import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
+import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.event.HookTickToHookLureEvent;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
@@ -42,35 +42,35 @@ public class Quaron extends Feature {
 
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("quaron_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 7.0F).sound(SoundType.METAL)));
 
-	public static final RegistryObject<Item> INGOT = ITERegistries.ITEMS.register("quaron_ingot", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> INGOT = ISERegistries.ITEMS.register("quaron_ingot", () -> new Item(new Item.Properties()));
 
-	public static final RegistryObject<Item> NUGGET = ITERegistries.ITEMS.register("quaron_nugget", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> NUGGET = ISERegistries.ITEMS.register("quaron_nugget", () -> new Item(new Item.Properties()));
 
 	public static final ILItemTier ITEM_TIER = new ILItemTier(3, 1242, 6f, 2.5f, 11, () -> Ingredient.of(INGOT.get()));
 
-	public static final RegistryObject<Item> SWORD = ITERegistries.ITEMS.register("quaron_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties()));
-	public static final RegistryObject<Item> SHOVEL = ITERegistries.ITEMS.register("quaron_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
-	public static final RegistryObject<Item> PICKAXE = ITERegistries.ITEMS.register("quaron_pickaxe", () -> new PickaxeItem(ITEM_TIER, 1, -2.8F, new Item.Properties()));
-	public static final RegistryObject<Item> AXE = ITERegistries.ITEMS.register("quaron_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.1F, new Item.Properties()));
-	public static final RegistryObject<Item> HOE = ITERegistries.ITEMS.register("quaron_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties()));
+	public static final RegistryObject<Item> SWORD = ISERegistries.ITEMS.register("quaron_sword", () -> new SwordItem(ITEM_TIER, 3, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> SHOVEL = ISERegistries.ITEMS.register("quaron_shovel", () -> new ShovelItem(ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
+	public static final RegistryObject<Item> PICKAXE = ISERegistries.ITEMS.register("quaron_pickaxe", () -> new PickaxeItem(ITEM_TIER, 1, -2.8F, new Item.Properties()));
+	public static final RegistryObject<Item> AXE = ISERegistries.ITEMS.register("quaron_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.1F, new Item.Properties()));
+	public static final RegistryObject<Item> HOE = ISERegistries.ITEMS.register("quaron_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties()));
 
-	private static final ITEArmorMaterial ARMOR_MATERIAL = new ITEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ISEArmorMaterial ARMOR_MATERIAL = new ISEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 2);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);
 		p_266652_.put(ArmorItem.Type.HELMET, 2);
 	}), 6, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(INGOT.get()));
 
-	public static final RegistryObject<Item> HELMET = ITERegistries.ITEMS.register("quaron_helmet", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties()));
-	public static final RegistryObject<Item> CHESTPLATE = ITERegistries.ITEMS.register("quaron_chestplate", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("quaron_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("quaron_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
+	public static final RegistryObject<Item> HELMET = ISERegistries.ITEMS.register("quaron_helmet", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> CHESTPLATE = ISERegistries.ITEMS.register("quaron_chestplate", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("quaron_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("quaron_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
 	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("quaron", 441, INGOT, 9, Rarity.COMMON);
 
-	public static final RegistryObject<SPShieldItem> SHIELD = ITERegistries.registerShield("quaron_shield", SHIELD_MATERIAL);
+	public static final RegistryObject<SPShieldItem> SHIELD = ISERegistries.registerShield("quaron_shield", SHIELD_MATERIAL);
 
-	public static final RegistryObject<QuaronFishingRod> FISHING_ROD = ITERegistries.ITEMS.register("quaron_fishing_rod", () -> new QuaronFishingRod(new Item.Properties().durability(94)));
+	public static final RegistryObject<QuaronFishingRod> FISHING_ROD = ISERegistries.ITEMS.register("quaron_fishing_rod", () -> new QuaronFishingRod(new Item.Properties().durability(94)));
 
 	public Quaron(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

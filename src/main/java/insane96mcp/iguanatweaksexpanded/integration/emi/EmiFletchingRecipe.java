@@ -31,7 +31,7 @@ public class EmiFletchingRecipe implements EmiRecipe {
 
 	@Override
 	public EmiRecipeCategory getCategory() {
-		return ITEEmiPlugin.FLETCHING_RECIPE_CATEGORY;
+		return ISEEmiPlugin.FLETCHING_RECIPE_CATEGORY;
 	}
 
 	@Override

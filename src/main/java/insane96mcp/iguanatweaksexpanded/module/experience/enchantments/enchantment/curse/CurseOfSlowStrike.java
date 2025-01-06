@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class CurseOfSlowStrike extends Enchantment implements IAttributeEnchantment {
     public static final UUID GRAVITY_MODIFIER_UUID = UUID.fromString("7567b3ad-a4c6-4700-8bf0-cd8c4356c155");
-    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ITEItemTagsProvider.create("enchanting/accepts_slow_strike_curse");
+    public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_slow_strike_curse");
     static final EnchantmentCategory CATEGORY = EnchantmentCategory.create("slow_strike_curse", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
     public CurseOfSlowStrike() {
         super(Rarity.RARE, CATEGORY, EquipmentSlot.values());

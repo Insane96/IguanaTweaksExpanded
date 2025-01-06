@@ -1,12 +1,12 @@
 package insane96mcp.iguanatweaksexpanded.module.items.copper;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
-import insane96mcp.iguanatweaksexpanded.data.generator.ITEDamageTypeTagsProvider;
-import insane96mcp.iguanatweaksexpanded.item.ITEArmorMaterial;
+import insane96mcp.iguanatweaksexpanded.data.generator.ISEDamageTypeTagsProvider;
+import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.network.message.ElectrocutionParticleMessage;
-import insane96mcp.iguanatweaksexpanded.setup.ITERegistries;
+import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksreborn.utils.MCUtils;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -61,40 +61,40 @@ public class CopperExpansion extends Feature {
 
 	public static final ILItemTier COPPER_ITEM_TIER = new ILItemTier(0, 65, 8f, 1.0f, 11, () -> Ingredient.of(Items.COPPER_INGOT));
 
-	public static final RegistryObject<Item> COPPER_SWORD = ITERegistries.ITEMS.register("copper_sword", () -> new SwordItem(COPPER_ITEM_TIER, 3, -2.4F, new Item.Properties()));
-	public static final RegistryObject<Item> COPPER_SHOVEL = ITERegistries.ITEMS.register("copper_shovel", () -> new ShovelItem(COPPER_ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
-	public static final RegistryObject<Item> COPPER_PICKAXE = ITERegistries.ITEMS.register("copper_pickaxe", () -> new PickaxeItem(COPPER_ITEM_TIER, 1, -2.8F, new Item.Properties()));
-	public static final RegistryObject<Item> COPPER_AXE = ITERegistries.ITEMS.register("copper_axe", () -> new AxeItem(COPPER_ITEM_TIER, 7.0F, -3.1F, new Item.Properties()));
-	public static final RegistryObject<Item> COPPER_HOE = ITERegistries.ITEMS.register("copper_hoe", () -> new HoeItem(COPPER_ITEM_TIER, -1, -2.0F, new Item.Properties()));
+	public static final RegistryObject<Item> COPPER_SWORD = ISERegistries.ITEMS.register("copper_sword", () -> new SwordItem(COPPER_ITEM_TIER, 3, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> COPPER_SHOVEL = ISERegistries.ITEMS.register("copper_shovel", () -> new ShovelItem(COPPER_ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
+	public static final RegistryObject<Item> COPPER_PICKAXE = ISERegistries.ITEMS.register("copper_pickaxe", () -> new PickaxeItem(COPPER_ITEM_TIER, 1, -2.8F, new Item.Properties()));
+	public static final RegistryObject<Item> COPPER_AXE = ISERegistries.ITEMS.register("copper_axe", () -> new AxeItem(COPPER_ITEM_TIER, 7.0F, -3.1F, new Item.Properties()));
+	public static final RegistryObject<Item> COPPER_HOE = ISERegistries.ITEMS.register("copper_hoe", () -> new HoeItem(COPPER_ITEM_TIER, -1, -2.0F, new Item.Properties()));
 
 	public static final RegistryObject<SPShieldItem> COPPER_SHIELD = CopperShield.registerShield("copper_shield");
 
 	public static final ILItemTier COATED_ITEM_TIER = new ILItemTier(3, 170, 7f, 1.5f, 5, () -> Ingredient.of(Items.OBSIDIAN));
-	public static final RegistryObject<Item> COATED_SWORD = ITERegistries.ITEMS.register("coated_copper_sword", () -> new SwordItem(COATED_ITEM_TIER, 3, -2.4F, new Item.Properties()));
-	public static final RegistryObject<Item> COATED_SHOVEL = ITERegistries.ITEMS.register("coated_copper_shovel", () -> new ShovelItem(COATED_ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
-	public static final RegistryObject<Item> COATED_PICKAXE = ITERegistries.ITEMS.register("coated_copper_pickaxe", () -> new PickaxeItem(COATED_ITEM_TIER, 1, -2.8F, new Item.Properties()));
-	public static final RegistryObject<Item> COATED_AXE = ITERegistries.ITEMS.register("coated_copper_axe", () -> new AxeItem(COATED_ITEM_TIER, 7.0F, -3.1F, new Item.Properties()));
-	public static final RegistryObject<Item> COATED_HOE = ITERegistries.ITEMS.register("coated_copper_hoe", () -> new HoeItem(COATED_ITEM_TIER, -1, -2.0F, new Item.Properties()));
+	public static final RegistryObject<Item> COATED_SWORD = ISERegistries.ITEMS.register("coated_copper_sword", () -> new SwordItem(COATED_ITEM_TIER, 3, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> COATED_SHOVEL = ISERegistries.ITEMS.register("coated_copper_shovel", () -> new ShovelItem(COATED_ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
+	public static final RegistryObject<Item> COATED_PICKAXE = ISERegistries.ITEMS.register("coated_copper_pickaxe", () -> new PickaxeItem(COATED_ITEM_TIER, 1, -2.8F, new Item.Properties()));
+	public static final RegistryObject<Item> COATED_AXE = ISERegistries.ITEMS.register("coated_copper_axe", () -> new AxeItem(COATED_ITEM_TIER, 7.0F, -3.1F, new Item.Properties()));
+	public static final RegistryObject<Item> COATED_HOE = ISERegistries.ITEMS.register("coated_copper_hoe", () -> new HoeItem(COATED_ITEM_TIER, -1, -2.0F, new Item.Properties()));
 
 	public static final SPShieldMaterial COATED_SHIELD_MATERIAL = new SPShieldMaterial("coated_copper", 184, () -> Items.OBSIDIAN, 5, Rarity.COMMON);
 
-	public static final RegistryObject<SPShieldItem> COATED_SHIELD = ITERegistries.registerShield("coated_copper_shield", COATED_SHIELD_MATERIAL);
-    public static final RegistryObject<SimpleParticleType> ELECTROCUTION_SPARKS = ITERegistries.PARTICLE_TYPES.register("electrocution_sparks", () -> new SimpleParticleType(true));
-	public static final RegistryObject<SoundEvent> ELECTROCUTION = ITERegistries.SOUND_EVENTS.register("electrocution", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "electrocution")));
-	public static final TagKey<DamageType> DOESNT_TRIGGER_ELECTROCUTION = ITEDamageTypeTagsProvider.create("doesnt_trigger_electrocution");
+	public static final RegistryObject<SPShieldItem> COATED_SHIELD = ISERegistries.registerShield("coated_copper_shield", COATED_SHIELD_MATERIAL);
+    public static final RegistryObject<SimpleParticleType> ELECTROCUTION_SPARKS = ISERegistries.PARTICLE_TYPES.register("electrocution_sparks", () -> new SimpleParticleType(true));
+	public static final RegistryObject<SoundEvent> ELECTROCUTION = ISERegistries.SOUND_EVENTS.register("electrocution", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "electrocution")));
+	public static final TagKey<DamageType> DOESNT_TRIGGER_ELECTROCUTION = ISEDamageTypeTagsProvider.create("doesnt_trigger_electrocution");
 
 
-	private static final ITEArmorMaterial CHAINED_COPPER = new ITEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "chained_copper", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ISEArmorMaterial CHAINED_COPPER = new ISEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "chained_copper", 10, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 1);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 3);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 4);
 		p_266652_.put(ArmorItem.Type.HELMET, 1);
 	}), 13, SoundEvents.ARMOR_EQUIP_CHAIN, 0f, 0f, () -> Ingredient.of(Items.COPPER_INGOT));
 
-	public static final RegistryObject<Item> BOOTS = ITERegistries.ITEMS.register("chained_copper_boots", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.BOOTS, new Item.Properties()));
-	public static final RegistryObject<Item> LEGGINGS = ITERegistries.ITEMS.register("chained_copper_leggings", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-	public static final RegistryObject<Item> CHESTPLATE = ITERegistries.ITEMS.register("chained_copper_chestplate", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-	public static final RegistryObject<Item> HELMET = ITERegistries.ITEMS.register("chained_copper_helmet", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.HELMET, new Item.Properties()));
+	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("chained_copper_boots", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.BOOTS, new Item.Properties()));
+	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("chained_copper_leggings", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+	public static final RegistryObject<Item> CHESTPLATE = ISERegistries.ITEMS.register("chained_copper_chestplate", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+	public static final RegistryObject<Item> HELMET = ISERegistries.ITEMS.register("chained_copper_helmet", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.HELMET, new Item.Properties()));
 
 	public CopperExpansion(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

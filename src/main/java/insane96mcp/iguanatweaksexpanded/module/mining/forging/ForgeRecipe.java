@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import com.google.gson.JsonObject;
-import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ISEBookCategory;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
@@ -20,7 +20,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ForgeRecipe implements Recipe<Container> {
     protected final RecipeType<?> type;
     protected final ResourceLocation id;
-    private final ITEBookCategory category;
+    private final ISEBookCategory category;
     final Ingredient ingredient;
     final int ingredientAmount;
     final Ingredient gear;
@@ -28,7 +28,7 @@ public class ForgeRecipe implements Recipe<Container> {
     protected final int smashesRequired;
     protected final float experience;
 
-    public ForgeRecipe(ResourceLocation pId, ITEBookCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience) {
+    public ForgeRecipe(ResourceLocation pId, ISEBookCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience) {
         this.type = Forging.FORGE_RECIPE_TYPE.get();
         this.category = pCategory;
         this.id = pId;
@@ -110,7 +110,7 @@ public class ForgeRecipe implements Recipe<Container> {
         return this.type;
     }
 
-    public ITEBookCategory category() {
+    public ISEBookCategory category() {
         return this.category;
     }
 
@@ -127,7 +127,7 @@ public class ForgeRecipe implements Recipe<Container> {
         }
 
         public ForgeRecipe fromJson(ResourceLocation pRecipeId, JsonObject pJson) {
-            ITEBookCategory category = ITEBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), ITEBookCategory.FORGE_MISC);
+            ISEBookCategory category = ISEBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), ISEBookCategory.FORGE_MISC);
             Ingredient ingredient = Ingredient.fromJson(pJson.getAsJsonObject("ingredient"));
             //Forge: Check if primitive string to keep vanilla or an object which can contain a count field.
             if (!pJson.has("result"))
@@ -148,7 +148,7 @@ public class ForgeRecipe implements Recipe<Container> {
         }
 
         public ForgeRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-            ITEBookCategory category = pBuffer.readEnum(ITEBookCategory.class);
+            ISEBookCategory category = pBuffer.readEnum(ISEBookCategory.class);
             Ingredient ingredient = Ingredient.fromNetwork(pBuffer);
             int ingredientAmount = pBuffer.readVarInt();
             Ingredient gear = Ingredient.fromNetwork(pBuffer);
@@ -169,7 +169,7 @@ public class ForgeRecipe implements Recipe<Container> {
         }
 
         public interface CookieBaker<T extends ForgeRecipe> {
-            T create(ResourceLocation pId, ITEBookCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience);
+            T create(ResourceLocation pId, ISEBookCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience);
         }
     }
 }

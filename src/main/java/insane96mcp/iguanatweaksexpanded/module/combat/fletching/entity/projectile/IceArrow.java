@@ -7,7 +7,7 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class IceArrow extends ITEArrow {
+public class IceArrow extends ISEArrow {
     public IceArrow(EntityType<? extends Arrow> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.gravityForce = 0.08f;

@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import com.google.gson.JsonObject;
-import insane96mcp.iguanatweaksexpanded.setup.client.ITEBookCategory;
+import insane96mcp.iguanatweaksexpanded.setup.client.ISEBookCategory;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -22,7 +22,7 @@ import java.util.function.Consumer;
 
 public class ForgeRecipeBuilder implements RecipeBuilder {
     private final RecipeCategory category;
-    private final ITEBookCategory bookCategory;
+    private final ISEBookCategory bookCategory;
     final Ingredient ingredient;
     final int ingredientAmount;
     final Ingredient gear;
@@ -32,7 +32,7 @@ public class ForgeRecipeBuilder implements RecipeBuilder {
     private final RecipeSerializer<? extends ForgeRecipe> serializer;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
-    public ForgeRecipeBuilder(RecipeCategory pCategory, ITEBookCategory pBookCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, RecipeSerializer<? extends ForgeRecipe> pSerializer) {
+    public ForgeRecipeBuilder(RecipeCategory pCategory, ISEBookCategory pBookCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, RecipeSerializer<? extends ForgeRecipe> pSerializer) {
         this.category = pCategory;
         this.bookCategory = pBookCategory;
         this.ingredient = ingredient;
@@ -44,7 +44,7 @@ public class ForgeRecipeBuilder implements RecipeBuilder {
     }
 
     public static ForgeRecipeBuilder forging(RecipeCategory pCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired) {
-        return new ForgeRecipeBuilder(pCategory, ITEBookCategory.FORGE_MISC, ingredient, ingredientAmount, gear, pResult, smashesRequired, Forging.FORGE_RECIPE_SERIALIZER.get());
+        return new ForgeRecipeBuilder(pCategory, ISEBookCategory.FORGE_MISC, ingredient, ingredientAmount, gear, pResult, smashesRequired, Forging.FORGE_RECIPE_SERIALIZER.get());
     }
 
     public ForgeRecipeBuilder awardExperience(float experience) {
@@ -86,7 +86,7 @@ public class ForgeRecipeBuilder implements RecipeBuilder {
 
     static class Result implements FinishedRecipe {
         private final ResourceLocation id;
-        private final ITEBookCategory category;
+        private final ISEBookCategory category;
         private final Ingredient ingredient;
         private final int ingredientAmount;
         private final Ingredient gear;
@@ -97,7 +97,7 @@ public class ForgeRecipeBuilder implements RecipeBuilder {
         private final ResourceLocation advancementId;
         private final RecipeSerializer<? extends ForgeRecipe> serializer;
 
-        public Result(ResourceLocation id, ITEBookCategory bookCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId, RecipeSerializer<? extends ForgeRecipe> pSerializer) {
+        public Result(ResourceLocation id, ISEBookCategory bookCategory, Ingredient ingredient, int ingredientAmount, Ingredient gear, ItemStack pResult, int smashesRequired, float experience, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId, RecipeSerializer<? extends ForgeRecipe> pSerializer) {
             this.id = id;
             this.category = bookCategory;
             this.ingredient = ingredient;
