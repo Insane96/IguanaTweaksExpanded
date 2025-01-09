@@ -5,21 +5,16 @@ import insane96mcp.iguanatweaksexpanded.data.generator.ISEBlockTagsProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
-import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.item.ILItemTier;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
 import net.minecraft.Util;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.PackType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -83,12 +78,7 @@ public class Durium extends Feature {
 	public static final RegistryObject<SPShieldItem> SHIELD = ISERegistries.registerShield("durium_shield", SHIELD_MATERIAL);
 	public static final RegistryObject<Item> SHEARS = ISERegistries.ITEMS.register("durium_shears", () -> new DuriumShears((new Item.Properties()).durability(252)));
 
-	@Config
-	@Label(name = "Durium Lodestone", description = "Enables a data pack that makes Lodestone require Durium instead of Netherite.")
-	public static Boolean duriumLodestone = true;
-
 	public Durium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "durium_lodestone", Component.literal("IguanaTweaks Expanded Durium Lodestone"), () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && duriumLodestone));
 	}
 }

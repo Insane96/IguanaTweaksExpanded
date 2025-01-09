@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Removed
+* Durium Lodestone data pack
+
 ## 1.18.0
 * Changed so much stuff to accomodate new Insane Survival Overhaul
   * Moved some features to main mod (Stats Buffs, Enhanced AI, Food Drinks, Tool Belt Integration, Minecarts, Cloth, Respawn Obelisk)
