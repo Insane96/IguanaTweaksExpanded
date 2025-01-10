@@ -287,7 +287,7 @@ public class EnchantingFeature extends JsonFeature {
             for (int i = 1; i <= maxLvl; i++) {
                 costs.append(getCost(enchantment, i, true)).append(" ");
             }
-            LogHelper.debug("%s %d (%s)", ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString(), maxLvl, costs);
+            LogHelper.debug("%s %d (%s) %s", ForgeRegistries.ENCHANTMENTS.getKey(enchantment).toString(), maxLvl, costs, enchantment.isTreasureOnly());
         }
     }
 
