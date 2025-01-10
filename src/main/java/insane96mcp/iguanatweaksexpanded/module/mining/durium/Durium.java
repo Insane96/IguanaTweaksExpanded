@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.durium;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEBlockTagsProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
+import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
@@ -73,12 +74,18 @@ public class Durium extends Feature {
 	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("durium_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("durium_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("durium", 452, INGOT, 9, Rarity.COMMON);
-
-	public static final RegistryObject<SPShieldItem> SHIELD = ISERegistries.registerShield("durium_shield", SHIELD_MATERIAL);
 	public static final RegistryObject<Item> SHEARS = ISERegistries.ITEMS.register("durium_shears", () -> new DuriumShears((new Item.Properties()).durability(252)));
 
 	public Durium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+	}
+
+	public static class ShieldsPlusIntegration {
+		public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("durium", 452, INGOT, 9, Rarity.COMMON);
+		public static final RegistryObject<SPShieldItem> SHIELD = ShieldsPlusRegistration.registerShield("durium_shield", SHIELD_MATERIAL);
+
+		public static void init() {
+
+		}
 	}
 }

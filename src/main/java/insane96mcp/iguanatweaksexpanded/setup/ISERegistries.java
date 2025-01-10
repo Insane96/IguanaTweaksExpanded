@@ -7,9 +7,6 @@ import insane96mcp.iguanatweaksexpanded.module.items.solarium.SoliumBoulderFeatu
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeinFeature;
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.OreWithRandomPatchConfiguration;
-import insane96mcp.shieldsplus.setup.SPItems;
-import insane96mcp.shieldsplus.world.item.SPShieldItem;
-import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.Registries;
@@ -111,10 +108,4 @@ public class ISERegistries {
         return register;
     }
 
-    public static RegistryObject<SPShieldItem> registerShield(String id, SPShieldMaterial material) {
-        Item.Properties properties = new Item.Properties().durability(material.durability).rarity(material.rarity);
-        RegistryObject<SPShieldItem> shield = ISERegistries.ITEMS.register(id, () -> new SPShieldItem(material, properties));
-        SPItems.SHIELDS.add(shield);
-        return shield;
-    }
 }

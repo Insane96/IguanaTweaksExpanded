@@ -80,9 +80,6 @@ public class Keego extends Feature {
 	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("keego_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("keego_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-
-	public static final RegistryObject<SPShieldItem> SHIELD = KeegoShield.registerShield("keego_shield");
-
 	public Keego(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
@@ -144,7 +141,7 @@ public class Keego extends Feature {
 	public void shieldParryEvent(ShieldBlockEvent event) {
 		if (!this.isEnabled()
 				|| event.getEntity().level().isClientSide
-				|| !event.getEntity().getUseItem().is(SHIELD.get()))
+				|| !event.getEntity().getUseItem().is(ShieldsPlusIntegration.SHIELD.get()))
 			return;
 
 		int amplifier = 0;
@@ -170,5 +167,13 @@ public class Keego extends Feature {
 
 		double duration = ((4 - serverPlayer.getAttribute(Attributes.ATTACK_SPEED).getValue()) * 20d);
 		serverPlayer.addEffect(new MobEffectInstance(ATTACK_MOMENTUM.get(), (int) Math.max(duration, 10), Math.min(amplifier, 7), false, false, true));
+	}
+
+	public static class ShieldsPlusIntegration {
+		public static final RegistryObject<SPShieldItem> SHIELD = KeegoShield.registerShield("keego_shield");
+
+		public static void init() {
+
+		}
 	}
 }

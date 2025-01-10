@@ -94,7 +94,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Items.OBSIDIAN, 2, CopperExpansion.COPPER_SWORD.get(), CopperExpansion.COATED_SWORD.get(), 12);
         forgeRecipe(writer, Items.OBSIDIAN, 2, CopperExpansion.COPPER_HOE.get(), CopperExpansion.COATED_HOE.get(), 12);
         forgeRecipe(writer, Items.OBSIDIAN, 1, CopperExpansion.COPPER_SHOVEL.get(), CopperExpansion.COATED_SHOVEL.get(), 12);
-        forgeRecipe(writer, Items.OBSIDIAN, 4, CopperExpansion.COPPER_SHIELD.get(), CopperExpansion.COATED_SHIELD.get(), 12);
+        forgeRecipe(writer, Items.OBSIDIAN, 4, CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get(), 12);
 
         //Chained Copper Armor
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CopperExpansion.HELMET.get())
@@ -163,7 +163,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 2, Items.WOODEN_SWORD, Solarium.SWORD.get(), 6);
         forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 2, Items.WOODEN_HOE, Solarium.HOE.get(), 6);
         forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 1, Items.WOODEN_SHOVEL, Solarium.SHOVEL.get(), 6);
-        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 4, SPItems.WOODEN_SHIELD.get(), Solarium.SHIELD.get(), 6);
+        forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 4, SPItems.WOODEN_SHIELD.get(), Solarium.ShieldsPlusIntegration.SHIELD.get(), 6);
         forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 5, Items.LEATHER_HELMET, Solarium.HELMET.get(), 4);
         forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 8, Items.LEATHER_CHESTPLATE, Solarium.CHESTPLATE.get(), 6);
         forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 7, Items.LEATHER_LEGGINGS, Solarium.LEGGINGS.get(), 5);
@@ -203,7 +203,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Durium.INGOT.get(), 2, FlintExpansion.HOE.get(), Durium.HOE.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 1, FlintExpansion.SHOVEL.get(), Durium.SHOVEL.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 2, Items.IRON_NUGGET, Durium.SHEARS.get(), 14);
-        forgeRecipe(writer, Durium.INGOT.get(), 4, FlintExpansion.ShieldsPlusIntegration.SHIELD.get(), Durium.SHIELD.get(), 14);
+        forgeRecipe(writer, Durium.INGOT.get(), 4, FlintExpansion.ShieldsPlusIntegration.SHIELD.get(), Durium.ShieldsPlusIntegration.SHIELD.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 5, Items.CHAINMAIL_HELMET, Durium.HELMET.get(), 10);
         forgeRecipe(writer, Durium.INGOT.get(), 8, Items.CHAINMAIL_CHESTPLATE, Durium.CHESTPLATE.get(), 14);
         forgeRecipe(writer, Durium.INGOT.get(), 7, Items.CHAINMAIL_LEGGINGS, Durium.LEGGINGS.get(), 12);
@@ -215,7 +215,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Keego.GEM.get(), 2, CopperExpansion.COPPER_SWORD.get(), Keego.SWORD.get(), 13);
         forgeRecipe(writer, Keego.GEM.get(), 2, CopperExpansion.COPPER_HOE.get(), Keego.HOE.get(), 13);
         forgeRecipe(writer, Keego.GEM.get(), 1, CopperExpansion.COPPER_SHOVEL.get(), Keego.SHOVEL.get(), 13);
-        forgeRecipe(writer, Keego.GEM.get(), 4, CopperExpansion.COPPER_SHIELD.get(), Keego.SHIELD.get(), 13);
+        forgeRecipe(writer, Keego.GEM.get(), 4, CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get(), Keego.ShieldsPlusIntegration.SHIELD.get(), 13);
         forgeRecipe(writer, Keego.GEM.get(), 5, CopperExpansion.HELMET.get(), Keego.HELMET.get(), 9);
         forgeRecipe(writer, Keego.GEM.get(), 8, CopperExpansion.CHESTPLATE.get(), Keego.CHESTPLATE.get(), 13);
         forgeRecipe(writer, Keego.GEM.get(), 7, CopperExpansion.LEGGINGS.get(), Keego.LEGGINGS.get(), 11);
@@ -253,7 +253,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         forgeRecipe(writer, Quaron.INGOT.get(), 2, Items.WOODEN_HOE, Quaron.HOE.get(), 17);
         forgeRecipe(writer, Quaron.INGOT.get(), 1, Items.WOODEN_SHOVEL, Quaron.SHOVEL.get(), 17);
         forgeRecipe(writer, Quaron.INGOT.get(), 1, Items.FISHING_ROD, Quaron.FISHING_ROD.get(), 17);
-        forgeRecipe(writer, Quaron.INGOT.get(), 4, SPItems.WOODEN_SHIELD.get(), Quaron.SHIELD.get(), 17);
+        forgeRecipe(writer, Quaron.INGOT.get(), 4, SPItems.WOODEN_SHIELD.get(), Quaron.ShieldsPlusIntegration.SHIELD.get(), 17);
         forgeRecipe(writer, Quaron.INGOT.get(), 5, Items.LEATHER_HELMET, Quaron.HELMET.get(), 12);
         forgeRecipe(writer, Quaron.INGOT.get(), 8, Items.LEATHER_CHESTPLATE, Quaron.CHESTPLATE.get(), 17);
         forgeRecipe(writer, Quaron.INGOT.get(), 7, Items.LEATHER_LEGGINGS, Quaron.LEGGINGS.get(), 15);
@@ -278,7 +278,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.SWORD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SWORD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_sword");
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.SHIELD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.SHIELD.get())
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.ShieldsPlusIntegration.SHIELD.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.ShieldsPlusIntegration.SHIELD.get())
                 .unlocks("has_soul_steel", has(SoulSteel.INGOT.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_shield");
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(Quaron.HELMET.get()), Ingredient.of(SoulSteel.INGOT.get()), RecipeCategory.COMBAT, SoulSteel.HELMET.get())
@@ -594,17 +594,17 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGear(writer, SoulSteel.SWORD.get(), SoulSteel.NUGGET.get(), 200, 9);
 
         //Recycle Shields
-        recycleGear(writer, CopperExpansion.COPPER_SHIELD.get(), Items.COPPER_INGOT, 200, 4);
+        recycleGear(writer, CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get(), Items.COPPER_INGOT, 200, 4);
         recycleGear(writer, Items.SHIELD, Items.IRON_NUGGET, 200, 36);
         recycleGear(writer, SPItems.IRON_SHIELD.get(), Items.IRON_NUGGET, 200, 36);
-        recycleGear(writer, Durium.SHIELD.get(), Durium.NUGGET.get(), 200, 36);
+        recycleGear(writer, Durium.ShieldsPlusIntegration.SHIELD.get(), Durium.NUGGET.get(), 200, 36);
         recycleGear(writer, SPItems.GOLDEN_SHIELD.get(), Items.GOLD_NUGGET, 200, 36);
-        recycleGear(writer, CopperExpansion.COATED_SHIELD.get(), Items.OBSIDIAN, 200, 4);
-        recycleGear(writer, Quaron.SHIELD.get(), Quaron.NUGGET.get(), 200, 36);
-        recycleGear(writer, Keego.SHIELD.get(), Keego.GEM.get(), 200, 4);
+        recycleGear(writer, CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get(), Items.OBSIDIAN, 200, 4);
+        recycleGear(writer, Quaron.ShieldsPlusIntegration.SHIELD.get(), Quaron.NUGGET.get(), 200, 36);
+        recycleGear(writer, Keego.ShieldsPlusIntegration.SHIELD.get(), Keego.GEM.get(), 200, 4);
         recycleGear(writer, SPItems.DIAMOND_SHIELD.get(), Items.DIAMOND, 200, 1);
         recycleGear(writer, SPItems.NETHERITE_SHIELD.get(), Items.NETHERITE_INGOT, 200, 1);
-        recycleGear(writer, SoulSteel.SHIELD.get(), SoulSteel.NUGGET.get(), 200, 9);
+        recycleGear(writer, SoulSteel.ShieldsPlusIntegration.SHIELD.get(), SoulSteel.NUGGET.get(), 200, 9);
 
         //Recycle Horse Armor
         addBlastingRecipe(writer, Items.IRON_HORSE_ARMOR, Items.IRON_NUGGET, 0, 200, 20.6f);

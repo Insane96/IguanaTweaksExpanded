@@ -41,13 +41,13 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="iguanatweaksreborn"
     mandatory=true
-    versionRange="[4.0.0,)"
+    versionRange="[4.1.0,)"
     ordering="BEFORE"
     side="BOTH"
 
 [[dependencies.iguanatweaksexpanded]]
     modId="shieldsplus"
-    mandatory=true
+    mandatory=false
     versionRange="[1.10.2,)"
     ordering="NONE"
     side="BOTH"

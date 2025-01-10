@@ -72,8 +72,6 @@ public class Solarium extends Feature {
 	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("solarium_leggings", () -> new SolariumArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
 	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("solarium_boots", () -> new SolariumArmorItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 
-	public static final RegistryObject<SPShieldItem> SHIELD = SolariumShield.registerShield("solarium_shield");
-
 	public Solarium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
@@ -189,5 +187,14 @@ public class Solarium extends Feature {
 			return;
 
 		event.setNewSpeed(event.getOriginalSpeed() * 5f);
+	}
+
+	public static class ShieldsPlusIntegration {
+
+		public static final RegistryObject<SPShieldItem> SHIELD = SolariumShield.registerShield("solarium_shield");
+
+		public static void init() {
+
+		}
 	}
 }

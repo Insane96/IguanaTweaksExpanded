@@ -9,7 +9,11 @@ import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEItemModelsProvi
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ISEArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
+import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
+import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
+import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
+import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.setup.ISECommonConfig;
 import insane96mcp.iguanatweaksexpanded.setup.ISEPackSource;
@@ -81,6 +85,13 @@ public class InsaneSurvivalExtra
         modEventBus.addListener(this::gatherData);
         modEventBus.addListener(this::addPackFinders);
         ISERegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
+
+        if (ModList.get().isLoaded("shieldsplus")) {
+            CopperExpansion.ShieldsPlusIntegration.init();
+            Durium.ShieldsPlusIntegration.init();
+            SoulSteel.ShieldsPlusIntegration.init();
+            Quaron.ShieldsPlusIntegration.init();
+        }
 
         ISETriggers.init();
 

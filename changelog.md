@@ -1,6 +1,9 @@
 # Changelog
 
-## Upcoming
+## 1.18.1
+### Changes
+* Shields+ is no longer a required dependency!
+
 ### Removed
 * Durium Lodestone data pack
 

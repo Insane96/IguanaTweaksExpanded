@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.items.copper;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEDamageTypeTagsProvider;
+import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
@@ -46,6 +47,7 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -67,8 +69,6 @@ public class CopperExpansion extends Feature {
 	public static final RegistryObject<Item> COPPER_AXE = ISERegistries.ITEMS.register("copper_axe", () -> new AxeItem(COPPER_ITEM_TIER, 7.0F, -3.1F, new Item.Properties()));
 	public static final RegistryObject<Item> COPPER_HOE = ISERegistries.ITEMS.register("copper_hoe", () -> new HoeItem(COPPER_ITEM_TIER, -1, -2.0F, new Item.Properties()));
 
-	public static final RegistryObject<SPShieldItem> COPPER_SHIELD = CopperShield.registerShield("copper_shield");
-
 	public static final ILItemTier COATED_ITEM_TIER = new ILItemTier(3, 170, 7f, 1.5f, 5, () -> Ingredient.of(Items.OBSIDIAN));
 	public static final RegistryObject<Item> COATED_SWORD = ISERegistries.ITEMS.register("coated_copper_sword", () -> new SwordItem(COATED_ITEM_TIER, 3, -2.4F, new Item.Properties()));
 	public static final RegistryObject<Item> COATED_SHOVEL = ISERegistries.ITEMS.register("coated_copper_shovel", () -> new ShovelItem(COATED_ITEM_TIER, 1.5F, -3.0F, new Item.Properties()));
@@ -76,9 +76,6 @@ public class CopperExpansion extends Feature {
 	public static final RegistryObject<Item> COATED_AXE = ISERegistries.ITEMS.register("coated_copper_axe", () -> new AxeItem(COATED_ITEM_TIER, 7.0F, -3.1F, new Item.Properties()));
 	public static final RegistryObject<Item> COATED_HOE = ISERegistries.ITEMS.register("coated_copper_hoe", () -> new HoeItem(COATED_ITEM_TIER, -1, -2.0F, new Item.Properties()));
 
-	public static final SPShieldMaterial COATED_SHIELD_MATERIAL = new SPShieldMaterial("coated_copper", 184, () -> Items.OBSIDIAN, 5, Rarity.COMMON);
-
-	public static final RegistryObject<SPShieldItem> COATED_SHIELD = ISERegistries.registerShield("coated_copper_shield", COATED_SHIELD_MATERIAL);
     public static final RegistryObject<SimpleParticleType> ELECTROCUTION_SPARKS = ISERegistries.PARTICLE_TYPES.register("electrocution_sparks", () -> new SimpleParticleType(true));
 	public static final RegistryObject<SoundEvent> ELECTROCUTION = ISERegistries.SOUND_EVENTS.register("electrocution", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "electrocution")));
 	public static final TagKey<DamageType> DOESNT_TRIGGER_ELECTROCUTION = ISEDamageTypeTagsProvider.create("doesnt_trigger_electrocution");
@@ -125,7 +122,7 @@ public class CopperExpansion extends Feature {
 	@SubscribeEvent
 	public void onHurtItemStack(HurtItemStackEvent event) {
 		if (!this.isEnabled()
-				|| (!event.getStack().is(COPPER_TOOLS_EQUIPMENT) && !event.getStack().is(COPPER_SHIELD.get()))
+				|| (!event.getStack().is(COPPER_TOOLS_EQUIPMENT) && !event.getStack().is(ShieldsPlusIntegration.COPPER_SHIELD.get()))
 				|| event.getPlayer() == null)
 			return;
 
@@ -175,10 +172,11 @@ public class CopperExpansion extends Feature {
 	@SubscribeEvent
 	public void onParry(ShieldBlockEvent event) {
 		if (!this.isEnabled()
+				|| !ModList.get().isLoaded("shieldsplus")
 				|| !(event.getEntity() instanceof Player player)
 				|| !(event.getDamageSource().getDirectEntity() instanceof LivingEntity attacker)
 				|| !(player.getUseItem().getItem() instanceof SPShieldItem spShieldItem)
-				|| !player.getUseItem().is(COATED_SHIELD.get()))
+				|| !player.getUseItem().is(ShieldsPlusIntegration.COATED_SHIELD.get()))
 			return;
 
 		CompoundTag tag = player.getUseItem().getOrCreateTag();
@@ -232,5 +230,16 @@ public class CopperExpansion extends Feature {
 
 		int hits = event.getItemStack().getOrCreateTag().getInt(COATED_TIMES_HIT);
 		event.getToolTip().add(Component.translatable("iguanatweaksexpanded.electrocution.charge", Math.round(hits / 3f * 100f)).withStyle(ChatFormatting.DARK_GRAY));
+	}
+
+	public static class ShieldsPlusIntegration {
+		public static final RegistryObject<SPShieldItem> COPPER_SHIELD = CopperShield.registerShield("copper_shield");
+
+		public static final SPShieldMaterial COATED_SHIELD_MATERIAL = new SPShieldMaterial("coated_copper", 184, () -> Items.OBSIDIAN, 5, Rarity.COMMON);
+		public static final RegistryObject<SPShieldItem> COATED_SHIELD = ShieldsPlusRegistration.registerShield("coated_copper_shield", COATED_SHIELD_MATERIAL);
+
+		public static void init() {
+
+		}
 	}
 }

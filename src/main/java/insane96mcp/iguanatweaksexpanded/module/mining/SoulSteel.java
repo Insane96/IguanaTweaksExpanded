@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
@@ -77,9 +78,6 @@ public class SoulSteel extends Feature {
 	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("soul_steel_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("soul_steel_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("soul_steel", 756, INGOT, 3, Rarity.COMMON);
-
-	public static final RegistryObject<SPShieldItem> SHIELD = ISERegistries.registerShield("soul_steel_shield", SHIELD_MATERIAL);
 
 	public SoulSteel(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
@@ -97,5 +95,14 @@ public class SoulSteel extends Feature {
 
 	public static void addGlobalLoot(GlobalLootModifierProvider provider) {
 		provider.add(path + "upgrade_template_in_fortress", new InjectLootTableModifier(new ResourceLocation("minecraft:chests/nether_bridge"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "chests/injection/soul_steel_upgrade_template")));
+	}
+
+	public static class ShieldsPlusIntegration {
+		public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("soul_steel", 756, INGOT, 3, Rarity.COMMON);
+		public static final RegistryObject<SPShieldItem> SHIELD = ShieldsPlusRegistration.registerShield("soul_steel_shield", SHIELD_MATERIAL);
+
+		public static void init() {
+
+		}
 	}
 }

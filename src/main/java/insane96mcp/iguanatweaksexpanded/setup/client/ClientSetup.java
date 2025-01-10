@@ -120,13 +120,13 @@ public class ClientSetup {
             addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
 
             if (ModList.get().isLoaded("shieldsplus")) {
-                addAfter(event, FlintExpansion.areStoneToolsDisabled() ? SPItems.WOODEN_SHIELD.get() : SPItems.STONE_SHIELD.get(), CopperExpansion.COPPER_SHIELD.get());
-                addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.SHIELD.get());
-                addAfter(event, SPItems.IRON_SHIELD.get(), Durium.SHIELD.get());
-                addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.SHIELD.get());
-                addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.COATED_SHIELD.get());
-                addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.SHIELD.get());
-                addAfter(event, SPItems.NETHERITE_SHIELD.get(), SoulSteel.SHIELD.get());
+                addAfter(event, FlintExpansion.areStoneToolsDisabled() ? SPItems.WOODEN_SHIELD.get() : SPItems.STONE_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get());
+                addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.ShieldsPlusIntegration.SHIELD.get());
+                addAfter(event, SPItems.IRON_SHIELD.get(), Durium.ShieldsPlusIntegration.SHIELD.get());
+                addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.ShieldsPlusIntegration.SHIELD.get());
+                addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get());
+                addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.ShieldsPlusIntegration.SHIELD.get());
+                addAfter(event, SPItems.NETHERITE_SHIELD.get(), SoulSteel.ShieldsPlusIntegration.SHIELD.get());
             }
 
             addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.BOOTS.get());

@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.quaron;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
@@ -66,9 +67,6 @@ public class Quaron extends Feature {
 	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("quaron_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("quaron_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-	public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("quaron", 441, INGOT, 9, Rarity.COMMON);
-
-	public static final RegistryObject<SPShieldItem> SHIELD = ISERegistries.registerShield("quaron_shield", SHIELD_MATERIAL);
 
 	public static final RegistryObject<QuaronFishingRod> FISHING_ROD = ISERegistries.ITEMS.register("quaron_fishing_rod", () -> new QuaronFishingRod(new Item.Properties().durability(94)));
 
@@ -113,5 +111,14 @@ public class Quaron extends Feature {
 
 		if (playerOwner.level().getRandom().nextFloat() < 0.2f)
 			event.setTick(event.getTick() - 1);
+	}
+
+	public static class ShieldsPlusIntegration {
+		public static final SPShieldMaterial SHIELD_MATERIAL = new SPShieldMaterial("quaron", 441, INGOT, 9, Rarity.COMMON);
+		public static final RegistryObject<SPShieldItem> SHIELD = ShieldsPlusRegistration.registerShield("quaron_shield", SHIELD_MATERIAL);
+
+		public static void init() {
+
+		}
 	}
 }

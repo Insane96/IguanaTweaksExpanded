@@ -72,7 +72,7 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         basicItem(SoulSteel.INGOT.get());
         basicItem(SoulSteel.NUGGET.get());
         basicItem(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
-        shield(SoulSteel.SHIELD.get());
+        shield(SoulSteel.ShieldsPlusIntegration.SHIELD.get());
         withExistingParent("soul_steel_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/soul_steel_block"));
 
         withExistingParent("blast_furnace", new ResourceLocation("block/blast_furnace"));
@@ -100,7 +100,7 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         handHeld(CopperExpansion.COATED_SHOVEL.get());
         handHeld(CopperExpansion.COATED_HOE.get());
         handHeld(CopperExpansion.COATED_SWORD.get());
-        shield(CopperExpansion.COATED_SHIELD.get());
+        shield(CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get());
 
         withExistingParent("crate", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate"));
 
@@ -114,7 +114,7 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         trimmedArmorItem(Solarium.CHESTPLATE);
         trimmedArmorItem(Solarium.HELMET);
         basicItem(Solarium.SOLARIUM_BALL.get());
-        shield(Solarium.SHIELD.get());
+        shield(Solarium.ShieldsPlusIntegration.SHIELD.get());
 
         handHeld(Keego.AXE.get());
         handHeld(Keego.PICKAXE.get());
@@ -126,7 +126,7 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         trimmedArmorItem(Keego.CHESTPLATE);
         trimmedArmorItem(Keego.HELMET);
         basicItem(Keego.GEM.get());
-        shield(Keego.SHIELD.get());
+        shield(Keego.ShieldsPlusIntegration.SHIELD.get());
         withExistingParent("keego_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/keego_ore"));
         withExistingParent("keego_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/keego_block"));
 
@@ -141,7 +141,7 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         trimmedArmorItem(Quaron.HELMET);
         basicItem(Quaron.INGOT.get());
         basicItem(Quaron.NUGGET.get());
-        shield(Quaron.SHIELD.get());
+        shield(Quaron.ShieldsPlusIntegration.SHIELD.get());
         withExistingParent("quaron_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/quaron_block"));
 
         handHeld(Durium.AXE.get());
@@ -157,7 +157,7 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         basicItem(Durium.INGOT.get());
         basicItem(Durium.NUGGET.get());
         basicItem(Durium.SCRAP_PIECE.get());
-        shield(Durium.SHIELD.get());
+        shield(Durium.ShieldsPlusIntegration.SHIELD.get());
         withExistingParent("durium_block", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/durium_block"));
         withExistingParent("durium_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/durium_ore"));
         withExistingParent("deepslate_durium_ore", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/deepslate_durium_ore"));
