@@ -11,8 +11,10 @@ import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ISEArr
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
+import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
+import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.setup.ISECommonConfig;
@@ -91,6 +93,8 @@ public class InsaneSurvivalExtra
             Durium.ShieldsPlusIntegration.init();
             SoulSteel.ShieldsPlusIntegration.init();
             Quaron.ShieldsPlusIntegration.init();
+            Keego.ShieldsPlusIntegration.init();
+            Solarium.ShieldsPlusIntegration.init();
         }
 
         ISETriggers.init();

@@ -26,9 +26,11 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -112,5 +114,14 @@ public class Fletching extends Feature {
 
 		event.getEntity().sendSystemMessage(Component.translatable(INVALID_FLETCHING_LANG));
 		event.setCanceled(true);
+	}
+
+	@SubscribeEvent
+	public void onTooltip(ItemTooltipEvent event) {
+		if (!this.isEnabled()
+				|| !event.getItemStack().is(Items.ARROW))
+			return;
+
+		event.getToolTip().add(Component.translatable(Items.ARROW.getDescriptionId() + ".tooltip"));
 	}
 }

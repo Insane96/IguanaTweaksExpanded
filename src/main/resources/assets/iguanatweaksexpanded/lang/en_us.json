@@ -127,11 +127,17 @@
 	"enchantment.iguanatweaksexpanded.static_charge_curse.info": "Chance to be stuck by lightning",
 	"enchantment.iguanatweaksexpanded.blood_pact_curse.info": "Using the item can hurt the user",
 
+	"item.minecraft.arrow.tooltip": "Basic arrow with average damage",
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
+	"item.iguanatweaksexpanded.quartz_arrow.tooltip": "Deals bonus piercing damage (ignores armor)",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",
+	"item.iguanatweaksexpanded.diamond_arrow.tooltip": "Deals more damage than flint arrows but it's heavier",
 	"item.iguanatweaksexpanded.explosive_arrow": "Explosive Arrow",
+	"item.iguanatweaksexpanded.explosive_arrow.tooltip": "Blows up on impact",
 	"item.iguanatweaksexpanded.torch_arrow": "Torch Arrow",
+	"item.iguanatweaksexpanded.torch_arrow.tooltip": "Places a torch or sets an entity on fire",
 	"item.iguanatweaksexpanded.ice_arrow": "Ice Arrow",
+	"item.iguanatweaksexpanded.ice_arrow.tooltip": "Applies freezing to hit entities",
 
 	"container.fletching": "Fletching",
 	"iguanatweaksexpanded.invalid_fletching_table": "This block is not valid. Break and place it back.",
