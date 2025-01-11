@@ -17,6 +17,7 @@ import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.InteractionHand;
@@ -126,6 +127,6 @@ public class Fletching extends Feature {
 				|| !event.getItemStack().is(Items.ARROW))
 			return;
 
-		event.getToolTip().add(Component.translatable(Items.ARROW.getDescriptionId() + ".tooltip"));
+		event.getToolTip().add(Component.translatable(Items.ARROW.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.GRAY));
 	}
 }
