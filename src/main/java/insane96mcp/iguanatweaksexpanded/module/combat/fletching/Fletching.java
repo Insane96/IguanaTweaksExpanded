@@ -92,6 +92,10 @@ public class Fletching extends Feature {
 	public static final RegistryObject<ISEArrowItem> ICE_ARROW_ITEM = ISERegistries.ITEMS.register("ice_arrow", () -> new ISEArrowItem(ICE_ARROW::get, 1f, new Item.Properties()));
 
 	@Config
+	@Label(name = "Torch arrows place torches", description = "If disabled, torch arrows will only set mobs on fire")
+	public static Boolean torchArrowsPlaceTorches = true;
+
+	@Config
 	@Label(name = "Fletching Data Pack", description = """
 			Enables the following changes:
 			* Replaces the vanilla fletching table recipe with the mod's one

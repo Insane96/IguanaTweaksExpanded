@@ -31,7 +31,7 @@ public class TorchArrow extends Arrow {
 
     @Override
     protected void onHitBlock(BlockHitResult pResult) {
-        if (this.level().isClientSide) {
+        if (this.level().isClientSide || !Fletching.torchArrowsPlaceTorches) {
             super.onHitBlock(pResult);
             return;
         }

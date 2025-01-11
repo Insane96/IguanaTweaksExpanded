@@ -3,6 +3,7 @@
 ## Upcoming
 ### Addition
 * Added tooltips to arrows
+* Config option to prevent torch arrows from placing torches
 
 ## 1.18.1
 ### Changes
