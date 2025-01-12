@@ -2,7 +2,7 @@
     "required": true,
     "package": "insane96mcp.iguanatweaksexpanded.mixin",
     "compatibilityLevel": "JAVA_17",
-    "refmap": "iguanatweaksexpanded.refmap.json",
+    "refmap": "mixins.iguanatweaksexpanded.refmap.json",
     "plugin": "insane96mcp.iguanatweaksreborn.mixin.plugin.ModLoadedPlugin",
     "mixins": [
         "AbstractArrowMixin",

@@ -1,9 +1,12 @@
 # Changelog
 
-## Upcoming
+## 1.18.2
 ### Addition
 * Added tooltips to arrows
 * Config option to prevent torch arrows from placing torches
+
+### Fixes
+* Startup crash
 
 ## 1.18.1
 ### Changes

@@ -67,7 +67,12 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 mixin {
-    add sourceSets.main, "iguanatweaksexpanded.refmap.json"
+    add sourceSets.main, "mixins.iguanatweaksexpanded.refmap.json"
+    config 'mixins.iguanatweaksexpanded.json'
+
+    debug.verbose = true
+    debug.export = true
+    dumpTargetOnFailure = true
 }
 
 repositories {
@@ -105,6 +110,8 @@ repositories {
 
 dependencies {
     minecraft "net.neoforged:forge:${mc_version}-${neo_version}"
+
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
     implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.4.1")) {
@@ -155,8 +162,6 @@ dependencies {
     //runtimeOnly fg.deobf("curse.maven:easy-magic-456239:4658750")
 
     //implementation fg.deobf("curse.maven:copperative-867868:4685249")
-
-    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
