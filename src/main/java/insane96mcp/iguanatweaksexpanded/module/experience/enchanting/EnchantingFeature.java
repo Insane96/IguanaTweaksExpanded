@@ -179,6 +179,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksreborn:protection", 6),
             new EnchantmentData("iguanatweaksreborn:sharpness", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksreborn:smite", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksreborn:sweeping_edge", 3, 6, 9, 12),
             new EnchantmentData("minecraft:aqua_affinity", 3),
             new EnchantmentData("minecraft:bane_of_arthropods", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("minecraft:binding_curse", 4),
