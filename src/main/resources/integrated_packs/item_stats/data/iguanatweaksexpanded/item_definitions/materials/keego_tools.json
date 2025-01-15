@@ -1,7 +1,7 @@
 {
 	"item": "#iguanatweaksexpanded:equipment/hand/keego",
 	"durability": 737,
-	"efficiency": 6,
+	"efficiency": 9,
 	"enchantability": 6,
 	"modifiers": [
 		{
@@ -17,7 +17,7 @@
 			"name": "Material modifier",
 			"slot": "mainhand",
 			"attribute": "minecraft:generic.attack_damage",
-			"amount": -0.5,
+			"amount": 0.5,
 			"operation": "addition"
 		}
 	]

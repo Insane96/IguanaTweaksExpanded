@@ -1,7 +1,7 @@
 {
 	"item": "iguanatweaksexpanded:solarium_boots",
 	"durability": 48,
-	"armor": 1,
+	"armor": 1.5,
 	"regenerating_absorption": 0.5,
 	"modifiers": [
 
