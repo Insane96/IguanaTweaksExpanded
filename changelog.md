@@ -2,7 +2,7 @@
 
 ## Upcoming
 ### Changes
-* Increased hammers base damage (3.5 -> 4.5)
+* Increased hammers base damage (3.5 -> 5)
 
 ## 1.18.2
 ### Addition
