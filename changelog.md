@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Increased hammers base damage (3.5 -> 4.5)
+
 ## 1.18.2
 ### Addition
 * Added tooltips to arrows
