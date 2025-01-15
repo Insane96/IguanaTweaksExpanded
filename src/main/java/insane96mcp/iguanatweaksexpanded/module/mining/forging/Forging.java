@@ -46,7 +46,7 @@ public class Forging extends Feature {
 
 	public static final RegistryObject<ForgeHammerItem> WOODEN_HAMMER = ISERegistries.ITEMS.register("wooden_hammer", () -> new ForgeHammerItem(Tiers.WOOD, 35, new Item.Properties()));
 	public static final RegistryObject<ForgeHammerItem> STONE_HAMMER = ISERegistries.ITEMS.register("stone_hammer", () -> new ForgeHammerItem(Tiers.STONE, 30, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> FLINT_HAMMER = ISERegistries.ITEMS.register("flint_hammer", () -> new ForgeHammerItem(FlintExpansion.ITEM_TIER, 25, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> FLINT_HAMMER = ISERegistries.ITEMS.register("flint_hammer", () -> new ForgeHammerItem(FlintExpansion.ITEM_TIER, 30, new Item.Properties()));
 	public static final RegistryObject<ForgeHammerItem> COPPER_HAMMER = ISERegistries.ITEMS.register("copper_hammer", () -> new ForgeHammerItem(CopperExpansion.COPPER_ITEM_TIER, 20, new Item.Properties()));
 	public static final RegistryObject<ForgeHammerItem> GOLDEN_HAMMER = ISERegistries.ITEMS.register("golden_hammer", () -> new ForgeHammerItem(Tiers.GOLD, 8, new Item.Properties()));
 	public static final RegistryObject<ForgeHammerItem> IRON_HAMMER = ISERegistries.ITEMS.register("iron_hammer", () -> new ForgeHammerItem(Tiers.IRON, 25, new Item.Properties()));
