@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.18.3
 ### Changes
 * Rebalanced item stats to match Insane Survival Overhaul
   * Increased hammers base damage (~~3.5~~ -> 5) and % damage (~~+100%~~ -> +150%)
