@@ -558,14 +558,6 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             ISEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? amount : -amount);
         }
 
-        @Override
-        public void onClick(double mouseX, double mouseY, int button) {
-            int amount = 1;
-            if (Screen.hasShiftDown())
-                amount = 4;
-            ISEEnchantingTableScreen.this.scroll(this.type == Type.DOWN ? amount : -amount);
-        }
-
         private int getXOffset() {
             int i = 0;
             if (this.isHoveredOrFocused())

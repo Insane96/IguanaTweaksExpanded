@@ -2,7 +2,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle' version '[6.0.18,6.2)'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     id 'org.spongepowered.mixin' version '0.7.+'
 }
@@ -32,7 +32,7 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            args '-mixin.config=iguanatweaksexpanded.mixins.json'
+            args '-mixin.config=mixins.iguanatweaksexpanded.json'
 
             mods {
                 "${mod_id}" {
@@ -109,7 +109,7 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.neoforged:forge:${mc_version}-${neo_version}"
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
@@ -132,7 +132,8 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:mmmmmmmmmmmm-225738:5051316")
     runtimeOnly fg.deobf("curse.maven:better-advancements-272515:4631253")
 
-    implementation fg.deobf("com.github.glitchfiend:SereneSeasons:${mc_version}-${sereneseasons_version}")
+    implementation fg.deobf("com.github.glitchfiend:GlitchCore-forge:${mc_version}-${glitchcore_version}")
+    implementation fg.deobf("com.github.glitchfiend:SereneSeasons-forge:${mc_version}-${sereneseasons_version}")
 
     implementation fg.deobf("com.github.Virtuoel:Pehkui:${pehkui_version}-${mc_version}-forge")
     implementation fg.deobf("curse.maven:kiwi-303657:4592974")
@@ -174,8 +175,7 @@ tasks.named('jar', Jar).configure {
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "Insane96MCP",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "iguanatweaksexpanded.mixins.json"
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 

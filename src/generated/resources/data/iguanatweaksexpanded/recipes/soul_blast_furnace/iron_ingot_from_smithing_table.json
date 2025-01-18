@@ -2,12 +2,11 @@
   "type": "iguanatweaksexpanded:multi_item_soul_blasting",
   "category": "soul_blast_furnace_misc",
   "cookingtime": 300,
-  "group": "iron_nugget",
+  "group": "iron_ingot",
   "ingredients": [
     {
-      "item": "minecraft:iron_door"
+      "item": "minecraft:smithing_table"
     }
   ],
-  "output_increase": 8.0,
-  "result": "minecraft:iron_nugget"
+  "result": "minecraft:iron_ingot"
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Smithing tables are now recyclable
+
 ## 1.18.3
 ### Changes
 * Rebalanced item stats to match Insane Survival Overhaul
