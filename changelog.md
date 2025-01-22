@@ -3,6 +3,7 @@
 ## Upcoming
 ### Changes
 * Smithing tables are now recyclable
+* Iron Hammers can now be made with both stone and flint hammers 
 
 ## 1.18.3
 ### Changes

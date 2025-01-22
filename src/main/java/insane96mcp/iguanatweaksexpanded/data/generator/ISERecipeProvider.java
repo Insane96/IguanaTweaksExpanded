@@ -633,7 +633,10 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         hammerCraftingRecipe(writer, Forging.STONE_HAMMER.get(), ItemTags.STONE_TOOL_MATERIALS);
         hammerCraftingRecipe(writer, Forging.FLINT_HAMMER.get(), Items.FLINT);
         hammerCraftingRecipe(writer, Forging.COPPER_HAMMER.get(), Items.COPPER_INGOT);
+        appendGearToName = true;
         forgeRecipe(writer, Items.IRON_INGOT, 5, Forging.STONE_HAMMER.get(), Forging.IRON_HAMMER.get(), 10);
+        forgeRecipe(writer, Items.IRON_INGOT, 5, Forging.FLINT_HAMMER.get(), Forging.IRON_HAMMER.get(), 8);
+        appendGearToName = false;
         forgeRecipe(writer, Solarium.SOLARIUM_BALL.get(), 5, Forging.WOODEN_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), 6);
         forgeRecipe(writer, Durium.INGOT.get(), 5, Forging.STONE_HAMMER.get(), Forging.DURIUM_HAMMER.get(), 14);
         forgeRecipe(writer, Quaron.INGOT.get(), 5, Forging.WOODEN_HAMMER.get(), Forging.QUARON_HAMMER.get(), 17);
@@ -875,10 +878,13 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private boolean appendMaterialToName = false;
+    private boolean appendGearToName = false;
     private void forgeRecipe(Consumer<FinishedRecipe> writer, ItemLike material, int amount, ItemLike gear, ItemStack result, int smashesRequired) {
         ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
         if (appendMaterialToName)
             recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_");
+        if (appendGearToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(gear.asItem()).getPath() + "_");
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(material), amount, Ingredient.of(gear), result, smashesRequired)
                 .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(material))
@@ -889,6 +895,8 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
         if (appendMaterialToName)
             recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(materialTag.location().getPath() + "_");
+        if (appendGearToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(gear.asItem()).getPath() + "_");
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
                 .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(materialTag))
@@ -899,6 +907,8 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
         if (appendMaterialToName)
             recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_");
+        if (appendGearToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(gear.location().getPath() + "_");
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(material), amount, Ingredient.of(gear), result, smashesRequired)
                 .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(material))
@@ -909,6 +919,8 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
         if (appendMaterialToName)
             recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(materialTag.location().getPath() + "_");
+        if (appendGearToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(gear.location().getPath() + "_");
         ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
                 .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(materialTag))
