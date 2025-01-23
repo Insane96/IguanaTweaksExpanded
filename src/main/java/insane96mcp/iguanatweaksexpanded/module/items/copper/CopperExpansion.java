@@ -13,6 +13,7 @@ import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
+import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
 import insane96mcp.insanelib.item.ILItemTier;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
@@ -93,6 +94,10 @@ public class CopperExpansion extends Feature {
 	public static final RegistryObject<Item> CHESTPLATE = ISERegistries.ITEMS.register("chained_copper_chestplate", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
 	public static final RegistryObject<Item> HELMET = ISERegistries.ITEMS.register("chained_copper_helmet", () -> new ArmorItem(CHAINED_COPPER, ArmorItem.Type.HELMET, new Item.Properties()));
 
+	@Config
+	@Label(name = "Deep Bonus Sea Level", description = "The sea level + this at which the deep bonus starts to apply")
+	public static Integer deepBonusSeaLevelRelative = 16;
+
 	public CopperExpansion(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
@@ -114,9 +119,10 @@ public class CopperExpansion extends Feature {
 		int y = event.getEntity().getBlockY();
 		if (y > level.getSeaLevel())
 			return;
+		int startingY = level.getSeaLevel() + deepBonusSeaLevelRelative;
 		//Normalize y to go from sea level to world depth (0~128 usually)
-		y = (level.getSeaLevel() - level.getMinBuildHeight()) - (y + level.getSeaLevel());
-		event.setNewSpeed((float) (event.getNewSpeed() + (0.25f * (Math.pow(y, 0.655f)))));
+		y = (startingY - level.getMinBuildHeight()) - (y + startingY);
+		event.setNewSpeed((float) (event.getNewSpeed() + (0.24f * (Math.pow(y, 0.655f)))));
 	}
 
 	@SubscribeEvent
@@ -135,9 +141,10 @@ public class CopperExpansion extends Feature {
 		int y = event.getEntity().getBlockY();
 		if (y > level.getSeaLevel())
 			return;
+		int startingY = level.getSeaLevel() + deepBonusSeaLevelRelative;
 		//Normalize y to go from sea level to world depth (0~128 usually)
-		y = (level.getSeaLevel() - level.getMinBuildHeight()) - (y + level.getSeaLevel());
-		double chance = 1 - 1 / (1 + 0.38f * Math.pow(y, 0.67f));
+		y = (startingY - level.getMinBuildHeight()) - (y + startingY);
+		double chance = 1 - 1 / (1 + 0.37f * Math.pow(y, 0.67f));
 		for (int i = 0; i < amount; i++) {
 			if (event.getRandom().nextFloat() >= chance)
 				++newAmount;
