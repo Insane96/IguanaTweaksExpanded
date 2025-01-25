@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:forging",
+  "category": "forge_misc",
+  "ingredient": {
+    "item": "minecraft:iron_ingot"
+  },
+  "amount": 3,
+  "gear": {
+    "item": "minecraft:redstone"
+  },
+  "result": "minecraft:compass",
+  "smashes_required": 5,
+  "experience": 4
+}

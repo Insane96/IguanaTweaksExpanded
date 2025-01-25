@@ -7,6 +7,7 @@
 * Copper bonus efficiency and unbreaking now start 16 blocks above the sea level (configurable)
 * Moved enchanted books from spawners to base mod
 * Crafting arrow recipe has been removed. Use the fletching table
+* Clocks and compasses now require forging
 
 ## 1.18.3
 ### Changes
