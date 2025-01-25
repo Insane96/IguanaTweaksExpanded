@@ -852,7 +852,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .recycle(amountAtMaxDurability)
                 .unlockedBy("has_armor", has(itemToRecycle))
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
     }
 
     private void hammerCraftingRecipe(Consumer<FinishedRecipe> writer, Item hammer, Item material) {
