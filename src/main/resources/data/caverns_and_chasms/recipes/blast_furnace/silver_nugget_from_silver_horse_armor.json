@@ -1,0 +1,13 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_blasting",
+  "category": "blast_furnace_misc",
+  "cookingtime": 200,
+  "group": "caverns_and_chasms:silver_nugget",
+  "ingredients": [
+    {
+      "item": "caverns_and_chasms:silver_horse_armor"
+    }
+  ],
+  "output_increase": 20.6,
+  "result": "caverns_and_chasms:silver_nugget"
+}

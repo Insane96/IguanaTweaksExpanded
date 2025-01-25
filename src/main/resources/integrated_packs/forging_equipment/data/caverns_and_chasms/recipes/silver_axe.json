@@ -1,0 +1,27 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "caverns_and_chasms"
+                }
+            ],
+            "recipe": {
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "caverns_and_chasms:silver_ingot"
+                },
+                "amount": 3,
+                "gear": {
+                    "item": "iguanatweaksreborn:flint_axe"
+                },
+                "result": "caverns_and_chasms:silver_axe",
+                "smashes_required": 6,
+                "experience": 15
+            }
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "caverns_and_chasms"
+                }
+            ],
+            "recipe": {
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "minecraft:copper_ingot"
+                },
+                "amount": 4,
+                "gear": {
+                    "item": "minecraft:redstone"
+                },
+                "result": "caverns_and_chasms:barometer",
+                "smashes_required": 5,
+                "experience": 4
+            }
+        }
+    ]
+}

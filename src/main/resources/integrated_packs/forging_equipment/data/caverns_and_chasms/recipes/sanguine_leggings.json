@@ -1,0 +1,27 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "caverns_and_chasms"
+                }
+            ],
+            "recipe": {
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "caverns_and_chasms:living_flesh"
+                },
+                "amount": 7,
+                "gear": {
+                    "item": "iguanatweaksexpanded:chained_copper_leggings"
+                },
+                "result": "caverns_and_chasms:sanguine_leggings",
+                "smashes_required": 14,
+                "experience": 21
+            }
+        }
+    ]
+}

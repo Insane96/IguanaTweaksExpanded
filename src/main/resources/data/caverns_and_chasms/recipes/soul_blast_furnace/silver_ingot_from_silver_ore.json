@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 300,
+  "experience": 2.0,
+  "group": "silver_ingot",
+  "ingredients": [
+    {
+      "item": "caverns_and_chasms:silver_ore"
+    }
+  ],
+  "output_increase": 0.3,
+  "result": "caverns_and_chasms:silver_ingot"
+}

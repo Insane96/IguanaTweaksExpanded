@@ -4,6 +4,7 @@ import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
+import dev.emi.emi.api.widget.TextWidget;
 import dev.emi.emi.api.widget.WidgetHolder;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
@@ -64,8 +65,8 @@ public class EmiForgeRecipe implements EmiRecipe {
 		widgets.addSlot(this.ingredient, 2, 2);
 		widgets.addSlot(this.gear, 2, 38);
 		widgets.addSlot(this.output, 62, 20).recipeContext(this);
-		widgets.addText(Component.literal("" + this.smashesRequired), 32, 11, 0xFFFFFF, true);
-		widgets.addTooltipText(List.of(Component.translatable(InsaneSurvivalExtra.MOD_ID + ".smashes_required")), 30, 9, 18, 11);
+		widgets.addText(Component.literal("" + this.smashesRequired), 34, 19, 0xFFFFFF, true).horizontalAlign(TextWidget.Alignment.CENTER);
+		widgets.addTooltipText(List.of(Component.translatable(InsaneSurvivalExtra.MOD_ID + ".smashes_required")), 26, 19, 23, 17);
 		widgets.addTexture(ForgeScreen.TEXTURE, 0, 0, 86, 58, 53, 14);
 	}
 }

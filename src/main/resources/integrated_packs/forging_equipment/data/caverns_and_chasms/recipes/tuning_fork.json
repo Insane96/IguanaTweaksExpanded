@@ -1,0 +1,27 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "caverns_and_chasms"
+                }
+            ],
+            "recipe": {
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "minecraft:copper_ingot"
+                },
+                "amount": 3,
+                "gear": {
+                    "item": "minecraft:copper_ingot"
+                },
+                "result": "caverns_and_chasms:tuning_fork",
+                "smashes_required": 3,
+                "experience": 2
+            }
+        }
+    ]
+}

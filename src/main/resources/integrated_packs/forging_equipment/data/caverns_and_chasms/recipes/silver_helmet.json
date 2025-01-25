@@ -1,0 +1,27 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "caverns_and_chasms"
+                }
+            ],
+            "recipe": {
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "caverns_and_chasms:silver_ingot"
+                },
+                "amount": 5,
+                "gear": {
+                    "item": "minecraft:chainmail_helmet"
+                },
+                "result": "caverns_and_chasms:silver_helmet",
+                "smashes_required": 4,
+                "experience": 11
+            }
+        }
+    ]
+}

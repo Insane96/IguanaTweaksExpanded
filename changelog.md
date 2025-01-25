@@ -1,6 +1,9 @@
 # Changelog
 
-## Upcoming
+## Alpha 1.19.0
+### Additions
+* Caverns and chasms integration
+
 ### Changes
 * Smithing tables are now recyclable
 * Iron Hammers can now be made with both stone and flint hammers
