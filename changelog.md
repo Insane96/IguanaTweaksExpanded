@@ -6,6 +6,7 @@
 * Iron Hammers can now be made with both stone and flint hammers
 * Copper bonus efficiency and unbreaking now start 16 blocks above the sea level (configurable)
 * Moved enchanted books from spawners to base mod
+* Crafting arrow recipe has been removed. Use the fletching table
 
 ## 1.18.3
 ### Changes
