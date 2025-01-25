@@ -5,6 +5,7 @@
 * Smithing tables are now recyclable
 * Iron Hammers can now be made with both stone and flint hammers
 * Copper bonus efficiency and unbreaking now start 16 blocks above the sea level (configurable)
+* Moved enchanted books from spawners to base mod
 
 ## 1.18.3
 ### Changes

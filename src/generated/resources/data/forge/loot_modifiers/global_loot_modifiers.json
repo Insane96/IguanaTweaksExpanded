@@ -3,8 +3,7 @@
     "iguanatweaksexpanded:new_enchantments_feature/void_curse",
     "iguanatweaksexpanded:experience/enchanting/blocks/lapis_ore",
     "iguanatweaksexpanded:experience/enchanting/blocks/deepslate_lapis_ore",
-    "iguanatweaksexpanded:mining/soul_steel/upgrade_template_in_fortress",
-    "iguanatweaksexpanded:experience/enchanting/curses_from_spawners"
+    "iguanatweaksexpanded:mining/soul_steel/upgrade_template_in_fortress"
   ],
   "replace": false
 }

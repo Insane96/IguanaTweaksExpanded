@@ -639,6 +639,5 @@ public class EnchantingFeature extends JsonFeature {
     public static void addGlobalLoot(GlobalLootModifierProvider provider) {
         provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
         provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
-        provider.add(path + "curses_from_spawners", new InjectLootTableModifier(new ResourceLocation(InsaneSurvivalOverhaul.RESOURCE_PREFIX + "empowered_spawner"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "curses_from_spawners")));
     }
 }
