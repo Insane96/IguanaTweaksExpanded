@@ -11,6 +11,7 @@
 * Moved enchanted books from spawners to base mod
 * Crafting arrow recipe has been removed. Use the fletching table
 * Clocks and compasses now require forging
+* Fletching tables slots switched
 
 ## 1.18.3
 ### Changes
