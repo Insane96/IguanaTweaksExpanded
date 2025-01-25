@@ -61,9 +61,9 @@ public class EmiFletchingRecipe implements EmiRecipe {
 
 	@Override
 	public void addWidgets(WidgetHolder widgets) {
-		widgets.addSlot(this.ingredient, 11, 2);
-		widgets.addSlot(this.catalyst1, 2, 20);
-		widgets.addSlot(this.catalyst2, 20, 20);
+		widgets.addSlot(this.ingredient, 11, 20);
+		widgets.addSlot(this.catalyst1, 2, 2);
+		widgets.addSlot(this.catalyst2, 20, 2);
 		widgets.addTexture(EmiTexture.EMPTY_ARROW, 40, 11);
 		widgets.addSlot(this.output, 68, 7).large(true).recipeContext(this);
 		//widgets.addText(Component.literal("" + this.smashesRequired), 32, 11, 0xFFFFFF, true);

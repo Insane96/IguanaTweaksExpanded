@@ -47,9 +47,9 @@ public class FletchingMenu extends RecipeBookMenu<CraftingContainer> {
         this.recipeBookType = InsaneSurvivalExtra.FLETCHING_RECIPE_BOOK_TYPE;
         this.level = pPlayerInventory.player.level();
 
-        this.addSlot(new Slot(this.craftSlots, INGREDIENT_SLOT, 56, 26));
-        this.addSlot(new Slot(this.craftSlots, CATALYST_1_SLOT, 47, 44));
-        this.addSlot(new Slot(this.craftSlots, CATALYST_2_SLOT, 65, 44));
+        this.addSlot(new Slot(this.craftSlots, INGREDIENT_SLOT, 56, 44));
+        this.addSlot(new Slot(this.craftSlots, CATALYST_1_SLOT, 47, 26));
+        this.addSlot(new Slot(this.craftSlots, CATALYST_2_SLOT, 65, 26));
         this.addSlot(new FletchingResultSlot(pPlayerInventory.player, this.craftSlots, this.resultSlots, RESULT_SLOT, 124, 35));
 
         for(int i = 0; i < 3; ++i) {
