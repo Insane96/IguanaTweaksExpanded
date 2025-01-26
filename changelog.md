@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Fixes
+* Shield forge recipes missing iron one and smashes and xp not matching mod's ones
+
 ## Alpha 1.19.0
 ### Additions
 * Caverns and chasms integration
