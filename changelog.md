@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.19.1
 ### Fixes
 * Shield forge recipes missing iron one and smashes and xp not matching mod's ones
 * Double lodestone advancement
