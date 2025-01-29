@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Poor and rich ores no longer show up in Creative menu if the feature is disabled
+
 ## 1.19.1
 ### Fixes
 * Shield forge recipes missing iron one and smashes and xp not matching mod's ones

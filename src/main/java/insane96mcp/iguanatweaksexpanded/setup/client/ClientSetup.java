@@ -191,21 +191,23 @@ public class ClientSetup {
             addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.SAND_ORE.item().get());
             addAfter(event, Items.DEEPSLATE_DIAMOND_ORE, Keego.ORE.item().get());
             addAfter(event, Items.VINE, Solarium.SOLIUM_MOSS.item().get());
-            addAfter(event, Items.DEEPSLATE_COPPER_ORE, BeegOreVeins.COPPER_ORE_ROCK.item().get());
-            addAfter(event, Items.DEEPSLATE_IRON_ORE, BeegOreVeins.IRON_ORE_ROCK.item().get());
-            addAfter(event, Items.DEEPSLATE_GOLD_ORE, BeegOreVeins.GOLD_ORE_ROCK.item().get());
-            addBefore(event, Items.IRON_ORE, BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().item().get());
-            addBefore(event, Items.DEEPSLATE_IRON_ORE, BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().item().get());
-            addAfter(event, Items.IRON_ORE, BeegOreVeins.POOR_RICH_IRON_ORE.richOre().item().get());
-            addAfter(event, Items.DEEPSLATE_IRON_ORE, BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().item().get());
-            addBefore(event, Items.COPPER_ORE, BeegOreVeins.POOR_RICH_COPPER_ORE.poorOre().item().get());
-            addBefore(event, Items.DEEPSLATE_COPPER_ORE, BeegOreVeins.POOR_RICH_COPPER_ORE.poorDeepslateOre().item().get());
-            addAfter(event, Items.COPPER_ORE, BeegOreVeins.POOR_RICH_COPPER_ORE.richOre().item().get());
-            addAfter(event, Items.DEEPSLATE_COPPER_ORE, BeegOreVeins.POOR_RICH_COPPER_ORE.richDeepslateOre().item().get());
-            addBefore(event, Items.GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.poorOre().item().get());
-            addBefore(event, Items.DEEPSLATE_GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.poorDeepslateOre().item().get());
-            addAfter(event, Items.GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.richOre().item().get());
-            addAfter(event, Items.DEEPSLATE_GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.richDeepslateOre().item().get());
+            if (Feature.isEnabled(BeegOreVeins.class)) {
+                addAfter(event, Items.DEEPSLATE_COPPER_ORE, BeegOreVeins.COPPER_ORE_ROCK.item().get());
+                addAfter(event, Items.DEEPSLATE_IRON_ORE, BeegOreVeins.IRON_ORE_ROCK.item().get());
+                addAfter(event, Items.DEEPSLATE_GOLD_ORE, BeegOreVeins.GOLD_ORE_ROCK.item().get());
+                addBefore(event, Items.IRON_ORE, BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().item().get());
+                addBefore(event, Items.DEEPSLATE_IRON_ORE, BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().item().get());
+                addAfter(event, Items.IRON_ORE, BeegOreVeins.POOR_RICH_IRON_ORE.richOre().item().get());
+                addAfter(event, Items.DEEPSLATE_IRON_ORE, BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().item().get());
+                addBefore(event, Items.COPPER_ORE, BeegOreVeins.POOR_RICH_COPPER_ORE.poorOre().item().get());
+                addBefore(event, Items.DEEPSLATE_COPPER_ORE, BeegOreVeins.POOR_RICH_COPPER_ORE.poorDeepslateOre().item().get());
+                addAfter(event, Items.COPPER_ORE, BeegOreVeins.POOR_RICH_COPPER_ORE.richOre().item().get());
+                addAfter(event, Items.DEEPSLATE_COPPER_ORE, BeegOreVeins.POOR_RICH_COPPER_ORE.richDeepslateOre().item().get());
+                addBefore(event, Items.GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.poorOre().item().get());
+                addBefore(event, Items.DEEPSLATE_GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.poorDeepslateOre().item().get());
+                addAfter(event, Items.GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.richOre().item().get());
+                addAfter(event, Items.DEEPSLATE_GOLD_ORE, BeegOreVeins.POOR_RICH_GOLD_ORE.richDeepslateOre().item().get());
+            }
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             addAfter(event, Items.RAW_GOLD, Durium.SCRAP_PIECE.get());
