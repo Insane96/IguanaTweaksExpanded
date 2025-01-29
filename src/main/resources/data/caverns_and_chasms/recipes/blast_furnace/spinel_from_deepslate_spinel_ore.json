@@ -3,12 +3,12 @@
   "category": "blast_furnace_misc",
   "cookingtime": 200,
   "experience": 1.0,
-  "group": "lapis_lazuli",
+  "group": "spinel",
   "ingredients": [
     {
-      "item": "minecraft:lapis_ore"
+      "item": "caverns_and_chasms:deepslate_spinel_ore"
     }
   ],
-  "output_increase": 12.0,
-  "result": "minecraft:lapis_lazuli"
+  "output_increase": 2.0,
+  "result": "caverns_and_chasms:spinel"
 }

@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_nether_gold_ore": {
+    "has_hellish_coal_ores": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:nether_gold_ore"
-            ]
+            "tag": "iguanatweaksreborn:hellish_coal_ores"
           }
         ]
       },
@@ -15,20 +13,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:blast_furnace/gold_ingot_from_nether_gold_ore"
+        "recipe": "iguanatweaksexpanded:blast_furnace/hellish_coal_from_hellish_coal_ores"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_nether_gold_ore",
+      "has_hellish_coal_ores",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:blast_furnace/gold_ingot_from_nether_gold_ore"
+      "iguanatweaksexpanded:blast_furnace/hellish_coal_from_hellish_coal_ores"
     ]
   },
   "sends_telemetry_event": true

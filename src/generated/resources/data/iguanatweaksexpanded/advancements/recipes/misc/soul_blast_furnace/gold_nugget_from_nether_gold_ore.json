@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:soul_blast_furnace/gold_ingot_from_nether_gold_ore"
+        "recipe": "iguanatweaksexpanded:soul_blast_furnace/gold_nugget_from_nether_gold_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:soul_blast_furnace/gold_ingot_from_nether_gold_ore"
+      "iguanatweaksexpanded:soul_blast_furnace/gold_nugget_from_nether_gold_ore"
     ]
   },
   "sends_telemetry_event": true

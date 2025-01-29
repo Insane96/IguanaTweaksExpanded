@@ -2,13 +2,12 @@
   "type": "iguanatweaksexpanded:multi_item_soul_blasting",
   "category": "soul_blast_furnace_misc",
   "cookingtime": 300,
-  "experience": 2.0,
-  "group": "gold_ingot",
+  "group": "iron_nugget",
   "ingredients": [
     {
-      "item": "minecraft:nether_gold_ore"
+      "item": "minecraft:iron_door"
     }
   ],
-  "output_increase": 0.3,
-  "result": "minecraft:gold_ingot"
+  "output_increase": 4.4,
+  "result": "minecraft:iron_nugget"
 }

@@ -3,6 +3,13 @@
 ## Upcoming
 ### Changes
 * Poor and rich ores no longer show up in Creative menu if the feature is disabled
+* Blast Furnaces recipes
+  * Durium and redstone ores now yeld more
+  * Reduced Nether Gold Ore and Quartz output
+  * Other minor fixes and changes
+
+### Fixes
+* Missing Caverns and Chasms blasting recipes (spinel and soul silver ore)
 
 ## 1.19.1
 ### Fixes

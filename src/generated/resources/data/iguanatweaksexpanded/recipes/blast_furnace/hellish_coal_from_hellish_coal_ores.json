@@ -2,13 +2,13 @@
   "type": "iguanatweaksexpanded:multi_item_blasting",
   "category": "blast_furnace_misc",
   "cookingtime": 200,
-  "experience": 2.0,
-  "group": "quartz",
+  "experience": 1.2,
+  "group": "hellish_coal",
   "ingredients": [
     {
-      "item": "minecraft:nether_quartz_ore"
+      "tag": "iguanatweaksreborn:hellish_coal_ores"
     }
   ],
   "output_increase": 1.0,
-  "result": "minecraft:quartz"
+  "result": "iguanatweaksreborn:hellish_coal"
 }

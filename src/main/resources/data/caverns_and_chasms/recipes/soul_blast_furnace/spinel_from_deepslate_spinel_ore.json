@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "spinel",
+  "ingredients": [
+    {
+      "item": "caverns_and_chasms:deepslate_spinel_ore"
+    }
+  ],
+  "output_increase": 1,
+  "result": "caverns_and_chasms:spinel"
+}

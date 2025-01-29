@@ -3,12 +3,12 @@
   "category": "blast_furnace_misc",
   "cookingtime": 200,
   "experience": 2.0,
-  "group": "gold_ingot",
+  "group": "silver_nugget",
   "ingredients": [
     {
-      "item": "minecraft:nether_gold_ore"
+      "item": "caverns_and_chasms:soul_silver_ore"
     }
   ],
-  "output_increase": 1.0,
-  "result": "minecraft:gold_ingot"
+  "output_increase": 7.0,
+  "result": "caverns_and_chasms:silver_nugget"
 }

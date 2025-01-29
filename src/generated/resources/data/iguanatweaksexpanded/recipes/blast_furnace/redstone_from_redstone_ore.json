@@ -9,6 +9,6 @@
       "item": "minecraft:redstone_ore"
     }
   ],
-  "output_increase": 4.0,
+  "output_increase": 8.0,
   "result": "minecraft:redstone"
 }

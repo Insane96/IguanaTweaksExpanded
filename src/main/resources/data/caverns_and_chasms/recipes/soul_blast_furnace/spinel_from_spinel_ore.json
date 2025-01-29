@@ -1,14 +1,14 @@
 {
   "type": "iguanatweaksexpanded:multi_item_soul_blasting",
   "category": "soul_blast_furnace_misc",
-  "cookingtime": 300,
+  "cookingtime": 100,
   "experience": 1.0,
-  "group": "lapis_lazuli",
+  "group": "spinel",
   "ingredients": [
     {
-      "item": "minecraft:deepslate_lapis_ore"
+      "item": "caverns_and_chasms:spinel_ore"
     }
   ],
-  "output_increase": 7.5,
-  "result": "minecraft:lapis_lazuli"
+  "output_increase": 1,
+  "result": "caverns_and_chasms:spinel"
 }

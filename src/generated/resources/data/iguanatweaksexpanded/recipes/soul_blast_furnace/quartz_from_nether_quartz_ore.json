@@ -9,6 +9,6 @@
       "item": "minecraft:nether_quartz_ore"
     }
   ],
-  "output_increase": 1.0,
+  "output_increase": 0.3,
   "result": "minecraft:quartz"
 }
