@@ -1,8 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.combat.fletching.item;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.Position;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -10,11 +8,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class ISEArrowItem extends ArrowItem {
@@ -44,16 +39,11 @@ public class ISEArrowItem extends ArrowItem {
     public AbstractArrow createDispenserArrow(Level pLevel, Position pos, ItemStack pStack) {
         Arrow arrow = arrowType.get().create(pLevel);
         if (arrow == null)
-            return super.createArrow(pLevel, pStack, null);
+            return this.createArrow(pLevel, pStack, null);
         arrow.setPos(pos.x(), pos.y(), pos.z());
         arrow.pickup = AbstractArrow.Pickup.ALLOWED;
         arrow.setBaseDamage(baseDamage);
         return arrow;
-    }
-
-    @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable(getDescriptionId() + ".tooltip").withStyle(ChatFormatting.GRAY));
     }
 
     @Override

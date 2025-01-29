@@ -1,0 +1,27 @@
+{
+    "values": [
+        "minecraft:arrow",
+        "minecraft:spectral_arrow",
+        "iguanatweaksexpanded:quartz_arrow",
+        "iguanatweaksexpanded:diamond_arrow",
+        "iguanatweaksexpanded:explosive_arrow",
+        "iguanatweaksexpanded:torch_arrow",
+        "iguanatweaksexpanded:ice_arrow",
+        {
+            "required": false,
+            "id": "savage_and_ravage:mischief_arrow"
+        },
+        {
+            "required": false,
+            "id": "caverns_and_chasms:blunt_arrow"
+        },
+        {
+            "required": false,
+            "id": "caverns_and_chasms:silver_arrow"
+        },
+        {
+            "required": false,
+            "id": "supplementaries:rope_arrow"
+        }
+    ]
+}

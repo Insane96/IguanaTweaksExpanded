@@ -128,6 +128,7 @@
 	"enchantment.iguanatweaksexpanded.blood_pact_curse.info": "Using the item can hurt the user",
 
 	"item.minecraft.arrow.tooltip": "Basic arrow with average damage",
+	"item.minecraft.spectral_arrow.tooltip": "Same as normal arrows but make your enemies glow",
 	"item.iguanatweaksexpanded.quartz_arrow": "Quartz Arrow",
 	"item.iguanatweaksexpanded.quartz_arrow.tooltip": "Deals bonus piercing damage (ignores armor)",
 	"item.iguanatweaksexpanded.diamond_arrow": "Diamond Arrow",
@@ -138,6 +139,10 @@
 	"item.iguanatweaksexpanded.torch_arrow.tooltip": "Places a torch or sets an entity on fire",
 	"item.iguanatweaksexpanded.ice_arrow": "Ice Arrow",
 	"item.iguanatweaksexpanded.ice_arrow.tooltip": "Applies freezing to hit entities",
+	"item.savage_and_ravage.mischief_arrow.tooltip": "Summon a creepie where it lands",
+	"item.caverns_and_chasms.blunt_arrow.tooltip": "Deals no damage",
+	"item.caverns_and_chasms.silver_arrow.tooltip": "Really high damage but heavy",
+	"item.supplementaries.rope_arrow.tooltip": "Place ropes on the ceiling where it lands",
 
 	"container.fletching": "Fletching",
 	"iguanatweaksexpanded.invalid_fletching_table": "This block is not valid. Break and place it back.",

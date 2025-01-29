@@ -7,6 +7,7 @@
   * Durium and redstone ores now yeld more
   * Reduced Nether Gold Ore and Quartz output
   * Other minor fixes and changes
+* Arrow tooltips are now added via ITE Item Tooltips feature
 
 ### Fixes
 * Missing Caverns and Chasms blasting recipes (spinel and soul silver ore)
