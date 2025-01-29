@@ -5,13 +5,10 @@
   "experience": 8.0,
   "ingredients": [
     {
-      "item": "minecraft:netherite_scrap"
+      "item": "minecraft:spider_eye"
     },
     {
-      "item": "minecraft:netherite_scrap"
-    },
-    {
-      "item": "minecraft:netherite_scrap"
+      "item": "minecraft:spider_eye"
     },
     {
       "item": "caverns_and_chasms:silver_ingot"
@@ -20,8 +17,12 @@
       "item": "caverns_and_chasms:silver_ingot"
     },
     {
-      "item": "caverns_and_chasms:silver_ingot"
+      "item": "minecraft:ghast_tear"
+    },
+    {
+      "item": "minecraft:ghast_tear"
     }
   ],
+  "output_increase": 0.3,
   "result": "caverns_and_chasms:necromium_ingot"
 }

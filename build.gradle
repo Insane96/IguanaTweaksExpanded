@@ -47,7 +47,6 @@ minecraft {
 
             workingDirectory project.file('run')
             property 'forge.enabledGameTestNamespaces', mod_id
-            property 'mixin.debug.export', 'true'
         }
 
         server {

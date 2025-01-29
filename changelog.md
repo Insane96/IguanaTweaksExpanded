@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.19.2
 ### Changes
 * Poor and rich ores no longer show up in Creative menu if the feature is disabled
 * Blast Furnaces recipes
@@ -8,9 +8,10 @@
   * Reduced Nether Gold Ore and Quartz output
   * Other minor fixes and changes
 * Arrow tooltips are now added via ITE Item Tooltips feature
+* Ancient scrap related ingots are no longer doubled in the soul blast furnace
 
 ### Fixes
-* Missing Caverns and Chasms blasting recipes (spinel and soul silver ore)
+* Missing Caverns and Chasms blasting recipes (spinel and soul silver ore). Also living flesh
 
 ## 1.19.1
 ### Fixes

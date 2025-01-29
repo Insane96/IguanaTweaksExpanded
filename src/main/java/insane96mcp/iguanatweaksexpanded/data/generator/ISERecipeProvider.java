@@ -316,7 +316,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS), 1)
                 .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
                 .save(writer);
-        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.IRON_INGOT), Ingredient.of(CoalFire.HELLISH_COAL.get()), Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS)), CoalFire.HELLISH_COAL.get(), SoulSteel.INGOT.get(), 8f, 1200, 0.3f);
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.IRON_INGOT), Ingredient.of(CoalFire.HELLISH_COAL.get()), Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS)), CoalFire.HELLISH_COAL.get(), SoulSteel.INGOT.get(), 8f, 1200);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ExplosiveBarrel.BLOCK.item().get())
                 .requires(Items.TNT, 1)
