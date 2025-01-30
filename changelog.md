@@ -11,7 +11,7 @@
 * Ancient scrap related ingots are no longer doubled in the soul blast furnace
 
 ### Fixes
-* Missing Caverns and Chasms blasting recipes (spinel and soul silver ore). Also living flesh
+* Missing Caverns and Chasms blasting recipes (spinel and soul silver ore). Also living flesh. Also recycle
 
 ## 1.19.1
 ### Fixes
