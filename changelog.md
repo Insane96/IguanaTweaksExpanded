@@ -1,5 +1,15 @@
 # Changelog
 
+## Upcoming
+### Additions
+* Added a new Enchantment: Enduring
+  * Increases item durability by 500
+* Added a new Enchantment: Haste
+  * Increases item efficiency by flat 3
+
+### Fixes
+* Missing CC recycle recipes
+
 ## 1.19.2
 ### Changes
 * Poor and rich ores no longer show up in Creative menu if the feature is disabled
@@ -11,7 +21,7 @@
 * Ancient scrap related ingots are no longer doubled in the soul blast furnace
 
 ### Fixes
-* Missing Caverns and Chasms blasting recipes (spinel and soul silver ore). Also living flesh. Also recycle
+* Missing Caverns and Chasms blasting recipes (spinel and soul silver ore). Also living flesh.
 
 ## 1.19.1
 ### Fixes

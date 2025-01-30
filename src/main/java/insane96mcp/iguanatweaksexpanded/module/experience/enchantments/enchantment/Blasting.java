@@ -38,17 +38,18 @@ public class Blasting extends Enchantment {
         return !(other instanceof DiggingEnchantment) && super.checkCompatibility(other);
     }
 
-    public static float getMiningSpeedBoost(LivingEntity entity, BlockState state) {
-        ItemStack heldStack = entity.getMainHandItem();
-        if (!heldStack.isCorrectToolForDrops(state))
+    public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state) {
+        if (state == null || entity == null)
             return 0f;
-        int lvl = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.BLASTING.get());
+        if (!stack.isCorrectToolForDrops(state))
+            return 0f;
+        int lvl = stack.getEnchantmentLevel(NewEnchantmentsFeature.BLASTING.get());
         if (lvl == 0)
             return 0f;
-        if (!(heldStack.getItem() instanceof DiggerItem diggerItem))
+        if (!(stack.getItem() instanceof DiggerItem diggerItem))
             return 0f;
 
         float miningSpeedBoost = lvl * Math.max(0.04f, (7f - state.getBlock().getExplosionResistance()) * 0.2f) * diggerItem.speed;
-        return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, false, entity);
+        return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, state, false, entity);
     }
 }

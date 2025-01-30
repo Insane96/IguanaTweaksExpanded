@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import insane96mcp.iguanatweaksexpanded.event.ISEEventFactory;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.items.UnbreakableItems;
+import insane96mcp.iguanatweaksreborn.module.items.unbreakableitems.UnbreakableItems;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;

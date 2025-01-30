@@ -9,6 +9,8 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantme
 import insane96mcp.iguanatweaksexpanded.network.message.JumpMidAirMessage;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksreborn.data.lootmodifier.DropMultiplierModifier;
+import insane96mcp.iguanatweaksreborn.event.EnchantmentBonusEfficiencyEvent;
+import insane96mcp.iguanatweaksreborn.event.StackMaxDamageEvent;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
@@ -63,6 +65,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> EXPANDED = ISERegistries.ENCHANTMENTS.register("expanded", Expanded::new);
 	public static final RegistryObject<Enchantment> VEINING = ISERegistries.ENCHANTMENTS.register("veining", Veining::new);
 	public static final RegistryObject<Enchantment> EXCHANGE = ISERegistries.ENCHANTMENTS.register("exchange", Exchange::new);
+	public static final RegistryObject<Enchantment> HASTE = ISERegistries.ENCHANTMENTS.register("haste", Haste::new);
 
 	//Armor
 	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ISERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
@@ -105,6 +108,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	//General
 	public static final RegistryObject<Enchantment> SOULBOUND = ISERegistries.ENCHANTMENTS.register("soulbound", Soulbound::new);
+	public static final RegistryObject<Enchantment> ENDURING = ISERegistries.ENCHANTMENTS.register("enduring", Enduring::new);
 
 	//Curses
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ISERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
@@ -138,6 +142,13 @@ public class NewEnchantmentsFeature extends Feature {
 		CurseOfExperience.consumePlayerExperience(event);
 		CurseOfFragility.increaseItemHurt(event);
 		CurseOfBloodPact.trySuckingAndRepairing(event);
+	}
+
+	@SubscribeEvent
+	public void onStackMaxDamage(StackMaxDamageEvent event) {
+		int lvl = event.getStack().getEnchantmentLevel(ENDURING.get());
+		if (lvl > 0)
+			event.setNewMaxDamage(event.getNewMaxDamage() + Enduring.getBonusDurability() * lvl);
 	}
 
 	@SubscribeEvent
@@ -203,10 +214,16 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
 		event.setNewSpeed(event.getNewSpeed() * AirBorn.getMiningSpeedMultiplier(event.getEntity(), event.getState()));
-		event.setNewSpeed(event.getNewSpeed() + Blasting.getMiningSpeedBoost(event.getEntity(), event.getState()));
-		event.setNewSpeed(event.getNewSpeed() + Adrenaline.getMiningSpeedBoost(event.getEntity(), event.getState()));
-		if (event.getEntity().getMainHandItem().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
-			event.setNewSpeed(event.getNewSpeed() * 0.65f);
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onBreakSpeedEnchantment(EnchantmentBonusEfficiencyEvent event) {
+		if (event.getStack().getEnchantmentLevel(HASTE.get()) > 0)
+			event.setNewEfficiency(event.getNewEfficiency() + Haste.getBonusEfficiency());
+		event.setNewEfficiency(event.getNewEfficiency() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
+		event.setNewEfficiency(event.getNewEfficiency() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
+		if (event.getStack().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
+			event.setNewEfficiency(event.getNewEfficiency() * 0.65f);
 	}
 
 	@SubscribeEvent
