@@ -842,7 +842,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .recycle(amountAtMaxDurability, 0.6f)
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
                 .unlockedBy("has_armor", has(itemToRecycle))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/recycle/" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
 
         MultiItemSmeltingRecipeBuilder.soulBlasting(
                         NonNullList.of(Ingredient.EMPTY, Ingredient.of(itemToRecycle)),
@@ -852,7 +852,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .recycle(amountAtMaxDurability)
                 .unlockedBy("has_armor", has(itemToRecycle))
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/recycle_" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/recycle/" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
     }
 
     private void hammerCraftingRecipe(Consumer<FinishedRecipe> writer, Item hammer, Item material) {
