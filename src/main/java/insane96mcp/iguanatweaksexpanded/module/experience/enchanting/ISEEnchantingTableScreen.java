@@ -463,7 +463,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
             MutableComponent component = Component.empty();
             if (Screen.hasShiftDown()) {
-                component.append(Component.translatable(this.enchantment.getDescriptionId() + ".info").withStyle(ChatFormatting.LIGHT_PURPLE));
+                component.append(Component.translatable(this.enchantment.getDescriptionId() + ".desc").withStyle(ChatFormatting.LIGHT_PURPLE));
                 component.append(CommonComponents.NEW_LINE);
             }
             if (!enchantment.isCurse())

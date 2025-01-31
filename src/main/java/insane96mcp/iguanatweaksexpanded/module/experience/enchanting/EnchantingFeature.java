@@ -629,7 +629,7 @@ public class EnchantingFeature extends JsonFeature {
                     }
                     tooltip.add(mutablecomponent);
                     if (Screen.hasShiftDown())
-                        tooltip.add(Component.literal("  ").append(Component.translatable(enchantment.getDescriptionId() + ".info").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC)));
+                        tooltip.add(Component.literal("  ").append(Component.translatable(enchantment.getDescriptionId() + ".desc").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC)));
                 }
             }
         }

@@ -7,6 +7,9 @@
 * Added a new Enchantment: Haste
   * Increases item efficiency by flat 3
 
+### Changes
+* Enchantment descriptions now use the same translation key as Enchantment Descriptions mod
+
 ### Fixes
 * Missing CC recycle recipes
 
