@@ -1,0 +1,34 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:wandering_trader",
+        "minecraft:villager",
+        "minecraft:iron_golem",
+        "minecraft:pillager",
+        "minecraft:evoker",
+        "minecraft:vindicator",
+        "minecraft:witch",
+        "minecraft:ravager",
+        "minecraft:zombie_villager",
+        {
+            "id": "savage_and_ravage:executioner",
+            "required": false
+        },
+        {
+            "id": "savage_and_ravage:griefer",
+            "required": false
+        },
+        {
+            "id": "savage_and_ravage:iceologer",
+            "required": false
+        },
+        {
+            "id": "savage_and_ravage:skeleton_villager",
+            "required": false
+        },
+        {
+            "id": "savage_and_ravage:trickster",
+            "required": false
+        }
+    ]
+}

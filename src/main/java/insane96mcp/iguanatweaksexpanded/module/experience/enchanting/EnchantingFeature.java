@@ -122,6 +122,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:air_born", 3),
             new EnchantmentData("iguanatweaksexpanded:air_stealer", 2, 4, 6),
             new EnchantmentData("iguanatweaksexpanded:armor_piercer", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:bane_of_noses", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:blasting", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:blood_pact_curse", 4),
             new EnchantmentData("iguanatweaksexpanded:burst_of_arrows", 6),

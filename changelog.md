@@ -2,10 +2,13 @@
 
 ## Upcoming
 ### Additions
-* Added a new Enchantment: Enduring
-  * Increases item durability by 500
-* Added a new Enchantment: Haste
-  * Increases item efficiency by flat 3
+* New enchantments
+  * Bane of Noses
+    * Increases damage against long noses
+  * Enduring
+    * Increases item durability by 500
+  * Haste
+    * Increases item efficiency by flat 3
 
 ### Changes
 * Enchantment descriptions now use the same translation key as Enchantment Descriptions mod
