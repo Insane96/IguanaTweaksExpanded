@@ -10,6 +10,9 @@
 ### Changes
 * Enchantment descriptions now use the same translation key as Enchantment Descriptions mod
 
+### Removed
+* Enchantment descriptions on pending enchantments
+
 ### Fixes
 * Missing CC recycle recipes
 

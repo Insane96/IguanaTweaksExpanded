@@ -628,8 +628,8 @@ public class EnchantingFeature extends JsonFeature {
                         mutablecomponent.append(CommonComponents.SPACE).append(Component.translatable("enchantment.level." + lvl));
                     }
                     tooltip.add(mutablecomponent);
-                    if (Screen.hasShiftDown())
-                        tooltip.add(Component.literal("  ").append(Component.translatable(enchantment.getDescriptionId() + ".desc").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC)));
+                    //if (Screen.hasShiftDown())
+                        //tooltip.add(Component.literal("  ").append(Component.translatable(enchantment.getDescriptionId() + ".desc").withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC)));
                 }
             }
         }
