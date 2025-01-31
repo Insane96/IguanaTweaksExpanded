@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.0
 ### Additions
 * New enchantments
   * Bane of Noses
