@@ -1,5 +1,13 @@
 # Changelog
 
+## Upcoming
+### Additions
+* New enchantments
+  * Flat Protection
+    * +1 Armor
+  * Absorption
+    * +0.75 absorption
+
 ## 1.20.0
 ### Additions
 * New enchantments

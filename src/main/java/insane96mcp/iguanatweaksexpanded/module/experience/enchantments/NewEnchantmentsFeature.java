@@ -70,6 +70,8 @@ public class NewEnchantmentsFeature extends Feature {
 	//Armor
 	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ISERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
 	public static final RegistryObject<Enchantment> MELEE_PROTECTION = ISERegistries.ENCHANTMENTS.register("melee_protection", MeleeProtection::new);
+	public static final RegistryObject<Enchantment> FLAT_PROTECTION = ISERegistries.ENCHANTMENTS.register("flat_protection", FlatProtection::new);
+	public static final RegistryObject<Enchantment> ABSORPTION = ISERegistries.ENCHANTMENTS.register("absorption", Absorption::new);
 	public static final RegistryObject<Enchantment> HEALTHY = ISERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ISERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public static final RegistryObject<Enchantment> RECOVERY = ISERegistries.ENCHANTMENTS.register("recovery", Recovery::new);
