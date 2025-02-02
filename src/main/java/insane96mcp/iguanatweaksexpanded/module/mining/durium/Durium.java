@@ -74,7 +74,7 @@ public class Durium extends Feature {
 	public static final RegistryObject<Item> LEGGINGS = ISERegistries.ITEMS.register("durium_leggings", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 	public static final RegistryObject<Item> BOOTS = ISERegistries.ITEMS.register("durium_boots", () -> new ArmorItem(ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-	public static final RegistryObject<Item> SHEARS = ISERegistries.ITEMS.register("durium_shears", () -> new DuriumShears((new Item.Properties()).durability(252)));
+	public static final RegistryObject<Item> SHEARS = ISERegistries.ITEMS.register("durium_shears", () -> new DuriumShears((new Item.Properties()).durability(328)));
 
 	public Durium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

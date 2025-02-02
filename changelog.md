@@ -8,6 +8,9 @@
   * Absorption
     * +0.75 absorption
 
+### Changes
+* Increased durium shears durability
+
 ## 1.20.0
 ### Additions
 * New enchantments
