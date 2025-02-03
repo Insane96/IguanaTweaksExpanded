@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Increased durium drops (2\~4 -> 3\~4)
+
 ## 1.20.1
 ### Additions
 * New enchantments
