@@ -36,7 +36,7 @@ public class DuriumShears extends ShearsItem {
             return InteractionResult.PASS;
         InteractionResult interactionResult = super.interactLivingEntity(stack, player, entity, hand);
         if (interactionResult != InteractionResult.PASS)
-            player.getCooldowns().addCooldown(stack.getItem(), 80);
+            player.getCooldowns().addCooldown(stack.getItem(), 60);
         return interactionResult;
     }
 }

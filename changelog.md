@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.1
 ### Additions
 * New enchantments
   * Flat Protection
@@ -9,7 +9,7 @@
     * +0.75 absorption
 
 ### Changes
-* Increased durium shears durability
+* Increased durium shears durability and reduced cooldown
 
 ## 1.20.0
 ### Additions
