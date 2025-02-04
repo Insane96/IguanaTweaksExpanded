@@ -363,6 +363,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 200, 4.4f);
         addBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 200);
         addBlastingRecipe(writer, Items.SMITHING_TABLE, Items.IRON_INGOT, 0f, 200);
+        addBlastingRecipe(writer, Items.CAULDRON, Items.IRON_INGOT, 0f, 200, 6f);
         //Gold
         addBlastingRecipe(writer, Items.RAW_GOLD, Items.GOLD_INGOT, 2f, 200);
         addBlastingRecipe(writer, Items.GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
@@ -399,6 +400,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 300, 4.4f);
         addSoulBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 300);
         addSoulBlastingRecipe(writer, Items.SMITHING_TABLE, Items.IRON_INGOT, 0f, 300);
+        addSoulBlastingRecipe(writer, Items.CAULDRON, Items.IRON_INGOT, 0f, 300, 6f);
         //Gold
         addSoulBlastingRecipe(writer, Items.RAW_GOLD, Items.GOLD_INGOT, 2f, 300);
         addSoulBlastingRecipe(writer, Items.GOLD_ORE, Items.GOLD_INGOT, 2f, 300, 0.3f);
