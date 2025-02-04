@@ -1,0 +1,13 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 300,
+  "group": "iron_ingot",
+  "ingredients": [
+    {
+      "item": "minecraft:cauldron"
+    }
+  ],
+  "output_increase": 6.0,
+  "result": "minecraft:iron_ingot"
+}
