@@ -23,5 +23,6 @@
       "item": "minecraft:gold_ingot"
     }
   ],
+  "output_increase": 0.3,
   "result": "minecraft:netherite_ingot"
 }

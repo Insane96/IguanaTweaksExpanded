@@ -100,7 +100,8 @@ public class ClientSetup {
             addAfter(event, Items.NETHERITE_HOE, Forging.NETHERITE_HAMMER.get());
             addAfter(event, Keego.HOE.get(), Forging.KEEGO_HAMMER.get());
 
-            addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
+            if (!ModList.get().isLoaded("caverns_and_chasms"))
+                addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {

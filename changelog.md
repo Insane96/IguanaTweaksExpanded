@@ -10,6 +10,7 @@
   * Attack speed increased (0.35 -> 0.5)
   * Attack reach increased (2 -> 2.5)
 * Increased durium drops (2\~4 -> 3\~4)
+* Altimeter now disables itself if Caverns and chasms is installed
 
 ## 1.20.1
 ### Additions

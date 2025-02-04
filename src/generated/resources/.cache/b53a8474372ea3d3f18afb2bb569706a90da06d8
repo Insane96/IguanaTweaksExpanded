@@ -1,4 +1,4 @@
-// 1.20.1	2025-01-01T22:32:43.2711704	Tags for minecraft:damage_type mod id iguanatweaksexpanded
+// 1.20.1	2025-02-04T14:11:48.5856834	Tags for minecraft:damage_type mod id iguanatweaksexpanded
 9d0d69a17a3fea8bc533ed44859785cc328ba681 data/iguanatweaksexpanded/tags/damage_type/doesnt_trigger_electrocution.json
 10324698ef50d9ab1c367abd0d46152a26bf5ed5 data/iguanatweaksexpanded/tags/damage_type/enchantments/protection/magic.json
 5e5b7ebd57fe2f7adf0d7c8ca157ad630a2a2c63 data/iguanatweaksreborn/tags/damage_type/doesnt_trigger_piercing.json

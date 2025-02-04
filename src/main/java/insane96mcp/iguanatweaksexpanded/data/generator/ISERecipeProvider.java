@@ -33,7 +33,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
+import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -143,15 +146,18 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_barrel", has(Items.BARREL))
                 .save(writer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Altimeter.ITEM.get())
-                .pattern(" i ")
-                .pattern("frf")
-                .pattern(" f ")
-                .define('f', Durium.INGOT.get())
-                .define('i', Items.IRON_INGOT)
-                .define('r', Items.REDSTONE)
-                .unlockedBy("has_durium_ingot", has(Durium.INGOT.get()))
-                .save(writer);
+        ConditionalRecipe.builder()
+                .addCondition(new NotCondition(new ModLoadedCondition("caverns_and_chasms")))
+                .addRecipe(writerConsumer -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Altimeter.ITEM.get())
+                        .pattern(" i ")
+                        .pattern("frf")
+                        .pattern(" f ")
+                        .define('f', Durium.INGOT.get())
+                        .define('i', Items.IRON_INGOT)
+                        .define('r', Items.REDSTONE)
+                        .unlockedBy("has_durium_ingot", has(Durium.INGOT.get()))
+                        .save(writerConsumer))
+                .build(writer, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "altimeter"));
 
         //Solarium ball and forging
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Solarium.SOLARIUM_BALL.get(), 1)
