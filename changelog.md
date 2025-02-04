@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.2
 ### Changes
 * Hammers rework!
   * Hammers now knock up enemies in an area
