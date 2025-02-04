@@ -103,8 +103,9 @@ public class Forging extends Feature {
 
 		event.getEntity().getPersistentData().putBoolean(InsaneSurvivalExtra.MOD_ID + "cancel_knockback", true);
 
-		if ((attacker instanceof Player player && player.getAttackStrengthScale(0.5f) < 0.9f))
-			return;
+		float attackStrengthScale = 1f;
+		if (attacker instanceof Player player)
+			attackStrengthScale = player.getAttackStrengthScale(0.5f);
 
 		float range = 2.5F;
 		float rangeSqr = range * range;
@@ -114,16 +115,16 @@ public class Forging extends Feature {
 					&& !livingEntity.isAlliedTo(attacker)
 					&& (!(livingEntity instanceof ArmorStand armorStand) || !armorStand.isMarker())
 					&& event.getEntity().distanceToSqr(livingEntity) < rangeSqr) {
-				livingEntity.push(0, (1f + (getKnockbackBonus(attacker))) * (1.0D - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE)), 0);
+				livingEntity.push(0, (0.9f + (getKnockbackBonus(attacker))) * (1.0D - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE)) * attackStrengthScale, 0);
 			}
 		}
 
-		event.getEntity().playSound(SoundEvents.ANVIL_PLACE, 0.6f, 1.1f);
+		event.getEntity().playSound(SoundEvents.ANVIL_PLACE, 0.6f * attackStrengthScale, 1.1f);
 		((ServerLevel) event.getEntity().level()).sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.ANVIL.defaultBlockState), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), 200, range / 2f, range / 4f, range / 2f, 1f);
 	}
 
 	private static float getKnockbackBonus(LivingEntity entity) {
-		return Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, entity), EnchantmentHelper.getEnchantmentLevel(EnchantmentsFeature.KNOCKBACK.get(), entity)) * 0.35f;
+		return Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, entity), EnchantmentHelper.getEnchantmentLevel(EnchantmentsFeature.KNOCKBACK.get(), entity)) * 0.2f;
 	}
 
 	@SubscribeEvent
