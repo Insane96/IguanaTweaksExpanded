@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-04T14:11:48.5866833	Recipes
+// 1.20.1	2025-02-04T14:24:26.2453542	Recipes
 526370693a4951624cbf8285db04c56cdc7523cf data/iguanatweaksexpanded/advancements/recipes/building_blocks/durium_block.json
 354b2d1d1780cbf99af3957561d45cd439edcb4e data/iguanatweaksexpanded/advancements/recipes/building_blocks/keego_block.json
 c245ac737c4ae3ba93103337c55fcf4fe4bd0c0b data/iguanatweaksexpanded/advancements/recipes/building_blocks/quaron_block.json
@@ -716,7 +716,7 @@ fcd45392d2fddc22b3c47cac1f664379219c9379 data/iguanatweaksexpanded/recipes/solar
 d16240055222f285e1bb452afd58502f33c37c07 data/iguanatweaksexpanded/recipes/solarium_sword.json
 a9e5042b1f23ff23ff3dfddd969ce272ffd6e206 data/iguanatweaksexpanded/recipes/soul_blast_furnace.json
 28193bfe7979c8039071ae49cf2e642d8bd090b8 data/iguanatweaksexpanded/recipes/soul_blast_furnace/alloy/durium_ingot.json
-de9b31064b65d7c051c9c536e74b9d675cdc8920 data/iguanatweaksexpanded/recipes/soul_blast_furnace/alloy/netherite_ingot.json
+8fd10f610a99d3b8214469cd815b3edf860f8bc2 data/iguanatweaksexpanded/recipes/soul_blast_furnace/alloy/netherite_ingot.json
 bbff192a83375dc3f9f2d59f6a84456f87f3a5f0 data/iguanatweaksexpanded/recipes/soul_blast_furnace/alloy/quaron_ingot.json
 df2b6f9d20f71d4b393a0cf868a4ee8b914830f3 data/iguanatweaksexpanded/recipes/soul_blast_furnace/alloy/soul_steel_ingot.json
 12e153d241f9abf929c329710c1a782aa97a9d5e data/iguanatweaksexpanded/recipes/soul_blast_furnace/coal_from_coal_ore.json
