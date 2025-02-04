@@ -2,6 +2,12 @@
 
 ## Upcoming
 ### Changes
+* Hammers rework!
+  * Hammers now knock up enemies in an area
+  * Knockback enchantment increases knock up
+  * Base % damage reduced (+150% -> +100%)
+  * Base damage reduced (5 -> 4)
+  * Attack speed increased (0.35 -> 0.5)
 * Increased durium drops (2\~4 -> 3\~4)
 
 ## 1.20.1
