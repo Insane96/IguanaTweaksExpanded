@@ -116,12 +116,7 @@ public class CopperExpansion extends Feature {
 		if (!level.dimension().equals(Level.OVERWORLD))
 			return;
 
-		int y = event.getEntity().getBlockY();
-		if (y > level.getSeaLevel())
-			return;
-		int startingY = level.getSeaLevel() + deepBonusSeaLevelRelative;
-		//Normalize y to go from sea level to world depth (0~128 usually)
-		y = (startingY - level.getMinBuildHeight()) - (y + startingY);
+		int y = getNormalizedY(event.getEntity().getBlockY(), level);
 		event.setNewSpeed((float) (event.getNewSpeed() + (0.24f * (Math.pow(y, 0.655f)))));
 	}
 
@@ -138,18 +133,22 @@ public class CopperExpansion extends Feature {
 
 		int amount = event.getAmount();
 		int newAmount = 0;
-		int y = event.getEntity().getBlockY();
-		if (y > level.getSeaLevel())
-			return;
-		int startingY = level.getSeaLevel() + deepBonusSeaLevelRelative;
-		//Normalize y to go from sea level to world depth (0~128 usually)
-		y = (startingY - level.getMinBuildHeight()) - (y + startingY);
+		int y = getNormalizedY(event.getEntity().getBlockY(), level);
 		double chance = 1 - 1 / (1 + 0.37f * Math.pow(y, 0.67f));
 		for (int i = 0; i < amount; i++) {
 			if (event.getRandom().nextFloat() >= chance)
 				++newAmount;
 		}
 		event.setAmount(newAmount);
+	}
+
+	public static int getNormalizedY(int y, Level level) {
+		if (y > level.getSeaLevel())
+			return y;
+		int startingY = level.getSeaLevel() + deepBonusSeaLevelRelative;
+		//Normalize y to go from 0 at sea level relative to world depth (0~128 usually)
+		y = (startingY - level.getMinBuildHeight()) - (y + startingY);
+		return y;
 	}
 
 	@SubscribeEvent
