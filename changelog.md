@@ -5,6 +5,7 @@
 * Keego shield cooldown is no longer reduced with Attack Momentum
 * Rebalanced shields to match Shields+
 * Copper items can now be repaired with Caverns and Chasms copper nuggets
+* Slightly increased hammer knockup range
 
 ### Fixes
 * Copper shields not reducing cooldown the deeper are used

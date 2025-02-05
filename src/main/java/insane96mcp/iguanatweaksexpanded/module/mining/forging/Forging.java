@@ -107,7 +107,7 @@ public class Forging extends Feature {
 		if (attacker instanceof Player player)
 			attackStrengthScale = player.getAttackStrengthScale(0.5f);
 
-		float range = 2.5F;
+		float range = 3F;
 		float rangeSqr = range * range;
 
 		for (LivingEntity livingEntity : event.getEntity().level().getEntitiesOfClass(LivingEntity.class, event.getEntity().getBoundingBox().inflate(range, range / 2f, range))) {
