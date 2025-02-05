@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.3
 ### Changes
 * Keego shield cooldown is no longer reduced with Attack Momentum
 * Rebalanced shields to match Shields+
