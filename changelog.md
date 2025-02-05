@@ -1,11 +1,10 @@
 # Changelog
 
-* Upate Design doc shield stats
-
 ## Upcoming
 ### Changes
 * Keego shield cooldown is no longer reduced with Attack Momentum
 * Rebalanced shields to match Shields+
+* Copper items can now be repaired with Caverns and Chasms copper nuggets
 
 ### Fixes
 * Copper shields not reducing cooldown the deeper are used
