@@ -2,7 +2,10 @@
 
 ## Upcoming
 ### Changes
+* Repair Kits now require half the smashes to be crafted (~~10~~ -> 5)
 * Increased max crates before slowdown to 2
+* Added missing Caverns and Chasms Repair kits
+* Enduring durability changed (+500 -> +100 on armors, otherwise +400)
 
 ### Fixes
 * Compass recipe

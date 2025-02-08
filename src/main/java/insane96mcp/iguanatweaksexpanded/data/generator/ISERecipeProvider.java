@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
+import com.teamabnormals.caverns_and_chasms.core.registry.CCItems;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
@@ -688,6 +689,10 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addRepairKitRecipe(writer, Items.DIAMOND, new Color(161, 251, 232));
         addRepairKitRecipe(writer, SoulSteel.INGOT.get(), new Color(73, 55, 44));
         addRepairKitRecipe(writer, Items.NETHERITE_INGOT, new Color(76, 65, 67));
+
+        addRepairKitRecipeRequiresMod(writer, "caverns_and_chasms", CCItems.SILVER_INGOT.get(), new Color(206, 213, 229, 255));
+        addRepairKitRecipeRequiresMod(writer, "caverns_and_chasms", CCItems.NECROMIUM_INGOT.get(), new Color(176, 189, 182, 255));
+        addRepairKitRecipeRequiresMod(writer, "caverns_and_chasms", CCItems.LIVING_FLESH.get(), new Color(152, 136, 139, 255));
         appendMaterialToName = false;
         //</editor-fold>
 
@@ -709,11 +714,19 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, ItemLike material, Color color) {
-        forgeRecipe(writer, material, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 10);
+        forgeRecipe(writer, material, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 5);
     }
 
     private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, ItemLike material, Color color) {
-        forgeRecipe(writer, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 10);
+        forgeRecipe(writer, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 5);
+    }
+
+    private void addRepairKitRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, ItemLike material, Color color) {
+        forgeRecipeRequiresMod(writer, modId, material, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 5);
+    }
+
+    private void addRepairKitRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, TagKey<Item> materialTag, ItemLike material, Color color) {
+        forgeRecipeRequiresMod(writer, modId, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 5);
     }
 
     private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, BeegOreVeins.PoorRichOre poorRichOre, Item smeltOutput, float experience, int cookingTime, float baseOutputIncrease) {
@@ -887,6 +900,20 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
     private boolean appendMaterialToName = false;
     private boolean appendGearToName = false;
+    private void forgeRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, ItemLike material, int amount, ItemLike gear, ItemStack result, int smashesRequired) {
+        ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
+        if (appendMaterialToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_");
+        if (appendGearToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(gear.asItem()).getPath() + "_");
+        ConditionalRecipe.builder()
+                .addCondition(new ModLoadedCondition(modId))
+                .addRecipe(writerConsumer -> ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(material), amount, Ingredient.of(gear), result, smashesRequired)
+                        .awardExperience(smashesRequired)
+                        .unlockedBy("has_material", has(material))
+                        .save(writerConsumer))
+                .build(writer, recipeId);
+    }
     private void forgeRecipe(Consumer<FinishedRecipe> writer, ItemLike material, int amount, ItemLike gear, ItemStack result, int smashesRequired) {
         ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
         if (appendMaterialToName)
@@ -897,6 +924,21 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .awardExperience(smashesRequired)
                 .unlockedBy("has_material", has(material))
                 .save(writer, recipeId);
+    }
+
+    private void forgeRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, TagKey<Item> materialTag, int amount, ItemLike gear, ItemStack result, int smashesRequired) {
+        ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
+        if (appendMaterialToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(materialTag.location().getPath() + "_");
+        if (appendGearToName)
+            recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(gear.asItem()).getPath() + "_");
+        ConditionalRecipe.builder()
+                .addCondition(new ModLoadedCondition(modId))
+                .addRecipe(writerConsumer -> ForgeRecipeBuilder.forging(RecipeCategory.TOOLS, Ingredient.of(materialTag), amount, Ingredient.of(gear), result, smashesRequired)
+                        .awardExperience(smashesRequired)
+                        .unlockedBy("has_material", has(materialTag))
+                        .save(writerConsumer))
+                .build(writer, recipeId);
     }
 
     private void forgeRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, int amount, ItemLike gear, ItemStack result, int smashesRequired) {
