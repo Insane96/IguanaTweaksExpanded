@@ -10,6 +10,7 @@
 ### Fixes
 * Compass recipe
 * Players not knocked up by hammers
+* Monsters from quark monster boxes dropping nothing
 
 ## 1.20.3
 ### Changes

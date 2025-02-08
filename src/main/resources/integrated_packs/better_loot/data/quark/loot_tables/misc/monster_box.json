@@ -150,7 +150,7 @@
                     "weight": 20,
                     "functions": [
                         {
-                            "function": "iguanatweaksexpanded:enchant_with_treasure",
+                            "function": "iguanatweaksreborn:enchant_with_treasure",
                             "allow_treasure": false
                         }
                     ]
