@@ -49,7 +49,7 @@ public class SyncISEEnchantingTableLearnedEnchantments {
 	}
 
 	public static void sync(ServerLevel level, ISEEnchantingTableBlockEntity blockEntity) {
-		Object msg = new SyncISEEnchantingTableLearnedEnchantments(blockEntity.learnedEnchantments);
+		Object msg = new SyncISEEnchantingTableLearnedEnchantments(blockEntity.knownEnchantments);
 		level.players().forEach(player -> CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT));
 	}
 }

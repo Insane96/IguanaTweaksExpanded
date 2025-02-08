@@ -43,7 +43,7 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     public float tRot;
     private static final RandomSource RANDOM = RandomSource.create();
     protected NonNullList<ItemStack> items = NonNullList.withSize(ISEEnchantingTableMenu.SLOT_COUNT, ItemStack.EMPTY);
-    public Map<Enchantment, Integer> learnedEnchantments = new HashMap<>();
+    public Map<Enchantment, Integer> knownEnchantments = new HashMap<>();
     protected ISEEnchantingTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
     }
@@ -60,7 +60,7 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
                 Enchantment enchantment1 = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment));
                 if (enchantment1 == null)
                     continue;
-                this.learnedEnchantments.put(enchantment1, enchantment1.getMaxLevel() / 2);
+                this.knownEnchantments.put(enchantment1, enchantment1.getMaxLevel() / 2);
             }
             tag.remove("treasure_enchantments");
         }
@@ -73,7 +73,7 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
             if (enchantment == null)
                 continue;
             int lvl = compoundTag.getInt("lvl");
-            this.learnedEnchantments.put(enchantment, lvl);
+            this.knownEnchantments.put(enchantment, lvl);
         }
     }
 
@@ -81,7 +81,7 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         super.saveAdditional(tag);
         ContainerHelper.saveAllItems(tag, this.items);
         ListTag listTag = new ListTag();
-        for (Map.Entry<Enchantment, Integer> learnedEnchantment : this.learnedEnchantments.entrySet()) {
+        for (Map.Entry<Enchantment, Integer> learnedEnchantment : this.knownEnchantments.entrySet()) {
             ResourceLocation enchantmentId = ForgeRegistries.ENCHANTMENTS.getKey(learnedEnchantment.getKey());
             if (enchantmentId == null)
                 continue;
@@ -94,18 +94,25 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     }
 
     public boolean knowsEnchantment(Enchantment enchantment, int lvl) {
-        return this.learnedEnchantments.containsKey(enchantment) && this.learnedEnchantments.get(enchantment) >= lvl;
+        return this.knownEnchantments.containsKey(enchantment) && this.knownEnchantments.get(enchantment) >= lvl;
     }
 
-    public void learnEnchantment(Enchantment enchantment, int lvl) {
-        if (this.knowsEnchantment(enchantment, lvl))
-            return;
-        this.learnedEnchantments.put(enchantment, lvl);
+    public boolean teachEnchantment(Enchantment enchantment, int lvl) {
+        if (this.knowsEnchantment(enchantment, lvl)) {
+            if (enchantment.getMaxLevel() == 1
+                    || this.knownEnchantments.get(enchantment) > lvl
+                    || this.knownEnchantments.get(enchantment) == enchantment.getMaxLevel())
+                return false;
+            this.knownEnchantments.put(enchantment, lvl + 1);
+            return true;
+        }
+        this.knownEnchantments.put(enchantment, lvl);
         this.setChanged();
+        return true;
     }
 
     public void forgetEnchantment(Enchantment enchantment) {
-        this.learnedEnchantments.remove(enchantment);
+        this.knownEnchantments.remove(enchantment);
         this.setChanged();
     }
 

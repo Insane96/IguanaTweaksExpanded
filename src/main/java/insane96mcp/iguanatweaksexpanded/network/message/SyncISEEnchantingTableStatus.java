@@ -53,9 +53,9 @@ public class SyncISEEnchantingTableStatus {
 				return;
 
 			blockEntity.setItem(0, message.item);
-			blockEntity.learnedEnchantments.clear();
+			blockEntity.knownEnchantments.clear();
 			for (var knownEnchantment : message.knownEnchantments.entrySet()) {
-				blockEntity.learnEnchantment(knownEnchantment.getKey(), knownEnchantment.getValue());
+				blockEntity.teachEnchantment(knownEnchantment.getKey(), knownEnchantment.getValue());
 			}
 
 			if (Minecraft.getInstance().screen instanceof ISEEnchantingTableScreen ISEEnchantingTableScreen) {
@@ -66,7 +66,7 @@ public class SyncISEEnchantingTableStatus {
 	}
 
 	public static void sync(ServerLevel level, BlockPos pos, ISEEnchantingTableBlockEntity blockEntity) {
-		Object msg = new SyncISEEnchantingTableStatus(pos, blockEntity.getItem(0), blockEntity.learnedEnchantments);
+		Object msg = new SyncISEEnchantingTableStatus(pos, blockEntity.getItem(0), blockEntity.knownEnchantments);
 		level.players().forEach(player -> CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT));
 	}
 }

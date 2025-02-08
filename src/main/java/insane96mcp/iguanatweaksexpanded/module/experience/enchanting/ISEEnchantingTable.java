@@ -54,7 +54,7 @@ public class ISEEnchantingTable extends BaseEntityBlock {
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         ISEEnchantingTableBlockEntity ISEEnchantingTableBlockEntity = new ISEEnchantingTableBlockEntity(pPos, pState);
         for (IdTagValue idTagValue : EnchantingFeature.startingEnchantments) {
-            ISEEnchantingTableBlockEntity.learnEnchantment(ForgeRegistries.ENCHANTMENTS.getValue(idTagValue.id.location), (int) idTagValue.value);
+            ISEEnchantingTableBlockEntity.teachEnchantment(ForgeRegistries.ENCHANTMENTS.getValue(idTagValue.id.location), (int) idTagValue.value);
         }
         return ISEEnchantingTableBlockEntity;
     }
@@ -100,18 +100,24 @@ public class ISEEnchantingTable extends BaseEntityBlock {
                             continue;
                         hasOneEligibleEnchantment = true;
                         MutableComponent enchantmentDescId = Component.translatable(enchantment.getDescriptionId());
-                        Integer lvlKnown = enchantingTableBE.learnedEnchantments.getOrDefault(enchantment, 0);
+                        Integer lvlKnown = enchantingTableBE.knownEnchantments.getOrDefault(enchantment, 0);
                         MutableComponent lvlKnownDescId = Component.translatable("enchantment.level." + lvlKnown);
-                        if (enchantingTableBE.knowsEnchantment(enchantment, lvl)) {
+                        if (!enchantingTableBE.teachEnchantment(enchantment, lvl)) {
                             player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.already_knows", enchantmentDescId, lvlKnownDescId));
                             continue;
                         }
+                        if (lvlKnown == lvl)
+                            lvl++;
                         MutableComponent newLvlDescId = Component.translatable("enchantment.level." + lvl);
-                        enchantingTableBE.learnEnchantment(enchantment, lvl);
-                        if (lvlKnown == 0)
-                            player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.learned_enchantment", enchantmentDescId, newLvlDescId));
-                        else
+                        if (lvlKnown == 0) {
+                            if (enchantment.getMaxLevel() == 1)
+                                player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.learned_enchantment", enchantmentDescId));
+                            else
+                                player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.learned_enchantment.with_lvl", enchantmentDescId, newLvlDescId));
+                        }
+                        else {
                             player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.upgrade_known_enchantment", enchantmentDescId, lvlKnownDescId, newLvlDescId));
+                        }
                         hasLearned = true;
                         toRemove.add(compound);
                     }

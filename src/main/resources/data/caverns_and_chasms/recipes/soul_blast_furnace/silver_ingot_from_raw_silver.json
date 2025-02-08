@@ -6,8 +6,8 @@
   "group": "silver_ingot",
   "ingredients": [
     {
-      "item": "caaverns_and_chasms:raw_silver"
+      "item": "caverns_and_chasms:raw_silver"
     }
   ],
-  "result": "caaverns_and_chasms:silver_ingot"
+  "result": "caverns_and_chasms:silver_ingot"
 }

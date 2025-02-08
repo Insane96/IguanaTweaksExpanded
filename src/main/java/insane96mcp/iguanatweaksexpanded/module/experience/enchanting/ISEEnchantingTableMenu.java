@@ -163,7 +163,7 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
             int cost = 0;
             int lapisCost = 0;
             for (EnchantmentInstance instance : enchantmentInstances) {
-                if (!table.learnedEnchantments.containsKey(instance.enchantment)) {
+                if (!table.knownEnchantments.containsKey(instance.enchantment)) {
                     player.sendSystemMessage(Component.literal("The table doesn't know ").append(Component.translatable(instance.enchantment.getDescriptionId())).append(Component.literal(" enchantment")));
                     return;
                 }
