@@ -151,7 +151,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public void onStackMaxDamage(StackMaxDamageEvent event) {
 		int lvl = event.getStack().getEnchantmentLevel(ENDURING.get());
 		if (lvl > 0)
-			event.setNewMaxDamage(event.getNewMaxDamage() + Enduring.getBonusDurability() * lvl);
+			event.setNewMaxDamage(event.getNewMaxDamage() + Enduring.getBonusDurability(event.getStack()) * lvl);
 	}
 
 	@SubscribeEvent

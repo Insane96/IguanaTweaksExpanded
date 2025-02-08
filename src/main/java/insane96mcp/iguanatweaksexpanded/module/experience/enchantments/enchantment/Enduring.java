@@ -1,6 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.DigDurabilityEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -24,7 +26,7 @@ public class Enduring extends Enchantment {
         return !(other instanceof DigDurabilityEnchantment) && super.checkCompatibility(other);
     }
 
-    public static int getBonusDurability() {
-        return 500;
+    public static int getBonusDurability(ItemStack stack) {
+        return stack.getItem() instanceof ArmorItem ? 100 : 400;
     }
 }
