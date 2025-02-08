@@ -37,9 +37,9 @@ public class RepairKitRepairRecipe extends CustomRecipe {
                 repairableItem = itemStack;
             }
             if (itemStack.getItem().equals(RepairKits.REPAIR_KIT.get())) {
-                //TODO Allow multiple repair kits
-                //Don't go further if there's more than 1 repair kit
-                if (repairKit != null)
+                if (repairKit != null
+                        && (itemStack.getTag() == null
+                                || !repairKit.getOrCreateTag().getString("repair_item").equals(itemStack.getTag().getString("repair_item"))))
                     return false;
                 repairKit = itemStack;
             }
@@ -52,15 +52,18 @@ public class RepairKitRepairRecipe extends CustomRecipe {
     public ItemStack assemble(CraftingContainer container, RegistryAccess pRegistryAccess) {
         ItemStack repairableItem = null;
         ItemStack repairKit = null;
+        int kitAmount = 0;
         for (int i = 0; i < container.getContainerSize(); i++) {
             ItemStack itemStack = container.getItem(i);
             if (itemStack.isEmpty())
                 continue;
             if (itemStack.isDamageableItem())
                 repairableItem = itemStack;
-            if (itemStack.getItem().equals(RepairKits.REPAIR_KIT.get()))
-                //TODO Allow multiple repair kits
-                repairKit = itemStack;
+            if (itemStack.getItem().equals(RepairKits.REPAIR_KIT.get())) {
+                if (repairKit == null)
+                    repairKit = itemStack;
+                kitAmount++;
+            }
         }
         if (repairableItem != null && repairKit != null) {
             Item repairItem = ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(repairKit.getOrCreateTag().getString("repair_item")));
@@ -73,13 +76,13 @@ public class RepairKitRepairRecipe extends CustomRecipe {
             ItemStack resultStack = repairableItem.copy();
             if (!resultStack.getItem().isValidRepairItem(resultStack, repairItemStack) && oRepairData.isEmpty())
                 return ItemStack.EMPTY;
-            int repairCount = RepairKits.repairKitIngotRatio;
+            int repairCount = RepairKits.repairKitIngotRatio * kitAmount;
             int repairItemCountCost;
-            int maxPartialRepairDmg = 1;
+            int maxPartialRepairDmg = Mth.ceil(resultStack.getMaxDamage() * (1f - RepairKits.maxRepair));
             float amountRequired = 4;
             if (oRepairData.isPresent()) {
                 AnvilRepair.RepairData repairData = oRepairData.get();
-                maxPartialRepairDmg = Mth.ceil(resultStack.getMaxDamage() * (1f - repairData.maxRepair()));
+                maxPartialRepairDmg = Math.max(maxPartialRepairDmg, Mth.ceil(resultStack.getMaxDamage() * (1f - repairData.maxRepair())));
                 amountRequired = repairData.amountRequired();
             }
             if (Anvils.moreMaterialIfEnchanted > 0f && repairableItem.isEnchanted()) {

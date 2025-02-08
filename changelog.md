@@ -4,7 +4,10 @@
 ### Changes
 * Enchanting tables can now upgrade enchantments with same level books
   * So if the enchanting table knows Efficiency III, an Efficiency III book will unlock IV
-* Repair Kits now require half the smashes to be crafted (~~10~~ -> 5)
+* Repair Kits
+  * Multiple can now be used in the crafting interface
+  * Can repair at most 75% durability
+  * Now require much fewer smashes to be crafted (~~10~~ -> 4)
 * Increased max crates before slowdown to 2
 * Added missing Caverns and Chasms Repair kits
 * Enduring durability changed (+500 -> +100 on armors, otherwise +400)

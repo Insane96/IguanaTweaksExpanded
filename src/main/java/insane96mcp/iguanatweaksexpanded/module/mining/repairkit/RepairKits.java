@@ -21,6 +21,9 @@ public class RepairKits extends Feature {
 	@Config(min = 1)
 	@Label(name = "Repair Kit Ingot Ratio", description = "How many ingots does a repair kit repair")
 	public static Integer repairKitIngotRatio = 2;
+	@Config(min = 0, max = 1)
+	@Label(name = "Max repair", description = "Maximum repair percentage of an item")
+	public static Double maxRepair = 0.75d;
 
 	public RepairKits(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

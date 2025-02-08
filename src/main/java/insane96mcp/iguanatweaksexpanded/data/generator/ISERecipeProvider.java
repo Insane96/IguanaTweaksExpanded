@@ -714,19 +714,19 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, ItemLike material, Color color) {
-        forgeRecipe(writer, material, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 5);
+        forgeRecipe(writer, material, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4);
     }
 
     private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, ItemLike material, Color color) {
-        forgeRecipe(writer, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 5);
+        forgeRecipe(writer, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4);
     }
 
     private void addRepairKitRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, ItemLike material, Color color) {
-        forgeRecipeRequiresMod(writer, modId, material, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 5);
+        forgeRecipeRequiresMod(writer, modId, material, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4);
     }
 
     private void addRepairKitRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, TagKey<Item> materialTag, ItemLike material, Color color) {
-        forgeRecipeRequiresMod(writer, modId, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 5);
+        forgeRecipeRequiresMod(writer, modId, materialTag, 3, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4);
     }
 
     private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, BeegOreVeins.PoorRichOre poorRichOre, Item smeltOutput, float experience, int cookingTime, float baseOutputIncrease) {
