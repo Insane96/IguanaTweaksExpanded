@@ -116,6 +116,8 @@ public class Forging extends Feature {
 					&& (!(livingEntity instanceof ArmorStand armorStand) || !armorStand.isMarker())
 					&& event.getEntity().distanceToSqr(livingEntity) < rangeSqr) {
 				livingEntity.push(0, (0.9f + (getKnockbackBonus(attacker))) * (1.0D - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE)) * attackStrengthScale, 0);
+				if (livingEntity instanceof Player player)
+					player.hurtMarked = true;
 			}
 		}
 

@@ -6,6 +6,7 @@
 
 ### Fixes
 * Compass recipe
+* Players not knocked up by hammers
 
 ## 1.20.3
 ### Changes
