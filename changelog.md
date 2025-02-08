@@ -1,5 +1,12 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Increased max crates before slowdown to 2
+
+### Fixes
+* Compass recipe
+
 ## 1.20.3
 ### Changes
 * Keego shield cooldown is no longer reduced with Attack Momentum

@@ -37,10 +37,10 @@ public class Crate extends Feature {
 
 	@Config(min = 0)
 	@Label(name = "Max crates without slowdown")
-	public static Integer maxCratesWithoutSlowdown = 1;
+	public static Integer maxCratesWithoutSlowdown = 2;
 
 	@Config(min = 0d, max = 1d)
-	@Label(name = "Base Slowness per crate over max", description = "When you have > 'Max crates without slowdown' this is the base value for the slowdown. The slowdown is calculated as (crates above 'Max crates' * this * crates above 'Max crates')")
+	@Label(name = "Base Slowness per crate over max", description = "When you have > 'Max crates without slowdown' this is the base value for the slowdown. The slowdown is calculated as (crates above 'Max crates' ^ 2 * this)")
 	public static Double slownessPerCrate = 0.05d;
 
 	public Crate(Module module, boolean enabledByDefault, boolean canBeDisabled) {
