@@ -7,7 +7,7 @@
 			"repair_material": {
 				"id": "minecraft:obsidian"
 			},
-			"amount": 1
+			"amount": 0.75
 		}
 	]
 }

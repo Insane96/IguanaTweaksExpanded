@@ -7,13 +7,13 @@
 			"repair_material": {
 				"id": "minecraft:copper_ingot"
 			},
-			"amount": 3
+			"amount": 2.25
 		},
 		{
 			"repair_material": {
 				"id": "caverns_and_chasms:copper_nugget"
 			},
-			"amount": 36,
+			"amount": 20,
 			"cost_multiplier": 9
 		}
 	]

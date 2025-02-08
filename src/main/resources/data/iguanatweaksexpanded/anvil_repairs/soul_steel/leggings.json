@@ -3,12 +3,12 @@
 	"repair": [
 		{
 			"repair_material": "iguanatweaksexpanded:quaron_ingot",
-			"amount": 12,
+			"amount": 10.75,
 			"max_repair": 0.5
 		},
 		{
 			"repair_material": "iguanatweaksexpanded:quaron_nugget",
-			"amount": 106,
+			"amount": 95,
 			"max_repair": 0.5,
 			"cost_multiplier": 9
 		},
