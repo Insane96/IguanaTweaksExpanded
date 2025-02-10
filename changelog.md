@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.4
 ### Changes
 * Enchanting tables can now upgrade enchantments with same level books
   * So if the enchanting table knows Efficiency III, an Efficiency III book will unlock IV
