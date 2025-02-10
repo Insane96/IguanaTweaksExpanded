@@ -35,7 +35,7 @@ public class ISEDataPacks extends Feature {
 
     public ISEDataPacks(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "ite_advancements", Component.literal("IguanaTweaks Expanded Advancements"), () -> this.isEnabled() && !disableAllDataPacks && advancements));
+        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "advancements", Component.literal("IguanaTweaks Expanded Advancements"), () -> this.isEnabled() && !disableAllDataPacks && advancements));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "item_stats", Component.literal("IguanaTweaks Expanded Item Stats"), () -> this.isEnabled() && !disableAllDataPacks && itemStatsDataPack));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "better_loot", Component.literal("IguanaTweaks Expanded Better Loot"), () -> this.isEnabled() && !disableAllDataPacks && betterStructureLoot));
         IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "block_data", Component.literal("IguanaTweaks Expanded Block Data"), () -> this.isEnabled() && !disableAllDataPacks && blockData));
