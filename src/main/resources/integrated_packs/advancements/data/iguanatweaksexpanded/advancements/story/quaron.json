@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/iron_pickaxe",
+	"parent": "minecraft:nether/root",
 	"criteria": {
 		"quaron_ingot": {
 			"trigger": "minecraft:inventory_changed",

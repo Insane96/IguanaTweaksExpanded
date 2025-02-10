@@ -11,6 +11,7 @@
 * Increased max crates before slowdown to 2
 * Added missing Caverns and Chasms Repair kits
 * Enduring durability changed (+500 -> +100 on armors, otherwise +400)
+* Minor advancements update
 
 ### Fixes
 * Compass recipe
