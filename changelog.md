@@ -3,6 +3,8 @@
 ## Upcoming
 ### Changes
 * Reverted 'Enchanting tables can now upgrade enchantments with same level books'
+  * Made way too easy to upgrade them
+* Enhanced learning enchantments messages
 
 ## 1.20.4
 ### Changes
