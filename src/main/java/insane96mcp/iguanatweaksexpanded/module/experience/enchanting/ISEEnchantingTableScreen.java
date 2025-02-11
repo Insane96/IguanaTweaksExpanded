@@ -9,6 +9,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
@@ -95,6 +96,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         this.scrollUpBtn.active = false;
         this.scrollDownBtn = new ScrollButton(topLeftCornerX + LIST_X + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y + ENCH_ENTRY_H * 4 + 2, SCROLL_BUTTON_W, SCROLL_BUTTON_H, ScrollButton.Type.DOWN);
         this.scrollDownBtn.active = false;
+        this.addRenderableWidget(new MaxLvl(topLeftCornerX + BUTTON_X, topLeftCornerY + BUTTON_Y + BUTTON_H + 4, font).alignCenter());
     }
 
     private void updatePossibleEnchantments() {
@@ -275,9 +277,8 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         }
         if (this.maxCost > 0) {
             float cost = this.getCurrentCost();
-            int color = cost > this.maxCost ? 0xFF0000 : 0x11FF11;
-            guiGraphics.drawCenteredString(this.font, "Max: %s".formatted(ONE_DECIMAL_FORMATTER.format(this.maxCost)), topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 12, color);
-            color = this.minecraft.player.experienceLevel < cost && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
+            //guiGraphics.drawCenteredString(this.font, , topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 12, color);
+            int color = this.minecraft.player.experienceLevel < cost && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
             if (this.isButtonEnabled())
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             else
@@ -569,6 +570,25 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         enum Type {
             UP,
             DOWN
+        }
+    }
+
+    private class MaxLvl extends StringWidget {
+        public MaxLvl(int x, int y, Font pFont) {
+            super(Component.empty(), pFont);
+            this.setTooltip(Tooltip.create(Component.translatable("iguanatweaksexpanded.enchanting_table.max_lvl_info")));
+            this.setX(x);
+            this.setY(y);
+            this.setWidth(BUTTON_W);
+            this.setHeight((int) (BUTTON_H * 1.5) + 1);
+        }
+
+        @Override
+        public Component getMessage() {
+            if (ISEEnchantingTableScreen.this.maxCost == 0)
+                return super.getMessage();
+            ChatFormatting color = ISEEnchantingTableScreen.this.getCurrentCost() > ISEEnchantingTableScreen.this.maxCost ? ChatFormatting.RED : ChatFormatting.GREEN;
+            return Component.literal("Max: %s".formatted(ONE_DECIMAL_FORMATTER.format(ISEEnchantingTableScreen.this.maxCost))).withStyle(color);
         }
     }
 

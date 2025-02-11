@@ -13,6 +13,7 @@
 	"iguanatweaksexpanded.enchanting_table.no_valid_enchantments": "This enchanted book has no valid enchantments on it",
 	"iguanatweaksexpanded.has_pending_enchantments": "Has Pending Enchantments",
 	"iguanatweaksexpanded.base_enchantability": "Base Enchantability: %d",
+	"iguanatweaksexpanded.enchanting_table.max_lvl_info": "Increased by infusing or empowering items and also by applying curses",
 
 	"enchantment.iguanatweaksexpanded.magnetic": "Magnetic",
 	"enchantment.iguanatweaksexpanded.vindication": "Vindication",
