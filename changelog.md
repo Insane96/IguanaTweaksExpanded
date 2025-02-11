@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Reverted 'Enchanting tables can now upgrade enchantments with same level books'
+
 ## 1.20.4
 ### Changes
 * Enchanting tables can now upgrade enchantments with same level books
