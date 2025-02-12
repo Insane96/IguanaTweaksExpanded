@@ -90,7 +90,8 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
             compoundTag.putInt("lvl", learnedEnchantment.getValue());
             listTag.add(compoundTag);
         }
-        tag.put("learned_enchantments", listTag);
+        if (!listTag.isEmpty())
+            tag.put("learned_enchantments", listTag);
     }
 
     public boolean knowsEnchantment(Enchantment enchantment, int lvl) {

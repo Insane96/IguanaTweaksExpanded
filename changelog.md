@@ -2,10 +2,12 @@
 
 ## Upcoming
 ### Changes
-* Reverted 'Enchanting tables can now upgrade enchantments with same level books'
-  * Made way too easy to upgrade them
-* Enhanced learning enchantments messages
-* Added Max level info in enchanting table
+* Enchanting Table
+  * Known enchantments are now shown when no item is in
+  * Reverted 'Enchanting tables can now upgrade enchantments with same level books'
+    * Made way too easy to upgrade them
+  * Enhanced learning enchantments messages
+  * Added Max level info in enchanting table
 
 ## 1.20.4
 ### Changes
