@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.5
 ### Changes
 * Enchanting Table
   * Known enchantments are now shown when no item is in
