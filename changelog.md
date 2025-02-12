@@ -8,6 +8,11 @@
     * Made way too easy to upgrade them
   * Enhanced learning enchantments messages
   * Added Max level info in enchanting table
+* Expanded max level is now 4
+  * I mines 2 blocks
+  * II mines 3
+  * III mines 5
+  * IV mines 9
 
 ## 1.20.4
 ### Changes

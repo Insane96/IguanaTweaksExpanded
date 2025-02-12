@@ -55,17 +55,17 @@ public class Expanded extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 2;
+        return 3;
     }
 
     @Override
     public int getMinCost(int level) {
-        return 25 * level;
+        return 15 * level;
     }
 
     @Override
     public int getMaxCost(int level) {
-        return this.getMinCost(level) + 25;
+        return this.getMinCost(level) + 15;
     }
 
     public boolean checkCompatibility(Enchantment other) {
@@ -225,19 +225,21 @@ public class Expanded extends Enchantment {
             playerRelative = true;
         }
 
-        //Clamp level to 3
-        if (lvl > 3)
-            lvl = 3;
+        //Clamp level to 4
+        if (lvl > 4)
+            lvl = 4;
 
         if (lvl >= 1) {
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, true, face));
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, false, face));
         }
         if (lvl >= 2) {
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, true, face));
+        }
+        if (lvl >= 3) {
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getClockWise()));
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getCounterClockWise()));
         }
-        if (lvl == 3) {
+        if (lvl == 4) {
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), 1), playerRelative, true, face));
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), 1), playerRelative, true, face));
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), 1), playerRelative, false, face));
