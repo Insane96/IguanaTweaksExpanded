@@ -10,9 +10,9 @@
       ],
       "recipe": {
         "type": "iguanatweaksexpanded:forging",
-        "amount": 3,
+        "amount": 2,
         "category": "forge_misc",
-        "experience": 5.0,
+        "experience": 4.0,
         "gear": {
           "item": "minecraft:amethyst_shard"
         },
@@ -23,7 +23,7 @@
           "item": "iguanatweaksexpanded:repair_kit",
           "nbt": "{color:{b:139,g:136,r:152},repair_item:\"caverns_and_chasms:living_flesh\"}"
         },
-        "smashes_required": 5
+        "smashes_required": 4
       }
     }
   ]

@@ -1,8 +1,8 @@
 {
   "type": "iguanatweaksexpanded:forging",
-  "amount": 3,
+  "amount": 2,
   "category": "forge_misc",
-  "experience": 5.0,
+  "experience": 4.0,
   "gear": {
     "item": "minecraft:amethyst_shard"
   },
@@ -13,5 +13,5 @@
     "item": "iguanatweaksexpanded:repair_kit",
     "nbt": "{color:{b:111,g:90,r:20},repair_item:\"iguanatweaksexpanded:durium_ingot\"}"
   },
-  "smashes_required": 5
+  "smashes_required": 4
 }

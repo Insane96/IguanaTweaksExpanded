@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Repair kits forging now require 2 materials and 1 less smash
+
 ## 1.20.5
 ### Changes
 * Enchanting Table
