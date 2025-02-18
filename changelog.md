@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.6
 ### Changes
 * Repair kits forging now require 2 materials and 1 less smash
 
