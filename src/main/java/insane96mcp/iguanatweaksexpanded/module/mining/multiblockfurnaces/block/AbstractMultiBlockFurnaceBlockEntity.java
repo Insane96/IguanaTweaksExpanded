@@ -342,7 +342,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         if (!hasIngredient)
             return false;
 
-        ItemStack resultStack = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
+        ItemStack resultStack = ((Recipe<WorldlyContainer>) recipe).getResultItem(registryAccess);
         if (resultStack.isEmpty()) {
             return false;
         }

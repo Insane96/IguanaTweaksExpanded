@@ -94,7 +94,7 @@ public abstract class AbstractMultiItemSmeltingRecipe implements Recipe<Containe
             for (int slot : getIngredientSlots()) {
                 containerStack = container.getItem(slot);
                 if (containerStack != ItemStack.EMPTY) {
-                    stack.setCount((int) (MCUtils.getPercentageDurabilityLeft(containerStack) * this.recycle.amountAtFullDurability * this.recycle.ratio));
+                    stack.setCount(MathHelper.getAmountWithDecimalChance(RANDOM, MCUtils.getPercentageDurabilityLeft(containerStack) * this.recycle.amountAtFullDurability * this.recycle.ratio));
                     break;
                 }
             }

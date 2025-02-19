@@ -4,8 +4,11 @@
 ### Changes
 * Slight rework of Blast furnaces
   * Items are now taken from an hopper placed in the middle of the multiblock structure instead of dropped items
-  * Fuel items are now placed in the fuel slot (if empty)
-  * Can no longer pick up items that don't belong to recipes
+    * Fuel items are now placed in the fuel slot (if empty)
+    * Can no longer pick up items that don't belong to recipes
+  * Recycling items now has a chance to yield the % of recycled item
+    * E.g. In previous version you couldn't recycle a diamond shovel in a blast furnace, since that would give 60% of a diamond.  
+      This is now fixed since there's now a 60% chance to get back a diamond
 
 ## 1.20.6
 ### Changes

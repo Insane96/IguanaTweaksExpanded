@@ -40,8 +40,8 @@ public abstract class EmiMultiItemSmeltingRecipe implements EmiRecipe {
 		this.recycle = recipe.getRecycle();
 		int amount = (int) (this.outputIncrease + 1);
 		if (this.recycle != null)
-			amount = (int) (this.recycle.amountAtFullDurability() * this.recycle.ratio());
-		this.output = EmiStack.of(recipe.getResult(), (long) (amount));
+			amount = this.recycle.amountAtFullDurability();
+		this.output = EmiStack.of(recipe.getResult(), amount);
 		this.cookingTime = recipe.getCookingTime();
 	}
 
@@ -82,16 +82,11 @@ public abstract class EmiMultiItemSmeltingRecipe implements EmiRecipe {
 		widgets.addText(Component.translatable("emi.cooking.experience", this.experience), 92, 5, -1, true);
 		SlotWidget outputSlot = widgets.addSlot(this.output, 125, 12).large(true).recipeContext(this);
 		if (this.recycle != null)
-			outputSlot.appendTooltip(Component.translatable("emi.tooltip.iguanatweaksexpanded.recycle").withStyle(ChatFormatting.DARK_GREEN));
+			outputSlot.appendTooltip(Component.translatable("emi.tooltip.iguanatweaksexpanded.recycle", (int) (this.recycle.ratio() * 100)).withStyle(ChatFormatting.DARK_GREEN));
 		if (this.outputIncrease > 0f) {
 			float chance = this.outputIncrease - (int) this.outputIncrease;
 			if (chance > 0f)
 				outputSlot.appendTooltip(Component.translatable("emi.tooltip.iguanatweaksexpanded.output_increase", InsaneLib.ONE_DECIMAL_FORMATTER.format(chance * 100f)).withStyle(ChatFormatting.DARK_GREEN));
 		}
-		/*widgets.addSlot(this.ingredient, 2, 2);
-		widgets.addSlot(this.gear, 2, 38);
-		widgets.addText(Component.literal("" + this.smashesRequired), 32, 11, 0xFFFFFF, true);
-		widgets.addTooltipText(List.of(Component.translatable(IguanaTweaksExpanded.MOD_ID + ".smashes_required")), 30, 9, 18, 11);
-		widgets.addTexture(ForgeScreen.TEXTURE, 0, 0, 86, 58, 53, 14);*/
 	}
 }
