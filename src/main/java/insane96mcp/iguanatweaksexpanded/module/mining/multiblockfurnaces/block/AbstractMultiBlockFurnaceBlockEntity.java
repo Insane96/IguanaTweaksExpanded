@@ -15,11 +15,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
+import net.minecraft.util.Tuple;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
@@ -36,11 +36,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.HopperBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,7 +56,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
     public static final int DATA_COOKING_PROGRESS = 2;
     public static final int DATA_COOKING_TOTAL_TIME = 3;
     public static final int BURN_TIME_STANDARD = 200;
-    public static final int BURN_COOL_SPEED = 4;
+    public static final int BURN_COOL_SPEED = 2;
     private final RecipeType<? extends AbstractMultiItemSmeltingRecipe> recipeType;
     protected NonNullList<ItemStack> items = NonNullList.withSize(AbstractMultiBlockFurnaceMenu.SLOT_COUNT, ItemStack.EMPTY);
     int litTime;
@@ -180,9 +181,8 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
                         blockEntity.items.set(FUEL_SLOT, fuelStack.getCraftingRemainingItem());
                     else if (hasFuel) {
                         fuelStack.shrink(1);
-                        if (fuelStack.isEmpty()) {
+                        if (fuelStack.isEmpty())
                             blockEntity.items.set(FUEL_SLOT, fuelStack.getCraftingRemainingItem());
-                        }
                     }
                 }
             }
@@ -206,7 +206,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
             }
         }
         else if (!blockEntity.isLit() && blockEntity.cookingProgress > 0) {
-            blockEntity.cookingProgress = Mth.clamp(blockEntity.cookingProgress - 2, 0, blockEntity.cookingTotalTime);
+            blockEntity.cookingProgress = Mth.clamp(blockEntity.cookingProgress - BURN_COOL_SPEED, 0, blockEntity.cookingTotalTime);
         }
 
         if (!blockEntity.isLit() && (!hasInputItem || !hasFuel) && pLevel.getGameTime() % 100 == 21) {
@@ -219,57 +219,111 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
             pLevel.setBlock(pPos, pState, 3);
         }
 
-        if (setChanged) {
+        if (setChanged)
             setChanged(pLevel, pPos, pState);
-        }
     }
 
-    protected static void tryGetItemFromLevel(BlockPos pPos, BlockState pState, Level pLevel, AbstractMultiBlockFurnaceBlockEntity pBlockEntity) {
+    protected static void tryGetItemFromLevel(BlockPos pPos, BlockState pState, Level level, AbstractMultiBlockFurnaceBlockEntity blockEntity) {
         BlockPos posBehind = pPos.relative(pState.getValue(AbstractMultiBlockFurnace.FACING).getOpposite()).above();
-        AABB aabb = new AABB(posBehind.getX(), posBehind.getY(), posBehind.getZ(), posBehind.getX() + 1f, posBehind.getY() + 1f, posBehind.getZ() + 1f);
-        List<ItemEntity> entitiesOfClass = pLevel.getEntitiesOfClass(ItemEntity.class, aabb);
-        if (entitiesOfClass.isEmpty())
+        Optional<HopperBlockEntity> oHopperBlockEntity = level.getBlockEntity(posBehind, BlockEntityType.HOPPER);
+        if (oHopperBlockEntity.isEmpty())
             return;
 
-        int[] ingredientSlots = pBlockEntity.getIngredientSlots();
+        HopperBlockEntity hopperBlockEntity = oHopperBlockEntity.get();
+        Tuple<ItemStack, Integer> fuelItem = getFirstFuelItem(blockEntity, hopperBlockEntity);
+        if (fuelItem != null) {
+            ItemStack currentFuelStack = blockEntity.getItem(FUEL_SLOT);
+            ItemStack inHopperStack = fuelItem.getA();
+            int hopperSlot = fuelItem.getB();
+            if (currentFuelStack.isEmpty()) {
+                blockEntity.setItem(FUEL_SLOT, inHopperStack);
+                hopperBlockEntity.setItem(hopperSlot, ItemStack.EMPTY);
+            }
+            else if (canMergeItems(currentFuelStack, inHopperStack)) {
+                int placeableItemsCount = inHopperStack.getMaxStackSize() - currentFuelStack.getCount();
+                int actuallyPlaceableItemsCount = Math.min(inHopperStack.getCount(), placeableItemsCount);
+                hopperBlockEntity.removeItem(hopperSlot, actuallyPlaceableItemsCount);
+                currentFuelStack.grow(actuallyPlaceableItemsCount);
+            }
+        }
+
+        int[] ingredientSlots = blockEntity.getIngredientSlots();
 
         boolean isInventoryEmpty = true;
         for (int slot = 0; slot < ingredientSlots.length; slot++) {
-            ItemStack destinationStack = pBlockEntity.getItem(slot);
+            ItemStack destinationStack = blockEntity.getItem(slot);
             if (!destinationStack.isEmpty()) {
                 isInventoryEmpty = false;
                 break;
             }
         }
 
-        //If ingredient slots are empty pickup 1 of the first item found
+        //If ingredient slots are empty pickup the first available stack
         if (isInventoryEmpty) {
-            ItemEntity itemEntity = entitiesOfClass.get(0);
-            pBlockEntity.setItem(ingredientSlots[0], itemEntity.getItem().copy());
-            itemEntity.discard();
+            //TODO Check for multiple items if alloy
+            Tuple<ItemStack, Integer> inHopperStack = getFirstBurnableItem(blockEntity, level, hopperBlockEntity);
+            if (inHopperStack == null)
+                return;
+            blockEntity.setItem(ingredientSlots[0], inHopperStack.getA());
+            hopperBlockEntity.setItem(inHopperStack.getB(), ItemStack.EMPTY);
         }
         //If not, try to refill the items in the slots
         else {
+            List<Tuple<ItemStack, Integer>> hopperItems = getHopperItems(hopperBlockEntity);
+            if (hopperItems.isEmpty())
+                return;
             for (int slot = 0; slot < ingredientSlots.length; ++slot) {
-                ItemStack destinationStack = pBlockEntity.getItem(slot);
-                if (destinationStack.isEmpty() || destinationStack.getCount() >= destinationStack.getMaxStackSize())
+                ItemStack destinationStack = blockEntity.getItem(slot);
+                if (destinationStack.isEmpty()
+                        || destinationStack.getCount() >= destinationStack.getMaxStackSize())
                     continue;
-                Optional<ItemEntity> oAvailableItem = entitiesOfClass.stream().filter(itemEntity -> itemEntity.getItem().is(destinationStack.getItem())).findFirst();
-                if (oAvailableItem.isEmpty()) {
+                Tuple<ItemStack, Integer> possibleStack = hopperItems.stream().filter(tuple -> tuple.getA().is(destinationStack.getItem())).findFirst().orElse(null);
+                if (possibleStack == null)
                     continue;
-                }
-                ItemStack newStack = oAvailableItem.get().getItem().copy();
-                newStack.setCount(1);
+
+                ItemStack newStack = possibleStack.getA().copy();
                 if (canMergeItems(destinationStack, newStack)) {
                     int placeableItemsCount = newStack.getMaxStackSize() - destinationStack.getCount();
                     int actuallyPlaceableItemsCount = Math.min(newStack.getCount(), placeableItemsCount);
-                    oAvailableItem.get().getItem().shrink(actuallyPlaceableItemsCount);
+                    hopperBlockEntity.removeItem(possibleStack.getB(), actuallyPlaceableItemsCount);
                     destinationStack.grow(actuallyPlaceableItemsCount);
                 }
-                if (oAvailableItem.get().getItem().isEmpty())
-                    oAvailableItem.get().discard();
             }
         }
+    }
+
+    private static List<Tuple<ItemStack, Integer>> getHopperItems(HopperBlockEntity hopperBlockEntity) {
+        List<Tuple<ItemStack, Integer>> items = new ArrayList<>();
+        for (int i = 0; i < hopperBlockEntity.getContainerSize(); i++) {
+            ItemStack stack = hopperBlockEntity.getItem(i);
+            if (!stack.isEmpty())
+                items.add(new Tuple<>(stack, i));
+        }
+        return items;
+    }
+
+    @Nullable
+    private static Tuple<ItemStack, Integer> getFirstBurnableItem(AbstractMultiBlockFurnaceBlockEntity blockEntity, Level level, HopperBlockEntity hopperBlockEntity) {
+        for (int i = 0; i < hopperBlockEntity.getContainerSize(); i++) {
+            ItemStack stack = hopperBlockEntity.getItem(i);
+            if (blockEntity.canSmelt(stack, level))
+                return new Tuple<>(stack, i);
+        }
+        return null;
+    }
+
+    @Nullable
+    private static Tuple<ItemStack, Integer> getFirstFuelItem(AbstractMultiBlockFurnaceBlockEntity pBlockEntity, HopperBlockEntity hopperBlockEntity) {
+        for (int i = 0; i < hopperBlockEntity.getContainerSize(); i++) {
+            ItemStack stack = hopperBlockEntity.getItem(i);
+            if (pBlockEntity.getBurnDuration(stack) > 0)
+                return new Tuple<>(stack, i);
+        }
+        return null;
+    }
+
+    protected boolean canSmelt(ItemStack pStack, Level level) {
+        return level.getRecipeManager().getAllRecipesFor((RecipeType<AbstractMultiItemSmeltingRecipe>)this.recipeType).stream().anyMatch(recipe -> recipe.hasIngredient(pStack, this.level));
     }
 
     protected abstract boolean canOverflowFuel();
@@ -278,13 +332,14 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
     protected abstract boolean shouldBurnTimeTick();
 
     private boolean canBurn(RegistryAccess registryAccess, @javax.annotation.Nullable Recipe<?> recipe, int[] inputSlots, NonNullList<ItemStack> slotsStacks, int stackSize) {
+        if (recipe == null)
+            return false;
         boolean hasIngredient = false;
         for (int slot : inputSlots) {
             if (!slotsStacks.get(slot).isEmpty())
                 hasIngredient = true;
         }
-        if (!hasIngredient
-                || recipe == null)
+        if (!hasIngredient)
             return false;
 
         ItemStack resultStack = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
@@ -304,8 +359,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
     }
 
     private boolean burn(RegistryAccess registryAccess, @javax.annotation.Nullable Recipe<?> recipe, int[] inputSlots, NonNullList<ItemStack> slotStacks, int stackSize) {
-        if (recipe == null
-                || !this.canBurn(registryAccess, recipe, inputSlots, slotStacks, stackSize))
+        if (!this.canBurn(registryAccess, recipe, inputSlots, slotStacks, stackSize))
             return false;
         ItemStack resultStack = ((Recipe<WorldlyContainer>) recipe).assemble(this, registryAccess);
         ItemStack resultSlotStack = slotStacks.get(RESULT_SLOT);

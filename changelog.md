@@ -1,5 +1,12 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Slight rework of Blast furnaces
+  * Items are now taken from an hopper placed in the middle of the multiblock structure instead of dropped items
+  * Fuel items are now placed in the fuel slot (if empty)
+  * Can no longer pick up items that don't belong to recipes
+
 ## 1.20.6
 ### Changes
 * Repair kits forging now require 2 materials and 1 less smash
