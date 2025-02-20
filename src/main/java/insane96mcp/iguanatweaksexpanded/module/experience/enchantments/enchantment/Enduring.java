@@ -27,6 +27,6 @@ public class Enduring extends Enchantment {
     }
 
     public static int getBonusDurability(ItemStack stack) {
-        return stack.getItem() instanceof ArmorItem ? 100 : 400;
+        return stack.getItem() instanceof ArmorItem ? 60 : 400;
     }
 }
