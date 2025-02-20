@@ -11,6 +11,7 @@
       This is now fixed since there's now a 60% chance to get back a diamond
 * Quark trowel is now be crafted in the Forge
 * Reduced enduring bonus durability on armor (100 - > 60)
+* Forging recipes now all give the same amount of experience equal to smashes required
 
 ## 1.20.6
 ### Changes
