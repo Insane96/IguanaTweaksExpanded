@@ -1,0 +1,27 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "quark"
+                }
+            ],
+            "recipe": {
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "mineecraft:iron_ingot"
+                },
+                "amount": 2,
+                "gear": {
+                    "item": "minecraft:stick"
+                },
+                "result": "quark:trowel",
+                "smashes_required": 10,
+                "experience": 10
+            }
+        }
+    ]
+}

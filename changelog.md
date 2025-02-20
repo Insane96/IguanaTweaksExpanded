@@ -9,6 +9,7 @@
   * Recycling items now has a chance to yield the % of recycled item
     * E.g. In previous version you couldn't recycle a diamond shovel in a blast furnace, since that would give 60% of a diamond.  
       This is now fixed since there's now a 60% chance to get back a diamond
+* Quark trowel is now be crafted in the Forge
 
 ## 1.20.6
 ### Changes
