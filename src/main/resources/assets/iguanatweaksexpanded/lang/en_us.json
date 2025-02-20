@@ -350,7 +350,7 @@
 	"advancements.sr_story.copper_tools.title": "Deeper, Faster, Stronger",
 	"advancements.sr_story.copper_tools.description": "Craft a copper tool, which mines faster the deeper you are in the world.",
 	"advancements.sr_story.blast_furnace.title": "Bricks required",
-	"advancements.sr_story.blast_furnace.description": "Obtain a Blast Furnace, then build a 3x3x3 structure to use it. Right click on it to see a ghost of the structure. Can smelt, alloy and recycle.",
+	"advancements.sr_story.blast_furnace.description": "Obtain a Blast Furnace, then build a 3x3x3 structure to use it. Right click on it to see a ghost of the structure. Can smelt, alloy and recycle. Place an hopper in the middle of the structure to automatically insert items.",
 	"advancements.sr_story.forge.title": "Metal equipment anyone?",
 	"advancements.sr_story.forge.description": "Obtain a Forge",
 	"advancements.sr_story.iron_pickaxe.title": "Getting an upgrade",

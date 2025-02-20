@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.7
 ### Changes
 * Slight rework of Blast furnaces
   * Items are now taken from an hopper placed in the middle of the multiblock structure instead of dropped items
