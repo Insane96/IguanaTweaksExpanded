@@ -42,7 +42,7 @@ jobs:                                     #The place where you actually tell the
           curseforge-id: 926157
           curseforge-token: "${{env.CURSEFORGE_TOKEN}}"
 
-          modrinth-id: 72JfV3Be
+          modrinth-id: hy7htrV5
           modrinth-token: "${{env.MODRINTH_TOKEN}}"
 
           files: |
