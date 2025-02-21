@@ -12,7 +12,7 @@
                 "type": "iguanatweaksexpanded:forging",
                 "category": "forge_misc",
                 "ingredient": {
-                    "item": "mineecraft:iron_ingot"
+                    "item": "minecraft:iron_ingot"
                 },
                 "amount": 2,
                 "gear": {

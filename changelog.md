@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Fixes
+* Quark throwel forging recipe
+
 ## 1.20.7
 ### Changes
 * Slight rework of Blast furnaces
