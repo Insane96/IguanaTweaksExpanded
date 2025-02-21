@@ -48,6 +48,6 @@ jobs:                                     #The place where you actually tell the
           files: |
             build/libs/!(*-@(slim)).jar
 
-          changelog: https://github.com/Insane96/IguanaTweaksReborn/blob/1.20.1/changelog.md
+          changelog: https://github.com/Insane96/IguanaTweaksExpanded/blob/1.20.1/changelog.md
           name: "${{env.VERSION}}"
           version: "${{env.RELEASE_NAME}}"
