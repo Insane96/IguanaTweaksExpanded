@@ -121,7 +121,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             if (EnchantingFeature.enchantingTableRequiresLearning
                     && !this.learnedEnchantments.containsKey(enchantment))
                 continue;
-            if (stack.isEmpty())
+            if (this.shouldShowKnownEnchantments())
                 availableEnchantments.add(enchantment);
             if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || (this.learnedEnchantments.containsKey(enchantment) && enchantment.canApplyAtEnchantingTable(stack)))
                 availableEnchantments.add(enchantment);
@@ -321,6 +321,11 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         }
     }
 
+    public boolean shouldShowKnownEnchantments() {
+        ItemStack stack = this.menu.getSlot(0).getItem();
+        return stack.isEmpty();
+    }
+
     private class EnchantmentEntry extends AbstractWidget {
         public LevelBtn levelDownBtn;
         public EnchantmentDisplay enchantmentDisplay;
@@ -461,16 +466,23 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             //pGuiGraphics.blit(TEXTURE_LOCATION, this.getX() + this.getWidth(), this.getY(), ENCH_DISPLAY_U + this.getWidth(), ENCH_ENTRY_V + this.getYOffset(), ENCH_LVL_W, this.getHeight());
             this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 1, 0xDDDDDD);
             MutableComponent lvlTxt = Component.empty();
-            if (this.lvl > 0)
+            if (this.lvl > 0) {
                 lvlTxt = Component.translatable("enchantment.level." + this.lvl);
+                if (this.lvl == this.enchantment.getMaxLevel() && ISEEnchantingTableScreen.this.shouldShowKnownEnchantments())
+                    lvlTxt.withStyle(ChatFormatting.BLUE);
+            }
             pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
             MutableComponent component = Component.empty();
             if (Screen.hasShiftDown()) {
                 component.append(Component.translatable(this.enchantment.getDescriptionId() + ".desc").withStyle(ChatFormatting.LIGHT_PURPLE));
                 component.append(CommonComponents.NEW_LINE);
             }
-            if (!enchantment.isCurse())
-                this.setTooltip(Tooltip.create(component.append(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl)))))));
+            if (!enchantment.isCurse()) {
+                if (shouldShowKnownEnchantments())
+                    this.setTooltip(Tooltip.create(component.append(Component.literal("Cost per level: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, 1)))))));
+                else
+                    this.setTooltip(Tooltip.create(component.append(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl)))))));
+            }
             else
                 this.setTooltip(Tooltip.create(component.append(Component.literal("Bonus max cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, 1, true)))))));
             //this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;

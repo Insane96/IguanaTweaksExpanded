@@ -1,6 +1,11 @@
 # Changelog
 
 ## Upcoming
+### Changes
+* Enchanting table
+  * Known enchantments list now displays the level in blue if at max level
+  * Known enchantments list now displays the cost per level instead of total cost
+
 ### Fixes
 * Quark throwel forging recipe
 
