@@ -228,11 +228,13 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         Optional<HopperBlockEntity> oHopperBlockEntity = level.getBlockEntity(posBehind, BlockEntityType.HOPPER);
         if (oHopperBlockEntity.isEmpty())
             return;
+        ItemStack currentFuelStack = blockEntity.getItem(FUEL_SLOT);
+        if (currentFuelStack.getCount() >= currentFuelStack.getMaxStackSize())
+            return;
 
         HopperBlockEntity hopperBlockEntity = oHopperBlockEntity.get();
         Tuple<ItemStack, Integer> fuelItem = getFirstFuelItem(blockEntity, hopperBlockEntity);
         if (fuelItem != null) {
-            ItemStack currentFuelStack = blockEntity.getItem(FUEL_SLOT);
             ItemStack inHopperStack = fuelItem.getA();
             int hopperSlot = fuelItem.getB();
             if (currentFuelStack.isEmpty()) {

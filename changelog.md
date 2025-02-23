@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.8
 ### Changes
 * Enchanting table
   * Known enchantments list now displays the level in blue if at max level
