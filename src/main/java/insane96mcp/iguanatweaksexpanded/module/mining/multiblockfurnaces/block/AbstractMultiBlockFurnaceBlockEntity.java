@@ -306,7 +306,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
     private static Tuple<ItemStack, Integer> getFirstBurnableItem(AbstractMultiBlockFurnaceBlockEntity blockEntity, Level level, HopperBlockEntity hopperBlockEntity) {
         for (int i = 0; i < hopperBlockEntity.getContainerSize(); i++) {
             ItemStack stack = hopperBlockEntity.getItem(i);
-            if (blockEntity.canSmelt(stack, level))
+            if (!stack.isEmpty() && blockEntity.canSmelt(stack, level))
                 return new Tuple<>(stack, i);
         }
         return null;

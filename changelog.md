@@ -9,6 +9,7 @@
 ### Fixes
 * Copper crash without Shields+ installed
 * Quark throwel forging recipe
+* Hoppers in blast furnaces not getting items from 2nd+ slots
 
 ## 1.20.7
 ### Changes
