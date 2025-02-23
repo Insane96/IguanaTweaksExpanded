@@ -56,10 +56,11 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
-@Label(name = "Copper Tools/Armor Expansion", description = "Two new set of tools and a new Armor Set. Disabling this will prevent copper tools from being faster and more durable the deeper are used and will prevent the electrocution effect of coated copper items")
+@Label(name = "Copper Tools & Armor Expansion", description = "Two new set of tools and a new Armor Set. Disabling this will prevent copper tools from being faster and more durable the deeper are used and will prevent the electrocution effect of coated copper items")
 @LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
 public class CopperExpansion extends Feature {
 	public static final TagKey<Item> COPPER_TOOLS_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/tools/copper"));
+	public static final TagKey<Item> COPPER_UNBREAKING_BONUS = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "copper_unbreaking_bonus"));
 	public static final TagKey<Item> COATED_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/coated_copper"));
 
 	public static final ILItemTier COPPER_ITEM_TIER = new ILItemTier(0, 65, 8f, 1.0f, 11, () -> Ingredient.of(Items.COPPER_INGOT));
@@ -123,7 +124,7 @@ public class CopperExpansion extends Feature {
 	@SubscribeEvent
 	public void onHurtItemStack(HurtItemStackEvent event) {
 		if (!this.isEnabled()
-				|| (!event.getStack().is(COPPER_TOOLS_EQUIPMENT) && !event.getStack().is(ShieldsPlusIntegration.COPPER_SHIELD.get()))
+				|| (!event.getStack().is(COPPER_UNBREAKING_BONUS))
 				|| event.getPlayer() == null)
 			return;
 

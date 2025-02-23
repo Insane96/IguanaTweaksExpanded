@@ -7,6 +7,7 @@
   * Known enchantments list now displays the cost per level instead of total cost
 
 ### Fixes
+* Copper crash without Shields+ installed
 * Quark throwel forging recipe
 
 ## 1.20.7
