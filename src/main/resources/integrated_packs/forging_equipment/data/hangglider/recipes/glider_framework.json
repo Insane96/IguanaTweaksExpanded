@@ -1,0 +1,27 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "hangglider"
+                }
+            ],
+            "recipe": {
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "minecraft:iron_ingot"
+                },
+                "amount": 5,
+                "gear": {
+                    "item": "minecraft:iron_ingot"
+                },
+                "result": "hangglider:glider_framework",
+                "smashes_required": 8,
+                "experience": 8
+            }
+        }
+    ]
+}

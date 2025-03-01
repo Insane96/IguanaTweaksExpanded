@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Hang glider (by Fuzs) recipe is now made in forge
+
 ## 1.20.8
 ### Changes
 * Enchanting table
