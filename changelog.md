@@ -2,6 +2,12 @@
 
 ## Upcoming
 ### Changes
+* Enduring reworked 
+  * Has now 2 levels, increasing durability by 30/100 per level (on armor/tools)
+  * Is now affected by durability modifiers
+    * E.g. hammers bonus durability will be 133 instead of 400
+* Same for Haste
+  * Is now two levels, increasing mining speed by 1.5 per level
 * Reduced Explosive enchantment cost
 
 ## 1.20.9

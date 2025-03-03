@@ -11,20 +11,25 @@ public class Haste extends Enchantment {
     }
 
     @Override
+    public int getMaxLevel() {
+        return 2;
+    }
+
+    @Override
     public int getMinCost(int level) {
-        return 22 * level;
+        return 11 * level;
     }
 
     @Override
     public int getMaxCost(int level) {
-        return this.getMinCost(level) + 22;
+        return this.getMinCost(level) + 11;
     }
 
     public boolean checkCompatibility(Enchantment other) {
         return !(other instanceof DiggingEnchantment) && super.checkCompatibility(other);
     }
 
-    public static int getBonusEfficiency() {
-        return 3;
+    public static float getBonusEfficiency() {
+        return 1.5f;
     }
 }

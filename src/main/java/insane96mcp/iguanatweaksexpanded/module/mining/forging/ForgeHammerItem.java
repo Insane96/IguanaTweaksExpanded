@@ -8,7 +8,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -27,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class ForgeHammerItem extends TieredItem implements Vanishable {
+public class ForgeHammerItem extends TieredItem implements Vanishable, DurabilityModifier {
     protected static final UUID ENTITY_REACH_UUID = UUID.fromString("cdec6524-49a5-465a-a61c-f53c2e637c48");
 
     public static final String FORGE_COOLDOWN_LANG = InsaneSurvivalExtra.MOD_ID + ".hammer_cooldown";
@@ -63,12 +62,13 @@ public class ForgeHammerItem extends TieredItem implements Vanishable {
     }
 
     @Override
-    public int getMaxDamage(ItemStack stack) {
-        return this.maxDamage / 3;
+    public float getDurabilityMultiplier(ItemStack stack) {
+        return 0.33333333f;
     }
 
-    public int getSmashesOnHit(ItemStack stack, RandomSource random) {
-        return 1;
+    @Override
+    public int getMaxDamage(ItemStack stack) {
+        return (int) (this.maxDamage * getDurabilityMultiplier(stack));
     }
 
     public void onUse(Player player, ItemStack stack) {

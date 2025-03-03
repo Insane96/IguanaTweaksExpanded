@@ -64,7 +64,7 @@ public class ForgeBlock extends BaseEntityBlock {
                 pPlayer.displayClientMessage(Component.translatable(CANT_FORGE_ENCHANTED), true);
                 return InteractionResult.PASS;
             }
-            if (!pPlayer.getCooldowns().isOnCooldown(forgeHammerItem) && ForgeBlockEntity.onUse(pLevel, pPos, pState, forgeBlockEntity, forgeHammerItem.getSmashesOnHit(stack, pPlayer.getRandom()))) {
+            if (!pPlayer.getCooldowns().isOnCooldown(forgeHammerItem) && ForgeBlockEntity.onUse(pLevel, pPos, pState, forgeBlockEntity, 1)) {
                 forgeHammerItem.onUse(pPlayer, stack);
                 if (pPlayer instanceof ServerPlayer serverPlayer) {
                     pPlayer.causeFoodExhaustion(0.25f);

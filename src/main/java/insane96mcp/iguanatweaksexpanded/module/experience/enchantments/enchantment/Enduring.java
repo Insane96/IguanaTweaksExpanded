@@ -1,5 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksexpanded.module.mining.forging.DurabilityModifier;
+import insane96mcp.iguanatweaksreborn.module.items.misc.ItemDefinition;
+import insane96mcp.iguanatweaksreborn.module.items.misc.ItemDefinitionsReloadListener;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -13,20 +16,35 @@ public class Enduring extends Enchantment {
     }
 
     @Override
+    public int getMaxLevel() {
+        return 2;
+    }
+
+    @Override
     public int getMinCost(int level) {
-        return 22 * level;
+        return 11 * level;
     }
 
     @Override
     public int getMaxCost(int level) {
-        return this.getMinCost(level) + 22;
+        return this.getMinCost(level) + 11;
     }
 
     public boolean checkCompatibility(Enchantment other) {
         return !(other instanceof DigDurabilityEnchantment) && super.checkCompatibility(other);
     }
 
-    public static int getBonusDurability(ItemStack stack) {
-        return stack.getItem() instanceof ArmorItem ? 60 : 400;
+    public static int getBonusDurabilityPerLevel(ItemStack stack) {
+        float durabilityModifier = stack.getItem() instanceof DurabilityModifier durabilityModifier1
+                ? durabilityModifier1.getDurabilityMultiplier(stack)
+                : 1f;
+        for (ItemDefinition definition : ItemDefinitionsReloadListener.getDefinitions()) {
+            if (!definition.item().matchesItem(stack))
+                continue;
+
+            if (definition.durability() != null && definition.durability().durabilityMultiplier != null)
+                durabilityModifier *= definition.durability().durabilityMultiplier;
+        }
+        return (int) ((stack.getItem() instanceof ArmorItem ? 30 : 100) * durabilityModifier);
     }
 }
