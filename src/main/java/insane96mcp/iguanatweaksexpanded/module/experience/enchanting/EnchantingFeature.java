@@ -147,7 +147,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:blasting", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:blood_pact_curse", 4),
             new EnchantmentData("iguanatweaksexpanded:burst_of_arrows", 6),
-            new EnchantmentData("iguanatweaksexpanded:double_jump", 3),
+            new EnchantmentData("iguanatweaksexpanded:double_jump", 5),
             new EnchantmentData("iguanatweaksexpanded:dumbness_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:ender_curse", 3),
             new EnchantmentData("iguanatweaksexpanded:exchange", 3),
