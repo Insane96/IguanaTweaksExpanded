@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+### Additions
+* Many config options for enchanting table
+
 ### Changes
 * Enduring reworked 
   * Has now 2 levels, increasing durability by 30/100 per level (on armor/tools)
@@ -8,6 +11,7 @@
     * E.g. hammers bonus durability will be 133 instead of 400
 * Juicy bait reworked
   * Now max 1 level, increases chance to double fishing loot by 15%
+* Empowered items now have 1 extra enchantability
 * Same for Haste
   * Is now two levels, increasing mining speed by 1.5 per level
 * Reduced Explosive enchantment cost

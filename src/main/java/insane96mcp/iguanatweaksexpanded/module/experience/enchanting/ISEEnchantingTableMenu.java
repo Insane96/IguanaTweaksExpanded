@@ -111,20 +111,22 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
                     enchantingPower += level.getBlockState(blockPos.offset(blockpos)).getEnchantPowerBonus(level, blockPos.offset(blockpos));
                 }
             }
-            if (enchantingPower > 15f)
-                enchantingPower = 15f;
-            int baseTableEnchantability = 3;
-            float enchantabilityModifier = 0.5f;
+            if (enchantingPower > EnchantingFeature.enchantingTableMaxEnchantingPower)
+                enchantingPower = EnchantingFeature.enchantingTableMaxEnchantingPower;
+            int baseTableEnchantability = EnchantingFeature.enchantingTableBaseEnchantability;
+            double enchantabilityModifier = EnchantingFeature.enchantingTableEnchantabilityMultiplier;
             if (stack.getTag() != null) {
-                if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM))
-                    enchantabilityModifier = 1f;
+                if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM)) {
+                    enchantabilityModifier = EnchantingFeature.enchantingTableInfusedEnchantabilityMultiplier;
+                    baseTableEnchantability += EnchantingFeature.enchantingTableInfusedEnchantabilityFlat;
+                }
                 if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM)) {
-                    enchantabilityModifier *= 1.2f;
-                    //baseTableEnchantability += 4;
+                    enchantabilityModifier *= 1 + EnchantingFeature.enchantingTableEmpoweredBonusEnchantability;
+                    baseTableEnchantability += EnchantingFeature.enchantingTableEmpoweredBonusEnchantabilityFlat;
                 }
             }
-            float maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * (enchantingPower / 15f) + baseTableEnchantability + EnchantingFeature.getCurseCost(stack);
-            this.maxCost.set(Math.round(maxCost));
+            double maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * (enchantingPower / EnchantingFeature.enchantingTableMaxEnchantingPower.floatValue()) + baseTableEnchantability + EnchantingFeature.getCurseCost(stack);
+            this.maxCost.set((int) Math.round(maxCost));
         }
         this.broadcastChanges();
     }

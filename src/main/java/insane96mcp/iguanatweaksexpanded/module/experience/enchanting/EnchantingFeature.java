@@ -69,8 +69,11 @@ public class EnchantingFeature extends JsonFeature {
 	public static final RegistryObject<BlockEntityType<ISEEnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ISERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(ISEEnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
     public static final RegistryObject<MenuType<ISEEnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ISERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(ISEEnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
 
+    public static final RegistryObject<Item> CLEANSED_LAPIS = ISERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ISERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ISEItem(new Item.Properties(), true));
     public static final String INFUSED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "infused";
     public static final String EMPOWERED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "empowered";
+
     @Config
     @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items (also applies to enchanted books).")
     public static Boolean noEnchantmentMerge = true;
@@ -97,14 +100,32 @@ public class EnchantingFeature extends JsonFeature {
             """)
     public static Boolean allurementIntegration = true;
     @Config
-    @Label(name = "Enchanting Table requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
+    @Label(name = "Enchanting Table.Requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
     public static Boolean enchantingTableRequiresLearning = true;
+    @Config(min = 0)
+    @Label(name = "Enchanting Table.Max enchanting power", description = "Increasing this increases bookshelves required. Vanilla is 15")
+    public static Integer enchantingTableMaxEnchantingPower = 25;
+    @Config(min = 0)
+    @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not infused or empowered")
+    public static Double enchantingTableEnchantabilityMultiplier = 0.5d;
+    @Config(min = 0)
+    @Label(name = "Enchanting Table.Infused Enchantability multiplier", description = "Tool enchantability multiplier when infused")
+    public static Double enchantingTableInfusedEnchantabilityMultiplier = 1d;
+    @Config(min = 0)
+    @Label(name = "Enchanting Table.Infused Enchantability flat", description = "Tool enchantability bonus when infused")
+    public static Integer enchantingTableInfusedEnchantabilityFlat = 0;
+    @Config(min = 0)
+    @Label(name = "Enchanting Table.Empowered bonus Enchantability", description = "Tool enchantability bonus percentage when empowered")
+    public static Double enchantingTableEmpoweredBonusEnchantability = 0.2d;
+    @Config(min = 0)
+    @Label(name = "Enchanting Table.Empowered bonus Enchantability flat", description = "Tool enchantability bonus when empowered")
+    public static Integer enchantingTableEmpoweredBonusEnchantabilityFlat = 1;
+    @Config(min = 0)
+    @Label(name = "Enchanting Table.Base enchantability")
+    public static Integer enchantingTableBaseEnchantability = 3;
     /*@Config
     @Label(name = "All enchantments are one time use", description = "If true, enchantments in the enchanting table are one time use.")
     public static Boolean allEnchantmentsAreOneTimeUse = true;*/
-
-    public static final RegistryObject<Item> CLEANSED_LAPIS = ISERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ISERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ISEItem(new Item.Properties(), true));
 
     public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
             new EnchantmentData("allurement:alleviating", 5),
