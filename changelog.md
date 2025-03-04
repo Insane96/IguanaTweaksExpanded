@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Curse of Fragility now halves the tool's durability
+* Increased double jump cost (3 -> 5)
+
 ## 1.20.10
 ### Additions
 * Many config options for enchanting table
