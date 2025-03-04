@@ -26,18 +26,14 @@ import java.util.List;
 public class JuicyBait extends Enchantment {
 
     public JuicyBait() {
-        super(Rarity.RARE, EnchantmentCategory.FISHING_ROD, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnchantmentCategory.FISHING_ROD, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 3;
-    }
     /**
      * Returns the minimal value of enchantability needed on the enchantment level passed.
      */
     public int getMinCost(int pEnchantmentLevel) {
-        return 15 + (pEnchantmentLevel - 1) * 9;
+        return 24;
     }
 
     public int getMaxCost(int pEnchantmentLevel) {
@@ -49,7 +45,7 @@ public class JuicyBait extends Enchantment {
     }
 
     public static float getChanceToDoubleReel(int lvl) {
-        return lvl * 0.05f;
+        return lvl * 0.15f;
     }
 
     public static void apply(ItemFishedEvent event) {
