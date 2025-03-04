@@ -143,7 +143,6 @@ public class NewEnchantmentsFeature extends Feature {
 	@SubscribeEvent
 	public void onHurtItemStack(HurtItemStackEvent event) {
 		CurseOfExperience.consumePlayerExperience(event);
-		CurseOfFragility.increaseItemHurt(event);
 		CurseOfBloodPact.trySuckingAndRepairing(event);
 	}
 
@@ -152,6 +151,10 @@ public class NewEnchantmentsFeature extends Feature {
 		int lvl = event.getStack().getEnchantmentLevel(ENDURING.get());
 		if (lvl > 0)
 			event.setNewMaxDamage(event.getNewMaxDamage() + Enduring.getBonusDurabilityPerLevel(event.getStack()) * lvl);
+
+		lvl = event.getStack().getEnchantmentLevel(CURSE_OF_FRAGILITY.get());
+		if (lvl > 0)
+			event.setNewMaxDamage((int) (event.getNewMaxDamage() * (1f - CurseOfFragility.getDurabilityReduction())));
 	}
 
 	@SubscribeEvent

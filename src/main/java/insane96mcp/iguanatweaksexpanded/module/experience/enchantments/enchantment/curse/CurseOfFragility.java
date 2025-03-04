@@ -1,8 +1,6 @@
 
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.insanelib.event.HurtItemStackEvent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -30,10 +28,7 @@ public class CurseOfFragility extends Enchantment {
         return 50;
     }
 
-    public static void increaseItemHurt(HurtItemStackEvent event) {
-        if (event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_FRAGILITY.get()) <= 0)
-            return;
-
-        event.setAmount(event.getAmount() + 1);
+    public static float getDurabilityReduction() {
+        return 0.5f;
     }
 }
