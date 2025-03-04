@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.20.10
 ### Additions
 * Many config options for enchanting table
 
