@@ -1,0 +1,14 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_blasting",
+  "category": "blast_furnace_misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "raw_iron",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ore"
+    }
+  ],
+  "output_increase": 1.0,
+  "result": "minecraft:raw_iron"
+}
