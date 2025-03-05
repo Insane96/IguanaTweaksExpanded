@@ -1,7 +1,13 @@
 # Changelog
 
+* Blasting ores should give raw ores
+
 ## Upcoming
+### Additions
+* Italian translation!
+
 ### Changes
+* Altimeter now shows the exact Y value in its tooltip
 * Curse of Fragility now halves the tool's durability
 * Increased double jump cost (3 -> 5)
 

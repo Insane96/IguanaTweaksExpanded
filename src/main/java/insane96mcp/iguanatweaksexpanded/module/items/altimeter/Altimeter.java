@@ -9,7 +9,6 @@ import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,14 +32,9 @@ public class Altimeter extends Feature {
 		if (!isEnabled(Altimeter.class)
 				|| !tooltip
 				|| !event.getItemStack().is(ITEM.get())
-				|| !(event.getEntity() instanceof Player))
+				|| event.getEntity() == null)
 			return;
 
-		for (int i = event.getEntity().level().getMinBuildHeight(); i <= event.getEntity().level().getMaxBuildHeight(); i += 16) {
-			if (event.getEntity().getBlockY() < i) {
-				event.getToolTip().add(Component.literal("%d ~ %d".formatted(i - 16, i)).withStyle(ChatFormatting.GRAY));
-				break;
-			}
-		}
+		event.getToolTip().add(Component.literal("%d".formatted(event.getEntity().getBlockY())).withStyle(ChatFormatting.GRAY));
 	}
 }
