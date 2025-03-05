@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.21.0
 ### Additions
 * Italian translation!
 
