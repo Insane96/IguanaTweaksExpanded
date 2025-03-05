@@ -1,12 +1,12 @@
 # Changelog
 
-* Blasting ores should give raw ores
-
 ## Upcoming
 ### Additions
 * Italian translation!
 
 ### Changes
+* Blasting iron, copper and gold ore now outputs raw ores instead of ingots
+  * So you have to smelt them again
 * Altimeter now shows the exact Y value in its tooltip
 * Curse of Fragility now halves the tool's durability
 * Increased double jump cost (3 -> 5)
