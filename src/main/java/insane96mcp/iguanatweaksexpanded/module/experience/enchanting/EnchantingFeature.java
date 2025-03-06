@@ -104,7 +104,7 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean enchantingTableRequiresLearning = true;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Max enchanting power", description = "Increasing this increases bookshelves required. Vanilla is 15")
-    public static Integer enchantingTableMaxEnchantingPower = 25;
+    public static Integer enchantingTableMaxEnchantingPower = 20;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not infused or empowered")
     public static Double enchantingTableEnchantabilityMultiplier = 0.5d;

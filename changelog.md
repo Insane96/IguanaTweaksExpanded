@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Reduced bookshelves needed for full enchanting power (25 -> 20)
+
 ## 1.21.0
 ### Additions
 * Italian translation!
