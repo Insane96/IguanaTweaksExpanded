@@ -331,8 +331,8 @@ public class EnchantingFeature extends JsonFeature {
         if (!noEnchantmentMerge)
             return;
 
-        boolean isValidEnchantedBook = event.getRight().is(Items.ENCHANTED_BOOK) && !hasOnlyCurses(event.getRight());
-        if ((event.getRight().isEnchanted() && !event.getRight().is(CLEANSED_LAPIS.get())) || (event.getLeft().isEnchanted() && isValidEnchantedBook))
+        boolean isEnchantedBook = event.getRight().is(Items.ENCHANTED_BOOK);
+        if (event.getRight().isEnchanted() || isEnchantedBook)
             event.setCanceled(true);
     }
 
