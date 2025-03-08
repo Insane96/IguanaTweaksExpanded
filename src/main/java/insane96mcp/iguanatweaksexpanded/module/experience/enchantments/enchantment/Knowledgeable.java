@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -25,6 +26,10 @@ public class Knowledgeable extends Enchantment {
         return true;
     }
 
+    private static float getChance() {
+        return 0.2f;
+    }
+
     @Override
     public void doPostAttack(LivingEntity attacker, Entity entity, int lvl) {
         if (!(entity instanceof LivingEntity target)
@@ -32,13 +37,15 @@ public class Knowledgeable extends Enchantment {
                 || player.getAttackStrengthScale(0.5f) < 0.9f)
             return;
 
-        if (target.getRandom().nextInt(5) == 0)
+        float chance = getChance() * BonusDamageEnchantment.getDamageBonusRatio(attacker.getMainHandItem());
+        if (target.getRandom().nextFloat() <= chance)
             target.level().addFreshEntity(new ExperienceOrb(target.level(), target.getX(), target.getY() + target.getBbHeight() / 2f, target.getZ(), lvl));
     }
 
     public static int applyToBlockDrops(Player player, int expToDrop) {
+        float chance = getChance() * BonusDamageEnchantment.getDamageBonusRatio(player.getMainHandItem());
         int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.KNOWLEDGEABLE.get(), player);
-        return lvl > 0 && player.getRandom().nextInt(5) == 0
+        return lvl > 0 && player.getRandom().nextFloat() <= chance
                 ? expToDrop + lvl
                 : expToDrop;
     }

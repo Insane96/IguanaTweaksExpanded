@@ -3,6 +3,7 @@
 ## Upcoming
 ### Changes
 * Reduced bookshelves needed for full enchanting power (25 -> 20)
+* Knowledgeable chance now scales with weapon % attack damage (like damaging enchantments)
 * Heavily increased durium drops (2\~4 -> 4\~6)
 
 ### Fixes

@@ -23,8 +23,4 @@ public class Rage extends BonusDamageEnchantment {
         float ratio = Math.min(1f, 1f - ((attacker.getHealth() - 1) / attacker.getMaxHealth()));
         return this.getDamageBonus(stack, lvl) * (ratio * ratio * 0.8f + 0.2f);
     }
-
-    public float getMinDamageBonus(ItemStack stack, int lvl) {
-        return this.getDamageBonusPerLevel() * lvl * getDamageBonusRatio(stack) * 0.2f;
-    }
 }
