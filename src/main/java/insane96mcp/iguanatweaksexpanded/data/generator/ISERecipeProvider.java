@@ -378,7 +378,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_NUGGET, 2f, 200, 7f);
         addBlastingRecipe(writer, BeegOreVeins.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 200, 1f);
         //Durium
-        addBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 200, 5f);
+        addBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 200, 9f);
         //Other
         addBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 400);
         addBlastingRecipe(writer, Items.COAL_ORE, Items.COAL, 0.7f, 100, 1f);
@@ -415,7 +415,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_NUGGET, 2f, 300, 4.2f);
         addSoulBlastingRecipe(writer, BeegOreVeins.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 300, 0.3f);
         //Durium
-        addSoulBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 300, 2.9f);
+        addSoulBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 300, 6f);
         //Other
         addSoulBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 600);
         addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT)), Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, 8f, 1200);

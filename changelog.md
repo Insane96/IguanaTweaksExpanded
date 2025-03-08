@@ -3,6 +3,7 @@
 ## Upcoming
 ### Changes
 * Reduced bookshelves needed for full enchanting power (25 -> 20)
+* Heavily increased durium drops (2\~4 -> 4\~6)
 
 ## 1.21.0
 ### Additions
