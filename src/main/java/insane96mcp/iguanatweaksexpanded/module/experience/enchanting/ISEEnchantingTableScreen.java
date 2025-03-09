@@ -129,9 +129,10 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         availableEnchantments
                 .stream()
                 .sorted(Comparator.comparing(enchantment -> {
-                    String comparator = ForgeRegistries.ENCHANTMENTS.getKey(enchantment).getPath();
-                    if (enchantment.isCurse()) comparator = "_" + comparator;
-                    return comparator;
+                    String name = Component.translatable(enchantment.getDescriptionId()).getString();
+                    if (enchantment.isCurse())
+                        name = "_" + name;
+                    return name;
                 }))
                 .forEach(enchantment -> enchantments.add(new EnchantmentInstance(enchantment, this.learnedEnchantments.getOrDefault(enchantment, 0))));
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
