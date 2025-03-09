@@ -71,8 +71,8 @@ public class EnchantingFeature extends JsonFeature {
 
     public static final RegistryObject<Item> CLEANSED_LAPIS = ISERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ISERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ISEItem(new Item.Properties(), true));
-    public static final String INFUSED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "infused";
-    public static final String EMPOWERED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "empowered";
+    public static final String PURIFIED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "infused";
+    public static final String INFUSED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "empowered";
 
     @Config
     @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items (also applies to enchanted books).")
@@ -106,23 +106,23 @@ public class EnchantingFeature extends JsonFeature {
     @Label(name = "Enchanting Table.Max enchanting power", description = "Increasing this increases bookshelves required. Vanilla is 15")
     public static Integer enchantingTableMaxEnchantingPower = 20;
     @Config(min = 0)
-    @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not infused or empowered")
-    public static Double enchantingTableEnchantabilityMultiplier = 0.5d;
+    @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not purified or infused")
+    public static Double enchantingTableEnchantabilityMultiplier = 0.3d;
     @Config(min = 0)
-    @Label(name = "Enchanting Table.Infused Enchantability multiplier", description = "Tool enchantability multiplier when infused")
-    public static Double enchantingTableInfusedEnchantabilityMultiplier = 1d;
+    @Label(name = "Enchanting Table.Purified Enchantability multiplier", description = "Tool enchantability multiplier when purified (sums with Enchantability multiplier and Infused bonus Enchantability multiplier)")
+    public static Double enchantingTablePurifiedEnchantabilityMultiplier = 0.5d;
     @Config(min = 0)
-    @Label(name = "Enchanting Table.Infused Enchantability flat", description = "Tool enchantability bonus when infused")
-    public static Integer enchantingTableInfusedEnchantabilityFlat = 0;
+    @Label(name = "Enchanting Table.Purified Enchantability flat", description = "Tool enchantability bonus when purified")
+    public static Integer enchantingTablePurifiedEnchantabilityFlat = 0;
     @Config(min = 0)
-    @Label(name = "Enchanting Table.Empowered bonus Enchantability", description = "Tool enchantability bonus percentage when empowered")
-    public static Double enchantingTableEmpoweredBonusEnchantability = 0.2d;
+    @Label(name = "Enchanting Table.Infused bonus Enchantability multiplier", description = "Tool enchantability bonus percentage when infused (sums with Enchantability multiplier and Purified bonus Enchantability multiplier)")
+    public static Double enchantingTableInfusedBonusEnchantability = 0.2d;
     @Config(min = 0)
-    @Label(name = "Enchanting Table.Empowered bonus Enchantability flat", description = "Tool enchantability bonus when empowered")
-    public static Integer enchantingTableEmpoweredBonusEnchantabilityFlat = 1;
+    @Label(name = "Enchanting Table.Infused bonus Enchantability flat", description = "Tool enchantability bonus when infused")
+    public static Integer enchantingTableInfusedBonusEnchantabilityFlat = 1;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Base enchantability")
-    public static Integer enchantingTableBaseEnchantability = 3;
+    public static Integer enchantingTableBaseEnchantability = 2;
     /*@Config
     @Label(name = "All enchantments are one time use", description = "If true, enchantments in the enchanting table are one time use.")
     public static Boolean allEnchantmentsAreOneTimeUse = true;*/
@@ -139,6 +139,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("allurement:spread_of_ailments", 3, 6, 9, 12),
             new EnchantmentData("allurement:vengeance", 3, 6, 9, 12),
             new EnchantmentData("farmersdelight:backstabbing", 2, 4, 6, 8),
+            new EnchantmentData("iguanatweaksexpanded:absorption", 6),
             new EnchantmentData("iguanatweaksexpanded:adrenaline", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:air_born", 3),
             new EnchantmentData("iguanatweaksexpanded:air_stealer", 2, 4, 6),
@@ -147,14 +148,16 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:blasting", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:blood_pact_curse", 4),
             new EnchantmentData("iguanatweaksexpanded:burst_of_arrows", 6),
+            new EnchantmentData("iguanatweaksexpanded:cryo_aspect", 3, 6, 9),
             new EnchantmentData("iguanatweaksexpanded:double_jump", 5),
             new EnchantmentData("iguanatweaksexpanded:dumbness_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:ender_curse", 3),
             new EnchantmentData("iguanatweaksexpanded:exchange", 3),
-            new EnchantmentData("iguanatweaksexpanded:expanded", 4, 8, 12),
+            new EnchantmentData("iguanatweaksexpanded:expanded", 4, 8, 12, 16),
             new EnchantmentData("iguanatweaksexpanded:enduring", 4, 8, 12),
             new EnchantmentData("iguanatweaksexpanded:explosive", 2, 4, 6),
             new EnchantmentData("iguanatweaksexpanded:experience_curse", 4),
+            new EnchantmentData("iguanatweaksexpanded:flat_protection", 6),
             new EnchantmentData("iguanatweaksexpanded:fragility_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:gravity_defying", 3),
             new EnchantmentData("iguanatweaksexpanded:healthy", 2, 4, 6, 8, 10, 12),
@@ -167,10 +170,12 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:magic_protection", 2, 4, 6, 8, 10),
             new EnchantmentData("iguanatweaksexpanded:magnetic", 3, 6, 9, 12),
             new EnchantmentData("iguanatweaksexpanded:melee_protection", 2, 4, 6, 8, 10, 12),
+            new EnchantmentData("iguanatweaksexpanded:obscurity_curse", 3),
             new EnchantmentData("iguanatweaksexpanded:padding", 3),
             new EnchantmentData("iguanatweaksexpanded:part_breaker", 3, 6, 9, 12),
             new EnchantmentData("iguanatweaksexpanded:rage", 2, 4, 6, 8, 10, 12),
             new EnchantmentData("iguanatweaksexpanded:reach", 6),
+            new EnchantmentData("iguanatweaksexpanded:retreat", 3),
             new EnchantmentData("iguanatweaksexpanded:recovery", 3),
             new EnchantmentData("iguanatweaksexpanded:short_arm_curse", 2),
             new EnchantmentData("iguanatweaksexpanded:slow_charge_curse", 3),
@@ -338,7 +343,7 @@ public class EnchantingFeature extends JsonFeature {
 
     public void cleansedLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.INFUSED_ITEM))
+        if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.PURIFIED_ITEM))
             return;
 
         ItemStack right = event.getRight().copy();
@@ -348,7 +353,7 @@ public class EnchantingFeature extends JsonFeature {
         event.setCost(0);
         event.setMaterialCost(1);
         ItemStack result = left.copy();
-        result.getOrCreateTag().putBoolean(EnchantingFeature.INFUSED_ITEM, true);
+        result.getOrCreateTag().putBoolean(EnchantingFeature.PURIFIED_ITEM, true);
         event.setOutput(result);
     }
 
@@ -369,7 +374,7 @@ public class EnchantingFeature extends JsonFeature {
 
     public void enchantedCleansedLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.EMPOWERED_ITEM))
+        if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.INFUSED_ITEM))
             return;
 
         ItemStack right = event.getRight().copy();
@@ -378,7 +383,7 @@ public class EnchantingFeature extends JsonFeature {
         event.setCost(0);
         event.setMaterialCost(1);
         ItemStack result = left.copy();
-        result.getOrCreateTag().putBoolean(EnchantingFeature.EMPOWERED_ITEM, true);
+        result.getOrCreateTag().putBoolean(EnchantingFeature.INFUSED_ITEM, true);
         event.setOutput(result);
     }
 
@@ -479,7 +484,10 @@ public class EnchantingFeature extends JsonFeature {
             else
                 return enchantmentData.cost[lvl - 1];
         }
-        return (int) Math.round(vanillaCost * lvl);
+        else {
+            LogHelper.warn("Enchantment data for %s is missing. Using default formula", enchantment.getDescriptionId());
+        }
+        return Math.round(vanillaCost * lvl);
     }
 
     public static int getCost(Enchantment enchantment, int lvl) {
@@ -627,11 +635,11 @@ public class EnchantingFeature extends JsonFeature {
 
     @OnlyIn(Dist.CLIENT)
     private static void infusedEmpoweredTooltip(ItemStack stack, CompoundTag tag, List<Component> tooltip) {
-        if (tag.contains(INFUSED_ITEM)) {
+        if (tag.contains(PURIFIED_ITEM)) {
             tooltip.add(Component.empty());
             tooltip.add(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
-        if (tag.contains(EMPOWERED_ITEM)) {
+        if (tag.contains(INFUSED_ITEM)) {
             tooltip.add(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
     }

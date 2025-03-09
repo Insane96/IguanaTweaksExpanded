@@ -114,13 +114,13 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
         int baseTableEnchantability = EnchantingFeature.enchantingTableBaseEnchantability;
         double enchantabilityModifier = EnchantingFeature.enchantingTableEnchantabilityMultiplier;
         if (stack.getTag() != null) {
-            if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM)) {
-                enchantabilityModifier = EnchantingFeature.enchantingTableInfusedEnchantabilityMultiplier;
-                baseTableEnchantability += EnchantingFeature.enchantingTableInfusedEnchantabilityFlat;
+            if (stack.getTag().contains(EnchantingFeature.PURIFIED_ITEM)) {
+                enchantabilityModifier += EnchantingFeature.enchantingTablePurifiedEnchantabilityMultiplier;
+                baseTableEnchantability += EnchantingFeature.enchantingTablePurifiedEnchantabilityFlat;
             }
-            if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM)) {
-                enchantabilityModifier *= 1 + EnchantingFeature.enchantingTableEmpoweredBonusEnchantability;
-                baseTableEnchantability += EnchantingFeature.enchantingTableEmpoweredBonusEnchantabilityFlat;
+            if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM)) {
+                enchantabilityModifier += EnchantingFeature.enchantingTableInfusedBonusEnchantability;
+                baseTableEnchantability += EnchantingFeature.enchantingTableInfusedBonusEnchantabilityFlat;
             }
         }
         double maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * (enchantingPower / EnchantingFeature.enchantingTableMaxEnchantingPower.floatValue()) + baseTableEnchantability + EnchantingFeature.getCurseCost(stack);

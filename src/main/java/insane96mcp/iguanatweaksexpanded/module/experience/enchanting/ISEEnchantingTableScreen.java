@@ -202,7 +202,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
 
     private boolean isItemEmpowered() {
         CompoundTag tag = this.menu.getSlot(0).getItem().getTag();
-        return tag != null && tag.contains(EnchantingFeature.EMPOWERED_ITEM);
+        return tag != null && tag.contains(EnchantingFeature.INFUSED_ITEM);
     }
 
     private boolean hasEnchantment(Enchantment enchantment) {
