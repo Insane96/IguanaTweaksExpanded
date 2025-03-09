@@ -1,6 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableLearnedEnchantments;
+import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableStatus;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -24,6 +25,7 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EnchantmentTableBlock;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -99,39 +101,43 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
         });
     }
 
+    public int calculateMaxCost(ItemStack stack, Level level, BlockPos blockPos) {
+        float enchantingPower = 0;
+
+        for (BlockPos blockpos : EnchantmentTableBlock.BOOKSHELF_OFFSETS) {
+            if (EnchantmentTableBlock.isValidBookShelf(level, blockPos, blockpos)) {
+                enchantingPower += level.getBlockState(blockPos.offset(blockpos)).getEnchantPowerBonus(level, blockPos.offset(blockpos));
+            }
+        }
+        if (enchantingPower > EnchantingFeature.enchantingTableMaxEnchantingPower)
+            enchantingPower = EnchantingFeature.enchantingTableMaxEnchantingPower;
+        int baseTableEnchantability = EnchantingFeature.enchantingTableBaseEnchantability;
+        double enchantabilityModifier = EnchantingFeature.enchantingTableEnchantabilityMultiplier;
+        if (stack.getTag() != null) {
+            if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM)) {
+                enchantabilityModifier = EnchantingFeature.enchantingTableInfusedEnchantabilityMultiplier;
+                baseTableEnchantability += EnchantingFeature.enchantingTableInfusedEnchantabilityFlat;
+            }
+            if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM)) {
+                enchantabilityModifier *= 1 + EnchantingFeature.enchantingTableEmpoweredBonusEnchantability;
+                baseTableEnchantability += EnchantingFeature.enchantingTableEmpoweredBonusEnchantabilityFlat;
+            }
+        }
+        double maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * (enchantingPower / EnchantingFeature.enchantingTableMaxEnchantingPower.floatValue()) + baseTableEnchantability + EnchantingFeature.getCurseCost(stack);
+        return (int) Math.round(maxCost);
+    }
+
     private void updateMaxCost(ItemStack stack, Level level, BlockPos blockPos) {
         if (stack.isEmpty() || !EnchantingFeature.canBeEnchanted(stack)) {
             this.maxCost.set(0);
         }
         else {
-            float enchantingPower = 0;
-
-            for (BlockPos blockpos : EnchantmentTableBlock.BOOKSHELF_OFFSETS) {
-                if (EnchantmentTableBlock.isValidBookShelf(level, blockPos, blockpos)) {
-                    enchantingPower += level.getBlockState(blockPos.offset(blockpos)).getEnchantPowerBonus(level, blockPos.offset(blockpos));
-                }
-            }
-            if (enchantingPower > EnchantingFeature.enchantingTableMaxEnchantingPower)
-                enchantingPower = EnchantingFeature.enchantingTableMaxEnchantingPower;
-            int baseTableEnchantability = EnchantingFeature.enchantingTableBaseEnchantability;
-            double enchantabilityModifier = EnchantingFeature.enchantingTableEnchantabilityMultiplier;
-            if (stack.getTag() != null) {
-                if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM)) {
-                    enchantabilityModifier = EnchantingFeature.enchantingTableInfusedEnchantabilityMultiplier;
-                    baseTableEnchantability += EnchantingFeature.enchantingTableInfusedEnchantabilityFlat;
-                }
-                if (stack.getTag().contains(EnchantingFeature.EMPOWERED_ITEM)) {
-                    enchantabilityModifier *= 1 + EnchantingFeature.enchantingTableEmpoweredBonusEnchantability;
-                    baseTableEnchantability += EnchantingFeature.enchantingTableEmpoweredBonusEnchantabilityFlat;
-                }
-            }
-            double maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * (enchantingPower / EnchantingFeature.enchantingTableMaxEnchantingPower.floatValue()) + baseTableEnchantability + EnchantingFeature.getCurseCost(stack);
-            this.maxCost.set((int) Math.round(maxCost));
+            this.maxCost.set(calculateMaxCost(stack, level, blockPos));
         }
         this.broadcastChanges();
     }
 
-    public void updateEnchantmentsChosen(List<EnchantmentInstance> enchantments) {
+    public void updateEnchantmentsChosen(List<EnchantmentInstance> enchantments, @Nullable Player dontSync) {
         this.access.execute((level, blockPos) -> {
             CompoundTag tag = this.container.getItem(0).getOrCreateTag();
             if (enchantments.isEmpty()) {
@@ -147,6 +153,7 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
             for (EnchantmentInstance enchantmentInstance : enchantments) {
                 pendingEnchantments.add(EnchantmentHelper.storeEnchantment(ForgeRegistries.ENCHANTMENTS.getKey(enchantmentInstance.enchantment), (byte)enchantmentInstance.level));
             }
+            SyncISEEnchantingTableStatus.sync((ServerLevel) level, blockPos, (ISEEnchantingTableBlockEntity) level.getBlockEntity(blockPos), dontSync);
         });
     }
 
@@ -162,6 +169,8 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
             if (enchantmentInstances.isEmpty())
                 return;
             ISEEnchantingTableBlockEntity table = (ISEEnchantingTableBlockEntity) level.getBlockEntity(blockPos);
+            if (table == null)
+                return;
             int cost = 0;
             int lapisCost = 0;
             for (EnchantmentInstance instance : enchantmentInstances) {
@@ -190,6 +199,7 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
                 }
             }
             this.updateMaxCost(stack, level, blockPos);
+            SyncISEEnchantingTableStatus.sync((ServerLevel) level, blockPos, table);
         });
         this.broadcastChanges();
         return true;

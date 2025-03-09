@@ -10,7 +10,7 @@
 
 ### Fixes
 * Being able to apply enchanted books to items
-* Enchantment list scrolling up when another player opened the container
+* Many bugs in the enchanting table in multiplayer
 
 ## 1.21.0
 ### Additions

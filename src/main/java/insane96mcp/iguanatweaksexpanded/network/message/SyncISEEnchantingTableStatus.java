@@ -6,11 +6,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -65,8 +67,16 @@ public class SyncISEEnchantingTableStatus {
 		ctx.get().setPacketHandled(true);
 	}
 
-	public static void sync(ServerLevel level, BlockPos pos, ISEEnchantingTableBlockEntity blockEntity) {
+	public static void sync(ServerLevel level, BlockPos pos, ISEEnchantingTableBlockEntity blockEntity, @Nullable Player dontSync) {
 		Object msg = new SyncISEEnchantingTableStatus(pos, blockEntity.getItem(0), blockEntity.knownEnchantments);
-		level.players().forEach(player -> CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT));
+		level.players().forEach(player -> {
+			if (player.equals(dontSync))
+				return;
+			CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
+		});
+	}
+
+	public static void sync(ServerLevel level, BlockPos pos, ISEEnchantingTableBlockEntity blockEntity) {
+		sync(level, pos, blockEntity, null);
 	}
 }

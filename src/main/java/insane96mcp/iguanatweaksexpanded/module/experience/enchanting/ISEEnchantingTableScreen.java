@@ -103,7 +103,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
     private void updatePossibleEnchantments() {
         ItemStack stack = this.menu.getSlot(0).getItem();
         this.updateMaxCost();
-        if ((ItemStack.isSameItem(stack, this.lastStack) || (!EnchantingFeature.canBeEnchanted(stack) && !stack.isEmpty())) && !this.forceUpdateEnchantmentsList)
+        if ((ItemStack.isSameItemSameTags(stack, this.lastStack) || (!EnchantingFeature.canBeEnchanted(stack) && !stack.isEmpty())) && !this.forceUpdateEnchantmentsList)
             return;
         this.forceUpdateEnchantmentsList = false;
         this.lastStack = stack.copy();
@@ -178,6 +178,10 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
     private void updateMaxCost() {
         this.maxCost = this.menu.maxCost.get();
         ItemStack stack = this.menu.getSlot(0).getItem();
+        if (stack.isEmpty()) {
+            this.maxCost = 0;
+            return;
+        }
         if (!EnchantingFeature.canBeEnchanted(stack) && !this.forceUpdateEnchantmentsList)
             return;
         EnchantingFeature.getPendingEnchantments(stack)

@@ -41,9 +41,8 @@ public class SyncISEEnchantingTableEnchantments {
 	public static void handle(final SyncISEEnchantingTableEnchantments message, Supplier<NetworkEvent.Context> ctx) {
 		ctx.get().enqueueWork(() -> {
 			//noinspection DataFlowIssue
-			if (ctx.get().getSender().containerMenu instanceof ISEEnchantingTableMenu enchantingTableMenu) {
-				enchantingTableMenu.updateEnchantmentsChosen(message.enchantmentInstances);
-			}
+			if (ctx.get().getSender().containerMenu instanceof ISEEnchantingTableMenu enchantingTableMenu)
+				enchantingTableMenu.updateEnchantmentsChosen(message.enchantmentInstances, ctx.get().getSender());
 		});
 		ctx.get().setPacketHandled(true);
 	}
