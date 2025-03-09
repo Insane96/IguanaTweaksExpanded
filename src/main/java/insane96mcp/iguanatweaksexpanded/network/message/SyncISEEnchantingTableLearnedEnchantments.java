@@ -5,6 +5,7 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchanti
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkEvent;
@@ -51,5 +52,10 @@ public class SyncISEEnchantingTableLearnedEnchantments {
 	public static void sync(ServerLevel level, ISEEnchantingTableBlockEntity blockEntity) {
 		Object msg = new SyncISEEnchantingTableLearnedEnchantments(blockEntity.knownEnchantments);
 		level.players().forEach(player -> CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT));
+	}
+
+	public static void sync(ServerPlayer player, ISEEnchantingTableBlockEntity blockEntity) {
+		Object msg = new SyncISEEnchantingTableLearnedEnchantments(blockEntity.knownEnchantments);
+		CHANNEL.sendTo(msg, player.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
 	}
 }

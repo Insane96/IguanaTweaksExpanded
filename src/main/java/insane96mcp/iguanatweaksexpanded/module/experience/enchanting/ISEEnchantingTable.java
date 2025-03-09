@@ -9,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -71,7 +72,7 @@ public class ISEEnchantingTable extends BaseEntityBlock {
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof ISEEnchantingTableBlockEntity) {
             player.openMenu((MenuProvider)blockentity);
-            SyncISEEnchantingTableLearnedEnchantments.sync((ServerLevel) level, (ISEEnchantingTableBlockEntity) level.getBlockEntity(pos));
+            SyncISEEnchantingTableLearnedEnchantments.sync((ServerPlayer) player, (ISEEnchantingTableBlockEntity) level.getBlockEntity(pos));
         }
     }
 

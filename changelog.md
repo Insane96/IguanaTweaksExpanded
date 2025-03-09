@@ -10,6 +10,7 @@
 
 ### Fixes
 * Being able to apply enchanted books to items
+* Enchantment list scrolling up when another player opened the container
 
 ## 1.21.0
 ### Additions

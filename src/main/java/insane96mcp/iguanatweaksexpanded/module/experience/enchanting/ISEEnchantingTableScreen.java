@@ -151,7 +151,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
                 });
             }
         }
-        this.scroll(-999);
+        this.scroll(0);
     }
 
     private float getCurrentCost() {
