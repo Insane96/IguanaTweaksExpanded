@@ -32,6 +32,14 @@ public class EnchantmentData {
         return this;
     }
 
+    public int getCost(int lvl) {
+        if (this.costPerLevel != 0)
+            return this.costPerLevel * lvl;
+        else if (this.cost.length >= lvl)
+            return this.cost[lvl - 1];
+        return 0;
+    }
+
     public static final java.lang.reflect.Type LIST_TYPE = new TypeToken<ArrayList<EnchantmentData>>(){}.getType();
     public static class Serializer implements JsonDeserializer<EnchantmentData>, JsonSerializer<EnchantmentData> {
         @Override
@@ -45,15 +53,17 @@ public class EnchantmentData {
             if (jObject.has("cost_per_level"))
                 enchantmentData.costPerLevel(GsonHelper.getAsInt(jObject, "cost_per_level"));
 
-            if (jObject.get("costs").isJsonPrimitive())
-                enchantmentData.cost(GsonHelper.getAsInt(jObject, "costs"));
-            else {
-                JsonArray jsonArray = jObject.get("costs").getAsJsonArray();
-                int[] cost = new int[jsonArray.size()];
-                for (int i = 0; i < jsonArray.size(); i++) {
-                    cost[i] = jsonArray.get(i).getAsInt();
+            if (jObject.has("costs")) {
+                if (jObject.get("costs").isJsonPrimitive())
+                    enchantmentData.cost(GsonHelper.getAsInt(jObject, "costs"));
+                else {
+                    JsonArray jsonArray = jObject.get("costs").getAsJsonArray();
+                    int[] cost = new int[jsonArray.size()];
+                    for (int i = 0; i < jsonArray.size(); i++) {
+                        cost[i] = jsonArray.get(i).getAsInt();
+                    }
+                    enchantmentData.cost(cost);
                 }
-                enchantmentData.cost(cost);
             }
             return enchantmentData;
         }
@@ -62,10 +72,12 @@ public class EnchantmentData {
         public JsonElement serialize(EnchantmentData src, java.lang.reflect.Type typeOfSrc, JsonSerializationContext context) {
             JsonObject jObject = new JsonObject();
             jObject.add("id", context.serialize(src.enchantment));
-            if (src.cost.length > 1)
-                jObject.add("costs", context.serialize(src.cost));
-            else if (src.cost.length == 1)
-                jObject.addProperty("costs", src.cost[0]);
+            if (src.cost != null) {
+                if (src.cost.length > 1)
+                    jObject.add("costs", context.serialize(src.cost));
+                else if (src.cost.length == 1)
+                        jObject.addProperty("costs", src.cost[0]);
+            }
             if (src.costPerLevel != 0)
                 jObject.addProperty("cost_per_level", src.costPerLevel);
 

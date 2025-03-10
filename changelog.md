@@ -8,6 +8,7 @@
   * Knowledgeable chance now scales with attack speed
     * Base chance has been increased
   * Rebalanced enchantabilities for new enchantments costs
+  * Reduced by 1 all the enchantments cost (**you should regenerate the enchantment_data.json file**)
   * Reduced items enchantabilities by ~25%
 * Heavily increased durium drops (2\~4 -> 4\~6)
 
