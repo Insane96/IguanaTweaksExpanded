@@ -17,17 +17,17 @@ public class Enduring extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 2;
+        return 3;
     }
 
     @Override
-    public int getMinCost(int level) {
-        return 11 * level;
+    public int getMinCost(int pEnchantmentLevel) {
+        return 5 + (pEnchantmentLevel - 1) * 8;
     }
 
     @Override
-    public int getMaxCost(int level) {
-        return this.getMinCost(level) + 11;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return super.getMinCost(pEnchantmentLevel) + 50;
     }
 
     public boolean checkCompatibility(Enchantment other) {

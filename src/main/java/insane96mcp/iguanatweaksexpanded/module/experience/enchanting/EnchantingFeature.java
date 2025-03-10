@@ -107,7 +107,7 @@ public class EnchantingFeature extends JsonFeature {
     public static Integer enchantingTableMaxEnchantingPower = 20;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not purified or infused")
-    public static Double enchantingTableEnchantabilityMultiplier = 0.3d;
+    public static Double enchantingTableEnchantabilityMultiplier = 0.5d;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Purified Enchantability multiplier", description = "Tool enchantability multiplier when purified (sums with Enchantability multiplier and Infused bonus Enchantability multiplier)")
     public static Double enchantingTablePurifiedEnchantabilityMultiplier = 0.5d;
