@@ -27,7 +27,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.BowItem;
-import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -105,9 +104,6 @@ public class NewEnchantmentsFeature extends Feature {
 
 	//Fishing rods
 	public static final RegistryObject<Enchantment> JUICY_BAIT = ISERegistries.ENCHANTMENTS.register("lucky_hook", JuicyBait::new);
-
-	//Crossbows
-	public static final RegistryObject<Enchantment> BURST_OF_ARROWS = ISERegistries.ENCHANTMENTS.register("burst_of_arrows", BurstOfArrows::new);
 
 	//General
 	public static final RegistryObject<Enchantment> SOULBOUND = ISERegistries.ENCHANTMENTS.register("soulbound", Soulbound::new);
@@ -252,7 +248,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBlockBreakLowest(BlockEvent.BreakEvent event) {
-		event.setExpToDrop(Knowledgeable.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
+		event.setExpToDrop(Knowledgeable.applyToBlockDrops(event.getPlayer(), event.getExpToDrop(), event.getState()));
 		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 	}
@@ -261,7 +257,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onEnchantmentBlockBreak(EnchantmentBlockBreakEvent event) {
-		event.setExpToDrop(Knowledgeable.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
+		event.setExpToDrop(Knowledgeable.applyToBlockDrops(event.getPlayer(), event.getExpToDrop(), event.getState()));
 		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
@@ -313,23 +309,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent
 	public void onProjectileShoot(EntityJoinLevelEvent event) {
-		onCrossbowProjectileShot(event.getEntity());
 		onBowProjectileShot(event.getEntity());
-	}
-
-	private static void onCrossbowProjectileShot(Entity entity) {
-		if (!(entity instanceof Projectile projectile)
-				|| !(projectile.getOwner() instanceof LivingEntity owner)
-				|| (projectile.getPersistentData().contains(BurstOfArrows.BURST) && !projectile.getPersistentData().getBoolean(BurstOfArrows.BURST)))
-			return;
-
-		Optional<InteractionHand> activeHand = getActiveHand(owner, (stack) -> stack.getItem() instanceof CrossbowItem);
-		if (activeHand.isEmpty())
-			return;
-		int lvl = activeHand.get() == InteractionHand.MAIN_HAND ? owner.getMainHandItem().getEnchantmentLevel(BURST_OF_ARROWS.get()) : owner.getOffhandItem().getEnchantmentLevel(BURST_OF_ARROWS.get());
-		if (lvl == 0)
-			return;
-		projectile.getPersistentData().putBoolean(BurstOfArrows.BURST, true);
 	}
 
 	private static void onBowProjectileShot(Entity entity) {

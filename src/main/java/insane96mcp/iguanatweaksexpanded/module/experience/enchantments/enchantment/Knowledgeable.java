@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class Knowledgeable extends Enchantment {
     public static final TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_knowledgeable");
@@ -42,8 +43,11 @@ public class Knowledgeable extends Enchantment {
             target.level().addFreshEntity(new ExperienceOrb(target.level(), target.getX(), target.getY() + target.getBbHeight() / 2f, target.getZ(), lvl));
     }
 
-    public static int applyToBlockDrops(Player player, int expToDrop) {
-        float chance = (float) (getChance() * (1f / player.getAttributeValue(Attributes.ATTACK_SPEED)));
+    public static int applyToBlockDrops(Player player, int expToDrop, BlockState state) {
+        float hardness = state.destroySpeed;
+        if (hardness <= 0f)
+            return expToDrop;
+        float chance = getChance() * hardness * 0.5f;
         int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.KNOWLEDGEABLE.get(), player);
         return lvl > 0 && player.getRandom().nextFloat() <= chance
                 ? expToDrop + lvl

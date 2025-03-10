@@ -22,16 +22,12 @@ public class Smartness extends Enchantment {
         super(Rarity.RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
-    public int getMinCost(int lvl) {
-        return 15 + (lvl - 1) * 9;
+    public int getMinCost(int pEnchantmentLevel) {
+        return 15 + (pEnchantmentLevel - 1) * 9;
     }
 
-    public int getMaxCost(int lvl) {
-        return super.getMinCost(lvl) + 50;
-    }
-
-    public int getMaxLevel() {
-        return 3;
+    public int getMaxCost(int pEnchantmentLevel) {
+        return super.getMinCost(pEnchantmentLevel) + 50;
     }
 
     public boolean checkCompatibility(Enchantment enchantment) {
@@ -39,7 +35,7 @@ public class Smartness extends Enchantment {
     }
 
     public static float getBonusExperience(int lvl) {
-        return lvl * 0.5f;
+        return lvl * 1f;
     }
 
     public static int getIncreasedExperience(RandomSource random, int lvl, int experience) {
