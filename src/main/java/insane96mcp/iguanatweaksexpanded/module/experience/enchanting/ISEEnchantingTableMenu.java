@@ -123,8 +123,9 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
                 baseTableEnchantability += EnchantingFeature.enchantingTableInfusedBonusEnchantabilityFlat;
             }
         }
-        double maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * (enchantingPower / EnchantingFeature.enchantingTableMaxEnchantingPower.floatValue()) + baseTableEnchantability + EnchantingFeature.getCurseCost(stack);
-        return (int) Math.round(maxCost);
+        double ratio = (enchantingPower / EnchantingFeature.enchantingTableMaxEnchantingPower.floatValue());
+        double maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * ratio + baseTableEnchantability * ratio + EnchantingFeature.getCurseCost(stack);
+        return (int) Math.max(1, Math.round(maxCost));
     }
 
     private void updateMaxCost(ItemStack stack, Level level, BlockPos blockPos) {

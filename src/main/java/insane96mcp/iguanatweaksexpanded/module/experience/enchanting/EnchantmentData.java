@@ -11,17 +11,25 @@ import java.util.ArrayList;
 @JsonAdapter(EnchantmentData.Serializer.class)
 public class EnchantmentData {
     public IdTagMatcher enchantment;
-    public int maxLvl;
+    public int costPerLevel;
     public int[] cost;
 
-    public EnchantmentData(IdTagMatcher enchantment, int... cost) {
+    public EnchantmentData(IdTagMatcher enchantment) {
         this.enchantment = enchantment;
-        this.cost = cost;
     }
 
-    public EnchantmentData(String enchantment, int... cost) {
-        this.enchantment = IdTagMatcher.newId(enchantment);
+    public EnchantmentData(String enchantment) {
+        this(IdTagMatcher.newId(enchantment));
+    }
+
+    public EnchantmentData costPerLevel(int costPerLevel) {
+        this.costPerLevel = costPerLevel;
+        return this;
+    }
+
+    public EnchantmentData cost(int... cost) {
         this.cost = cost;
+        return this;
     }
 
     public static final java.lang.reflect.Type LIST_TYPE = new TypeToken<ArrayList<EnchantmentData>>(){}.getType();
@@ -30,16 +38,24 @@ public class EnchantmentData {
         public EnchantmentData deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject jObject = json.getAsJsonObject();
             IdTagMatcher idTagMatcher = context.deserialize(jObject.get("id"), IdTagMatcher.class);
+            EnchantmentData enchantmentData = new EnchantmentData(idTagMatcher);
+            if (!jObject.has("cost_per_level") && !jObject.has("costs"))
+                throw new JsonParseException("Missing cost_per_level or costs field");
+
+            if (jObject.has("cost_per_level"))
+                enchantmentData.costPerLevel(GsonHelper.getAsInt(jObject, "cost_per_level"));
+
             if (jObject.get("costs").isJsonPrimitive())
-                return new EnchantmentData(idTagMatcher, GsonHelper.getAsInt(jObject, "costs"));
+                enchantmentData.cost(GsonHelper.getAsInt(jObject, "costs"));
             else {
                 JsonArray jsonArray = jObject.get("costs").getAsJsonArray();
                 int[] cost = new int[jsonArray.size()];
                 for (int i = 0; i < jsonArray.size(); i++) {
                     cost[i] = jsonArray.get(i).getAsInt();
                 }
-                return new EnchantmentData(idTagMatcher, cost);
+                enchantmentData.cost(cost);
             }
+            return enchantmentData;
         }
 
         @Override
@@ -48,8 +64,10 @@ public class EnchantmentData {
             jObject.add("id", context.serialize(src.enchantment));
             if (src.cost.length > 1)
                 jObject.add("costs", context.serialize(src.cost));
-            else
+            else if (src.cost.length == 1)
                 jObject.addProperty("costs", src.cost[0]);
+            if (src.costPerLevel != 0)
+                jObject.addProperty("cost_per_level", src.costPerLevel);
 
             return jObject;
         }
