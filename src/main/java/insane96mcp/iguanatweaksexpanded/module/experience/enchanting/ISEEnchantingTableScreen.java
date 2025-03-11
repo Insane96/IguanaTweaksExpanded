@@ -25,6 +25,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -134,7 +135,8 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
                         name = "_" + name;
                     return name;
                 }))
-                .forEach(enchantment -> enchantments.add(new EnchantmentInstance(enchantment, this.learnedEnchantments.getOrDefault(enchantment, 0))));
+                .forEach(enchantment ->
+                        enchantments.add(new EnchantmentInstance(enchantment, Math.min(enchantment.getMaxLevel(), this.learnedEnchantments.getOrDefault(enchantment, 0)))));
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
         for (int i = 0; i < enchantments.size(); i++) {
@@ -478,7 +480,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             }
             pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
             MutableComponent component = Component.empty();
-            if (Screen.hasShiftDown()) {
+            if (Screen.hasShiftDown() && ModList.get().isLoaded("enchdesc")) {
                 component.append(Component.translatable(this.enchantment.getDescriptionId() + ".desc").withStyle(ChatFormatting.LIGHT_PURPLE));
                 component.append(CommonComponents.NEW_LINE);
             }

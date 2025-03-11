@@ -2,15 +2,15 @@
 * III 1 Unbreaking: Increases item durability by 75% per level
 * III 1 Enduring: Increases item durability by 30 / 100 per level on armors / non-armors
 * I   2 Mending: Repairs tool by 1 durability every 2 xp picked up
-* I   2 Reforming: Repairs tool by 1 durability every 30 sec
+* I   2 Reforming: Repairs tool by 1 durability every 2 minutes
 * I   2 Soulbound: Makes the item stay in your inventory on death
 
 # Tools and Weapons
 * I   4 Luck: On Tools increases ores dropped by ~80% per level. On weapons increases loot. On Fishing rods increases quality (Luck attribute) by 1
 * I   4 Smartness: Increases experience from blocks, mobs and fishing
 * I   4 Reach: Increases block and entity reach (also works on Chestplates)
-* V   1 Adrenaline: Increases mining speed and attack speed the lower the tools' durability
 * I   4 Knowledgeable: Chance for mobs hit and blocks broken to drop xp
+* V   1 Adrenaline: Increases mining speed and attack speed the lower the tools' durability
 
 # Fishing rods
 * III 2 Lure: Reduces time to lure fishes
@@ -28,9 +28,10 @@
 * IV  1 Piercing: Makes arrows pass through multiple creatues
 * II  2 Reeling: Pulls creatures towards the player
 * III 1 Spread of Ailments: Makes arrows carry the shooter's effects (7 sec per level) and applies them to entities hit
+* I   2 Gravity Defying: Removes gravity from arrows
 
 # Tridents
-* III 1 Loyalty: Makes the trident return back when thrown. Higher levels increase the speed
+* III 2 Loyalty: Makes the trident return back when thrown. Higher levels increase the speed
 * I   4 Channeling: In thunder weather, hitting a mob summons a lightning bolt
 * III 1 Riptide: Replaces the throw with a charge that hurls the user forward ONLY when wet. Ranged attacks are no longer possible.
 * V   1 Impaling: Increases damage against aquatic and wet mobs
@@ -52,7 +53,7 @@
 * V   1 Bane of Noses: Increases damage by 1 against long nosed creatures
 * V   1 Rage: Increases damage the lower your health, up to 2 per level at 0 HP (min 0.4)
 * V   1 Swift strike: Increases attack speed by 10% per level
-* V   1 Critical: Increases crit chance by 10% per level and crit damage by 10% per level
+* V   1 Critical: Increases crit chance by 10% per level and crit damage by 30% per level
 * V   1 Armor Piercer: Increases piercing damage by 1 per level and decreases attack damage by 0.5 per level
 * II  2 Fire Aspect: Sets entities hit on fire
 * II  2 Cryo Aspect: Freezes entities hit
@@ -62,73 +63,83 @@
 * II  2 Launch: Launches the entity hit upwards
 * III 2 Sweeping Edge: Makes sweeping weapons (hoes by default) have increased reach and range
 * I   4 Part Breaker: 10% chance for the mob to drop extra loot on death (heads, blaze rods, etc.)
-* II  1 Air Stealer: Steals 10 tick per level of the hit entity's air
+* II  2 Air Stealer: Steals 10 tick per level of the hit entity's air
 
-minecraft:aqua_affinity 1 (2 ) false
+# Armor
+* I   4 Protection: Increases protection from any source (that doesn't ignore armor) by 7.5% per level
+* IV  1 Blast Protection: Increases protection from explosions by 8% per level and reduces knockback from explosions
+* IV  1 Fire Protection: Increases protection from fire/lava by 8% per level and reduces time on fire
+* IV  1 Projectile Protection: Increases protection from projectiles by 8% per level and reduces the range at which mobs can see you
+* IV  1 Magic Protection: Increases protection from magic sources by 8% per level and reduces the duration of negative effects
+* IV  1 Melee Protection: Increases protection from**** melee attacks by 8% per level and increases attack speed
+* IV  1 Healthy: Increases max health by 1 per level
+* I   4 Alleviating: Heals the user on experience pick up
+* I   4 Flat Protection: Increases armor by 1 per level
+* I   4 Absorption: Increases absorption by 0.75 per level
+
+# Helmet
+* I   3 Aqua Affinity: Removes mining penalty when underwater
+* III 2 Respiration: Decreases air consumption
+
+# Chestplate
+* III 2 Thorns: Deals damage to entities that hit you
+* I   3 Air Born: Removes mining penalty when not on ground
+* I   2 Recovery: Heals the user overtime for some of the damage taken when hurt
+* III 2 Vindication: Stores up to `2 * level` damage taken that you deal back next attack
+
+# Leggings
+* III 2 Swift Sneak: Increases movement speed when sneaking
+* III 2 Magnetic: Pulls items towards the wearer
+* I   2 Retreat: Increases movement speed the lower the health
+* I   4 Sprint Pact: Increases movement speed, but you can no longer sprint
+* I   2 Step Up: Increases step height
+* II  2 Zippy: Increases movement speed by 7.5% per level
+
+# Boots
+* IV  1 Feather Falling: Reduces fall damage by 16% per level
+* III 2 Soul Speed: Increases speed on soul sand
+* III 2 Depth Strider: Reduces water friction
+* II  2 Frost Walker: Freezes water around the wearer
+* IV  1 Shockwave: Damages entities around on fall
+* I   4 Double Jump: Allows the wearer to jump in midair once
+* II  2 Hoppy: Increases wearer jump height
+* I   4 Steady Fall: Negates fall damage but redirects twice of it to the boots
+* I   2 Leaf Walker: Lets you walk on leaves
+
+# Shields
+* II  1 Ablaze: Sets entities blocked by the shield on fire
+* V   1 Aegis: Decreases damage taken by 10% per level when blocking
+* I   4 Celestial Guardian: Gives a huge amount of vitality when blocking and life goes below 25%
+* I   2 Fast Recovery: Reduces shield cooldown
+* I   2 Lightweight: Blocking (without crouch) slows down less
+* I   4 Perfect Parry: Blocking at the exact time of an attack, negates all the damage and stuns the attacker
+* II  2 Recoil: Increases shield knockback
+* IV  1 Reflection: Reflects some of the damage taken back to the attacker
+* V   1 Reinforced: Increases damage blocked
+
+# ???
+* I   4 Stasis: From supplementaries. Have no idea what it does
+
 minecraft:binding_curse 1 (3 ) true
-minecraft:depth_strider 3 (2 4 6 ) false
-minecraft:frost_walker 3 (2 4 6 ) true
-minecraft:respiration 4 (2 4 6 8 ) false
-minecraft:soul_speed 4 (3 6 9 12 ) true
-minecraft:swift_sneak 4 (2 4 6 8 ) true
-minecraft:thorns 4 (2 4 6 8 ) false
 minecraft:vanishing_curse 1 (3 ) true
-iguanatweaksreborn:blast_protection 5 (1 2 3 4 5 ) false
-iguanatweaksreborn:feather_falling 5 (1 2 3 4 5 ) false
-iguanatweaksreborn:fire_protection 5 (1 2 3 4 5 ) false
-iguanatweaksreborn:projectile_protection 5 (1 2 3 4 5 ) false
-iguanatweaksreborn:protection 1 (5 ) true
-allurement:alleviating 1 (4 ) true
 allurement:ascension_curse 1 (3 ) true
 allurement:fleeting_curse 1 (3 ) true
-allurement:obedience 1 (2 ) true
-allurement:shockwave 5 (1 2 3 4 5 ) false
-allurement:vengeance 4 (2 4 6 8 ) false
-iguanatweaksexpanded:absorption 1 (5 ) false
-iguanatweaksexpanded:air_born 1 (2 ) false
 iguanatweaksexpanded:blood_pact_curse 1 (3 ) true
-iguanatweaksexpanded:burst_of_arrows 1 (5 ) false
-iguanatweaksexpanded:double_jump 1 (4 ) true
 iguanatweaksexpanded:dumbness_curse 1 (1 ) true
 iguanatweaksexpanded:ender_curse 1 (2 ) true
 iguanatweaksexpanded:experience_curse 1 (3 ) true
-iguanatweaksexpanded:flat_protection 1 (5 ) false
 iguanatweaksexpanded:fragility_curse 1 (1 ) true
 iguanatweaksexpanded:frenzy_curse 1 (6 ) true
-iguanatweaksexpanded:gravity_defying 1 (2 ) false
-iguanatweaksexpanded:healthy 5 (1 2 3 4 5 ) false
 iguanatweaksexpanded:hop_curse 1 (2 ) true
-iguanatweaksexpanded:hoppy 3 (1 2 3 ) false
 iguanatweaksexpanded:inefficiency_curse 1 (1 ) true
-iguanatweaksexpanded:magic_protection 5 (1 2 3 4 5 ) false
-iguanatweaksexpanded:magnetic 4 (2 4 6 8 ) false
-iguanatweaksexpanded:melee_protection 5 (1 2 3 4 5 ) false
 iguanatweaksexpanded:obscurity_curse 1 (2 ) true
-iguanatweaksexpanded:recovery 1 (2 ) true
-iguanatweaksexpanded:retreat 1 (2 ) true
 iguanatweaksexpanded:short_arm_curse 1 (1 ) true
 iguanatweaksexpanded:slow_charge_curse 1 (2 ) true
 iguanatweaksexpanded:slow_strike_curse 1 (1 ) true
-iguanatweaksexpanded:sprint_pact 1 (5 ) true
 iguanatweaksexpanded:static_charge_curse 1 (2 ) true
-iguanatweaksexpanded:steady_fall 1 (5 ) true
 iguanatweaksexpanded:steel_fall_curse 1 (2 ) true
-iguanatweaksexpanded:step_up 1 (2 ) false
 iguanatweaksexpanded:tear_curse 1 (2 ) true
 iguanatweaksexpanded:unhurried_curse 1 (2 ) true
 iguanatweaksexpanded:unstable_motion_curse 1 (3 ) true
-iguanatweaksexpanded:vindication 4 (2 4 6 8 ) false
 iguanatweaksexpanded:void_curse 1 (1 ) true
 iguanatweaksexpanded:walking_curse 1 (3 ) true
-iguanatweaksexpanded:zippy 3 (1 2 3 ) false
-passablefoliage:leaf_walker 1 (1 ) false
-shieldsplus:ablaze 3 (1 2 3 ) false
-shieldsplus:aegis 6 (1 2 3 4 5 6 ) false
-shieldsplus:celestial_guardian 1 (5 ) true
-shieldsplus:fast_recovery 1 (2 ) false
-shieldsplus:lightweight 1 (2 ) false
-shieldsplus:perfect_parry 1 (5 ) false
-shieldsplus:recoil 3 (1 2 3 ) false
-shieldsplus:reflection 5 (2 4 6 8 10 ) false
-shieldsplus:reinforced 6 (1 2 3 4 5 6 ) false
-supplementaries:stasis 1 (4 ) true
