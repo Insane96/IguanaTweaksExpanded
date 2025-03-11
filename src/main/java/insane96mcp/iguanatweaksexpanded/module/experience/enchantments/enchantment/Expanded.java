@@ -215,8 +215,6 @@ public class Expanded extends Enchantment {
         }
     }
 
-    public static final int[] MAX_BLOCKS_MINED = new int[] { 0, 3, 6, 9 };
-
     public static List<BlockPos> getMinedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face) {
         List<BlockPos> minedBlocks = new ArrayList<>();
         boolean playerRelative = false;

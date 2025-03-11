@@ -23,7 +23,7 @@ public class Smartness extends Enchantment {
     }
 
     public int getMinCost(int pEnchantmentLevel) {
-        return 15 + (pEnchantmentLevel - 1) * 9;
+        return 24;
     }
 
     public int getMaxCost(int pEnchantmentLevel) {

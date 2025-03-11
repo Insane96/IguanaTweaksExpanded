@@ -60,7 +60,6 @@ public class NewEnchantmentsFeature extends Feature {
 
 	//Tools
 	public static final RegistryObject<Enchantment> BLASTING = ISERegistries.ENCHANTMENTS.register("blasting", Blasting::new);
-	public static final RegistryObject<Enchantment> AIR_BORN = ISERegistries.ENCHANTMENTS.register("air_born", AirBorn::new);
 	public static final RegistryObject<Enchantment> EXPANDED = ISERegistries.ENCHANTMENTS.register("expanded", Expanded::new);
 	public static final RegistryObject<Enchantment> VEINING = ISERegistries.ENCHANTMENTS.register("veining", Veining::new);
 	public static final RegistryObject<Enchantment> EXCHANGE = ISERegistries.ENCHANTMENTS.register("exchange", Exchange::new);
@@ -74,6 +73,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> HEALTHY = ISERegistries.ENCHANTMENTS.register("healthy", Healthy::new);
 	public static final RegistryObject<Enchantment> VINDICATION = ISERegistries.ENCHANTMENTS.register("vindication", Vindication::new);
 	public static final RegistryObject<Enchantment> RECOVERY = ISERegistries.ENCHANTMENTS.register("recovery", Recovery::new);
+	public static final RegistryObject<Enchantment> AIR_BORN = ISERegistries.ENCHANTMENTS.register("air_born", AirBorn::new);
 	public static final RegistryObject<Enchantment> STEP_UP = ISERegistries.ENCHANTMENTS.register("step_up", StepUp::new);
 	public static final RegistryObject<Enchantment> ZIPPY = ISERegistries.ENCHANTMENTS.register("zippy", Zippy::new);
 	public static final RegistryObject<Enchantment> HOPPY = ISERegistries.ENCHANTMENTS.register("hoppy", Hoppy::new);
@@ -129,8 +129,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_FRENZY = ISERegistries.ENCHANTMENTS.register("frenzy_curse", CurseOfFrenzy::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_UNSTABLE_MOTION = ISERegistries.ENCHANTMENTS.register("unstable_motion_curse", CurseOfUnstableMotion::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_STATIC_CHARGE = ISERegistries.ENCHANTMENTS.register("static_charge_curse", CurseOfStaticCharge::new);
-	//public static final RegistryObject<Enchantment> CURSE_OF_ANCHOR = ITERegistries.ENCHANTMENTS.register("anchor_curse", CurseOfAnchor::new);
-	//public static final RegistryObject<Enchantment> CURSE_OF_SINKING = ITERegistries.ENCHANTMENTS.register("sinking_curse", CurseOfSinking::new);
+
 	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}

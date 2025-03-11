@@ -44,6 +44,6 @@ public class ArmorPiercer extends Enchantment implements IAttributeEnchantment {
         if (event.getSlotType() != EquipmentSlot.MAINHAND)
             return;
         event.addModifier(PiercingDamage.PIERCING_DAMAGE.get(), new AttributeModifier(MODIFIER_UUID, "Armor Piercier Enchantment Modifier", 0.8d * enchantmentLvl, AttributeModifier.Operation.ADDITION));
-        event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(MODIFIER_UUID, "Armor Piercier Enchantment Modifier", -0.10d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+        event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(MODIFIER_UUID, "Armor Piercier Enchantment Modifier", -0.1d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_TOTAL));
     }
 }

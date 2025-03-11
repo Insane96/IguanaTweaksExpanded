@@ -27,15 +27,8 @@ public class PartBreaker extends Enchantment {
         super(Rarity.RARE, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 3;
-    }
-    /**
-     * Returns the minimal value of enchantability needed on the enchantment level passed.
-     */
     public int getMinCost(int pEnchantmentLevel) {
-        return 15 + (pEnchantmentLevel - 1) * 9;
+        return 24;
     }
 
     public int getMaxCost(int pEnchantmentLevel) {
@@ -48,7 +41,7 @@ public class PartBreaker extends Enchantment {
     }
 
     public static float getChance(int lvl) {
-        return lvl * 0.05f;
+        return lvl * 0.10f;
     }
 
     public static void onLootDrop(LivingDropsEvent event) {
