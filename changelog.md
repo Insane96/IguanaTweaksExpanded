@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## Alpha 1.22.0
 ### Changes
 * Reduced bookshelves needed for full enchanting power (25 -> 20)
 * Enchanting
@@ -10,13 +10,14 @@
   * Rebalanced enchantabilities for new enchantments costs
   * Reduced items enchantabilities by ~25%
   * Enchantments
-    * Cost per level has been reduced by ~1 (**you should regenerate the enchantment_data.json file**)
+    * Cost has been rebalanced. Mostly reduced by 1 (**you should regenerate the enchantment_data.json file**)
     * Enduring is now III levels (was II)
     * Veining is now III levels (was II)
     * Haste is now V levels (was II) with 0.8 tool efficiency per level
     * Part breaker is now 1 level only, with 10% chance
     * Armor piercer now reduces overall attack damage instead of the tool's
     * Air stealer now scales with weapon % attack damage
+    * Reduced Magnetic range by 1
 * Heavily increased durium drops (2\~4 -> 4\~6)
 
 ### Fixes
