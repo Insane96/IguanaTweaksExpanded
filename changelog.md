@@ -16,6 +16,7 @@
     * Haste is now V levels (was II) with 0.8 tool efficiency per level
     * Part breaker is now 1 level only, with 10% chance
     * Armor piercer now reduces overall attack damage instead of the tool's
+    * Air stealer now scales with weapon % attack damage
 * Heavily increased durium drops (2\~4 -> 4\~6)
 
 ### Fixes

@@ -55,13 +55,14 @@
 * V   1 Critical: Increases crit chance by 10% per level and crit damage by 10% per level
 * V   1 Armor Piercer: Increases piercing damage by 1 per level and decreases attack damage by 0.5 per level
 * II  2 Fire Aspect: Sets entities hit on fire
+* II  2 Cryo Aspect: Freezes entities hit
+* II  2 Explosive: Blows up entities killed
 * II  2 Knockback: Increases weapon knockback
 * I   2 Padding: Lowers weapon knockback
-* III 2 Sweeping Edge: Makes sweeping weapons (hoes by default) have increased reach and range
 * II  2 Launch: Launches the entity hit upwards
+* III 2 Sweeping Edge: Makes sweeping weapons (hoes by default) have increased reach and range
 * I   4 Part Breaker: 10% chance for the mob to drop extra loot on death (heads, blaze rods, etc.)
 * II  1 Air Stealer: Steals 10 tick per level of the hit entity's air
-* 
 
 minecraft:aqua_affinity 1 (2 ) false
 minecraft:binding_curse 1 (3 ) true
@@ -87,12 +88,10 @@ iguanatweaksexpanded:absorption 1 (5 ) false
 iguanatweaksexpanded:air_born 1 (2 ) false
 iguanatweaksexpanded:blood_pact_curse 1 (3 ) true
 iguanatweaksexpanded:burst_of_arrows 1 (5 ) false
-iguanatweaksexpanded:cryo_aspect 3 (2 4 6 ) false
 iguanatweaksexpanded:double_jump 1 (4 ) true
 iguanatweaksexpanded:dumbness_curse 1 (1 ) true
 iguanatweaksexpanded:ender_curse 1 (2 ) true
 iguanatweaksexpanded:experience_curse 1 (3 ) true
-iguanatweaksexpanded:explosive 3 (1 2 3 ) false
 iguanatweaksexpanded:flat_protection 1 (5 ) false
 iguanatweaksexpanded:fragility_curse 1 (1 ) true
 iguanatweaksexpanded:frenzy_curse 1 (6 ) true
