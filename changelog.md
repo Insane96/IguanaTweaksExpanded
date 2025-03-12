@@ -1,14 +1,10 @@
 # Changelog
 
-* Hardcoded strings
-* Enderman get stuck in leaves
-* Can still feed animals infinitely
-* "Heavily broken when durabilty < -2%"
-
 ## Upcoming
 ### Changes
 * Allurement's Reforming repair speed has been doubled (every 2 -> 1 minute)
 * Table base enchantability reduced to 1
+* Increased Quick Charge II and III cost
 
 ### Fixes
 * Enchanting table strings hardcoded

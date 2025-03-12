@@ -148,7 +148,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("minecraft:flame").costPerLevel(2),
             new EnchantmentData("minecraft:infinity").costPerLevel(1),
 
-            new EnchantmentData("minecraft:quick_charge").costPerLevel(1),
+            new EnchantmentData("minecraft:quick_charge").cost(1, 1, 2, 3),
             new EnchantmentData("minecraft:multishot").costPerLevel(3),
             new EnchantmentData("minecraft:piercing").costPerLevel(1),
             new EnchantmentData("allurement:reeling").costPerLevel(2),
