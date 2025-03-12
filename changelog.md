@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.22.1
 ### Additions
 * One time use enchantments
   * Disabled by default, makes enchantments in the enchanting table get consumed when applied
