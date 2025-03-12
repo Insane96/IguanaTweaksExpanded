@@ -122,7 +122,7 @@ public class EnchantingFeature extends JsonFeature {
     public static Integer enchantingTableInfusedBonusEnchantabilityFlat = 1;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Base enchantability")
-    public static Integer enchantingTableBaseEnchantability = 2;
+    public static Integer enchantingTableBaseEnchantability = 1;
     /*@Config
     @Label(name = "All enchantments are one time use", description = "If true, enchantments in the enchanting table are one time use.")
     public static Boolean allEnchantmentsAreOneTimeUse = true;*/

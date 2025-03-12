@@ -4,12 +4,11 @@
 * Enderman get stuck in leaves
 * Can still feed animals infinitely
 * "Heavily broken when durabilty < -2%"
-* Reduce min enchantment to 1
-* Increase repair speed of reforming to 1200
 
 ## Upcoming
 ### Changes
 * Allurement's Reforming repair speed has been doubled (every 2 -> 1 minute)
+* Table base enchantability reduced to 1
 
 ### Fixes
 * Enchanting table strings hardcoded
