@@ -279,9 +279,9 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         }
         ItemStack stack = this.menu.getSlot(0).getItem();
         if ((EnchantingFeature.canBeEnchanted(stack) || stack.isEmpty()) && this.enchantmentEntries.isEmpty()) {
-            guiGraphics.drawCenteredString(this.font, Component.literal("No enchantments available").withStyle(ChatFormatting.UNDERLINE), topLeftCornerX + LIST_X +  + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y, 0xFFaa00);
+            guiGraphics.drawCenteredString(this.font, Component.translatable("iguanatweaksexpanded.enchanting_table.no_enchantments_available").withStyle(ChatFormatting.UNDERLINE), topLeftCornerX + LIST_X +  + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y, 0xFFaa00);
             if (mouseX >= topLeftCornerX + LIST_X && mouseX <= topLeftCornerX + LIST_X + ENCH_ENTRY_W && mouseY >= topLeftCornerY + LIST_Y && mouseY <= topLeftCornerY + LIST_Y + ENCH_ENTRY_H) {
-                guiGraphics.renderTooltip(this.font, Component.literal("Apply enchanted books to the table to let it learn enchantments").withStyle(ChatFormatting.GRAY), mouseX, mouseY);
+                guiGraphics.renderTooltip(this.font, Component.translatable("iguanatweaksexpanded.enchanting_table.no_enchantments_available.tooltip").withStyle(ChatFormatting.GRAY), mouseX, mouseY);
             }
         }
         if (this.maxCost > 0) {
@@ -419,13 +419,16 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             RenderSystem.enableDepthTest();
             guiGraphics.blit(TEXTURE_LOCATION, this.getX(), this.getY(), this.type == Type.LOWER ? LOWER_LVL_BTN_U : RISE_LVL_BTN_U, ENCH_ENTRY_V + this.getYOffset(), this.width, this.height);
             guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-            //TODO bonus max cost tooltip
-            if (this.enchantmentEntry.enchantmentDisplay.enchantment.isCurse())
-                this.setTooltip(null);
-            else if (this.type == Type.LOWER)
-                this.setTooltip(Tooltip.create(Component.literal("Previous level cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(this.enchantmentEntry.enchantmentDisplay.enchantment, this.enchantmentEntry.enchantmentDisplay.lvl - 1))))));
-            else if (this.type == Type.RISE)
-                this.setTooltip(Tooltip.create(Component.literal("Next level cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(this.enchantmentEntry.enchantmentDisplay.enchantment, this.enchantmentEntry.enchantmentDisplay.lvl + 1))))));
+
+            Enchantment enchantment = this.enchantmentEntry.enchantmentDisplay.enchantment;
+            if (enchantment.isCurse()) {
+                this.setTooltip(Tooltip.create(Component.translatable("iguanatweaksexpanded.enchanting_table.level_btn_tooltip.curse", EnchantingFeature.getCost(enchantment, 1, true))));
+            }
+            else {
+                int currCost = EnchantingFeature.getCost(enchantment, this.enchantmentEntry.enchantmentDisplay.lvl);
+                int newCost = EnchantingFeature.getCost(enchantment, this.enchantmentEntry.enchantmentDisplay.lvl + (this.type == Type.RISE ? 1 : -1));
+                this.setTooltip(Tooltip.create(Component.translatable("iguanatweaksexpanded.enchanting_table.level_btn_tooltip", currCost, newCost)));
+            }
         }
 
         private int getYOffset() {
@@ -484,15 +487,10 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
                 component.append(Component.translatable(this.enchantment.getDescriptionId() + ".desc").withStyle(ChatFormatting.LIGHT_PURPLE));
                 component.append(CommonComponents.NEW_LINE);
             }
-            if (!enchantment.isCurse()) {
-                if (shouldShowKnownEnchantments())
-                    this.setTooltip(Tooltip.create(component.append(Component.literal("Cost per level: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, 1)))))));
-                else
-                    this.setTooltip(Tooltip.create(component.append(Component.literal("Total cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, lvl)))))));
-            }
-            else
-                this.setTooltip(Tooltip.create(component.append(Component.literal("Bonus max cost: %s".formatted(ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getCost(enchantment, 1, true)))))));
-            //this.isHovered = pMouseX >= this.getX() && pMouseY >= this.getY() && pMouseX < this.getX() + this.width + ENCH_LVL_W && pMouseY < this.getY() + this.height;
+            if (enchantment.isCurse())
+                this.setTooltip(Tooltip.create(component.append(Component.translatable("iguanatweaksexpanded.enchanting_table.bonus_max_cost", EnchantingFeature.getCost(enchantment, 1, true)))));
+            else if (!shouldShowKnownEnchantments())
+                this.setTooltip(Tooltip.create(component.append(Component.translatable("iguanatweaksexpanded.enchanting_table.total_cost", EnchantingFeature.getCost(enchantment, lvl)))));
         }
 
         @Override
@@ -609,7 +607,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             if (ISEEnchantingTableScreen.this.maxCost == 0)
                 return super.getMessage();
             ChatFormatting color = ISEEnchantingTableScreen.this.getCurrentCost() > ISEEnchantingTableScreen.this.maxCost ? ChatFormatting.RED : ChatFormatting.GREEN;
-            return Component.literal("Max: %s".formatted(ONE_DECIMAL_FORMATTER.format(ISEEnchantingTableScreen.this.maxCost))).withStyle(color);
+            return Component.translatable("iguanatweaksexpanded.enchanting_table.max", ISEEnchantingTableScreen.this.maxCost).withStyle(color);
         }
 
         @Override

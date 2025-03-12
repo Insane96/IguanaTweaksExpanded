@@ -35,6 +35,6 @@ public class Altimeter extends Feature {
 				|| event.getEntity() == null)
 			return;
 
-		event.getToolTip().add(Component.literal("%d".formatted(event.getEntity().getBlockY())).withStyle(ChatFormatting.GRAY));
+		event.getToolTip().add(Component.literal("Y: %d".formatted(event.getEntity().getBlockY())).withStyle(ChatFormatting.GRAY));
 	}
 }

@@ -17,12 +17,7 @@ public class AltimeterItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        for (int i = level.getMinBuildHeight(); i <= level.getMaxBuildHeight(); i += 16) {
-            if (player.getBlockY() < i) {
-                player.displayClientMessage(Component.literal("%d ~ %d".formatted(i - 16, i)).withStyle(ChatFormatting.GRAY), true);
-                break;
-            }
-        }
+        player.displayClientMessage(Component.literal("Y: %d".formatted(player.getBlockY())).withStyle(ChatFormatting.GRAY), true);
         return InteractionResultHolder.success(stack);
     }
 }

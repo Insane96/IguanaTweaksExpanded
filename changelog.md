@@ -1,5 +1,21 @@
 # Changelog
 
+* Hardcoded strings
+* Enderman get stuck in leaves
+* Can still feed animals infinitely
+* "Heavily broken when durabilty < -2%"
+* Reduce min enchantment to 1
+* Increase repair speed of reforming to 1200
+* reduce leather dropped
+* Disable feeding through
+* lapis sulle pianure
+
+## Upcoming
+### Changes
+
+### Fixes
+* Enchanting table strings hardcoded
+
 ## Alpha 1.22.0
 ### Changes
 * Reduced bookshelves needed for full enchanting power (25 -> 20)

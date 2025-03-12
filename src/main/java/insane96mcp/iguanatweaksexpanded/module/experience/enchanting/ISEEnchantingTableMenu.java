@@ -176,14 +176,14 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
             int lapisCost = 0;
             for (EnchantmentInstance instance : enchantmentInstances) {
                 if (!table.knownEnchantments.containsKey(instance.enchantment)) {
-                    player.sendSystemMessage(Component.literal("The table doesn't know ").append(Component.translatable(instance.enchantment.getDescriptionId())).append(Component.literal(" enchantment")));
+                    player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.doesnt_know", Component.translatable(instance.enchantment.getDescriptionId())));
                     return;
                 }
                 cost += EnchantingFeature.getCost(instance.enchantment, instance.level);
                 lapisCost += instance.level;
             }
             if (cost > this.getMaxCost(enchantmentInstances) && !player.getAbilities().instabuild) {
-                player.sendSystemMessage(Component.literal("Cost higher than max cost: " + cost + " > " + this.getMaxCost(enchantmentInstances)));
+                player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.cost_higher_than_max", cost, this.getMaxCost(enchantmentInstances)));
                 return;
             }
             enchantmentInstances.forEach(enchantmentInstance -> stack.enchant(enchantmentInstance.enchantment, enchantmentInstance.level));

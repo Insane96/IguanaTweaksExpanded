@@ -152,7 +152,7 @@ public class ISEEmiPlugin implements EmiPlugin {
 				CompoundTag displayTag = new CompoundTag();
 				ListTag loreTag = new ListTag();
 				loreTag.add(StringTag.valueOf(""));
-				loreTag.add(StringTag.valueOf(Component.Serializer.toJson(Component.literal("With every enchantment learned"))));
+				loreTag.add(StringTag.valueOf(Component.Serializer.toJson(Component.translatable("iguanatweaksexpanded.emi.every_enchantment"))));
 				displayTag.put("Lore", loreTag);
 				stack.getOrCreateTag().put("display", displayTag);
 				registry.addEmiStackAfter(EmiStack.of(stack), emiStack -> emiStack.getItemStack().is(EnchantingFeature.ENCHANTING_TABLE.item().get()));
