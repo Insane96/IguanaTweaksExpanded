@@ -6,12 +6,10 @@
 * "Heavily broken when durabilty < -2%"
 * Reduce min enchantment to 1
 * Increase repair speed of reforming to 1200
-* reduce leather dropped
-* Disable feeding through
-* lapis sulle pianure
 
 ## Upcoming
 ### Changes
+* Allurement's Reforming repair speed has been doubled (every 2 -> 1 minute)
 
 ### Fixes
 * Enchanting table strings hardcoded
