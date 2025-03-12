@@ -194,8 +194,8 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
             lapis.shrink(lapisCost);
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
             for (EnchantmentInstance instance : enchantmentInstances) {
-                if (instance.enchantment.isCurse()) {
-                    table.forgetEnchantment(instance.enchantment);
+                if (instance.enchantment.isCurse() || EnchantingFeature.enchantingTableOneTimeUseEnchantments) {
+                    table.forgetEnchantment(instance.enchantment, instance.level);
                     EnchantingFeature.removePendingEnchantment(stack, instance.enchantment);
                 }
             }

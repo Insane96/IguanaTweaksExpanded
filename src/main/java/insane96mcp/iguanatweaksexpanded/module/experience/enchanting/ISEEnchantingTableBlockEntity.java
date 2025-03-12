@@ -114,7 +114,17 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     }
 
     public void forgetEnchantment(Enchantment enchantment) {
-        this.knownEnchantments.remove(enchantment);
+        this.forgetEnchantment(enchantment, enchantment.getMaxLevel());
+    }
+
+    public void forgetEnchantment(Enchantment enchantment, int lvl) {
+        Integer currentLvl = this.knownEnchantments.get(enchantment);
+        if (currentLvl == null)
+            return;
+        if (currentLvl - lvl <= 0)
+            this.knownEnchantments.remove(enchantment);
+        else
+            this.knownEnchantments.put(enchantment, currentLvl - lvl);
         this.setChanged();
     }
 

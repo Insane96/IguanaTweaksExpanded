@@ -96,12 +96,15 @@ public class EnchantingFeature extends JsonFeature {
     @Label(name = "Allurement integration", description = """
             If true, some mixins are used on Allurement to make the enchantments work on more things and configs are changed to not overlap with ITE.
             Requires Minecraft Restart.
-            PLEASE NOTE that due to config limitation, some things cannot be disabled, so better use item tags. E.g. Launch enchantment uses a new iguanatweaksexpanded:enchanting/allurement/accepts_launch_enchantments item tag to decide which item accepts the enchantment.
+            PLEASE NOTE that due to config limitation, some things cannot be disabled, so use item tags. E.g. Launch enchantment uses a new iguanatweaksexpanded:enchanting/allurement/accepts_launch_enchantments item tag to decide which item accepts the enchantment.
             """)
     public static Boolean allurementIntegration = true;
     @Config
     @Label(name = "Enchanting Table.Requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
     public static Boolean enchantingTableRequiresLearning = true;
+    @Config
+    @Label(name = "Enchanting Table.One time use enchantments", description = "If true, all the enchantments in the enchanting table (so, not only curses) are one time use. If enabled, you can no longer disenchant items in grindstone to prevent accidental loss.")
+    public static Boolean enchantingTableOneTimeUseEnchantments = false;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Max enchanting power", description = "Increasing this increases bookshelves required. Vanilla is 15")
     public static Integer enchantingTableMaxEnchantingPower = 20;
@@ -123,9 +126,6 @@ public class EnchantingFeature extends JsonFeature {
     @Config(min = 0)
     @Label(name = "Enchanting Table.Base enchantability")
     public static Integer enchantingTableBaseEnchantability = 1;
-    /*@Config
-    @Label(name = "All enchantments are one time use", description = "If true, enchantments in the enchanting table are one time use.")
-    public static Boolean allEnchantmentsAreOneTimeUse = true;*/
 
     public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
             new EnchantmentData("minecraft:unbreaking").costPerLevel(1),
@@ -415,13 +415,14 @@ public class EnchantingFeature extends JsonFeature {
     public void onGrindstoneUpdate(GrindstoneEvent.OnPlaceItem event) {
         if (!this.isEnabled())
             return;
-
-        extractTreasureEnchantments(event);
+        extractEnchantments(event);
         resetLodestoneCompass(event);
         removeAllEnchantments(event);
+        if (enchantingTableOneTimeUseEnchantments && (!event.getTopItem().isEmpty() && event.getBottomItem().isEmpty()) || (event.getTopItem().isEmpty() && !event.getBottomItem().isEmpty()))
+            event.setCanceled(true);
     }
 
-    public static void extractTreasureEnchantments(GrindstoneEvent.OnPlaceItem event) {
+    public static void extractEnchantments(GrindstoneEvent.OnPlaceItem event) {
         if (!grindstoneTreasureEnchantmentExtraction
                 || !event.getTopItem().isEnchanted()
                 || !event.getBottomItem().is(Items.BOOK)

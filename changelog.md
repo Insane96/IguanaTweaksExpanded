@@ -1,6 +1,10 @@
 # Changelog
 
 ## Upcoming
+### Additions
+* One time use enchantments
+  * Disabled by default, makes enchantments in the enchanting table get consumed when applied
+
 ### Changes
 * Allurement's Reforming repair speed has been doubled (every 2 -> 1 minute)
 * Table base enchantability reduced to 1
