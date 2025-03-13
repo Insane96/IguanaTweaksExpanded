@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.22.2
 ### Changes
 * Reduced reach cost
 
