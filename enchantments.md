@@ -8,7 +8,7 @@
 # Tools and Weapons
 * I   4 Luck: On Tools increases ores dropped by ~80% per level. On weapons increases loot. On Fishing rods increases quality (Luck attribute) by 1
 * I   4 Smartness: Increases experience from blocks, mobs and fishing
-* I   4 Reach: Increases block and entity reach (also works on Chestplates)
+* I   3 Reach: Increases block and entity reach (also works on Chestplates)
 * I   4 Knowledgeable: Chance for mobs hit and blocks broken to drop xp
 * V   1 Adrenaline: Increases mining speed and attack speed the lower the tools' durability
 
@@ -23,7 +23,7 @@
 * V   1 Infinity: Arrows have 1/lvl chance to be consumed when fired
 
 # Crossbow
-* III 1 Quick Charge: Decreases reload speed by 0.25
+* III 1, 1, 2, 2 Quick Charge: Decreases reload speed by 0.25
 * I   3 Multishot: Fires 3 arrows at once
 * IV  1 Piercing: Makes arrows pass through multiple creatues
 * II  2 Reeling: Pulls creatures towards the player

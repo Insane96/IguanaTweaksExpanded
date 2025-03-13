@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+### Changes
+* Reduced reach cost
+
 ### Fixes
 * Quick charge cost
 

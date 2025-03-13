@@ -136,7 +136,7 @@ public class EnchantingFeature extends JsonFeature {
 
             new EnchantmentData("iguanatweaksreborn:luck").costPerLevel(4),
             new EnchantmentData("iguanatweaksexpanded:smartness").costPerLevel(4),
-            new EnchantmentData("iguanatweaksexpanded:reach").costPerLevel(4),
+            new EnchantmentData("iguanatweaksexpanded:reach").costPerLevel(3),
             new EnchantmentData("iguanatweaksexpanded:knowledgeable").costPerLevel(4),
             new EnchantmentData("iguanatweaksexpanded:adrenaline").costPerLevel(1),
 
