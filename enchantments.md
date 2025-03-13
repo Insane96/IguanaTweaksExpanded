@@ -6,7 +6,7 @@
 * I   2 Soulbound: Makes the item stay in your inventory on death
 
 # Tools and Weapons
-* I   4 Luck: On Tools increases ores dropped by ~80% per level. On weapons increases loot. On Fishing rods increases quality (Luck attribute) by 1
+* I   4 Luck: On Tools increases ores dropped by ~75% per level. On weapons increases loot. On Fishing rods increases quality (Luck attribute) by 2
 * I   4 Smartness: Increases experience from blocks, mobs and fishing
 * I   3 Reach: Increases block and entity reach (also works on Chestplates)
 * I   4 Knowledgeable: Chance for mobs hit and blocks broken to drop xp

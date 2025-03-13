@@ -6,6 +6,7 @@
 
 ### Fixes
 * Quick charge cost
+* Shields enchantabilities being vanilla
 
 ## 1.22.1
 ### Additions
