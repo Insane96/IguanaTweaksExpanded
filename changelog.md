@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Fixes
+* Quick charge cost
+
 ## 1.22.1
 ### Additions
 * One time use enchantments
