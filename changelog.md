@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.22.3
 ### Changes
 * Enduring now adds 50 durability per level to Shields instead of 100
 
