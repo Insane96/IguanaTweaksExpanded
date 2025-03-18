@@ -110,6 +110,7 @@ public class ClientSetup {
             addAfter(event, Items.IRON_SWORD, Durium.SWORD.get());
             addAfter(event, Items.DIAMOND_SWORD, Keego.SWORD.get());
             addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
+            addAfter(event, Items.DIAMOND_SWORD, Quaron.SWORD.get());
             addAfter(event, Items.NETHERITE_SWORD, SoulSteel.SWORD.get());
 
             addAfter(event, FlintExpansion.AXE.get(), CopperExpansion.COPPER_AXE.get());
