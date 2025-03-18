@@ -28,6 +28,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.DiggingEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -47,6 +48,7 @@ import net.minecraftforge.event.level.BlockEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class Expanded extends Enchantment {
     static EnchantmentCategory PICKAXE_AND_SHOVELS = EnchantmentCategory.create("pickaxe_or_shovel", item -> item instanceof PickaxeItem || item instanceof ShovelItem);
@@ -73,41 +75,63 @@ public class Expanded extends Enchantment {
         return !(other instanceof DiggingEnchantment) && !(other instanceof Blasting) && super.checkCompatibility(other);
     }
 
-    public static void toolAction(BlockEvent.BlockToolModificationEvent event) {
-
-    }
-
-    public static void tryApply(LivingEntity entity, Level level, BlockPos pos, Direction face, BlockState state) {
-        if (!(level instanceof ServerLevel serverLevel) ||
-                !(entity instanceof ServerPlayer player))
-            return;
-        ItemStack heldStack = entity.getMainHandItem();
-        if (!heldStack.isCorrectToolForDrops(state))
-            return;
+    /**
+     * Return true in the function to break the loop
+     */
+    public static void apply(LivingEntity entity, Level level, ItemStack heldStack, BlockPos pos, Direction face, BlockState state, Function<BlockPos, Boolean> function) {
         int enchLevel = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.EXPANDED.get());
         if (enchLevel == 0)
             return;
-        List<BlockPos> minedBlocks = getMinedBlocks(heldStack, enchLevel, level, entity, pos, face);
-        for (BlockPos minedBlock : minedBlocks) {
-            BlockState minedBlockState = level.getBlockState(minedBlock);
-            BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(minedBlock) : null;
-            int exp = ISEEventFactory.onEnchantmentBlockBreak(player, level, minedBlock, minedBlockState);
-            if (exp == -1)
-                continue;
-            boolean blockRemoved = removeBlock(serverLevel, minedBlock, player);
-            if (blockRemoved) {
-                serverLevel.destroyBlock(minedBlock, false, entity);
-                if (!player.isCreative()) {
-                    minedBlockState.getBlock().playerDestroy(serverLevel, player, minedBlock, minedBlockState, blockEntity, heldStack);
-                    minedBlockState.getBlock().popExperience(serverLevel, minedBlock, exp);
-                }
-                level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, minedBlock, Block.getId(minedBlockState));
-                ISEEventFactory.onBlockDestroyPosts(serverLevel, minedBlock, minedBlockState, player);
-            }
-            heldStack.hurtAndBreak(1, entity, livingEntity -> livingEntity.broadcastBreakEvent(InteractionHand.MAIN_HAND));
-            if (UnbreakableItems.isBroken(heldStack) || heldStack.isEmpty())
+        List<BlockPos> affectedBlocks = getAffectedBlocks(heldStack, enchLevel, level, entity, pos, face);
+        for (BlockPos affectedBlock : affectedBlocks) {
+            if (function.apply(affectedBlock))
                 break;
         }
+    }
+
+    public static void onBlockToolModification(BlockEvent.BlockToolModificationEvent event) {
+        Player entity = event.getPlayer();
+        //noinspection DataFlowIssue
+        Level level = entity.level();
+        BlockState state = event.getState();
+        BlockPos pos = event.getPos();
+        Direction face = event.getContext().getClickedFace();
+        ItemStack heldStack = event.getContext().getItemInHand();
+        apply(entity, level, heldStack, pos, face, state, affectedPos -> {
+            if (event.getState() != level.getBlockState(affectedPos))
+                return false;
+            if (level instanceof ServerLevel serverLevel && (entity instanceof ServerPlayer player && !player.getAbilities().flying)) {
+                heldStack.getItem().useOn(new UseOnContext(serverLevel, null, event.getContext().getHand(), event.getContext().getItemInHand(), new BlockHitResult(event.getContext().getClickLocation(), event.getContext().getClickedFace(), affectedPos, event.getContext().isInside())));
+            }
+            return UnbreakableItems.isBroken(heldStack) || heldStack.isEmpty();
+        });
+    }
+
+    public static void onBlockBreak(LivingEntity entity, Level level, BlockPos pos, Direction face, BlockState state) {
+        ItemStack heldStack = entity.getMainHandItem();
+        if (!heldStack.isCorrectToolForDrops(state))
+            return;
+        apply(entity, level, heldStack, pos, face, state, affectedBlock -> {
+            if (level instanceof ServerLevel serverLevel && (entity instanceof ServerPlayer player && !player.getAbilities().flying)) {
+                BlockState minedBlockState = level.getBlockState(affectedBlock);
+                BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(affectedBlock) : null;
+                int exp = ISEEventFactory.onEnchantmentBlockBreak(player, level, affectedBlock, minedBlockState);
+                if (exp == -1)
+                    return false;
+                boolean blockRemoved = removeBlock(serverLevel, affectedBlock, player);
+                if (blockRemoved) {
+                    serverLevel.destroyBlock(affectedBlock, false, entity);
+                    if (!player.isCreative()) {
+                        minedBlockState.getBlock().playerDestroy(serverLevel, player, affectedBlock, minedBlockState, blockEntity, heldStack);
+                        minedBlockState.getBlock().popExperience(serverLevel, affectedBlock, exp);
+                    }
+                    level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, affectedBlock, Block.getId(minedBlockState));
+                    ISEEventFactory.onBlockDestroyPosts(serverLevel, affectedBlock, minedBlockState, player);
+                }
+                heldStack.hurtAndBreak(1, entity, livingEntity -> livingEntity.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+            }
+            return UnbreakableItems.isBroken(heldStack) || heldStack.isEmpty();
+        });
     }
 
     private static boolean removeBlock(Level level, BlockPos pos, ServerPlayer player) {
@@ -150,7 +174,7 @@ public class Expanded extends Enchantment {
 
 
         // determine extra blocks to highlight
-        List<BlockPos> minedBlocks = getMinedBlocks(heldStack, enchLevel, level, player, targetPos, blockTrace.getDirection());
+        List<BlockPos> minedBlocks = getAffectedBlocks(heldStack, enchLevel, level, player, targetPos, blockTrace.getDirection());
         if (minedBlocks.isEmpty())
             return;
 
@@ -220,7 +244,7 @@ public class Expanded extends Enchantment {
         }
     }
 
-    public static List<BlockPos> getMinedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face) {
+    public static List<BlockPos> getAffectedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face) {
         List<BlockPos> minedBlocks = new ArrayList<>();
         boolean playerRelative = false;
         if (face == Direction.UP || face == Direction.DOWN) {

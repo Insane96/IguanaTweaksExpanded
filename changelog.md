@@ -5,7 +5,7 @@
 * Copper tools now show depth bonuses
 
 ### Changes
-* Veining now also affects right-click actions
+* Expanded and veining now also affects right-click actions
   * Strip, pathing, tilling, etc
 
 ### Fixes

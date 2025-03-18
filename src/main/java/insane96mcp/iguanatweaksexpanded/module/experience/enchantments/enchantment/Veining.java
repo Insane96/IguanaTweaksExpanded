@@ -79,9 +79,9 @@ public class Veining extends Enchantment {
         int enchLevel = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.VEINING.get());
         if (enchLevel == 0)
             return;
-        List<BlockPos> minedBlocks = getAffectedBlocks(heldStack, enchLevel, level, entity, pos, face);
-        for (BlockPos minedBlock : minedBlocks) {
-            if (function.apply(minedBlock))
+        List<BlockPos> affectedBlocks = getAffectedBlocks(heldStack, enchLevel, level, entity, pos, face);
+        for (BlockPos affectedBlock : affectedBlocks) {
+            if (function.apply(affectedBlock))
                 break;
         }
     }
@@ -102,7 +102,7 @@ public class Veining extends Enchantment {
         });
     }
 
-    public static void tryApply(LivingEntity entity, Level level, BlockPos pos, Direction face, BlockState state) {
+    public static void onBlockBreak(LivingEntity entity, Level level, BlockPos pos, Direction face, BlockState state) {
         ItemStack heldStack = entity.getMainHandItem();
         if (!heldStack.isCorrectToolForDrops(state))
             return;
