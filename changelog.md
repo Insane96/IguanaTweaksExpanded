@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+### Additions
+* Copper tools now show depth bonuses
+
 ### Fixes
 * Copper depth bonus being completely broken
 

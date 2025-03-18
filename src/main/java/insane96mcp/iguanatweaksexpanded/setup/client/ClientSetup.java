@@ -53,10 +53,10 @@ public class ClientSetup {
     {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
-            addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_HOE.get());
-            addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_AXE.get());
-            addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_PICKAXE.get());
-            addAfter(event, FlintExpansion.HOE.get(), CopperExpansion.COPPER_SHOVEL.get());
+            addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_HOE.get());
+            addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_AXE.get());
+            addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_PICKAXE.get());
+            addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_SHOVEL.get());
             addAfter(event, Items.IRON_HOE, Solarium.HOE.get());
             addAfter(event, Items.IRON_HOE, Solarium.AXE.get());
             addAfter(event, Items.IRON_HOE, Solarium.PICKAXE.get());

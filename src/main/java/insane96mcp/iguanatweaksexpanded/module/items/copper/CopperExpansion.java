@@ -26,6 +26,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -120,7 +121,11 @@ public class CopperExpansion extends Feature {
 		int y = getNormalizedY(event.getEntity().getBlockY(), level);
 		if (y < 0)
 			return;
-		event.setNewSpeed((float) (event.getNewSpeed() + (0.24f * (Math.pow(y, 0.655f)))));
+		event.setNewSpeed((event.getNewSpeed() + getBonusMiningSpeed(y)));
+	}
+
+	public static float getBonusMiningSpeed(int normalizedY) {
+		return (float) (0.24f * Math.pow(normalizedY, 0.655f));
 	}
 
 	@SubscribeEvent
@@ -139,12 +144,16 @@ public class CopperExpansion extends Feature {
 		int y = getNormalizedY(event.getEntity().getBlockY(), level);
 		if (y < 0)
 			return;
-		double chance = 1 - 1 / (1 + 0.37f * Math.pow(y, 0.67f));
+		double chance = 1 - 1 / (1 + getBonusUnbreakability(y));
 		for (int i = 0; i < amount; i++) {
 			if (event.getRandom().nextFloat() >= chance)
 				++newAmount;
 		}
 		event.setAmount(newAmount);
+	}
+
+	public static float getBonusUnbreakability(int normalizedY) {
+		return (float) (0.37f * Math.pow(normalizedY, 0.67f));
 	}
 
 	public static int getNormalizedY(int y, Level level) {
@@ -232,7 +241,7 @@ public class CopperExpansion extends Feature {
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void onTooltip(ItemTooltipEvent event) {
+	public void onCoatedTooltip(ItemTooltipEvent event) {
 		if (!this.isEnabled()
 				|| !event.getItemStack().is(COATED_EQUIPMENT)
 				|| event.getEntity() == null)
@@ -240,6 +249,24 @@ public class CopperExpansion extends Feature {
 
 		int hits = event.getItemStack().getOrCreateTag().getInt(COATED_TIMES_HIT);
 		event.getToolTip().add(Component.translatable("iguanatweaksexpanded.electrocution.charge", Math.round(hits / 3f * 100f)).withStyle(ChatFormatting.DARK_GRAY));
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onTooltip(ItemTooltipEvent event) {
+		if (!this.isEnabled()
+				|| event.getEntity() == null)
+			return;
+
+		if (event.getItemStack().is(COPPER_TOOLS_EQUIPMENT)) {
+			float bonus = getBonusMiningSpeed(getNormalizedY(event.getEntity().getBlockY(), event.getEntity().level()));
+			if (bonus > 0)
+				event.getToolTip().add(Component.translatable("iguanatweaksexpanded.copper.depth_mining_speed", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(bonus)).withStyle(Style.EMPTY.withColor(0xD1890D)));
+		}
+		if (event.getItemStack().is(COPPER_UNBREAKING_BONUS)) {
+			float bonus = Math.round(getBonusUnbreakability(getNormalizedY(event.getEntity().getBlockY(), event.getEntity().level())) * 10f) / 10f;
+			if (bonus > 0)
+				event.getToolTip().add(Component.translatable("iguanatweaksexpanded.copper.depth_unbreaking", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(1f + bonus)).withStyle(Style.EMPTY.withColor(0xD1890D)));
+		}
 	}
 
 	public static class ShieldsPlusIntegration {
