@@ -13,7 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class ISEEventFactory {
     /**
-     * Returns the experience dropped
+     * Returns the experience dropped, or -1 if the event is canceled
      */
     public static int onEnchantmentBlockBreak(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
         EnchantmentBlockBreakEvent event = new EnchantmentBlockBreakEvent(level, pos, state, player);

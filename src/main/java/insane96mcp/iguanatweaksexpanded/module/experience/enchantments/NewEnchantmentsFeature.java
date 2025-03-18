@@ -276,6 +276,17 @@ public class NewEnchantmentsFeature extends Feature {
 		}
 	}
 
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onBlockToolModification(BlockEvent.BlockToolModificationEvent event) {
+		if (event.getPlayer() == null)
+			return;
+		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
+		if (pick instanceof BlockHitResult) {
+			blockHitResult = (BlockHitResult) pick;
+			Veining.onBlockToolModification(event);
+		}
+	}
+
 	@SubscribeEvent
 	public void onPostBlockBreak(DestroyBlockPostEvent event) {
 		if (blockHitResult == null)
