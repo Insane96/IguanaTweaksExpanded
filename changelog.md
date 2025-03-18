@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.22.4
 ### Additions
 * Copper tools now show depth bonuses
 
