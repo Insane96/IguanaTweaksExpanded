@@ -232,6 +232,8 @@ public class Veining extends Enchantment {
     }
 
     private static boolean addIfCanBeMined(ItemStack stack, List<BlockPos> blockPos, Level level, BlockPos targetPos, BlockPos minedPos) {
+        if (minedPos.equals(targetPos))
+            return false;
         BlockState targetState = level.getBlockState(targetPos);
         BlockState minedState = level.getBlockState(minedPos);
         if (targetState.is(minedState.getBlock())) {

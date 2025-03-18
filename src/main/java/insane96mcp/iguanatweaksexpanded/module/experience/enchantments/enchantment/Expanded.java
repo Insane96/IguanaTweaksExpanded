@@ -43,6 +43,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.client.model.data.ModelData;
+import net.minecraftforge.event.level.BlockEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,10 @@ public class Expanded extends Enchantment {
 
     public boolean checkCompatibility(Enchantment other) {
         return !(other instanceof DiggingEnchantment) && !(other instanceof Blasting) && super.checkCompatibility(other);
+    }
+
+    public static void toolAction(BlockEvent.BlockToolModificationEvent event) {
+
     }
 
     public static void tryApply(LivingEntity entity, Level level, BlockPos pos, Direction face, BlockState state) {

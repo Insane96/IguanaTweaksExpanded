@@ -6,6 +6,7 @@
 
 ### Fixes
 * Copper depth bonus being completely broken
+* Fixed Veining breaking one block less than excpected
 
 ## 1.22.3
 ### Changes
