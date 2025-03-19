@@ -4,6 +4,7 @@ import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.integration.BuzzierBeesIntegration;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.item.*;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.module.combat.RegeneratingAbsorption;
@@ -47,8 +48,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.UUID;
 
-@Label(name = "Solarium", description = "Add Solarium, a new material made by alloying Overgrown solium moss ball (found in hot biomes) and can be used to upgrade Iron Equipment")
-@LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
+@Label(name = "Solarium", description = "Add Solarium, a new material made by alloying Overgrown solium moss ball (found in hot biomes) and can be used to upgrade Iron Equipment. Disabling this will disable ore generation and items in the creative inventory.")
+@LoadFeature(module = Modules.Ids.ITEMS)
 public class Solarium extends Feature {
 	public static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("c9c18638-6505-4544-9871-6397916fd0b7");
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("435317e9-0146-4f1b-bc21-67f466ee5f9c");
@@ -74,6 +75,7 @@ public class Solarium extends Feature {
 
 	public Solarium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+		InsaneSurvivalExtra.addServerPack("solarium", "Insane's Survival Extra Solarium", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	@SubscribeEvent
