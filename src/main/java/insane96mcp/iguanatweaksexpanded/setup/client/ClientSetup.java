@@ -61,11 +61,13 @@ public class ClientSetup {
             addAfter(event, Items.IRON_HOE, Solarium.AXE.get());
             addAfter(event, Items.IRON_HOE, Solarium.PICKAXE.get());
             addAfter(event, Items.IRON_HOE, Solarium.SHOVEL.get());
-            addAfter(event, Items.IRON_HOE, Durium.HOE.get());
-            addAfter(event, Items.IRON_HOE, Durium.AXE.get());
-            addAfter(event, Items.IRON_HOE, Durium.PICKAXE.get());
-            addAfter(event, Items.IRON_HOE, Durium.SHOVEL.get());
-            addAfter(event, Items.SHEARS, Durium.SHEARS.get());
+            if (Feature.isEnabled(Durium.class)) {
+                addAfter(event, Items.IRON_HOE, Durium.HOE.get());
+                addAfter(event, Items.IRON_HOE, Durium.AXE.get());
+                addAfter(event, Items.IRON_HOE, Durium.PICKAXE.get());
+                addAfter(event, Items.IRON_HOE, Durium.SHOVEL.get());
+                addAfter(event, Items.SHEARS, Durium.SHEARS.get());
+            }
             addAfter(event, Items.DIAMOND_HOE, Keego.HOE.get());
             addAfter(event, Items.DIAMOND_HOE, Keego.AXE.get());
             addAfter(event, Items.DIAMOND_HOE, Keego.PICKAXE.get());
@@ -94,7 +96,9 @@ public class ClientSetup {
             addAfter(event, Items.GOLDEN_HOE, Forging.GOLDEN_HAMMER.get());
             addAfter(event, Items.IRON_HOE, Forging.IRON_HAMMER.get());
             addAfter(event, Solarium.HOE.get(), Forging.SOLARIUM_HAMMER.get());
-            addAfter(event, Durium.HOE.get(), Forging.DURIUM_HAMMER.get());
+            if (Feature.isEnabled(Durium.class)) {
+                addAfter(event, Durium.HOE.get(), Forging.DURIUM_HAMMER.get());
+            }
             addAfter(event, Items.DIAMOND_HOE, Forging.DIAMOND_HAMMER.get());
             addAfter(event, SoulSteel.HOE.get(), Forging.SOUL_STEEL_HAMMER.get());
             addAfter(event, Items.NETHERITE_HOE, Forging.NETHERITE_HAMMER.get());
@@ -107,7 +111,9 @@ public class ClientSetup {
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             addAfter(event, FlintExpansion.SWORD.get(), CopperExpansion.COPPER_SWORD.get());
             addAfter(event, Items.IRON_SWORD, Solarium.SWORD.get());
-            addAfter(event, Items.IRON_SWORD, Durium.SWORD.get());
+            if (Feature.isEnabled(Durium.class)) {
+                addAfter(event, Items.IRON_SWORD, Durium.SWORD.get());
+            }
             addAfter(event, Items.DIAMOND_SWORD, Keego.SWORD.get());
             addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
             addAfter(event, Items.DIAMOND_SWORD, Quaron.SWORD.get());
@@ -115,7 +121,9 @@ public class ClientSetup {
 
             addAfter(event, FlintExpansion.AXE.get(), CopperExpansion.COPPER_AXE.get());
             addAfter(event, Items.IRON_AXE, Solarium.AXE.get());
-            addAfter(event, Items.IRON_AXE, Durium.AXE.get());
+            if (Feature.isEnabled(Durium.class)) {
+                addAfter(event, Items.IRON_AXE, Durium.AXE.get());
+            }
             addAfter(event, Items.DIAMOND_AXE, Keego.AXE.get());
             addAfter(event, Items.DIAMOND_AXE, CopperExpansion.COATED_AXE.get());
             addAfter(event, Items.DIAMOND_AXE, Quaron.AXE.get());
@@ -139,10 +147,12 @@ public class ClientSetup {
             addAfter(event, Items.IRON_BOOTS, Solarium.LEGGINGS.get());
             addAfter(event, Items.IRON_BOOTS, Solarium.CHESTPLATE.get());
             addAfter(event, Items.IRON_BOOTS, Solarium.HELMET.get());
-            addAfter(event, Items.IRON_BOOTS, Durium.BOOTS.get());
-            addAfter(event, Items.IRON_BOOTS, Durium.LEGGINGS.get());
-            addAfter(event, Items.IRON_BOOTS, Durium.CHESTPLATE.get());
-            addAfter(event, Items.IRON_BOOTS, Durium.HELMET.get());
+            if (Feature.isEnabled(Durium.class)) {
+                addAfter(event, Items.IRON_BOOTS, Durium.BOOTS.get());
+                addAfter(event, Items.IRON_BOOTS, Durium.LEGGINGS.get());
+                addAfter(event, Items.IRON_BOOTS, Durium.CHESTPLATE.get());
+                addAfter(event, Items.IRON_BOOTS, Durium.HELMET.get());
+            }
             addAfter(event, Items.DIAMOND_BOOTS, Keego.BOOTS.get());
             addAfter(event, Items.DIAMOND_BOOTS, Keego.LEGGINGS.get());
             addAfter(event, Items.DIAMOND_BOOTS, Keego.CHESTPLATE.get());
@@ -163,8 +173,10 @@ public class ClientSetup {
             addAfter(event, Items.ARROW, Fletching.ICE_ARROW_ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            addBefore(event, Items.GOLD_BLOCK, Durium.BLOCK.item().get());
-            addBefore(event, Items.GOLD_BLOCK, Durium.SCRAP_BLOCK.item().get());
+            if (Feature.isEnabled(Durium.class)) {
+                addBefore(event, Items.GOLD_BLOCK, Durium.BLOCK.item().get());
+                addBefore(event, Items.GOLD_BLOCK, Durium.SCRAP_BLOCK.item().get());
+            }
             addAfter(event, Items.DIAMOND_BLOCK, SoulSteel.BLOCK.item().get());
             addBefore(event, Items.NETHERITE_BLOCK, Keego.BLOCK.item().get());
             addBefore(event, Items.DIAMOND_BLOCK, Quaron.BLOCK.item().get());
@@ -185,12 +197,12 @@ public class ClientSetup {
             addAfter(event, Items.TNT, ExplosiveBarrel.BLOCK.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.DEEPSLATE_ORE.item().get());
-            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.ORE.item().get());
-            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.DIRT_ORE.item().get());
-            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.CLAY_ORE.item().get());
-            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.GRAVEL_ORE.item().get());
-            addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.SAND_ORE.item().get());
+            if (Feature.isEnabled(Durium.class)) {
+                addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.DIRT_ORE.item().get());
+                addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.CLAY_ORE.item().get());
+                addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.GRAVEL_ORE.item().get());
+                addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.SAND_ORE.item().get());
+            }
             addAfter(event, Items.DEEPSLATE_DIAMOND_ORE, Keego.ORE.item().get());
             addAfter(event, Items.VINE, Solarium.SOLIUM_MOSS.item().get());
             if (Feature.isEnabled(BeegOreVeins.class)) {
@@ -212,9 +224,11 @@ public class ClientSetup {
             }
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            addAfter(event, Items.RAW_GOLD, Durium.SCRAP_PIECE.get());
+            if (Feature.isEnabled(Durium.class)) {
+                addAfter(event, Items.RAW_GOLD, Durium.SCRAP_PIECE.get());
             addAfter(event, Items.IRON_INGOT, Durium.INGOT.get());
             addAfter(event, Items.IRON_NUGGET, Durium.NUGGET.get());
+        }
             addBefore(event, Items.EMERALD, Solarium.SOLARIUM_BALL.get());
             addAfter(event, Items.GOLD_INGOT, SoulSteel.INGOT.get());
             addAfter(event, Items.GOLD_NUGGET, SoulSteel.NUGGET.get());

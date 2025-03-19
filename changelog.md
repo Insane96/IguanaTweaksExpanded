@@ -1,6 +1,10 @@
 # Changelog
 
 ## Upcoming
+### Changes
+* Durium feature can now be disabled
+  * This will disable the ore generation, loot tables, some advancements and anvil repair
+
 ### Fixes
 * Quaron sword missing from creative inventory
 

@@ -6,6 +6,7 @@ import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
@@ -32,8 +33,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.EnumMap;
 
-@Label(name = "Durium", description = "Add Durium, a new metal made by alloying Durium Scrap (found as scrap pieces in ores in the Overworld) and can be used to upgrade Iron Equipment")
-@LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
+@Label(name = "Durium", description = "Add Durium, a new metal made by alloying Durium Scrap (found as scrap pieces in ores in the Overworld) and can be used to upgrade Iron Equipment. Disabling this will disable ore generation and items in the creative inventory.")
+@LoadFeature(module = Modules.Ids.MINING)
 public class Durium extends Feature {
 
 	public static final TagKey<Block> BLOCK_ORES = ISEBlockTagsProvider.create("durium_ores");
@@ -78,6 +79,7 @@ public class Durium extends Feature {
 
 	public Durium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+		InsaneSurvivalExtra.addServerPack("durium", "Insane's Survival Extra Durium", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	public static class ShieldsPlusIntegration {

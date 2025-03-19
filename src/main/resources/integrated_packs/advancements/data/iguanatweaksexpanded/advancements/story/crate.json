@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/durium_ingot",
+	"parent": "iguanatweaksexpanded:story/blast_furnace",
 	"criteria": {
 		"overweight": {
 			"trigger": "iguanatweaksexpanded:overweight_crate_carry"

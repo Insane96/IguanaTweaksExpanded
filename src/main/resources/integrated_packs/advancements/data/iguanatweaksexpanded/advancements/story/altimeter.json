@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/durium_gear",
+	"parent": "iguanatweaksexpanded:story/blast_furnace",
 	"criteria": {
 		"altimeter": {
 			"trigger": "minecraft:inventory_changed",
