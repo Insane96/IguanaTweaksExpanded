@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.22.5
 ### Changes
 * Durium, Soul Steel, Keego, Solarium and Copper features can now be disabled
   * This will hide the items from creative inventory and disable the data pack that adds ore generation, some advancements and anvil repair (if any)
