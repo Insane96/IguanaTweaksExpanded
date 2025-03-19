@@ -1,17 +1,17 @@
 {
 	"item_to_repair": {
-		"id": "iguanatweaksexpanded:quaron_hammer"
+		"id": "iguanatweaksexpanded:stone_hammer"
 	},
 	"repair": [
 		{
 			"repair_material": {
-				"id": "iguanatweaksexpanded:quaron_ingot"
+				"id": "minecraft:copper_ingot"
 			},
 			"amount": 3.75
 		},
 		{
 			"repair_material": {
-				"id": "iguanatweaksexpanded:quaron_nugget"
+				"id": "caverns_and_chasms:copper_nugget"
 			},
 			"amount": 33,
 			"cost_multiplier": 9

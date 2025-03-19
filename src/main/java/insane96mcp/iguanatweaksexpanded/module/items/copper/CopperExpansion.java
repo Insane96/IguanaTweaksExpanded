@@ -5,6 +5,7 @@ import insane96mcp.iguanatweaksexpanded.data.generator.ISEDamageTypeTagsProvider
 import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.network.message.ElectrocutionParticleMessage;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
@@ -57,8 +58,8 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
-@Label(name = "Copper Tools & Armor Expansion", description = "Two new set of tools and a new Armor Set. Disabling this will prevent copper tools from being faster and more durable the deeper are used and will prevent the electrocution effect of coated copper items")
-@LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
+@Label(name = "Copper Tools & Armor Expansion", description = "Two new set of tools and a new Armor Set. Disabling this will prevent copper tools from being faster and more durable the deeper are used and will prevent the electrocution effect of coated copper items. Disabling this will disable ore generation and items in the creative inventory.")
+@LoadFeature(module = Modules.Ids.ITEMS)
 public class CopperExpansion extends Feature {
 	public static final TagKey<Item> COPPER_TOOLS_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/tools/copper"));
 	public static final TagKey<Item> COPPER_UNBREAKING_BONUS = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "copper_unbreaking_bonus"));
@@ -102,6 +103,7 @@ public class CopperExpansion extends Feature {
 
 	public CopperExpansion(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+		InsaneSurvivalExtra.addServerPack("copper_expansion", "Insane's Survival Extra Copper Expansion", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	public static final String COATED_TIMES_HIT = InsaneSurvivalExtra.RESOURCE_PREFIX + "coated_times_hit";

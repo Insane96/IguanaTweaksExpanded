@@ -2,8 +2,8 @@
 
 ## Upcoming
 ### Changes
-* Durium, Soul Steel, Keego, Solarium features can now be disabled
-  * This will hide the items from creative inventory and disable the data pack that adds ore generation, some advancements and anvil repair
+* Durium, Soul Steel, Keego, Solarium and Copper features can now be disabled
+  * This will hide the items from creative inventory and disable the data pack that adds ore generation, some advancements and anvil repair (if any)
 
 ### Fixes
 * Quaron sword missing from creative inventory

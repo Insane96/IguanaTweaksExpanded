@@ -53,16 +53,18 @@ public class ClientSetup {
     {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
-            addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_HOE.get());
-            addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_AXE.get());
-            addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_PICKAXE.get());
-            addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_SHOVEL.get());
-            addAfter(event, CopperExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
-            addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_HOE.get());
-            addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_AXE.get());
-            addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_PICKAXE.get());
-            addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_SHOVEL.get());
-            addAfter(event, CopperExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
+            if (Feature.isEnabled(CopperExpansion.class)) {
+                addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_HOE.get());
+                addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_AXE.get());
+                addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_PICKAXE.get());
+                addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_SHOVEL.get());
+                addAfter(event, CopperExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
+                addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_HOE.get());
+                addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_AXE.get());
+                addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_PICKAXE.get());
+                addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_SHOVEL.get());
+                addAfter(event, CopperExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
+            }
             if (Feature.isEnabled(Solarium.class)) {
                 addAfter(event, Items.IRON_HOE, Solarium.HOE.get());
                 addAfter(event, Items.IRON_HOE, Solarium.AXE.get());
@@ -115,7 +117,12 @@ public class ClientSetup {
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            addAfter(event, Items.WOODEN_SWORD, CopperExpansion.COPPER_SWORD.get());
+            if (Feature.isEnabled(CopperExpansion.class)) {
+                addAfter(event, Items.WOODEN_SWORD, CopperExpansion.COPPER_SWORD.get());
+                addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
+                addAfter(event, Items.WOODEN_AXE, CopperExpansion.COPPER_AXE.get());
+                addAfter(event, Items.DIAMOND_AXE, CopperExpansion.COATED_AXE.get());
+            }
             if (Feature.isEnabled(Solarium.class)) {
                 addAfter(event, Items.IRON_SWORD, Solarium.SWORD.get());
                 addAfter(event, Items.IRON_AXE, Solarium.AXE.get());
@@ -128,20 +135,21 @@ public class ClientSetup {
                 addAfter(event, Items.DIAMOND_SWORD, Keego.SWORD.get());
                 addAfter(event, Items.DIAMOND_AXE, Keego.AXE.get());
             }
-            addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
             if (Feature.isEnabled(Quaron.class)) {
-                addAfter(event, Items.DIAMOND_AXE, CopperExpansion.COATED_AXE.get());
                 addAfter(event, Items.DIAMOND_SWORD, Quaron.SWORD.get());
+                addAfter(event, Items.DIAMOND_AXE, Quaron.AXE.get());
             }
             if (Feature.isEnabled(SoulSteel.class)) {
                 addAfter(event, Items.NETHERITE_SWORD, SoulSteel.SWORD.get());
                 addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
             }
 
-            addAfter(event, Items.WOODEN_AXE, CopperExpansion.COPPER_AXE.get());
 
             if (ModList.get().isLoaded("shieldsplus")) {
-                addAfter(event, SPItems.WOODEN_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get());
+                if (Feature.isEnabled(CopperExpansion.class)) {
+                    addAfter(event, SPItems.WOODEN_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get());
+                    addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get());
+                }
                 if (Feature.isEnabled(Solarium.class)) {
                     addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.ShieldsPlusIntegration.SHIELD.get());
                 }
@@ -151,7 +159,6 @@ public class ClientSetup {
                 if (Feature.isEnabled(Keego.class)) {
                     addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.ShieldsPlusIntegration.SHIELD.get());
                 }
-                addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get());
                 if (Feature.isEnabled(Quaron.class)) {
                     addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.ShieldsPlusIntegration.SHIELD.get());
                 }
@@ -160,10 +167,12 @@ public class ClientSetup {
                 }
             }
 
-            addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.BOOTS.get());
-            addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.LEGGINGS.get());
-            addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.CHESTPLATE.get());
-            addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.HELMET.get());
+            if (Feature.isEnabled(CopperExpansion.class)) {
+                addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.BOOTS.get());
+                addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.LEGGINGS.get());
+                addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.CHESTPLATE.get());
+                addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.HELMET.get());
+            }
             if (Feature.isEnabled(Solarium.class)) {
                 addAfter(event, Items.IRON_BOOTS, Solarium.BOOTS.get());
                 addAfter(event, Items.IRON_BOOTS, Solarium.LEGGINGS.get());

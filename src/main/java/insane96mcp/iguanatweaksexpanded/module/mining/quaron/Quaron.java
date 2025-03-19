@@ -4,6 +4,7 @@ import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.event.HookTickToHookLureEvent;
@@ -72,6 +73,7 @@ public class Quaron extends Feature {
 
 	public Quaron(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+		InsaneSurvivalExtra.addServerPack("quaron", "Insane's Survival Extra Quaron", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
