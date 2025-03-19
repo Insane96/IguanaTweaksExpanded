@@ -4,13 +4,13 @@ import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
-import insane96mcp.insanelib.data.lootmodifier.InjectLootTableModifier;
 import insane96mcp.insanelib.item.ILItemTier;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
@@ -24,13 +24,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.EnumMap;
 import java.util.List;
 
-@Label(name = "Soul Steel", description = "Add Soul Steel, a new metal made by alloying Iron, Soul Sand and Hellish Coal. DISABLING THIS DOES NOTHING. use datapacks to remove soul steel from the game, with recipes, loot table modifiers and world gen.")
+@Label(name = "Soul Steel", description = "Add Soul Steel, a new metal made by alloying Iron, Soul Sand and Hellish Coal. Disabling this will disable ore generation and items in the creative inventory.")
 @LoadFeature(module = Modules.Ids.MINING)
 public class SoulSteel extends Feature {
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("soul_steel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), new Item.Properties());
@@ -81,6 +80,7 @@ public class SoulSteel extends Feature {
 
 	public SoulSteel(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+		InsaneSurvivalExtra.addServerPack("soul_steel", "Insane's Survival Extra Soul Steel", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	private static List<ResourceLocation> createUpgradeIconList() {
@@ -89,12 +89,6 @@ public class SoulSteel extends Feature {
 
 	private static List<ResourceLocation> createUpgradeMaterialList() {
 		return List.of(EMPTY_SLOT_INGOT);
-	}
-
-	private static final String path = "mining/soul_steel/";
-
-	public static void addGlobalLoot(GlobalLootModifierProvider provider) {
-		provider.add(path + "upgrade_template_in_fortress", new InjectLootTableModifier(new ResourceLocation("minecraft:chests/nether_bridge"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "chests/injection/soul_steel_upgrade_template")));
 	}
 
 	public static class ShieldsPlusIntegration {

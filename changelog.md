@@ -2,11 +2,12 @@
 
 ## Upcoming
 ### Changes
-* Durium feature can now be disabled
-  * This will disable the ore generation, loot tables, some advancements and anvil repair
+* Durium, Soul Steel features can now be disabled
+  * This will hide the items from creative inventory and disable the data pack that adds ore generation, some advancements and anvil repair
 
 ### Fixes
 * Quaron sword missing from creative inventory
+* Soul Steel block dropping nothing
 
 ## 1.22.4
 ### Additions

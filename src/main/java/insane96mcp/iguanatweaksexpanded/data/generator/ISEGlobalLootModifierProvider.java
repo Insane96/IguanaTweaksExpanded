@@ -2,7 +2,6 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 
@@ -15,7 +14,5 @@ public class ISEGlobalLootModifierProvider extends GlobalLootModifierProvider {
     protected void start() {
         EnchantingFeature.addGlobalLoot(this);
         NewEnchantmentsFeature.addGlobalLoot(this);
-        //RecallIdol.addGlobalLoot(this);
-        SoulSteel.addGlobalLoot(this);
     }
 }

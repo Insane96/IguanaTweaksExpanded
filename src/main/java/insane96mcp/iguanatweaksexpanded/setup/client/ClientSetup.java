@@ -81,10 +81,12 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_HOE, Quaron.PICKAXE.get());
             addAfter(event, Items.DIAMOND_HOE, Quaron.SHOVEL.get());
             addAfter(event, Items.FISHING_ROD, Quaron.FISHING_ROD.get());
-            addAfter(event, Items.NETHERITE_HOE, SoulSteel.HOE.get());
-            addAfter(event, Items.NETHERITE_HOE, SoulSteel.AXE.get());
-            addAfter(event, Items.NETHERITE_HOE, SoulSteel.PICKAXE.get());
-            addAfter(event, Items.NETHERITE_HOE, SoulSteel.SHOVEL.get());
+            if (Feature.isEnabled(SoulSteel.class)) {
+                addAfter(event, Items.NETHERITE_HOE, SoulSteel.HOE.get());
+                addAfter(event, Items.NETHERITE_HOE, SoulSteel.AXE.get());
+                addAfter(event, Items.NETHERITE_HOE, SoulSteel.PICKAXE.get());
+                addAfter(event, Items.NETHERITE_HOE, SoulSteel.SHOVEL.get());
+            }
 
             addAfter(event, Items.WOODEN_HOE, Forging.WOODEN_HAMMER.get());
             if (!FlintExpansion.areStoneToolsDisabled())
@@ -100,7 +102,9 @@ public class ClientSetup {
                 addAfter(event, Durium.HOE.get(), Forging.DURIUM_HAMMER.get());
             }
             addAfter(event, Items.DIAMOND_HOE, Forging.DIAMOND_HAMMER.get());
-            addAfter(event, SoulSteel.HOE.get(), Forging.SOUL_STEEL_HAMMER.get());
+            if (Feature.isEnabled(SoulSteel.class)) {
+                addAfter(event, SoulSteel.HOE.get(), Forging.SOUL_STEEL_HAMMER.get());
+            }
             addAfter(event, Items.NETHERITE_HOE, Forging.NETHERITE_HAMMER.get());
             addAfter(event, Keego.HOE.get(), Forging.KEEGO_HAMMER.get());
 
@@ -109,7 +113,7 @@ public class ClientSetup {
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            addAfter(event, FlintExpansion.SWORD.get(), CopperExpansion.COPPER_SWORD.get());
+            addAfter(event, Items.WOODEN_SWORD, CopperExpansion.COPPER_SWORD.get());
             addAfter(event, Items.IRON_SWORD, Solarium.SWORD.get());
             if (Feature.isEnabled(Durium.class)) {
                 addAfter(event, Items.IRON_SWORD, Durium.SWORD.get());
@@ -117,9 +121,11 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_SWORD, Keego.SWORD.get());
             addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
             addAfter(event, Items.DIAMOND_SWORD, Quaron.SWORD.get());
-            addAfter(event, Items.NETHERITE_SWORD, SoulSteel.SWORD.get());
+            if (Feature.isEnabled(SoulSteel.class)) {
+                addAfter(event, Items.NETHERITE_SWORD, SoulSteel.SWORD.get());
+            }
 
-            addAfter(event, FlintExpansion.AXE.get(), CopperExpansion.COPPER_AXE.get());
+            addAfter(event, Items.WOODEN_AXE, CopperExpansion.COPPER_AXE.get());
             addAfter(event, Items.IRON_AXE, Solarium.AXE.get());
             if (Feature.isEnabled(Durium.class)) {
                 addAfter(event, Items.IRON_AXE, Durium.AXE.get());
@@ -127,16 +133,22 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_AXE, Keego.AXE.get());
             addAfter(event, Items.DIAMOND_AXE, CopperExpansion.COATED_AXE.get());
             addAfter(event, Items.DIAMOND_AXE, Quaron.AXE.get());
-            addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
+            if (Feature.isEnabled(SoulSteel.class)) {
+                addAfter(event, Items.NETHERITE_AXE, SoulSteel.AXE.get());
+            }
 
             if (ModList.get().isLoaded("shieldsplus")) {
-                addAfter(event, FlintExpansion.areStoneToolsDisabled() ? SPItems.WOODEN_SHIELD.get() : SPItems.STONE_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get());
+                addAfter(event, SPItems.WOODEN_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get());
                 addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.ShieldsPlusIntegration.SHIELD.get());
-                addAfter(event, SPItems.IRON_SHIELD.get(), Durium.ShieldsPlusIntegration.SHIELD.get());
+                if (Feature.isEnabled(Durium.class)) {
+                    addAfter(event, SPItems.IRON_SHIELD.get(), Durium.ShieldsPlusIntegration.SHIELD.get());
+                }
                 addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.ShieldsPlusIntegration.SHIELD.get());
                 addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get());
                 addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.ShieldsPlusIntegration.SHIELD.get());
-                addAfter(event, SPItems.NETHERITE_SHIELD.get(), SoulSteel.ShieldsPlusIntegration.SHIELD.get());
+                if (Feature.isEnabled(SoulSteel.class)) {
+                    addAfter(event, SPItems.NETHERITE_SHIELD.get(), SoulSteel.ShieldsPlusIntegration.SHIELD.get());
+                }
             }
 
             addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.BOOTS.get());
@@ -161,10 +173,12 @@ public class ClientSetup {
             addAfter(event, Items.DIAMOND_BOOTS, Quaron.LEGGINGS.get());
             addAfter(event, Items.DIAMOND_BOOTS, Quaron.CHESTPLATE.get());
             addAfter(event, Items.DIAMOND_BOOTS, Quaron.HELMET.get());
-            addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.BOOTS.get());
-            addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.LEGGINGS.get());
-            addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.CHESTPLATE.get());
-            addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.HELMET.get());
+            if (Feature.isEnabled(SoulSteel.class)) {
+                addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.BOOTS.get());
+                addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.LEGGINGS.get());
+                addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.CHESTPLATE.get());
+                addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.HELMET.get());
+            }
 
             addAfter(event, Items.ARROW, Fletching.TORCH_ARROW_ITEM.get());
             addAfter(event, Items.ARROW, Fletching.EXPLOSIVE_ARROW_ITEM.get());
@@ -177,7 +191,9 @@ public class ClientSetup {
                 addBefore(event, Items.GOLD_BLOCK, Durium.BLOCK.item().get());
                 addBefore(event, Items.GOLD_BLOCK, Durium.SCRAP_BLOCK.item().get());
             }
-            addAfter(event, Items.DIAMOND_BLOCK, SoulSteel.BLOCK.item().get());
+            if (Feature.isEnabled(SoulSteel.class)) {
+                addAfter(event, Items.DIAMOND_BLOCK, SoulSteel.BLOCK.item().get());
+            }
             addBefore(event, Items.NETHERITE_BLOCK, Keego.BLOCK.item().get());
             addBefore(event, Items.DIAMOND_BLOCK, Quaron.BLOCK.item().get());
         }
@@ -226,13 +242,15 @@ public class ClientSetup {
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             if (Feature.isEnabled(Durium.class)) {
                 addAfter(event, Items.RAW_GOLD, Durium.SCRAP_PIECE.get());
-            addAfter(event, Items.IRON_INGOT, Durium.INGOT.get());
-            addAfter(event, Items.IRON_NUGGET, Durium.NUGGET.get());
-        }
+                addAfter(event, Items.IRON_INGOT, Durium.INGOT.get());
+                addAfter(event, Items.IRON_NUGGET, Durium.NUGGET.get());
+            }
             addBefore(event, Items.EMERALD, Solarium.SOLARIUM_BALL.get());
-            addAfter(event, Items.GOLD_INGOT, SoulSteel.INGOT.get());
-            addAfter(event, Items.GOLD_NUGGET, SoulSteel.NUGGET.get());
-            addBefore(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
+            if (Feature.isEnabled(SoulSteel.class)) {
+                addAfter(event, Items.GOLD_INGOT, SoulSteel.INGOT.get());
+                addAfter(event, Items.GOLD_NUGGET, SoulSteel.NUGGET.get());
+                addBefore(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
+            }
             addAfter(event, Items.DIAMOND, Keego.GEM.get());
             addAfter(event, Items.GOLD_INGOT, Quaron.INGOT.get());
             addAfter(event, Items.GOLD_NUGGET, Quaron.NUGGET.get());
