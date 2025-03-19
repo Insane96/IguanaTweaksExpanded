@@ -68,10 +68,12 @@ public class ClientSetup {
                 addAfter(event, Items.IRON_HOE, Durium.SHOVEL.get());
                 addAfter(event, Items.SHEARS, Durium.SHEARS.get());
             }
-            addAfter(event, Items.DIAMOND_HOE, Keego.HOE.get());
-            addAfter(event, Items.DIAMOND_HOE, Keego.AXE.get());
-            addAfter(event, Items.DIAMOND_HOE, Keego.PICKAXE.get());
-            addAfter(event, Items.DIAMOND_HOE, Keego.SHOVEL.get());
+            if (Feature.isEnabled(Keego.class)) {
+                addAfter(event, Items.DIAMOND_HOE, Keego.HOE.get());
+                addAfter(event, Items.DIAMOND_HOE, Keego.AXE.get());
+                addAfter(event, Items.DIAMOND_HOE, Keego.PICKAXE.get());
+                addAfter(event, Items.DIAMOND_HOE, Keego.SHOVEL.get());
+            }
             addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_HOE.get());
             addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_AXE.get());
             addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_PICKAXE.get());
@@ -106,7 +108,9 @@ public class ClientSetup {
                 addAfter(event, SoulSteel.HOE.get(), Forging.SOUL_STEEL_HAMMER.get());
             }
             addAfter(event, Items.NETHERITE_HOE, Forging.NETHERITE_HAMMER.get());
-            addAfter(event, Keego.HOE.get(), Forging.KEEGO_HAMMER.get());
+            if (Feature.isEnabled(Keego.class)) {
+                addAfter(event, Keego.HOE.get(), Forging.KEEGO_HAMMER.get());
+            }
 
             if (!ModList.get().isLoaded("caverns_and_chasms"))
                 addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
@@ -118,7 +122,9 @@ public class ClientSetup {
             if (Feature.isEnabled(Durium.class)) {
                 addAfter(event, Items.IRON_SWORD, Durium.SWORD.get());
             }
+            if (Feature.isEnabled(Keego.class)) {
             addAfter(event, Items.DIAMOND_SWORD, Keego.SWORD.get());
+            }
             addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
             addAfter(event, Items.DIAMOND_SWORD, Quaron.SWORD.get());
             if (Feature.isEnabled(SoulSteel.class)) {
@@ -130,7 +136,9 @@ public class ClientSetup {
             if (Feature.isEnabled(Durium.class)) {
                 addAfter(event, Items.IRON_AXE, Durium.AXE.get());
             }
-            addAfter(event, Items.DIAMOND_AXE, Keego.AXE.get());
+            if (Feature.isEnabled(Keego.class)) {
+                addAfter(event, Items.DIAMOND_AXE, Keego.AXE.get());
+            }
             addAfter(event, Items.DIAMOND_AXE, CopperExpansion.COATED_AXE.get());
             addAfter(event, Items.DIAMOND_AXE, Quaron.AXE.get());
             if (Feature.isEnabled(SoulSteel.class)) {
@@ -143,7 +151,9 @@ public class ClientSetup {
                 if (Feature.isEnabled(Durium.class)) {
                     addAfter(event, SPItems.IRON_SHIELD.get(), Durium.ShieldsPlusIntegration.SHIELD.get());
                 }
-                addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.ShieldsPlusIntegration.SHIELD.get());
+                if (Feature.isEnabled(Keego.class)) {
+                    addAfter(event, SPItems.DIAMOND_SHIELD.get(), Keego.ShieldsPlusIntegration.SHIELD.get());
+                }
                 addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get());
                 addAfter(event, SPItems.DIAMOND_SHIELD.get(), Quaron.ShieldsPlusIntegration.SHIELD.get());
                 if (Feature.isEnabled(SoulSteel.class)) {
@@ -165,10 +175,12 @@ public class ClientSetup {
                 addAfter(event, Items.IRON_BOOTS, Durium.CHESTPLATE.get());
                 addAfter(event, Items.IRON_BOOTS, Durium.HELMET.get());
             }
-            addAfter(event, Items.DIAMOND_BOOTS, Keego.BOOTS.get());
-            addAfter(event, Items.DIAMOND_BOOTS, Keego.LEGGINGS.get());
-            addAfter(event, Items.DIAMOND_BOOTS, Keego.CHESTPLATE.get());
-            addAfter(event, Items.DIAMOND_BOOTS, Keego.HELMET.get());
+            if (Feature.isEnabled(Keego.class)) {
+                addAfter(event, Items.DIAMOND_BOOTS, Keego.BOOTS.get());
+                addAfter(event, Items.DIAMOND_BOOTS, Keego.LEGGINGS.get());
+                addAfter(event, Items.DIAMOND_BOOTS, Keego.CHESTPLATE.get());
+                addAfter(event, Items.DIAMOND_BOOTS, Keego.HELMET.get());
+            }
             addAfter(event, Items.DIAMOND_BOOTS, Quaron.BOOTS.get());
             addAfter(event, Items.DIAMOND_BOOTS, Quaron.LEGGINGS.get());
             addAfter(event, Items.DIAMOND_BOOTS, Quaron.CHESTPLATE.get());
@@ -194,7 +206,9 @@ public class ClientSetup {
             if (Feature.isEnabled(SoulSteel.class)) {
                 addAfter(event, Items.DIAMOND_BLOCK, SoulSteel.BLOCK.item().get());
             }
-            addBefore(event, Items.NETHERITE_BLOCK, Keego.BLOCK.item().get());
+            if (Feature.isEnabled(Keego.class)) {
+                addBefore(event, Items.NETHERITE_BLOCK, Keego.BLOCK.item().get());
+            }
             addBefore(event, Items.DIAMOND_BLOCK, Quaron.BLOCK.item().get());
         }
         else if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
@@ -219,7 +233,9 @@ public class ClientSetup {
                 addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.GRAVEL_ORE.item().get());
                 addAfter(event, Items.DEEPSLATE_COPPER_ORE, Durium.SAND_ORE.item().get());
             }
-            addAfter(event, Items.DEEPSLATE_DIAMOND_ORE, Keego.ORE.item().get());
+            if (Feature.isEnabled(Keego.class)) {
+                addAfter(event, Items.DEEPSLATE_DIAMOND_ORE, Keego.ORE.item().get());
+            }
             addAfter(event, Items.VINE, Solarium.SOLIUM_MOSS.item().get());
             if (Feature.isEnabled(BeegOreVeins.class)) {
                 addAfter(event, Items.DEEPSLATE_COPPER_ORE, BeegOreVeins.COPPER_ORE_ROCK.item().get());
@@ -251,7 +267,9 @@ public class ClientSetup {
                 addAfter(event, Items.GOLD_NUGGET, SoulSteel.NUGGET.get());
                 addBefore(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get());
             }
-            addAfter(event, Items.DIAMOND, Keego.GEM.get());
+            if (Feature.isEnabled(Keego.class)) {
+                addAfter(event, Items.DIAMOND, Keego.GEM.get());
+            }
             addAfter(event, Items.GOLD_INGOT, Quaron.INGOT.get());
             addAfter(event, Items.GOLD_NUGGET, Quaron.NUGGET.get());
             addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());

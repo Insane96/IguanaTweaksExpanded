@@ -2,7 +2,7 @@
 
 ## Upcoming
 ### Changes
-* Durium, Soul Steel features can now be disabled
+* Durium, Soul Steel, Keego features can now be disabled
   * This will hide the items from creative inventory and disable the data pack that adds ore generation, some advancements and anvil repair
 
 ### Fixes

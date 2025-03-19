@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.keego;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
@@ -42,8 +43,8 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.EnumMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Label(name = "Keego", description = "Add a new Netherite alternative which makes you go fast")
-@LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
+@Label(name = "Keego", description = "Add a new Nether gem which makes lets you go fast (KEEp GOing). Disabling this will disable ore generation and items in the creative inventory.")
+@LoadFeature(module = Modules.Ids.MINING)
 public class Keego extends Feature {
 
 	public static final TagKey<Item> KEEGO_TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/tools/keego"));
@@ -82,6 +83,7 @@ public class Keego extends Feature {
 
 	public Keego(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
+		InsaneSurvivalExtra.addServerPack("keego", "Insane's Survival Extra Keego", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	@SubscribeEvent
