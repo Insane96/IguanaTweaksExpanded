@@ -1,16 +1,14 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.oregeneration;
 
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.GroundRockBlock;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -33,7 +31,7 @@ public class BeegOreVeins extends Feature {
 
     public BeegOreVeins(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "beeg_ore_veins", Component.literal("IguanaTweaks Expanded Beeg Ore Veins"), () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks));
+        InsaneSurvivalExtra.addServerPack("beeg_ore_veins", "IguanaTweaks Expanded Beeg Ore Veins", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
     }
 
     public record PoorRichOre(SimpleBlockWithItem poorOre, SimpleBlockWithItem poorDeepslateOre, SimpleBlockWithItem richOre, SimpleBlockWithItem richDeepslateOre) {

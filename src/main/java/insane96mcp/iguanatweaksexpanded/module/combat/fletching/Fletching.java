@@ -10,7 +10,6 @@ import insane96mcp.iguanatweaksexpanded.module.combat.fletching.inventory.Fletch
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.item.ISEArrowItem;
 import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -18,7 +17,6 @@ import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.PackType;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -102,7 +100,7 @@ public class Fletching extends Feature {
 
 	public Fletching(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "fletching", Component.literal("IguanaTweaks Expanded Fletching"), () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && dataPack));
+		InsaneSurvivalExtra.addServerPack("fletching", "IguanaTweaks Expanded Fletching", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && dataPack);
 	}
 
 	@SubscribeEvent

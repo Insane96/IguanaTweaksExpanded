@@ -1,15 +1,13 @@
 package insane96mcp.iguanatweaksexpanded.module.misc;
 
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksreborn.module.misc.DataPacks;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.PackType;
 import net.minecraftforge.fml.ModList;
 
 @Label(name = "Data Packs", description = "Various data packs that can be enabled/disabled")
@@ -35,11 +33,11 @@ public class ISEDataPacks extends Feature {
 
     public ISEDataPacks(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "advancements", Component.literal("IguanaTweaks Expanded Advancements"), () -> this.isEnabled() && !disableAllDataPacks && advancements));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "item_stats", Component.literal("IguanaTweaks Expanded Item Stats"), () -> this.isEnabled() && !disableAllDataPacks && itemStatsDataPack));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "better_loot", Component.literal("IguanaTweaks Expanded Better Loot"), () -> this.isEnabled() && !disableAllDataPacks && betterStructureLoot));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "block_data", Component.literal("IguanaTweaks Expanded Block Data"), () -> this.isEnabled() && !disableAllDataPacks && blockData));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "supplementaries_integration", Component.literal("IguanaTweaks Expanded Supplementaries Integration"), () -> this.isEnabled() && !DataPacks.disableAllDataPacks && DataPacks.supplementaries && ModList.get().isLoaded("supplementaries")));
-        IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "farmers_delight_integration", Component.literal("IguanaTweaks Expanded Farmer's Delight integration"), () -> this.isEnabled() && !disableAllDataPacks && ModList.get().isLoaded("farmersdelight") && DataPacks.farmersDelight));
+        InsaneSurvivalExtra.addServerPack("advancements", "IguanaTweaks Expanded Advancements", () -> this.isEnabled() && !disableAllDataPacks && advancements);
+        InsaneSurvivalExtra.addServerPack("item_stats", "IguanaTweaks Expanded Item Stats", () -> this.isEnabled() && !disableAllDataPacks && itemStatsDataPack);
+        InsaneSurvivalExtra.addServerPack("better_loot", "IguanaTweaks Expanded Better Loot", () -> this.isEnabled() && !disableAllDataPacks && betterStructureLoot);
+        InsaneSurvivalExtra.addServerPack("block_data", "IguanaTweaks Expanded Block Data", () -> this.isEnabled() && !disableAllDataPacks && blockData);
+        InsaneSurvivalExtra.addServerPack("supplementaries_integration", "IguanaTweaks Expanded Supplementaries Integration", () -> this.isEnabled() && !DataPacks.disableAllDataPacks && DataPacks.supplementaries && ModList.get().isLoaded("supplementaries"));
+        InsaneSurvivalExtra.addServerPack("farmers_delight_integration", "IguanaTweaks Expanded Farmer's Delight integration", () -> this.isEnabled() && !disableAllDataPacks && ModList.get().isLoaded("farmersdelight") && DataPacks.farmersDelight);
     }
 }

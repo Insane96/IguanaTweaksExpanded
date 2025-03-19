@@ -15,7 +15,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.invento
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.inventory.MultiBlockSoulBlastFurnaceMenu;
 import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
-import insane96mcp.iguanatweaksexpanded.setup.IntegratedPack;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksexpanded.utils.ClientUtils;
 import insane96mcp.insanelib.base.Feature;
@@ -25,7 +24,6 @@ import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.PackType;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
@@ -86,7 +84,7 @@ public class MultiBlockFurnaces extends Feature {
 
 	public MultiBlockFurnaces(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		IntegratedPack.addPack(new IntegratedPack(PackType.SERVER_DATA, "multi_block_blast_furnace", Component.literal("IguanaTweaks Expanded Multi Block Blast Furnace"), () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && blastFurnaceDataPack));
+		InsaneSurvivalExtra.addServerPack("multi_block_blast_furnace", "IguanaTweaks Expanded Multi Block Blast Furnace", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && blastFurnaceDataPack);
 	}
 
 	@SubscribeEvent
