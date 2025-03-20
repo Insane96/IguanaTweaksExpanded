@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.22.6
+### Fixes
+* World crash
+
 ## 1.22.5
 ### Changes
 * Durium, Soul Steel, Keego, Solarium and Copper features can now be disabled
