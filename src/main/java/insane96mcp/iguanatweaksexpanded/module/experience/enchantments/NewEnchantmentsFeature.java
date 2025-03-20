@@ -163,6 +163,12 @@ public class NewEnchantmentsFeature extends Feature {
 		CurseOfUnstableMotion.tick(event);
 		CurseOfStaticCharge.tick(event);
 		Retreat.applyMovementSpeedModifier(event);
+		/*if (event.getEntity() instanceof Player player && EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.INVULNERABILITY.get(), player) > 0) {
+			player.setNoGravity(true);
+		}
+		else {
+			event.getEntity().setNoGravity(false);
+		}*/
 	}
 
 	@SubscribeEvent

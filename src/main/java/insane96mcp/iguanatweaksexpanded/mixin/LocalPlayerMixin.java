@@ -20,4 +20,9 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
     public int iguanatweaksreborn$hurtDuration(int original) {
         return Invulnerability.getHurtDuration((LivingEntity) (Object) this, original);
     }
+
+    /*@WrapOperation(method = "aiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isInWater()Z", ordinal = 2))
+    public boolean iguanatweaksreborn$swimAnywhere(LocalPlayer instance, Operation<Boolean> original) {
+        return original.call(instance) || true;
+    }*/
 }

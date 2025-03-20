@@ -8,6 +8,7 @@
         "AbstractArrowMixin",
         "BlockItemInvoker",
         "CrossbowItemMixin",
+        "EntityMixin",
         "FishingHookMixin",
         "GrindstoneMenu2Mixin",
         "GrindstoneMenu3Mixin",
