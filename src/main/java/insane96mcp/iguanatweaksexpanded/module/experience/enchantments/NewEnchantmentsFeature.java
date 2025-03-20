@@ -83,6 +83,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> DOUBLE_JUMP = ISERegistries.ENCHANTMENTS.register("double_jump", DoubleJump::new);
 	public static final RegistryObject<Enchantment> ENLIGHTENED = ISERegistries.ENCHANTMENTS.register("enlightened", Enlightened::new);
 	public static final RegistryObject<Enchantment> INVULNERABILITY = ISERegistries.ENCHANTMENTS.register("invulnerability", Invulnerability::new);
+	public static final RegistryObject<Enchantment> FIRE_GUARDIAN = ISERegistries.ENCHANTMENTS.register("fire_guardian", FireGuardian::new);
 	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ISERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
 	public static final RegistryObject<Enchantment> STEADY_FALL = ISERegistries.ENCHANTMENTS.register("steady_fall", SteadyFall::new);
 
@@ -177,6 +178,7 @@ public class NewEnchantmentsFeature extends Feature {
 		Recovery.storeDamageToRegen(event.getEntity(), event.getSource(), event.getAmount());
 		CurseOfEnder.onHurt(event);
 		SteadyFall.onFall(event);
+		FireGuardian.onDamaged(event);
 		CurseOfObscurity.apply(event);
 		CurseOfFrenzy.onDamage(event);
 	}

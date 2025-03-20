@@ -6,6 +6,8 @@
   * Gives a slight night vision effect
 * New enchantment: Invulnerability for chestplates
   * Doubles invulnerability frames
+* New enchantment: Fire Guardian for chestplates
+  * 15 seconds of Fire resistance when taking fire damage. 30 seconds cooldown
 
 ## 1.22.6
 ### Fixes

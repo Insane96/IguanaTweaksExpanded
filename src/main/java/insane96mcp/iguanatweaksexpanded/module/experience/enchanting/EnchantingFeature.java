@@ -204,6 +204,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:recovery").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:vindication").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:invincible").costPerLevel(4),
+            new EnchantmentData("iguanatweaksexpanded:fire_guardian").costPerLevel(3),
 
             new EnchantmentData("minecraft:swift_sneak").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:magnetic").costPerLevel(2),
