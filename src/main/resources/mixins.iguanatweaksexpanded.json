@@ -21,6 +21,7 @@
     ],
     "minVersion": "0.8",
     "client": [
-        "LightTextureMixin"
+        "LightTextureMixin",
+        "LocalPlayerMixin"
     ]
 }

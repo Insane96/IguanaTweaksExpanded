@@ -4,6 +4,8 @@
 ### Additions
 * New enchantment: Enlightened for helmets
   * Gives a slight night vision effect
+* New enchantment: Invulnerability for chestplates
+  * Doubles invulnerability frames
 
 ## 1.22.6
 ### Fixes
