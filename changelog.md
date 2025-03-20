@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming
+### Additions
+* New enchantment: Enlightened for helmets
+  * Gives a slight night vision effect
+
 ## 1.22.6
 ### Fixes
 * World crash

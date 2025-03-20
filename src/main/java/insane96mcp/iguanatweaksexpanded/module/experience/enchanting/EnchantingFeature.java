@@ -197,6 +197,7 @@ public class EnchantingFeature extends JsonFeature {
 
             new EnchantmentData("minecraft:aqua_affinity").costPerLevel(3),
             new EnchantmentData("minecraft:respiration").costPerLevel(2),
+            new EnchantmentData("iguanatweaksexpanded:enlightened").costPerLevel(2),
 
             new EnchantmentData("minecraft:thorns").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:air_born").costPerLevel(3),

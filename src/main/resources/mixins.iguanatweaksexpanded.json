@@ -19,5 +19,8 @@
         "integration.allurement.LaunchEnchantmentMixin",
         "integration.passablefoliage.LeafWalkerEnchantmentMixin"
     ],
-    "minVersion": "0.8"
+    "minVersion": "0.8",
+    "client": [
+        "LightTextureMixin"
+    ]
 }

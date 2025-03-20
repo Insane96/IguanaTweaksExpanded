@@ -81,6 +81,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> MAGNETIC = ISERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
 	public static final RegistryObject<Enchantment> RETREAT = ISERegistries.ENCHANTMENTS.register("retreat", Retreat::new);
 	public static final RegistryObject<Enchantment> DOUBLE_JUMP = ISERegistries.ENCHANTMENTS.register("double_jump", DoubleJump::new);
+	public static final RegistryObject<Enchantment> ENLIGHTENED = ISERegistries.ENCHANTMENTS.register("enlightened", Enlightened::new);
 	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ISERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
 	public static final RegistryObject<Enchantment> STEADY_FALL = ISERegistries.ENCHANTMENTS.register("steady_fall", SteadyFall::new);
 
