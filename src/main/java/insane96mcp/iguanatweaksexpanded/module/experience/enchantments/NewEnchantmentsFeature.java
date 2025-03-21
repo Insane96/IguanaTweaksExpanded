@@ -284,7 +284,7 @@ public class NewEnchantmentsFeature extends Feature {
 		if (pick instanceof BlockHitResult) {
 			blockHitResult = (BlockHitResult) pick;
 			Veining.onBlockBreak(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
-			Expanded.onBlockBreak(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
+			Expanded.onBlockBreak(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), blockHitResult.getLocation(), event.getState());
 		}
 	}
 

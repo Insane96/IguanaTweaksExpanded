@@ -39,6 +39,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -58,7 +59,7 @@ public class Expanded extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -78,11 +79,11 @@ public class Expanded extends Enchantment {
     /**
      * Return true in the function to break the loop
      */
-    public static void apply(LivingEntity entity, Level level, ItemStack heldStack, BlockPos pos, Direction face, BlockState state, Function<BlockPos, Boolean> function) {
+    public static void apply(LivingEntity entity, Level level, ItemStack heldStack, BlockPos pos, Direction face, Vec3 clickedLocation, BlockState state, Function<BlockPos, Boolean> function) {
         int enchLevel = heldStack.getEnchantmentLevel(NewEnchantmentsFeature.EXPANDED.get());
         if (enchLevel == 0)
             return;
-        List<BlockPos> affectedBlocks = getAffectedBlocks(heldStack, enchLevel, level, entity, pos, face);
+        List<BlockPos> affectedBlocks = getAffectedBlocks(heldStack, enchLevel, level, entity, pos, face, clickedLocation);
         for (BlockPos affectedBlock : affectedBlocks) {
             if (function.apply(affectedBlock))
                 break;
@@ -97,7 +98,7 @@ public class Expanded extends Enchantment {
         BlockPos pos = event.getPos();
         Direction face = event.getContext().getClickedFace();
         ItemStack heldStack = event.getContext().getItemInHand();
-        apply(entity, level, heldStack, pos, face, state, affectedPos -> {
+        apply(entity, level, heldStack, pos, face, event.getContext().getClickLocation(), state, affectedPos -> {
             if (event.getState() != level.getBlockState(affectedPos))
                 return false;
             if (level instanceof ServerLevel serverLevel && (entity instanceof ServerPlayer player && !player.getAbilities().flying)) {
@@ -107,11 +108,11 @@ public class Expanded extends Enchantment {
         });
     }
 
-    public static void onBlockBreak(LivingEntity entity, Level level, BlockPos pos, Direction face, BlockState state) {
+    public static void onBlockBreak(LivingEntity entity, Level level, BlockPos pos, Direction face, Vec3 clickedLocation, BlockState state) {
         ItemStack heldStack = entity.getMainHandItem();
         if (!heldStack.isCorrectToolForDrops(state))
             return;
-        apply(entity, level, heldStack, pos, face, state, affectedBlock -> {
+        apply(entity, level, heldStack, pos, face, clickedLocation, state, affectedBlock -> {
             if (level instanceof ServerLevel serverLevel && (entity instanceof ServerPlayer player && !player.getAbilities().flying)) {
                 BlockState minedBlockState = level.getBlockState(affectedBlock);
                 BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(affectedBlock) : null;
@@ -174,7 +175,7 @@ public class Expanded extends Enchantment {
 
 
         // determine extra blocks to highlight
-        List<BlockPos> minedBlocks = getAffectedBlocks(heldStack, enchLevel, level, player, targetPos, blockTrace.getDirection());
+        List<BlockPos> minedBlocks = getAffectedBlocks(heldStack, enchLevel, level, player, targetPos, blockTrace.getDirection(), blockTrace.getLocation());
         if (minedBlocks.isEmpty())
             return;
 
@@ -225,26 +226,7 @@ public class Expanded extends Enchantment {
         }
     }
 
-    /**
-     *
-     * @param forward If true, its relative to direction, else opposite
-     */
-    public static BlockPos getRelative(BlockPos targetPos, boolean playerRelative, boolean forward, Direction direction) {
-        if (!playerRelative) {
-            if (forward)
-                return targetPos.above();
-            else
-                return targetPos.below();
-        }
-        else {
-            if (forward)
-                return targetPos.relative(direction);
-            else
-                return targetPos.relative(direction.getOpposite());
-        }
-    }
-
-    public static List<BlockPos> getAffectedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face) {
+    public static List<BlockPos> getAffectedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face, Vec3 clickedLocation) {
         List<BlockPos> minedBlocks = new ArrayList<>();
         boolean playerRelative = false;
         if (face == Direction.UP || face == Direction.DOWN) {
@@ -252,28 +234,38 @@ public class Expanded extends Enchantment {
             playerRelative = true;
         }
 
-        //Clamp level to 4
-        if (lvl > 4)
-            lvl = 4;
-
         if (lvl >= 1) {
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, false, face));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, true, face, clickedLocation));
         }
         if (lvl >= 2) {
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, true, face));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos, playerRelative, false, face, clickedLocation));
         }
         if (lvl >= 3) {
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getClockWise()));
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getCounterClockWise()));
         }
-        if (lvl == 4) {
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), 1), playerRelative, true, face));
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), 1), playerRelative, true, face));
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), 1), playerRelative, false, face));
-            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), 1), playerRelative, false, face));
-        }
 
         return minedBlocks;
+    }
+
+    /**
+     * @param forward If true, its relative to direction, else opposite
+     */
+    public static BlockPos getRelative(BlockPos targetPos, boolean playerRelative, boolean forward, Direction direction, Vec3 clickedLocation) {
+        if (!playerRelative) {
+            double fractionalY = clickedLocation.y - Math.floor(clickedLocation.y);
+            boolean chooseAbove = fractionalY > 0.5;
+            if (!forward)
+                chooseAbove = !chooseAbove;
+            return chooseAbove ? targetPos.above() : targetPos.below();
+        }
+        else {
+            double fractional = clickedLocation.get(direction.getAxis()) - Math.floor(clickedLocation.get(direction.getAxis()));
+            boolean chooseForward = direction.getAxisDirection() == Direction.AxisDirection.POSITIVE ? (fractional > 0.5) : (fractional < 0.5);
+            if (!forward)
+                chooseForward = !chooseForward;
+            return chooseForward ? targetPos.relative(direction) : targetPos.relative(direction.getOpposite());
+        }
     }
 
     private static void addIfCanBeMined(ItemStack stack, List<BlockPos> blockPos, Level level, BlockPos targetPos, BlockPos minedPos) {

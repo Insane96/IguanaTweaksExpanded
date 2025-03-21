@@ -11,6 +11,11 @@
 * New enchantment: Charged Jump for leggings
   * Sneak for two seconds, then jump really high
 
+### Changes
+* Improved Expanded
+  * Now checks for the top/bottom of the block looking so with 1 level you can choose if up/forward or down/backwards
+  * Max level reduced to II, at level III you break blocks in a + shape and the cost is increased 
+
 ## 1.22.6
 ### Fixes
 * World crash

@@ -161,7 +161,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("minecraft:efficiency").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:haste").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:blasting").costPerLevel(1),
-            new EnchantmentData("iguanatweaksexpanded:expanded").costPerLevel(3),
+            new EnchantmentData("iguanatweaksexpanded:expanded").cost(3, 3, 4),
             new EnchantmentData("iguanatweaksexpanded:veining").costPerLevel(3),
             new EnchantmentData("minecraft:silk_touch").costPerLevel(4),
             new EnchantmentData("iguanatweaksexpanded:exchange").costPerLevel(2),
