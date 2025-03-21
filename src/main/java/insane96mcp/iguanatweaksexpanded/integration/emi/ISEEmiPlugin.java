@@ -137,8 +137,8 @@ public class ISEEmiPlugin implements EmiPlugin {
 				CompoundTag blockEntityTag = new CompoundTag();
 				ListTag listTag = new ListTag();
 				for (var enchantment : ForgeRegistries.ENCHANTMENTS.getEntries()) {
-					/*if (enchantment.getValue().isCurse())
-						continue;*/
+					if (!enchantment.getValue().isDiscoverable())
+						continue;
 					CompoundTag compoundTag = new CompoundTag();
 					String id = enchantment.getKey().location().toString();
 					int lvl = enchantment.getValue().getMaxLevel();

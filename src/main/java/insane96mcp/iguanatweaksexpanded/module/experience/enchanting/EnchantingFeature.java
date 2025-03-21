@@ -162,6 +162,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:haste").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:blasting").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:expanded").costPerLevel(3),
+            new EnchantmentData("iguanatweaksexpanded:veining").costPerLevel(3),
             new EnchantmentData("minecraft:silk_touch").costPerLevel(4),
             new EnchantmentData("iguanatweaksexpanded:exchange").costPerLevel(2),
 
@@ -203,7 +204,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:air_born").costPerLevel(3),
             new EnchantmentData("iguanatweaksexpanded:recovery").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:vindication").costPerLevel(2),
-            new EnchantmentData("iguanatweaksexpanded:invincible").costPerLevel(4),
+            new EnchantmentData("iguanatweaksexpanded:invulnerability").costPerLevel(4),
             new EnchantmentData("iguanatweaksexpanded:fire_guardian").costPerLevel(3),
 
             new EnchantmentData("minecraft:swift_sneak").costPerLevel(2),
@@ -212,6 +213,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:sprint_pact").costPerLevel(4),
             new EnchantmentData("iguanatweaksexpanded:step_up").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:zippy").costPerLevel(2),
+            new EnchantmentData("iguanatweaksexpanded:charged_jump").costPerLevel(3),
 
             new EnchantmentData("iguanatweaksreborn:feather_falling").costPerLevel(1),
             new EnchantmentData("minecraft:soul_speed").costPerLevel(2),

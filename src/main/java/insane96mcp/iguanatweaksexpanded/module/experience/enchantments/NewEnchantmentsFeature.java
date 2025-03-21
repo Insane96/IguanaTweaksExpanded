@@ -77,6 +77,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> STEP_UP = ISERegistries.ENCHANTMENTS.register("step_up", StepUp::new);
 	public static final RegistryObject<Enchantment> ZIPPY = ISERegistries.ENCHANTMENTS.register("zippy", Zippy::new);
 	public static final RegistryObject<Enchantment> HOPPY = ISERegistries.ENCHANTMENTS.register("hoppy", Hoppy::new);
+	public static final RegistryObject<Enchantment> CHARGED_JUMP = ISERegistries.ENCHANTMENTS.register("charged_jump", ChargedJump::new);
 	public static final RegistryObject<Enchantment> SPRINT_PACT = ISERegistries.ENCHANTMENTS.register("sprint_pact", SprintPact::new);
 	public static final RegistryObject<Enchantment> MAGNETIC = ISERegistries.ENCHANTMENTS.register("magnetic", Magnetic::new);
 	public static final RegistryObject<Enchantment> RETREAT = ISERegistries.ENCHANTMENTS.register("retreat", Retreat::new);
@@ -164,6 +165,7 @@ public class NewEnchantmentsFeature extends Feature {
 		CurseOfUnstableMotion.tick(event);
 		CurseOfStaticCharge.tick(event);
 		Retreat.applyMovementSpeedModifier(event);
+		ChargedJump.tryChargeJump(event.getEntity());
 		/*if (event.getEntity() instanceof Player player && EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.INVULNERABILITY.get(), player) > 0) {
 			player.setNoGravity(true);
 		}

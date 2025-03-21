@@ -1,12 +1,12 @@
 package insane96mcp.iguanatweaksexpanded.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.ChargedJump;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Hoppy;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.Invulnerability;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -28,9 +28,8 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "getJumpBoostPower", at = @At("RETURN"), cancellable = true)
     public void onGetJumpBoostPower(CallbackInfoReturnable<Float> cir) {
-        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.HOPPY.get(), (LivingEntity) (Object) this);
-        if (lvl > 0)
-            cir.setReturnValue(cir.getReturnValue() + 0.1f * lvl);
+        cir.setReturnValue(Hoppy.getJumpBoost((LivingEntity) (Object) this, cir.getReturnValue()));
+        cir.setReturnValue(ChargedJump.getJumpBoost((LivingEntity) (Object) this, cir.getReturnValue()));
     }
 
     @ModifyExpressionValue(method = "hurt", at = @At(value = "CONSTANT", args = "floatValue=10.0", ordinal = 0))

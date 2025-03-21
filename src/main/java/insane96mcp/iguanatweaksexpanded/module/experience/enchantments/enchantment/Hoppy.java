@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -33,5 +34,12 @@ public class Hoppy extends Enchantment {
         if (lvl <= 0)
             return;
         event.setDistance(event.getDistance() - lvl);
+    }
+
+    public static float getJumpBoost(LivingEntity entity, float original) {
+        int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.HOPPY.get(), entity);
+        if (lvl > 0)
+            return original + 0.1f * lvl;
+        return original;
     }
 }

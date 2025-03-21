@@ -8,6 +8,8 @@
   * Doubles invulnerability frames
 * New enchantment: Fire Guardian for chestplates
   * 15 seconds of Fire resistance when taking fire damage. 30 seconds cooldown
+* New enchantment: Charged Jump for leggings
+  * Sneak for two seconds, then jump really high
 
 ## 1.22.6
 ### Fixes
