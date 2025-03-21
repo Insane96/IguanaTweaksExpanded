@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.23.0
 ### Additions
 * New enchantment: Enlightened for helmets
   * Gives a slight night vision effect

@@ -40,7 +40,7 @@
 * V   1 Efficiency: Increases tool efficiency by 20% per level
 * V   1 Haste: Increases tool efficiency by 0.8 per level
 * V   1 Blasting: Increases efficiency against low blast resistance blocks
-* III 3 Expanded: Mine mulitple blocks in a column, then a + shape and then 3x3
+* III 3, 3, 4 Expanded: Mine mulitple blocks in a column, then a + shape
 * III 3 Veining: Mine 3 connected blocks per level
 * I   4 Silk Touch: Makes blocks drop themselves
 * I   2 Exchange: Replaces blocks mined with the one in the off-hand
