@@ -1,5 +1,12 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Reduced Curse of Blood Pact bonus max cost (3 -> 2)
+
+### Fixes
+* Crash when disabling ISO Sleep and Respawn module
+
 ## 1.23.0
 ### Additions
 * New enchantment: Enlightened for helmets
