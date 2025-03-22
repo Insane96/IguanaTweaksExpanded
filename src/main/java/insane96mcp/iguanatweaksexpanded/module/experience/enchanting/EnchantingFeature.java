@@ -239,7 +239,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("allurement:fleeting_curse").costPerLevel(3),
             new EnchantmentData("allurement:obedience").costPerLevel(2),
             new EnchantmentData("farmersdelight:backstabbing").costPerLevel(2),
-            new EnchantmentData("iguanatweaksexpanded:blood_pact_curse").costPerLevel(3),
+            new EnchantmentData("iguanatweaksexpanded:blood_pact_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:dumbness_curse").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:ender_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:experience_curse").costPerLevel(3),
