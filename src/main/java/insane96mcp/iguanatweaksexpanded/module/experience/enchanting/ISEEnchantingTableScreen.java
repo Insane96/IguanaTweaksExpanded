@@ -483,14 +483,14 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             }
             pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
             MutableComponent component = Component.empty();
-            if (Screen.hasShiftDown() && ModList.get().isLoaded("enchdesc")) {
+            if (Screen.hasShiftDown() || shouldShowKnownEnchantments() && ModList.get().isLoaded("enchdesc"))
                 component.append(Component.translatable(this.enchantment.getDescriptionId() + ".desc").withStyle(ChatFormatting.LIGHT_PURPLE));
-                component.append(CommonComponents.NEW_LINE);
-            }
             if (enchantment.isCurse())
-                this.setTooltip(Tooltip.create(component.append(Component.translatable("iguanatweaksexpanded.enchanting_table.bonus_max_cost", EnchantingFeature.getCost(enchantment, 1, true)))));
+                this.setTooltip(Tooltip.create(component.append(CommonComponents.NEW_LINE).append(Component.translatable("iguanatweaksexpanded.enchanting_table.bonus_max_cost", EnchantingFeature.getCost(enchantment, 1, true)))));
             else if (!shouldShowKnownEnchantments())
-                this.setTooltip(Tooltip.create(component.append(Component.translatable("iguanatweaksexpanded.enchanting_table.total_cost", EnchantingFeature.getCost(enchantment, lvl)))));
+                this.setTooltip(Tooltip.create(component.append(CommonComponents.NEW_LINE).append(Component.translatable("iguanatweaksexpanded.enchanting_table.total_cost", EnchantingFeature.getCost(enchantment, lvl)))));
+            else
+                this.setTooltip(Tooltip.create(component));
         }
 
         @Override

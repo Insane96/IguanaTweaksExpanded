@@ -3,6 +3,7 @@
 ## Upcoming
 ### Changes
 * Reduced Curse of Blood Pact bonus max cost (3 -> 2)
+* Enchantments descriptions are now shown in the known enchantments list
 
 ### Fixes
 * Crash when disabling ISO Sleep and Respawn module
