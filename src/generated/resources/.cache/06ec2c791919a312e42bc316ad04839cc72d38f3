@@ -1,6 +1,5 @@
-// 1.20.1	2025-02-04T14:11:48.5826831	Global Loot Modifiers : iguanatweaksexpanded
-ac454f8819e6e252142208d0451e0cc23ea5a759 data/forge/loot_modifiers/global_loot_modifiers.json
+// 1.20.1	2025-03-22T11:24:06.7502307	Global Loot Modifiers : iguanatweaksexpanded
+2018a2a5af20307fd5ae45551459f4c2dd824d2b data/forge/loot_modifiers/global_loot_modifiers.json
 2efa3fb69c4ed25b6a0c009bca322030447f23e6 data/iguanatweaksexpanded/loot_modifiers/experience/enchanting/blocks/deepslate_lapis_ore.json
 e1aeb103b2e0dc392dfdb6cfcbd335ce2809a459 data/iguanatweaksexpanded/loot_modifiers/experience/enchanting/blocks/lapis_ore.json
-bfd1cfdc1bd5729cc3f0ea78a93c52bb83fceb15 data/iguanatweaksexpanded/loot_modifiers/mining/soul_steel/upgrade_template_in_fortress.json
 3d515f20fd55879dea7d7546222dbe65643fecca data/iguanatweaksexpanded/loot_modifiers/new_enchantments_feature/void_curse.json

@@ -51,7 +51,7 @@ public class ISEItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(EnchantingFeature.NOT_ENCHANTABLE)
-                .add(Items.BOOK, Items.FLINT_AND_STEEL, Items.SHEARS, Items.BRUSH, Items.ELYTRA)
+                .add(Items.BOOK)
                 .add(CoalFire.FIRESTARTER.get());
         tag(Smartness.ACCEPTS_ENCHANTMENT)
                 .addTags(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)

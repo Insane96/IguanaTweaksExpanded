@@ -4,6 +4,7 @@
 ### Changes
 * Reduced Curse of Blood Pact bonus max cost (3 -> 2)
 * Enchantments descriptions are now shown in the known enchantments list
+* You can now enchant Shears, Brushes and Flint and Steel
 
 ### Fixes
 * Crash when disabling ISO Sleep and Respawn module
