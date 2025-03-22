@@ -44,6 +44,9 @@ license="All rights reserved"
     versionRange="[4.11.3,)"
     ordering="BEFORE"
     side="BOTH"
+    [dependencies.iguanatweaksexpanded.mc-publish]
+        modrinth="iguanatweaks-reborn" # Modrinth's project slug
+        curseforge="iguanatweaks-reborn" # CurseForge's project slug
 
 [[dependencies.iguanatweaksexpanded]]
     modId="shieldsplus"
