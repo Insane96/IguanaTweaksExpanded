@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.23.1
 ### Changes
 * Reduced Curse of Blood Pact bonus max cost (3 -> 2)
 * Enchantments descriptions are now shown in the known enchantments list
