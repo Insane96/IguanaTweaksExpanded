@@ -3,6 +3,7 @@
 ## Upcoming
 ### Changes
 * Curse of Frenzy now gives the buffs to attackers and not the wearer attacking
+* Enchantability increased like base mod
 
 ## 1.23.1
 ### Changes
