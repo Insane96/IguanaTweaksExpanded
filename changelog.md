@@ -3,7 +3,13 @@
 ## Upcoming
 ### Changes
 * Curse of Frenzy now gives the buffs to attackers and not the wearer attacking
+* Curse of Static Charge has increased chance to strike and can strike underground
+* Curse of Unhurried now reduces the Total movement speed (-10% -> x0.9)
+  * Same for Slow Strike and Short arm
+* Curse of Inefficiency now halves the tool's efficiency (x0.65 -> x0.5)
 * Enchantability increased like base mod
+* Some curses have increased bonus max cost
+* Non-purified items now have 60% of full enchantability instead of 50%
 
 ## 1.23.1
 ### Changes

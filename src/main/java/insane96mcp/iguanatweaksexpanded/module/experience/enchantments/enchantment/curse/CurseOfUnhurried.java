@@ -38,6 +38,6 @@ public class CurseOfUnhurried extends Enchantment implements IAttributeEnchantme
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
         if (event.getSlotType() != EquipmentSlot.LEGS)
             return;
-        event.addModifier(Attributes.MOVEMENT_SPEED, new AttributeModifier(ID, "Unhurried Curse Modifier", -0.1d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+        event.addModifier(Attributes.MOVEMENT_SPEED, new AttributeModifier(ID, "Unhurried Curse Modifier", -0.1d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_TOTAL));
     }
 }

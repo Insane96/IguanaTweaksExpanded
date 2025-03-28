@@ -36,11 +36,10 @@ public class CurseOfStaticCharge extends Enchantment {
         if (event.getEntity().level().isClientSide
                 || !event.getEntity().level().isThundering()
                 || event.getEntity().tickCount % 20 != 2
-                || !event.getEntity().level().canSeeSky(event.getEntity().blockPosition())
                 || EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_STATIC_CHARGE.get(), event.getEntity()) <= 0)
             return;
 
-        if (event.getEntity().getRandom().nextInt(5000) == 0) {
+        if (event.getEntity().getRandom().nextInt(2000) == 0) {
             LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(event.getEntity().level());
             if (lightningbolt != null) {
                 lightningbolt.moveTo(event.getEntity().position().add(0, event.getEntity().getBbHeight(), 0));

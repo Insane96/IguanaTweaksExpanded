@@ -134,17 +134,18 @@
 * 3 Binding: The item cannot be unequipped
 * 2 Ender: The user is randomly teleported when takes damage
 * 3 Frenzy: Mobs hit gain speed, resistance and strength
+* 2 Obscurity: Chance to blind you when you take damage
+* 2 Hop: Randomly jump forward / backwards
+* 2 Static Charge: Chance to get struck by lightning in thunder weather
+* 2 Steel Fall: Increases fall damage
+* 3 Unstable Motion: Gain / lose movement speed at random
+* 2 Unhurried: Reduced total movement speed
+* 3 Walking: You can no longer sprint
 
-iguanatweaksexpanded:dumbness_curse 1 (1 ) true
-iguanatweaksexpanded:hop_curse 1 (2 ) true
-iguanatweaksexpanded:inefficiency_curse 1 (1 ) true
-iguanatweaksexpanded:obscurity_curse 1 (2 ) true
-iguanatweaksexpanded:short_arm_curse 1 (1 ) true
-iguanatweaksexpanded:slow_charge_curse 1 (2 ) true
-iguanatweaksexpanded:slow_strike_curse 1 (1 ) true
-iguanatweaksexpanded:static_charge_curse 1 (2 ) true
-iguanatweaksexpanded:steel_fall_curse 1 (2 ) true
-iguanatweaksexpanded:unhurried_curse 1 (2 ) true
-iguanatweaksexpanded:unstable_motion_curse 1 (3 ) true
-iguanatweaksexpanded:void_curse 1 (1 ) true
-iguanatweaksexpanded:walking_curse 1 (3 ) true
+## Weapons
+* 2 Dumbness: Halves experience gain
+* 2 Inefficiency: Halved efficiency
+* 2 Short Arm: Reduced attack and mining range
+* 2 Slow Strike: Reduced attack speed
+* 2 Slow Charge: Slower crossbow charge
+* 2 Void: Chance for drops to be lost

@@ -108,10 +108,10 @@ public class EnchantingFeature extends JsonFeature {
     public static Integer enchantingTableMaxEnchantingPower = 20;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not purified or infused")
-    public static Double enchantingTableEnchantabilityMultiplier = 0.5d;
+    public static Double enchantingTableEnchantabilityMultiplier = 0.6d;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Purified Enchantability multiplier", description = "Tool enchantability multiplier when purified (sums with Enchantability multiplier and Infused bonus Enchantability multiplier)")
-    public static Double enchantingTablePurifiedEnchantabilityMultiplier = 0.5d;
+    public static Double enchantingTablePurifiedEnchantabilityMultiplier = 0.4d;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Purified Enchantability flat", description = "Tool enchantability bonus when purified")
     public static Integer enchantingTablePurifiedEnchantabilityFlat = 0;
@@ -240,23 +240,23 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("allurement:obedience").costPerLevel(2),
             new EnchantmentData("farmersdelight:backstabbing").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:blood_pact_curse").costPerLevel(2),
-            new EnchantmentData("iguanatweaksexpanded:dumbness_curse").costPerLevel(1),
+            new EnchantmentData("iguanatweaksexpanded:dumbness_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:ender_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:experience_curse").costPerLevel(3),
             new EnchantmentData("iguanatweaksexpanded:fragility_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:frenzy_curse").costPerLevel(3),
             new EnchantmentData("iguanatweaksexpanded:hop_curse").costPerLevel(2),
-            new EnchantmentData("iguanatweaksexpanded:inefficiency_curse").costPerLevel(1),
+            new EnchantmentData("iguanatweaksexpanded:inefficiency_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:obscurity_curse").costPerLevel(2),
-            new EnchantmentData("iguanatweaksexpanded:short_arm_curse").costPerLevel(1),
+            new EnchantmentData("iguanatweaksexpanded:short_arm_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:slow_charge_curse").costPerLevel(2),
-            new EnchantmentData("iguanatweaksexpanded:slow_strike_curse").costPerLevel(1),
+            new EnchantmentData("iguanatweaksexpanded:slow_strike_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:static_charge_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:steel_fall_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:tear_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:unhurried_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:unstable_motion_curse").costPerLevel(3),
-            new EnchantmentData("iguanatweaksexpanded:void_curse").costPerLevel(1),
+            new EnchantmentData("iguanatweaksexpanded:void_curse").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:walking_curse").costPerLevel(3),
             new EnchantmentData("minecraft:binding_curse").costPerLevel(3),
             new EnchantmentData("minecraft:vanishing_curse").costPerLevel(3),

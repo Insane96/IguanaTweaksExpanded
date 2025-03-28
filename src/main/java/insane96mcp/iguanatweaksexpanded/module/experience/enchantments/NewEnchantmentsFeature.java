@@ -236,7 +236,7 @@ public class NewEnchantmentsFeature extends Feature {
 		event.setNewEfficiency(event.getNewEfficiency() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
 		event.setNewEfficiency(event.getNewEfficiency() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
 		if (event.getStack().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
-			event.setNewEfficiency(event.getNewEfficiency() * 0.65f);
+			event.setNewEfficiency(event.getNewEfficiency() * 0.5f);
 	}
 
 	@SubscribeEvent

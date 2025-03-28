@@ -43,6 +43,6 @@ public class CurseOfSlowStrike extends Enchantment implements IAttributeEnchantm
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
         if (event.getSlotType() != EquipmentSlot.MAINHAND)
             return;
-        event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(GRAVITY_MODIFIER_UUID, "Slow Strike Curse Modifier", -0.2d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+        event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(GRAVITY_MODIFIER_UUID, "Slow Strike Curse Modifier", -0.2d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_TOTAL));
     }
 }
