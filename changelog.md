@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Smelting ore blocks now requires 2x time
+
 ## 1.23.2
 ### Changes
 * Curse of Frenzy now gives the buffs to attackers and not the wearer attacking
