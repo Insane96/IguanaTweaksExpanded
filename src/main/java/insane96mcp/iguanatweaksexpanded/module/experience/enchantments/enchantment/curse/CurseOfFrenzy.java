@@ -36,10 +36,10 @@ public class CurseOfFrenzy extends Enchantment {
     public static void onDamage(LivingDamageEvent event) {
         if (event.getEntity().level().isClientSide
                 || !(event.getSource().getEntity() instanceof LivingEntity attacker)
-                || EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_FRENZY.get(), attacker) <= 0)
+                || EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_FRENZY.get(), event.getEntity()) <= 0)
             return;
 
-        applyEffect(event.getEntity());
+        applyEffect(attacker);
     }
 
     public static void applyEffect(LivingEntity entity) {

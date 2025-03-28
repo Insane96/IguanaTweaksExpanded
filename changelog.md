@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Curse of Frenzy now gives the buffs to attackers and not the wearer attacking
+
 ## 1.23.1
 ### Changes
 * Reduced Curse of Blood Pact bonus max cost (3 -> 2)

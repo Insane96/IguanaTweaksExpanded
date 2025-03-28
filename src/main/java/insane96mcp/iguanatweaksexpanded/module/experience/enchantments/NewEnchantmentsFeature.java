@@ -116,7 +116,7 @@ public class NewEnchantmentsFeature extends Feature {
 	//Curses
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ISERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_TEAR = ISERegistries.ENCHANTMENTS.register("tear_curse", CurseOfTear::new);
-	public static final RegistryObject<Enchantment> BLOOD_PACT = ISERegistries.ENCHANTMENTS.register("blood_pact_curse", CurseOfBloodPact::new);
+	public static final RegistryObject<Enchantment> CURSE_OF_BLOOD_PACT = ISERegistries.ENCHANTMENTS.register("blood_pact_curse", CurseOfBloodPact::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_UNHURRIED = ISERegistries.ENCHANTMENTS.register("unhurried_curse", CurseOfUnhurried::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_SLOW_STRIKE = ISERegistries.ENCHANTMENTS.register("slow_strike_curse", CurseOfSlowStrike::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_INEFFICIENCY = ISERegistries.ENCHANTMENTS.register("inefficiency_curse", CurseOfInefficiency::new);

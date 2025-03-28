@@ -46,7 +46,7 @@ public class CurseOfBloodPact extends Enchantment {
     public static void trySuckingAndRepairing(HurtItemStackEvent event) {
         if (event.getPlayer() == null)
             return;
-        if (event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.BLOOD_PACT.get()) <= 0)
+        if (event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.CURSE_OF_BLOOD_PACT.get()) <= 0)
             return;
 
         float damageThrough = 0f;

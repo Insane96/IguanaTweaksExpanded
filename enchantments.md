@@ -120,16 +120,22 @@
 # ???
 * I   4 Stasis: From supplementaries. Have no idea what it does
 
-minecraft:binding_curse 1 (3 ) true
-minecraft:vanishing_curse 1 (3 ) true
-allurement:ascension_curse 1 (3 ) true
-allurement:fleeting_curse 1 (3 ) true
-iguanatweaksexpanded:blood_pact_curse 1 (3 ) true
+# Curses
+## General
+* 3 Vanishing: Removes the item from your inventory when you die
+* 3 Ascension: Item floats in the air when dropped in the world
+* 2 Fleeting: Item tries to stay away from entities when dropped in the world
+* 2 Blood Pact: Using the item has a small chance to damage the user
+* 2 Fragility: Items' durability is halved
+* 2 Tear: Opposite mending
+* 3 Experience: Item consumes experience when it's used
+
+## Armor
+* 3 Binding: The item cannot be unequipped
+* 2 Ender: The user is randomly teleported when takes damage
+* 3 Frenzy: Mobs hit gain speed, resistance and strength
+
 iguanatweaksexpanded:dumbness_curse 1 (1 ) true
-iguanatweaksexpanded:ender_curse 1 (2 ) true
-iguanatweaksexpanded:experience_curse 1 (3 ) true
-iguanatweaksexpanded:fragility_curse 1 (1 ) true
-iguanatweaksexpanded:frenzy_curse 1 (6 ) true
 iguanatweaksexpanded:hop_curse 1 (2 ) true
 iguanatweaksexpanded:inefficiency_curse 1 (1 ) true
 iguanatweaksexpanded:obscurity_curse 1 (2 ) true
@@ -138,7 +144,6 @@ iguanatweaksexpanded:slow_charge_curse 1 (2 ) true
 iguanatweaksexpanded:slow_strike_curse 1 (1 ) true
 iguanatweaksexpanded:static_charge_curse 1 (2 ) true
 iguanatweaksexpanded:steel_fall_curse 1 (2 ) true
-iguanatweaksexpanded:tear_curse 1 (2 ) true
 iguanatweaksexpanded:unhurried_curse 1 (2 ) true
 iguanatweaksexpanded:unstable_motion_curse 1 (3 ) true
 iguanatweaksexpanded:void_curse 1 (1 ) true
