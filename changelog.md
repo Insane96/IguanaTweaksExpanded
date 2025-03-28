@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.23.2
 ### Changes
 * Curse of Frenzy now gives the buffs to attackers and not the wearer attacking
 * Curse of Static Charge has increased chance to strike and can strike underground
@@ -10,6 +10,9 @@
 * Enchantability increased like base mod
 * Some curses have increased bonus max cost
 * Non-purified items now have 60% of full enchantability instead of 50%
+
+### Fixes
+* Enchantments descriptions missing new line
 
 ## 1.23.1
 ### Changes
