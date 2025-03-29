@@ -144,13 +144,9 @@ public class NewEnchantmentsFeature extends Feature {
 		CurseOfBloodPact.trySuckingAndRepairing(event);
 	}
 
-	@SubscribeEvent(priority = EventPriority.LOW)
-	public void onStackMaxDamage(StackMaxDamageEvent event) {
-		int lvl = event.getStack().getEnchantmentLevel(ENDURING.get());
-		if (lvl > 0)
-			event.setNewMaxDamage(event.getNewMaxDamage() + Enduring.getBonusDurabilityPerLevel(event.getStack()) * lvl);
-
-		lvl = event.getStack().getEnchantmentLevel(CURSE_OF_FRAGILITY.get());
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public void onStackMaxDamageLowest(StackMaxDamageEvent event) {
+		int lvl = event.getStack().getEnchantmentLevel(CURSE_OF_FRAGILITY.get());
 		if (lvl > 0)
 			event.setNewMaxDamage((int) (event.getNewMaxDamage() * (1f - CurseOfFragility.getDurabilityReduction())));
 	}
@@ -230,9 +226,6 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onBreakSpeedEnchantment(EnchantmentBonusEfficiencyEvent event) {
-		int hasteLvl = event.getStack().getEnchantmentLevel(HASTE.get());
-		if (hasteLvl > 0)
-			event.setNewEfficiency(event.getNewEfficiency() + Haste.getBonusEfficiency() * hasteLvl);
 		event.setNewEfficiency(event.getNewEfficiency() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
 		event.setNewEfficiency(event.getNewEfficiency() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
 		if (event.getStack().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)

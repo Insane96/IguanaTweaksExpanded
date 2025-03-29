@@ -27,7 +27,8 @@ public class Haste extends Enchantment {
         return !(other instanceof DiggingEnchantment) && super.checkCompatibility(other);
     }
 
-    public static float getBonusEfficiency() {
-        return 0.8f;
+    @Override
+    public boolean isDiscoverable() {
+        return false;
     }
 }

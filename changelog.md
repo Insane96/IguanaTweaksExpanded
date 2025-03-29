@@ -1,8 +1,18 @@
 # Changelog
 
+* melee skeletons flee
+* nerf biscuit recipe
+* solarium bonus tooltip
+* phantom glider
+* tired 3
+
 ## Upcoming
 ### Changes
 * Smelting ore blocks now requires 2x time
+
+### Removed
+* Haste and Enduring enchantments
+  * Were a mistake, Unbreaking and Efficiency have been buffed in the main mod
 
 ## 1.23.2
 ### Changes
