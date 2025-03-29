@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksreborn.world.item.DurabilityModifier;
 import insane96mcp.insanelib.InsaneLib;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

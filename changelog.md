@@ -1,12 +1,13 @@
 # Changelog
 
 * melee skeletons flee
-* nerf biscuit recipe
-* solarium bonus tooltip
 * phantom glider
 * tired 3
 
 ## Upcoming
+### Additions
+* Tooltips to solarium and coated copper
+
 ### Changes
 * Smelting ore blocks now requires 2x time
 

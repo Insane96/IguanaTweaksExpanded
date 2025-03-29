@@ -6,7 +6,6 @@ import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
-import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.network.message.ElectrocutionParticleMessage;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksreborn.utils.MCUtils;
@@ -21,7 +20,6 @@ import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import insane96mcp.shieldsplus.world.item.SPShieldMaterial;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -30,7 +28,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
@@ -51,7 +49,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
@@ -236,21 +233,8 @@ public class CopperExpansion extends Feature {
 			hitEntities++;
 		} while (hitEntities < 4);
 
-		Object msg = new ElectrocutionParticleMessage(listIdsOfHitEntities);
-		for (Player levelPlayer : electrocuter.level().players()) {
-			NetworkHandler.CHANNEL.sendTo(msg, ((ServerPlayer) levelPlayer).connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-		}
-	}
-
-	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void onCoatedTooltip(ItemTooltipEvent event) {
-		if (!this.isEnabled()
-				|| !event.getItemStack().is(COATED_EQUIPMENT)
-				|| event.getEntity() == null)
-			return;
-
-		int hits = event.getItemStack().getOrCreateTag().getInt(COATED_TIMES_HIT);
-		event.getToolTip().add(Component.translatable("iguanatweaksexpanded.electrocution.charge", Math.round(hits / 3f * 100f)).withStyle(ChatFormatting.DARK_GRAY));
+		if (electrocuter.level() instanceof ServerLevel serverLevel)
+			ElectrocutionParticleMessage.sync(serverLevel, listIdsOfHitEntities);
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
@@ -268,6 +252,10 @@ public class CopperExpansion extends Feature {
 			float bonus = Math.round(getBonusUnbreakability(getNormalizedY(event.getEntity().getBlockY(), event.getEntity().level())) * 10f) / 10f;
 			if (bonus > 0)
 				event.getToolTip().add(Component.translatable("iguanatweaksexpanded.copper.depth_unbreaking", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(1f + bonus)).withStyle(Style.EMPTY.withColor(0xD1890D)));
+		}
+		if (event.getItemStack().is(COATED_EQUIPMENT)) {
+			int hits = event.getItemStack().getOrCreateTag().getInt(COATED_TIMES_HIT);
+			event.getToolTip().add(Component.translatable("iguanatweaksexpanded.electrocution.charge", Math.round(hits / 3f * 100f)).withStyle(Style.EMPTY.withColor(0x4624a6)));
 		}
 	}
 

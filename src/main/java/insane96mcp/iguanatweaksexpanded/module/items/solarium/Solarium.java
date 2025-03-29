@@ -8,6 +8,7 @@ import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.module.combat.RegeneratingAbsorption;
+import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
@@ -15,10 +16,10 @@ import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.item.ILItemTier;
 import insane96mcp.insanelib.util.MCUtils;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
@@ -42,6 +43,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.RegistryObject;
@@ -78,16 +80,6 @@ public class Solarium extends Feature {
 		InsaneSurvivalExtra.addServerPack("solarium", "Insane's Survival Extra Solarium", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
-	@SubscribeEvent
-	public void onTooltip(ItemTooltipEvent event) {
-		if (!this.isEnabled()
-				|| !event.getItemStack().is(SOLARIUM_EQUIPMENT))
-			return;
-
-		event.getToolTip().add(Component.empty());
-		event.getToolTip().add(Component.translatable(InsaneSurvivalExtra.RESOURCE_PREFIX + "innate_solarium").withStyle(ChatFormatting.GREEN));
-	}
-
 	public static void healGear(ItemStack stack, Entity entity, Level level) {
 		if (level.isClientSide
 				|| entity.tickCount % 60 != 22)
@@ -102,18 +94,14 @@ public class Solarium extends Feature {
 
 	@SubscribeEvent
 	public void onLivingTick(LivingEvent.LivingTickEvent event) {
-		//TODO Move to ItemAttributeEvent?
 		armorBoost(event);
 	}
 
 	public static void armorBoost(LivingEvent.LivingTickEvent event) {
-		if (event.getEntity().tickCount % 2 != 1)
+		if (event.getEntity().tickCount % 5 != 4)
 			return;
 
 		Attribute attr = RegeneratingAbsorption.SPEED_ATTRIBUTE.get();
-		/*boolean isRegenAbsorption = isEnabled(AbsorptionArmor.class);
-		if (isRegenAbsorption)
-			attr = RegeneratingAbsorption.SPEED_ATTRIBUTE.get();*/
 		AttributeInstance attributeInstance = event.getEntity().getAttribute(attr);
 		if (attributeInstance == null)
 			return;
@@ -146,8 +134,6 @@ public class Solarium extends Feature {
 
 	@SubscribeEvent
 	public void boostMiningSpeed(PlayerEvent.BreakSpeed event) {
-		/*if (!event.getState().requiresCorrectToolForDrops())
-			event.setNewSpeed(event.getNewSpeed() + EnchantmentsFeature.applyMiningSpeedModifiers(0.5f, true, event.getEntity()));*/
 		if (!event.getEntity().getMainHandItem().is(SOLARIUM_EQUIPMENT)
 				|| !event.getEntity().getMainHandItem().isCorrectToolForDrops(event.getState()))
 			return;
@@ -179,6 +165,28 @@ public class Solarium extends Feature {
 	 */
 	public static float getCalculatedSkyLightRatio(Entity entity) {
         return Math.min(getCalculatedSkyLight(entity), 12f) / 12f;
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGH)
+	public void onTooltip(ItemTooltipEvent event) {
+		if (!this.isEnabled()
+				|| event.getEntity() == null)
+			return;
+
+		float calculatedSkyLightRatio = getCalculatedSkyLightRatio(event.getEntity());
+		if (event.getItemStack().is(SOLARIUM_EQUIPMENT)) {
+			event.getToolTip().add(Component.translatable("iguanatweaksexpanded.solarium.sunlight_repair", InsaneLib.ONE_DECIMAL_FORMATTER.format(calculatedSkyLightRatio * 100f), 3).withStyle(Style.EMPTY.withColor(0xFFFF4D)));
+		}
+		if (event.getItemStack().is(SOLARIUM_HAND_EQUIPMENT)) {
+			float bonusMiningSpeed = calculatedSkyLightRatio * 0.5f;
+			event.getToolTip().add(Component.translatable("iguanatweaksexpanded.solarium.sunlight_mining_speed", InsaneLib.ONE_DECIMAL_FORMATTER.format(bonusMiningSpeed * 100f)).withStyle(Style.EMPTY.withColor(0xFFFF4D)));
+			float bonusAttackDamage = calculatedSkyLightRatio * 0.2f;
+			event.getToolTip().add(Component.translatable("iguanatweaksexpanded.solarium.sunlight_bonus_damage", InsaneLib.ONE_DECIMAL_FORMATTER.format(bonusAttackDamage * 100f)).withStyle(Style.EMPTY.withColor(0xFFFF4D)));
+		}
+		else if (event.getItemStack().getItem() instanceof SolariumArmorItem) {
+			float bonusRegenSpeed = calculatedSkyLightRatio * 0.05f;
+			event.getToolTip().add(Component.translatable("iguanatweaksexpanded.solarium.sunlight_bonus_regen_absorption_speed", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(bonusRegenSpeed)).withStyle(Style.EMPTY.withColor(0xFFFF4D)));
+		}
 	}
 
 	@SubscribeEvent
