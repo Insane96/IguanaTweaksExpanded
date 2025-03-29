@@ -1,10 +1,6 @@
 # Changelog
 
-* melee skeletons flee
-* phantom glider
-* tired 3
-
-## Upcoming
+## 1.23.3
 ### Additions
 * Tooltips to solarium and coated copper
 
