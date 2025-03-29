@@ -230,6 +230,10 @@
 	"item.iguanatweaksexpanded.solarium_chestplate": "Corazza di solario",
 	"item.iguanatweaksexpanded.solarium_leggings": "Gambiere di solario",
 	"item.iguanatweaksexpanded.solarium_boots": "Stivali di solario",
+	"iguanatweaksexpanded.solarium.sunlight_mining_speed": "Velocità di scavo: +%s%%",
+	"iguanatweaksexpanded.solarium.sunlight_bonus_damage": "Danno bonus: +%s%%",
+	"iguanatweaksexpanded.solarium.sunlight_bonus_regen_absorption_speed": "+%s Velocità di rigenerazione dell'assorbimento",
+	"iguanatweaksexpanded.solarium.sunlight_repair": "Possibiltà di riparazione: %s%% ogni %s secondi",
 	"block.iguanatweaksexpanded.solium_moss": "Muschio di solium",
 	"item.iguanatweaksexpanded.solarium_ball": "Sfera di solario",
 
