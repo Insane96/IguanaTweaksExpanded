@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Fixed
+* Undiscorverable enchantments in the enchanting table
+
 ## 1.23.3
 ### Additions
 * Tooltips to solarium and coated copper

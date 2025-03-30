@@ -120,11 +120,12 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
 
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
             if (EnchantingFeature.enchantingTableRequiresLearning
-                    && !this.learnedEnchantments.containsKey(enchantment))
-                continue;
+                    && !this.learnedEnchantments.containsKey(enchantment)
+                    || !enchantment.isDiscoverable())
+                        continue;
             if (this.shouldShowKnownEnchantments())
                 availableEnchantments.add(enchantment);
-            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack) && enchantment.isDiscoverable()) || (this.learnedEnchantments.containsKey(enchantment) && enchantment.canApplyAtEnchantingTable(stack)))
+            if ((!enchantment.isTreasureOnly() && enchantment.canApplyAtEnchantingTable(stack)) || (this.learnedEnchantments.containsKey(enchantment) && enchantment.canApplyAtEnchantingTable(stack)))
                 availableEnchantments.add(enchantment);
         }
         availableEnchantments
