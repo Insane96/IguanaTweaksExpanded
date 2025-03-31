@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.23.4
 ### Fixed
 * Undiscorverable enchantments in the enchanting table
 * Bow like items enchantability not bumped up
