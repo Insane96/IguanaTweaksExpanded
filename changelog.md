@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Hang Glider now has 1 enchantability
+
 ## 1.23.4
 ### Fixed
 * Undiscorverable enchantments in the enchanting table
