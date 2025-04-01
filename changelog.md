@@ -2,6 +2,7 @@
 
 ## Upcoming
 ### Changes
+* Purified and infused items are no longer destroyed when enchantments are extracted
 * Hang Glider now has 2 enchantability, and reinforced has 1
 
 ## 1.23.4

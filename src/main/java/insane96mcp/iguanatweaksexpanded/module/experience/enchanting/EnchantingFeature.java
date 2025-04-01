@@ -343,7 +343,7 @@ public class EnchantingFeature extends JsonFeature {
 
     public void cleansedLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.PURIFIED_ITEM))
+        if (!left.getItem().isEnchantable(left) || isPurified(left))
             return;
 
         ItemStack right = event.getRight().copy();
@@ -374,7 +374,7 @@ public class EnchantingFeature extends JsonFeature {
 
     public void enchantedCleansedLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.getItem().isEnchantable(left) || left.getTag() == null || left.getTag().contains(EnchantingFeature.INFUSED_ITEM))
+        if (!left.getItem().isEnchantable(left) || isInfused(left))
             return;
 
         ItemStack right = event.getRight().copy();
@@ -391,7 +391,7 @@ public class EnchantingFeature extends JsonFeature {
     public void onGrindstoneTake(GrindstoneEvent.OnTakeItem event) {
         if (!this.isEnabled()
                 || !grindstoneBetterXp
-                || (grindstoneTreasureEnchantmentExtraction && event.getTopItem().isEnchanted() && event.getBottomItem().is(Items.BOOK)))
+                || onExtractEnchantments(event))
             return;
 
         float lvl = 0;
@@ -405,9 +405,25 @@ public class EnchantingFeature extends JsonFeature {
                 continue;*/
             lvl += getCost(enchantment.getKey(), enchantment.getValue());
         }
-        lvl = (int)Math.floor(lvl);
+        lvl = (int) Math.floor(lvl);
 
         event.setXp((int) (lvl * PlayerExperience.getBetterScalingLevel(30) * getGrindstonePercentageXpGiven()));
+    }
+
+    public static boolean onExtractEnchantments(GrindstoneEvent.OnTakeItem event) {
+        if (!grindstoneTreasureEnchantmentExtraction
+                || !event.getTopItem().isEnchanted()
+                || !event.getBottomItem().is(Items.BOOK))
+            return false;
+
+        if (isPurified(event.getTopItem()) || isInfused(event.getTopItem())) {
+            ItemStack topItem = event.getTopItem().copy();
+            //noinspection DataFlowIssue - Can't be null as if purified or infused the tag must be there
+            topItem.getTag().remove("Enchantments");
+            event.setNewTopItem(topItem);
+        }
+
+        return true;
     }
 
     public static float getGrindstonePercentageXpGiven() {
@@ -438,6 +454,10 @@ public class EnchantingFeature extends JsonFeature {
                 continue;
             EnchantedBookItem.addEnchantment(output, new EnchantmentInstance(enchantmentInstance.getKey(), enchantmentInstance.getValue()));
         }
+        if (isPurified(event.getTopItem()))
+            output.getOrCreateTag().putBoolean(PURIFIED_ITEM, true);
+        if (isInfused(event.getTopItem()))
+            output.getOrCreateTag().putBoolean(INFUSED_ITEM, true);
         event.setOutput(output);
         event.setXp(0);
     }
@@ -590,6 +610,14 @@ public class EnchantingFeature extends JsonFeature {
         return false;
     }
 
+    public static boolean isPurified(ItemStack stack) {
+        return stack.getTag() != null && stack.getTag().contains(PURIFIED_ITEM);
+    }
+
+    public static boolean isInfused(ItemStack stack) {
+        return stack.getTag() != null && stack.getTag().contains(INFUSED_ITEM);
+    }
+
     @SubscribeEvent
     public void onTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
@@ -635,11 +663,13 @@ public class EnchantingFeature extends JsonFeature {
 
     @OnlyIn(Dist.CLIENT)
     private static void infusedEmpoweredTooltip(ItemStack stack, CompoundTag tag, List<Component> tooltip) {
-        if (tag.contains(PURIFIED_ITEM)) {
+        if (isPurified(stack)) {
             tooltip.add(Component.empty());
             tooltip.add(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
-        if (tag.contains(INFUSED_ITEM)) {
+        if (isInfused(stack)) {
+            if (!isPurified(stack))
+                tooltip.add(Component.empty());
             tooltip.add(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE));
         }
     }
