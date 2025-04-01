@@ -2,7 +2,7 @@
 
 ## Upcoming
 ### Changes
-* Hang Glider now has 1 enchantability
+* Hang Glider now has 2 enchantability, and reinforced has 1
 
 ## 1.23.4
 ### Fixed
