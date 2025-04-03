@@ -1,5 +1,12 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Reforming repair speed doubled
+
+### Fixes
+* IT Translations
+
 ## 1.23.5
 ### Changes
 * Purified and infused items are no longer destroyed when enchantments are extracted
