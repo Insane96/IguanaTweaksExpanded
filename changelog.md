@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.23.6
 ### Changes
 * Reforming repair speed doubled
 * Many features can now be disabled, hiding items from creative inventory and EMI
