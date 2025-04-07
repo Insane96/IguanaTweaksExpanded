@@ -169,6 +169,6 @@ public class CrateBlock extends BaseEntityBlock {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable BlockGetter blockGetter, List<Component> components, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, blockGetter, components, tooltipFlag);
-        components.add(Component.translatable(WEIGHTED_LANG, Crate.maxCratesWithoutSlowdown + 1).withStyle(ChatFormatting.RED));
+        components.add(Component.translatable(WEIGHTED_LANG, PortableCrate.maxCratesWithoutSlowdown + 1).withStyle(ChatFormatting.RED));
     }
 }

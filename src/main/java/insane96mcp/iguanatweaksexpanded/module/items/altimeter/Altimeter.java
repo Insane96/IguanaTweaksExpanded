@@ -14,8 +14,8 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-@Label(name = "Altimeter", description = "Check your altitude")
-@LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
+@Label(name = "Altimeter", description = "Check your altitude. Will be hidden from creative inventory if disabled or if caverns and chasms is enabled")
+@LoadFeature(module = Modules.Ids.ITEMS)
 public class Altimeter extends Feature {
 	public static final RegistryObject<Item> ITEM = ISERegistries.ITEMS.register("altimeter", () -> new AltimeterItem(new Item.Properties()));
 

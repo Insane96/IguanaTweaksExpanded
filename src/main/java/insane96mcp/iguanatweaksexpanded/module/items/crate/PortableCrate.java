@@ -25,8 +25,8 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.UUID;
 
 @Label(name = "Crate", description = "A new block that can let you carry more stuff around.")
-@LoadFeature(module = Modules.Ids.ITEMS, canBeDisabled = false)
-public class Crate extends Feature {
+@LoadFeature(module = Modules.Ids.ITEMS)
+public class PortableCrate extends Feature {
 
 	public static final UUID CRATE_WEIGHT_UUID = UUID.fromString("4ce89c45-a011-43fa-b9a8-7f2bd0ea2fc3");
 
@@ -43,7 +43,7 @@ public class Crate extends Feature {
 	@Label(name = "Base Slowness per crate over max", description = "When you have > 'Max crates without slowdown' this is the base value for the slowdown. The slowdown is calculated as (crates above 'Max crates' ^ 2 * this)")
 	public static Double slownessPerCrate = 0.05d;
 
-	public Crate(Module module, boolean enabledByDefault, boolean canBeDisabled) {
+	public PortableCrate(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
 

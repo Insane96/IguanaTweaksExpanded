@@ -60,31 +60,43 @@ public class ISEEmiPlugin implements EmiPlugin {
 	public void register(EmiRegistry registry) {
 		RecipeManager manager = registry.getRecipeManager();
 
-		registry.addCategory(FORGE_RECIPE_CATEGORY);
-		registry.addWorkstation(FORGE_RECIPE_CATEGORY, FORGE_WORKSTATION);
-		for (ForgeRecipe forgeRecipe : manager.getAllRecipesFor(Forging.FORGE_RECIPE_TYPE.get())) {
-			registry.addRecipe(new EmiForgeRecipe(forgeRecipe));
-			if (forgeRecipe.getResult().getItem() instanceof RepairKitItem) {
-				registry.addEmiStack(EmiStack.of(forgeRecipe.getResult()));
+		if (Feature.isEnabled(Forging.class)) {
+			registry.addCategory(FORGE_RECIPE_CATEGORY);
+			registry.addWorkstation(FORGE_RECIPE_CATEGORY, FORGE_WORKSTATION);
+			for (ForgeRecipe forgeRecipe : manager.getAllRecipesFor(Forging.FORGE_RECIPE_TYPE.get())) {
+				registry.addRecipe(new EmiForgeRecipe(forgeRecipe));
+				if (forgeRecipe.getResult().getItem() instanceof RepairKitItem) {
+					registry.addEmiStack(EmiStack.of(forgeRecipe.getResult()));
+				}
 			}
 		}
 
-		registry.addCategory(BLAST_FURNACE_CATEGORY);
-		registry.addWorkstation(BLAST_FURNACE_CATEGORY, BLAST_FURNACE_WORKSTATION);
-		for (AbstractMultiItemSmeltingRecipe multiItemSmeltingRecipe : manager.getAllRecipesFor(MultiBlockFurnaces.BLASTING_RECIPE_TYPE.get())) {
-			registry.addRecipe(new EmiBlastFurnaceRecipe(multiItemSmeltingRecipe));
+		if (Feature.isEnabled(MultiBlockFurnaces.class)) {
+			registry.addCategory(BLAST_FURNACE_CATEGORY);
+			registry.addWorkstation(BLAST_FURNACE_CATEGORY, BLAST_FURNACE_WORKSTATION);
+			for (AbstractMultiItemSmeltingRecipe multiItemSmeltingRecipe : manager.getAllRecipesFor(MultiBlockFurnaces.BLASTING_RECIPE_TYPE.get())) {
+				registry.addRecipe(new EmiBlastFurnaceRecipe(multiItemSmeltingRecipe));
+			}
+
+			registry.addCategory(SOUL_BLAST_FURNACE_CATEGORY);
+			registry.addWorkstation(SOUL_BLAST_FURNACE_CATEGORY, SOUL_BLAST_FURNACE_WORKSTATION);
+			for (AbstractMultiItemSmeltingRecipe multiItemSmeltingRecipe : manager.getAllRecipesFor(MultiBlockFurnaces.SOUL_BLASTING_RECIPE_TYPE.get())) {
+				registry.addRecipe(new EmiSoulBlastFurnaceRecipe(multiItemSmeltingRecipe));
+			}
+
+			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);
+			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.BLAST_FURNACE));
+			if (MultiBlockFurnaces.hideBlastingCategoryInEMI) {
+				registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);
+			}
 		}
 
-		registry.addCategory(SOUL_BLAST_FURNACE_CATEGORY);
-		registry.addWorkstation(SOUL_BLAST_FURNACE_CATEGORY, SOUL_BLAST_FURNACE_WORKSTATION);
-		for (AbstractMultiItemSmeltingRecipe multiItemSmeltingRecipe : manager.getAllRecipesFor(MultiBlockFurnaces.SOUL_BLASTING_RECIPE_TYPE.get())) {
-			registry.addRecipe(new EmiSoulBlastFurnaceRecipe(multiItemSmeltingRecipe));
-		}
-
-		registry.addCategory(FLETCHING_RECIPE_CATEGORY);
-		registry.addWorkstation(FLETCHING_RECIPE_CATEGORY, FLETCHING_WORKSTATION);
-		for (FletchingRecipe fletchingRecipe : manager.getAllRecipesFor(Fletching.FLETCHING_RECIPE_TYPE.get())) {
-			registry.addRecipe(new EmiFletchingRecipe(fletchingRecipe));
+		if (Feature.isEnabled(Fletching.class)) {
+			registry.addCategory(FLETCHING_RECIPE_CATEGORY);
+			registry.addWorkstation(FLETCHING_RECIPE_CATEGORY, FLETCHING_WORKSTATION);
+			for (FletchingRecipe fletchingRecipe : manager.getAllRecipesFor(Fletching.FLETCHING_RECIPE_TYPE.get())) {
+				registry.addRecipe(new EmiFletchingRecipe(fletchingRecipe));
+			}
 		}
 		//registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.ANVIL_REPAIRING);
 		if (Feature.isEnabled(EnchantingFeature.class)) {
@@ -160,21 +172,20 @@ public class ISEEmiPlugin implements EmiPlugin {
 
 			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.ENCHANTING_TABLE));
 		}
-		if (Feature.isEnabled(MultiBlockFurnaces.class)) {
-			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);
-			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.BLAST_FURNACE));
-		}
 		if (Feature.isEnabled(Fletching.class)) {
 			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.FLETCHING_TABLE));
 		}
-		if (Feature.isEnabled(MultiBlockFurnaces.class) && MultiBlockFurnaces.hideBlastingCategoryInEMI) {
-			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.BLASTING);
+		if (Feature.isEnabled(Altimeter.class)) {
+			registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), "info_altimeter", Component.translatable("emi.info.iguanatweaksexpanded.altimeter")));
 		}
-		registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), "info_altimeter", Component.translatable("emi.info.iguanatweaksexpanded.altimeter")));
-		registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, "info_keego_mining", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
-		registry.addRecipe(createSimpleInfo(Keego.KEEGO_HAND_EQUIPMENT, "info_keego_attacking", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
-		registry.addRecipe(createSimpleInfo(Keego.KEEGO_ARMOR_EQUIPMENT, "info_keego_moving", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
-		registry.addRecipe(createSimpleInfo(RepairKits.REPAIR_KIT.get(), "info_repair_kit", Component.translatable("emi.info.iguanatweaksexpanded.repair_kit")));
+		if (Feature.isEnabled(Keego.class)) {
+			registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, "info_keego_mining", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
+			registry.addRecipe(createSimpleInfo(Keego.KEEGO_HAND_EQUIPMENT, "info_keego_attacking", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
+			registry.addRecipe(createSimpleInfo(Keego.KEEGO_ARMOR_EQUIPMENT, "info_keego_moving", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
+		}
+		if (Feature.isEnabled(RepairKits.class)) {
+			registry.addRecipe(createSimpleInfo(RepairKits.REPAIR_KIT.get(), "info_repair_kit", Component.translatable("emi.info.iguanatweaksexpanded.repair_kit")));
+		}
 	}
 
 	public EmiInfoRecipe createSimpleInfo(Item item, String id, Component component) {

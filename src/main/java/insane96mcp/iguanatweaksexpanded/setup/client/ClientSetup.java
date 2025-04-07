@@ -12,8 +12,8 @@ import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.ElectrocutionSparkParticle;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.ClientCrateTooltip;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.CrateTooltip;
+import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -130,7 +130,7 @@ public class ClientSetup {
                 addAfter(event, Items.NETHERITE_HOE, Forging.NETHERITE_HAMMER.get());
             }
 
-            if (!ModList.get().isLoaded("caverns_and_chasms"))
+            if (!ModList.get().isLoaded("caverns_and_chasms") && Feature.isEnabled(Altimeter.class))
                 addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
         }
@@ -221,12 +221,13 @@ public class ClientSetup {
                 addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.CHESTPLATE.get());
                 addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.HELMET.get());
             }
-
-            addAfter(event, Items.ARROW, Fletching.TORCH_ARROW_ITEM.get());
-            addAfter(event, Items.ARROW, Fletching.EXPLOSIVE_ARROW_ITEM.get());
-            addAfter(event, Items.ARROW, Fletching.DIAMOND_ARROW_ITEM.get());
-            addAfter(event, Items.ARROW, Fletching.QUARTZ_ARROW_ITEM.get());
-            addAfter(event, Items.ARROW, Fletching.ICE_ARROW_ITEM.get());
+            if (Feature.isEnabled(Fletching.class)) {
+                addAfter(event, Items.ARROW, Fletching.TORCH_ARROW_ITEM.get());
+                addAfter(event, Items.ARROW, Fletching.EXPLOSIVE_ARROW_ITEM.get());
+                addAfter(event, Items.ARROW, Fletching.DIAMOND_ARROW_ITEM.get());
+                addAfter(event, Items.ARROW, Fletching.QUARTZ_ARROW_ITEM.get());
+                addAfter(event, Items.ARROW, Fletching.ICE_ARROW_ITEM.get());
+            }
         }
         else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             if (Feature.isEnabled(Durium.class)) {
@@ -244,21 +245,31 @@ public class ClientSetup {
             }
         }
         else if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            addBefore(event, Items.SHULKER_BOX, Crate.ITEM.get());
-            addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
-            addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.BLAST_FURNACE.item().get());
+            if (Feature.isEnabled(PortableCrate.class)) {
+                addBefore(event, Items.SHULKER_BOX, PortableCrate.ITEM.get());
+            }
+            if (Feature.isEnabled(MultiBlockFurnaces.class)) {
+                addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
+                addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.BLAST_FURNACE.item().get());
+            }
             if (Feature.isEnabled(Forging.class)) {
                 addBefore(event, Items.ANVIL, Forging.FORGE.item().get());
             }
-            addAfter(event, Items.FLETCHING_TABLE, Fletching.FLETCHING_TABLE.item().get());
+            if (Feature.isEnabled(Fletching.class)) {
+                addAfter(event, Items.FLETCHING_TABLE, Fletching.FLETCHING_TABLE.item().get());
+            }
             if (Feature.isEnabled(EnchantingFeature.class)) {
                 addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENCHANTING_TABLE.item().get());
                 event.getEntries().remove(new ItemStack(Items.ENCHANTING_TABLE));
             }
         }
         else if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
-            addAfter(event, Items.TNT, MiningCharge.MINING_CHARGE.item().get());
-            addAfter(event, Items.TNT, ExplosiveBarrel.BLOCK.item().get());
+            if (Feature.isEnabled(MiningCharge.class)) {
+                addAfter(event, Items.TNT, MiningCharge.MINING_CHARGE.item().get());
+            }
+            if (Feature.isEnabled(ExplosiveBarrel.class)) {
+                addAfter(event, Items.TNT, ExplosiveBarrel.BLOCK.item().get());
+            }
         }
         else if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             if (Feature.isEnabled(Durium.class)) {
@@ -312,8 +323,10 @@ public class ClientSetup {
                 addAfter(event, Items.GOLD_INGOT, Quaron.INGOT.get());
                 addAfter(event, Items.GOLD_NUGGET, Quaron.NUGGET.get());
             }
-            addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
-            addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
+            if (Feature.isEnabled(EnchantingFeature.class)) {
+                addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
+                addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
+            }
         }
     }
 

@@ -3,7 +3,7 @@
 ## Upcoming
 ### Changes
 * Reforming repair speed doubled
-* Forging feature can now be disabled, hiding items from creative inventory
+* Many features can now be disabled, hiding items from creative inventory and EMI
 
 ### Fixes
 * IT Translations

@@ -4,7 +4,7 @@ import com.teamabnormals.caverns_and_chasms.core.registry.CCItems;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
+import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -136,7 +136,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_chain", has(Items.IRON_NUGGET))
                 .save(writer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, Crate.ITEM.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, PortableCrate.ITEM.get())
                 .pattern("nnn")
                 .pattern("ibi")
                 .pattern("nnn")

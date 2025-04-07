@@ -46,7 +46,7 @@ import java.util.List;
 import java.util.Map;
 
 @Label(name = "Multi Block Furnaces", description = "Add new multi block furnaces")
-@LoadFeature(module = Modules.Ids.MINING, canBeDisabled = false)
+@LoadFeature(module = Modules.Ids.MINING)
 public class MultiBlockFurnaces extends Feature {
 	public static final String INVALID_FURNACE_LANG = InsaneSurvivalExtra.MOD_ID + ".invalid_blast_furnace";
 

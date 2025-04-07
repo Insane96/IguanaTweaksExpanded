@@ -3,7 +3,7 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.Crate;
+import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
@@ -41,7 +41,7 @@ public class ISEBlockTagsProvider extends BlockTagsProvider {
                 .add(Solarium.SOLIUM_MOSS.block().get());*/
 
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(Crate.BLOCK.get(), ExplosiveBarrel.BLOCK.block().get(), Fletching.FLETCHING_TABLE.block().get());
+                .add(PortableCrate.BLOCK.get(), ExplosiveBarrel.BLOCK.block().get(), Fletching.FLETCHING_TABLE.block().get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(Durium.SAND_ORE.block().get(), Durium.GRAVEL_ORE.block().get(), Durium.CLAY_ORE.block().get(), Durium.DIRT_ORE.block().get());
@@ -59,7 +59,7 @@ public class ISEBlockTagsProvider extends BlockTagsProvider {
                 .add(EnchantingFeature.ENCHANTING_TABLE.block().get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(Crate.BLOCK.get())
+                .add(PortableCrate.BLOCK.get())
                 .add(BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().block().get())
                 .add(BeegOreVeins.POOR_RICH_COPPER_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get())
                 .add(EnchantingFeature.ENCHANTING_TABLE.block().get())

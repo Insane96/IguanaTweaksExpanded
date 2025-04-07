@@ -64,7 +64,7 @@ public class CrateBlockEntity extends RandomizableContainerBlockEntity implement
     };
 
     public CrateBlockEntity(BlockPos pos, BlockState state) {
-        super(Crate.BLOCK_ENTITY_TYPE.get(), pos, state);
+        super(PortableCrate.BLOCK_ENTITY_TYPE.get(), pos, state);
     }
 
     @Override
