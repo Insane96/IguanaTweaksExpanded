@@ -58,19 +58,25 @@ public class ClientSetup {
                 addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_AXE.get());
                 addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_PICKAXE.get());
                 addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_SHOVEL.get());
-                addAfter(event, CopperExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
+                if (Feature.isEnabled(Forging.class)) {
+                    addAfter(event, CopperExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
+                }
                 addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_HOE.get());
                 addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_AXE.get());
                 addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_PICKAXE.get());
                 addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_SHOVEL.get());
-                addAfter(event, CopperExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
+                if (Feature.isEnabled(Forging.class)) {
+                    addAfter(event, CopperExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
+                }
             }
             if (Feature.isEnabled(Solarium.class)) {
                 addAfter(event, Items.IRON_HOE, Solarium.HOE.get());
                 addAfter(event, Items.IRON_HOE, Solarium.AXE.get());
                 addAfter(event, Items.IRON_HOE, Solarium.PICKAXE.get());
                 addAfter(event, Items.IRON_HOE, Solarium.SHOVEL.get());
-                addAfter(event, Solarium.HOE.get(), Forging.SOLARIUM_HAMMER.get());
+                if (Feature.isEnabled(Forging.class)) {
+                    addAfter(event, Solarium.HOE.get(), Forging.SOLARIUM_HAMMER.get());
+                }
             }
             if (Feature.isEnabled(Durium.class)) {
                 addAfter(event, Items.IRON_HOE, Durium.HOE.get());
@@ -78,14 +84,18 @@ public class ClientSetup {
                 addAfter(event, Items.IRON_HOE, Durium.PICKAXE.get());
                 addAfter(event, Items.IRON_HOE, Durium.SHOVEL.get());
                 addAfter(event, Items.SHEARS, Durium.SHEARS.get());
-                addAfter(event, Durium.HOE.get(), Forging.DURIUM_HAMMER.get());
+                if (Feature.isEnabled(Forging.class)) {
+                    addAfter(event, Durium.HOE.get(), Forging.DURIUM_HAMMER.get());
+                }
             }
             if (Feature.isEnabled(Keego.class)) {
                 addAfter(event, Items.DIAMOND_HOE, Keego.HOE.get());
                 addAfter(event, Items.DIAMOND_HOE, Keego.AXE.get());
                 addAfter(event, Items.DIAMOND_HOE, Keego.PICKAXE.get());
                 addAfter(event, Items.DIAMOND_HOE, Keego.SHOVEL.get());
-                addAfter(event, Keego.HOE.get(), Forging.KEEGO_HAMMER.get());
+                if (Feature.isEnabled(Forging.class)) {
+                    addAfter(event, Keego.HOE.get(), Forging.KEEGO_HAMMER.get());
+                }
             }
             if (Feature.isEnabled(Quaron.class)) {
                 addAfter(event, Items.DIAMOND_HOE, Quaron.HOE.get());
@@ -93,24 +103,32 @@ public class ClientSetup {
                 addAfter(event, Items.DIAMOND_HOE, Quaron.PICKAXE.get());
                 addAfter(event, Items.DIAMOND_HOE, Quaron.SHOVEL.get());
                 addAfter(event, Items.FISHING_ROD, Quaron.FISHING_ROD.get());
-                addAfter(event, Quaron.HOE.get(), Forging.QUARON_HAMMER.get());
+                if (Feature.isEnabled(Forging.class)) {
+                    addAfter(event, Quaron.HOE.get(), Forging.QUARON_HAMMER.get());
+                }
             }
             if (Feature.isEnabled(SoulSteel.class)) {
                 addAfter(event, Items.NETHERITE_HOE, SoulSteel.HOE.get());
                 addAfter(event, Items.NETHERITE_HOE, SoulSteel.AXE.get());
                 addAfter(event, Items.NETHERITE_HOE, SoulSteel.PICKAXE.get());
                 addAfter(event, Items.NETHERITE_HOE, SoulSteel.SHOVEL.get());
-                addAfter(event, SoulSteel.HOE.get(), Forging.SOUL_STEEL_HAMMER.get());
+                if (Feature.isEnabled(Forging.class)) {
+                    addAfter(event, SoulSteel.HOE.get(), Forging.SOUL_STEEL_HAMMER.get());
+                }
             }
 
-            addAfter(event, Items.WOODEN_HOE, Forging.WOODEN_HAMMER.get());
-            if (!FlintExpansion.areStoneToolsDisabled())
-                addAfter(event, Items.STONE_HOE, Forging.STONE_HAMMER.get());
-            addAfter(event, FlintExpansion.HOE.get(), Forging.FLINT_HAMMER.get());
-            addAfter(event, Items.GOLDEN_HOE, Forging.GOLDEN_HAMMER.get());
-            addAfter(event, Items.IRON_HOE, Forging.IRON_HAMMER.get());
-            addAfter(event, Items.DIAMOND_HOE, Forging.DIAMOND_HAMMER.get());
-            addAfter(event, Items.NETHERITE_HOE, Forging.NETHERITE_HAMMER.get());
+            if (Feature.isEnabled(Forging.class)) {
+                addAfter(event, Items.WOODEN_HOE, Forging.WOODEN_HAMMER.get());
+                if (!FlintExpansion.areStoneToolsDisabled())
+                    addAfter(event, Items.STONE_HOE, Forging.STONE_HAMMER.get());
+                if (Feature.isEnabled(FlintExpansion.class)) {
+                    addAfter(event, FlintExpansion.HOE.get(), Forging.FLINT_HAMMER.get());
+                }
+                addAfter(event, Items.GOLDEN_HOE, Forging.GOLDEN_HAMMER.get());
+                addAfter(event, Items.IRON_HOE, Forging.IRON_HAMMER.get());
+                addAfter(event, Items.DIAMOND_HOE, Forging.DIAMOND_HAMMER.get());
+                addAfter(event, Items.NETHERITE_HOE, Forging.NETHERITE_HAMMER.get());
+            }
 
             if (!ModList.get().isLoaded("caverns_and_chasms"))
                 addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
@@ -229,7 +247,9 @@ public class ClientSetup {
             addBefore(event, Items.SHULKER_BOX, Crate.ITEM.get());
             addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
             addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.BLAST_FURNACE.item().get());
-            addBefore(event, Items.ANVIL, Forging.FORGE.item().get());
+            if (Feature.isEnabled(Forging.class)) {
+                addBefore(event, Items.ANVIL, Forging.FORGE.item().get());
+            }
             addAfter(event, Items.FLETCHING_TABLE, Fletching.FLETCHING_TABLE.item().get());
             if (Feature.isEnabled(EnchantingFeature.class)) {
                 addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENCHANTING_TABLE.item().get());
