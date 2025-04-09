@@ -1,6 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -36,5 +38,10 @@ public class Zippy extends Enchantment implements IAttributeEnchantment {
     @Override
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
         event.addModifier(Attributes.MOVEMENT_SPEED, new AttributeModifier(MODIFIER_UUID, "Zippy Enchantment Modifier", 0.075d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

@@ -4,6 +4,8 @@ import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.integration.ToolBeltIntegration;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.util.MCUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -123,5 +125,10 @@ public class Soulbound extends Enchantment {
             }
         }
         persistedTag.remove(InsaneSurvivalExtra.RESOURCE_PREFIX + "soulbound_items");
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

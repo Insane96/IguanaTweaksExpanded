@@ -1,7 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ISOProtectionEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -39,7 +41,11 @@ public class MeleeProtection extends ISOProtectionEnchantment implements IAttrib
 
     public boolean isSourceReduced(DamageSource source) {
         return source.is(DamageTypes.MOB_ATTACK) || source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.MOB_ATTACK_NO_AGGRO);
+    }
 
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 
     @Override

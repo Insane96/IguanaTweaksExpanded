@@ -2,7 +2,9 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksreborn.module.combat.PiercingDamage;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -45,5 +47,10 @@ public class ArmorPiercer extends Enchantment implements IAttributeEnchantment {
             return;
         event.addModifier(PiercingDamage.PIERCING_DAMAGE.get(), new AttributeModifier(MODIFIER_UUID, "Armor Piercier Enchantment Modifier", 0.8d * enchantmentLvl, AttributeModifier.Operation.ADDITION));
         event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(MODIFIER_UUID, "Armor Piercier Enchantment Modifier", -0.1d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_TOTAL));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

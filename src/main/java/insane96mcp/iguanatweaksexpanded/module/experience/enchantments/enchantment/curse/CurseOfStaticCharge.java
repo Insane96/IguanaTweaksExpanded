@@ -1,6 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
@@ -46,5 +48,10 @@ public class CurseOfStaticCharge extends Enchantment {
                 event.getEntity().level().addFreshEntity(lightningbolt);
             }
         }
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

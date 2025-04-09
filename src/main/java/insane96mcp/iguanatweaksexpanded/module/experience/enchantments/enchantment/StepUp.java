@@ -1,6 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -31,5 +33,10 @@ public class StepUp extends Enchantment implements IAttributeEnchantment {
     @Override
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
         event.addModifier(ForgeMod.STEP_HEIGHT_ADDITION.get(), new AttributeModifier(MODIFIER_UUID, "Step Up Enchantment Modifier", 0.5d * enchantmentLvl, AttributeModifier.Operation.ADDITION));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

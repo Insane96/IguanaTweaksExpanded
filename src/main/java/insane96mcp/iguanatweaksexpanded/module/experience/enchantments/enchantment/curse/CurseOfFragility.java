@@ -1,6 +1,8 @@
 
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -30,5 +32,10 @@ public class CurseOfFragility extends Enchantment {
 
     public static float getDurabilityReduction() {
         return 0.5f;
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

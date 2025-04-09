@@ -5,6 +5,7 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchan
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import insane96mcp.iguanatweaksreborn.utils.MCUtils;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -75,5 +76,10 @@ public class Adrenaline extends Enchantment implements IAttributeEnchantment {
             return;
         float durConsumed = 1 - MCUtils.getPercentageDurabilityLeft(event.getItemStack());
         event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(MODIFIER_UUID, "Adrenaline Enchantment Modifier", 0.15f * enchantmentLvl * (durConsumed * durConsumed), AttributeModifier.Operation.MULTIPLY_BASE));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

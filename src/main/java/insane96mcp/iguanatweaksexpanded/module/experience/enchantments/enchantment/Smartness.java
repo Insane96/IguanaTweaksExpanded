@@ -2,6 +2,8 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.util.MathHelper;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
@@ -62,5 +64,10 @@ public class Smartness extends Enchantment {
         if (lvl > 0)
             return getIncreasedExperience(hook.level().random, lvl, exp);
         return exp;
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

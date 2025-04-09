@@ -1,8 +1,10 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.IProtectionEnchantment;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ISOProtectionEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -44,6 +46,11 @@ public class Healthy extends Enchantment implements IAttributeEnchantment {
         } else {
             return !(other instanceof IProtectionEnchantment) && super.checkCompatibility(other);
         }
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 
     @Override

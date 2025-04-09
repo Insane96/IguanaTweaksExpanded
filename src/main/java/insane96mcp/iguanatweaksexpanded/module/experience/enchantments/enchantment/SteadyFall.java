@@ -1,7 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.utils.MCUtils;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
@@ -44,5 +46,10 @@ public class SteadyFall extends Enchantment {
         feetStack.hurtAndBreak((int) (reducedDamage * ratio()), event.getEntity(), (entity) -> {
             entity.broadcastBreakEvent(EquipmentSlot.FEET);
         });
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

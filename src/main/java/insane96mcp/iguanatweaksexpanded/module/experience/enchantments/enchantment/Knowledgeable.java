@@ -2,6 +2,8 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -52,5 +54,10 @@ public class Knowledgeable extends Enchantment {
         return lvl > 0 && player.getRandom().nextFloat() <= chance
                 ? expToDrop + lvl
                 : expToDrop;
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

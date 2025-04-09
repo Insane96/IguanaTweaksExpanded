@@ -2,6 +2,8 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -48,6 +50,11 @@ public class Vindication extends Enchantment {
             return;
         stackedDamage = Math.min(maxStackedDamage, stackedDamage + damageAmount);
         attacked.getPersistentData().putFloat(STACKED_DAMAGE, stackedDamage);
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 
     public static void tryApplyDamage(LivingHurtEvent event) {

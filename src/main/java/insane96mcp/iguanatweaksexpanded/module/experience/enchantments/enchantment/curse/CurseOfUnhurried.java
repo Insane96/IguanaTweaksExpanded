@@ -1,6 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -39,5 +41,10 @@ public class CurseOfUnhurried extends Enchantment implements IAttributeEnchantme
         if (event.getSlotType() != EquipmentSlot.LEGS)
             return;
         event.addModifier(Attributes.MOVEMENT_SPEED, new AttributeModifier(ID, "Unhurried Curse Modifier", -0.1d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_TOTAL));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

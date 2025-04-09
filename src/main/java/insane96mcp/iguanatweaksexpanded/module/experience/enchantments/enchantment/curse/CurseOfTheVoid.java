@@ -3,6 +3,8 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.JuicyBait;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -63,5 +65,10 @@ public class CurseOfTheVoid extends Enchantment {
             return;
 
         event.getDrops().clear();
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

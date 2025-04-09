@@ -1,6 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -70,5 +72,10 @@ public class DoubleJump extends Enchantment {
 
     public static int getRemainingJumps(Player entity, int lvl) {
         return lvl - entity.getPersistentData().getInt("double_jumps");
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

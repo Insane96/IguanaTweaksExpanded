@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DiggerItem;
@@ -36,6 +37,11 @@ public class Blasting extends Enchantment {
 
     public boolean checkCompatibility(Enchantment other) {
         return !(other instanceof DiggingEnchantment) && super.checkCompatibility(other);
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 
     public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state) {

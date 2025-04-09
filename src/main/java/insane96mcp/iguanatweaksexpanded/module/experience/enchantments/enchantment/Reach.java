@@ -1,7 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -43,5 +45,10 @@ public class Reach extends Enchantment implements IAttributeEnchantment {
             return;
         event.addModifier(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(REACH_MODIFIER_UUID, "Reach Enchantment Modifier", 0.2f * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
         event.addModifier(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(REACH_MODIFIER_UUID, "Reach Enchantment Modifier", 0.2f * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

@@ -1,7 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ISOProtectionEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.enchantment.DiggingEnchantment;
@@ -34,6 +36,11 @@ public class FlatProtection extends Enchantment implements IAttributeEnchantment
 
     public boolean checkCompatibility(Enchantment other) {
         return !(other instanceof DiggingEnchantment) && super.checkCompatibility(other);
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 
     public static float getArmor() {

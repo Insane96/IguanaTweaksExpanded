@@ -1,6 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.util.MCUtils;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -53,5 +55,10 @@ public class Retreat extends Enchantment {
         if (modifier != null)
             movementSpeed.removeModifier(MODIFIER_UUID);
         MCUtils.applyModifier(event.getEntity(), Attributes.MOVEMENT_SPEED, MODIFIER_UUID, "Retreat Enchantment Modifier", amount, AttributeModifier.Operation.MULTIPLY_BASE);
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

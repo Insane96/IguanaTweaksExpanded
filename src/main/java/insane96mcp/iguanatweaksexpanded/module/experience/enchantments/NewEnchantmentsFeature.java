@@ -85,7 +85,6 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> ENLIGHTENED = ISERegistries.ENCHANTMENTS.register("enlightened", Enlightened::new);
 	public static final RegistryObject<Enchantment> INVULNERABILITY = ISERegistries.ENCHANTMENTS.register("invulnerability", Invulnerability::new);
 	public static final RegistryObject<Enchantment> FIRE_GUARDIAN = ISERegistries.ENCHANTMENTS.register("fire_guardian", FireGuardian::new);
-	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ISERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
 	public static final RegistryObject<Enchantment> STEADY_FALL = ISERegistries.ENCHANTMENTS.register("steady_fall", SteadyFall::new);
 
 	//Weapons
@@ -99,6 +98,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> ARMOR_PIERCER = ISERegistries.ENCHANTMENTS.register("armor_piercer", ArmorPiercer::new);
 	public static final RegistryObject<Enchantment> CRYO_ASPECT = ISERegistries.ENCHANTMENTS.register("cryo_aspect", CryoAspect::new);
 	public static final RegistryObject<Enchantment> EXPLOSIVE = ISERegistries.ENCHANTMENTS.register("explosive", Explosive::new);
+	public static final RegistryObject<Enchantment> GRAVITY_DEFYING = ISERegistries.ENCHANTMENTS.register("gravity_defying", GravityDefying::new);
 
 	//Tools and weapons
 	public static final RegistryObject<Enchantment> SMARTNESS = ISERegistries.ENCHANTMENTS.register("smartness", Smartness::new);

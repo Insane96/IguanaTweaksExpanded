@@ -1,8 +1,10 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksreborn.module.combat.RegeneratingAbsorption;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.protection.ISOProtectionEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.enchantment.DiggingEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -38,6 +40,11 @@ public class Absorption extends Enchantment implements IAttributeEnchantment {
 
     public static float getAbsorption() {
         return 0.75f;
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 
     @Override

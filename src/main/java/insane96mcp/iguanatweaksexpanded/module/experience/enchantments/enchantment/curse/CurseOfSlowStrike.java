@@ -1,7 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -44,5 +46,10 @@ public class CurseOfSlowStrike extends Enchantment implements IAttributeEnchantm
         if (event.getSlotType() != EquipmentSlot.MAINHAND)
             return;
         event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(GRAVITY_MODIFIER_UUID, "Slow Strike Curse Modifier", -0.2d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_TOTAL));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

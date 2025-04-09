@@ -2,6 +2,8 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -57,5 +59,10 @@ public class CurseOfBloodPact extends Enchantment {
         if (damageThrough > 0)
             event.getPlayer().hurt(event.getPlayer().damageSources().source(DAMAGE_TYPE), damageThrough);
         //event.setAmount((int) damageThrough);
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

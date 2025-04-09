@@ -2,6 +2,8 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -45,5 +47,10 @@ public class CurseOfExperience extends Enchantment {
             event.getPlayer().hurt(event.getPlayer().damageSources().source(DAMAGE_TYPE), 2f);
         else
             event.getPlayer().giveExperiencePoints(-2);
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

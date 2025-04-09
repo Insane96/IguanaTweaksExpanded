@@ -1,7 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -29,5 +31,10 @@ public class SwiftStrike extends BonusDamageEnchantment implements IAttributeEnc
         if (event.getSlotType() != EquipmentSlot.MAINHAND)
             return;
         event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(BONUS_ATTACK_SPEED_UUID, "Rhythmic Swing enchantment", getAttackSpeedBonusPerLevel() * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_BASE));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

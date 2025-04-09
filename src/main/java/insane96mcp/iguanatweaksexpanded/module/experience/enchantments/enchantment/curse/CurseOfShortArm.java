@@ -1,7 +1,9 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.IAttributeEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -45,5 +47,10 @@ public class CurseOfShortArm extends Enchantment implements IAttributeEnchantmen
             return;
         event.addModifier(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(MODIFIER_UUID, "Short Arm Curse Modifier", -0.25d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_TOTAL));
         event.addModifier(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(MODIFIER_UUID, "Short Arm Curse Modifier", -0.25d * enchantmentLvl, AttributeModifier.Operation.MULTIPLY_TOTAL));
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

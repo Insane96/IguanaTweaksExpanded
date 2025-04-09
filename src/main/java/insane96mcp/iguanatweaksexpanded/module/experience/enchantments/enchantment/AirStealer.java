@@ -2,7 +2,9 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
+import insane96mcp.insanelib.base.Feature;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -49,5 +51,10 @@ public class AirStealer extends Enchantment {
         int ticksStolen = (int) (10 * lvl * attackCooldown * BonusDamageEnchantment.getDamageBonusRatio(mainHandItem));
         attacked.setAirSupply(attacked.getAirSupply() - ticksStolen);
         attacker.setAirSupply(attacker.getAirSupply() + ticksStolen);
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

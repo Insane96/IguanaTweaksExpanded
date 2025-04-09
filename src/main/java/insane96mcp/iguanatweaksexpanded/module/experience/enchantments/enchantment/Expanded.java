@@ -5,7 +5,9 @@ import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import insane96mcp.iguanatweaksexpanded.event.ISEEventFactory;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.items.unbreakableitems.UnbreakableItems;
+import insane96mcp.insanelib.base.Feature;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -74,6 +76,11 @@ public class Expanded extends Enchantment {
 
     public boolean checkCompatibility(Enchantment other) {
         return !(other instanceof DiggingEnchantment) && !(other instanceof Blasting) && super.checkCompatibility(other);
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 
     /**
