@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.23.7
 ### Additions
 * Tinkers' Construct integration data pack
   * Lets you recycle copper, chained and coated copper tools and armor
