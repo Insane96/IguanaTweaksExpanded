@@ -30,6 +30,9 @@ public class ISEDataPacks extends Feature {
     @Config
     @Label(name = "Block Data Data Pack")
     public static Boolean blockData = true;
+    @Config
+    @Label(name = "Tinkers Construct Integration")
+    public static Boolean tconstructIntegration = true;
 
     public ISEDataPacks(Module module, boolean enabledByDefault, boolean canBeDisabled) {
         super(module, enabledByDefault, canBeDisabled);
@@ -39,5 +42,6 @@ public class ISEDataPacks extends Feature {
         InsaneSurvivalExtra.addServerPack("block_data", "IguanaTweaks Expanded Block Data", () -> this.isEnabled() && !disableAllDataPacks && blockData);
         InsaneSurvivalExtra.addServerPack("supplementaries_integration", "IguanaTweaks Expanded Supplementaries Integration", () -> this.isEnabled() && !DataPacks.disableAllDataPacks && DataPacks.supplementaries && ModList.get().isLoaded("supplementaries"));
         InsaneSurvivalExtra.addServerPack("farmers_delight_integration", "IguanaTweaks Expanded Farmer's Delight integration", () -> this.isEnabled() && !disableAllDataPacks && ModList.get().isLoaded("farmersdelight") && DataPacks.farmersDelight);
+        InsaneSurvivalExtra.addServerPack("tconstruct_integration", "IguanaTweaks Expanded Tinkers' Construct integration", () -> this.isEnabled() && !disableAllDataPacks && ModList.get().isLoaded("tconstruct") && tconstructIntegration);
     }
 }

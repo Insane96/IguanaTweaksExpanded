@@ -1,0 +1,20 @@
+{
+    "type": "tconstruct:damagable_melting",
+    "byproducts": [
+        {
+            "amount": 20,
+            "tag": "forge:molten_iron",
+            "unit_size": 10
+        }
+    ],
+    "ingredient": {
+        "item": "iguanatweaksexpanded:chained_copper_helmet"
+    },
+    "result": {
+        "amount": 270,
+        "tag": "forge:molten_copper",
+        "unit_size": 10
+    },
+    "temperature": 500,
+    "time": 112
+}

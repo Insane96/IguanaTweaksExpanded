@@ -1,7 +1,5 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
-import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.DigDurabilityEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -34,10 +32,5 @@ public class Enduring extends Enchantment {
     @Override
     public boolean isDiscoverable() {
         return false;
-    }
-
-    @Override
-    public boolean isDiscoverable() {
-        return Feature.isEnabled(EnchantmentsFeature.class);
     }
 }

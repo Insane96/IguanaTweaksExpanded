@@ -1,5 +1,13 @@
 # Changelog
 
+## Upcoming
+### Additions
+* Tinkers' Construct integration data pack
+  * Lets you recycle copper, chained and coated copper tools and armor
+
+### Changes
+* Disabling the New Enchantments feature now also makes the enchantments not-discoverable
+
 ## 1.23.6
 ### Changes
 * Reforming repair speed doubled
