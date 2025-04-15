@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.23.8
 ### Changes
 * Veining and Expanded now lower the mining speed of the tool
   * More blocks broken = slower
