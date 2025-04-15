@@ -1,5 +1,13 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Veining and Expanded now lower the mining speed of the tool
+  * More blocks broken = slower
+  * Enchanting cost has been lowered (3 -> 2)
+  * Expanded III now mines a 3x3 square
+  * Veining now mines more blocks (4/7/10/13 -> 4/8/12/16)
+
 ## 1.23.7
 ### Additions
 * Tinkers' Construct integration data pack

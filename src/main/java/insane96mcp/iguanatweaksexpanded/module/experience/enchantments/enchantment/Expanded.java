@@ -233,6 +233,8 @@ public class Expanded extends Enchantment {
         }
     }
 
+    public static final int[] BLOCKS_MINED = new int[] { 2, 3, 9 };
+
     public static List<BlockPos> getAffectedBlocks(ItemStack heldStack, int lvl, Level level, LivingEntity entity, BlockPos targetPos, Direction face, Vec3 clickedLocation) {
         List<BlockPos> minedBlocks = new ArrayList<>();
         boolean playerRelative = false;
@@ -250,6 +252,10 @@ public class Expanded extends Enchantment {
         if (lvl >= 3) {
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getClockWise()));
             addIfCanBeMined(heldStack, minedBlocks, level, targetPos, targetPos.relative(face.getCounterClockWise()));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), 1), playerRelative, true, face, clickedLocation));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), 1), playerRelative, true, face, clickedLocation));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getClockWise(), 1), playerRelative, false, face, clickedLocation));
+            addIfCanBeMined(heldStack, minedBlocks, level, targetPos, getRelative(targetPos.relative(face.getCounterClockWise(), 1), playerRelative, false, face, clickedLocation));
         }
 
         return minedBlocks;

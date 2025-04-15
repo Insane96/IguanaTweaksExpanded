@@ -224,12 +224,18 @@ public class NewEnchantmentsFeature extends Feature {
 		event.setNewSpeed(event.getNewSpeed() * AirBorn.getMiningSpeedMultiplier(event.getEntity(), event.getState()));
 	}
 
-	@SubscribeEvent(priority = EventPriority.HIGH)
+	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onBreakSpeedEnchantment(EnchantmentBonusEfficiencyEvent event) {
 		event.setNewEfficiency(event.getNewEfficiency() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
 		event.setNewEfficiency(event.getNewEfficiency() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
 		if (event.getStack().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
 			event.setNewEfficiency(event.getNewEfficiency() * 0.5f);
+		int veiningLvl = event.getStack().getEnchantmentLevel(VEINING.get());
+		if (veiningLvl > 0)
+			event.setNewEfficiency(event.getNewEfficiency() / ((Veining.getAmountMined(veiningLvl) + 1)));
+		int expandedLvl = event.getStack().getEnchantmentLevel(EXPANDED.get());
+		if (expandedLvl > 0)
+			event.setNewEfficiency(event.getNewEfficiency() / (Expanded.BLOCKS_MINED[expandedLvl - 1]));
 	}
 
 	@SubscribeEvent
