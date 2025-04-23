@@ -326,8 +326,8 @@
 	"item.iguanatweaksexpanded.soul_steel_ingot": "Soul Steel Ingot",
 	"block.iguanatweaksexpanded.soul_steel_block": "Block of Soul Steel",
 	"item.iguanatweaksexpanded.smithing_template.soul_steel_upgrade.additions_slot_description": "Add Soul Steel Ingot",
-	"item.iguanatweaksexpanded.smithing_template.soul_steel_upgrade.applies_to": "Diamond Equipment",
-	"item.iguanatweaksexpanded.smithing_template.soul_steel_upgrade.base_slot_description": "Add diamond armor, weapon, or tool",
+	"item.iguanatweaksexpanded.smithing_template.soul_steel_upgrade.applies_to": "Quaron Equipment",
+	"item.iguanatweaksexpanded.smithing_template.soul_steel_upgrade.base_slot_description": "Add quaron armor, weapon, or tool",
 	"item.iguanatweaksexpanded.smithing_template.soul_steel_upgrade.ingredients": "Soul Steel Ingot",
 	"upgrade.iguanatweaksexpanded.soul_steel_upgrade": "Soul Steel Upgrade",
 

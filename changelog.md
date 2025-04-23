@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Fixes
+* Soul Steel trim saying it requires diamond instead of quaron equipment
+
 ## 1.23.8
 ### Changes
 * Veining and Expanded now lower the mining speed of the tool
