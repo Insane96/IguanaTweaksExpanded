@@ -2,7 +2,6 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantm
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.InsaneSurvivalOverhaul;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.insanelib.base.Feature;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -68,7 +67,7 @@ public class ChargedJump extends Enchantment {
 
     @Override
     public boolean isDiscoverable() {
-        return Feature.isEnabled(EnchantmentsFeature.class);
+        return Feature.isEnabled(NewEnchantmentsFeature.class);
     }
 
 }

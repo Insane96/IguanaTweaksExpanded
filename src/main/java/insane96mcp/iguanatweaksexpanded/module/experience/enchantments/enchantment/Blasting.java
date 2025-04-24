@@ -41,7 +41,7 @@ public class Blasting extends Enchantment {
 
     @Override
     public boolean isDiscoverable() {
-        return Feature.isEnabled(EnchantmentsFeature.class);
+        return Feature.isEnabled(NewEnchantmentsFeature.class);
     }
 
     public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state) {

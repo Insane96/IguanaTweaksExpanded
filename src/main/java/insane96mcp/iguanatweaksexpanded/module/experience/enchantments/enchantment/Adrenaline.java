@@ -80,6 +80,6 @@ public class Adrenaline extends Enchantment implements IAttributeEnchantment {
 
     @Override
     public boolean isDiscoverable() {
-        return Feature.isEnabled(EnchantmentsFeature.class);
+        return Feature.isEnabled(NewEnchantmentsFeature.class);
     }
 }

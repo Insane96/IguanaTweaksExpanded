@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
 import insane96mcp.insanelib.base.Feature;
 import net.minecraft.core.registries.Registries;
@@ -38,6 +38,6 @@ public class BaneOfNoses extends BonusDamageEnchantment {
 
     @Override
     public boolean isDiscoverable() {
-        return Feature.isEnabled(EnchantmentsFeature.class);
+        return Feature.isEnabled(NewEnchantmentsFeature.class);
     }
 }

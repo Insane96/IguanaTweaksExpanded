@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse;
 
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.util.MCUtils;
 import net.minecraft.util.RandomSource;
@@ -74,6 +73,6 @@ public class CurseOfUnstableMotion extends Enchantment {
 
     @Override
     public boolean isDiscoverable() {
-        return Feature.isEnabled(EnchantmentsFeature.class);
+        return Feature.isEnabled(NewEnchantmentsFeature.class);
     }
 }
