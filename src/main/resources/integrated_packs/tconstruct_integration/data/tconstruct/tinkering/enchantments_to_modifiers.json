@@ -1,0 +1,23 @@
+{
+    "#tconstruct:modifier_like/blasting": "tconstruct:blasting",
+    "#tconstruct:modifier_like/cooling": "tconstruct:cooling",
+    "#tconstruct:modifier_like/double_jump": "tconstruct:double_jump",
+    "#tconstruct:modifier_like/exchanging": "tconstruct:exchanging",
+    "#tconstruct:modifier_like/expanded": "tconstruct:expanded",
+    "#tconstruct:modifier_like/experienced": "tconstruct:experienced",
+    "#tconstruct:modifier_like/freezing": "tconstruct:freezing",
+    "#tconstruct:modifier_like/headlight": "tconstruct:headlight",
+    "#tconstruct:modifier_like/killager": "tconstruct:killager",
+    "#tconstruct:modifier_like/leaping": "tconstruct:leaping",
+    "#tconstruct:modifier_like/magic_protection": "tconstruct:magic_protection",
+    "#tconstruct:modifier_like/magnetic": "tconstruct:magnetic",
+    "#tconstruct:modifier_like/melee_protection": "tconstruct:melee_protection",
+    "#tconstruct:modifier_like/padded": "tconstruct:padded",
+    "#tconstruct:modifier_like/pierce": "tconstruct:pierce",
+    "#tconstruct:modifier_like/revitalizing": "tconstruct:revitalizing",
+    "#tconstruct:modifier_like/severing": "tconstruct:severing",
+    "#tconstruct:modifier_like/soulbound": "tconstruct:soulbound",
+    "#tconstruct:modifier_like/speedy": "tconstruct:speedy",
+    "#tconstruct:modifier_like/step_up": "tconstruct:step_up",
+    "#tconstruct:modifier_like/swiftstrike": "tconstruct:swiftstrike"
+}
