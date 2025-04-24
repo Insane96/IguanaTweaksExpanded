@@ -54,7 +54,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-@Label(name = "New Enchantments", description = "Adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'")
+@Label(name = "New Enchantments", description = "Adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'. Disabling this feature will make the new enchantments not discoverable")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class NewEnchantmentsFeature extends Feature {
 

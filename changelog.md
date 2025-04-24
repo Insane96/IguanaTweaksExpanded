@@ -1,8 +1,12 @@
 # Changelog
 
 ## Upcoming
+### Changes
+* Most enchantments can now be extracted for Tinkers' modifiers crystals
+
 ### Fixes
 * Soul Steel trim saying it requires diamond instead of quaron equipment
+* New enchantments getting disabled when the Enchanting Feature was disabled
 
 ## 1.23.8
 ### Changes
