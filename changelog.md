@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.23.9
 ### Changes
 * Most enchantments can now be extracted for Tinkers' modifiers crystals
 
