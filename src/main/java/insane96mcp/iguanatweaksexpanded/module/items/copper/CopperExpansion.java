@@ -189,8 +189,8 @@ public class CopperExpansion extends Feature {
 
 	@SubscribeEvent
 	public void onParry(ShieldBlockEvent event) {
-		if (!this.isEnabled()
-				|| !ModList.get().isLoaded("shieldsplus")
+		if (!ModList.get().isLoaded("shieldplus")
+				|| !this.isEnabled()
 				|| !(event.getEntity() instanceof Player player)
 				|| !(event.getDamageSource().getDirectEntity() instanceof LivingEntity attacker)
 				|| !(player.getUseItem().getItem() instanceof SPShieldItem spShieldItem)

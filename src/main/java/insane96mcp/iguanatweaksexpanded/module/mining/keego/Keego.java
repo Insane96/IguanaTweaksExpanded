@@ -38,6 +38,7 @@ import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.EnumMap;
@@ -141,7 +142,8 @@ public class Keego extends Feature {
 
 	@SubscribeEvent
 	public void shieldParryEvent(ShieldBlockEvent event) {
-		if (!this.isEnabled()
+		if (!ModList.get().isLoaded("shieldplus")
+				|| !this.isEnabled()
 				|| event.getEntity().level().isClientSide
 				|| !event.getEntity().getUseItem().is(ShieldsPlusIntegration.SHIELD.get()))
 			return;

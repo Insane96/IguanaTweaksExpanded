@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.23.10
+### Fixes
+* Keego crash fix without Shields+ installed 
+
 ## 1.23.9
 ### Changes
 * Most enchantments can now be extracted for Tinkers' modifiers crystals
