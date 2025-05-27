@@ -297,7 +297,9 @@ public class EnchantingFeature extends JsonFeature {
     @Override
     public void loadJsonConfigs() {
         super.loadJsonConfigs();
-        if (this.isEnabled() && ModList.get().isLoaded("allurement") && allurementIntegration) {
+        if (!this.isEnabled())
+            return;
+        if (ModList.get().isLoaded("allurement") && allurementIntegration) {
             AllurementConfig.COMMON.cheapItemRenaming.set(false);
             AllurementConfig.COMMON.removeTooExpensive.set(false);
             AllurementConfig.COMMON.anvilIngotRepairing.set(false);

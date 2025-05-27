@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Fixes
+* If enchanting feature is disabled, logs are no longer spammed with "Enchantment cost missing"
+
 ## 1.23.10
 ### Fixes
 * Keego crash fix without Shields+ installed 
