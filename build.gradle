@@ -117,7 +117,7 @@ dependencies {
         jarJar.ranged(it, "[0.4.1,)")
     }
 
-    implementation fg.deobf("blank:InsaneLib:${lib_version}")
+    implementation fg.deobf("blank:insanelib:${lib_version}")
     implementation fg.deobf("blank:iguanatweaksreborn:${itr_version}")
     runtimeOnly fg.deobf("blank:MobsPropertiesRandomness:${mpr_version}-mc${mc_version}")
     implementation fg.deobf("blank:Shields+:${shields_plus_version}-mc${mc_version}")
