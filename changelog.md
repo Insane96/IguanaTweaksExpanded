@@ -1,6 +1,9 @@
 # Changelog
 
-## Upcoming
+## 1.23.11
+### Changes
+* Update to work with latest ISO
+
 ### Fixes
 * If enchanting feature is disabled, logs are no longer spammed with "Enchantment cost missing"
 
