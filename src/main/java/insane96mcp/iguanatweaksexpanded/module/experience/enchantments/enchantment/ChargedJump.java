@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
+import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.InsaneSurvivalOverhaul;
 import insane96mcp.insanelib.base.Feature;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -12,7 +12,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class ChargedJump extends Enchantment {
 
-    public static final String CHARGED_JUMP = InsaneSurvivalOverhaul.RESOURCE_PREFIX + "charged_jump_enchantment";
+    public static final String CHARGED_JUMP = InsaneSurvivalExtra.RESOURCE_PREFIX + "charged_jump_enchantment";
 
     public ChargedJump() {
         super(Rarity.RARE, EnchantmentCategory.ARMOR_LEGS, new EquipmentSlot[] {EquipmentSlot.LEGS});

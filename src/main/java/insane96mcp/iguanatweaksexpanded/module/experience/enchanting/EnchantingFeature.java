@@ -9,7 +9,7 @@ import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksexpanded.utils.LogHelper;
-import insane96mcp.iguanatweaksreborn.InsaneSurvivalOverhaul;
+import insane96mcp.iguanatweaksreborn.InsaneSO;
 import insane96mcp.iguanatweaksreborn.module.experience.DroppedExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.PlayerExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.anvils.Anvils;
@@ -291,7 +291,7 @@ public class EnchantingFeature extends JsonFeature {
 
     @Override
     public String getModConfigFolder() {
-        return InsaneSurvivalOverhaul.CONFIG_FOLDER;
+        return InsaneSO.CONFIG_FOLDER;
     }
 
     @Override

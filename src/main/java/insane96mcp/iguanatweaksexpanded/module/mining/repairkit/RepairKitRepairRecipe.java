@@ -85,17 +85,17 @@ public class RepairKitRepairRecipe extends CustomRecipe {
                 maxPartialRepairDmg = Math.max(maxPartialRepairDmg, Mth.ceil(resultStack.getMaxDamage() * (1f - repairData.maxRepair())));
                 amountRequired = repairData.amountRequired();
             }
-            if (Anvils.moreMaterialIfEnchanted > 0f && repairableItem.isEnchanted()) {
+            if (Anvils.materialCost$increaseMaterialsRequiredWithEnchantments > 0f && repairableItem.isEnchanted()) {
                 float increase = 0f;
                 for (Integer lvl : EnchantmentHelper.getEnchantments(repairableItem).values()) {
-                    increase += Anvils.moreMaterialIfEnchanted.floatValue() * lvl;
+                    increase += Anvils.materialCost$increaseMaterialsRequiredWithEnchantments.floatValue() * lvl;
                 }
                 amountRequired *= 1 + increase;
             }
-            if (Anvils.moreMaterialIfEnchantedFlat > 0f && repairableItem.isEnchanted()) {
+            if (Anvils.materialCost$increaseMaterialsRequiredWithEnchantmentsFlat > 0f && repairableItem.isEnchanted()) {
                 float increase = 0f;
                 for (Integer lvl : EnchantmentHelper.getEnchantments(repairableItem).values()) {
-                    increase += Anvils.moreMaterialIfEnchantedFlat.floatValue() * lvl;
+                    increase += Anvils.materialCost$increaseMaterialsRequiredWithEnchantmentsFlat.floatValue() * lvl;
                 }
                 amountRequired += (increase * oRepairData.get().costMultiplier());
             }

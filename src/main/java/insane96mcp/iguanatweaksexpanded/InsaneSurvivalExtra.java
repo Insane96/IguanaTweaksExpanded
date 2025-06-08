@@ -19,8 +19,8 @@ import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
 import insane96mcp.iguanatweaksexpanded.setup.ISECommonConfig;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
-import insane96mcp.iguanatweaksreborn.InsaneSurvivalOverhaul;
-import insane96mcp.iguanatweaksreborn.setup.IntegratedPack;
+import insane96mcp.iguanatweaksreborn.InsaneSO;
+import insane96mcp.insanelib.util.IntegratedPack;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.inventory.RecipeBookType;
@@ -59,7 +59,7 @@ public class InsaneSurvivalExtra
     public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "fletching");
 
     public InsaneSurvivalExtra(FMLJavaModLoadingContext context) {
-        context.registerConfig(ModConfig.Type.COMMON, ISECommonConfig.CONFIG_SPEC, InsaneSurvivalOverhaul.NEW_MOD_ID + "/expanded-common.toml");
+        context.registerConfig(ModConfig.Type.COMMON, ISECommonConfig.CONFIG_SPEC, InsaneSO.NEW_MOD_ID + "/expanded-common.toml");
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = context.getModEventBus();
         if (FMLLoader.getDist().isClient()) {
