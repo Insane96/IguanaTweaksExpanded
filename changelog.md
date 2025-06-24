@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.23.12
+### Changes
+* Update to work with latest ISO
+
 ## 1.23.11
 ### Changes
 * Update to work with latest ISO
