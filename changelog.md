@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Disabling any of the materials features or Forging will now also disable most of the recipes (not blast furnace recipes)
+
 ## 1.23.12
 ### Changes
 * Update to work with latest ISO

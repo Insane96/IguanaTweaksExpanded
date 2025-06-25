@@ -1,20 +1,30 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "c": {
-      "item": "minecraft:iron_nugget"
-    },
-    "m": {
-      "item": "minecraft:copper_ingot"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Copper expansion"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 3,
+        "category": "forge_misc",
+        "experience": 12.0,
+        "gear": {
+          "item": "iguanatweaksexpanded:copper_pickaxe"
+        },
+        "ingredient": {
+          "item": "minecraft:obsidian"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:coated_copper_pickaxe",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 12
+      }
     }
-  },
-  "pattern": [
-    "cmc",
-    "m m"
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:chained_copper_helmet"
-  },
-  "show_notification": true
+  ]
 }

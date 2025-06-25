@@ -8,7 +8,6 @@ import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
-import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.item.ILItemTier;
@@ -29,8 +28,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.EnumMap;
 import java.util.List;
 
-@Label(name = "Soul Steel", description = "Add Soul Steel, a new metal made by alloying Iron, Soul Sand and Hellish Coal. Disabling this will disable ore generation and items in the creative inventory.")
-@LoadFeature(module = Modules.Ids.MINING)
+@LoadFeature(module = Modules.Ids.MINING, description = "Add Soul Steel, a new metal made by alloying Iron, Soul Sand and Hellish Coal. Disabling this will disable ore generation and items in the creative inventory.")
 public class SoulSteel extends Feature {
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("soul_steel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), new Item.Properties());
 

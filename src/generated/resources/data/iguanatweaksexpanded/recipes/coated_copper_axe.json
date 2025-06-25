@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 3,
-  "category": "forge_misc",
-  "experience": 12.0,
-  "gear": {
-    "item": "iguanatweaksexpanded:copper_axe"
-  },
-  "ingredient": {
-    "item": "minecraft:obsidian"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:coated_copper_axe",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 12
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Copper expansion"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 3,
+        "category": "forge_misc",
+        "experience": 12.0,
+        "gear": {
+          "item": "iguanatweaksexpanded:copper_axe"
+        },
+        "ingredient": {
+          "item": "minecraft:obsidian"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:coated_copper_axe",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 12
+      }
+    }
+  ]
 }

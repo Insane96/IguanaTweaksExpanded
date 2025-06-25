@@ -7,7 +7,6 @@ import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
-import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.item.ILItemTier;
@@ -44,8 +43,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.EnumMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Label(name = "Keego", description = "Add a new Nether gem which makes lets you go fast (KEEp GOing). Disabling this will disable ore generation and items in the creative inventory.")
-@LoadFeature(module = Modules.Ids.MINING)
+@LoadFeature(module = Modules.Ids.MINING, description = "Add a new Nether gem which makes lets you go fast (KEEp GOing). Disabling this will disable ore generation and items in the creative inventory.")
 public class Keego extends Feature {
 
 	public static final TagKey<Item> KEEGO_TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/tools/keego"));
