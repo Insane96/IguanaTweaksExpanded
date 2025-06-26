@@ -1,8 +1,8 @@
 # Changelog
 
-## Upcoming
+## 1.23.13
 ### Changes
-* Disabling any of the materials features or Forging will now also disable most of the recipes (not blast furnace recipes)
+* Disabling most features will now also disable most of the recipes (not Blast Furnace)
 
 ## 1.23.12
 ### Changes
