@@ -1,15 +1,28 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "minecraft:netherite_ingot"
-  },
-  "base": {
-    "item": "iguanatweaksexpanded:diamond_hammer"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:netherite_hammer"
-  },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Forging"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:smithing_transform",
+        "addition": {
+          "item": "minecraft:netherite_ingot"
+        },
+        "base": {
+          "item": "iguanatweaksexpanded:diamond_hammer"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:netherite_hammer"
+        },
+        "template": {
+          "item": "minecraft:netherite_upgrade_smithing_template"
+        }
+      }
+    }
+  ]
 }

@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 5,
-  "category": "forge_misc",
-  "experience": 16.0,
-  "gear": {
-    "item": "iguanatweaksexpanded:golden_hammer"
-  },
-  "ingredient": {
-    "item": "minecraft:diamond"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:diamond_hammer",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 16
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Forging"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 5,
+        "category": "forge_misc",
+        "experience": 16.0,
+        "gear": {
+          "item": "iguanatweaksexpanded:golden_hammer"
+        },
+        "ingredient": {
+          "item": "minecraft:diamond"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:diamond_hammer",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 16
+      }
+    }
+  ]
 }

@@ -106,9 +106,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         );
 
         //Coated Copper
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.HELMET.get(),
-                forgeRecipeBuilder(Items.OBSIDIAN, 3, CopperExpansion.COPPER_PICKAXE.get(), CopperExpansion.COATED_PICKAXE.get(), 12)
-        );
         featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COATED_AXE.get(),
                 forgeRecipeBuilder(Items.OBSIDIAN, 3, CopperExpansion.COPPER_AXE.get(), CopperExpansion.COATED_AXE.get(), 12)
         );
@@ -239,17 +236,19 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         .unlockedBy("has_ingot", has(Durium.INGOT.get()))
                         .save(recipe)
         );
-        featureBoundRecipe(writer, "Durium", Durium.INGOT.get(),
+        featureBoundRecipe(writer, "Durium",
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Durium.INGOT.get(), 9)
                         .requires(Durium.BLOCK.item().get(), 1)
                         .unlockedBy("has_ingot", has(Durium.INGOT.get()))
-                        .save(recipe, ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "durium_ingot_from_block"))
+                        .save(recipe),
+                ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "durium_ingot_from_block")
         );
-        featureBoundRecipe(writer, "Durium", Durium.INGOT.get(),
+        featureBoundRecipe(writer, "Durium",
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Durium.INGOT.get(), 1)
                         .requires(Durium.NUGGET.get(), 9)
                         .unlockedBy("has_nuggets", has(Durium.NUGGET.get()))
-                        .save(recipe, ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "durium_ingot_from_nuggets"))
+                        .save(recipe),
+                ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "durium_ingot_from_nuggets")
         );
         featureBoundRecipe(writer, "Durium", Durium.NUGGET.get(),
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Durium.NUGGET.get(), 9)
@@ -348,7 +347,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Keego.GEM.get(), 9)
                         .requires(Keego.BLOCK.block().get(), 1)
                         .unlockedBy("has_keego", has(Keego.GEM.get()))
-                        .save(recipe, ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "keego_from_block"))
+                        .save(recipe)
         );
 
         //Quaron
@@ -358,17 +357,19 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
                         .save(recipe)
         );
-        featureBoundRecipe(writer, "Quaron", Quaron.INGOT.get(),
+        featureBoundRecipe(writer, "Quaron",
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.INGOT.get(), 9)
                         .requires(Quaron.BLOCK.block().get(), 1)
                         .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
-                        .save(recipe, ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron_ingot_from_block"))
+                        .save(recipe),
+                ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron_ingot_from_block")
         );
-        featureBoundRecipe(writer, "Quaron", Quaron.INGOT.get(),
+        featureBoundRecipe(writer, "Quaron",
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.INGOT.get(), 1)
                         .requires(Quaron.NUGGET.get(), 9)
                         .unlockedBy("has_nuggets", has(Quaron.NUGGET.get()))
-                        .save(recipe, ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron_ingot_from_nuggets"))
+                        .save(recipe),
+                ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron_ingot_from_nuggets")
         );
         featureBoundRecipe(writer, "Quaron", Quaron.NUGGET.get(),
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.NUGGET.get(), 9)
@@ -441,17 +442,19 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                             .save(consumer, id))
                     .build(writer, id);
         });
-        featureBoundRecipe(writer, "Soul steel", SoulSteel.INGOT.get(),
+        featureBoundRecipe(writer, "Soul steel",
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.INGOT.get(), 9)
                         .requires(SoulSteel.BLOCK.block().get(), 1)
                         .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
-                        .save(recipe, ResourceLocation.parse(modIdPrefix + "soul_steel_ingot_from_block"))
+                        .save(recipe),
+                ResourceLocation.parse(modIdPrefix + "soul_steel_ingot_from_block")
         );
-        featureBoundRecipe(writer, "Soul steel", SoulSteel.INGOT.get(),
+        featureBoundRecipe(writer, "Soul steel",
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.INGOT.get(), 1)
                         .requires(SoulSteel.NUGGET.get(), 9)
                         .unlockedBy("has_nuggets", has(SoulSteel.NUGGET.get()))
-                        .save(recipe, ResourceLocation.parse(modIdPrefix + "soul_steel_ingot_from_nuggets"))
+                        .save(recipe),
+                ResourceLocation.parse(modIdPrefix + "soul_steel_ingot_from_nuggets")
         );
         featureBoundRecipe(writer, "Soul steel", SoulSteel.NUGGET.get(),
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.NUGGET.get(), 9)
@@ -794,11 +797,11 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         hammerCraftingRecipe(writer, Forging.FLINT_HAMMER.get(), Items.FLINT);
         hammerCraftingRecipe(writer, Forging.COPPER_HAMMER.get(), Items.COPPER_INGOT);
         appendGearToName = true;
-        featureBoundRecipe(writer, "Forging", Forging.IRON_HAMMER.get(),
-                forgeRecipeBuilder(Items.IRON_INGOT, 5, Forging.STONE_HAMMER.get(), Forging.IRON_HAMMER.get(), 10)
+        featureBoundRecipe(writer, "Forging",
+                forgeRecipeBuilder(Items.IRON_INGOT, 5, Forging.STONE_HAMMER.get(), Forging.IRON_HAMMER.get(), 10), ResourceLocation.parse(modIdPrefix + "iron_hammer_from_stone_hammer")
         );
-        featureBoundRecipe(writer, "Forging", Forging.IRON_HAMMER.get(),
-                forgeRecipeBuilder(Items.IRON_INGOT, 5, Forging.FLINT_HAMMER.get(), Forging.IRON_HAMMER.get(), 8)
+        featureBoundRecipe(writer, "Forging",
+                forgeRecipeBuilder(Items.IRON_INGOT, 5, Forging.FLINT_HAMMER.get(), Forging.IRON_HAMMER.get(), 8), ResourceLocation.parse(modIdPrefix + "iron_hammer_from_flint_hammer")
         );
         appendGearToName = false;
         featureBoundRecipe(writer, "Forging", Forging.SOLARIUM_HAMMER.get(),
@@ -888,12 +891,15 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     public static void featureBoundRecipe(Consumer<FinishedRecipe> writer, String featureName, ItemLike resultItem, Consumer<Consumer<FinishedRecipe>> recipeBuilder) {
+        featureBoundRecipe(writer, featureName, recipeBuilder, ForgeRegistries.ITEMS.getKey(resultItem.asItem()));
+    }
+
+    public static void featureBoundRecipe(Consumer<FinishedRecipe> writer, String featureName, Consumer<Consumer<FinishedRecipe>> recipeBuilder, ResourceLocation name) {
         ConditionalRecipe.builder()
                 .addCondition(new FeatureEnabledCondition(featureName))
                 .addRecipe(recipeBuilder)
-                .build(writer, ForgeRegistries.ITEMS.getKey(resultItem.asItem()));
+                .build(writer, name);
     }
-
 
     private ItemStack generateRepairKitStack(ItemLike material, Color color) {
         ItemStack resultStack = new ItemStack(RepairKits.REPAIR_KIT.get(), 1);
@@ -908,11 +914,15 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, ItemLike material, Color color) {
-        forgeRecipe(writer, material, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4);
+        featureBoundRecipe(writer, "Repair kits",
+                forgeRecipeBuilder(material, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4), ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_repair_kit")
+        );
     }
 
     private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, ItemLike material, Color color) {
-        forgeRecipe(writer, materialTag, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4);
+        featureBoundRecipe(writer, "Repair kits",
+                forgeRecipeBuilder(materialTag, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4), ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_repair_kit")
+        );
     }
 
     private void addRepairKitRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, ItemLike material, Color color) {
@@ -1163,4 +1173,22 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
     private Consumer<Consumer<FinishedRecipe>> forgeRecipeBuilder(ItemLike material, int amount, ItemLike gear, ItemLike result, int smashesRequired) {
         return forgeRecipeBuilder(material, amount, gear, new ItemStack(result), smashesRequired);
     }
+
+    private Consumer<Consumer<FinishedRecipe>> forgeRecipeBuilder(TagKey<Item> materialTag, int amount, ItemLike gear, ItemStack result, int smashesRequired) {
+        return recipeWriter -> {
+            ResourceLocation recipeId = RecipeBuilder.getDefaultRecipeId(result.getItem());
+            if (appendMaterialToName)
+                recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(materialTag.location().getPath() + "_");
+            if (appendGearToName)
+                recipeId = ForgeRegistries.ITEMS.getKey(result.getItem()).withPrefix(ForgeRegistries.ITEMS.getKey(gear.asItem()).getPath() + "_");
+
+            ForgeRecipeBuilder.forging(RecipeCategory.TOOLS,
+                            Ingredient.of(materialTag), amount,
+                            Ingredient.of(gear), result, smashesRequired)
+                    .awardExperience(smashesRequired)
+                    .unlockedBy("has_material", has(materialTag))
+                    .save(recipeWriter, recipeId);
+        };
+    }
+
 }

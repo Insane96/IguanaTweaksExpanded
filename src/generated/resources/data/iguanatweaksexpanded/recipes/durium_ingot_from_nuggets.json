@@ -1,36 +1,49 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_nugget"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Durium"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:durium_ingot"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:durium_ingot"
-  }
+  ]
 }

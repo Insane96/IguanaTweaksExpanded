@@ -5,7 +5,7 @@
       "conditions": [
         {
           "type": "insanelib:feature_enabled",
-          "feature": "Soul steel"
+          "feature": "Keego"
         }
       ],
       "recipe": {
@@ -13,12 +13,12 @@
         "category": "misc",
         "ingredients": [
           {
-            "item": "iguanatweaksexpanded:soul_steel_block"
+            "item": "iguanatweaksexpanded:keego_block"
           }
         ],
         "result": {
           "count": 9,
-          "item": "iguanatweaksexpanded:soul_steel_ingot"
+          "item": "iguanatweaksexpanded:keego"
         }
       }
     }

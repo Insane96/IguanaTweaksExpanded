@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 3,
-  "category": "forge_misc",
-  "experience": 6.0,
-  "gear": {
-    "item": "minecraft:wooden_axe"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:solarium_ball"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_axe",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 6
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Solarium"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 3,
+        "category": "forge_misc",
+        "experience": 6.0,
+        "gear": {
+          "item": "minecraft:wooden_axe"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:solarium_ball"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:solarium_axe",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 6
+      }
+    }
+  ]
 }

@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 4,
-  "category": "forge_misc",
-  "experience": 13.0,
-  "gear": {
-    "item": "iguanatweaksexpanded:copper_shield"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:keego"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:keego_shield",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 13
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Keego"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 4,
+        "category": "forge_misc",
+        "experience": 13.0,
+        "gear": {
+          "item": "iguanatweaksexpanded:copper_shield"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:keego"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:keego_shield",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 13
+      }
+    }
+  ]
 }

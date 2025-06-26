@@ -1,36 +1,49 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:soul_steel_nugget"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Soul steel"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:soul_steel_nugget"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:soul_steel_ingot"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:soul_steel_ingot"
-  }
+  ]
 }

@@ -1,13 +1,26 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:quaron_block"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Quaron"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:quaron_block"
+          }
+        ],
+        "result": {
+          "count": 9,
+          "item": "iguanatweaksexpanded:quaron_ingot"
+        }
+      }
     }
-  ],
-  "result": {
-    "count": 9,
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  }
+  ]
 }

@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 4,
-  "category": "forge_misc",
-  "experience": 11.0,
-  "gear": {
-    "item": "minecraft:leather_boots"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:quaron_boots",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 11
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Quaron"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 4,
+        "category": "forge_misc",
+        "experience": 11.0,
+        "gear": {
+          "item": "minecraft:leather_boots"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:quaron_ingot"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:quaron_boots",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 11
+      }
+    }
+  ]
 }

@@ -1,36 +1,49 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:solium_moss"
-    },
-    {
-      "item": "iguanatweaksexpanded:solium_moss"
-    },
-    {
-      "item": "iguanatweaksexpanded:solium_moss"
-    },
-    {
-      "item": "iguanatweaksexpanded:solium_moss"
-    },
-    {
-      "item": "iguanatweaksexpanded:solium_moss"
-    },
-    {
-      "item": "iguanatweaksexpanded:solium_moss"
-    },
-    {
-      "item": "iguanatweaksexpanded:solium_moss"
-    },
-    {
-      "item": "iguanatweaksexpanded:solium_moss"
-    },
-    {
-      "item": "iguanatweaksexpanded:solium_moss"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Solarium"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          },
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          },
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          },
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          },
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          },
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          },
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          },
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          },
+          {
+            "item": "iguanatweaksexpanded:solium_moss"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:solarium_ball"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_ball"
-  }
+  ]
 }

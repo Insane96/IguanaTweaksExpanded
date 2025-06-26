@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 4,
-  "category": "forge_misc",
-  "experience": 9.0,
-  "gear": {
-    "item": "minecraft:chainmail_boots"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:durium_ingot"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_boots",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 9
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Durium"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 4,
+        "category": "forge_misc",
+        "experience": 9.0,
+        "gear": {
+          "item": "minecraft:chainmail_boots"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:durium_ingot"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:durium_boots",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 9
+      }
+    }
+  ]
 }

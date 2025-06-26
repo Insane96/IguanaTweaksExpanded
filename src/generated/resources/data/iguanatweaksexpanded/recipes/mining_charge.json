@@ -1,25 +1,38 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "redstone",
-  "key": {
-    "C": {
-      "item": "iguanatweaksexpanded:durium_nugget"
-    },
-    "S": {
-      "item": "minecraft:slime_ball"
-    },
-    "T": {
-      "item": "minecraft:tnt"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Mining charge"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "redstone",
+        "key": {
+          "C": {
+            "item": "iguanatweaksexpanded:durium_nugget"
+          },
+          "S": {
+            "item": "minecraft:slime_ball"
+          },
+          "T": {
+            "item": "minecraft:tnt"
+          }
+        },
+        "pattern": [
+          " T ",
+          " S ",
+          "CCC"
+        ],
+        "result": {
+          "count": 2,
+          "item": "iguanatweaksexpanded:mining_charge"
+        },
+        "show_notification": true
+      }
     }
-  },
-  "pattern": [
-    " T ",
-    " S ",
-    "CCC"
-  ],
-  "result": {
-    "count": 2,
-    "item": "iguanatweaksexpanded:mining_charge"
-  },
-  "show_notification": true
+  ]
 }

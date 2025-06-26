@@ -1,27 +1,40 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "C": {
-      "item": "minecraft:copper_block"
-    },
-    "I": {
-      "item": "minecraft:iron_block"
-    },
-    "S": {
-      "item": "minecraft:smooth_stone"
-    },
-    "c": {
-      "item": "minecraft:copper_ingot"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Forging"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "equipment",
+        "key": {
+          "C": {
+            "item": "minecraft:copper_block"
+          },
+          "I": {
+            "item": "minecraft:iron_block"
+          },
+          "S": {
+            "item": "minecraft:smooth_stone"
+          },
+          "c": {
+            "item": "minecraft:copper_ingot"
+          }
+        },
+        "pattern": [
+          "ISI",
+          " c ",
+          "cCc"
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:forge"
+        },
+        "show_notification": true
+      }
     }
-  },
-  "pattern": [
-    "ISI",
-    " c ",
-    "cCc"
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:forge"
-  },
-  "show_notification": true
+  ]
 }

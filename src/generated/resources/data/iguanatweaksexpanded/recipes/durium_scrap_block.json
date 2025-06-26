@@ -1,36 +1,49 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_scrap_piece"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Durium"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_scrap_piece"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:durium_scrap_block"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:durium_scrap_block"
-  }
+  ]
 }

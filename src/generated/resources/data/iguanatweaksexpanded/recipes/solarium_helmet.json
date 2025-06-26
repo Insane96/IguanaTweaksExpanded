@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 5,
-  "category": "forge_misc",
-  "experience": 4.0,
-  "gear": {
-    "item": "minecraft:leather_helmet"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:solarium_ball"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_helmet",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 4
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Solarium"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 5,
+        "category": "forge_misc",
+        "experience": 4.0,
+        "gear": {
+          "item": "minecraft:leather_helmet"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:solarium_ball"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:solarium_helmet",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 4
+      }
+    }
+  ]
 }

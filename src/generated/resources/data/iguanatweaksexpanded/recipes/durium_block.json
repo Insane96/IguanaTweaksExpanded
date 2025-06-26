@@ -1,36 +1,49 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "building",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:durium_ingot"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_ingot"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_ingot"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_ingot"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_ingot"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_ingot"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_ingot"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_ingot"
-    },
-    {
-      "item": "iguanatweaksexpanded:durium_ingot"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Durium"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "building",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          },
+          {
+            "item": "iguanatweaksexpanded:durium_ingot"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:durium_block"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:durium_block"
-  }
+  ]
 }

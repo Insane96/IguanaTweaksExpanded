@@ -1,18 +1,31 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "redstone",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "minecraft:tnt"
-    },
-    {
-      "item": "minecraft:barrel"
-    },
-    {
-      "item": "minecraft:gunpowder"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Explosive barrel"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "redstone",
+        "ingredients": [
+          {
+            "item": "minecraft:tnt"
+          },
+          {
+            "item": "minecraft:barrel"
+          },
+          {
+            "item": "minecraft:gunpowder"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:explosive_barrel"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:explosive_barrel"
-  }
+  ]
 }

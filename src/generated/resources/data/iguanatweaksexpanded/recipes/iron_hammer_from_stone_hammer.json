@@ -5,25 +5,25 @@
       "conditions": [
         {
           "type": "insanelib:feature_enabled",
-          "feature": "Keego"
+          "feature": "Forging"
         }
       ],
       "recipe": {
         "type": "iguanatweaksexpanded:forging",
-        "amount": 7,
+        "amount": 5,
         "category": "forge_misc",
-        "experience": 11.0,
+        "experience": 10.0,
         "gear": {
-          "item": "iguanatweaksexpanded:chained_copper_leggings"
+          "item": "iguanatweaksexpanded:stone_hammer"
         },
         "ingredient": {
-          "item": "iguanatweaksexpanded:keego"
+          "item": "minecraft:iron_ingot"
         },
         "result": {
-          "item": "iguanatweaksexpanded:keego_leggings",
+          "item": "iguanatweaksexpanded:iron_hammer",
           "nbt": "{Damage:0}"
         },
-        "smashes_required": 11
+        "smashes_required": 10
       }
     }
   ]

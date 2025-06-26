@@ -1,15 +1,28 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "iguanatweaksexpanded:soul_steel_ingot"
-  },
-  "base": {
-    "item": "iguanatweaksexpanded:quaron_helmet"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:soul_steel_helmet"
-  },
-  "template": {
-    "item": "iguanatweaksexpanded:soul_steel_upgrade_smithing_template"
-  }
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Soul steel"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:smithing_transform",
+        "addition": {
+          "item": "iguanatweaksexpanded:soul_steel_ingot"
+        },
+        "base": {
+          "item": "iguanatweaksexpanded:quaron_helmet"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:soul_steel_helmet"
+        },
+        "template": {
+          "item": "iguanatweaksexpanded:soul_steel_upgrade_smithing_template"
+        }
+      }
+    }
+  ]
 }

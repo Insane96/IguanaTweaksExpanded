@@ -5,25 +5,25 @@
       "conditions": [
         {
           "type": "insanelib:feature_enabled",
-          "feature": "Keego"
+          "feature": "Repair kits"
         }
       ],
       "recipe": {
         "type": "iguanatweaksexpanded:forging",
-        "amount": 7,
+        "amount": 2,
         "category": "forge_misc",
-        "experience": 11.0,
+        "experience": 4.0,
         "gear": {
-          "item": "iguanatweaksexpanded:chained_copper_leggings"
+          "item": "minecraft:amethyst_shard"
         },
         "ingredient": {
-          "item": "iguanatweaksexpanded:keego"
+          "tag": "minecraft:planks"
         },
         "result": {
-          "item": "iguanatweaksexpanded:keego_leggings",
-          "nbt": "{Damage:0}"
+          "item": "iguanatweaksexpanded:repair_kit",
+          "nbt": "{color:{b:95,g:148,r:184},repair_item:\"minecraft:oak_planks\"}"
         },
-        "smashes_required": 11
+        "smashes_required": 4
       }
     }
   ]

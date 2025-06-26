@@ -1,21 +1,34 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "equipment",
-  "key": {
-    "M": {
-      "tag": "minecraft:planks"
-    },
-    "S": {
-      "item": "minecraft:stick"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Forging"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "equipment",
+        "key": {
+          "M": {
+            "tag": "minecraft:planks"
+          },
+          "S": {
+            "item": "minecraft:stick"
+          }
+        },
+        "pattern": [
+          "MMM",
+          "MSM",
+          " S "
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:wooden_hammer"
+        },
+        "show_notification": true
+      }
     }
-  },
-  "pattern": [
-    "MMM",
-    "MSM",
-    " S "
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:wooden_hammer"
-  },
-  "show_notification": true
+  ]
 }

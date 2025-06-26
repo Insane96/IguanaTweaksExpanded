@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 2,
-  "category": "forge_misc",
-  "experience": 14.0,
-  "gear": {
-    "item": "minecraft:iron_nugget"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:durium_ingot"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:durium_shears",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 14
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Durium"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 2,
+        "category": "forge_misc",
+        "experience": 14.0,
+        "gear": {
+          "item": "minecraft:iron_nugget"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:durium_ingot"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:durium_shears",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 14
+      }
+    }
+  ]
 }

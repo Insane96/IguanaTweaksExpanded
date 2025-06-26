@@ -1,36 +1,49 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "building",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:keego"
-    },
-    {
-      "item": "iguanatweaksexpanded:keego"
-    },
-    {
-      "item": "iguanatweaksexpanded:keego"
-    },
-    {
-      "item": "iguanatweaksexpanded:keego"
-    },
-    {
-      "item": "iguanatweaksexpanded:keego"
-    },
-    {
-      "item": "iguanatweaksexpanded:keego"
-    },
-    {
-      "item": "iguanatweaksexpanded:keego"
-    },
-    {
-      "item": "iguanatweaksexpanded:keego"
-    },
-    {
-      "item": "iguanatweaksexpanded:keego"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Keego"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "building",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:keego"
+          },
+          {
+            "item": "iguanatweaksexpanded:keego"
+          },
+          {
+            "item": "iguanatweaksexpanded:keego"
+          },
+          {
+            "item": "iguanatweaksexpanded:keego"
+          },
+          {
+            "item": "iguanatweaksexpanded:keego"
+          },
+          {
+            "item": "iguanatweaksexpanded:keego"
+          },
+          {
+            "item": "iguanatweaksexpanded:keego"
+          },
+          {
+            "item": "iguanatweaksexpanded:keego"
+          },
+          {
+            "item": "iguanatweaksexpanded:keego"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:keego_block"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:keego_block"
-  }
+  ]
 }

@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 1,
-  "category": "forge_misc",
-  "experience": 17.0,
-  "gear": {
-    "item": "minecraft:fishing_rod"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:quaron_fishing_rod",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 17
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Quaron"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 1,
+        "category": "forge_misc",
+        "experience": 17.0,
+        "gear": {
+          "item": "minecraft:fishing_rod"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:quaron_ingot"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:quaron_fishing_rod",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 17
+      }
+    }
+  ]
 }

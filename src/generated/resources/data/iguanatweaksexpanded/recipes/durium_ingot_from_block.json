@@ -1,13 +1,26 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:durium_block"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Durium"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:durium_block"
+          }
+        ],
+        "result": {
+          "count": 9,
+          "item": "iguanatweaksexpanded:durium_ingot"
+        }
+      }
     }
-  ],
-  "result": {
-    "count": 9,
-    "item": "iguanatweaksexpanded:durium_ingot"
-  }
+  ]
 }

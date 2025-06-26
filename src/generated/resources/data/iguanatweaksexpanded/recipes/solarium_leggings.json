@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 7,
-  "category": "forge_misc",
-  "experience": 5.0,
-  "gear": {
-    "item": "minecraft:leather_leggings"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:solarium_ball"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_leggings",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 5
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Solarium"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 7,
+        "category": "forge_misc",
+        "experience": 5.0,
+        "gear": {
+          "item": "minecraft:leather_leggings"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:solarium_ball"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:solarium_leggings",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 5
+      }
+    }
+  ]
 }

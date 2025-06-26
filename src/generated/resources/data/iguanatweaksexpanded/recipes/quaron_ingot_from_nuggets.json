@@ -1,36 +1,49 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:quaron_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:quaron_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:quaron_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:quaron_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:quaron_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:quaron_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:quaron_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:quaron_nugget"
-    },
-    {
-      "item": "iguanatweaksexpanded:quaron_nugget"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Quaron"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          },
+          {
+            "item": "iguanatweaksexpanded:quaron_nugget"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:quaron_ingot"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:quaron_ingot"
-  }
+  ]
 }

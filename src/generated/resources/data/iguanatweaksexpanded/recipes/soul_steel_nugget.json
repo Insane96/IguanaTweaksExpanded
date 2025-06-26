@@ -1,13 +1,26 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "iguanatweaksexpanded:soul_steel_ingot"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Soul steel"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "iguanatweaksexpanded:soul_steel_ingot"
+          }
+        ],
+        "result": {
+          "count": 9,
+          "item": "iguanatweaksexpanded:soul_steel_nugget"
+        }
+      }
     }
-  ],
-  "result": {
-    "count": 9,
-    "item": "iguanatweaksexpanded:soul_steel_nugget"
-  }
+  ]
 }

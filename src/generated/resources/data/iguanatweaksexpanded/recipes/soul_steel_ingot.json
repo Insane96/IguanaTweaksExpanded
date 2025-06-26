@@ -1,36 +1,49 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "item": "minecraft:netherite_scrap"
-    },
-    {
-      "item": "minecraft:netherite_scrap"
-    },
-    {
-      "item": "minecraft:netherite_scrap"
-    },
-    {
-      "item": "minecraft:netherite_scrap"
-    },
-    {
-      "item": "minecraft:iron_ingot"
-    },
-    {
-      "item": "minecraft:iron_ingot"
-    },
-    {
-      "item": "iguanatweaksreborn:hellish_coal"
-    },
-    {
-      "item": "iguanatweaksreborn:hellish_coal"
-    },
-    {
-      "tag": "minecraft:soul_fire_base_blocks"
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Soul steel"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "minecraft:netherite_scrap"
+          },
+          {
+            "item": "minecraft:netherite_scrap"
+          },
+          {
+            "item": "minecraft:netherite_scrap"
+          },
+          {
+            "item": "minecraft:netherite_scrap"
+          },
+          {
+            "item": "minecraft:iron_ingot"
+          },
+          {
+            "item": "minecraft:iron_ingot"
+          },
+          {
+            "item": "iguanatweaksreborn:hellish_coal"
+          },
+          {
+            "item": "iguanatweaksreborn:hellish_coal"
+          },
+          {
+            "tag": "minecraft:soul_fire_base_blocks"
+          }
+        ],
+        "result": {
+          "item": "iguanatweaksexpanded:soul_steel_ingot"
+        }
+      }
     }
-  ],
-  "result": {
-    "item": "iguanatweaksexpanded:soul_steel_ingot"
-  }
+  ]
 }

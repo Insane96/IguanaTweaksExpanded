@@ -1,17 +1,30 @@
 {
-  "type": "iguanatweaksexpanded:forging",
-  "amount": 4,
-  "category": "forge_misc",
-  "experience": 6.0,
-  "gear": {
-    "item": "shieldsplus:wooden_shield"
-  },
-  "ingredient": {
-    "item": "iguanatweaksexpanded:solarium_ball"
-  },
-  "result": {
-    "item": "iguanatweaksexpanded:solarium_shield",
-    "nbt": "{Damage:0}"
-  },
-  "smashes_required": 6
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "insanelib:feature_enabled",
+          "feature": "Solarium"
+        }
+      ],
+      "recipe": {
+        "type": "iguanatweaksexpanded:forging",
+        "amount": 4,
+        "category": "forge_misc",
+        "experience": 6.0,
+        "gear": {
+          "item": "shieldsplus:wooden_shield"
+        },
+        "ingredient": {
+          "item": "iguanatweaksexpanded:solarium_ball"
+        },
+        "result": {
+          "item": "iguanatweaksexpanded:solarium_shield",
+          "nbt": "{Damage:0}"
+        },
+        "smashes_required": 6
+      }
+    }
+  ]
 }
