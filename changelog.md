@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.23.14
+### Changes
+* Cleansed and Enchanted lapis can now be disabled (creative and apply only)
+
 ## 1.23.13
 ### Changes
 * Disabling most features will now also disable most of the recipes (not Blast Furnace)

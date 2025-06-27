@@ -125,6 +125,11 @@ public class EnchantingFeature extends JsonFeature {
     @Label(name = "Enchanting Table.Base enchantability")
     public static Integer enchantingTableBaseEnchantability = 1;
 
+    @Config(description = "This doesn't disable cleansed lapis from dropping from lapis ore")
+    public static Boolean enableCleansedLapis = true;
+    @Config
+    public static Boolean enableEnchantedCleansedLapis = true;
+
     public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
             new EnchantmentData("minecraft:unbreaking").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:enduring").costPerLevel(1),
@@ -360,7 +365,8 @@ public class EnchantingFeature extends JsonFeature {
 
     public void enchantedCleansedLapisCrafting(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.is(CLEANSED_LAPIS.get())
+        if (!enableEnchantedCleansedLapis
+                || !left.is(CLEANSED_LAPIS.get())
                 || left.isEnchanted()
                 || left.getCount() > 1)
             return;
@@ -375,7 +381,9 @@ public class EnchantingFeature extends JsonFeature {
 
     public void enchantedCleansedLapis(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.getItem().isEnchantable(left) || isInfused(left))
+        if (!enableEnchantedCleansedLapis
+                || !left.getItem().isEnchantable(left)
+                || isInfused(left))
             return;
 
         ItemStack right = event.getRight().copy();

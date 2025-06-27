@@ -128,20 +128,24 @@ public class ISEEmiPlugin implements EmiPlugin {
 			tag.put("display", display);
 
 			ItemStack output = new ItemStack(Items.DIAMOND_SWORD, 1);
-			output.setTag(tag);
-			registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "cleansed_lapis_use"), Items.DIAMOND_SWORD, EnchantingFeature.CLEANSED_LAPIS.get(), output));
-
-			registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchanted_cleansed_lapis_use"), EnchantingFeature.CLEANSED_LAPIS.get(), Items.EXPERIENCE_BOTTLE, new ItemStack(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get())));
-			tag = new CompoundTag();
-			lore = new ListTag();
-			lore.add(StringTag.valueOf(""));
-			lore.add(StringTag.valueOf(Component.Serializer.toJson(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE))));
-			display = new CompoundTag();
-			display.put("Lore", lore);
-			tag.put("display", display);
-			output = new ItemStack(Items.DIAMOND_PICKAXE, 1);
-			output.setTag(tag);
-			registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchanted_cleansed_lapis_use"), Items.DIAMOND_PICKAXE, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), output));
+			if (EnchantingFeature.enableCleansedLapis)
+			{
+				output.setTag(tag);
+				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "cleansed_lapis_use"), Items.DIAMOND_SWORD, EnchantingFeature.CLEANSED_LAPIS.get(), output));
+			}
+			if (EnchantingFeature.enableEnchantedCleansedLapis) {
+				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchanted_cleansed_lapis_use"), EnchantingFeature.CLEANSED_LAPIS.get(), Items.EXPERIENCE_BOTTLE, new ItemStack(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get())));
+				tag = new CompoundTag();
+				lore = new ListTag();
+				lore.add(StringTag.valueOf(""));
+				lore.add(StringTag.valueOf(Component.Serializer.toJson(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE))));
+				display = new CompoundTag();
+				display.put("Lore", lore);
+				tag.put("display", display);
+				output = new ItemStack(Items.DIAMOND_PICKAXE, 1);
+				output.setTag(tag);
+				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchanted_cleansed_lapis_use"), Items.DIAMOND_PICKAXE, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), output));
+			}
 
 			if (EnchantingFeature.enchantingTableRequiresLearning) {
 				ItemStack stack = new ItemStack(EnchantingFeature.ENCHANTING_TABLE.item().get());
