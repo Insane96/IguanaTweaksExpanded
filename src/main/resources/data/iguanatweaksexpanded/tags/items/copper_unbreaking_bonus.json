@@ -1,9 +1,0 @@
-{
-    "values": [
-        "#iguanatweaksexpanded:equipment/hand/tools/copper",
-        {
-            "required": false,
-            "id": "iguanatweaksexpanded:copper_shield"
-        }
-    ]
-}

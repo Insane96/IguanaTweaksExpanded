@@ -272,7 +272,6 @@
 	"item.iguanatweaksexpanded.iron_hammer": "Martello da forgia di ferro",
 	"item.iguanatweaksexpanded.durium_hammer": "Martello da forgia di durio",
 	"item.iguanatweaksexpanded.solarium_hammer": "Martello da forgia di solario",
-	"item.iguanatweaksexpanded.coated_copper_hammer": "Martello da forgia di rame rivestito",
 	"item.iguanatweaksexpanded.diamond_hammer": "Martello da forgia di diamante",
 	"item.iguanatweaksexpanded.soul_steel_hammer": "Martello da forgia di acciaio delle anime",
 	"item.iguanatweaksexpanded.netherite_hammer": "Martello da forgia di netherite",
@@ -401,8 +400,6 @@
 	"advancements.sr_story.solarium.description": "Ottieni un equipaggiamento di solario migliorando quello di legno e pelle",
 	"advancements.sr_story.sawmill.title": "Tagliapietre ma per il legno",
 	"advancements.sr_story.sawmill.description": "Ottieni una segheria",
-	"advancements.sr_story.coated_copper_tools.title": "Scossa? Va beeene",
-	"advancements.sr_story.coated_copper_tools.description": "Ottieni attrezzi di rame rivestito con dell'ossidiana in una forgia e folgora i tuoi nemici.",
 
 	"advancements.sr_nether.soul_blast_furnace.title": "Potenziato dai mostri che uccidi ... forse",
 	"advancements.sr_nether.soul_blast_furnace.description": "Ottieni un forno fusorio delle anime. Ha le stesse caratteristiche del forno fusorio normale, eccetto che può creare più leghe e ricicla meglio.",

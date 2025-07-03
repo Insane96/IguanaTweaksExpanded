@@ -6,7 +6,7 @@
   },
   "amount": 3,
   "gear": {
-    "item": "iguanatweaksexpanded:copper_pickaxe"
+    "item": "iguanatweaksreborn:copper_pickaxe"
   },
   "result": "minecraft:golden_pickaxe",
   "smashes_required": 6,
