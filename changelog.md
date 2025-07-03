@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## Alpha 1.24.0
 ### Removed
 * (Re)moved Copper expansion to ISO
   * Coated copper has been removed. Will be transformed into normal copper
