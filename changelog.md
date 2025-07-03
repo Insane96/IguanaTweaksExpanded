@@ -1,5 +1,12 @@
 # Changelog
 
+## Upcoming
+### Removed
+* (Re)moved Copper expansion to ISO
+  * Coated copper has been removed
+  * Copper tools are the same as upcoming vanilla ones
+  * Chained copper armor is now copper armor
+
 ## 1.23.13
 ### Changes
 * Disabling most features will now also disable most of the recipes (not Blast Furnace)

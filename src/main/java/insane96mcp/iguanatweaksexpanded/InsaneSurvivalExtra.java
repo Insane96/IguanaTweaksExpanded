@@ -8,7 +8,6 @@ import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEItemModelsProvi
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ISEArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -66,7 +65,6 @@ public class InsaneSurvivalExtra
             modEventBus.addListener(EventPriority.LOW, ClientSetup::onBuildCreativeModeTabContents);
             modEventBus.addListener(ClientSetup::registerEntityRenderers);
             modEventBus.addListener(ClientSetup::registerRecipeBookCategories);
-            modEventBus.addListener(ClientSetup::registerParticleFactories);
             modEventBus.addListener(ClientSetup::registerTooltips);
             modEventBus.addListener(ClientSetup::registerItemColorHandlers);
         }
@@ -76,7 +74,6 @@ public class InsaneSurvivalExtra
         ISERegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
 
         if (ModList.get().isLoaded("shieldsplus")) {
-            CopperExpansion.ShieldsPlusIntegration.init();
             Durium.ShieldsPlusIntegration.init();
             SoulSteel.ShieldsPlusIntegration.init();
             Quaron.ShieldsPlusIntegration.init();

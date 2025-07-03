@@ -4,7 +4,7 @@
   "cookingtime": 100,
   "experience": 0.0,
   "ingredient": {
-    "item": "iguanatweaksexpanded:chained_copper_leggings"
+    "item": "iguanatweaksreborn:copper_leggings"
   },
   "result": "minecraft:iron_nugget"
 }

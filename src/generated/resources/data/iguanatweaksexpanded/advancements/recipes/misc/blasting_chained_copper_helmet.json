@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chained_armor": {
+    "has_copper_armor": {
       "conditions": {
         "items": [
           {
             "items": [
-              "iguanatweaksexpanded:chained_copper_helmet"
+              "iguanatweaksreborn:copper_helmet"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_chained_armor",
+      "has_copper_armor",
       "has_the_recipe"
     ]
   ],

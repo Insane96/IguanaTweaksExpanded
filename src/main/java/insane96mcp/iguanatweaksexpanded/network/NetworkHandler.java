@@ -7,7 +7,7 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public class NetworkHandler {
-	private static final String PROTOCOL_VERSION = Integer.toString(4);
+	private static final String PROTOCOL_VERSION = Integer.toString(5);
 	public static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
 			.named(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "network_channel"))
 			.clientAcceptedVersions(s -> true)
@@ -19,7 +19,6 @@ public class NetworkHandler {
 
 	public static void init() {
 		CHANNEL.registerMessage(++index, JumpMidAirMessage.class, JumpMidAirMessage::encode, JumpMidAirMessage::decode, JumpMidAirMessage::handle);
-		CHANNEL.registerMessage(++index, ElectrocutionParticleMessage.class, ElectrocutionParticleMessage::encode, ElectrocutionParticleMessage::decode, ElectrocutionParticleMessage::handle);
 		CHANNEL.registerMessage(++index, SyncISEEnchantingTableStatus.class, SyncISEEnchantingTableStatus::encode, SyncISEEnchantingTableStatus::decode, SyncISEEnchantingTableStatus::handle);
 		CHANNEL.registerMessage(++index, SyncISEEnchantingTableLearnedEnchantments.class, SyncISEEnchantingTableLearnedEnchantments::encode, SyncISEEnchantingTableLearnedEnchantments::decode, SyncISEEnchantingTableLearnedEnchantments::handle);
 		CHANNEL.registerMessage(++index, SyncISEEnchantingTableEnchantments.class, SyncISEEnchantingTableEnchantments::encode, SyncISEEnchantingTableEnchantments::decode, SyncISEEnchantingTableEnchantments::handle);

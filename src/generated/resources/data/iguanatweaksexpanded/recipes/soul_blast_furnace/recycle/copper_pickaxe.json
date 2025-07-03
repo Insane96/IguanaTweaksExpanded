@@ -5,7 +5,7 @@
   "group": "recycle_copper_ingot",
   "ingredients": [
     {
-      "item": "iguanatweaksexpanded:copper_pickaxe"
+      "item": "iguanatweaksreborn:copper_pickaxe"
     }
   ],
   "recycle": {

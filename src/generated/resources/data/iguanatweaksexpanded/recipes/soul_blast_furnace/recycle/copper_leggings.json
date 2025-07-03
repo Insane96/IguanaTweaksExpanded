@@ -1,0 +1,15 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 200,
+  "group": "recycle_iron_nugget",
+  "ingredients": [
+    {
+      "item": "iguanatweaksreborn:copper_leggings"
+    }
+  ],
+  "recycle": {
+    "amount_at_full_durability": 9
+  },
+  "result": "minecraft:iron_nugget"
+}

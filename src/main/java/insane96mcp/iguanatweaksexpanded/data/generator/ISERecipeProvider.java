@@ -3,7 +3,6 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 import com.teamabnormals.caverns_and_chasms.core.registry.CCItems;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
@@ -18,6 +17,7 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.Mu
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
+import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
 import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.Death;
 import insane96mcp.iguanatweaksreborn.module.world.coalfire.CoalFire;
@@ -54,119 +54,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> writer) {
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COPPER_AXE.get(), recipe ->
-                        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CopperExpansion.COPPER_AXE.get())
-                        .pattern("ff")
-                        .pattern("fs")
-                        .pattern(" s")
-                        .define('f', Items.COPPER_INGOT)
-                        .define('s', Items.STICK)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .save(recipe)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COPPER_SHOVEL.get(),
-                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CopperExpansion.COPPER_SHOVEL.get())
-                        .pattern("f")
-                        .pattern("s")
-                        .pattern("s")
-                        .define('f', Items.COPPER_INGOT)
-                        .define('s', Items.STICK)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .save(recipe)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COPPER_PICKAXE.get(),
-                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CopperExpansion.COPPER_PICKAXE.get())
-                        .pattern("fff")
-                        .pattern(" s ")
-                        .pattern(" s ")
-                        .define('f', Items.COPPER_INGOT)
-                        .define('s', Items.STICK)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .save(recipe)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COPPER_HOE.get(),
-                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CopperExpansion.COPPER_HOE.get())
-                        .pattern("ff")
-                        .pattern(" s")
-                        .pattern(" s")
-                        .define('f', Items.COPPER_INGOT)
-                        .define('s', Items.STICK)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .save(recipe)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COPPER_SWORD.get(),
-                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CopperExpansion.COPPER_SWORD.get())
-                        .pattern("f")
-                        .pattern("f")
-                        .pattern("s")
-                        .define('f', Items.COPPER_INGOT)
-                        .define('s', Items.STICK)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .save(recipe)
-        );
-
-        //Coated Copper
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COATED_AXE.get(),
-                forgeRecipeBuilder(Items.OBSIDIAN, 3, CopperExpansion.COPPER_AXE.get(), CopperExpansion.COATED_AXE.get(), 12)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COATED_SWORD.get(),
-                forgeRecipeBuilder(Items.OBSIDIAN, 2, CopperExpansion.COPPER_SWORD.get(), CopperExpansion.COATED_SWORD.get(), 12)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COATED_HOE.get(),
-                forgeRecipeBuilder(Items.OBSIDIAN, 2, CopperExpansion.COPPER_HOE.get(), CopperExpansion.COATED_HOE.get(), 12)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.COATED_SHOVEL.get(),
-                forgeRecipeBuilder(Items.OBSIDIAN, 1, CopperExpansion.COPPER_SHOVEL.get(), CopperExpansion.COATED_SHOVEL.get(), 12)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get(),
-                forgeRecipeBuilder(Items.OBSIDIAN, 4, CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get(), 12)
-        );
-
-        //Chained Copper Armor
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.HELMET.get(),
-                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CopperExpansion.HELMET.get())
-                        .pattern("cmc")
-                        .pattern("m m")
-                        .define('c', Items.IRON_NUGGET)
-                        .define('m', Items.COPPER_INGOT)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .unlockedBy("has_chain", has(Items.IRON_NUGGET))
-                        .save(recipe)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.CHESTPLATE.get(),
-                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CopperExpansion.CHESTPLATE.get())
-                        .pattern("c c")
-                        .pattern("mcm")
-                        .pattern("mmm")
-                        .define('c', Items.IRON_NUGGET)
-                        .define('m', Items.COPPER_INGOT)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .unlockedBy("has_chain", has(Items.IRON_NUGGET))
-                        .save(recipe)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.LEGGINGS.get(),
-                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CopperExpansion.LEGGINGS.get())
-                        .pattern("ccc")
-                        .pattern("m m")
-                        .pattern("m m")
-                        .define('c', Items.IRON_NUGGET)
-                        .define('m', Items.COPPER_INGOT)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .unlockedBy("has_chain", has(Items.IRON_NUGGET))
-                        .save(recipe)
-        );
-        featureBoundRecipe(writer, "Copper expansion", CopperExpansion.BOOTS.get(),
-                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, CopperExpansion.BOOTS.get())
-                        .pattern("c c")
-                        .pattern("m m")
-                        .define('c', Items.IRON_NUGGET)
-                        .define('m', Items.COPPER_INGOT)
-                        .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
-                        .unlockedBy("has_chain", has(Items.IRON_NUGGET))
-                        .save(recipe)
-        );
-
-
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, PortableCrate.ITEM.get())
                 .pattern("nnn")
                 .pattern("ibi")
@@ -308,34 +195,34 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
         //Keego
         featureBoundRecipe(writer, "Keego", Keego.PICKAXE.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 3, CopperExpansion.COPPER_PICKAXE.get(), Keego.PICKAXE.get(), 13)
+                forgeRecipeBuilder(Keego.GEM.get(), 3, CopperEquipment.PICKAXE.get(), Keego.PICKAXE.get(), 13)
         );
         featureBoundRecipe(writer, "Keego", Keego.AXE.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 3, CopperExpansion.COPPER_AXE.get(), Keego.AXE.get(), 13)
+                forgeRecipeBuilder(Keego.GEM.get(), 3, CopperEquipment.AXE.get(), Keego.AXE.get(), 13)
         );
         featureBoundRecipe(writer, "Keego", Keego.SWORD.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 2, CopperExpansion.COPPER_SWORD.get(), Keego.SWORD.get(), 13)
+                forgeRecipeBuilder(Keego.GEM.get(), 2, CopperEquipment.SWORD.get(), Keego.SWORD.get(), 13)
         );
         featureBoundRecipe(writer, "Keego", Keego.HOE.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 2, CopperExpansion.COPPER_HOE.get(), Keego.HOE.get(), 13)
+                forgeRecipeBuilder(Keego.GEM.get(), 2, CopperEquipment.HOE.get(), Keego.HOE.get(), 13)
         );
         featureBoundRecipe(writer, "Keego", Keego.SHOVEL.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 1, CopperExpansion.COPPER_SHOVEL.get(), Keego.SHOVEL.get(), 13)
+                forgeRecipeBuilder(Keego.GEM.get(), 1, CopperEquipment.SHOVEL.get(), Keego.SHOVEL.get(), 13)
         );
         featureBoundRecipe(writer, "Keego", Keego.ShieldsPlusIntegration.SHIELD.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 4, CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get(), Keego.ShieldsPlusIntegration.SHIELD.get(), 13)
+                forgeRecipeBuilder(Keego.GEM.get(), 4, CopperEquipment.ShieldsPlusIntegration.SHIELD.get(), Keego.ShieldsPlusIntegration.SHIELD.get(), 13)
         );
         featureBoundRecipe(writer, "Keego", Keego.HELMET.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 5, CopperExpansion.HELMET.get(), Keego.HELMET.get(), 9)
+                forgeRecipeBuilder(Keego.GEM.get(), 5, CopperEquipment.HELMET.get(), Keego.HELMET.get(), 9)
         );
         featureBoundRecipe(writer, "Keego", Keego.CHESTPLATE.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 8, CopperExpansion.CHESTPLATE.get(), Keego.CHESTPLATE.get(), 13)
+                forgeRecipeBuilder(Keego.GEM.get(), 8, CopperEquipment.CHESTPLATE.get(), Keego.CHESTPLATE.get(), 13)
         );
         featureBoundRecipe(writer, "Keego", Keego.LEGGINGS.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 7, CopperExpansion.LEGGINGS.get(), Keego.LEGGINGS.get(), 11)
+                forgeRecipeBuilder(Keego.GEM.get(), 7, CopperEquipment.LEGGINGS.get(), Keego.LEGGINGS.get(), 11)
         );
         featureBoundRecipe(writer, "Keego", Keego.BOOTS.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 4, CopperExpansion.BOOTS.get(), Keego.BOOTS.get(), 8)
+                forgeRecipeBuilder(Keego.GEM.get(), 4, CopperEquipment.BOOTS.get(), Keego.BOOTS.get(), 8)
         );
         featureBoundRecipe(writer, "Keego", Keego.BLOCK.block().get(),
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, Keego.BLOCK.block().get(), 1)
@@ -585,76 +472,76 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
         //<editor-fold desc="Chained Copper Armor">
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(CopperExpansion.HELMET.get()),
+                        Ingredient.of(CopperEquipment.HELMET.get()),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0,
                         200
                 )
-                .unlockedBy("has_chained_armor", has(CopperExpansion.HELMET.get()))
+                .unlockedBy("has_copper_armor", has(CopperEquipment.HELMET.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_helmet");
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(CopperExpansion.CHESTPLATE.get()),
+                        Ingredient.of(CopperEquipment.CHESTPLATE.get()),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0,
                         200
                 )
-                .unlockedBy("has_chained_armor", has(CopperExpansion.CHESTPLATE.get()))
+                .unlockedBy("has_copper_armor", has(CopperEquipment.CHESTPLATE.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_chestplate");
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(CopperExpansion.LEGGINGS.get()),
+                        Ingredient.of(CopperEquipment.LEGGINGS.get()),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0,
                         200
                 )
-                .unlockedBy("has_chained_armor", has(CopperExpansion.LEGGINGS.get()))
+                .unlockedBy("has_copper_armor", has(CopperEquipment.LEGGINGS.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_leggings");
         SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(CopperExpansion.BOOTS.get()),
+                        Ingredient.of(CopperEquipment.BOOTS.get()),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0,
                         200
                 )
-                .unlockedBy("has_chained_armor", has(CopperExpansion.BOOTS.get()))
+                .unlockedBy("has_copper_armor", has(CopperEquipment.BOOTS.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_boots");
         SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(CopperExpansion.HELMET.get()),
+                        Ingredient.of(CopperEquipment.HELMET.get()),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0,
                         100
                 )
-                .unlockedBy("has_chained_armor", has(CopperExpansion.HELMET.get()))
+                .unlockedBy("has_copper_armor", has(CopperEquipment.HELMET.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_helmet");
         SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(CopperExpansion.CHESTPLATE.get()),
+                        Ingredient.of(CopperEquipment.CHESTPLATE.get()),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0,
                         100
                 )
-                .unlockedBy("has_chained_armor", has(CopperExpansion.CHESTPLATE.get()))
+                .unlockedBy("has_copper_armor", has(CopperEquipment.CHESTPLATE.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_chestplate");
         SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(CopperExpansion.LEGGINGS.get()),
+                        Ingredient.of(CopperEquipment.LEGGINGS.get()),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0,
                         100
                 )
-                .unlockedBy("has_chained_armor", has(CopperExpansion.LEGGINGS.get()))
+                .unlockedBy("has_copper_armor", has(CopperEquipment.LEGGINGS.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_leggings");
         SimpleCookingRecipeBuilder.blasting(
-                        Ingredient.of(CopperExpansion.BOOTS.get()),
+                        Ingredient.of(CopperEquipment.BOOTS.get()),
                         RecipeCategory.MISC,
                         Items.IRON_NUGGET,
                         0,
                         100
                 )
-                .unlockedBy("has_chained_armor", has(CopperExpansion.BOOTS.get()))
+                .unlockedBy("has_copper_armor", has(CopperEquipment.BOOTS.get()))
                 .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_boots");
         //</editor-fold>
 
@@ -663,10 +550,10 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, CoalFire.ITEM_ORES, CoalFire.HELLISH_COAL.get(), 1.2f, 150, 0.3f);
 
         //<editor-fold desc="Recycle recipes">
-        recycleGear(writer, CopperExpansion.HELMET.get(), Items.IRON_NUGGET, 200, 6);
-        recycleGear(writer, CopperExpansion.CHESTPLATE.get(), Items.IRON_NUGGET, 200, 9);
-        recycleGear(writer, CopperExpansion.LEGGINGS.get(), Items.IRON_NUGGET, 200, 9);
-        recycleGear(writer, CopperExpansion.BOOTS.get(), Items.IRON_NUGGET, 200, 6);
+        recycleGear(writer, CopperEquipment.HELMET.get(), Items.IRON_NUGGET, 200, 6);
+        recycleGear(writer, CopperEquipment.CHESTPLATE.get(), Items.IRON_NUGGET, 200, 9);
+        recycleGear(writer, CopperEquipment.LEGGINGS.get(), Items.IRON_NUGGET, 200, 9);
+        recycleGear(writer, CopperEquipment.BOOTS.get(), Items.IRON_NUGGET, 200, 6);
         recycleGear(writer, Items.IRON_HELMET, Items.IRON_NUGGET, 200, 45);
         recycleGear(writer, Items.IRON_CHESTPLATE, Items.IRON_NUGGET, 200, 72);
         recycleGear(writer, Items.IRON_LEGGINGS, Items.IRON_NUGGET, 200, 63);
@@ -704,11 +591,11 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGear(writer, SoulSteel.LEGGINGS.get(), SoulSteel.NUGGET.get(), 200, 9);
         recycleGear(writer, SoulSteel.BOOTS.get(), SoulSteel.NUGGET.get(), 200, 9);
 
-        recycleGear(writer, CopperExpansion.COPPER_PICKAXE.get(), Items.COPPER_INGOT, 200, 3);
-        recycleGear(writer, CopperExpansion.COPPER_AXE.get(), Items.COPPER_INGOT, 200, 3);
-        recycleGear(writer, CopperExpansion.COPPER_SHOVEL.get(), Items.COPPER_INGOT, 200, 1);
-        recycleGear(writer, CopperExpansion.COPPER_HOE.get(), Items.COPPER_INGOT, 200, 2);
-        recycleGear(writer, CopperExpansion.COPPER_SWORD.get(), Items.COPPER_INGOT, 200, 2);
+        recycleGear(writer, CopperEquipment.PICKAXE.get(), Items.COPPER_INGOT, 200, 3);
+        recycleGear(writer, CopperEquipment.AXE.get(), Items.COPPER_INGOT, 200, 3);
+        recycleGear(writer, CopperEquipment.SHOVEL.get(), Items.COPPER_INGOT, 200, 1);
+        recycleGear(writer, CopperEquipment.HOE.get(), Items.COPPER_INGOT, 200, 2);
+        recycleGear(writer, CopperEquipment.SWORD.get(), Items.COPPER_INGOT, 200, 2);
         recycleGear(writer, Items.IRON_PICKAXE, Items.IRON_NUGGET, 200, 27);
         recycleGear(writer, Items.IRON_AXE, Items.IRON_NUGGET, 200, 27);
         recycleGear(writer, Items.IRON_SHOVEL, Items.IRON_NUGGET, 200, 9);
@@ -730,11 +617,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGear(writer, Items.GOLDEN_SHOVEL, Items.GOLD_NUGGET, 200, 9);
         recycleGear(writer, Items.GOLDEN_HOE, Items.GOLD_NUGGET, 200, 18);
         recycleGear(writer, Items.GOLDEN_SWORD, Items.GOLD_NUGGET, 200, 18);
-        recycleGear(writer, CopperExpansion.COATED_PICKAXE.get(), Items.OBSIDIAN, 200, 3);
-        recycleGear(writer, CopperExpansion.COATED_AXE.get(), Items.OBSIDIAN, 200, 3);
-        recycleGear(writer, CopperExpansion.COATED_SHOVEL.get(), Items.OBSIDIAN, 200, 1);
-        recycleGear(writer, CopperExpansion.COATED_HOE.get(), Items.OBSIDIAN, 200, 2);
-        recycleGear(writer, CopperExpansion.COATED_SWORD.get(), Items.OBSIDIAN, 200, 2);
         recycleGear(writer, Keego.PICKAXE.get(), Keego.GEM.get(), 200, 3);
         recycleGear(writer, Keego.AXE.get(), Keego.GEM.get(), 200, 3);
         recycleGear(writer, Keego.SHOVEL.get(), Keego.GEM.get(), 200, 1);
@@ -757,12 +639,11 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGear(writer, SoulSteel.SWORD.get(), SoulSteel.NUGGET.get(), 200, 9);
 
         //Recycle Shields
-        recycleGear(writer, CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get(), Items.COPPER_INGOT, 200, 4);
+        recycleGear(writer, CopperEquipment.ShieldsPlusIntegration.SHIELD.get(), Items.COPPER_INGOT, 200, 4);
         recycleGear(writer, Items.SHIELD, Items.IRON_NUGGET, 200, 36);
         recycleGear(writer, SPItems.IRON_SHIELD.get(), Items.IRON_NUGGET, 200, 36);
         recycleGear(writer, Durium.ShieldsPlusIntegration.SHIELD.get(), Durium.NUGGET.get(), 200, 36);
         recycleGear(writer, SPItems.GOLDEN_SHIELD.get(), Items.GOLD_NUGGET, 200, 36);
-        recycleGear(writer, CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get(), Items.OBSIDIAN, 200, 4);
         recycleGear(writer, Quaron.ShieldsPlusIntegration.SHIELD.get(), Quaron.NUGGET.get(), 200, 36);
         recycleGear(writer, Keego.ShieldsPlusIntegration.SHIELD.get(), Keego.GEM.get(), 200, 4);
         recycleGear(writer, SPItems.DIAMOND_SHIELD.get(), Items.DIAMOND, 200, 1);
@@ -816,9 +697,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         featureBoundRecipe(writer, "Forging", Forging.GOLDEN_HAMMER.get(),
                 forgeRecipeBuilder(Items.GOLD_INGOT, 5, Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), 6)
         );
-        featureBoundRecipe(writer, "Forging", Forging.COATED_COPPER_HAMMER.get(),
-                forgeRecipeBuilder(Items.OBSIDIAN, 5, Forging.COPPER_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), 12)
-        );
         featureBoundRecipe(writer, "Forging", Forging.KEEGO_HAMMER.get(),
                 forgeRecipeBuilder(Keego.GEM.get(), 5, Forging.FLINT_HAMMER.get(), Forging.KEEGO_HAMMER.get(), 16)
         );
@@ -855,7 +733,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGear(writer, Forging.DURIUM_HAMMER.get(), Durium.NUGGET.get(), 200, 45);
         recycleGear(writer, Forging.QUARON_HAMMER.get(), Quaron.NUGGET.get(), 200, 45);
         recycleGear(writer, Forging.GOLDEN_HAMMER.get(), Items.GOLD_NUGGET, 200, 45);
-        recycleGear(writer, Forging.COATED_COPPER_HAMMER.get(), Items.OBSIDIAN, 200, 5);
         recycleGear(writer, Forging.KEEGO_HAMMER.get(), Keego.GEM.get(), 200, 5);
         recycleGear(writer, Forging.DIAMOND_HAMMER.get(), Items.DIAMOND, 200, 5);
         recycleGear(writer, Forging.NETHERITE_HAMMER.get(), Items.NETHERITE_INGOT, 200, 1);
