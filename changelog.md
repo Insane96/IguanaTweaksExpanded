@@ -3,7 +3,7 @@
 ## Upcoming
 ### Removed
 * (Re)moved Copper expansion to ISO
-  * Coated copper has been removed
+  * Coated copper has been removed. Will be transformed into normal copper
   * Copper tools are the same as upcoming vanilla ones
   * Chained copper armor is now copper armor
 
