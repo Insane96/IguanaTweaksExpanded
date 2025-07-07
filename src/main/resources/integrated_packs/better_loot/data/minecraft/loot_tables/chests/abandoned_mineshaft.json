@@ -46,6 +46,12 @@
                                 "max": 12
                             }
                         }
+                    ],
+                    "conditions": [
+                        {
+                            "condition": "insanelib:feature_enabled",
+                            "feature": "Durium"
+                        }
                     ]
                 },
                 {
@@ -300,6 +306,12 @@
                                 "max": 6
                             },
                             "treasure": true
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "condition": "insanelib:feature_enabled",
+                            "feature": "Durium"
                         }
                     ]
                 },
