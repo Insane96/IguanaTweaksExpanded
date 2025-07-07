@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Some items no longer show up in loot tables if feature is disabled
+* Removed cleansed and enchanted lapis from loot tables
+
 ## Alpha 1.24.0
 ### Removed
 * (Re)moved Copper expansion to ISO
