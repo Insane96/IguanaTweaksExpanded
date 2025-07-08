@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+Requires InsaneLib 1.21.13
+
 ## Alpha 1.24.1
 ### Changes
 * Some items no longer show up in loot tables if feature is disabled
