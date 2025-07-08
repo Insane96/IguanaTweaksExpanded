@@ -126,13 +126,24 @@ public class InsaneSurvivalExtra
             case "copper_shovel", "coated_copper_shovel" -> CopperEquipment.SHOVEL.get();
             case "copper_hoe", "coated_copper_hoe" -> CopperEquipment.HOE.get();
             case "copper_sword", "coated_copper_sword" -> CopperEquipment.SWORD.get();
-            case "copper_shield", "coated_copper_shield" -> CopperEquipment.ShieldsPlusIntegration.SHIELD.get();
             case "chained_copper_helmet" -> CopperEquipment.HELMET.get();
             case "chained_copper_chestplate" -> CopperEquipment.CHESTPLATE.get();
             case "chained_copper_leggings" -> CopperEquipment.LEGGINGS.get();
             case "chained_copper_boots" -> CopperEquipment.BOOTS.get();
             default -> null;
         });
+        if (ModList.get().isLoaded("shieldsplus")) {
+            ShieldsPlusMissingMappings.missingMappings(event);
+        }
+    }
+
+    private static class ShieldsPlusMissingMappings {
+        public static void missingMappings(MissingMappingsEvent event) {
+            InsaneLib.handleMissingMappings(event, MOD_ID, Registries.ITEM, name -> switch (name) {
+                case "copper_shield", "coated_copper_shield" -> CopperEquipment.ShieldsPlusIntegration.SHIELD.get();
+                default -> null;
+            });
+        }
     }
 
     public static void addServerPack(String path, String description, BooleanSupplier enabled) {

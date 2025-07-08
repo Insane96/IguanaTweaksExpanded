@@ -1,7 +1,10 @@
 # Changelog
 
-## Upcoming
+## 1.24.2
 Requires InsaneLib 1.21.13
+### Fixes
+* Mineshafts, End cities and supplementaries pots dropping nothing
+* Crash without Shields+ installed
 
 ## Alpha 1.24.1
 ### Changes
