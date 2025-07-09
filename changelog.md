@@ -6,6 +6,7 @@
 
 ### Fixes
 * Copper armor smelt in furnace
+* Living flesh alloying recipe
 
 ## 1.24.4
 ### Fixes
