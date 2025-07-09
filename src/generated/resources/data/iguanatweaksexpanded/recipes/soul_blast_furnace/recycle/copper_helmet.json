@@ -2,14 +2,14 @@
   "type": "iguanatweaksexpanded:multi_item_soul_blasting",
   "category": "soul_blast_furnace_misc",
   "cookingtime": 200,
-  "group": "recycle_iron_nugget",
+  "group": "recycle_copper_ingot",
   "ingredients": [
     {
       "item": "iguanatweaksreborn:copper_helmet"
     }
   ],
   "recycle": {
-    "amount_at_full_durability": 6
+    "amount_at_full_durability": 5
   },
-  "result": "minecraft:iron_nugget"
+  "result": "minecraft:copper_ingot"
 }
