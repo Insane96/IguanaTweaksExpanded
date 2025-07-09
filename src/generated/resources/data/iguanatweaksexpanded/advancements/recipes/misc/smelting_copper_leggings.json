@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:smelting_chained_copper_leggings"
+        "recipe": "iguanatweaksexpanded:smelting_copper_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:smelting_chained_copper_leggings"
+      "iguanatweaksexpanded:smelting_copper_leggings"
     ]
   },
   "sends_telemetry_event": false

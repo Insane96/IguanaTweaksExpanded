@@ -474,75 +474,75 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperEquipment.HELMET.get()),
                         RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
+                        Items.COPPER_INGOT,
                         0,
                         200
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.HELMET.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_helmet");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_copper_helmet");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperEquipment.CHESTPLATE.get()),
                         RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
+                        Items.COPPER_INGOT,
                         0,
                         200
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.CHESTPLATE.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_chestplate");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_copper_chestplate");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperEquipment.LEGGINGS.get()),
                         RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
+                        Items.COPPER_INGOT,
                         0,
                         200
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.LEGGINGS.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_leggings");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_copper_leggings");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperEquipment.BOOTS.get()),
                         RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
+                        Items.COPPER_INGOT,
                         0,
                         200
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.BOOTS.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_chained_copper_boots");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_copper_boots");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperEquipment.HELMET.get()),
                         RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
+                        Items.COPPER_INGOT,
                         0,
                         100
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.HELMET.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_helmet");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_copper_helmet");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperEquipment.CHESTPLATE.get()),
                         RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
+                        Items.COPPER_INGOT,
                         0,
                         100
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.CHESTPLATE.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_chestplate");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_copper_chestplate");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperEquipment.LEGGINGS.get()),
                         RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
+                        Items.COPPER_INGOT,
                         0,
                         100
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.LEGGINGS.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_leggings");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_copper_leggings");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperEquipment.BOOTS.get()),
                         RecipeCategory.MISC,
-                        Items.IRON_NUGGET,
+                        Items.COPPER_INGOT,
                         0,
                         100
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.BOOTS.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_chained_copper_boots");
+                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_copper_boots");
         //</editor-fold>
 
         //Hellish Coal

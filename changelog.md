@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Fixes
+* Copper armor smelt in furnace
+
 ## 1.24.4
 ### Fixes
 * Same as previous version but this time I've actually run data gen

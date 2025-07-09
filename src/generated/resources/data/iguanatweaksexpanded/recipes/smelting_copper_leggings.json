@@ -4,7 +4,7 @@
   "cookingtime": 200,
   "experience": 0.0,
   "ingredient": {
-    "item": "iguanatweaksreborn:copper_helmet"
+    "item": "iguanatweaksreborn:copper_leggings"
   },
-  "result": "minecraft:iron_nugget"
+  "result": "minecraft:copper_ingot"
 }

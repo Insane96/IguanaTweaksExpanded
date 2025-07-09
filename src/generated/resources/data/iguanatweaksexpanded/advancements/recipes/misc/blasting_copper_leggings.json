@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "iguanatweaksreborn:copper_boots"
+              "iguanatweaksreborn:copper_leggings"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "iguanatweaksexpanded:smelting_chained_copper_boots"
+        "recipe": "iguanatweaksexpanded:blasting_copper_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "iguanatweaksexpanded:smelting_chained_copper_boots"
+      "iguanatweaksexpanded:blasting_copper_leggings"
     ]
   },
   "sends_telemetry_event": false
