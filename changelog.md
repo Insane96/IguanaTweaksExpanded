@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+### Additions
+* Tide's fishing rod has now the same enchantability as vanilla's
+
 ### Fixes
 * Copper armor smelt in furnace
 
