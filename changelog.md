@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.24.4
+### Fixes
+* Same as previous version but this time I've actually run data gen
+
 ## 1.24.3
 ### Fixes
 * Recycling copper armor giving iron nuggets
