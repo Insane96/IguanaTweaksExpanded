@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.24.3
+### Fixes
+* Recycling copper armor giving iron nuggets
+
 ## 1.24.2
 Requires InsaneLib 1.21.13
 ### Fixes

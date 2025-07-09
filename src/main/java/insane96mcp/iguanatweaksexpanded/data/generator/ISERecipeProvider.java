@@ -550,10 +550,10 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, CoalFire.ITEM_ORES, CoalFire.HELLISH_COAL.get(), 1.2f, 150, 0.3f);
 
         //<editor-fold desc="Recycle recipes">
-        recycleGear(writer, CopperEquipment.HELMET.get(), Items.IRON_NUGGET, 200, 6);
-        recycleGear(writer, CopperEquipment.CHESTPLATE.get(), Items.IRON_NUGGET, 200, 9);
-        recycleGear(writer, CopperEquipment.LEGGINGS.get(), Items.IRON_NUGGET, 200, 9);
-        recycleGear(writer, CopperEquipment.BOOTS.get(), Items.IRON_NUGGET, 200, 6);
+        recycleGear(writer, CopperEquipment.HELMET.get(), Items.COPPER_INGOT, 200, 5);
+        recycleGear(writer, CopperEquipment.CHESTPLATE.get(), Items.COPPER_INGOT, 200, 8);
+        recycleGear(writer, CopperEquipment.LEGGINGS.get(), Items.COPPER_INGOT, 200, 7);
+        recycleGear(writer, CopperEquipment.BOOTS.get(), Items.COPPER_INGOT, 200, 4);
         recycleGear(writer, Items.IRON_HELMET, Items.IRON_NUGGET, 200, 45);
         recycleGear(writer, Items.IRON_CHESTPLATE, Items.IRON_NUGGET, 200, 72);
         recycleGear(writer, Items.IRON_LEGGINGS, Items.IRON_NUGGET, 200, 63);
