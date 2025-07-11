@@ -9,6 +9,7 @@
 	"iguanatweaksexpanded.enchanting_table.already_known.max_lvl": "%s is already at max level",
 	"iguanatweaksexpanded.enchanting_table.currently": "(currently: %s)",
 	"iguanatweaksexpanded.enchanting_table.learned_enchantment": "Teached %s",
+	"iguanatweaksexpanded.enchanting_table.added_levels": "Added %s level of %s (now %s)",
 	"iguanatweaksexpanded.enchanting_table.was_lvl": "(was %s)",
 	"iguanatweaksexpanded.enchanting_table.no_valid_enchantments": "This enchanted book has no valid enchantments on it",
 	"iguanatweaksexpanded.has_pending_enchantments": "Has Pending Enchantments",

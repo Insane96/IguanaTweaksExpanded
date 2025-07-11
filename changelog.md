@@ -4,6 +4,9 @@
 ### Additions
 * Tide's fishing rod has now the same enchantability as vanilla's
 
+### Changes
+* You can now teach multiple levels of curses at once to an enchanting table
+
 ### Fixes
 * Copper armor smelt in furnace
 * Living flesh alloying recipe

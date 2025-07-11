@@ -9,6 +9,7 @@
 	"iguanatweaksexpanded.enchanting_table.already_known.max_lvl": "%s è già al livello massimo",
 	"iguanatweaksexpanded.enchanting_table.currently": "(attualmente: %s)",
 	"iguanatweaksexpanded.enchanting_table.learned_enchantment": "Insegnato %s",
+	"iguanatweaksexpanded.enchanting_table.added_levels": "Aggiunti %s livelli di %s (adesso %s)",
 	"iguanatweaksexpanded.enchanting_table.was_lvl": "(era %s)",
 	"iguanatweaksexpanded.enchanting_table.no_valid_enchantments": "Questo libro incantato non ha incantesimi validi",
 	"iguanatweaksexpanded.has_pending_enchantments": "Ha incantesimi in sospeso",

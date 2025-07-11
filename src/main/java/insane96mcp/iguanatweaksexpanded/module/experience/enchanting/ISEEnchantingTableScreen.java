@@ -136,13 +136,17 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
                         name = "_" + name;
                     return name;
                 }))
-                .forEach(enchantment ->
-                        enchantments.add(new EnchantmentInstance(enchantment, Math.min(enchantment.getMaxLevel(), this.learnedEnchantments.getOrDefault(enchantment, 0)))));
+                .forEach(enchantment -> {
+                    enchantments.add(new EnchantmentInstance(enchantment, this.learnedEnchantments.getOrDefault(enchantment, 0)));
+                });
         int topLeftCornerX = (this.width - this.imageWidth) / 2;
         int topLeftCornerY = (this.height - this.imageHeight) / 2;
         for (int i = 0; i < enchantments.size(); i++) {
             EnchantmentInstance instance = enchantments.get(i);
-            this.enchantmentEntries.add(new EnchantmentEntry(topLeftCornerX + LIST_X, topLeftCornerY + LIST_Y + (i * ENCH_ENTRY_H), instance.enchantment, instance.level));
+            int maxLvl = instance.level;
+            //if (EnchantingFeature.isConsumedOnEnchant(instance.enchantment))
+            //    maxLvl = 0;
+            this.enchantmentEntries.add(new EnchantmentEntry(topLeftCornerX + LIST_X, topLeftCornerY + LIST_Y + (i * ENCH_ENTRY_H), instance.enchantment, maxLvl));
         }
         List<EnchantmentInstance> pendingEnchantments = EnchantingFeature.getPendingEnchantments(stack);
         if (!pendingEnchantments.isEmpty()) {
@@ -478,8 +482,10 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 1, 0xDDDDDD);
             MutableComponent lvlTxt = Component.empty();
             if (this.lvl > 0) {
-                lvlTxt = Component.translatable("enchantment.level." + this.lvl);
-                if (this.lvl == this.enchantment.getMaxLevel() && ISEEnchantingTableScreen.this.shouldShowKnownEnchantments())
+                lvlTxt = Component.translatable("enchantment.level." + Math.min(10, this.lvl));
+                if (this.lvl == this.enchantment.getMaxLevel() && ISEEnchantingTableScreen.this.shouldShowKnownEnchantments() && !EnchantingFeature.isConsumedOnEnchant(this.enchantment))
+                    lvlTxt.withStyle(ChatFormatting.BLUE);
+                if (this.lvl > 10)
                     lvlTxt.withStyle(ChatFormatting.BLUE);
             }
             pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
@@ -511,7 +517,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         }
 
         public int getMaxLvl() {
-            int maxLvl = this.maxLvl == 0 ? this.enchantment.getMaxLevel() : this.maxLvl;
+            int maxLvl = Math.min(this.maxLvl, this.enchantment.getMaxLevel());
             if (this.enchantment.getMaxLevel() > 1
                     && ISEEnchantingTableScreen.this.isItemEmpowered()
                     && EnchantingFeature.canOverLevel(this.enchantment))
