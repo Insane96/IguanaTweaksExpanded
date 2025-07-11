@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.24.5
 ### Additions
 * Tide's fishing rod has now the same enchantability as vanilla's
 
