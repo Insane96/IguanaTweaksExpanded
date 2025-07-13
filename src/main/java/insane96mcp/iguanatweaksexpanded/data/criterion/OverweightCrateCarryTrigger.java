@@ -1,13 +1,13 @@
 package insane96mcp.iguanatweaksexpanded.data.criterion;
 
 import com.google.gson.JsonObject;
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
 public class OverweightCrateCarryTrigger extends SimpleCriterionTrigger<OverweightCrateCarryTrigger.TriggerInstance> {
-	static final ResourceLocation ID = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "overweight_crate_carry");
+	static final ResourceLocation ID = new ResourceLocation(InsaneSE.MOD_ID, "overweight_crate_carry");
 
 	@Override
 	protected TriggerInstance createInstance(JsonObject jsonObject, ContextAwarePredicate pPredicate, DeserializationContext context) {

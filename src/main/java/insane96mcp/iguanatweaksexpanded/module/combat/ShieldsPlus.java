@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.combat;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.insanelib.base.Feature;
@@ -19,6 +19,6 @@ public class ShieldsPlus extends Feature {
 
 	public ShieldsPlus(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		InsaneSurvivalExtra.addServerPack("shields", "IguanaTweaks Expanded Shields", () -> super.isEnabled() && !ISEDataPacks.disableAllDataPacks && shieldsPlusCompatDataPack && ModList.get().isLoaded("shieldsplus"));
+		InsaneSE.addServerPack("shields", "IguanaTweaks Expanded Shields", () -> super.isEnabled() && !ISEDataPacks.disableAllDataPacks && shieldsPlusCompatDataPack && ModList.get().isLoaded("shieldsplus"));
 	}
 }

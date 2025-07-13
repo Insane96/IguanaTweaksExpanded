@@ -2,7 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksreborn.world.item.DurabilityModifier;
 import insane96mcp.insanelib.InsaneLib;
 import net.minecraft.ChatFormatting;
@@ -30,8 +30,8 @@ import java.util.UUID;
 public class ForgeHammerItem extends TieredItem implements Vanishable, DurabilityModifier {
     protected static final UUID ENTITY_REACH_UUID = UUID.fromString("cdec6524-49a5-465a-a61c-f53c2e637c48");
 
-    public static final String FORGE_COOLDOWN_LANG = InsaneSurvivalExtra.MOD_ID + ".hammer_cooldown";
-    public static final String FORGE_DURABILITY_LANG = InsaneSurvivalExtra.MOD_ID + ".hammer_durability";
+    public static final String FORGE_COOLDOWN_LANG = InsaneSE.MOD_ID + ".hammer_cooldown";
+    public static final String FORGE_DURABILITY_LANG = InsaneSE.MOD_ID + ".hammer_durability";
 
     final int useCooldown;
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;

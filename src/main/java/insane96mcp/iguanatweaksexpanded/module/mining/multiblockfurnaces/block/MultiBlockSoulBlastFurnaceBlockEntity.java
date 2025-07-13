@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.inventory.MultiBlockSoulBlastFurnaceMenu;
 import net.minecraft.core.BlockPos;
@@ -18,7 +18,7 @@ public class MultiBlockSoulBlastFurnaceBlockEntity extends AbstractMultiBlockFur
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable(InsaneSurvivalExtra.MOD_ID + ".container.soul_blast_furnace");
+        return Component.translatable(InsaneSE.MOD_ID + ".container.soul_blast_furnace");
     }
 
     @Override

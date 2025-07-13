@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockBlastFurnaceBlock;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block.MultiBlockBlastFurnaceBlockEntity;
@@ -48,7 +48,7 @@ import java.util.Map;
 @Label(name = "Multi Block Furnaces", description = "Add new multi block furnaces")
 @LoadFeature(module = Modules.Ids.MINING)
 public class MultiBlockFurnaces extends Feature {
-	public static final String INVALID_FURNACE_LANG = InsaneSurvivalExtra.MOD_ID + ".invalid_blast_furnace";
+	public static final String INVALID_FURNACE_LANG = InsaneSE.MOD_ID + ".invalid_blast_furnace";
 
 	public static final SimpleBlockWithItem BLAST_FURNACE = SimpleBlockWithItem.register("blast_furnace", () -> new MultiBlockBlastFurnaceBlock(BlockBehaviour.Properties.copy(Blocks.BLAST_FURNACE)));
 	public static final RegistryObject<BlockEntityType<MultiBlockBlastFurnaceBlockEntity>> BLAST_FURNACE_BLOCK_ENTITY_TYPE = ISERegistries.BLOCK_ENTITY_TYPES.register("blast_furnace", () -> BlockEntityType.Builder.of(MultiBlockBlastFurnaceBlockEntity::new, BLAST_FURNACE.block().get()).build(null));
@@ -84,7 +84,7 @@ public class MultiBlockFurnaces extends Feature {
 
 	public MultiBlockFurnaces(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		InsaneSurvivalExtra.addServerPack("multi_block_blast_furnace", "IguanaTweaks Expanded Multi Block Blast Furnace", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && blastFurnaceDataPack);
+		InsaneSE.addServerPack("multi_block_blast_furnace", "IguanaTweaks Expanded Multi Block Blast Furnace", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && blastFurnaceDataPack);
 	}
 
 	@SubscribeEvent

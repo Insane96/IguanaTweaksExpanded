@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
@@ -86,7 +86,7 @@ public class Forging extends Feature {
 
 	public Forging(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		InsaneSurvivalExtra.addServerPack("forging_equipment", "IguanaTweaks Expanded Forging Equipment", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && forgingEquipment);
+		InsaneSE.addServerPack("forging_equipment", "IguanaTweaks Expanded Forging Equipment", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && forgingEquipment);
 	}
 
 	@SubscribeEvent
@@ -96,7 +96,7 @@ public class Forging extends Feature {
 				|| event.getEntity().level().isClientSide)
 			return;
 
-		event.getEntity().getPersistentData().putBoolean(InsaneSurvivalExtra.MOD_ID + "cancel_knockback", true);
+		event.getEntity().getPersistentData().putBoolean(InsaneSE.MOD_ID + "cancel_knockback", true);
 
 		float attackStrengthScale = 1f;
 		if (attacker instanceof Player player)
@@ -126,9 +126,9 @@ public class Forging extends Feature {
 
 	@SubscribeEvent
 	public void cancelKnockback(LivingKnockBackEvent event) {
-		if (event.getEntity().getPersistentData().getBoolean(InsaneSurvivalExtra.MOD_ID + "cancel_knockback")) {
+		if (event.getEntity().getPersistentData().getBoolean(InsaneSE.MOD_ID + "cancel_knockback")) {
 			event.setCanceled(true);
-			event.getEntity().getPersistentData().remove(InsaneSurvivalExtra.MOD_ID + "cancel_knockback");
+			event.getEntity().getPersistentData().remove(InsaneSE.MOD_ID + "cancel_knockback");
 		}
 	}
 }

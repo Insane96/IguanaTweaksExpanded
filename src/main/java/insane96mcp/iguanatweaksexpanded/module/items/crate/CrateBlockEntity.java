@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.crate;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -111,7 +111,7 @@ public class CrateBlockEntity extends RandomizableContainerBlockEntity implement
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable(InsaneSurvivalExtra.MOD_ID + ".container.crate");
+        return Component.translatable(InsaneSE.MOD_ID + ".container.crate");
     }
 
     @Override

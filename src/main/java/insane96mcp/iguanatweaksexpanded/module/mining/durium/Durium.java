@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.durium;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEBlockTagsProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
@@ -61,7 +61,7 @@ public class Durium extends Feature {
 	public static final RegistryObject<Item> AXE = ISERegistries.ITEMS.register("durium_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.1F, new Item.Properties()));
 	public static final RegistryObject<Item> HOE = ISERegistries.ITEMS.register("durium_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties()));
 
-	private static final ISEArmorMaterial ARMOR_MATERIAL = new ISEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "durium", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ISEArmorMaterial ARMOR_MATERIAL = new ISEArmorMaterial(InsaneSE.RESOURCE_PREFIX + "durium", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 2);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);
@@ -77,7 +77,7 @@ public class Durium extends Feature {
 
 	public Durium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		InsaneSurvivalExtra.addServerPack("durium", "Insane's Survival Extra Durium", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
+		InsaneSE.addServerPack("durium", "Insane's Survival Extra Durium", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	public static class ShieldsPlusIntegration {

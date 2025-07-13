@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.network.message.SendMultiBlockFurnaceGhostData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -42,7 +42,7 @@ public abstract class AbstractMultiBlockFurnace extends BaseEntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
-    public static final String MULTI_BLOCK_TOOLTIP = InsaneSurvivalExtra.MOD_ID + ".multi_block_structure";
+    public static final String MULTI_BLOCK_TOOLTIP = InsaneSE.MOD_ID + ".multi_block_structure";
 
     public AbstractMultiBlockFurnace(Properties pProperties) {
         super(pProperties);

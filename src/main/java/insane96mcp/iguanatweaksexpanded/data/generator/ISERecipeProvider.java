@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import com.teamabnormals.caverns_and_chasms.core.registry.CCItems;
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
@@ -76,7 +76,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         .define('r', Items.REDSTONE)
                         .unlockedBy("has_durium_ingot", has(Durium.INGOT.get()))
                         .save(writerConsumer))
-                .build(writer, ResourceLocation.fromNamespaceAndPath(InsaneSurvivalExtra.MOD_ID, "altimeter"));
+                .build(writer, ResourceLocation.fromNamespaceAndPath(InsaneSE.MOD_ID, "altimeter"));
 
         //Solarium ball and forging
         featureBoundRecipe(writer, "Solarium", Solarium.SOLARIUM_BALL.get(),
@@ -128,14 +128,14 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         .requires(Durium.BLOCK.item().get(), 1)
                         .unlockedBy("has_ingot", has(Durium.INGOT.get()))
                         .save(recipe),
-                ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "durium_ingot_from_block")
+                ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + "durium_ingot_from_block")
         );
         featureBoundRecipe(writer, "Durium",
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Durium.INGOT.get(), 1)
                         .requires(Durium.NUGGET.get(), 9)
                         .unlockedBy("has_nuggets", has(Durium.NUGGET.get()))
                         .save(recipe),
-                ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "durium_ingot_from_nuggets")
+                ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + "durium_ingot_from_nuggets")
         );
         featureBoundRecipe(writer, "Durium", Durium.NUGGET.get(),
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Durium.NUGGET.get(), 9)
@@ -249,14 +249,14 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         .requires(Quaron.BLOCK.block().get(), 1)
                         .unlockedBy("has_quaron", has(Quaron.INGOT.get()))
                         .save(recipe),
-                ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron_ingot_from_block")
+                ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + "quaron_ingot_from_block")
         );
         featureBoundRecipe(writer, "Quaron",
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.INGOT.get(), 1)
                         .requires(Quaron.NUGGET.get(), 9)
                         .unlockedBy("has_nuggets", has(Quaron.NUGGET.get()))
                         .save(recipe),
-                ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron_ingot_from_nuggets")
+                ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + "quaron_ingot_from_nuggets")
         );
         featureBoundRecipe(writer, "Quaron", Quaron.NUGGET.get(),
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Quaron.NUGGET.get(), 9)
@@ -302,7 +302,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
         //Soul Steel
         copySmithingTemplate(writer, SoulSteel.UPGRADE_SMITHING_TEMPLATE.get(), Items.NETHERRACK);
-        String modIdPrefix = InsaneSurvivalExtra.RESOURCE_PREFIX;
+        String modIdPrefix = InsaneSE.RESOURCE_PREFIX;
         List.of(
                 Map.entry(SoulSteel.AXE.get(),          Quaron.AXE.get()),
                 Map.entry(SoulSteel.PICKAXE.get(),      Quaron.PICKAXE.get()),
@@ -479,7 +479,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         200
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.HELMET.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_copper_helmet");
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "smelting_copper_helmet");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperEquipment.CHESTPLATE.get()),
                         RecipeCategory.MISC,
@@ -488,7 +488,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         200
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.CHESTPLATE.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_copper_chestplate");
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "smelting_copper_chestplate");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperEquipment.LEGGINGS.get()),
                         RecipeCategory.MISC,
@@ -497,7 +497,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         200
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.LEGGINGS.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_copper_leggings");
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "smelting_copper_leggings");
         SimpleCookingRecipeBuilder.smelting(
                         Ingredient.of(CopperEquipment.BOOTS.get()),
                         RecipeCategory.MISC,
@@ -506,7 +506,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         200
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.BOOTS.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "smelting_copper_boots");
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "smelting_copper_boots");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperEquipment.HELMET.get()),
                         RecipeCategory.MISC,
@@ -515,7 +515,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.HELMET.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_copper_helmet");
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "blasting_copper_helmet");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperEquipment.CHESTPLATE.get()),
                         RecipeCategory.MISC,
@@ -524,7 +524,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.CHESTPLATE.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_copper_chestplate");
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "blasting_copper_chestplate");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperEquipment.LEGGINGS.get()),
                         RecipeCategory.MISC,
@@ -533,7 +533,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.LEGGINGS.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_copper_leggings");
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "blasting_copper_leggings");
         SimpleCookingRecipeBuilder.blasting(
                         Ingredient.of(CopperEquipment.BOOTS.get()),
                         RecipeCategory.MISC,
@@ -542,7 +542,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         100
                 )
                 .unlockedBy("has_copper_armor", has(CopperEquipment.BOOTS.get()))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blasting_copper_boots");
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "blasting_copper_boots");
         //</editor-fold>
 
         //Hellish Coal
@@ -713,7 +713,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                                 Forging.SOUL_STEEL_HAMMER.get()
                         )
                         .unlocks("has_material", has(SoulSteel.INGOT.get()))
-                        .save(recipe, ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_hammer"))
+                        .save(recipe, ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + "soul_steel_hammer"))
         );
         featureBoundRecipe(writer, "Forging", Forging.NETHERITE_HAMMER.get(),
                 recipe -> SmithingTransformRecipeBuilder.smithing(
@@ -724,7 +724,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                                 Forging.NETHERITE_HAMMER.get()
                         )
                         .unlocks("has_material", has(Items.NETHERITE_INGOT))
-                        .save(recipe, ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + "netherite_hammer"))
+                        .save(recipe, ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + "netherite_hammer"))
         );
 
         //Recycle Forge Hammers
@@ -792,13 +792,13 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
     private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, ItemLike material, Color color) {
         featureBoundRecipe(writer, "Repair kits",
-                forgeRecipeBuilder(material, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4), ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_repair_kit")
+                forgeRecipeBuilder(material, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4), ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_repair_kit")
         );
     }
 
     private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, ItemLike material, Color color) {
         featureBoundRecipe(writer, "Repair kits",
-                forgeRecipeBuilder(materialTag, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4), ResourceLocation.parse(InsaneSurvivalExtra.RESOURCE_PREFIX + ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_repair_kit")
+                forgeRecipeBuilder(materialTag, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4), ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_repair_kit")
         );
     }
 
@@ -837,7 +837,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .outputIncrease(outputIncrease)
                 .group(resultPath)
                 .unlockedBy("has_" + itemTag.location().getPath(), has(itemTag))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
     }
 
     public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {
@@ -853,7 +853,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .outputIncrease(outputIncrease)
                 .group(resultPath)
                 .unlockedBy("has_" + itemPath, has(item))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemPath);
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemPath);
     }
 
     public static void addBlastingAlloy(Consumer<FinishedRecipe> writer, NonNullList<Ingredient> items, Item unlockingItem, Item result, float experience, int cookingTime) {
@@ -875,7 +875,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .experience(experience)
                 .outputIncrease(outputIncrease)
                 .unlockedBy("has_" + itemPath, has(unlockingItem))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/alloy/" + resultPath);
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "blast_furnace/alloy/" + resultPath);
     }
 
     public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
@@ -894,7 +894,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .outputIncrease(outputIncrease)
                 .group(resultPath)
                 .unlockedBy("has_" + itemTag.location().getPath(), has(itemTag))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
     }
 
     public static void addSoulBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {
@@ -910,7 +910,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .outputIncrease(outputIncrease)
                 .group(resultPath)
                 .unlockedBy("has_" + itemPath, has(item))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemPath);
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "soul_blast_furnace/" + resultPath + "_from_" + itemPath);
     }
 
     public static void addSoulBlastingAlloy(Consumer<FinishedRecipe> writer, NonNullList<Ingredient> items, Item unlockingItem, Item result, float experience, int cookingTime) {
@@ -932,7 +932,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .experience(experience)
                 .outputIncrease(outputIncrease)
                 .unlockedBy("has_" + itemPath, has(unlockingItem))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/alloy/" + resultPath);
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "soul_blast_furnace/alloy/" + resultPath);
     }
 
     private void recycleGear(Consumer<FinishedRecipe> writer, Item itemToRecycle, Item output, int baseCookingTime, int amountAtMaxDurability) {
@@ -944,7 +944,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .recycle(amountAtMaxDurability, 0.6f)
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
                 .unlockedBy("has_armor", has(itemToRecycle))
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace/recycle/" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "blast_furnace/recycle/" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
 
         MultiItemSmeltingRecipeBuilder.soulBlasting(
                         NonNullList.of(Ingredient.EMPTY, Ingredient.of(itemToRecycle)),
@@ -954,7 +954,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .recycle(amountAtMaxDurability)
                 .unlockedBy("has_armor", has(itemToRecycle))
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())
-                .save(writer, InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace/recycle/" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
+                .save(writer, InsaneSE.RESOURCE_PREFIX + "soul_blast_furnace/recycle/" + ForgeRegistries.ITEMS.getKey(itemToRecycle).getPath());
     }
 
     private void hammerCraftingRecipe(Consumer<FinishedRecipe> writer, Item hammer, Item material) {

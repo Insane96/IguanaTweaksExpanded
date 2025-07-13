@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.block;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEBlockTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import net.minecraft.core.BlockPos;
@@ -117,7 +117,7 @@ public class MultiBlockSoulBlastFurnaceBlock extends AbstractMultiBlockFurnace {
 
     @Override
     protected String getInvalidStructureLang() {
-        return InsaneSurvivalExtra.MOD_ID + ".soul_blast_furnace_invalid_structure";
+        return InsaneSE.MOD_ID + ".soul_blast_furnace_invalid_structure";
     }
 
     /**

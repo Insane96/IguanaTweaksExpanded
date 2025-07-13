@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.integration.Allurement;
@@ -129,6 +129,6 @@ public class ISEItemTagsProvider extends ItemTagsProvider {
     }
 
     public static TagKey<Item> create(String tagName) {
-        return TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, tagName));
+        return TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSE.MOD_ID, tagName));
     }
 }

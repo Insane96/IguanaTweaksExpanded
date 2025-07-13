@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
@@ -38,11 +38,11 @@ public class SoulSteel extends Feature {
 
 	private static final ChatFormatting TITLE_FORMAT = ChatFormatting.GRAY;
 	private static final ChatFormatting DESCRIPTION_FORMAT = ChatFormatting.BLUE;
-	private static final Component UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel_upgrade"))).withStyle(TITLE_FORMAT);
-	private static final Component UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "smithing_template.soul_steel_upgrade.applies_to"))).withStyle(DESCRIPTION_FORMAT);
-	private static final Component UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "smithing_template.soul_steel_upgrade.ingredients"))).withStyle(DESCRIPTION_FORMAT);
-	private static final Component UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "smithing_template.soul_steel_upgrade.base_slot_description")));
-	private static final Component UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "smithing_template.soul_steel_upgrade.additions_slot_description")));
+	private static final Component UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "soul_steel_upgrade"))).withStyle(TITLE_FORMAT);
+	private static final Component UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "smithing_template.soul_steel_upgrade.applies_to"))).withStyle(DESCRIPTION_FORMAT);
+	private static final Component UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "smithing_template.soul_steel_upgrade.ingredients"))).withStyle(DESCRIPTION_FORMAT);
+	private static final Component UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "smithing_template.soul_steel_upgrade.base_slot_description")));
+	private static final Component UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "smithing_template.soul_steel_upgrade.additions_slot_description")));
 	private static final ResourceLocation EMPTY_SLOT_HELMET = new ResourceLocation("item/empty_armor_slot_helmet");
 	private static final ResourceLocation EMPTY_SLOT_CHESTPLATE = new ResourceLocation("item/empty_armor_slot_chestplate");
 	private static final ResourceLocation EMPTY_SLOT_LEGGINGS = new ResourceLocation("item/empty_armor_slot_leggings");
@@ -63,7 +63,7 @@ public class SoulSteel extends Feature {
 	public static final RegistryObject<Item> AXE = ISERegistries.ITEMS.register("soul_steel_axe", () -> new AxeItem(ITEM_TIER, 5.0F, -3.1F, new Item.Properties()));
 	public static final RegistryObject<Item> HOE = ISERegistries.ITEMS.register("soul_steel_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties()));
 
-	private static final ISEArmorMaterial ARMOR_MATERIAL = new ISEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_steel", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ISEArmorMaterial ARMOR_MATERIAL = new ISEArmorMaterial(InsaneSE.RESOURCE_PREFIX + "soul_steel", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 4);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);
@@ -78,7 +78,7 @@ public class SoulSteel extends Feature {
 
 	public SoulSteel(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		InsaneSurvivalExtra.addServerPack("soul_steel", "Insane's Survival Extra Soul Steel", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
+		InsaneSE.addServerPack("soul_steel", "Insane's Survival Extra Soul Steel", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	private static List<ResourceLocation> createUpgradeIconList() {

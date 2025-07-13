@@ -8,7 +8,7 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
@@ -40,19 +40,19 @@ import java.util.List;
 
 @EmiEntrypoint
 public class ISEEmiPlugin implements EmiPlugin {
-	public static final ResourceLocation FORGE_CATEGORY_ID = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "forging");
+	public static final ResourceLocation FORGE_CATEGORY_ID = new ResourceLocation(InsaneSE.MOD_ID, "forging");
 	public static final EmiStack FORGE_WORKSTATION = EmiStack.of(Forging.FORGE.item().get());
 	public static final EmiRecipeCategory FORGE_RECIPE_CATEGORY = new EmiRecipeCategory(FORGE_CATEGORY_ID, FORGE_WORKSTATION);
 
-	public static final ResourceLocation FLETCHING_CATEGORY_ID = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "fletching");
+	public static final ResourceLocation FLETCHING_CATEGORY_ID = new ResourceLocation(InsaneSE.MOD_ID, "fletching");
 	public static final EmiStack FLETCHING_WORKSTATION = EmiStack.of(Fletching.FLETCHING_TABLE.item().get());
 	public static final EmiRecipeCategory FLETCHING_RECIPE_CATEGORY = new EmiRecipeCategory(FLETCHING_CATEGORY_ID, FLETCHING_WORKSTATION);
 
-	public static final ResourceLocation BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "blast_furnace");
+	public static final ResourceLocation BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(InsaneSE.MOD_ID, "blast_furnace");
 	public static final EmiStack BLAST_FURNACE_WORKSTATION = EmiStack.of(MultiBlockFurnaces.BLAST_FURNACE.item().get());
 	public static final EmiRecipeCategory BLAST_FURNACE_CATEGORY = new EmiRecipeCategory(BLAST_FURNACE_CATEGORY_ID, BLAST_FURNACE_WORKSTATION);
 
-	public static final ResourceLocation SOUL_BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "soul_blast_furnace");
+	public static final ResourceLocation SOUL_BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(InsaneSE.MOD_ID, "soul_blast_furnace");
 	public static final EmiStack SOUL_BLAST_FURNACE_WORKSTATION = EmiStack.of(MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
 	public static final EmiRecipeCategory SOUL_BLAST_FURNACE_CATEGORY = new EmiRecipeCategory(SOUL_BLAST_FURNACE_CATEGORY_ID, SOUL_BLAST_FURNACE_WORKSTATION);
 
@@ -115,7 +115,7 @@ public class ISEEmiPlugin implements EmiPlugin {
 					List.of(emiIngredientOf(Items.GRINDSTONE)),
 					List.of(Component.translatable(key, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f)),
 							Component.translatable(key2, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f))),
-					new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "info_grindstone")));
+					new ResourceLocation(InsaneSE.MOD_ID, "info_grindstone")));
 
 			registry.addRecipe(createSimpleInfo(EnchantingFeature.CLEANSED_LAPIS.get(), "info_cleansed_lapis", Component.translatable("emi.info.iguanatweaksexpanded.cleansed_lapis")));
 			registry.addRecipe(createSimpleInfo(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), "info_enchanted_cleansed_lapis", Component.translatable("emi.info.iguanatweaksexpanded.enchanted_cleansed_lapis")));
@@ -131,10 +131,10 @@ public class ISEEmiPlugin implements EmiPlugin {
 			if (EnchantingFeature.enableCleansedLapis)
 			{
 				output.setTag(tag);
-				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "cleansed_lapis_use"), Items.DIAMOND_SWORD, EnchantingFeature.CLEANSED_LAPIS.get(), output));
+				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSE.MOD_ID, "cleansed_lapis_use"), Items.DIAMOND_SWORD, EnchantingFeature.CLEANSED_LAPIS.get(), output));
 			}
 			if (EnchantingFeature.enableEnchantedCleansedLapis) {
-				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchanted_cleansed_lapis_use"), EnchantingFeature.CLEANSED_LAPIS.get(), Items.EXPERIENCE_BOTTLE, new ItemStack(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get())));
+				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSE.MOD_ID, "enchanted_cleansed_lapis_use"), EnchantingFeature.CLEANSED_LAPIS.get(), Items.EXPERIENCE_BOTTLE, new ItemStack(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get())));
 				tag = new CompoundTag();
 				lore = new ListTag();
 				lore.add(StringTag.valueOf(""));
@@ -144,7 +144,7 @@ public class ISEEmiPlugin implements EmiPlugin {
 				tag.put("display", display);
 				output = new ItemStack(Items.DIAMOND_PICKAXE, 1);
 				output.setTag(tag);
-				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchanted_cleansed_lapis_use"), Items.DIAMOND_PICKAXE, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), output));
+				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSE.MOD_ID, "enchanted_cleansed_lapis_use"), Items.DIAMOND_PICKAXE, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), output));
 			}
 
 			if (EnchantingFeature.enchantingTableRequiresLearning) {
@@ -193,11 +193,11 @@ public class ISEEmiPlugin implements EmiPlugin {
 	}
 
 	public EmiInfoRecipe createSimpleInfo(Item item, String id, Component component) {
-		return new EmiInfoRecipe(List.of(emiIngredientOf(item)), List.of(component), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, id));
+		return new EmiInfoRecipe(List.of(emiIngredientOf(item)), List.of(component), new ResourceLocation(InsaneSE.MOD_ID, id));
 	}
 
 	public EmiInfoRecipe createSimpleInfo(TagKey<Item> itemTag, String id, Component component) {
-		return new EmiInfoRecipe(List.of(emiIngredientOf(itemTag)), List.of(component), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, id));
+		return new EmiInfoRecipe(List.of(emiIngredientOf(itemTag)), List.of(component), new ResourceLocation(InsaneSE.MOD_ID, id));
 	}
 
 	public static EmiIngredient emiIngredientOf(Item item) {

@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableEnchantments;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -34,7 +34,7 @@ import java.util.*;
 import static insane96mcp.insanelib.InsaneLib.ONE_DECIMAL_FORMATTER;
 
 public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchantingTableMenu> {
-    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "textures/gui/container/enchanting_table.png");
+    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(InsaneSE.MOD_ID, "textures/gui/container/enchanting_table.png");
 
     static final int CATALYST_SLOT_X = 38;
     static final int CATALYST_SLOT_Y = 19;

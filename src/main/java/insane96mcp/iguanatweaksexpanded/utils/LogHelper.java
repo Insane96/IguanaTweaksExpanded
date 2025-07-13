@@ -1,21 +1,21 @@
 package insane96mcp.iguanatweaksexpanded.utils;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 
 public class LogHelper {
 	public static void error(String format, Object... args) {
-		InsaneSurvivalExtra.LOGGER.error(String.format(format, args));
+		InsaneSE.LOGGER.error(String.format(format, args));
 	}
 
 	public static void warn(String format, Object... args) {
-		InsaneSurvivalExtra.LOGGER.warn(String.format(format, args));
+		InsaneSE.LOGGER.warn(String.format(format, args));
 	}
 
 	public static void info(String format, Object... args) {
-		InsaneSurvivalExtra.LOGGER.info(String.format(format, args));
+		InsaneSE.LOGGER.info(String.format(format, args));
 	}
 
 	public static void debug(String format, Object... args) {
-		InsaneSurvivalExtra.LOGGER.debug(String.format(format, args));
+		InsaneSE.LOGGER.debug(String.format(format, args));
 	}
 }

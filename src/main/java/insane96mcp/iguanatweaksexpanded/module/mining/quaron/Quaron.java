@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.quaron;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.integration.ShieldsPlusRegistration;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
@@ -40,7 +40,7 @@ import java.util.EnumMap;
 @Label(name = "Quaron", description = "Add Quaron, a new metal made by alloying Iron and Amethyst. Disabling this will disable ore generation and items in the creative inventory.")
 @LoadFeature(module = Modules.Ids.MINING)
 public class Quaron extends Feature {
-	public static final TagKey<Item> TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/tools/quaron"));
+	public static final TagKey<Item> TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSE.MOD_ID, "equipment/hand/tools/quaron"));
 
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("quaron_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 7.0F).sound(SoundType.METAL)));
 
@@ -56,7 +56,7 @@ public class Quaron extends Feature {
 	public static final RegistryObject<Item> AXE = ISERegistries.ITEMS.register("quaron_axe", () -> new AxeItem(ITEM_TIER, 6.0F, -3.1F, new Item.Properties()));
 	public static final RegistryObject<Item> HOE = ISERegistries.ITEMS.register("quaron_hoe", () -> new HoeItem(ITEM_TIER, -2, -1.0F, new Item.Properties()));
 
-	private static final ISEArmorMaterial ARMOR_MATERIAL = new ISEArmorMaterial(InsaneSurvivalExtra.RESOURCE_PREFIX + "quaron", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
+	private static final ISEArmorMaterial ARMOR_MATERIAL = new ISEArmorMaterial(InsaneSE.RESOURCE_PREFIX + "quaron", 20, Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266652_) -> {
 		p_266652_.put(ArmorItem.Type.BOOTS, 2);
 		p_266652_.put(ArmorItem.Type.LEGGINGS, 5);
 		p_266652_.put(ArmorItem.Type.CHESTPLATE, 6);
@@ -73,7 +73,7 @@ public class Quaron extends Feature {
 
 	public Quaron(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		InsaneSurvivalExtra.addServerPack("quaron", "Insane's Survival Extra Quaron", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
+		InsaneSE.addServerPack("quaron", "Insane's Survival Extra Quaron", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)

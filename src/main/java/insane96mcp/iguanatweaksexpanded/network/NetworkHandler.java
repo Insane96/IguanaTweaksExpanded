@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.network;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.network.message.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkRegistry;
@@ -9,7 +9,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 public class NetworkHandler {
 	private static final String PROTOCOL_VERSION = Integer.toString(5);
 	public static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
-			.named(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "network_channel"))
+			.named(new ResourceLocation(InsaneSE.MOD_ID, "network_channel"))
 			.clientAcceptedVersions(s -> true)
 			.serverAcceptedVersions(s -> true)
 			.networkProtocolVersion(() -> PROTOCOL_VERSION)

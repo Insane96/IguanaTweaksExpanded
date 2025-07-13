@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.insanelib.base.Feature;
 import net.minecraft.world.damagesource.DamageSource;
@@ -13,7 +13,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class Vindication extends Enchantment {
 
-    public static final String STACKED_DAMAGE = InsaneSurvivalExtra.RESOURCE_PREFIX + "stacked_vindication_damage";
+    public static final String STACKED_DAMAGE = InsaneSE.RESOURCE_PREFIX + "stacked_vindication_damage";
 
     public Vindication() {
         super(Rarity.RARE, EnchantmentCategory.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});

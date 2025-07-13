@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.inventory;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
 import net.minecraft.world.Container;
@@ -20,7 +20,7 @@ public class MultiBlockBlastFurnaceMenu extends AbstractMultiBlockFurnaceMenu {
     }
 
     public MultiBlockBlastFurnaceMenu(int pContainerId, Inventory pPlayerInventory, Container pBlastFurnaceContainer, ContainerData pBlastFurnaceData) {
-        super(MultiBlockFurnaces.BLAST_FURNACE_MENU_TYPE.get(), MultiBlockFurnaces.BLASTING_RECIPE_TYPE.get(), InsaneSurvivalExtra.MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE, pContainerId, pPlayerInventory, pBlastFurnaceContainer, pBlastFurnaceData, List.of(
+        super(MultiBlockFurnaces.BLAST_FURNACE_MENU_TYPE.get(), MultiBlockFurnaces.BLASTING_RECIPE_TYPE.get(), InsaneSE.MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE, pContainerId, pPlayerInventory, pBlastFurnaceContainer, pBlastFurnaceData, List.of(
                 new Slot(pBlastFurnaceContainer, 0, 51, 26),
                 new Slot(pBlastFurnaceContainer, 1, 69, 26),
                 new Slot(pBlastFurnaceContainer, 2, 61, 44),

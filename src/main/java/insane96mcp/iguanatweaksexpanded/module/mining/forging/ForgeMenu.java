@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -36,7 +36,7 @@ public class ForgeMenu extends RecipeBookMenu<Container> {
     public ForgeMenu(int pContainerId, Inventory pPlayerInventory, Container pContainer, ContainerData pData) {
         super(Forging.FORGE_MENU_TYPE.get(), pContainerId);
         this.recipeType = Forging.FORGE_RECIPE_TYPE.get();
-        this.recipeBookType = InsaneSurvivalExtra.FORGING_RECIPE_BOOK_TYPE;
+        this.recipeBookType = InsaneSE.FORGING_RECIPE_BOOK_TYPE;
         checkContainerSize(pContainer, SLOT_COUNT);
         checkContainerDataCount(pData, DATA_COUNT);
         this.container = pContainer;

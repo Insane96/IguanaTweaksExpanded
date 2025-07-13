@@ -25,6 +25,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.inventory.RecipeBookType;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -47,18 +48,18 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BooleanSupplier;
 
 @Mod("iguanatweaksexpanded")
-public class InsaneSurvivalExtra
+public class InsaneSE
 {
 	public static final String MOD_ID = "iguanatweaksexpanded";
 	public static final String RESOURCE_PREFIX = MOD_ID + ":";
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public static final RecipeBookType MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "multi_item_blasting");
-    public static final RecipeBookType MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "multi_item_soul_blasting");
-    public static final RecipeBookType FORGING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "forging");
-    public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "fletching");
+    public static final RecipeBookType MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSE.RESOURCE_PREFIX + "multi_item_blasting");
+    public static final RecipeBookType MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSE.RESOURCE_PREFIX + "multi_item_soul_blasting");
+    public static final RecipeBookType FORGING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSE.RESOURCE_PREFIX + "forging");
+    public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSE.RESOURCE_PREFIX + "fletching");
 
-    public InsaneSurvivalExtra(FMLJavaModLoadingContext context) {
+    public InsaneSE(FMLJavaModLoadingContext context) {
         context.registerConfig(ModConfig.Type.COMMON, ISECommonConfig.CONFIG_SPEC, InsaneSO.NEW_MOD_ID + "/expanded-common.toml");
         MinecraftForge.EVENT_BUS.register(this);
         IEventBus modEventBus = context.getModEventBus();
@@ -108,14 +109,14 @@ public class InsaneSurvivalExtra
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         generator.addProvider(event.includeServer(), new ISERecipeProvider(generator.getPackOutput()));
-        generator.addProvider(event.includeServer(), new ISEGlobalLootModifierProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID));
-        ISEBlockTagsProvider blockTags = new ISEBlockTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSurvivalExtra.MOD_ID, existingFileHelper);
+        generator.addProvider(event.includeServer(), new ISEGlobalLootModifierProvider(generator.getPackOutput(), InsaneSE.MOD_ID));
+        ISEBlockTagsProvider blockTags = new ISEBlockTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSE.MOD_ID, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new ISEItemTagsProvider(generator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ISEDamageTypeTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSurvivalExtra.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ISEBlockStatesProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ISEBlockModelsProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
-        generator.addProvider(event.includeClient(), new ISEItemModelsProvider(generator.getPackOutput(), InsaneSurvivalExtra.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ISEItemTagsProvider(generator.getPackOutput(), lookupProvider, blockTags.contentsGetter(), InsaneSE.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ISEDamageTypeTagsProvider(generator.getPackOutput(), lookupProvider, InsaneSE.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ISEBlockStatesProvider(generator.getPackOutput(), InsaneSE.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ISEBlockModelsProvider(generator.getPackOutput(), InsaneSE.MOD_ID, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ISEItemModelsProvider(generator.getPackOutput(), InsaneSE.MOD_ID, existingFileHelper));
     }
 
     @SubscribeEvent

@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.items.solarium;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.integration.BuzzierBeesIntegration;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.item.*;
@@ -54,8 +54,8 @@ public class Solarium extends Feature {
 	public static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("c9c18638-6505-4544-9871-6397916fd0b7");
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("435317e9-0146-4f1b-bc21-67f466ee5f9c");
 
-	public static final TagKey<Item> SOLARIUM_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/solarium"));
-	public static final TagKey<Item> SOLARIUM_HAND_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "equipment/hand/solarium"));
+	public static final TagKey<Item> SOLARIUM_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSE.MOD_ID, "equipment/solarium"));
+	public static final TagKey<Item> SOLARIUM_HAND_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSE.MOD_ID, "equipment/hand/solarium"));
 
 	public static final SimpleBlockWithItem SOLIUM_MOSS = SimpleBlockWithItem.register("solium_moss", () -> new SoliumMossBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_YELLOW).pushReaction(PushReaction.DESTROY).noCollission().strength(0.4F).sound(SoundType.GLOW_LICHEN).lightLevel(GlowLichenBlock.emission(9)).randomTicks()));
 	public static final RegistryObject<Item> SOLARIUM_BALL = ISERegistries.ITEMS.register("solarium_ball", () -> new Item(new Item.Properties()));
@@ -75,7 +75,7 @@ public class Solarium extends Feature {
 
 	public Solarium(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
-		InsaneSurvivalExtra.addServerPack("solarium", "Insane's Survival Extra Solarium", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
+		InsaneSE.addServerPack("solarium", "Insane's Survival Extra Solarium", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 	}
 
 	public static void healGear(ItemStack stack, Entity entity, Level level) {

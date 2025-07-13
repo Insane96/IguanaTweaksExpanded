@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -9,7 +9,7 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class BurstOfArrows extends Enchantment {
 
-    public static final String BURST = InsaneSurvivalExtra.RESOURCE_PREFIX + "burst";
+    public static final String BURST = InsaneSE.RESOURCE_PREFIX + "burst";
 
     public BurstOfArrows() {
         super(Rarity.VERY_RARE, EnchantmentCategory.CROSSBOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});

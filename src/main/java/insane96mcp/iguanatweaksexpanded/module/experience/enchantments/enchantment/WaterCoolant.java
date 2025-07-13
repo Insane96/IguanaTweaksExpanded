@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.enchantment.damage.BonusDamageEnchantment;
 import insane96mcp.insanelib.base.Feature;
@@ -14,7 +14,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 
 public class WaterCoolant extends BonusDamageEnchantment {
-    public static final TagKey<EntityType<?>> AFFECTED_BY_WATER_COOLANT = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchantments/water_coolant"));
+    public static final TagKey<EntityType<?>> AFFECTED_BY_WATER_COOLANT = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(InsaneSE.MOD_ID, "enchantments/water_coolant"));
     public WaterCoolant() {
         super(Rarity.UNCOMMON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }

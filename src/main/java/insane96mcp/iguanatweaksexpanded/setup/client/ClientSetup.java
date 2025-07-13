@@ -1,7 +1,7 @@
 package insane96mcp.iguanatweaksexpanded.setup.client;
 
 import com.google.common.collect.ImmutableList;
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.FletchingScreen;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.ISEArrowRenderer;
@@ -315,13 +315,13 @@ public class ClientSetup {
 
     public static void init(FMLClientSetupEvent event) {
         event.enqueueWork(() ->
-                ItemProperties.register(Altimeter.ITEM.get(), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "y"), (stack, clientLevel, livingEntity, entityId) -> {
+                ItemProperties.register(Altimeter.ITEM.get(), new ResourceLocation(InsaneSE.MOD_ID, "y"), (stack, clientLevel, livingEntity, entityId) -> {
                     if (livingEntity == null)
                         return 96f;
                     return (float) livingEntity.getY();
                 }));
         event.enqueueWork(() ->
-                ItemProperties.register(Quaron.FISHING_ROD.get(), new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "cast"), (stack, clientLevel, livingEntity, entityId) -> {
+                ItemProperties.register(Quaron.FISHING_ROD.get(), new ResourceLocation(InsaneSE.MOD_ID, "cast"), (stack, clientLevel, livingEntity, entityId) -> {
                     if (livingEntity == null) {
                         return 0.0F;
                     } else {
@@ -366,11 +366,11 @@ public class ClientSetup {
         event.registerBlockEntityRenderer(EnchantingFeature.ENCHANTING_TABLE_BLOCK_ENTITY.get(), ISEEnchantingTableRenderer::new);
     }
 
-    static RecipeBookCategories BLAST_FURNACE_SEARCH = RecipeBookCategories.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace_search", new ItemStack(Items.COMPASS));
-    static RecipeBookCategories BLAST_FURNACE_MISC = RecipeBookCategories.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "blast_furnace_misc", new ItemStack(MultiBlockFurnaces.BLAST_FURNACE.item().get()));
+    static RecipeBookCategories BLAST_FURNACE_SEARCH = RecipeBookCategories.create(InsaneSE.RESOURCE_PREFIX + "blast_furnace_search", new ItemStack(Items.COMPASS));
+    static RecipeBookCategories BLAST_FURNACE_MISC = RecipeBookCategories.create(InsaneSE.RESOURCE_PREFIX + "blast_furnace_misc", new ItemStack(MultiBlockFurnaces.BLAST_FURNACE.item().get()));
     public static final List<RecipeBookCategories> BLAST_FURNACE_CATEGORIES = ImmutableList.of(BLAST_FURNACE_SEARCH, BLAST_FURNACE_MISC);
-    static RecipeBookCategories SOUL_BLAST_FURNACE_SEARCH = RecipeBookCategories.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace_search", new ItemStack(Items.COMPASS));
-    static RecipeBookCategories SOUL_BLAST_FURNACE_MISC = RecipeBookCategories.create(InsaneSurvivalExtra.RESOURCE_PREFIX + "soul_blast_furnace_misc", new ItemStack(MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get()));
+    static RecipeBookCategories SOUL_BLAST_FURNACE_SEARCH = RecipeBookCategories.create(InsaneSE.RESOURCE_PREFIX + "soul_blast_furnace_search", new ItemStack(Items.COMPASS));
+    static RecipeBookCategories SOUL_BLAST_FURNACE_MISC = RecipeBookCategories.create(InsaneSE.RESOURCE_PREFIX + "soul_blast_furnace_misc", new ItemStack(MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get()));
     public static final List<RecipeBookCategories> SOUL_BLAST_FURNACE_CATEGORIES = ImmutableList.of(SOUL_BLAST_FURNACE_SEARCH, SOUL_BLAST_FURNACE_MISC);
     static RecipeBookCategories FORGE_SEARCH = RecipeBookCategories.create("forge_search", new ItemStack(Items.COMPASS));
     static RecipeBookCategories FORGE_MISC = RecipeBookCategories.create("forge_misc", new ItemStack(Forging.FORGE.item().get()));
@@ -380,19 +380,19 @@ public class ClientSetup {
     public static final List<RecipeBookCategories> FLETCHING_CATEGORIES = ImmutableList.of(FLETCHING_SEARCH, FLETCHING_MISC);
 
     public static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
-        event.registerBookCategories(InsaneSurvivalExtra.MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE, BLAST_FURNACE_CATEGORIES);
+        event.registerBookCategories(InsaneSE.MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE, BLAST_FURNACE_CATEGORIES);
         event.registerAggregateCategory(BLAST_FURNACE_SEARCH, ImmutableList.of(BLAST_FURNACE_MISC));
         event.registerRecipeCategoryFinder(MultiBlockFurnaces.BLASTING_RECIPE_TYPE.get(), r -> BLAST_FURNACE_MISC);
 
-        event.registerBookCategories(InsaneSurvivalExtra.MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE, SOUL_BLAST_FURNACE_CATEGORIES);
+        event.registerBookCategories(InsaneSE.MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE, SOUL_BLAST_FURNACE_CATEGORIES);
         event.registerAggregateCategory(SOUL_BLAST_FURNACE_SEARCH, ImmutableList.of(SOUL_BLAST_FURNACE_MISC));
         event.registerRecipeCategoryFinder(MultiBlockFurnaces.SOUL_BLASTING_RECIPE_TYPE.get(), r -> SOUL_BLAST_FURNACE_MISC);
 
-        event.registerBookCategories(InsaneSurvivalExtra.FORGING_RECIPE_BOOK_TYPE, FORGE_CATEGORIES);
+        event.registerBookCategories(InsaneSE.FORGING_RECIPE_BOOK_TYPE, FORGE_CATEGORIES);
         event.registerAggregateCategory(FORGE_SEARCH, ImmutableList.of(FORGE_MISC));
         event.registerRecipeCategoryFinder(Forging.FORGE_RECIPE_TYPE.get(), r -> FORGE_MISC);
 
-        event.registerBookCategories(InsaneSurvivalExtra.FLETCHING_RECIPE_BOOK_TYPE, FLETCHING_CATEGORIES);
+        event.registerBookCategories(InsaneSE.FLETCHING_RECIPE_BOOK_TYPE, FLETCHING_CATEGORIES);
         event.registerAggregateCategory(FLETCHING_SEARCH, ImmutableList.of(FLETCHING_MISC));
         event.registerRecipeCategoryFinder(Fletching.FLETCHING_RECIPE_TYPE.get(), r -> FLETCHING_MISC);
     }

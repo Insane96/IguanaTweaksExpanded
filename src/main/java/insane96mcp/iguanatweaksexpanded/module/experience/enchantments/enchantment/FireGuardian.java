@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.insanelib.base.Feature;
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +15,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 public class FireGuardian extends Enchantment {
 
-    public static final String LAST_USED_FIRE_GUARDIAN = InsaneSurvivalExtra.MOD_ID + "last_used_fire_guardian";
+    public static final String LAST_USED_FIRE_GUARDIAN = InsaneSE.MOD_ID + "last_used_fire_guardian";
 
     public FireGuardian() {
         super(Rarity.RARE, EnchantmentCategory.ARMOR_CHEST, new EquipmentSlot[]{EquipmentSlot.CHEST});

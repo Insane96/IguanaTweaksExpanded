@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module;
 
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.setup.ISECommonConfig;
 import insane96mcp.insanelib.base.Module;
 import net.minecraftforge.fml.config.ModConfig;
@@ -32,15 +32,15 @@ public class Modules {
 	}
 
 	public static class Ids {
-		public static final String COMBAT = InsaneSurvivalExtra.RESOURCE_PREFIX + "combat";
-		public static final String EXPERIENCE = InsaneSurvivalExtra.RESOURCE_PREFIX + "experience";
-		public static final String HUNGER_HEALTH = InsaneSurvivalExtra.RESOURCE_PREFIX + "hunger_health";
-		public static final String ITEMS = InsaneSurvivalExtra.RESOURCE_PREFIX + "items";
-		public static final String MINING = InsaneSurvivalExtra.RESOURCE_PREFIX + "mining";
-		public static final String MISC = InsaneSurvivalExtra.RESOURCE_PREFIX + "misc";
-		public static final String MOBS = InsaneSurvivalExtra.RESOURCE_PREFIX + "mobs";
-		public static final String MOVEMENT = InsaneSurvivalExtra.RESOURCE_PREFIX + "movement";
-		public static final String SLEEP_RESPAWN = InsaneSurvivalExtra.RESOURCE_PREFIX + "sleep_respawn";
-		public static final String WORLD = InsaneSurvivalExtra.RESOURCE_PREFIX + "world";
+		public static final String COMBAT = InsaneSE.RESOURCE_PREFIX + "combat";
+		public static final String EXPERIENCE = InsaneSE.RESOURCE_PREFIX + "experience";
+		public static final String HUNGER_HEALTH = InsaneSE.RESOURCE_PREFIX + "hunger_health";
+		public static final String ITEMS = InsaneSE.RESOURCE_PREFIX + "items";
+		public static final String MINING = InsaneSE.RESOURCE_PREFIX + "mining";
+		public static final String MISC = InsaneSE.RESOURCE_PREFIX + "misc";
+		public static final String MOBS = InsaneSE.RESOURCE_PREFIX + "mobs";
+		public static final String MOVEMENT = InsaneSE.RESOURCE_PREFIX + "movement";
+		public static final String SLEEP_RESPAWN = InsaneSE.RESOURCE_PREFIX + "sleep_respawn";
+		public static final String WORLD = InsaneSE.RESOURCE_PREFIX + "world";
 	}
 }

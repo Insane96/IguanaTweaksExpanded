@@ -1,9 +1,8 @@
 package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import com.teamabnormals.allurement.core.AllurementConfig;
-import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
+import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
-import insane96mcp.iguanatweaksexpanded.item.ISEItem;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
 import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
@@ -282,16 +281,16 @@ public class EnchantingFeature extends JsonFeature {
 	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 
-        InsaneSurvivalExtra.addServerPack("new_enchanting_table", "IguanaTweaks Expanded New Enchanting Table", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
+        InsaneSE.addServerPack("new_enchanting_table", "IguanaTweaks Expanded New Enchanting Table", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 
-        addSyncType(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "enchantments_data")));
+        addSyncType(new ResourceLocation(InsaneSE.MOD_ID, "enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(InsaneSE.MOD_ID, "enchantments_data")));
 
-        addSyncType(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "over_level_enchantment_blacklist")));
+        addSyncType(new ResourceLocation(InsaneSE.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(InsaneSE.MOD_ID, "over_level_enchantment_blacklist")));
 
-        addSyncType(new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "starting_enchantments"), new SyncType(json -> loadAndReadJson(json, startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("starting_enchantments.json", startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE, true, new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "over_level_enchantment_blacklist")));
+        addSyncType(new ResourceLocation(InsaneSE.MOD_ID, "starting_enchantments"), new SyncType(json -> loadAndReadJson(json, startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("starting_enchantments.json", startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE, true, new ResourceLocation(InsaneSE.MOD_ID, "over_level_enchantment_blacklist")));
 	}
 
     @Override
@@ -713,7 +712,7 @@ public class EnchantingFeature extends JsonFeature {
 
     private static final String path = "experience/enchanting/";
     public static void addGlobalLoot(GlobalLootModifierProvider provider) {
-        provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
-        provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(InsaneSurvivalExtra.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
+        provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
+        provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
     }
 }
