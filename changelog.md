@@ -6,6 +6,9 @@
   * You can now purify items with bottle o' enchanting, which is the same as the old infusing, with increased enchantability and over level enchantments
 * Durium, Solarium, Keego, Quaron, Soul Steel, Repair Kits and Forging are now disabled by default
 
+### Fixes
+* Missing copper and flint shield enchantability
+
 ## 1.24.5
 ### Additions
 * Tide's fishing rod has now the same enchantability as vanilla's
