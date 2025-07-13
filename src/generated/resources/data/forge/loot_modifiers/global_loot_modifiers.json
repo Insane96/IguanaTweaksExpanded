@@ -1,8 +1,6 @@
 {
   "entries": [
-    "iguanatweaksexpanded:new_enchantments_feature/void_curse",
-    "iguanatweaksexpanded:experience/enchanting/blocks/lapis_ore",
-    "iguanatweaksexpanded:experience/enchanting/blocks/deepslate_lapis_ore"
+    "iguanatweaksexpanded:new_enchantments_feature/void_curse"
   ],
   "replace": false
 }

@@ -1,36 +1,35 @@
 {
 	"display": {
 		"icon": {
-			"item": "iguanatweaksexpanded:enchanted_cleansed_lapis"
+			"item": "minecraft:experience_bottle"
 		},
 		"title": {
-			"translate": "advancements.sr_story.enchanted_cleansed_lapis.title"
+			"translate": "advancements.sr_story.enchant_purify_item.title"
 		},
 		"description": {
-			"translate": "advancements.sr_story.enchanted_cleansed_lapis.description"
+			"translate": "advancements.sr_story.enchant_purify_item.description"
 		},
 		"frame": "task",
 		"show_toast": true,
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/cleansed_lapis",
+	"parent": "minecraft:story/enchant_item",
 	"criteria": {
-		"enchanted_cleansed_lapis": {
+		"purify_item": {
 			"trigger": "iguanatweaksreborn:anvil_repair",
 			"conditions": {
 				"input2": {
 					"items": [
-						"iguanatweaksexpanded:cleansed_lapis"
-					],
-					"nbt": "{Enchantments:[{}],display:{Name:'{\"text\":\"Enchanted Cleansed Lapis\"}'}}"
+						"minecraft:experience_bottle"
+					]
 				}
 			}
 		}
 	},
 	"requirements": [
 		[
-			"enchanted_cleansed_lapis"
+			"purify_item"
 		]
 	]
 }

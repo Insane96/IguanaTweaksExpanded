@@ -292,12 +292,6 @@ public class ClientSetup {
                 addAfter(event, Items.GOLD_INGOT, Quaron.INGOT.get());
                 addAfter(event, Items.GOLD_NUGGET, Quaron.NUGGET.get());
             }
-            if (Feature.isEnabled(EnchantingFeature.class)) {
-                if (EnchantingFeature.enableEnchantedCleansedLapis)
-                    addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
-                if (EnchantingFeature.enableCleansedLapis)
-                    addAfter(event, Items.LAPIS_LAZULI, EnchantingFeature.CLEANSED_LAPIS.get());
-            }
         }
     }
 

@@ -1,7 +1,6 @@
-// 1.20.1	2025-07-03T15:20:43.5462425	Item Models: iguanatweaksexpanded
+// 1.20.1	2025-07-13T10:20:15.5668154	Item Models: iguanatweaksexpanded
 9db8ff6b8f62a90066f9ec6f113f30579ef147b4 assets/iguanatweaksexpanded/models/item/blast_furnace.json
 daccfbcc039d84fe0a198d4b7ee234e1cfecb636 assets/iguanatweaksexpanded/models/item/clay_durium_ore.json
-584c0d36157b44e3127a22da9839923d18f3d613 assets/iguanatweaksexpanded/models/item/cleansed_lapis.json
 3b34491a825abd06d004523a6ac77227fe1802f8 assets/iguanatweaksexpanded/models/item/copper_hammer.json
 4ee09a5631cd6f565f5168e158e01289cd4deec8 assets/iguanatweaksexpanded/models/item/crate.json
 4b4100f8f985ffc4a8b38a58e26b109cdd563d8d assets/iguanatweaksexpanded/models/item/deepslate_durium_ore.json
@@ -66,7 +65,6 @@ c156530f4a003d1cc2fa15c11a30d1b1e7f4923c assets/iguanatweaksexpanded/models/item
 313300a16ea7cc01a54c0ec8099ea9bf05edd0ac assets/iguanatweaksexpanded/models/item/durium_shield.json
 c00034174291c67a98858852a134f42de0029f42 assets/iguanatweaksexpanded/models/item/durium_shovel.json
 eadf0eab6e652ea12c0dc892fcea6f428ed4d4db assets/iguanatweaksexpanded/models/item/durium_sword.json
-4626b64001898b730b585c3c57e61d06e6547982 assets/iguanatweaksexpanded/models/item/enchanted_cleansed_lapis.json
 3cc4e7f7f68f60d66c50db78e67238bad3b29f24 assets/iguanatweaksexpanded/models/item/explosive_arrow.json
 74112b46bb7fdf8efba852b908f612d3f00a79ee assets/iguanatweaksexpanded/models/item/explosive_barrel.json
 5a69be44adbb26de0616d130acbe9661bdd1775d assets/iguanatweaksexpanded/models/item/flint_block.json

@@ -22,7 +22,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKitItem;
 import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.base.Feature;
-import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
@@ -44,15 +43,15 @@ public class ISEEmiPlugin implements EmiPlugin {
 	public static final EmiStack FORGE_WORKSTATION = EmiStack.of(Forging.FORGE.item().get());
 	public static final EmiRecipeCategory FORGE_RECIPE_CATEGORY = new EmiRecipeCategory(FORGE_CATEGORY_ID, FORGE_WORKSTATION);
 
-	public static final ResourceLocation FLETCHING_CATEGORY_ID = new ResourceLocation(InsaneSE.MOD_ID, "fletching");
+	public static final ResourceLocation FLETCHING_CATEGORY_ID = InsaneSE.location("fletching");
 	public static final EmiStack FLETCHING_WORKSTATION = EmiStack.of(Fletching.FLETCHING_TABLE.item().get());
 	public static final EmiRecipeCategory FLETCHING_RECIPE_CATEGORY = new EmiRecipeCategory(FLETCHING_CATEGORY_ID, FLETCHING_WORKSTATION);
 
-	public static final ResourceLocation BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(InsaneSE.MOD_ID, "blast_furnace");
+	public static final ResourceLocation BLAST_FURNACE_CATEGORY_ID = InsaneSE.location("blast_furnace");
 	public static final EmiStack BLAST_FURNACE_WORKSTATION = EmiStack.of(MultiBlockFurnaces.BLAST_FURNACE.item().get());
 	public static final EmiRecipeCategory BLAST_FURNACE_CATEGORY = new EmiRecipeCategory(BLAST_FURNACE_CATEGORY_ID, BLAST_FURNACE_WORKSTATION);
 
-	public static final ResourceLocation SOUL_BLAST_FURNACE_CATEGORY_ID = new ResourceLocation(InsaneSE.MOD_ID, "soul_blast_furnace");
+	public static final ResourceLocation SOUL_BLAST_FURNACE_CATEGORY_ID = InsaneSE.location("soul_blast_furnace");
 	public static final EmiStack SOUL_BLAST_FURNACE_WORKSTATION = EmiStack.of(MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
 	public static final EmiRecipeCategory SOUL_BLAST_FURNACE_CATEGORY = new EmiRecipeCategory(SOUL_BLAST_FURNACE_CATEGORY_ID, SOUL_BLAST_FURNACE_WORKSTATION);
 
@@ -115,36 +114,20 @@ public class ISEEmiPlugin implements EmiPlugin {
 					List.of(emiIngredientOf(Items.GRINDSTONE)),
 					List.of(Component.translatable(key, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f)),
 							Component.translatable(key2, InsaneLib.ONE_DECIMAL_FORMATTER.format(EnchantingFeature.getGrindstonePercentageXpGiven() * 100f))),
-					new ResourceLocation(InsaneSE.MOD_ID, "info_grindstone")));
+					InsaneSE.location("info_grindstone")));
 
-			registry.addRecipe(createSimpleInfo(EnchantingFeature.CLEANSED_LAPIS.get(), "info_cleansed_lapis", Component.translatable("emi.info.iguanatweaksexpanded.cleansed_lapis")));
-			registry.addRecipe(createSimpleInfo(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), "info_enchanted_cleansed_lapis", Component.translatable("emi.info.iguanatweaksexpanded.enchanted_cleansed_lapis")));
-			CompoundTag tag = new CompoundTag();
-			ListTag lore = new ListTag();
-			lore.add(StringTag.valueOf(""));
-			lore.add(StringTag.valueOf(Component.Serializer.toJson(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE))));
-			CompoundTag display = new CompoundTag();
-			display.put("Lore", lore);
-			tag.put("display", display);
-
-			ItemStack output = new ItemStack(Items.DIAMOND_SWORD, 1);
-			if (EnchantingFeature.enableCleansedLapis)
-			{
-				output.setTag(tag);
-				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSE.MOD_ID, "cleansed_lapis_use"), Items.DIAMOND_SWORD, EnchantingFeature.CLEANSED_LAPIS.get(), output));
-			}
-			if (EnchantingFeature.enableEnchantedCleansedLapis) {
-				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSE.MOD_ID, "enchanted_cleansed_lapis_use"), EnchantingFeature.CLEANSED_LAPIS.get(), Items.EXPERIENCE_BOTTLE, new ItemStack(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get())));
-				tag = new CompoundTag();
-				lore = new ListTag();
+			if (EnchantingFeature.enablePurifyItems) {
+				CompoundTag tag = new CompoundTag();
+				ListTag lore = new ListTag();
 				lore.add(StringTag.valueOf(""));
-				lore.add(StringTag.valueOf(Component.Serializer.toJson(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE))));
-				display = new CompoundTag();
+				lore.add(StringTag.valueOf(Component.Serializer.toJson(EnchantingFeature.PURIFIED_COMPONENT)));
+				CompoundTag display = new CompoundTag();
 				display.put("Lore", lore);
 				tag.put("display", display);
-				output = new ItemStack(Items.DIAMOND_PICKAXE, 1);
+				ItemStack output = new ItemStack(Items.DIAMOND_PICKAXE, 1);
 				output.setTag(tag);
-				registry.addRecipe(new EmiAnvilRecipe(new ResourceLocation(InsaneSE.MOD_ID, "enchanted_cleansed_lapis_use"), Items.DIAMOND_PICKAXE, EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get(), output));
+				registry.addRecipe(new EmiAnvilRecipe(InsaneSE.location("enchant_purify_item"), Items.DIAMOND_PICKAXE, Items.EXPERIENCE_BOTTLE, output));
+				registry.addRecipe(createSimpleInfo(Items.EXPERIENCE_BOTTLE, EnchantingFeature.PURIFIED_COMPONENT, "purify_item"));
 			}
 
 			if (EnchantingFeature.enchantingTableRequiresLearning) {
@@ -180,24 +163,24 @@ public class ISEEmiPlugin implements EmiPlugin {
 			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.FLETCHING_TABLE));
 		}
 		if (Feature.isEnabled(Altimeter.class)) {
-			registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), "info_altimeter", Component.translatable("emi.info.iguanatweaksexpanded.altimeter")));
+			registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), Component.translatable("emi.info.iguanatweaksexpanded.altimeter"), "info_altimeter"));
 		}
 		if (Feature.isEnabled(Keego.class)) {
-			registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, "info_keego_mining", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
-			registry.addRecipe(createSimpleInfo(Keego.KEEGO_HAND_EQUIPMENT, "info_keego_attacking", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
-			registry.addRecipe(createSimpleInfo(Keego.KEEGO_ARMOR_EQUIPMENT, "info_keego_moving", Component.translatable("emi.info.iguanatweaksexpanded.keego")));
+			registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, Component.translatable("emi.info.iguanatweaksexpanded.keego"), "info_keego_mining"));
+			registry.addRecipe(createSimpleInfo(Keego.KEEGO_HAND_EQUIPMENT, Component.translatable("emi.info.iguanatweaksexpanded.keego"), "info_keego_attacking"));
+			registry.addRecipe(createSimpleInfo(Keego.KEEGO_ARMOR_EQUIPMENT, Component.translatable("emi.info.iguanatweaksexpanded.keego"), "info_keego_moving"));
 		}
 		if (Feature.isEnabled(RepairKits.class)) {
-			registry.addRecipe(createSimpleInfo(RepairKits.REPAIR_KIT.get(), "info_repair_kit", Component.translatable("emi.info.iguanatweaksexpanded.repair_kit")));
+			registry.addRecipe(createSimpleInfo(RepairKits.REPAIR_KIT.get(), Component.translatable("emi.info.iguanatweaksexpanded.repair_kit"), "info_repair_kit"));
 		}
 	}
 
-	public EmiInfoRecipe createSimpleInfo(Item item, String id, Component component) {
-		return new EmiInfoRecipe(List.of(emiIngredientOf(item)), List.of(component), new ResourceLocation(InsaneSE.MOD_ID, id));
+	public EmiInfoRecipe createSimpleInfo(Item item, Component component, String id) {
+		return new EmiInfoRecipe(List.of(emiIngredientOf(item)), List.of(component), InsaneSE.location(id));
 	}
 
-	public EmiInfoRecipe createSimpleInfo(TagKey<Item> itemTag, String id, Component component) {
-		return new EmiInfoRecipe(List.of(emiIngredientOf(itemTag)), List.of(component), new ResourceLocation(InsaneSE.MOD_ID, id));
+	public EmiInfoRecipe createSimpleInfo(TagKey<Item> itemTag, Component component, String id) {
+		return new EmiInfoRecipe(List.of(emiIngredientOf(itemTag)), List.of(component), InsaneSE.location(id));
 	}
 
 	public static EmiIngredient emiIngredientOf(Item item) {

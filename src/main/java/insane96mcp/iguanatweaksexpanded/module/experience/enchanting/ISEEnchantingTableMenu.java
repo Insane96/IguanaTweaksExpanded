@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableLearnedEnchantments;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableStatus;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
+import insane96mcp.insanelib.util.ModNBTData;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -113,15 +114,9 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
             enchantingPower = EnchantingFeature.enchantingTableMaxEnchantingPower;
         int baseTableEnchantability = EnchantingFeature.enchantingTableBaseEnchantability;
         double enchantabilityModifier = EnchantingFeature.enchantingTableEnchantabilityMultiplier;
-        if (stack.getTag() != null) {
-            if (stack.getTag().contains(EnchantingFeature.PURIFIED_ITEM)) {
-                enchantabilityModifier += EnchantingFeature.enchantingTablePurifiedEnchantabilityMultiplier;
-                baseTableEnchantability += EnchantingFeature.enchantingTablePurifiedEnchantabilityFlat;
-            }
-            if (stack.getTag().contains(EnchantingFeature.INFUSED_ITEM)) {
-                enchantabilityModifier += EnchantingFeature.enchantingTableInfusedBonusEnchantability;
-                baseTableEnchantability += EnchantingFeature.enchantingTableInfusedBonusEnchantabilityFlat;
-            }
+        if (stack.getTag() != null && ModNBTData.get(stack, EnchantingFeature.PURIFIED_ITEM, Boolean.class)) {
+            enchantabilityModifier += EnchantingFeature.enchantingTablePurifiedEnchantabilityMultiplier;
+            baseTableEnchantability += EnchantingFeature.enchantingTablePurifiedEnchantabilityFlat;
         }
         double ratio = (enchantingPower / EnchantingFeature.enchantingTableMaxEnchantingPower.floatValue());
         double maxCost = (EnchantmentsFeature.getEnchantmentValue(stack)) * enchantabilityModifier * ratio + baseTableEnchantability * ratio + EnchantingFeature.getCurseCost(stack);

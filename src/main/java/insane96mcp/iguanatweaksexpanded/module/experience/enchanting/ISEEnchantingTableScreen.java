@@ -14,7 +14,6 @@ import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -207,9 +206,8 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
                 });
     }
 
-    private boolean isItemEmpowered() {
-        CompoundTag tag = this.menu.getSlot(0).getItem().getTag();
-        return tag != null && tag.contains(EnchantingFeature.INFUSED_ITEM);
+    private boolean isItemPurified() {
+        return EnchantingFeature.isPurified(this.menu.getSlot(0).getItem());
     }
 
     private boolean hasEnchantment(Enchantment enchantment) {
@@ -519,7 +517,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         public int getMaxLvl() {
             int maxLvl = Math.min(this.maxLvl, this.enchantment.getMaxLevel());
             if (this.enchantment.getMaxLevel() > 1
-                    && ISEEnchantingTableScreen.this.isItemEmpowered()
+                    && ISEEnchantingTableScreen.this.isItemPurified()
                     && EnchantingFeature.canOverLevel(this.enchantment))
                 maxLvl++;
             return maxLvl;

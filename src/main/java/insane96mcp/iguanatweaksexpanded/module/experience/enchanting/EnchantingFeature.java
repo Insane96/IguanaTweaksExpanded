@@ -20,7 +20,7 @@ import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
 import insane96mcp.insanelib.data.IdTagMatcher;
 import insane96mcp.insanelib.data.IdTagValue;
-import insane96mcp.insanelib.data.lootmodifier.InjectLootTableModifier;
+import insane96mcp.insanelib.util.ModNBTData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -44,7 +44,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -66,10 +65,10 @@ public class EnchantingFeature extends JsonFeature {
 	public static final RegistryObject<BlockEntityType<ISEEnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ISERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(ISEEnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
     public static final RegistryObject<MenuType<ISEEnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ISERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(ISEEnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
 
-    public static final RegistryObject<Item> CLEANSED_LAPIS = ISERegistries.ITEMS.register("cleansed_lapis", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ENCHANTED_CLEANSED_LAPIS = ISERegistries.ITEMS.register("enchanted_cleansed_lapis", () -> new ISEItem(new Item.Properties(), true));
-    public static final String PURIFIED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "infused";
-    public static final String INFUSED_ITEM = InsaneSurvivalExtra.RESOURCE_PREFIX + "empowered";
+    public static final ResourceLocation PURIFIED_ITEM = InsaneSE.location("purified");
+    public static final Component PURIFIED_COMPONENT = Component.translatable(InsaneSE.lang("enchanting_purified")).withStyle(ChatFormatting.DARK_PURPLE);
+    public static final String EMPOWERED_ITEM_LEGACY = InsaneSE.RESOURCE_PREFIX + "empowered";
+
 
     @Config
     @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items (also applies to enchanted books).")
@@ -107,27 +106,19 @@ public class EnchantingFeature extends JsonFeature {
     public static Integer enchantingTableMaxEnchantingPower = 20;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not purified or infused")
-    public static Double enchantingTableEnchantabilityMultiplier = 0.6d;
+    public static Double enchantingTableEnchantabilityMultiplier = 1d;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Purified Enchantability multiplier", description = "Tool enchantability multiplier when purified (sums with Enchantability multiplier and Infused bonus Enchantability multiplier)")
-    public static Double enchantingTablePurifiedEnchantabilityMultiplier = 0.4d;
+    public static Double enchantingTablePurifiedEnchantabilityMultiplier = 1d;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Purified Enchantability flat", description = "Tool enchantability bonus when purified")
-    public static Integer enchantingTablePurifiedEnchantabilityFlat = 0;
+    public static Integer enchantingTablePurifiedEnchantabilityFlat = 1;
     @Config(min = 0)
-    @Label(name = "Enchanting Table.Infused bonus Enchantability multiplier", description = "Tool enchantability bonus percentage when infused (sums with Enchantability multiplier and Purified bonus Enchantability multiplier)")
-    public static Double enchantingTableInfusedBonusEnchantability = 0.2d;
-    @Config(min = 0)
-    @Label(name = "Enchanting Table.Infused bonus Enchantability flat", description = "Tool enchantability bonus when infused")
-    public static Integer enchantingTableInfusedBonusEnchantabilityFlat = 1;
-    @Config(min = 0)
-    @Label(name = "Enchanting Table.Base enchantability")
-    public static Integer enchantingTableBaseEnchantability = 1;
+    @Label(name = "Enchanting Table.Base enchantability", description = "Enchantability with no bookshelves")
+    public static Integer enchantingTableBaseEnchantability = 0;
 
-    @Config(description = "This doesn't disable cleansed lapis from dropping from lapis ore")
-    public static Boolean enableCleansedLapis = true;
     @Config
-    public static Boolean enableEnchantedCleansedLapis = true;
+    public static Boolean enablePurifyItems = true;
 
     public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
             new EnchantmentData("minecraft:unbreaking").costPerLevel(1),
@@ -283,14 +274,14 @@ public class EnchantingFeature extends JsonFeature {
 
         InsaneSE.addServerPack("new_enchanting_table", "IguanaTweaks Expanded New Enchanting Table", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 
-        addSyncType(new ResourceLocation(InsaneSE.MOD_ID, "enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, new ResourceLocation(InsaneSE.MOD_ID, "enchantments_data")));
+        addSyncType(InsaneSE.location("enchantments_data"), new SyncType(json -> loadAndReadJson(json, enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("enchantments_data.json", enchantmentsData, DEFAULT_ENCHANTMENTS_DATA, EnchantmentData.LIST_TYPE, true, InsaneSE.location("enchantments_data")));
 
-        addSyncType(new ResourceLocation(InsaneSE.MOD_ID, "over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, new ResourceLocation(InsaneSE.MOD_ID, "over_level_enchantment_blacklist")));
+        addSyncType(InsaneSE.location("over_level_enchantment_blacklist"), new SyncType(json -> loadAndReadJson(json, overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("over_level_enchantment_blacklist.json", overLevelEnchantmentBlacklist, DEFAULT_OVER_LEVEL_ENCHANTMENT_BLACKLIST, IdTagMatcher.LIST_TYPE, true, InsaneSE.location("over_level_enchantment_blacklist")));
 
-        addSyncType(new ResourceLocation(InsaneSE.MOD_ID, "starting_enchantments"), new SyncType(json -> loadAndReadJson(json, startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE)));
-        JSON_CONFIGS.add(new JsonConfig<>("starting_enchantments.json", startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE, true, new ResourceLocation(InsaneSE.MOD_ID, "over_level_enchantment_blacklist")));
+        addSyncType(InsaneSE.location("starting_enchantments"), new SyncType(json -> loadAndReadJson(json, startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE)));
+        JSON_CONFIGS.add(new JsonConfig<>("starting_enchantments.json", startingEnchantments, DEFAULT_STARTING_ENCHANTMENTS, IdTagValue.LIST_TYPE, true, InsaneSE.location("over_level_enchantment_blacklist")));
 	}
 
     @Override
@@ -332,9 +323,20 @@ public class EnchantingFeature extends JsonFeature {
         if (!this.isEnabled())
             return;
         preventMergingEnchantedItems(event);
-        enchantedCleansedLapisCrafting(event);
-        cleansedLapis(event);
-        enchantedCleansedLapis(event);
+        purifyItem(event);
+        fixLegacyEmpowered(event);
+    }
+
+    public void fixLegacyEmpowered(AnvilUpdateEvent event) {
+        if (event.getLeft().getTag() != null
+                && event.getLeft().getTag().getBoolean(EMPOWERED_ITEM_LEGACY)
+                && event.getRight().is(Items.LAPIS_LAZULI)
+                && event.getRight().getCount() == 1) {
+            ItemStack output = event.getLeft().copy();
+            output.getTag().remove(EMPOWERED_ITEM_LEGACY);
+            ModNBTData.put(output, PURIFIED_ITEM, true);
+            event.setOutput(output);
+        }
     }
 
     public void preventMergingEnchantedItems(AnvilUpdateEvent event) {
@@ -346,52 +348,20 @@ public class EnchantingFeature extends JsonFeature {
             event.setCanceled(true);
     }
 
-    public void cleansedLapis(final AnvilUpdateEvent event) {
+    public void purifyItem(final AnvilUpdateEvent event) {
         ItemStack left = event.getLeft();
-        if (!left.getItem().isEnchantable(left) || isPurified(left))
-            return;
-
-        ItemStack right = event.getRight().copy();
-        if (!right.is(CLEANSED_LAPIS.get())
-                || right.isEnchanted())
-            return;
-        event.setCost(0);
-        event.setMaterialCost(1);
-        ItemStack result = left.copy();
-        result.getOrCreateTag().putBoolean(EnchantingFeature.PURIFIED_ITEM, true);
-        event.setOutput(result);
-    }
-
-    public void enchantedCleansedLapisCrafting(final AnvilUpdateEvent event) {
-        ItemStack left = event.getLeft();
-        if (!enableEnchantedCleansedLapis
-                || !left.is(CLEANSED_LAPIS.get())
-                || left.isEnchanted()
-                || left.getCount() > 1)
+        if (!enablePurifyItems
+                || !left.getItem().isEnchantable(left)
+                || isPurified(left))
             return;
 
         ItemStack right = event.getRight().copy();
         if (!right.is(Items.EXPERIENCE_BOTTLE))
             return;
-        event.setMaterialCost(1);
-        ItemStack result = new ItemStack(ENCHANTED_CLEANSED_LAPIS.get());
-        event.setOutput(result);
-    }
-
-    public void enchantedCleansedLapis(final AnvilUpdateEvent event) {
-        ItemStack left = event.getLeft();
-        if (!enableEnchantedCleansedLapis
-                || !left.getItem().isEnchantable(left)
-                || isInfused(left))
-            return;
-
-        ItemStack right = event.getRight().copy();
-        if (!right.is(ENCHANTED_CLEANSED_LAPIS.get()))
-            return;
         event.setCost(0);
         event.setMaterialCost(1);
         ItemStack result = left.copy();
-        result.getOrCreateTag().putBoolean(EnchantingFeature.INFUSED_ITEM, true);
+        ModNBTData.put(result, PURIFIED_ITEM, true);
         event.setOutput(result);
     }
 
@@ -424,7 +394,7 @@ public class EnchantingFeature extends JsonFeature {
                 || !event.getBottomItem().is(Items.BOOK))
             return false;
 
-        if (isPurified(event.getTopItem()) || isInfused(event.getTopItem())) {
+        if (isPurified(event.getTopItem())) {
             ItemStack topItem = event.getTopItem().copy();
             //noinspection DataFlowIssue - Can't be null as if purified or infused the tag must be there
             topItem.getTag().remove("Enchantments");
@@ -463,9 +433,7 @@ public class EnchantingFeature extends JsonFeature {
             EnchantedBookItem.addEnchantment(output, new EnchantmentInstance(enchantmentInstance.getKey(), enchantmentInstance.getValue()));
         }
         if (isPurified(event.getTopItem()))
-            output.getOrCreateTag().putBoolean(PURIFIED_ITEM, true);
-        if (isInfused(event.getTopItem()))
-            output.getOrCreateTag().putBoolean(INFUSED_ITEM, true);
+            ModNBTData.put(output, PURIFIED_ITEM, true);
         event.setOutput(output);
         event.setXp(0);
     }
@@ -623,11 +591,7 @@ public class EnchantingFeature extends JsonFeature {
     }
 
     public static boolean isPurified(ItemStack stack) {
-        return stack.getTag() != null && stack.getTag().contains(PURIFIED_ITEM);
-    }
-
-    public static boolean isInfused(ItemStack stack) {
-        return stack.getTag() != null && stack.getTag().contains(INFUSED_ITEM);
+        return stack.getTag() != null && ModNBTData.get(stack, PURIFIED_ITEM, Boolean.class);
     }
 
     @SubscribeEvent
@@ -640,12 +604,15 @@ public class EnchantingFeature extends JsonFeature {
 
         treasureEnchantmentsEnchantedBooksTooltip(stack, event.getToolTip());
         Minecraft mc = Minecraft.getInstance();
+        CompoundTag tag = stack.getTag();
+        if (tag != null && tag.contains(EMPOWERED_ITEM_LEGACY)) {
+            event.getToolTip().add(Component.literal("This item contains legacy data. Place in an anvil to upgrade").withStyle(ChatFormatting.GOLD));
+        }
         if (!(mc.screen instanceof AnvilScreen) && !(mc.screen instanceof ISEEnchantingTableScreen) && !Screen.hasShiftDown())
             return;
 
         enchantabilityTooltip(stack, event.getToolTip());
 
-        CompoundTag tag = stack.getTag();
         if (tag == null)
             return;
         infusedEmpoweredTooltip(stack, tag, event.getToolTip());
@@ -677,12 +644,7 @@ public class EnchantingFeature extends JsonFeature {
     private static void infusedEmpoweredTooltip(ItemStack stack, CompoundTag tag, List<Component> tooltip) {
         if (isPurified(stack)) {
             tooltip.add(Component.empty());
-            tooltip.add(Component.translatable("iguanatweaksexpanded.infused_item").withStyle(ChatFormatting.DARK_PURPLE));
-        }
-        if (isInfused(stack)) {
-            if (!isPurified(stack))
-                tooltip.add(Component.empty());
-            tooltip.add(Component.translatable("iguanatweaksexpanded.empowered_item").withStyle(ChatFormatting.DARK_PURPLE));
+            tooltip.add(PURIFIED_COMPONENT);
         }
     }
 
@@ -708,11 +670,5 @@ public class EnchantingFeature extends JsonFeature {
                 }
             }
         }
-    }
-
-    private static final String path = "experience/enchanting/";
-    public static void addGlobalLoot(GlobalLootModifierProvider provider) {
-        provider.add(path + "blocks/lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/lapis_ore"), new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
-        provider.add(path + "blocks/deepslate_lapis_ore", new InjectLootTableModifier(new ResourceLocation("minecraft:blocks/deepslate_lapis_ore"), new ResourceLocation(InsaneSE.RESOURCE_PREFIX + "blocks/injection/cleansed_lapis")));
     }
 }

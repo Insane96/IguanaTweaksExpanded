@@ -24,6 +24,7 @@ import insane96mcp.insanelib.util.IntegratedPack;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -131,6 +132,8 @@ public class InsaneSE
             case "chained_copper_chestplate" -> CopperEquipment.CHESTPLATE.get();
             case "chained_copper_leggings" -> CopperEquipment.LEGGINGS.get();
             case "chained_copper_boots" -> CopperEquipment.BOOTS.get();
+            case "cleansed_lapis" -> Items.LAPIS_LAZULI;
+            case "enchanted_cleansed_lapis" -> Items.EXPERIENCE_BOTTLE;
             default -> null;
         });
         if (ModList.get().isLoaded("shieldsplus")) {
@@ -161,5 +164,13 @@ public class InsaneSE
 
     public static void addClientPack(int priority, String path, String description, BooleanSupplier enabled) {
         IntegratedPack.addClientPack(priority, MOD_ID, path, description, enabled);
+    }
+
+    public static ResourceLocation location(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    }
+
+    public static String lang(String path) {
+        return MOD_ID  + "." + path;
     }
 }

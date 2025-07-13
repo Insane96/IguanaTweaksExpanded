@@ -2,7 +2,6 @@ package insane96mcp.iguanatweaksexpanded.data.generator.client;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
@@ -79,9 +78,6 @@ public class ISEItemModelsProvider extends ItemModelProvider {
 
         withExistingParent("flint_block", new ResourceLocation(InsaneSE.MOD_ID, "block/flint_block"));
         withExistingParent("polished_flint_block", new ResourceLocation(InsaneSE.MOD_ID, "block/polished_flint_block"));
-
-        basicItem(EnchantingFeature.CLEANSED_LAPIS.get());
-        basicItem(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
 
         withExistingParent("crate", new ResourceLocation(InsaneSE.MOD_ID, "block/crate"));
 
