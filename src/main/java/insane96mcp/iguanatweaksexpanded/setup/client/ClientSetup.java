@@ -9,8 +9,6 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingF
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableScreen;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.ElectrocutionSparkParticle;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.ClientCrateTooltip;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.CrateTooltip;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
@@ -40,7 +38,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -53,22 +54,6 @@ public class ClientSetup {
     {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
-            if (Feature.isEnabled(CopperExpansion.class)) {
-                addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_HOE.get());
-                addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_AXE.get());
-                addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_PICKAXE.get());
-                addAfter(event, Items.WOODEN_HOE, CopperExpansion.COPPER_SHOVEL.get());
-                if (Feature.isEnabled(Forging.class)) {
-                    addAfter(event, CopperExpansion.COPPER_HOE.get(), Forging.COPPER_HAMMER.get());
-                }
-                addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_HOE.get());
-                addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_AXE.get());
-                addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_PICKAXE.get());
-                addAfter(event, Items.DIAMOND_HOE, CopperExpansion.COATED_SHOVEL.get());
-                if (Feature.isEnabled(Forging.class)) {
-                    addAfter(event, CopperExpansion.COATED_HOE.get(), Forging.COATED_COPPER_HAMMER.get());
-                }
-            }
             if (Feature.isEnabled(Solarium.class)) {
                 addAfter(event, Items.IRON_HOE, Solarium.HOE.get());
                 addAfter(event, Items.IRON_HOE, Solarium.AXE.get());
@@ -135,12 +120,6 @@ public class ClientSetup {
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            if (Feature.isEnabled(CopperExpansion.class)) {
-                addAfter(event, Items.WOODEN_SWORD, CopperExpansion.COPPER_SWORD.get());
-                addAfter(event, Items.DIAMOND_SWORD, CopperExpansion.COATED_SWORD.get());
-                addAfter(event, Items.WOODEN_AXE, CopperExpansion.COPPER_AXE.get());
-                addAfter(event, Items.DIAMOND_AXE, CopperExpansion.COATED_AXE.get());
-            }
             if (Feature.isEnabled(Solarium.class)) {
                 addAfter(event, Items.IRON_SWORD, Solarium.SWORD.get());
                 addAfter(event, Items.IRON_AXE, Solarium.AXE.get());
@@ -164,10 +143,6 @@ public class ClientSetup {
 
 
             if (ModList.get().isLoaded("shieldsplus")) {
-                if (Feature.isEnabled(CopperExpansion.class)) {
-                    addAfter(event, SPItems.WOODEN_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COPPER_SHIELD.get());
-                    addAfter(event, SPItems.DIAMOND_SHIELD.get(), CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get());
-                }
                 if (Feature.isEnabled(Solarium.class)) {
                     addAfter(event, SPItems.IRON_SHIELD.get(), Solarium.ShieldsPlusIntegration.SHIELD.get());
                 }
@@ -185,12 +160,6 @@ public class ClientSetup {
                 }
             }
 
-            if (Feature.isEnabled(CopperExpansion.class)) {
-                addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.BOOTS.get());
-                addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.LEGGINGS.get());
-                addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.CHESTPLATE.get());
-                addAfter(event, Items.LEATHER_BOOTS, CopperExpansion.HELMET.get());
-            }
             if (Feature.isEnabled(Solarium.class)) {
                 addAfter(event, Items.IRON_BOOTS, Solarium.BOOTS.get());
                 addAfter(event, Items.IRON_BOOTS, Solarium.LEGGINGS.get());
@@ -426,10 +395,6 @@ public class ClientSetup {
         event.registerBookCategories(InsaneSurvivalExtra.FLETCHING_RECIPE_BOOK_TYPE, FLETCHING_CATEGORIES);
         event.registerAggregateCategory(FLETCHING_SEARCH, ImmutableList.of(FLETCHING_MISC));
         event.registerRecipeCategoryFinder(Fletching.FLETCHING_RECIPE_TYPE.get(), r -> FLETCHING_MISC);
-    }
-
-    public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(CopperExpansion.ELECTROCUTION_SPARKS.get(), ElectrocutionSparkParticle.Provider::new);
     }
 
     public static void registerTooltips(RegisterClientTooltipComponentFactoriesEvent event) {

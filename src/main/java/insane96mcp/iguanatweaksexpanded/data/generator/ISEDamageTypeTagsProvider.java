@@ -4,7 +4,6 @@ import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.MagicProtection;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfBloodPact;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfExperience;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksreborn.module.combat.PiercingDamage;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -28,9 +27,7 @@ public class ISEDamageTypeTagsProvider extends DamageTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(PiercingDamage.DOESNT_TRIGGER_PIERCING).add(CopperExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
-
-        tag(CopperExpansion.DOESNT_TRIGGER_ELECTROCUTION).addOptionalTag(PiercingDamage.PIERCING_DAMAGE_TYPE.location()).add(CopperExpansion.ELECTROCUTION_ATTACK).add(CurseOfExperience.DAMAGE_TYPE);
+        tag(PiercingDamage.DOESNT_TRIGGER_PIERCING).add(CurseOfExperience.DAMAGE_TYPE);
 
         tag(DamageTypeTags.BYPASSES_ARMOR).add(CurseOfExperience.DAMAGE_TYPE, CurseOfBloodPact.DAMAGE_TYPE);
         tag(DamageTypeTags.BYPASSES_COOLDOWN).add(CurseOfBloodPact.DAMAGE_TYPE);

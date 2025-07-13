@@ -9,7 +9,6 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantme
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfShortArm;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfSlowStrike;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.curse.CurseOfTheVoid;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
@@ -87,7 +86,7 @@ public class ISEItemTagsProvider extends ItemTagsProvider {
         tag(Soulbound.ACCEPTS_ENCHANTMENT)
                 .add(Items.RECOVERY_COMPASS, Items.COMPASS);
         tag(FORGE_HAMMERS)
-                .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.DURIUM_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.COATED_COPPER_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
+                .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.DURIUM_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         tag(Durium.ITEM_ORES)
                 .add(Durium.ORE.item().get(), Durium.DEEPSLATE_ORE.item().get(), Durium.SAND_ORE.item().get(), Durium.GRAVEL_ORE.item().get(), Durium.CLAY_ORE.item().get(), Durium.DIRT_ORE.item().get());
         //ITR
@@ -96,16 +95,15 @@ public class ISEItemTagsProvider extends ItemTagsProvider {
         tag(Luck.ACCEPTS_ENCHANTMENT)
                 .add(Quaron.FISHING_ROD.get());
         //Vanilla
-        tag(ItemTags.PICKAXES).add(Solarium.PICKAXE.get(), Durium.PICKAXE.get(), CopperExpansion.COPPER_PICKAXE.get(), CopperExpansion.COATED_PICKAXE.get(), SoulSteel.PICKAXE.get(), Keego.PICKAXE.get(), Quaron.PICKAXE.get());
-        tag(ItemTags.AXES).add(Solarium.AXE.get(), Durium.AXE.get(), CopperExpansion.COPPER_AXE.get(), CopperExpansion.COATED_AXE.get(), SoulSteel.AXE.get(), Keego.AXE.get(), Quaron.AXE.get());
-        tag(ItemTags.SHOVELS).add(Solarium.SHOVEL.get(), Durium.SHOVEL.get(), CopperExpansion.COPPER_SHOVEL.get(), CopperExpansion.COATED_SHOVEL.get(), SoulSteel.SHOVEL.get(), Keego.SHOVEL.get(), Quaron.SHOVEL.get());
-        tag(ItemTags.SWORDS).add(Solarium.SWORD.get(), Durium.SWORD.get(), CopperExpansion.COPPER_SWORD.get(), CopperExpansion.COATED_SWORD.get(), SoulSteel.SWORD.get(), Keego.SWORD.get(), Quaron.SWORD.get());
-        tag(ItemTags.HOES).add(Solarium.HOE.get(), Durium.HOE.get(), CopperExpansion.COPPER_HOE.get(), CopperExpansion.COATED_HOE.get(), SoulSteel.HOE.get(), Keego.HOE.get(), Quaron.HOE.get());
+        tag(ItemTags.PICKAXES).add(Solarium.PICKAXE.get(), Durium.PICKAXE.get(), SoulSteel.PICKAXE.get(), Keego.PICKAXE.get(), Quaron.PICKAXE.get());
+        tag(ItemTags.AXES).add(Solarium.AXE.get(), Durium.AXE.get(), SoulSteel.AXE.get(), Keego.AXE.get(), Quaron.AXE.get());
+        tag(ItemTags.SHOVELS).add(Solarium.SHOVEL.get(), Durium.SHOVEL.get(), SoulSteel.SHOVEL.get(), Keego.SHOVEL.get(), Quaron.SHOVEL.get());
+        tag(ItemTags.SWORDS).add(Solarium.SWORD.get(), Durium.SWORD.get(), SoulSteel.SWORD.get(), Keego.SWORD.get(), Quaron.SWORD.get());
+        tag(ItemTags.HOES).add(Solarium.HOE.get(), Durium.HOE.get(), SoulSteel.HOE.get(), Keego.HOE.get(), Quaron.HOE.get());
 
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(Solarium.HELMET.get(), Solarium.CHESTPLATE.get(), Solarium.LEGGINGS.get(), Solarium.BOOTS.get())
                 .add(Durium.HELMET.get(), Durium.CHESTPLATE.get(), Durium.LEGGINGS.get(), Durium.BOOTS.get())
-                .add(CopperExpansion.HELMET.get(), CopperExpansion.CHESTPLATE.get(), CopperExpansion.LEGGINGS.get(), CopperExpansion.BOOTS.get())
                 .add(SoulSteel.HELMET.get(), SoulSteel.CHESTPLATE.get(), SoulSteel.LEGGINGS.get(), SoulSteel.BOOTS.get())
                 .add(Keego.HELMET.get(), Keego.CHESTPLATE.get(), Keego.LEGGINGS.get(), Keego.BOOTS.get())
                 .add(Quaron.HELMET.get(), Quaron.CHESTPLATE.get(), Quaron.LEGGINGS.get(), Quaron.BOOTS.get());
@@ -116,13 +114,13 @@ public class ISEItemTagsProvider extends ItemTagsProvider {
 
         //Forge
         tag(Tags.Items.ARMORS_HELMETS)
-                .add(Solarium.HELMET.get(), Durium.HELMET.get(), CopperExpansion.HELMET.get(), SoulSteel.HELMET.get(), Keego.HELMET.get(), Quaron.HELMET.get());
+                .add(Solarium.HELMET.get(), Durium.HELMET.get(), SoulSteel.HELMET.get(), Keego.HELMET.get(), Quaron.HELMET.get());
         tag(Tags.Items.ARMORS_CHESTPLATES)
-                .add(Solarium.CHESTPLATE.get(), Durium.CHESTPLATE.get(), CopperExpansion.CHESTPLATE.get(), SoulSteel.CHESTPLATE.get(), Keego.CHESTPLATE.get(), Quaron.CHESTPLATE.get());
+                .add(Solarium.CHESTPLATE.get(), Durium.CHESTPLATE.get(), SoulSteel.CHESTPLATE.get(), Keego.CHESTPLATE.get(), Quaron.CHESTPLATE.get());
         tag(Tags.Items.ARMORS_LEGGINGS)
-                .add(Solarium.LEGGINGS.get(), Durium.LEGGINGS.get(), CopperExpansion.LEGGINGS.get(), SoulSteel.LEGGINGS.get(), Keego.LEGGINGS.get(), Quaron.LEGGINGS.get());
+                .add(Solarium.LEGGINGS.get(), Durium.LEGGINGS.get(), SoulSteel.LEGGINGS.get(), Keego.LEGGINGS.get(), Quaron.LEGGINGS.get());
         tag(Tags.Items.ARMORS_BOOTS)
-                .add(Solarium.BOOTS.get(), Durium.BOOTS.get(), CopperExpansion.BOOTS.get(), SoulSteel.BOOTS.get(), Keego.BOOTS.get(), Quaron.BOOTS.get());
+                .add(Solarium.BOOTS.get(), Durium.BOOTS.get(), SoulSteel.BOOTS.get(), Keego.BOOTS.get(), Quaron.BOOTS.get());
 
         tag(Tags.Items.TOOLS_FISHING_RODS)
                 .add(Quaron.FISHING_ROD.get());

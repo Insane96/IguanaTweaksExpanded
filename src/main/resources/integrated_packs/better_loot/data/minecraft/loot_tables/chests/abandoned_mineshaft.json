@@ -46,6 +46,12 @@
                                 "max": 12
                             }
                         }
+                    ],
+                    "conditions": [
+                        {
+                            "condition": "insanelib:feature_enabled",
+                            "feature": "Durium"
+                        }
                     ]
                 },
                 {
@@ -217,7 +223,7 @@
                 {
                     "type": "minecraft:item",
                     "weight": 7,
-                    "name": "iguanatweaksexpanded:copper_pickaxe",
+                    "name": "iguanatweaksreborn:copper_pickaxe",
                     "functions": [
                         {
                             "function": "minecraft:set_damage",
@@ -300,6 +306,12 @@
                                 "max": 6
                             },
                             "treasure": true
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "condition": "insanelib:feature_enabled",
+                            "feature": "Durium"
                         }
                     ]
                 },

@@ -1,8 +1,41 @@
 # Changelog
 
-## 1.23.14
+## 1.24.5
+### Additions
+* Tide's fishing rod has now the same enchantability as vanilla's
+
 ### Changes
-* Cleansed and Enchanted lapis can now be disabled (creative and apply only)
+* You can now teach multiple levels of curses at once to an enchanting table
+
+### Fixes
+* Copper armor smelt in furnace
+* Living flesh alloying recipe
+
+## 1.24.4
+### Fixes
+* Same as previous version but this time I've actually run data gen
+
+## 1.24.3
+### Fixes
+* Recycling copper armor giving iron nuggets
+
+## 1.24.2
+Requires InsaneLib 1.21.13
+### Fixes
+* Mineshafts, End cities and supplementaries pots dropping nothing
+* Crash without Shields+ installed
+
+## Alpha 1.24.1
+### Changes
+* Some items no longer show up in loot tables if feature is disabled
+* Removed cleansed and enchanted lapis from loot tables
+
+## Alpha 1.24.0
+### Removed
+* (Re)moved Copper expansion to ISO
+  * Coated copper has been removed. Will be transformed into normal copper
+  * Copper tools are the same as upcoming vanilla ones
+  * Chained copper armor is now copper armor
 
 ## 1.23.13
 ### Changes

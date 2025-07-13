@@ -7,8 +7,6 @@ import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEBlockStatesProv
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEItemModelsProvider;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ISEArrowDispenseBehaviour;
-import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -20,8 +18,11 @@ import insane96mcp.iguanatweaksexpanded.setup.ISECommonConfig;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.InsaneSO;
+import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
+import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.util.IntegratedPack;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -38,7 +39,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.MissingMappingsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -66,7 +66,6 @@ public class InsaneSurvivalExtra
             modEventBus.addListener(EventPriority.LOW, ClientSetup::onBuildCreativeModeTabContents);
             modEventBus.addListener(ClientSetup::registerEntityRenderers);
             modEventBus.addListener(ClientSetup::registerRecipeBookCategories);
-            modEventBus.addListener(ClientSetup::registerParticleFactories);
             modEventBus.addListener(ClientSetup::registerTooltips);
             modEventBus.addListener(ClientSetup::registerItemColorHandlers);
         }
@@ -76,7 +75,6 @@ public class InsaneSurvivalExtra
         ISERegistries.REGISTRIES.forEach(register -> register.register(modEventBus));
 
         if (ModList.get().isLoaded("shieldsplus")) {
-            CopperExpansion.ShieldsPlusIntegration.init();
             Durium.ShieldsPlusIntegration.init();
             SoulSteel.ShieldsPlusIntegration.init();
             Quaron.ShieldsPlusIntegration.init();
@@ -122,9 +120,30 @@ public class InsaneSurvivalExtra
 
     @SubscribeEvent
     public void onMissingMappings(MissingMappingsEvent event) {
-        event.getMappings(ForgeRegistries.Keys.ITEMS, MOD_ID).stream()
-                .filter(mapping -> mapping.getKey().getPath().contains("ancient_lapis"))
-                .forEach(mapping -> mapping.remap(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get()));
+        InsaneLib.handleMissingMappings(event, MOD_ID, Registries.ITEM, name -> switch (name) {
+            case "copper_pickaxe", "coated_copper_pickaxe" -> CopperEquipment.PICKAXE.get();
+            case "copper_axe", "coated_copper_axe" -> CopperEquipment.AXE.get();
+            case "copper_shovel", "coated_copper_shovel" -> CopperEquipment.SHOVEL.get();
+            case "copper_hoe", "coated_copper_hoe" -> CopperEquipment.HOE.get();
+            case "copper_sword", "coated_copper_sword" -> CopperEquipment.SWORD.get();
+            case "chained_copper_helmet" -> CopperEquipment.HELMET.get();
+            case "chained_copper_chestplate" -> CopperEquipment.CHESTPLATE.get();
+            case "chained_copper_leggings" -> CopperEquipment.LEGGINGS.get();
+            case "chained_copper_boots" -> CopperEquipment.BOOTS.get();
+            default -> null;
+        });
+        if (ModList.get().isLoaded("shieldsplus")) {
+            ShieldsPlusMissingMappings.missingMappings(event);
+        }
+    }
+
+    private static class ShieldsPlusMissingMappings {
+        public static void missingMappings(MissingMappingsEvent event) {
+            InsaneLib.handleMissingMappings(event, MOD_ID, Registries.ITEM, name -> switch (name) {
+                case "copper_shield", "coated_copper_shield" -> CopperEquipment.ShieldsPlusIntegration.SHIELD.get();
+                default -> null;
+            });
+        }
     }
 
     public static void addServerPack(String path, String description, BooleanSupplier enabled) {

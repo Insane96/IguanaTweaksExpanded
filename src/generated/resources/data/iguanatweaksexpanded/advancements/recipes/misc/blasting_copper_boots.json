@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_copper_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "iguanatweaksreborn:copper_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "iguanatweaksexpanded:blasting_copper_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_copper_armor",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "iguanatweaksexpanded:blasting_copper_boots"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -23,6 +23,12 @@
 							},
 							"add": false
 						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
+						}
 					]
 				},
 				{
@@ -270,6 +276,12 @@
 							},
 							"treasure": true
 						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
+						}
 					]
 				},
 				{
@@ -285,6 +297,12 @@
 								"max": 39
 							},
 							"treasure": true
+						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
 						}
 					]
 				},
@@ -302,6 +320,12 @@
 							},
 							"treasure": true
 						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
+						}
 					]
 				},
 				{
@@ -317,6 +341,12 @@
 								"max": 39
 							},
 							"treasure": true
+						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
 						}
 					]
 				},
@@ -334,6 +364,12 @@
 							},
 							"treasure": true
 						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
+						}
 					]
 				},
 				{
@@ -349,6 +385,12 @@
 								"max": 39
 							},
 							"treasure": true
+						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
 						}
 					]
 				},
@@ -366,6 +408,12 @@
 							},
 							"treasure": true
 						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
+						}
 					]
 				},
 				{
@@ -382,6 +430,12 @@
 							},
 							"treasure": true
 						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
+						}
 					]
 				},
 				{
@@ -397,6 +451,12 @@
 								"max": 39
 							},
 							"treasure": true
+						}
+					],
+					"conditions": [
+						{
+							"condition": "insanelib:feature_enabled",
+							"feature": "Keego"
 						}
 					]
 				}

@@ -3,7 +3,6 @@ package insane96mcp.iguanatweaksexpanded.data.generator.client;
 import insane96mcp.iguanatweaksexpanded.InsaneSurvivalExtra;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.items.copper.CopperExpansion;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
@@ -84,24 +83,6 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         basicItem(EnchantingFeature.CLEANSED_LAPIS.get());
         basicItem(EnchantingFeature.ENCHANTED_CLEANSED_LAPIS.get());
 
-        trimmedArmorItem(CopperExpansion.BOOTS);
-        trimmedArmorItem(CopperExpansion.LEGGINGS);
-        trimmedArmorItem(CopperExpansion.CHESTPLATE);
-        trimmedArmorItem(CopperExpansion.HELMET);
-
-        handHeld(CopperExpansion.COPPER_AXE.get());
-        handHeld(CopperExpansion.COPPER_PICKAXE.get());
-        handHeld(CopperExpansion.COPPER_SHOVEL.get());
-        handHeld(CopperExpansion.COPPER_HOE.get());
-        handHeld(CopperExpansion.COPPER_SWORD.get());
-
-        handHeld(CopperExpansion.COATED_AXE.get());
-        handHeld(CopperExpansion.COATED_PICKAXE.get());
-        handHeld(CopperExpansion.COATED_SHOVEL.get());
-        handHeld(CopperExpansion.COATED_HOE.get());
-        handHeld(CopperExpansion.COATED_SWORD.get());
-        shield(CopperExpansion.ShieldsPlusIntegration.COATED_SHIELD.get());
-
         withExistingParent("crate", new ResourceLocation(InsaneSurvivalExtra.MOD_ID, "block/crate"));
 
         handHeld(Solarium.AXE.get());
@@ -177,7 +158,6 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         handHeld(Forging.IRON_HAMMER.get());
         handHeld(Forging.SOLARIUM_HAMMER.get());
         handHeld(Forging.DURIUM_HAMMER.get());
-        handHeld(Forging.COATED_COPPER_HAMMER.get());
         handHeld(Forging.DIAMOND_HAMMER.get());
         handHeld(Forging.SOUL_STEEL_HAMMER.get());
         handHeld(Forging.NETHERITE_HAMMER.get());

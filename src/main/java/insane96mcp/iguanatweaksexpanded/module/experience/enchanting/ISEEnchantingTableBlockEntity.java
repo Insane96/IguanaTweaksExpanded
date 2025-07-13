@@ -99,15 +99,14 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
     }
 
     public boolean teachEnchantment(Enchantment enchantment, int lvl) {
-        if (this.knowsEnchantment(enchantment, lvl) && this.knownEnchantments.get(enchantment) >= lvl) {
-            return false;
-            /*if (enchantment.getMaxLevel() == 1
-                    || this.knownEnchantments.get(enchantment) > lvl
-                    || this.knownEnchantments.get(enchantment) == enchantment.getMaxLevel())
-                return false;
-            this.knownEnchantments.put(enchantment, lvl + 1);
-            return true;*/
+        int knownLvl = this.knownEnchantments.getOrDefault(enchantment, 0);
+        if (EnchantingFeature.isConsumedOnEnchant(enchantment)) {
+            this.knownEnchantments.put(enchantment, knownLvl + lvl);
+            return true;
         }
+        if (knownLvl >= lvl)
+            return false;
+
         this.knownEnchantments.put(enchantment, lvl);
         this.setChanged();
         return true;

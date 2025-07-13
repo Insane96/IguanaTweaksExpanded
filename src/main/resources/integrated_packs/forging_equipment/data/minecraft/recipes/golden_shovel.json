@@ -6,7 +6,7 @@
   },
   "amount": 1,
   "gear": {
-    "item": "iguanatweaksexpanded:copper_shovel"
+    "item": "iguanatweaksreborn:copper_shovel"
   },
   "result": "minecraft:golden_shovel",
   "smashes_required": 6,

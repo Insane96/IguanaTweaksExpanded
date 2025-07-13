@@ -96,7 +96,7 @@ public class EnchantingFeature extends JsonFeature {
             Requires Minecraft Restart.
             PLEASE NOTE that due to config limitation, some things cannot be disabled, so use item tags. E.g. Launch enchantment uses a new iguanatweaksexpanded:enchanting/allurement/accepts_launch_enchantments item tag to decide which item accepts the enchantment.
             """)
-    public static Boolean allurementIntegration = true;
+    public static Boolean allurementIntegration = false;
     @Config
     @Label(name = "Enchanting Table.Requires learning enchantments", description = "If true, the new enchanting table must learn all the enchantments and not only treasure.")
     public static Boolean enchantingTableRequiresLearning = true;
@@ -555,6 +555,10 @@ public class EnchantingFeature extends JsonFeature {
                 cost += getCost(enchantment.getKey(), 1, true);
         }
         return cost;
+    }
+
+    public static boolean isConsumedOnEnchant(Enchantment enchantment) {
+        return enchantment.isCurse() || enchantingTableOneTimeUseEnchantments;
     }
 
     public static boolean hasEnchantGlintOnly(ItemStack stack) {

@@ -113,7 +113,15 @@ public class ISEEnchantingTable extends BaseEntityBlock {
                         //if (lvlKnown == lvl)
                         //    lvl++;
                         MutableComponent newLvlDescId = Component.translatable("enchantment.level." + lvl).withStyle(ChatFormatting.DARK_PURPLE);
-                        if (lvlKnown == 0) {
+                        if (EnchantingFeature.isConsumedOnEnchant(enchantment)) {
+                            int currentLvl = enchantingTableBE.knownEnchantments.get(enchantment);
+                            MutableComponent currentLvlDescId = Component.translatable("enchantment.level." + currentLvl).withStyle(ChatFormatting.DARK_PURPLE);
+                            if (currentLvl > 10) {
+                                currentLvlDescId = Component.translatable("enchantment.level." + 10).append("+").withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal(currentLvl + ""))));
+                            }
+                            player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.added_levels", newLvlDescId, enchantmentDescId, currentLvlDescId));
+                        }
+                        else if (lvlKnown == 0) {
                             if (enchantment.getMaxLevel() == 1)
                                 player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.learned_enchantment", enchantmentDescId));
                             else

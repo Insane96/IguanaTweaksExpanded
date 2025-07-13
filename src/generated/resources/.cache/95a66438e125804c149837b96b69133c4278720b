@@ -1,8 +1,8 @@
-// 1.20.1	2025-06-26T10:14:12.9079296	Tags for minecraft:item mod id iguanatweaksexpanded
-1729cefbc3d047169d44bb423a94bf12c65260a0 data/forge/tags/items/armors/boots.json
-ee90d46b0c7b8cdef93a1709fa75a6a1c26517f5 data/forge/tags/items/armors/chestplates.json
-1f5f6bccde68c5ec5075bd9664644e3cae217907 data/forge/tags/items/armors/helmets.json
-6cd74b8797aaf3bca86fcd6fdd5883b2deafc521 data/forge/tags/items/armors/leggings.json
+// 1.20.1	2025-07-03T15:20:43.5380261	Tags for minecraft:item mod id iguanatweaksexpanded
+d4c4487d7b6833bf48791b92a88fec6c89052894 data/forge/tags/items/armors/boots.json
+ce31c9fd42d95a454e3cec5d5d5191db21c4195b data/forge/tags/items/armors/chestplates.json
+a0b9e6a5d18c5f46581ea86736abfe12a371d5f1 data/forge/tags/items/armors/helmets.json
+7912e7cfdff81ceb2e724179955bef181aa39350 data/forge/tags/items/armors/leggings.json
 0dcaa030a82367fdf5edfbd383bced929b46f41f data/forge/tags/items/shears.json
 d9d9ced81ca834a50065e4a1f46638021f231bbe data/forge/tags/items/tools/fishing_rods.json
 8f54b552cda1f7670077e441aa0de17aac29e71e data/iguanatweaksexpanded/tags/items/durium_ores.json
@@ -20,16 +20,16 @@ c714a3598bc7b25fbf276b461fb8ebc6a6da17c4 data/iguanatweaksexpanded/tags/items/en
 9d7253f222e4b2e23e46f4d33766c8779a86fc51 data/iguanatweaksexpanded/tags/items/enchanting/accepts_smartness.json
 3264faa260a13bf57ca472479c5346d10a4bf8d3 data/iguanatweaksexpanded/tags/items/enchanting/accepts_soulbound.json
 9d7253f222e4b2e23e46f4d33766c8779a86fc51 data/iguanatweaksexpanded/tags/items/enchanting/accepts_void_curse.json
-3ad11a783010e6af8a5cdac9e89abf8fbef57ce9 data/iguanatweaksexpanded/tags/items/equipment/forge_hammers.json
+d6f39b616b96a830e962920784c7ee90a505055b data/iguanatweaksexpanded/tags/items/equipment/forge_hammers.json
 434fd8d0359902672e204ce2e53add0c8c79d1e1 data/iguanatweaksexpanded/tags/items/not_enchantable.json
 2f3ab07aa0f1e5f60a535e8f911e8bcac89d717e data/iguanatweaksreborn/tags/items/enchanting/accepts_damage_enchantments.json
 d9d9ced81ca834a50065e4a1f46638021f231bbe data/iguanatweaksreborn/tags/items/enchanting/accepts_luck.json
 c714a3598bc7b25fbf276b461fb8ebc6a6da17c4 data/iguanatweaksreborn/tags/items/enchanting/allurement/accepts_launch_enchantments.json
 d8dc8a1dca466012722b9e33500420f92a606c52 data/minecraft/tags/items/arrows.json
-f94255692fd510ba6449a0f1b38f7894295bdc16 data/minecraft/tags/items/axes.json
+a6fa699bb35eb1432a0463f9ffbc070eefba03fe data/minecraft/tags/items/axes.json
 0be5822b4d3e0a80e06644610da205523d98ee0c data/minecraft/tags/items/beacon_payment_items.json
-0b1f8e005336ddf857dd2adf91f75c446e54f81d data/minecraft/tags/items/hoes.json
-4d033432f2e76d95b36cf6678e45d27b59e18c8f data/minecraft/tags/items/pickaxes.json
-8c1c1bf857b753e634c4a5f5205aaf8cf3a099db data/minecraft/tags/items/shovels.json
-2943bc29a4936b65bd9bcd0f5f4867095d131e8f data/minecraft/tags/items/swords.json
-728862f2a3fdfa5755f098a432b0ff1f9885146f data/minecraft/tags/items/trimmable_armor.json
+baaee9061ebacd7e4dd6c6744bb2a8ed3d98bc0b data/minecraft/tags/items/hoes.json
+0f6b2d453b9e6692bdfeeeafa5283ff5dd3ca658 data/minecraft/tags/items/pickaxes.json
+68416e187db8be61c04f35c59f074b3292ad52bd data/minecraft/tags/items/shovels.json
+8091eaea3844a2b9d85d11dd3816dc5871cc3c90 data/minecraft/tags/items/swords.json
+5ca92bbcef4791f0b0f1cda174e211b77a1ff69d data/minecraft/tags/items/trimmable_armor.json
