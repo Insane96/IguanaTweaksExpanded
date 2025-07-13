@@ -32,7 +32,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.EnumMap;
 
-@LoadFeature(module = Modules.Ids.MINING, description = "Add Durium, a new metal made by alloying Durium Scrap (found as scrap pieces in ores in the Overworld) and can be used to upgrade Iron Equipment. Disabling this will disable ore generation and items in the creative inventory.")
+@LoadFeature(module = Modules.Ids.MINING, description = "Add Durium, a new metal made by alloying Durium Scrap (found as scrap pieces in ores in the Overworld) and can be used to upgrade Iron Equipment. Disabling this will disable ore generation and items in the creative inventory.", enabledByDefault = false)
 public class Durium extends Feature {
 
 	public static final TagKey<Block> BLOCK_ORES = ISEBlockTagsProvider.create("durium_ores");

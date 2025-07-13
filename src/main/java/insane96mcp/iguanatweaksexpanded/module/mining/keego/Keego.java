@@ -43,7 +43,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.EnumMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@LoadFeature(module = Modules.Ids.MINING, description = "Add a new Nether gem which makes lets you go fast (KEEp GOing). Disabling this will disable ore generation and items in the creative inventory.")
+@LoadFeature(module = Modules.Ids.MINING, description = "Add a new Nether gem which makes lets you go fast (KEEp GOing). Disabling this will disable ore generation and items in the creative inventory.", enabledByDefault = false)
 public class Keego extends Feature {
 
 	public static final TagKey<Item> KEEGO_TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSE.MOD_ID, "equipment/hand/tools/keego"));

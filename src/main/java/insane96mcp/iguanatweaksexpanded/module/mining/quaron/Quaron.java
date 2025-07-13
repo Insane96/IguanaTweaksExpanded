@@ -38,7 +38,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.EnumMap;
 
 @Label(name = "Quaron", description = "Add Quaron, a new metal made by alloying Iron and Amethyst. Disabling this will disable ore generation and items in the creative inventory.")
-@LoadFeature(module = Modules.Ids.MINING)
+@LoadFeature(module = Modules.Ids.MINING, enabledByDefault = false)
 public class Quaron extends Feature {
 	public static final TagKey<Item> TOOL_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSE.MOD_ID, "equipment/hand/tools/quaron"));
 

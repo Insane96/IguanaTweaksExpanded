@@ -49,7 +49,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.UUID;
 
-@LoadFeature(module = Modules.Ids.ITEMS, description = "Add Solarium, a new material made by alloying Overgrown solium moss ball (found in hot biomes) and can be used to upgrade Iron Equipment. Disabling this will disable ore generation and items in the creative inventory.")
+@LoadFeature(module = Modules.Ids.ITEMS, description = "Add Solarium, a new material made by alloying Overgrown solium moss ball (found in hot biomes) and can be used to upgrade Iron Equipment. Disabling this will disable ore generation and items in the creative inventory.", enabledByDefault = false)
 public class Solarium extends Feature {
 	public static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("c9c18638-6505-4544-9871-6397916fd0b7");
 	public static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.fromString("435317e9-0146-4f1b-bc21-67f466ee5f9c");

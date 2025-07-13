@@ -11,7 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraftforge.registries.RegistryObject;
 
-@LoadFeature(module = Modules.Ids.MINING, description = "Add repair kits, making you able to repair items in the crafting grid")
+@LoadFeature(module = Modules.Ids.MINING, description = "Add repair kits, making you able to repair items in the crafting grid", enabledByDefault = false)
 public class RepairKits extends Feature {
 
 	public static final RegistryObject<SimpleCraftingRecipeSerializer<RepairKitRepairRecipe>> RECIPE_SERIALIZER = ISERegistries.RECIPE_SERIALIZERS.register("crafting_special_repairingkit", () -> new SimpleCraftingRecipeSerializer<>(RepairKitRepairRecipe::new));
