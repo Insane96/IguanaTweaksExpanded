@@ -105,14 +105,14 @@ public class EnchantingFeature extends JsonFeature {
     @Label(name = "Enchanting Table.Max enchanting power", description = "Increasing this increases bookshelves required. Vanilla is 15")
     public static Integer enchantingTableMaxEnchantingPower = 20;
     @Config(min = 0)
-    @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not purified or infused")
+    @Label(name = "Enchanting Table.Enchantability multiplier", description = "Tool enchantability multiplier if not purified")
     public static Double enchantingTableEnchantabilityMultiplier = 1d;
     @Config(min = 0)
-    @Label(name = "Enchanting Table.Purified Enchantability multiplier", description = "Tool enchantability multiplier when purified (sums with Enchantability multiplier and Infused bonus Enchantability multiplier)")
-    public static Double enchantingTablePurifiedEnchantabilityMultiplier = 1d;
+    @Label(name = "Enchanting Table.Purified Enchantability multiplier", description = "Tool enchantability multiplier when purified")
+    public static Double enchantingTablePurifiedEnchantabilityMultiplier = 1.25d;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Purified Enchantability flat", description = "Tool enchantability bonus when purified")
-    public static Integer enchantingTablePurifiedEnchantabilityFlat = 1;
+    public static Integer enchantingTablePurifiedEnchantabilityFlat = 0;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Base enchantability", description = "Enchantability with no bookshelves")
     public static Integer enchantingTableBaseEnchantability = 0;

@@ -3,7 +3,7 @@
 ## Upcoming
 ### Changes
 * Removed cleansed and enchanted lapis
-  * You can now purify items with bottle o' enchanting, which is the same as the old infusing, with +1 to enchantability and over level enchantments
+  * You can now purify items with bottle o' enchanting, which is the same as the old infusing, with increased enchantability and over level enchantments
 * Durium, Solarium, Keego, Quaron, Soul Steel, Repair Kits and Forging are now disabled by default
 
 ## 1.24.5

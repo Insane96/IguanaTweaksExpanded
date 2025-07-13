@@ -115,7 +115,7 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
         int baseTableEnchantability = EnchantingFeature.enchantingTableBaseEnchantability;
         double enchantabilityModifier = EnchantingFeature.enchantingTableEnchantabilityMultiplier;
         if (stack.getTag() != null && ModNBTData.get(stack, EnchantingFeature.PURIFIED_ITEM, Boolean.class)) {
-            enchantabilityModifier += EnchantingFeature.enchantingTablePurifiedEnchantabilityMultiplier;
+            enchantabilityModifier = EnchantingFeature.enchantingTablePurifiedEnchantabilityMultiplier;
             baseTableEnchantability += EnchantingFeature.enchantingTablePurifiedEnchantabilityFlat;
         }
         double ratio = (enchantingPower / EnchantingFeature.enchantingTableMaxEnchantingPower.floatValue());
