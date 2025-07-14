@@ -57,7 +57,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-@Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled, a data pack is also enabled that changes the enchanting table recipe to give the new one and replaces xp bottles with enchanted cleansed lapis. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
+@Label(name = "Enchanting", description = "Adds a brand new enchanting table. If this feature is enabled, a data pack is also enabled that changes the enchanting table recipe to give the new one. Items in iguanatweaksexpanded:not_enchantable tag cannot be enchanted.")
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class EnchantingFeature extends JsonFeature {
     public static final TagKey<Item> NOT_ENCHANTABLE = ISEItemTagsProvider.create("not_enchantable");

@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.25.0
 ### Changes
 * Removed cleansed and enchanted lapis
   * You can now purify items with bottle o' enchanting, which is the same as the old infusing, with increased enchantability and over level enchantments
