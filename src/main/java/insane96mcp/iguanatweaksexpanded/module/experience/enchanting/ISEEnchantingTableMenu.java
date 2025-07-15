@@ -2,6 +2,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 
 import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableLearnedEnchantments;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableStatus;
+import insane96mcp.iguanatweaksreborn.module.experience.DroppedExperience;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import insane96mcp.insanelib.util.ModNBTData;
 import net.minecraft.Util;
@@ -177,12 +178,12 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
                 cost += EnchantingFeature.getCost(instance.enchantment, instance.level);
                 lapisCost += instance.level;
             }
-            if (cost > this.getMaxCost(enchantmentInstances) && !player.getAbilities().instabuild) {
+            if (cost > this.getMaxCost(enchantmentInstances) && !player.getAbilities().instabuild && !DroppedExperience.disableExperience) {
                 player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.cost_higher_than_max", cost, this.getMaxCost(enchantmentInstances)));
                 return;
             }
             enchantmentInstances.forEach(enchantmentInstance -> stack.enchant(enchantmentInstance.enchantment, enchantmentInstance.level));
-            if (!player.getAbilities().instabuild) {
+            if (!player.getAbilities().instabuild && !DroppedExperience.disableExperience) {
                 player.onEnchantmentPerformed(stack, cost);
             }
             ItemStack lapis = this.container.getItem(CATALYST_SLOT);

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.25.1
+### Changes
+* Disabling experience no longer prevents you from enchanting
+
 ## 1.25.0
 ### Changes
 * Removed cleansed and enchanted lapis

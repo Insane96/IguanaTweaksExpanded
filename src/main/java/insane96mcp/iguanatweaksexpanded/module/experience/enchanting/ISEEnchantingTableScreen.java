@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.experience.enchanting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableEnchantments;
+import insane96mcp.iguanatweaksreborn.module.experience.DroppedExperience;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -258,14 +259,14 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         float cost = this.getCurrentCost();
         if (cost <= 0f)
             return false;
-        if (!this.minecraft.player.getAbilities().instabuild) {
+        if (!this.minecraft.player.getAbilities().instabuild && !DroppedExperience.disableExperience) {
             for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
                 if (enchantmentEntry.enchantmentDisplay.lvl > enchantmentEntry.enchantmentDisplay.getMaxLvl())
                     return false;
             }
         }
 
-        boolean hasEnoughExp = this.minecraft.player.experienceLevel >= cost && cost <= this.maxCost;
+        boolean hasEnoughExp = this.minecraft.player.experienceLevel >= cost && cost <= this.maxCost || DroppedExperience.disableExperience;
         boolean hasEnoughLapis = this.menu.getSlot(ISEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= this.getLapisCost();
         return (hasEnoughExp && hasEnoughLapis) || this.minecraft.player.getAbilities().instabuild;
     }
@@ -290,7 +291,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         if (this.maxCost > 0) {
             float cost = this.getCurrentCost();
             //guiGraphics.drawCenteredString(this.font, , topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 12, color);
-            int color = this.minecraft.player.experienceLevel < cost && !this.minecraft.player.isCreative() ? 0xFF0000 : 0x11FF11;
+            int color = this.minecraft.player.experienceLevel < cost && !this.minecraft.player.isCreative() && !DroppedExperience.disableExperience ? 0xFF0000 : 0x11FF11;
             if (this.isButtonEnabled())
                 guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
             else
