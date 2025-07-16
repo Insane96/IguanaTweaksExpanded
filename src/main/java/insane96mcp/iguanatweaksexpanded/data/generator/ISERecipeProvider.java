@@ -1,6 +1,5 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
-import com.teamabnormals.caverns_and_chasms.core.registry.CCItems;
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
@@ -16,7 +15,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBl
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.data.MultiItemSmeltingRecipeBuilder;
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
-import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
 import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.Death;
@@ -26,7 +24,6 @@ import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -42,7 +39,6 @@ import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -739,29 +735,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         recycleGear(writer, Forging.SOUL_STEEL_HAMMER.get(), SoulSteel.NUGGET.get(), 200, 9);
         //</editor-fold>
 
-        //<editor-fold desc="Repair Kits">
-        appendMaterialToName = true;
-        addRepairKitRecipe(writer, ItemTags.PLANKS, Items.OAK_PLANKS, new Color(184, 148, 95));
-        //addRepairKitRecipe(writer, ItemTags.STONE_TOOL_MATERIALS, Items.COBBLESTONE, new Color(136, 135, 136));
-        addRepairKitRecipe(writer, Items.FLINT, new Color(61, 60, 60));
-        addRepairKitRecipe(writer, Items.COPPER_INGOT, new Color(209, 104, 69));
-        addRepairKitRecipe(writer, Items.GOLD_INGOT, new Color(253, 245, 95));
-        addRepairKitRecipe(writer, Items.IRON_INGOT, new Color(216, 216, 216));
-        addRepairKitRecipe(writer, Solarium.SOLARIUM_BALL.get(), new Color(164, 162, 10));
-        addRepairKitRecipe(writer, Durium.INGOT.get(), new Color(20, 90, 111));
-        addRepairKitRecipe(writer, Items.OBSIDIAN, new Color(26, 19, 47));
-        addRepairKitRecipe(writer, Keego.GEM.get(), new Color(0, 133, 213));
-        addRepairKitRecipe(writer, Quaron.INGOT.get(), new Color(227, 190, 255));
-        addRepairKitRecipe(writer, Items.DIAMOND, new Color(161, 251, 232));
-        addRepairKitRecipe(writer, SoulSteel.INGOT.get(), new Color(73, 55, 44));
-        addRepairKitRecipe(writer, Items.NETHERITE_INGOT, new Color(76, 65, 67));
-
-        addRepairKitRecipeRequiresMod(writer, "caverns_and_chasms", CCItems.SILVER_INGOT.get(), new Color(206, 213, 229, 255));
-        addRepairKitRecipeRequiresMod(writer, "caverns_and_chasms", CCItems.NECROMIUM_INGOT.get(), new Color(176, 189, 182, 255));
-        addRepairKitRecipeRequiresMod(writer, "caverns_and_chasms", CCItems.LIVING_FLESH.get(), new Color(152, 136, 139, 255));
-        appendMaterialToName = false;
-        //</editor-fold>
-
         addPoorRichOreRecipes(writer, BeegOreVeins.POOR_RICH_COPPER_ORE, Items.COPPER_INGOT, 0.75f, 100, 7f);
         addPoorRichOreRecipes(writer, BeegOreVeins.POOR_RICH_IRON_ORE, Items.IRON_INGOT, 1f, 200, 1f);
         addPoorRichOreRecipes(writer, BeegOreVeins.POOR_RICH_GOLD_ORE, Items.GOLD_INGOT, 2f, 200, 1f);
@@ -776,38 +749,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .addCondition(new FeatureEnabledCondition(featureName))
                 .addRecipe(recipeBuilder)
                 .build(writer, name);
-    }
-
-    private ItemStack generateRepairKitStack(ItemLike material, Color color) {
-        ItemStack resultStack = new ItemStack(RepairKits.REPAIR_KIT.get(), 1);
-        resultStack.getOrCreateTag().putString("repair_item", ForgeRegistries.ITEMS.getKey(material.asItem()).toString());
-        CompoundTag colorNbt = new CompoundTag();
-        colorNbt.putInt("r", color.getRed());
-        colorNbt.putInt("g", color.getGreen());
-        colorNbt.putInt("b", color.getBlue());
-        //noinspection DataFlowIssue
-        resultStack.getTag().put("color", colorNbt);
-        return resultStack;
-    }
-
-    private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, ItemLike material, Color color) {
-        featureBoundRecipe(writer, "Repair kits",
-                forgeRecipeBuilder(material, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4), ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_repair_kit")
-        );
-    }
-
-    private void addRepairKitRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> materialTag, ItemLike material, Color color) {
-        featureBoundRecipe(writer, "Repair kits",
-                forgeRecipeBuilder(materialTag, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4), ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + ForgeRegistries.ITEMS.getKey(material.asItem()).getPath() + "_repair_kit")
-        );
-    }
-
-    private void addRepairKitRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, ItemLike material, Color color) {
-        forgeRecipeRequiresMod(writer, modId, material, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4);
-    }
-
-    private void addRepairKitRecipeRequiresMod(Consumer<FinishedRecipe> writer, String modId, TagKey<Item> materialTag, ItemLike material, Color color) {
-        forgeRecipeRequiresMod(writer, modId, materialTag, 2, Items.AMETHYST_SHARD, generateRepairKitStack(material, color), 4);
     }
 
     private void addPoorRichOreRecipes(Consumer<FinishedRecipe> writer, BeegOreVeins.PoorRichOre poorRichOre, Item smeltOutput, float experience, int cookingTime, float baseOutputIncrease) {

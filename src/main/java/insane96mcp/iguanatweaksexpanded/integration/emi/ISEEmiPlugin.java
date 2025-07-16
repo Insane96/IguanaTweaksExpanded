@@ -171,7 +171,7 @@ public class ISEEmiPlugin implements EmiPlugin {
 			registry.addRecipe(createSimpleInfo(Keego.KEEGO_ARMOR_EQUIPMENT, Component.translatable("emi.info.iguanatweaksexpanded.keego"), "info_keego_moving"));
 		}
 		if (Feature.isEnabled(RepairKits.class)) {
-			registry.addRecipe(createSimpleInfo(RepairKits.REPAIR_KIT.get(), Component.translatable("emi.info.iguanatweaksexpanded.repair_kit"), "info_repair_kit"));
+			registry.addRecipe(createSimpleInfo(RepairKits.ITEM.get(), Component.translatable("emi.info.iguanatweaksexpanded.repair_kit"), "info_repair_kit"));
 		}
 	}
 

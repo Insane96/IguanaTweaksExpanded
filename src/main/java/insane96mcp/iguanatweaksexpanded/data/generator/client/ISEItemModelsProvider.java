@@ -166,7 +166,7 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         basicItem(Fletching.TORCH_ARROW_ITEM.get());
         basicItem(Fletching.ICE_ARROW_ITEM.get());
 
-        basicItem(RepairKits.REPAIR_KIT.get());
+        basicItem(RepairKits.ITEM.get());
         //basicItem(RecallIdol.ITEM.get());
     }
 

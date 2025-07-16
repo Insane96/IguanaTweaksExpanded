@@ -36,10 +36,10 @@ public class RepairKitRepairRecipe extends CustomRecipe {
                     return false;
                 repairableItem = itemStack;
             }
-            if (itemStack.getItem().equals(RepairKits.REPAIR_KIT.get())) {
+            if (itemStack.getItem().equals(RepairKits.ITEM.get())) {
                 if (repairKit != null
                         && (itemStack.getTag() == null
-                                || !repairKit.getOrCreateTag().getString("repair_item").equals(itemStack.getTag().getString("repair_item"))))
+                                || !repairKit.getOrCreateTag().getString("repair_material").equals(itemStack.getTag().getString("repair_material"))))
                     return false;
                 repairKit = itemStack;
             }
@@ -59,14 +59,14 @@ public class RepairKitRepairRecipe extends CustomRecipe {
                 continue;
             if (itemStack.isDamageableItem())
                 repairableItem = itemStack;
-            if (itemStack.getItem().equals(RepairKits.REPAIR_KIT.get())) {
+            if (itemStack.getItem().equals(RepairKits.ITEM.get())) {
                 if (repairKit == null)
                     repairKit = itemStack;
                 kitAmount++;
             }
         }
         if (repairableItem != null && repairKit != null) {
-            Item repairItem = ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(repairKit.getOrCreateTag().getString("repair_item")));
+            Item repairItem = ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(repairKit.getOrCreateTag().getString("repair_material")));
             if (repairItem == null)
                 return ItemStack.EMPTY;
             ItemStack repairItemStack = new ItemStack(repairItem);
@@ -76,7 +76,7 @@ public class RepairKitRepairRecipe extends CustomRecipe {
             ItemStack resultStack = repairableItem.copy();
             if (!resultStack.getItem().isValidRepairItem(resultStack, repairItemStack) && oRepairData.isEmpty())
                 return ItemStack.EMPTY;
-            int repairCount = RepairKits.repairKitIngotRatio * kitAmount;
+            int repairCount = RepairKits.repairKitMaterialRatio * kitAmount;
             int repairItemCountCost;
             int maxPartialRepairDmg = Mth.ceil(resultStack.getMaxDamage() * (1f - RepairKits.maxRepair));
             float amountRequired = 4;
@@ -122,6 +122,6 @@ public class RepairKitRepairRecipe extends CustomRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RepairKits.RECIPE_SERIALIZER.get();
+        return RepairKits.REPAIR_RECIPE_SERIALIZER.get();
     }
 }

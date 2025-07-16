@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MCM",
+    " M "
+  ],
+  "key": {
+    "M": {
+      "item": "iguanatweaksexpanded:quaron_ingot"
+    },
+    "C": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "item": "iguanatweaksexpanded:repair_kit",
+    "nbt": "{repair_material:\"iguanatweaksexpanded:quaron_ingot\",color:14925567}"
+  }
+}

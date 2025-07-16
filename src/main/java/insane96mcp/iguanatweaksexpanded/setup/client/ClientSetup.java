@@ -34,7 +34,6 @@ import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -339,13 +338,8 @@ public class ClientSetup {
         event.register((stack, tintIndex) -> {
             if (stack.getTag() == null)
                 return -1;
-            CompoundTag color = stack.getTag().getCompound("color");
-            byte a = color.getByte("a");
-            byte r = color.getByte("r");
-            byte g = color.getByte("g");
-            byte b = color.getByte("b");
-            return (0xFF & a) << 24 | (0xFF & r) << 16 | (0xFF & g) << 8 | (0xFF & b);
-        }, RepairKits.REPAIR_KIT.get());
+            return stack.getTag().getInt("color");
+        }, RepairKits.ITEM.get());
     }
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {

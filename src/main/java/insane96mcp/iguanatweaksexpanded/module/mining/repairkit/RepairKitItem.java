@@ -15,6 +15,6 @@ public class RepairKitItem extends Item {
     public Component getName(ItemStack stack) {
         if (stack.getTag() == null)
             return super.getName(stack);
-        return Component.translatable(this.getDescriptionId(stack), ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(stack.getTag().getString("repair_item"))).getName(stack).getString());
+        return Component.translatable(this.getDescriptionId(stack), ForgeRegistries.ITEMS.getValue(ResourceLocation.tryParse(stack.getTag().getString("repair_material"))).getName(stack).getString());
     }
 }
