@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Additions
+* You can now smelt raw ore blocks in the Soul Blast Furnace
+
 ## 1.25.1
 ### Changes
 * Disabling experience no longer prevents you from enchanting

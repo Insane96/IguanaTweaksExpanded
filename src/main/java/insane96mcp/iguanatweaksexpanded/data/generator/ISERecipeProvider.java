@@ -434,11 +434,13 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Items.COPPER_ORE, Items.RAW_COPPER, 0.7f, 300, 4.2f);
         addSoulBlastingRecipe(writer, Items.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER, 0.7f, 300, 4.2f);
         addSoulBlastingRecipe(writer, BeegOreVeins.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 300, 2f);
+        addSoulBlastingRecipe(writer, Items.RAW_COPPER_BLOCK, Items.COPPER_BLOCK, 6.3f, 1200);
         //Iron
         addSoulBlastingRecipe(writer, Items.RAW_IRON, Items.IRON_INGOT, 1f, 300);
         addSoulBlastingRecipe(writer, Items.IRON_ORE, Items.RAW_IRON, 1f, 600, 0.3f);
         addSoulBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.RAW_IRON, 1f, 600, 0.3f);
         addSoulBlastingRecipe(writer, BeegOreVeins.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 600, 0.3f);
+        addSoulBlastingRecipe(writer, Items.RAW_IRON_BLOCK, Items.IRON_BLOCK, 9f, 2400);
         addSoulBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 300, 4.4f);
         addSoulBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 300);
         addSoulBlastingRecipe(writer, Items.SMITHING_TABLE, Items.IRON_INGOT, 0f, 300);
@@ -449,6 +451,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addSoulBlastingRecipe(writer, Items.DEEPSLATE_GOLD_ORE, Items.RAW_GOLD, 2f, 600, 0.3f);
         addSoulBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_NUGGET, 2f, 600, 4.2f);
         addSoulBlastingRecipe(writer, BeegOreVeins.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 300, 0.3f);
+        addSoulBlastingRecipe(writer, Items.RAW_GOLD_BLOCK, Items.GOLD_BLOCK, 18f, 2400);
         //Durium
         addSoulBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 600, 6f);
         //Other

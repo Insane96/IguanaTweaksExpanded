@@ -1,0 +1,13 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 1200,
+  "experience": 6.3,
+  "group": "copper_block",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_copper_block"
+    }
+  ],
+  "result": "minecraft:copper_block"
+}

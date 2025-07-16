@@ -1,0 +1,13 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_soul_blasting",
+  "category": "soul_blast_furnace_misc",
+  "cookingtime": 2400,
+  "experience": 18.0,
+  "group": "silver_block",
+  "ingredients": [
+    {
+      "item": "caverns_and_chasms:raw_silver_block"
+    }
+  ],
+  "result": "caverns_and_chasms:silver_block"
+}
