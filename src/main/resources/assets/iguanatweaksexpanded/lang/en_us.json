@@ -276,8 +276,6 @@
 	"item.iguanatweaksexpanded.keego_hammer": "Keego Forge Hammer",
 	"item.iguanatweaksexpanded.quaron_hammer": "Quaron Hammer",
 
-	"item.iguanatweaksexpanded.repair_kit": "%s Repair Kit",
-
 	"block.iguanatweaksexpanded.mining_charge": "Mining Charge",
 
 	"iguanatweaksexpanded.multi_block_structure": "Requires a multi block structure to work",
@@ -420,6 +418,5 @@
 	"emi.info.grindstone": "Can be used to disenchant items",
 	"emi.info.iguanatweaksexpanded.altimeter": "Roughly shows your height with a precision of 16 blocks",
 	"emi.info.charcoal": "Can be obtained by burning logs",
-	"emi.info.iguanatweaksexpanded.keego": "Keego equipment is based off momentum. Each block mined increases mining speed, each entity hit increases attack speed and each block walked increases movement speed.",
-	"emi.info.iguanatweaksexpanded.repair_kit": "Can be used in a crafting grid to repair items, like when repairing with Anvils, but up to a cap durability"
+	"emi.info.iguanatweaksexpanded.keego": "Keego equipment is based off momentum. Each block mined increases mining speed, each entity hit increases attack speed and each block walked increases movement speed."
 }

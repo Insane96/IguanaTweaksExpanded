@@ -13,13 +13,10 @@ import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
-import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.crafting.AbstractMultiItemSmeltingRecipe;
-import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKitItem;
-import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.base.Feature;
 import net.minecraft.nbt.CompoundTag;
@@ -62,12 +59,6 @@ public class ISEEmiPlugin implements EmiPlugin {
 		if (Feature.isEnabled(Forging.class)) {
 			registry.addCategory(FORGE_RECIPE_CATEGORY);
 			registry.addWorkstation(FORGE_RECIPE_CATEGORY, FORGE_WORKSTATION);
-			for (ForgeRecipe forgeRecipe : manager.getAllRecipesFor(Forging.FORGE_RECIPE_TYPE.get())) {
-				registry.addRecipe(new EmiForgeRecipe(forgeRecipe));
-				if (forgeRecipe.getResult().getItem() instanceof RepairKitItem) {
-					registry.addEmiStack(EmiStack.of(forgeRecipe.getResult()));
-				}
-			}
 		}
 
 		if (Feature.isEnabled(MultiBlockFurnaces.class)) {
@@ -169,9 +160,6 @@ public class ISEEmiPlugin implements EmiPlugin {
 			registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, Component.translatable("emi.info.iguanatweaksexpanded.keego"), "info_keego_mining"));
 			registry.addRecipe(createSimpleInfo(Keego.KEEGO_HAND_EQUIPMENT, Component.translatable("emi.info.iguanatweaksexpanded.keego"), "info_keego_attacking"));
 			registry.addRecipe(createSimpleInfo(Keego.KEEGO_ARMOR_EQUIPMENT, Component.translatable("emi.info.iguanatweaksexpanded.keego"), "info_keego_moving"));
-		}
-		if (Feature.isEnabled(RepairKits.class)) {
-			registry.addRecipe(createSimpleInfo(RepairKits.ITEM.get(), Component.translatable("emi.info.iguanatweaksexpanded.repair_kit"), "info_repair_kit"));
 		}
 	}
 

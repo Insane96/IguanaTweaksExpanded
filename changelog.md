@@ -5,6 +5,9 @@
 * You can now smelt raw ore blocks in the Soul Blast Furnace
 * Added a config option to disable merging enchanted books
 
+### Removals
+* Moved Repair Kits to ISO
+
 ## 1.25.1
 ### Changes
 * Disabling experience no longer prevents you from enchanting

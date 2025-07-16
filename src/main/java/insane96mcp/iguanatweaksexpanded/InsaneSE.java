@@ -69,7 +69,6 @@ public class InsaneSE
             modEventBus.addListener(ClientSetup::registerEntityRenderers);
             modEventBus.addListener(ClientSetup::registerRecipeBookCategories);
             modEventBus.addListener(ClientSetup::registerTooltips);
-            modEventBus.addListener(ClientSetup::registerItemColorHandlers);
         }
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
@@ -134,6 +133,7 @@ public class InsaneSE
             case "chained_copper_boots" -> CopperEquipment.BOOTS.get();
             case "cleansed_lapis" -> Items.LAPIS_LAZULI;
             case "enchanted_cleansed_lapis" -> Items.EXPERIENCE_BOTTLE;
+            case "repair_kit" -> RepairKits.ITEM.get();
             default -> null;
         });
         if (ModList.get().isLoaded("shieldsplus")) {

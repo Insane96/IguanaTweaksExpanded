@@ -8,7 +8,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
-import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -166,7 +165,6 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         basicItem(Fletching.TORCH_ARROW_ITEM.get());
         basicItem(Fletching.ICE_ARROW_ITEM.get());
 
-        basicItem(RepairKits.ITEM.get());
         //basicItem(RecallIdol.ITEM.get());
     }
 

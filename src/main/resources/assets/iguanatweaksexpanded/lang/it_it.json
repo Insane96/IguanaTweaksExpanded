@@ -276,8 +276,6 @@
 	"item.iguanatweaksexpanded.keego_hammer": "Martello da forgia di keego",
 	"item.iguanatweaksexpanded.quaron_hammer": "Martello da forgia di quaron",
 
-	"item.iguanatweaksexpanded.repair_kit": "Kit di riparazione di %s",
-
 	"block.iguanatweaksexpanded.mining_charge": "Carica mineraria",
 
 	"iguanatweaksexpanded.multi_block_structure": "Richiede una struttura multi-blocco per funzionare",
@@ -421,5 +419,4 @@
 	"emi.info.iguanatweaksexpanded.altimeter": "Mostra la tua altezza nel mondo",
 	"emi.info.charcoal": "Può essere ottenuto bruciando tronchi",
 	"emi.info.iguanatweaksexpanded.keego": "L'equipaggiamento di keego è basati sul momento. Ogni blocco scavato aumenta la velocità di scavo, ogni creatura colpita aumenta la velocità di attacco e ogni blocco camminato incrementa la velocità di movimento",
-	"emi.info.iguanatweaksexpanded.repair_kit": "Può essere utilizzato per riparare oggetti nella griglia di fabbricazione, come in un incudine, ma fino ad un massimo di durabilità."
 }

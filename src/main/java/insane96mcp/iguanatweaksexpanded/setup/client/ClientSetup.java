@@ -27,7 +27,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.client.MultiBlockSoulBlastFurnaceScreen;
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeins;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
-import insane96mcp.iguanatweaksexpanded.module.mining.repairkit.RepairKits;
 import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.shieldsplus.setup.SPItems;
@@ -39,7 +38,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.fml.ModList;
@@ -332,14 +330,6 @@ public class ClientSetup {
         MenuScreens.register(Forging.FORGE_MENU_TYPE.get(), ForgeScreen::new);
         MenuScreens.register(EnchantingFeature.ENCHANTING_TABLE_MENU_TYPE.get(), ISEEnchantingTableScreen::new);
         MenuScreens.register(Fletching.FLETCHING_MENU_TYPE.get(), FletchingScreen::new);
-    }
-
-    public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
-        event.register((stack, tintIndex) -> {
-            if (stack.getTag() == null)
-                return -1;
-            return stack.getTag().getInt("color");
-        }, RepairKits.ITEM.get());
     }
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
