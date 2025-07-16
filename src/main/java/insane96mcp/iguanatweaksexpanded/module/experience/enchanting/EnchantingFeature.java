@@ -70,8 +70,10 @@ public class EnchantingFeature extends JsonFeature {
 
 
     @Config
-    @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items (also applies to enchanted books).")
+    @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items.")
     public static Boolean noEnchantmentMerge = true;
+    @Config(description = "Enchanted Books can no longer be merged with other enchanted books.")
+    public static Boolean preventMergingBooks = false;
     @Config
     @Label(name = "No enchanted smithing", description = "Enchanted items can no longer be upgraded (e.g. netherite)")
     public static Boolean noEnchantedSmithing = true;
@@ -322,6 +324,7 @@ public class EnchantingFeature extends JsonFeature {
         if (!this.isEnabled())
             return;
         preventMergingEnchantedItems(event);
+        preventMergingEnchantedBooks(event);
         purifyItem(event);
         fixLegacyEmpowered(event);
     }
@@ -342,8 +345,15 @@ public class EnchantingFeature extends JsonFeature {
         if (!noEnchantmentMerge)
             return;
 
-        boolean isEnchantedBook = event.getRight().is(Items.ENCHANTED_BOOK);
-        if (event.getRight().isEnchanted() || (isEnchantedBook && !event.getLeft().is(Items.ENCHANTED_BOOK)))
+        if (event.getRight().isEnchanted())
+            event.setCanceled(true);
+    }
+
+    public void preventMergingEnchantedBooks(AnvilUpdateEvent event) {
+        if (!preventMergingBooks)
+            return;
+
+        if (event.getLeft().is(Items.ENCHANTED_BOOK) && !event.getRight().isEmpty())
             event.setCanceled(true);
     }
 
