@@ -19,6 +19,7 @@ import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.InsaneSO;
 import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
+import insane96mcp.iguanatweaksreborn.module.items.repairkit.RepairKits;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.util.IntegratedPack;
 import net.minecraft.core.HolderLookup;

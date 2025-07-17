@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.26.0
 ### Additions
 * You can now smelt raw ore blocks in the Soul Blast Furnace
 * Added a config option to disable merging enchanted books
