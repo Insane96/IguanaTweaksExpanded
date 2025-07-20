@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Fixes
+* Experience bottle emi infos
+
 ## 1.26.0
 ### Additions
 * You can now smelt raw ore blocks in the Soul Blast Furnace

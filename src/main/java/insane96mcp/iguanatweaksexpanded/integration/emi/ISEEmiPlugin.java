@@ -118,7 +118,7 @@ public class ISEEmiPlugin implements EmiPlugin {
 				ItemStack output = new ItemStack(Items.DIAMOND_PICKAXE, 1);
 				output.setTag(tag);
 				registry.addRecipe(new EmiAnvilRecipe(InsaneSE.location("enchant_purify_item"), Items.DIAMOND_PICKAXE, Items.EXPERIENCE_BOTTLE, output));
-				registry.addRecipe(createSimpleInfo(Items.EXPERIENCE_BOTTLE, EnchantingFeature.PURIFIED_COMPONENT, "purify_item"));
+				registry.addRecipe(createSimpleInfo(Items.EXPERIENCE_BOTTLE, Component.translatable("emi.info.iguanatweaksexpanded.experience_bottle"), "purify_item"));
 			}
 
 			if (EnchantingFeature.enchantingTableRequiresLearning) {
