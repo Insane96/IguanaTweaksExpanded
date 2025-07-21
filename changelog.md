@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.26.1
 ### Changes
 * Enhanced Enchanting Table Screen when enchantments are one time use only
 
