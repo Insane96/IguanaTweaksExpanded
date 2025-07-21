@@ -267,16 +267,16 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         float cost = this.getCurrentCost();
         if (cost <= 0f)
             return false;
-        if (!this.minecraft.player.getAbilities().instabuild && !DroppedExperience.disableExperience) {
+        if (!this.minecraft.player.getAbilities().instabuild) {
             for (EnchantmentEntry enchantmentEntry : this.enchantmentEntries) {
                 if (enchantmentEntry.enchantmentDisplay.lvl > enchantmentEntry.enchantmentDisplay.getMaxLvl())
                     return false;
             }
         }
 
-        boolean hasEnoughExp = this.minecraft.player.experienceLevel >= cost && cost <= this.maxCost || DroppedExperience.disableExperience;
+        boolean hasEnoughExp = (this.minecraft.player.experienceLevel >= cost || DroppedExperience.disableExperience);
         boolean hasEnoughLapis = this.menu.getSlot(ISEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() >= this.getLapisCost();
-        return (hasEnoughExp && hasEnoughLapis) || this.minecraft.player.getAbilities().instabuild;
+        return (hasEnoughExp && hasEnoughLapis && cost <= this.maxCost) || this.minecraft.player.getAbilities().instabuild;
     }
 
     @Override

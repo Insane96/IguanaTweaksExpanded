@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.26.2
+### Fixes
+* Being able to enchant ignoring max cost
+
 ## 1.26.1
 ### Changes
 * Enhanced Enchanting Table Screen when enchantments are one time use only
@@ -13,7 +17,7 @@
 * Added a config option to disable merging enchanted books
 
 ### Removals
-* Moved Repair Kits to ISO
+* Moved Repair Kits to ISO****
 
 ## 1.25.1
 ### Changes
