@@ -1,6 +1,9 @@
 # Changelog
 
 ## Upcoming
+### Changes
+* Enhanced Enchanting Table Screen when enchantments are one time use only
+
 ### Fixes
 * Experience bottle emi infos
 

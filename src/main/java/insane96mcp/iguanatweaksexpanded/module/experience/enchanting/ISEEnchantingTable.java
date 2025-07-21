@@ -117,7 +117,7 @@ public class ISEEnchantingTable extends BaseEntityBlock {
                             int currentLvl = enchantingTableBE.knownEnchantments.get(enchantment);
                             MutableComponent currentLvlDescId = Component.translatable("enchantment.level." + currentLvl).withStyle(ChatFormatting.DARK_PURPLE);
                             if (currentLvl > 10) {
-                                currentLvlDescId = Component.translatable("enchantment.level." + 10).append("+").withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal(currentLvl + ""))));
+                                currentLvlDescId = Component.literal(currentLvl + "").withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_PURPLE));
                             }
                             player.sendSystemMessage(Component.translatable("iguanatweaksexpanded.enchanting_table.added_levels", newLvlDescId, enchantmentDescId, currentLvlDescId));
                         }

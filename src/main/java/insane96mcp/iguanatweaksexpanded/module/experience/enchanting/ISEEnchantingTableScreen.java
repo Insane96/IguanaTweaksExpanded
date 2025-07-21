@@ -102,7 +102,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
     }
 
     private void updatePossibleEnchantments() {
-        ItemStack stack = this.menu.getSlot(0).getItem();
+        ItemStack stack = this.getItem();
         this.updateMaxCost();
         if ((ItemStack.isSameItemSameTags(stack, this.lastStack) || (!EnchantingFeature.canBeEnchanted(stack) && !stack.isEmpty())) && !this.forceUpdateEnchantmentsList)
             return;
@@ -184,7 +184,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
 
     private void updateMaxCost() {
         this.maxCost = this.menu.maxCost.get();
-        ItemStack stack = this.menu.getSlot(0).getItem();
+        ItemStack stack = this.getItem();
         if (stack.isEmpty()) {
             this.maxCost = 0;
             return;
@@ -208,11 +208,19 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
     }
 
     private boolean isItemPurified() {
-        return EnchantingFeature.isPurified(this.menu.getSlot(0).getItem());
+        return EnchantingFeature.isPurified(this.getItem());
+    }
+
+    private ItemStack getItem() {
+        return this.menu.getSlot(0).getItem();
+    }
+
+    private boolean hasItem() {
+        return !this.getItem().isEmpty();
     }
 
     private boolean hasEnchantment(Enchantment enchantment) {
-        return EnchantmentHelper.getTagEnchantmentLevel(enchantment, this.menu.getSlot(0).getItem()) > 0;
+        return EnchantmentHelper.getTagEnchantmentLevel(enchantment, this.getItem()) > 0;
     }
 
     @Override
@@ -253,8 +261,8 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
     }
 
     private boolean isButtonEnabled() {
-        if (this.menu.getSlot(0).getItem().isEmpty()
-                || !EnchantingFeature.canBeEnchanted(this.menu.getSlot(0).getItem()))
+        if (this.getItem().isEmpty()
+                || !EnchantingFeature.canBeEnchanted(this.getItem()))
             return false;
         float cost = this.getCurrentCost();
         if (cost <= 0f)
@@ -281,7 +289,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         for (EnchantmentEntry entry : this.enchantmentEntries) {
             entry.render(guiGraphics, mouseX, mouseY, partialTick);
         }
-        ItemStack stack = this.menu.getSlot(0).getItem();
+        ItemStack stack = this.getItem();
         if ((EnchantingFeature.canBeEnchanted(stack) || stack.isEmpty()) && this.enchantmentEntries.isEmpty()) {
             guiGraphics.drawCenteredString(this.font, Component.translatable("iguanatweaksexpanded.enchanting_table.no_enchantments_available").withStyle(ChatFormatting.UNDERLINE), topLeftCornerX + LIST_X +  + ENCH_ENTRY_W / 2 - SCROLL_BUTTON_W, topLeftCornerY + LIST_Y, 0xFFaa00);
             if (mouseX >= topLeftCornerX + LIST_X && mouseX <= topLeftCornerX + LIST_X + ENCH_ENTRY_W && mouseY >= topLeftCornerY + LIST_Y && mouseY <= topLeftCornerY + LIST_Y + ENCH_ENTRY_H) {
@@ -292,11 +300,16 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             float cost = this.getCurrentCost();
             //guiGraphics.drawCenteredString(this.font, , topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H + 12, color);
             int color = this.minecraft.player.experienceLevel < cost && !this.minecraft.player.isCreative() && !DroppedExperience.disableExperience ? 0xFF0000 : 0x11FF11;
-            if (this.isButtonEnabled())
-                guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
-            else
-                guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
-            guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(cost)), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + 6, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
+            if (!EnchantingFeature.enchantingTableOneTimeUseEnchantments) {
+                if (this.isButtonEnabled())
+                    guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
+                else
+                    guiGraphics.blit(TEXTURE_LOCATION, topLeftCornerX + BUTTON_X + 3, topLeftCornerY + BUTTON_Y + 3, EXP_ORB_U + EXP_ORB_W, EXP_ORB_V, EXP_ORB_W, EXP_ORB_H);
+            }
+            int offset = EnchantingFeature.enchantingTableOneTimeUseEnchantments ? 0 : 6;
+            guiGraphics.drawCenteredString(this.font, "%s".formatted(ONE_DECIMAL_FORMATTER.format(cost)), topLeftCornerX + BUTTON_X + BUTTON_W / 2 + offset, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
+            //else if (this.isButtonEnabled())
+                //guiGraphics.drawCenteredString(this.font, "Enchant", topLeftCornerX + BUTTON_X + BUTTON_W / 2, topLeftCornerY + BUTTON_Y + BUTTON_H / 2 - (this.font.lineHeight / 2), color);
             if (cost > 0) {
                 int lapis = this.getLapisCost();
                 color = this.menu.getSlot(ISEEnchantingTableMenu.CATALYST_SLOT).getItem().getCount() < lapis ? 0xFF0000 : 0x11FF11;
@@ -333,7 +346,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
     }
 
     public boolean shouldShowKnownEnchantments() {
-        ItemStack stack = this.menu.getSlot(0).getItem();
+        ItemStack stack = this.getItem();
         return stack.isEmpty();
     }
 
@@ -351,8 +364,8 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         }
 
         private void updateActiveState() {
-            this.levelUpBtn.active = this.enchantmentDisplay.canRiseLevel() && !ISEEnchantingTableScreen.this.menu.getSlot(0).getItem().isEmpty();
-            this.levelDownBtn.active = this.enchantmentDisplay.lvl > 0 && !ISEEnchantingTableScreen.this.menu.getSlot(0).getItem().isEmpty();
+            this.levelUpBtn.active = this.enchantmentDisplay.canRiseLevel() && !ISEEnchantingTableScreen.this.getItem().isEmpty();
+            this.levelDownBtn.active = this.enchantmentDisplay.lvl > 0 && !ISEEnchantingTableScreen.this.getItem().isEmpty();
         }
 
         @Override
@@ -466,7 +479,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         public EnchantmentDisplay(int pX, int pY, Enchantment enchantment, int maxLvl) {
             super(pX, pY, ENCH_DISPLAY_W, ENCH_ENTRY_H, !enchantment.isCurse() ? Component.translatable(enchantment.getDescriptionId()) : Component.translatable(enchantment.getDescriptionId()).withStyle(ChatFormatting.RED));
             this.enchantment = enchantment;
-            this.lvl = ISEEnchantingTableScreen.this.menu.getSlot(0).getItem().isEmpty() ? maxLvl : 0;
+            this.lvl = ISEEnchantingTableScreen.this.getItem().isEmpty() ? maxLvl : 0;
             this.maxLvl = maxLvl;
         }
 
@@ -481,11 +494,17 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             this.renderScrollingString(pGuiGraphics, Minecraft.getInstance().font, 1, 0xDDDDDD);
             MutableComponent lvlTxt = Component.empty();
             if (this.lvl > 0) {
-                lvlTxt = Component.translatable("enchantment.level." + Math.min(10, this.lvl));
-                if (this.lvl == this.enchantment.getMaxLevel() && ISEEnchantingTableScreen.this.shouldShowKnownEnchantments() && !EnchantingFeature.isConsumedOnEnchant(this.enchantment))
-                    lvlTxt.withStyle(ChatFormatting.BLUE);
-                if (this.lvl > 10)
-                    lvlTxt.withStyle(ChatFormatting.BLUE);
+                if (EnchantingFeature.enchantingTableOneTimeUseEnchantments
+                        && ISEEnchantingTableScreen.this.menu.getSlot(0).getItem().isEmpty()) {
+                    lvlTxt = Component.literal(this.lvl + "");
+                    if (this.lvl > 99)
+                        lvlTxt = Component.literal(99 + "").withStyle(ChatFormatting.BLUE);
+                }
+                else {
+                    lvlTxt = Component.translatable("enchantment.level." + Math.min(10, this.lvl));
+                    if (this.lvl == this.enchantment.getMaxLevel() && ISEEnchantingTableScreen.this.shouldShowKnownEnchantments() && !EnchantingFeature.isConsumedOnEnchant(this.enchantment))
+                        lvlTxt.withStyle(ChatFormatting.BLUE);
+                }
             }
             pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
             MutableComponent component = Component.empty();
