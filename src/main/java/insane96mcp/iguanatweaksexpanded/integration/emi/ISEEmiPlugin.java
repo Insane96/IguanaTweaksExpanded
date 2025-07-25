@@ -13,6 +13,7 @@ import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
+import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
@@ -59,6 +60,9 @@ public class ISEEmiPlugin implements EmiPlugin {
 		if (Feature.isEnabled(Forging.class)) {
 			registry.addCategory(FORGE_RECIPE_CATEGORY);
 			registry.addWorkstation(FORGE_RECIPE_CATEGORY, FORGE_WORKSTATION);
+			for (ForgeRecipe forgeRecipe : manager.getAllRecipesFor(Forging.FORGE_RECIPE_TYPE.get())) {
+				registry.addRecipe(new EmiForgeRecipe(forgeRecipe));
+			}
 		}
 
 		if (Feature.isEnabled(MultiBlockFurnaces.class)) {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.26.3
+### Fixes
+* Forge recipes no longer showing up in EMI
+
 ## 1.26.2
 ### Fixes
 * Being able to enchant ignoring max cost
@@ -17,7 +21,7 @@
 * Added a config option to disable merging enchanted books
 
 ### Removals
-* Moved Repair Kits to ISO****
+* Moved Repair Kits to ISO
 
 ## 1.25.1
 ### Changes
