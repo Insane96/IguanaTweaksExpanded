@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.26.4
 ### Changes
 * When enchanting table is enchanting an item now shows how many levels are available
 * Applying books to enchanting tables now shows arabic numbers instead of roman when enchantment is consumed on enchant
