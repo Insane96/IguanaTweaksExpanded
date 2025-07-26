@@ -444,7 +444,10 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
             else {
                 int currCost = EnchantingFeature.getCost(enchantment, this.enchantmentEntry.enchantmentDisplay.lvl);
                 int newCost = EnchantingFeature.getCost(enchantment, this.enchantmentEntry.enchantmentDisplay.lvl + (this.type == Type.RISE ? 1 : -1));
-                this.setTooltip(Tooltip.create(Component.translatable("iguanatweaksexpanded.enchanting_table.level_btn_tooltip", currCost, newCost)));
+                MutableComponent translatable = Component.translatable("iguanatweaksexpanded.enchanting_table.level_btn_tooltip", currCost, newCost);
+                if (EnchantingFeature.isConsumedOnEnchant(enchantment))
+                    translatable.append(CommonComponents.NEW_LINE).append(Component.translatable("iguanatweaksexpanded.enchanting_table.available_levels", this.enchantmentEntry.enchantmentDisplay.maxLvl));
+                this.setTooltip(Tooltip.create(translatable));
             }
         }
 

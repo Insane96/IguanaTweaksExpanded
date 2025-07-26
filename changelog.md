@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming
+### Changes
+* When enchanting table is enchanting an item now shows how many levels are available
+* Applying books to enchanting tables now shows arabic numbers instead of roman when enchantment is consumed on enchant
+
 ## 1.26.3
 ### Fixes
 * Forge recipes no longer showing up in EMI
