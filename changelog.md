@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Enchantments are no longer consumed in creative mode
+
 ## 1.26.4
 ### Changes
 * When enchanting table is enchanting an item now shows how many levels are available

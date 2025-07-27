@@ -185,16 +185,16 @@ public class ISEEnchantingTableMenu extends AbstractContainerMenu {
             enchantmentInstances.forEach(enchantmentInstance -> stack.enchant(enchantmentInstance.enchantment, enchantmentInstance.level));
             if (!player.getAbilities().instabuild && !DroppedExperience.disableExperience) {
                 player.onEnchantmentPerformed(stack, cost);
+                for (EnchantmentInstance instance : enchantmentInstances) {
+                    if (EnchantingFeature.isConsumedOnEnchant(instance.enchantment)) {
+                        table.forgetEnchantment(instance.enchantment, instance.level);
+                        EnchantingFeature.removePendingEnchantment(stack, instance.enchantment);
+                    }
+                }
             }
             ItemStack lapis = this.container.getItem(CATALYST_SLOT);
             lapis.shrink(lapisCost);
             level.playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, 1f);
-            for (EnchantmentInstance instance : enchantmentInstances) {
-                if (EnchantingFeature.isConsumedOnEnchant(instance.enchantment)) {
-                    table.forgetEnchantment(instance.enchantment, instance.level);
-                    EnchantingFeature.removePendingEnchantment(stack, instance.enchantment);
-                }
-            }
             this.updateMaxCost(stack, level, blockPos);
             SyncISEEnchantingTableStatus.sync((ServerLevel) level, blockPos, table);
         });
