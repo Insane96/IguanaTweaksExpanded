@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.network.message.SyncISEEnchantingTableEnchantments;
 import insane96mcp.iguanatweaksreborn.module.experience.DroppedExperience;
+import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -121,7 +122,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
             if (EnchantingFeature.enchantingTableRequiresLearning
                     && !this.learnedEnchantments.containsKey(enchantment)
-                    || !enchantment.isDiscoverable())
+                    || EnchantmentsFeature.isEnchantmentDisabled(enchantment))
                         continue;
             if (this.shouldShowKnownEnchantments())
                 availableEnchantments.add(enchantment);

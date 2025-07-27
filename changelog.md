@@ -12,6 +12,7 @@
 
 ### Fixes
 * Player attack cooldown not calculated correctly in hammer knockback
+* Not being able to use Swift Sneak and Soul Speed in the enchanting table
 
 ## 1.26.5
 ### Changes
