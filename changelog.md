@@ -9,6 +9,7 @@
   * Ticks stolen now scale with attack speed and no longer with weapon % attack damage
 * Slightly increased Trident enchantability (7 -> 8)
 * Vanilla and ISO Shields enchantability changes no longer require Shields+ data pack enabled 
+* Lowered shortbow enchantability
 
 ### Fixes
 * Player attack cooldown not calculated correctly in hammer knockback
