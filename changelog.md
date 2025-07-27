@@ -3,7 +3,10 @@
 ## Upcoming
 ### Changes
 * Lowered Cryo Aspect freeze duration
-* Air stealer now scales with attack speed and no longer with weapon % attack damage
+* Air stealer 
+  * Only one level now
+  * Steals 25 ticks
+  * Ticks stolen now scale with attack speed and no longer with weapon % attack damage
 
 ### Fixes
 * Player attack cooldown not calculated correctly in hammer knockback

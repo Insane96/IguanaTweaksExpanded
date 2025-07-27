@@ -20,16 +20,11 @@ public class AirStealer extends Enchantment {
         super(Rarity.UNCOMMON, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 2;
-    }
-
     /**
      * Returns the minimal value of enchantability needed on the enchantment level passed.
      */
     public int getMinCost(int pEnchantmentLevel) {
-        return 5 + 20 * (pEnchantmentLevel - 1);
+        return 25;
     }
 
     public int getMaxCost(int pEnchantmentLevel) {
@@ -48,7 +43,7 @@ public class AirStealer extends Enchantment {
             float f = player.getAttackStrengthScale(0.5f);
             attackCooldown = f * f;
         }
-        int ticksStolen = (int) (10 * lvl * attackCooldown * attackSpeedMod);
+        int ticksStolen = (int) (25 * attackCooldown * attackSpeedMod);
         attacked.setAirSupply(attacked.getAirSupply() - ticksStolen);
         attacker.setAirSupply(attacker.getAirSupply() + ticksStolen);
     }
