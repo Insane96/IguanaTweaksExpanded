@@ -4,6 +4,9 @@
 ### Changes
 * Enchantments are no longer consumed in creative mode
 
+### Fixes
+* Purified items not requiring the correct stored amount of levels
+
 ## 1.26.4
 ### Changes
 * When enchanting table is enchanting an item now shows how many levels are available

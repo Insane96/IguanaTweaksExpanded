@@ -446,7 +446,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
                 int newCost = EnchantingFeature.getCost(enchantment, this.enchantmentEntry.enchantmentDisplay.lvl + (this.type == Type.RISE ? 1 : -1));
                 MutableComponent translatable = Component.translatable("iguanatweaksexpanded.enchanting_table.level_btn_tooltip", currCost, newCost);
                 if (EnchantingFeature.isConsumedOnEnchant(enchantment))
-                    translatable.append(CommonComponents.NEW_LINE).append(Component.translatable("iguanatweaksexpanded.enchanting_table.available_levels", this.enchantmentEntry.enchantmentDisplay.maxLvl));
+                    translatable.append(CommonComponents.NEW_LINE).append(Component.translatable("iguanatweaksexpanded.enchanting_table.available_levels", this.enchantmentEntry.enchantmentDisplay.storedLevels));
                 this.setTooltip(Tooltip.create(translatable));
             }
         }
@@ -474,16 +474,16 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
 
         public Enchantment enchantment;
         public int lvl;
-        private final int maxLvl;
+        private final int storedLevels;
 
         /**
          * A maxLvl of 0 means unbound max level, otherwise the level is capped
          */
-        public EnchantmentDisplay(int pX, int pY, Enchantment enchantment, int maxLvl) {
+        public EnchantmentDisplay(int pX, int pY, Enchantment enchantment, int storedLevels) {
             super(pX, pY, ENCH_DISPLAY_W, ENCH_ENTRY_H, !enchantment.isCurse() ? Component.translatable(enchantment.getDescriptionId()) : Component.translatable(enchantment.getDescriptionId()).withStyle(ChatFormatting.RED));
             this.enchantment = enchantment;
-            this.lvl = ISEEnchantingTableScreen.this.getItem().isEmpty() ? maxLvl : 0;
-            this.maxLvl = maxLvl;
+            this.lvl = ISEEnchantingTableScreen.this.getItem().isEmpty() ? storedLevels : 0;
+            this.storedLevels = storedLevels;
         }
 
         @Override
@@ -509,7 +509,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
                         lvlTxt.withStyle(ChatFormatting.BLUE);
                 }
             }
-            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.maxLvl ? 16733695 : 0xDDDDDD);
+            pGuiGraphics.drawCenteredString(Minecraft.getInstance().font, lvlTxt, this.getX() + ENCH_DISPLAY_W - ENCH_LVL_W / 2 - 1, this.getY() + 3, this.lvl > this.storedLevels ? 16733695 : 0xDDDDDD);
             MutableComponent component = Component.empty();
             boolean hasDesc = false;
             if ((Screen.hasShiftDown() || shouldShowKnownEnchantments()) && ModList.get().isLoaded("enchdesc")) {
@@ -538,10 +538,11 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         }
 
         public int getMaxLvl() {
-            int maxLvl = Math.min(this.maxLvl, this.enchantment.getMaxLevel());
+            int maxLvl = Math.min(this.storedLevels, this.enchantment.getMaxLevel());
             if (this.enchantment.getMaxLevel() > 1
                     && ISEEnchantingTableScreen.this.isItemPurified()
-                    && EnchantingFeature.canOverLevel(this.enchantment))
+                    && EnchantingFeature.canOverLevel(this.enchantment)
+                    && (!EnchantingFeature.isConsumedOnEnchant(this.enchantment) || this.storedLevels >= maxLvl + 1))
                 maxLvl++;
             return maxLvl;
         }
@@ -569,7 +570,7 @@ public class ISEEnchantingTableScreen extends AbstractContainerScreen<ISEEnchant
         }
 
         public void setLvl(int lvl) {
-            this.lvl = this.maxLvl > 0 ? Math.min(lvl, this.getMaxLvl()) : lvl;
+            this.lvl = this.storedLevels > 0 ? Math.min(lvl, this.getMaxLvl()) : lvl;
         }
 
         private int getYOffset() {
