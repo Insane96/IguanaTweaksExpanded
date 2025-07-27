@@ -4,6 +4,9 @@
 ### Changes
 * Lowered Cryo Aspect freeze duration
 
+### Fixes
+* Player attack cooldown not calculated correctly in hammer knockback
+
 ## 1.26.5
 ### Changes
 * Enchantments are no longer consumed in creative mode

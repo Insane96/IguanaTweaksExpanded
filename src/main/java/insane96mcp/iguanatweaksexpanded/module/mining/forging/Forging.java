@@ -110,13 +110,13 @@ public class Forging extends Feature {
 					&& !livingEntity.isAlliedTo(attacker)
 					&& (!(livingEntity instanceof ArmorStand armorStand) || !armorStand.isMarker())
 					&& event.getEntity().distanceToSqr(livingEntity) < rangeSqr) {
-				livingEntity.push(0, (0.9f + (getKnockbackBonus(attacker))) * (1.0D - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE)) * attackStrengthScale, 0);
+				livingEntity.push(0, (0.9f + (getKnockbackBonus(attacker))) * (1.0D - livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE)) * attackStrengthScale * attackStrengthScale, 0);
 				if (livingEntity instanceof Player player)
 					player.hurtMarked = true;
 			}
 		}
 
-		event.getEntity().playSound(SoundEvents.ANVIL_PLACE, 0.6f * attackStrengthScale, 1.1f);
+		event.getEntity().playSound(SoundEvents.ANVIL_PLACE, 0.6f * attackStrengthScale * attackStrengthScale, 1.1f);
 		((ServerLevel) event.getEntity().level()).sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.ANVIL.defaultBlockState), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), 200, range / 2f, range / 4f, range / 2f, 1f);
 	}
 
