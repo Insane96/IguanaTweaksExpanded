@@ -2,7 +2,10 @@
 
 ## Upcoming
 ### Changes
-* Increased Sprint Pact movement speed (x1.15 -> x1.2)  
+* Increased Sprint Pact movement speed (x1.15 -> x1.2)
+
+### Fixes
+* Sprint Pact and Curse of Walking no longer prevent players from swimming
 
 ## 1.26.6
 ### Changes
