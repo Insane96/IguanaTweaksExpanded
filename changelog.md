@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.26.6
 ### Changes
 * Lowered Cryo Aspect freeze duration
 * Air stealer 
