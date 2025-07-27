@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.26.5
 ### Changes
 * Enchantments are no longer consumed in creative mode
 
