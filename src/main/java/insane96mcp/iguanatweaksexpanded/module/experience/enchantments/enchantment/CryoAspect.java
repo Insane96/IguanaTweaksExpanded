@@ -39,7 +39,7 @@ public class CryoAspect extends Enchantment {
     }
 
     public void doPostAttack(@NotNull LivingEntity attacker, @NotNull Entity target, int lvl) {
-        int ticks = this.frozenTicksPerLevel(target) + (80 * lvl);
+        int ticks = this.frozenTicksPerLevel(target) + (60 * lvl);
         if (attacker instanceof Player player)
             ticks = (int) (ticks * player.getAttackStrengthScale(0.5f));
         if (target.getTicksFrozen() < ticks)
