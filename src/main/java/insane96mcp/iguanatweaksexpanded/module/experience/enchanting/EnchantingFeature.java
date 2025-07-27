@@ -149,7 +149,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("allurement:spread_of_ailments").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:gravity_defying").costPerLevel(2),
 
-            new EnchantmentData("minecraft:loyalty").costPerLevel(2),
+            new EnchantmentData("minecraft:loyalty").costPerLevel(3),
             new EnchantmentData("minecraft:channeling").costPerLevel(4),
             new EnchantmentData("minecraft:riptide").costPerLevel(1),
             new EnchantmentData("minecraft:impaling").costPerLevel(1),
