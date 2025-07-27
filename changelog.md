@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Increased Sprint Pact movement speed (x1.15 -> x1.2)  
+
 ## 1.26.6
 ### Changes
 * Lowered Cryo Aspect freeze duration

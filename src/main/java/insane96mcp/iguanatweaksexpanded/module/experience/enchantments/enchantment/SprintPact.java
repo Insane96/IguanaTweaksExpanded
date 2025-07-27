@@ -37,7 +37,7 @@ public class SprintPact extends Enchantment implements IAttributeEnchantment {
     public void applyAttributeModifier(ItemAttributeModifierEvent event, int enchantmentLvl) {
         if (event.getSlotType() != EquipmentSlot.LEGS)
             return;
-        event.addModifier(Attributes.MOVEMENT_SPEED, new AttributeModifier(MODIFIER_UUID, "Healthy enchantment", 0.15d, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        event.addModifier(Attributes.MOVEMENT_SPEED, new AttributeModifier(MODIFIER_UUID, "Healthy enchantment", 0.20d, AttributeModifier.Operation.MULTIPLY_TOTAL));
     }
 
     @Override

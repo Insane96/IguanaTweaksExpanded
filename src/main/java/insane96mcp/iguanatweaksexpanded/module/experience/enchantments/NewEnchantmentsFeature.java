@@ -364,6 +364,7 @@ public class NewEnchantmentsFeature extends Feature {
 		Veining.applyOutlineAndDestroyAnimation(event);
 	}
 
+	//Can't swim
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public void onSprint(PlayerSprintEvent event) {
