@@ -7,6 +7,7 @@
 
 ### Fixes
 * Sprint Pact and Curse of Walking no longer prevent players from swimming
+* Golden shield giving nuggets when recycled
 
 ## 1.26.6
 ### Changes
