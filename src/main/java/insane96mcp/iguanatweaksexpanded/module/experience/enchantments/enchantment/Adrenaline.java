@@ -24,7 +24,7 @@ import java.util.UUID;
 
 public class Adrenaline extends Enchantment implements IAttributeEnchantment {
     public static TagKey<Item> ACCEPTS_ENCHANTMENT = ISEItemTagsProvider.create("enchanting/accepts_adrenaline");
-    public static EnchantmentCategory CATEGORY = EnchantmentCategory.create("accepts_adrenaline", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT));
+    public static EnchantmentCategory CATEGORY = EnchantmentCategory.create("accepts_adrenaline", item -> item.builtInRegistryHolder().is(ACCEPTS_ENCHANTMENT) || item instanceof DiggerItem);
     public static final UUID MODIFIER_UUID = UUID.fromString("656cda69-88a6-4925-a1ce-8ec8e475efdd");
     public Adrenaline() {
         super(Rarity.UNCOMMON, CATEGORY, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
@@ -34,7 +34,6 @@ public class Adrenaline extends Enchantment implements IAttributeEnchantment {
     public int getMaxLevel() {
         return 5;
     }
-
 
     public int getMinCost(int lvl) {
         return 4 + (lvl - 1) * 8;
@@ -48,23 +47,18 @@ public class Adrenaline extends Enchantment implements IAttributeEnchantment {
         return !(other instanceof DiggingEnchantment) && super.checkCompatibility(other);
     }
 
-    public static float getMiningSpeedBoost(ItemStack stack, int lvl) {
+    public static float getMiningSpeedBoost(ItemStack stack) {
         if (!(stack.getItem() instanceof DiggerItem diggerItem))
-            return 0f;
-        float durConsumed = 1 - MCUtils.getPercentageDurabilityLeft(stack);
-        return EnchantmentsFeature.getEfficiencyBonus(diggerItem.speed, lvl) * 2.5f * (durConsumed * durConsumed);
-    }
-
-    public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state) {
-        if (state == null || entity == null)
-            return 0f;
-        if (!stack.isCorrectToolForDrops(state))
             return 0f;
         int lvl = stack.getEnchantmentLevel(NewEnchantmentsFeature.ADRENALINE.get());
         if (lvl == 0)
             return 0f;
+        float durConsumed = 1 - MCUtils.getPercentageDurabilityLeft(stack);
+        return EnchantmentsFeature.getEfficiencyBonus(diggerItem.speed, lvl) * 2f * durConsumed;
+    }
 
-        float miningSpeedBoost = getMiningSpeedBoost(stack, lvl);
+    public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state) {
+        float miningSpeedBoost = getMiningSpeedBoost(stack);
         if (miningSpeedBoost == 0f)
             return 0f;
         return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, state,false, entity);
@@ -75,7 +69,7 @@ public class Adrenaline extends Enchantment implements IAttributeEnchantment {
         if (event.getSlotType() != EquipmentSlot.MAINHAND)
             return;
         float durConsumed = 1 - MCUtils.getPercentageDurabilityLeft(event.getItemStack());
-        event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(MODIFIER_UUID, "Adrenaline Enchantment Modifier", 0.15f * enchantmentLvl * (durConsumed * durConsumed), AttributeModifier.Operation.MULTIPLY_BASE));
+        event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(MODIFIER_UUID, "Adrenaline Enchantment Modifier", 0.15f * enchantmentLvl * durConsumed, AttributeModifier.Operation.MULTIPLY_BASE));
     }
 
     @Override

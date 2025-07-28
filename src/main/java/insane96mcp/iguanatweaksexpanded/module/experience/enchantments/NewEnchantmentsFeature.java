@@ -9,7 +9,7 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantme
 import insane96mcp.iguanatweaksexpanded.network.message.JumpMidAirMessage;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksreborn.data.lootmodifier.DropMultiplierModifier;
-import insane96mcp.iguanatweaksreborn.event.EnchantmentBonusEfficiencyEvent;
+import insane96mcp.iguanatweaksreborn.event.EnchantmentBonusMiningSpeedEvent;
 import insane96mcp.iguanatweaksreborn.event.StackMaxDamageEvent;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.Label;
@@ -225,17 +225,17 @@ public class NewEnchantmentsFeature extends Feature {
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOW)
-	public void onBreakSpeedEnchantment(EnchantmentBonusEfficiencyEvent event) {
-		event.setNewEfficiency(event.getNewEfficiency() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
-		event.setNewEfficiency(event.getNewEfficiency() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
+	public void onBreakSpeedEnchantment(EnchantmentBonusMiningSpeedEvent event) {
+		event.setNewMiningSpeed(event.getNewMiningSpeed() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
+		event.setNewMiningSpeed(event.getNewMiningSpeed() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
 		if (event.getStack().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
-			event.setNewEfficiency(event.getNewEfficiency() * 0.5f);
+			event.setNewMiningSpeed(event.getNewMiningSpeed() * 0.5f);
 		int veiningLvl = event.getStack().getEnchantmentLevel(VEINING.get());
 		if (veiningLvl > 0)
-			event.setNewEfficiency(event.getNewEfficiency() / ((Veining.getAmountMined(veiningLvl) + 1)));
+			event.setNewMiningSpeed(event.getNewMiningSpeed() / ((Veining.getAmountMined(veiningLvl) + 1)));
 		int expandedLvl = event.getStack().getEnchantmentLevel(EXPANDED.get());
 		if (expandedLvl > 0)
-			event.setNewEfficiency(event.getNewEfficiency() / (Expanded.BLOCKS_MINED[expandedLvl - 1]));
+			event.setNewMiningSpeed(event.getNewMiningSpeed() / (Expanded.BLOCKS_MINED[expandedLvl - 1]));
 	}
 
 	@SubscribeEvent
