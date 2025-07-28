@@ -1,0 +1,16 @@
+{
+  "type": "iguanatweaksexpanded:multi_item_blasting",
+  "category": "blast_furnace_misc",
+  "cookingtime": 100,
+  "group": "recycle_necromium_ingot",
+  "ingredients": [
+    {
+      "item": "caverns_and_chasms:necromium_shovel"
+    }
+  ],
+  "recycle": {
+    "amount_at_full_durability": 1,
+    "ratio": 1
+  },
+  "result": "caverns_and_chasms:necromium_ingot"
+}

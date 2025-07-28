@@ -8,6 +8,7 @@
 ### Fixes
 * Sprint Pact and Curse of Walking no longer prevent players from swimming
 * Golden shield giving nuggets when recycled
+* Missing soul recycle recipes for caverns and chasms
 
 ## 1.26.6
 ### Changes
