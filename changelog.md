@@ -1,13 +1,13 @@
 # Changelog
 
-## Upcoming
+## 1.26.7
 ### Changes
 * Increased Sprint Pact movement speed (x1.15 -> x1.2)
 * Increased Adrenaline bonus mining speed and attack speed (exponential -> linear) but lowered bonus mining speed (2.5x -> 2x Efficiency enchantment bonus mining speed)
 
 ### Fixes
 * Sprint Pact and Curse of Walking no longer prevent players from swimming
-* Golden shield giving nuggets when recycled
+* Golden shield giving silver nuggets when recycled
 * Missing soul recycle recipes for caverns and chasms
 
 ## 1.26.6
