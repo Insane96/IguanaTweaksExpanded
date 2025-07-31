@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.26.8
+### Fixes
+* Enchantments not being consumed on enchanting
+
 ## 1.26.7
 ### Changes
 * Increased Sprint Pact movement speed (x1.15 -> x1.2)
