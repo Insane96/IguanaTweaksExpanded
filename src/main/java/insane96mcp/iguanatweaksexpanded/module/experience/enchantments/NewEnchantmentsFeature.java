@@ -231,11 +231,17 @@ public class NewEnchantmentsFeature extends Feature {
 		if (event.getStack().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
 			event.setNewMiningSpeed(event.getNewMiningSpeed() * 0.5f);
 		int veiningLvl = event.getStack().getEnchantmentLevel(VEINING.get());
-		if (veiningLvl > 0)
-			event.setNewMiningSpeed(event.getNewMiningSpeed() / ((Veining.getAmountMined(veiningLvl) + 1)));
+		if (veiningLvl > 0) {
+			float divider = Veining.getAmountMined(veiningLvl) + 1;
+			divider -= divider * 0.05f;
+			event.setNewMiningSpeed(event.getNewMiningSpeed() / divider);
+		}
 		int expandedLvl = event.getStack().getEnchantmentLevel(EXPANDED.get());
-		if (expandedLvl > 0)
-			event.setNewMiningSpeed(event.getNewMiningSpeed() / (Expanded.BLOCKS_MINED[expandedLvl - 1]));
+		if (expandedLvl > 0) {
+			float divider = Expanded.BLOCKS_MINED[expandedLvl - 1];
+			divider -= divider * 0.05f;
+			event.setNewMiningSpeed(event.getNewMiningSpeed() / divider);
+		}
 	}
 
 	@SubscribeEvent

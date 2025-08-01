@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+### Changes
+* Slightly increased mining speed with Veining and Expanded 
+
 ## 1.26.8
 ### Fixes
 * Enchantments not being consumed on enchanting
