@@ -1,8 +1,11 @@
 # Changelog
 
-## Upcoming
+## 1.26.9
 ### Changes
 * Slightly increased mining speed with Veining and Expanded 
+
+### Removed
+* Forge advancement
 
 ## 1.26.8
 ### Fixes

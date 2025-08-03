@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/forge",
+	"parent": "iguanatweaksexpanded:story/blast_furnace",
 	"criteria": {
 		"iron_pickaxe": {
 			"trigger": "minecraft:inventory_changed",
