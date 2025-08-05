@@ -24,9 +24,7 @@ public class Blasting extends Enchantment {
     public int getMaxLevel() {
         return 5;
     }
-    /**
-     * Returns the minimal value of enchantability needed on the enchantment level passed.
-     */
+
     public int getMinCost(int pEnchantmentLevel) {
         return 1 + 10 * (pEnchantmentLevel - 1);
     }

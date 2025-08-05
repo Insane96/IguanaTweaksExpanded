@@ -36,6 +36,7 @@
 	"enchantment.iguanatweaksexpanded.exchange": "Scambio",
 	"enchantment.iguanatweaksexpanded.blasting": "Scoppio",
 	"enchantment.iguanatweaksexpanded.haste": "'Incantesimo rimosso'",
+    "enchantment.iguanatweaksexpanded.earthbend": "Piegaterra",
 	"enchantment.iguanatweaksexpanded.air_born": "Nato in aria",
 	"enchantment.iguanatweaksexpanded.air_stealer": "Ladro d'aria",
 	"enchantment.iguanatweaksexpanded.armor_piercer": "Perforatore armatura",
@@ -105,6 +106,7 @@
 	"enchantment.iguanatweaksexpanded.exchange.desc": "Sostituisce i blocchi rotti con quelli della mano secondaria",
 	"enchantment.iguanatweaksexpanded.blasting.desc": "Aumenta la velocità di estrazione sui blocchi con bassa resistenza all'esplosione",
 	"enchantment.iguanatweaksexpanded.haste.desc": "'Per favore, disincantare'",
+    "enchantment.iguanatweaksexpanded.earthbend.desc": "Scava i blocchi che non hanno bisogno di un attrezzo più velocemente",
 	"enchantment.iguanatweaksexpanded.air_born.desc": "Ignora la penalità alla velocità di estrazione quando non è a terra",
 	"enchantment.iguanatweaksexpanded.air_stealer.desc": "Ruba aria dall'creature attaccate",
 	"enchantment.iguanatweaksexpanded.armor_piercer.desc": "Aumenta il danno che ignora l'armatura",
@@ -419,5 +421,5 @@
 	"emi.info.grindstone": "Può essere utilizzato per disincantare gli oggetti",
 	"emi.info.iguanatweaksexpanded.altimeter": "Mostra la tua altezza nel mondo",
 	"emi.info.charcoal": "Può essere ottenuto bruciando tronchi",
-	"emi.info.iguanatweaksexpanded.keego": "L'equipaggiamento di keego è basati sul momento. Ogni blocco scavato aumenta la velocità di scavo, ogni creatura colpita aumenta la velocità di attacco e ogni blocco camminato incrementa la velocità di movimento",
+	"emi.info.iguanatweaksexpanded.keego": "L'equipaggiamento di keego è basati sul momento. Ogni blocco scavato aumenta la velocità di scavo, ogni creatura colpita aumenta la velocità di attacco e ogni blocco camminato incrementa la velocità di movimento"
 }

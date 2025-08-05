@@ -64,6 +64,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> VEINING = ISERegistries.ENCHANTMENTS.register("veining", Veining::new);
 	public static final RegistryObject<Enchantment> EXCHANGE = ISERegistries.ENCHANTMENTS.register("exchange", Exchange::new);
 	public static final RegistryObject<Enchantment> HASTE = ISERegistries.ENCHANTMENTS.register("haste", Haste::new);
+	public static final RegistryObject<Enchantment> EARTHBEND = ISERegistries.ENCHANTMENTS.register("earthbend", Earthbend::new);
 
 	//Armor
 	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ISERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
@@ -221,6 +222,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
+        event.setNewSpeed(event.getNewSpeed() + Earthbend.getMiningSpeedBonus(event.getEntity(), event.getState()));
 		event.setNewSpeed(event.getNewSpeed() * AirBorn.getMiningSpeedMultiplier(event.getEntity(), event.getState()));
 	}
 

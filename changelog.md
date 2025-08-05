@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming
+### Additions
+* Earthbound enchantment
+  * Makes mining blocks that don't require a tool faster
+
 ## 1.26.9
 ### Changes
 * Slightly increased mining speed with Veining and Expanded 
