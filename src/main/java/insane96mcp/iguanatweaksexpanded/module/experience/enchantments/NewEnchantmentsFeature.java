@@ -97,6 +97,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> WATER_COOLANT = ISERegistries.ENCHANTMENTS.register("water_coolant", WaterCoolant::new);
 	public static final RegistryObject<Enchantment> BANE_OF_NOSES = ISERegistries.ENCHANTMENTS.register("bane_of_noses", BaneOfNoses::new);
 	public static final RegistryObject<Enchantment> RAGE = ISERegistries.ENCHANTMENTS.register("rage", Rage::new);
+	public static final RegistryObject<Enchantment> FIRE_SURGE = ISERegistries.ENCHANTMENTS.register("fire_surge", FireSurge::new);
 	public static final RegistryObject<Enchantment> SWIFT_STRIKE = ISERegistries.ENCHANTMENTS.register("swift_strike", SwiftStrike::new);
 	public static final RegistryObject<Enchantment> PADDING = ISERegistries.ENCHANTMENTS.register("padding", Padding::new);
 	public static final RegistryObject<Enchantment> PART_BREAKER = ISERegistries.ENCHANTMENTS.register("part_breaker", PartBreaker::new);

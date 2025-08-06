@@ -128,6 +128,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("minecraft:mending").costPerLevel(2),
             new EnchantmentData("allurement:reforming").costPerLevel(2),
             new EnchantmentData("iguanatweaksexpanded:soulbound").costPerLevel(2),
+            new EnchantmentData("iguanatweaksexpanded:keego").costPerLevel(3),
 
             new EnchantmentData("iguanatweaksreborn:luck").costPerLevel(4),
             new EnchantmentData("iguanatweaksexpanded:smartness").costPerLevel(4),
@@ -170,6 +171,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:water_coolant").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:bane_of_noses").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:rage").costPerLevel(1),
+            new EnchantmentData("iguanatweaksexpanded:fire_surge").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:swift_strike").costPerLevel(1),
             new EnchantmentData("iguanatweaksreborn:critical").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:armor_piercer").costPerLevel(1),

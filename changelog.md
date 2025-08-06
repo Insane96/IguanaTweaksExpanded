@@ -6,6 +6,8 @@
   * Makes mining blocks that don't require a tool faster
 * Keego treasure enchantment
   * Mine, attack and move faster the more you do it
+* Fire surge enchantment
+  * Deal more damage if you're on fire
 
 ## 1.26.9
 ### Changes
