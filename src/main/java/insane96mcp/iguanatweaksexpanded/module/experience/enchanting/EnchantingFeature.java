@@ -122,6 +122,7 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean enablePurifyItems = true;
 
     public static final List<EnchantmentData> DEFAULT_ENCHANTMENTS_DATA = List.of(
+            new EnchantmentData("minecraft:keego").costPerLevel(3),
             new EnchantmentData("minecraft:unbreaking").costPerLevel(1),
             new EnchantmentData("iguanatweaksexpanded:enduring").costPerLevel(1),
             new EnchantmentData("minecraft:mending").costPerLevel(2),
@@ -161,6 +162,7 @@ public class EnchantingFeature extends JsonFeature {
             new EnchantmentData("iguanatweaksexpanded:veining").costPerLevel(2),
             new EnchantmentData("minecraft:silk_touch").costPerLevel(4),
             new EnchantmentData("iguanatweaksexpanded:exchange").costPerLevel(2),
+            new EnchantmentData("iguanatweaksexpanded:earthbound").costPerLevel(3),
 
             new EnchantmentData("iguanatweaksreborn:sharpness").costPerLevel(1),
             new EnchantmentData("iguanatweaksreborn:bane_of_sssss").costPerLevel(1),

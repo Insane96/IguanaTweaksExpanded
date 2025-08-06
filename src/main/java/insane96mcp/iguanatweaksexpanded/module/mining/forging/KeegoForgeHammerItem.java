@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
-import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -16,9 +16,9 @@ public class KeegoForgeHammerItem extends ForgeHammerItem {
     @Override
     public int getUseCooldown(@Nullable LivingEntity entity, ItemStack stack) {
         int cooldown = super.getUseCooldown(entity, stack);
-        if (entity == null || !entity.hasEffect(Keego.ATTACK_MOMENTUM.get()))
+        if (entity == null || !entity.hasEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()))
             return cooldown;
-        int amplifier = entity.getEffect(Keego.ATTACK_MOMENTUM.get()).getAmplifier();
+        int amplifier = entity.getEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()).getAmplifier();
         return cooldown - (amplifier + 1);
     }
 
@@ -26,11 +26,11 @@ public class KeegoForgeHammerItem extends ForgeHammerItem {
     public void onUse(Player player, ItemStack stack) {
         int cooldown = this.getUseCooldown(player, stack);
         int amplifier = 0;
-        if (player.hasEffect(Keego.ATTACK_MOMENTUM.get()))
+        if (player.hasEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()))
             //noinspection DataFlowIssue
-            amplifier = player.getEffect(Keego.ATTACK_MOMENTUM.get()).getAmplifier() + 1;
+            amplifier = player.getEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()).getAmplifier() + 1;
         double duration = cooldown * 2;
-        player.addEffect(new MobEffectInstance(Keego.ATTACK_MOMENTUM.get(), (int) Math.max(duration, 10), Math.min(amplifier, 7), false, false, true));
+        player.addEffect(new MobEffectInstance(NewEnchantmentsFeature.ATTACK_MOMENTUM.get(), (int) Math.max(duration, 10), Math.min(amplifier, 7), false, false, true));
         super.onUse(player, stack);
     }
 }

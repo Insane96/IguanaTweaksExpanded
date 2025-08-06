@@ -17,14 +17,19 @@ import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
 import insane96mcp.insanelib.event.PlayerSprintEvent;
+import insane96mcp.insanelib.world.effect.ILMobEffect;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
@@ -113,6 +118,7 @@ public class NewEnchantmentsFeature extends Feature {
 	//General
 	public static final RegistryObject<Enchantment> SOULBOUND = ISERegistries.ENCHANTMENTS.register("soulbound", Soulbound::new);
 	public static final RegistryObject<Enchantment> ENDURING = ISERegistries.ENCHANTMENTS.register("enduring", Enduring::new);
+	public static final RegistryObject<Enchantment> KEEGO = ISERegistries.ENCHANTMENTS.register("keego", Keego::new);
 
 	//Curses
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ISERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
@@ -135,7 +141,12 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> CURSE_OF_UNSTABLE_MOTION = ISERegistries.ENCHANTMENTS.register("unstable_motion_curse", CurseOfUnstableMotion::new);
 	public static final RegistryObject<Enchantment> CURSE_OF_STATIC_CHARGE = ISERegistries.ENCHANTMENTS.register("static_charge_curse", CurseOfStaticCharge::new);
 
-	public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
+
+    public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ISERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.0625d, AttributeModifier.Operation.MULTIPLY_BASE));
+    public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ISERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.0625d, AttributeModifier.Operation.ADDITION));
+    public static final RegistryObject<MobEffect> MINING_MOMENTUM = ISERegistries.MOB_EFFECTS.register("mining_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false));
+
+    public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);
 	}
 
@@ -163,6 +174,7 @@ public class NewEnchantmentsFeature extends Feature {
 		CurseOfStaticCharge.tick(event);
 		Retreat.applyMovementSpeedModifier(event);
 		ChargedJump.tryChargeJump(event.getEntity());
+        Keego.onLivingTick(event);
 		/*if (event.getEntity() instanceof Player player && EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.INVULNERABILITY.get(), player) > 0) {
 			player.setNoGravity(true);
 		}
@@ -213,6 +225,7 @@ public class NewEnchantmentsFeature extends Feature {
 			AirStealer.onAttack(attacker, event.getEntity());
 		}
 		Padding.shouldApply(event);
+        Keego.onHurt(event);
 	}
 
 	@SubscribeEvent
@@ -222,6 +235,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
+        Keego.onBreakSpeed(event);
         event.setNewSpeed(event.getNewSpeed() + Earthbend.getMiningSpeedBonus(event.getEntity(), event.getState()));
 		event.setNewSpeed(event.getNewSpeed() * AirBorn.getMiningSpeedMultiplier(event.getEntity(), event.getState()));
 	}
@@ -269,7 +283,19 @@ public class NewEnchantmentsFeature extends Feature {
 		event.setExpToDrop(Knowledgeable.applyToBlockDrops(event.getPlayer(), event.getExpToDrop(), event.getState()));
 		event.setExpToDrop(Smartness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
 		event.setExpToDrop(CurseOfDumbness.applyToBlockDrops(event.getPlayer(), event.getExpToDrop()));
+        Keego.onBlockBreak(event);
 	}
+
+    //Priority high: run before Timber Trees
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public void onBlockBreak(BlockEvent.BreakEvent event) {
+        HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
+        if (pick instanceof BlockHitResult) {
+            blockHitResult = (BlockHitResult) pick;
+            Veining.onBlockBreak(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
+            Expanded.onBlockBreak(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), blockHitResult.getLocation(), event.getState());
+        }
+    }
 
 	static BlockHitResult blockHitResult;
 
@@ -281,17 +307,6 @@ public class NewEnchantmentsFeature extends Feature {
 		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
 		if (pick instanceof BlockHitResult) {
 			blockHitResult = (BlockHitResult) pick;
-		}
-	}
-
-	//Priority high: run before Timber Trees
-	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void onBlockBreak(BlockEvent.BreakEvent event) {
-		HitResult pick = event.getPlayer().pick(event.getPlayer().getEntityReach() + 0.5d, 0f, false);
-		if (pick instanceof BlockHitResult) {
-			blockHitResult = (BlockHitResult) pick;
-			Veining.onBlockBreak(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), event.getState());
-			Expanded.onBlockBreak(event.getPlayer(), event.getPlayer().level(), event.getPos(), blockHitResult.getDirection(), blockHitResult.getLocation(), event.getState());
 		}
 	}
 

@@ -3,6 +3,7 @@ package insane96mcp.iguanatweaksexpanded.module.mining.keego;
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.item.ISEArmorMaterial;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
@@ -10,7 +11,6 @@ import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.item.ILItemTier;
-import insane96mcp.insanelib.world.effect.ILMobEffect;
 import insane96mcp.shieldsplus.world.item.SPShieldItem;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
@@ -19,10 +19,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -34,7 +31,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.ShieldBlockEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -50,11 +46,7 @@ public class Keego extends Feature {
 	public static final TagKey<Item> KEEGO_HAND_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSE.MOD_ID, "equipment/hand/keego"));
 	public static final TagKey<Item> KEEGO_ARMOR_EQUIPMENT = TagKey.create(Registries.ITEM, new ResourceLocation(InsaneSE.MOD_ID, "equipment/armor/keego"));
 
-	public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ISERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.06d, AttributeModifier.Operation.MULTIPLY_BASE));
-	public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ISERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.06d, AttributeModifier.Operation.ADDITION));
-	public static final RegistryObject<MobEffect> MINING_MOMENTUM = ISERegistries.MOB_EFFECTS.register("mining_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false));
-
-	public static final SimpleBlockWithItem ORE = SimpleBlockWithItem.register("keego_ore", () -> new KeegoOreBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK).strength(-1f, 10f), UniformInt.of(10, 15)));
+    public static final SimpleBlockWithItem ORE = SimpleBlockWithItem.register("keego_ore", () -> new KeegoOreBlock(BlockBehaviour.Properties.copy(Blocks.BEDROCK).strength(-1f, 10f), UniformInt.of(10, 15)));
 
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("keego_block", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).requiresCorrectToolForDrops().strength(5.0F, 7.0F).sound(SoundType.METAL)));
 
@@ -86,30 +78,18 @@ public class Keego extends Feature {
 	}
 
 	@SubscribeEvent
-	public void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-		if (!this.isEnabled()
-				|| !event.getEntity().hasEffect(MINING_MOMENTUM.get())
-				|| !event.getEntity().getMainHandItem().isCorrectToolForDrops(event.getState()))
-			return;
-
-		//noinspection DataFlowIssue
-		int lvl = event.getEntity().getEffect(MINING_MOMENTUM.get()).getAmplifier() + 1;
-		event.setNewSpeed(event.getNewSpeed() * (1 + lvl * 0.1f));
-	}
-
-	@SubscribeEvent
 	public void onBlockBreak(BlockEvent.BreakEvent event) {
 		if (!this.isEnabled()
 				|| !event.getPlayer().getMainHandItem().is(KEEGO_TOOL_EQUIPMENT))
 			return;
 
 		int amplifier = 0;
-		if (event.getPlayer().hasEffect(MINING_MOMENTUM.get()))
+		if (event.getPlayer().hasEffect(NewEnchantmentsFeature.MINING_MOMENTUM.get()))
 			//noinspection DataFlowIssue
-			amplifier = event.getPlayer().getEffect(MINING_MOMENTUM.get()).getAmplifier() + 1;
+			amplifier = event.getPlayer().getEffect(NewEnchantmentsFeature.MINING_MOMENTUM.get()).getAmplifier() + 1;
 
 		int duration = (int) (1f / event.getState().getDestroyProgress(event.getPlayer(), event.getLevel(), event.getPos()) + 5) * 3 + 1;
-		event.getPlayer().addEffect(new MobEffectInstance(MINING_MOMENTUM.get(), Math.max(duration, 20), Math.min(amplifier, 23), false, false, true));
+		event.getPlayer().addEffect(new MobEffectInstance(NewEnchantmentsFeature.MINING_MOMENTUM.get(), Math.max(duration, 20), Math.min(amplifier, 23), false, false, true));
 	}
 
 	@SubscribeEvent
@@ -129,11 +109,11 @@ public class Keego extends Feature {
 			return;
 		if (event.player.walkDist % (10 - pieces.get() * 2) < event.player.walkDistO % (10 - pieces.get() * 2)) {
 			int amplifier = 0;
-			if (event.player.hasEffect(MOVEMENT_MOMENTUM.get()))
+			if (event.player.hasEffect(NewEnchantmentsFeature.MOVEMENT_MOMENTUM.get()))
 				//noinspection DataFlowIssue
-				amplifier = event.player.getEffect(MOVEMENT_MOMENTUM.get()).getAmplifier() + 1;
+				amplifier = event.player.getEffect(NewEnchantmentsFeature.MOVEMENT_MOMENTUM.get()).getAmplifier() + 1;
 
-			event.player.addEffect(new MobEffectInstance(MOVEMENT_MOMENTUM.get(), 100, Math.min(amplifier, 7), false, false, true));
+			event.player.addEffect(new MobEffectInstance(NewEnchantmentsFeature.MOVEMENT_MOMENTUM.get(), 100, Math.min(amplifier, 7), false, false, true));
 		}
 
 	}
@@ -147,11 +127,11 @@ public class Keego extends Feature {
 			return;
 
 		int amplifier = 0;
-		if (event.getEntity().hasEffect(ATTACK_MOMENTUM.get()))
+		if (event.getEntity().hasEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()))
 			//noinspection DataFlowIssue
-			amplifier = event.getEntity().getEffect(ATTACK_MOMENTUM.get()).getAmplifier() + 1;
+			amplifier = event.getEntity().getEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()).getAmplifier() + 1;
 
-		event.getEntity().addEffect(new MobEffectInstance(ATTACK_MOMENTUM.get(), 100, Math.min(amplifier, 7), false, false, true));
+		event.getEntity().addEffect(new MobEffectInstance(NewEnchantmentsFeature.ATTACK_MOMENTUM.get(), 100, Math.min(amplifier, 7), false, false, true));
 	}
 
 	@SubscribeEvent
@@ -163,12 +143,12 @@ public class Keego extends Feature {
 			return;
 
 		int amplifier = 0;
-		if (serverPlayer.hasEffect(ATTACK_MOMENTUM.get()))
+		if (serverPlayer.hasEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()))
 			//noinspection DataFlowIssue
-			amplifier = serverPlayer.getEffect(ATTACK_MOMENTUM.get()).getAmplifier() + 1;
+			amplifier = serverPlayer.getEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()).getAmplifier() + 1;
 
 		double duration = ((4 - serverPlayer.getAttribute(Attributes.ATTACK_SPEED).getValue()) * 20d);
-		serverPlayer.addEffect(new MobEffectInstance(ATTACK_MOMENTUM.get(), (int) Math.max(duration, 10), Math.min(amplifier, 7), false, false, true));
+		serverPlayer.addEffect(new MobEffectInstance(NewEnchantmentsFeature.ATTACK_MOMENTUM.get(), (int) Math.max(duration, 10), Math.min(amplifier, 7), false, false, true));
 	}
 
 	public static class ShieldsPlusIntegration {

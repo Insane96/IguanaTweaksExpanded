@@ -16,11 +16,6 @@ public class Earthbend extends Enchantment {
         super(Rarity.UNCOMMON, EnchantmentCategory.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 1;
-    }
-
     public int getMinCost(int pEnchantmentLevel) {
         return 1;
     }

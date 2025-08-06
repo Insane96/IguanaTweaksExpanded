@@ -4,6 +4,8 @@
 ### Additions
 * Earthbound enchantment
   * Makes mining blocks that don't require a tool faster
+* Keego treasure enchantment
+  * Mine, attack and move faster the more you do it
 
 ## 1.26.9
 ### Changes

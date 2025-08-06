@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.keego;
 
+import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.NewEnchantmentsFeature;
 import insane96mcp.iguanatweaksreborn.module.farming.hoes.IHoeCooldownModifier;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -19,20 +20,20 @@ public class KeegoHoeItem extends HoeItem implements IHoeCooldownModifier {
         InteractionResult interactionResult = super.useOn(context);
         if (interactionResult.consumesAction() && context.getPlayer() != null) {
             int amplifier = 0;
-            if (context.getPlayer().hasEffect(Keego.ATTACK_MOMENTUM.get()))
+            if (context.getPlayer().hasEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()))
                 //noinspection DataFlowIssue
-                amplifier = context.getPlayer().getEffect(Keego.ATTACK_MOMENTUM.get()).getAmplifier() + 1;
+                amplifier = context.getPlayer().getEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()).getAmplifier() + 1;
 
-            context.getPlayer().addEffect(new MobEffectInstance(Keego.ATTACK_MOMENTUM.get(), 40, Math.min(amplifier, 7), false, false, true));
+            context.getPlayer().addEffect(new MobEffectInstance(NewEnchantmentsFeature.ATTACK_MOMENTUM.get(), 40, Math.min(amplifier, 7), false, false, true));
         }
         return interactionResult;
     }
 
     @Override
     public int getCooldownOnUse(int baseCooldown, Player player, Level level) {
-        if (!player.hasEffect(Keego.ATTACK_MOMENTUM.get()))
+        if (!player.hasEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()))
             return baseCooldown;
 
-        return (int) (baseCooldown - ((player.getEffect(Keego.ATTACK_MOMENTUM.get()).getAmplifier() + 1) * 0.66667f));
+        return (int) (baseCooldown - ((player.getEffect(NewEnchantmentsFeature.ATTACK_MOMENTUM.get()).getAmplifier() + 1) * 0.66667f));
     }
 }
