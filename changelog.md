@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.27.0
 ### Additions
 * Earthbound enchantment
   * Makes mining blocks that don't require a tool faster
