@@ -24,11 +24,12 @@ public class FletchingRecipeSerializer implements RecipeSerializer<FletchingReci
 
     public FletchingRecipe fromJson(ResourceLocation pRecipeId, JsonObject pJson) {
         ISEBookCategory category = ISEBookCategory.CODEC.byName(GsonHelper.getAsString(pJson, "category", null), ISEBookCategory.FLETCHING_MISC);
+		String group = GsonHelper.getAsString(pJson, "group");
         ItemStack ingredient = getItemStack(pJson, "ingredient", true);
         ItemStack catalyst1 = getItemStack(pJson, "catalyst1", true);
         ItemStack catalyst2 = getItemStack(pJson, "catalyst2", false);
         ItemStack result = getItemStack(pJson, "result", true);
-        return this.factory.create(pRecipeId, category, ingredient, catalyst1, catalyst2, result);
+        return this.factory.create(pRecipeId, category, group, ingredient, catalyst1, catalyst2, result);
     }
 
     @Nullable
@@ -43,13 +44,14 @@ public class FletchingRecipeSerializer implements RecipeSerializer<FletchingReci
             return CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, key), true, true);
         else {
             String s1 = GsonHelper.getAsString(json, key);
-            ResourceLocation resourcelocation = new ResourceLocation(s1);
+            ResourceLocation resourcelocation = ResourceLocation.parse(s1);
             return new ItemStack(ForgeRegistries.ITEMS.getValue(resourcelocation));
         }
     }
 
     public FletchingRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
         ISEBookCategory category = pBuffer.readEnum(ISEBookCategory.class);
+		String group = pBuffer.readUtf();
         ItemStack ingredient = pBuffer.readItem();
         ItemStack catalyst1 = pBuffer.readItem();
         boolean hasCatalyst2 = pBuffer.readBoolean();
@@ -57,11 +59,12 @@ public class FletchingRecipeSerializer implements RecipeSerializer<FletchingReci
         if (hasCatalyst2)
             catalyst2 = pBuffer.readItem();
         ItemStack result = pBuffer.readItem();
-        return this.factory.create(pRecipeId, category, ingredient, catalyst1, catalyst2, result);
+        return this.factory.create(pRecipeId, category, group, ingredient, catalyst1, catalyst2, result);
     }
 
     public void toNetwork(FriendlyByteBuf pBuffer, FletchingRecipe pRecipe) {
         pBuffer.writeEnum(pRecipe.category());
+		pBuffer.writeUtf(pRecipe.getGroup());
         pBuffer.writeItem(pRecipe.getBaseIngredient());
         pBuffer.writeItem(pRecipe.getCatalyst1());
         if (pRecipe.getCatalyst2() != null) {
@@ -75,6 +78,6 @@ public class FletchingRecipeSerializer implements RecipeSerializer<FletchingReci
     }
 
     public interface CookieBaker<T extends FletchingRecipe> {
-        T create(ResourceLocation pId, ISEBookCategory pCategory, ItemStack baseIngredient, ItemStack catalyst1, @Nullable ItemStack catalyst2, ItemStack pResult);
+        T create(ResourceLocation pId, ISEBookCategory pCategory, String group, ItemStack baseIngredient, ItemStack catalyst1, @Nullable ItemStack catalyst2, ItemStack pResult);
     }
 }

@@ -21,16 +21,18 @@ public class FletchingRecipe implements Recipe<Container> {
     protected final RecipeType<?> type;
     protected final ResourceLocation id;
     private final ISEBookCategory category;
+	private final String group;
     final ItemStack baseIngredient;
     final ItemStack catalyst1;
     @Nullable
     final ItemStack catalyst2;
     private final ItemStack result;
 
-    public FletchingRecipe(ResourceLocation pId, ISEBookCategory pCategory, ItemStack baseIngredient, ItemStack catalyst1, @Nullable ItemStack catalyst2, ItemStack pResult) {
+    public FletchingRecipe(ResourceLocation pId, ISEBookCategory pCategory, String group, ItemStack baseIngredient, ItemStack catalyst1, @Nullable ItemStack catalyst2, ItemStack pResult) {
         this.type = Fletching.FLETCHING_RECIPE_TYPE.get();
-        this.category = pCategory;
-        this.id = pId;
+		this.id = pId;
+		this.category = pCategory;
+		this.group = group;
         this.baseIngredient = baseIngredient;
         this.catalyst1 = catalyst1;
         this.catalyst2 = catalyst2;
@@ -123,7 +125,12 @@ public class FletchingRecipe implements Recipe<Container> {
         return this.category;
     }
 
-    @Override
+	@Override
+	public String getGroup() {
+		return this.group;
+	}
+
+	@Override
     public ItemStack getToastSymbol() {
         return new ItemStack(Items.FLETCHING_TABLE);
     }

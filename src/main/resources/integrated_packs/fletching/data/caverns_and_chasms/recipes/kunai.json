@@ -11,6 +11,7 @@
             "recipe": {
                 "type": "iguanatweaksexpanded:fletching",
                 "category": "fletching_misc",
+				"group": "kunai",
                 "ingredient": "minecraft:stick",
                 "catalyst1": "caverns_and_chasms:silver_nugget",
                 "result": {

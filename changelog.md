@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fletching recipes now have a group
+
 ## 1.27.0
 ### Additions
 * Earthbound enchantment

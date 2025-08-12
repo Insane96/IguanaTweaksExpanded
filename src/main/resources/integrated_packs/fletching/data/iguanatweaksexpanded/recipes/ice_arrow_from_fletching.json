@@ -1,6 +1,7 @@
 {
     "type": "iguanatweaksexpanded:fletching",
     "category": "fletching_misc",
+	"group": "ice_arrow",
     "ingredient": {
         "item": "minecraft:arrow",
         "count": 4

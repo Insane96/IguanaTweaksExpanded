@@ -11,6 +11,7 @@
             "recipe": {
                 "type": "iguanatweaksexpanded:fletching",
                 "category": "fletching_misc",
+				"group": "blunt_arrow",
                 "ingredient": {
                     "item": "minecraft:arrow",
                     "count": 4
