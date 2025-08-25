@@ -41,7 +41,7 @@ license="All rights reserved"
 [[dependencies.iguanatweaksexpanded]]
     modId="iguanatweaksreborn"
     mandatory=true
-    versionRange="[4.18.1,)"
+    versionRange="[4.19.10,)"
     ordering="BEFORE"
     side="BOTH"
     [dependencies.iguanatweaksexpanded.mc-publish]

@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.27.2
+* Fixed compat with latest ISO
+
 ## 1.27.1
 * Fletching recipes now have a group
 * Fixed advancements descriptions
