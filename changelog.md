@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.27.1
 * Fletching recipes now have a group
 * Fixed advancements descriptions
 * Various advancements fixes
