@@ -3,6 +3,7 @@
 ## Upcoming
 * Fletching recipes now have a group
 * Fixed advancements descriptions
+* Various advancements fixes
 
 ## 1.27.0
 ### Additions

@@ -1,5 +1,5 @@
 {
-  "parent": "iguanatweaksexpanded:story/iron_pickaxe",
+  "parent": "minecraft:story/iron_tools",
   "display": {
     "icon": {
       "item": "minecraft:diamond"

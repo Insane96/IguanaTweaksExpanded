@@ -14,7 +14,7 @@
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/iron_pickaxe",
+	"parent": "minecraft:story/iron_tools",
 	"criteria": {
 		"durium_ingot": {
 			"trigger": "minecraft:inventory_changed",
