@@ -145,19 +145,7 @@ public class ISEItemModelsProvider extends ItemModelProvider {
 
         withExistingParent("explosive_barrel", new ResourceLocation(InsaneSE.MOD_ID, "block/explosive_barrel"));
 
-        handHeld(Forging.WOODEN_HAMMER.get());
-        handHeld(Forging.STONE_HAMMER.get());
-        handHeld(Forging.FLINT_HAMMER.get());
-        handHeld(Forging.COPPER_HAMMER.get());
-        handHeld(Forging.GOLDEN_HAMMER.get());
-        handHeld(Forging.IRON_HAMMER.get());
-        handHeld(Forging.SOLARIUM_HAMMER.get());
-        handHeld(Forging.DURIUM_HAMMER.get());
-        handHeld(Forging.DIAMOND_HAMMER.get());
-        handHeld(Forging.SOUL_STEEL_HAMMER.get());
-        handHeld(Forging.NETHERITE_HAMMER.get());
-        handHeld(Forging.KEEGO_HAMMER.get());
-        handHeld(Forging.QUARON_HAMMER.get());
+        handHeld(Forging.HAMMER.get());
 
         basicItem(Fletching.QUARTZ_ARROW_ITEM.get());
         basicItem(Fletching.DIAMOND_ARROW_ITEM.get());

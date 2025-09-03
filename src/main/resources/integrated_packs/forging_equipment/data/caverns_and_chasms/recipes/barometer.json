@@ -19,8 +19,8 @@
                     "item": "minecraft:redstone"
                 },
                 "result": "caverns_and_chasms:barometer",
-                "smashes_required": 5,
-                "experience": 5
+                "smashes_required": 6,
+                "experience": 12
             }
         }
     ]

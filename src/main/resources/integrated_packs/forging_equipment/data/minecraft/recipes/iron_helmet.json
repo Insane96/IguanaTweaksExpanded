@@ -6,9 +6,9 @@
   },
   "amount": 5,
   "gear": {
-    "item": "minecraft:chainmail_helmet"
+    "item": "iguanatweaksreborn:copper_helmet"
   },
   "result": "minecraft:iron_helmet",
-  "smashes_required": 7,
-  "experience": 7
+  "smashes_required": 6,
+  "experience": 12
 }

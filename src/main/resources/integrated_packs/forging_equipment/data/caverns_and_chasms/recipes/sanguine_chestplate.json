@@ -16,11 +16,11 @@
                 },
                 "amount": 8,
                 "gear": {
-                    "item": "iguanatweaksexpanded:chained_copper_chestplate"
+                    "item": "minecraft:leather_chestplate"
                 },
                 "result": "caverns_and_chasms:sanguine_chestplate",
-                "smashes_required": 16,
-                "experience": 16
+                "smashes_required": 6,
+                "experience": 12
             }
         }
     ]

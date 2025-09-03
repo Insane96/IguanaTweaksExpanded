@@ -1,5 +1,5 @@
 {
-	"item": "#iguanatweaksexpanded:equipment/forge_hammers",
+	"item": "iguanatweaksexpanded:forge_hammer",
 	"knockback_multiplier": 1,
 	"modifiers": [
 		{

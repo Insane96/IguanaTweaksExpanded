@@ -11,6 +11,7 @@ import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
+import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
 import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.network.NetworkHandler;
@@ -135,6 +136,10 @@ public class InsaneSE
             case "cleansed_lapis" -> Items.LAPIS_LAZULI;
             case "enchanted_cleansed_lapis" -> Items.EXPERIENCE_BOTTLE;
             case "repair_kit" -> RepairKits.ITEM.get();
+            case "wooden_hammer" -> Items.OAK_LOG;
+            case "stone_hammer" -> Items.COBBLESTONE;
+            case "copper_hammer" -> Items.COPPER_BLOCK;
+            case "iron_hammer", "golden_hammer", "diamond_hammer", "netherite_hammer", "keego_hammer", "soul_steel_hammer", "durium_hammer", "quaron_hammer", "solarium_hammer" -> Forging.HAMMER.get();
             default -> null;
         });
         if (ModList.get().isLoaded("shieldsplus")) {

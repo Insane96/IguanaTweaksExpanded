@@ -40,7 +40,6 @@ public class ISEItemTagsProvider extends ItemTagsProvider {
     public static final TagKey<Item> STONE_HAND_EQUIPMENT = create("equipment/hand/stone");
     public static final TagKey<Item> COPPER_HAND_EQUIPMENT = create("equipment/hand/copper");
     public static final TagKey<Item> CHAINED_COPPER_ARMOR = create("equipment/armor/chained_copper");
-    public static final TagKey<Item> FORGE_HAMMERS = create("equipment/forge_hammers");
 
     public ISEItemTagsProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> completableFuture, CompletableFuture<TagLookup<Block>> tagLookupCompletableFuture, String modId, @Nullable ExistingFileHelper existingFileHelper) {
         super(packOutput, completableFuture, tagLookupCompletableFuture, modId, existingFileHelper);
@@ -85,13 +84,11 @@ public class ISEItemTagsProvider extends ItemTagsProvider {
                 .addTag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT);
         tag(Soulbound.ACCEPTS_ENCHANTMENT)
                 .add(Items.RECOVERY_COMPASS, Items.COMPASS);
-        tag(FORGE_HAMMERS)
-                .add(Forging.WOODEN_HAMMER.get(), Forging.STONE_HAMMER.get(), Forging.FLINT_HAMMER.get(), Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.DURIUM_HAMMER.get(), Forging.IRON_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), Forging.KEEGO_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), Forging.SOUL_STEEL_HAMMER.get(), Forging.QUARON_HAMMER.get(), Forging.NETHERITE_HAMMER.get());
         tag(Durium.ITEM_ORES)
                 .add(Durium.ORE.item().get(), Durium.DEEPSLATE_ORE.item().get(), Durium.SAND_ORE.item().get(), Durium.GRAVEL_ORE.item().get(), Durium.CLAY_ORE.item().get(), Durium.DIRT_ORE.item().get());
         //ITR
         tag(BonusDamageEnchantment.ACCEPTS_ENCHANTMENT)
-                .addTag(FORGE_HAMMERS);
+                .add(Forging.HAMMER.get());
         tag(Luck.ACCEPTS_ENCHANTMENT)
                 .add(Quaron.FISHING_ROD.get());
         //Vanilla

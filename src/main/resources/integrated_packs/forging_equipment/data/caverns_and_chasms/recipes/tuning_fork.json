@@ -16,11 +16,11 @@
                 },
                 "amount": 3,
                 "gear": {
-                    "item": "minecraft:copper_ingot"
+                    "item": "caverns_and_chasms:copper_nugget"
                 },
                 "result": "caverns_and_chasms:tuning_fork",
-                "smashes_required": 3,
-                "experience": 3
+                "smashes_required": 6,
+                "experience": 12
             }
         }
     ]

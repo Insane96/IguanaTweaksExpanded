@@ -6,9 +6,9 @@
   },
   "amount": 2,
   "gear": {
-    "item": "iguanatweaksreborn:flint_hoe"
+    "item": "iguanatweaksreborn:copper_hoe"
   },
   "result": "minecraft:iron_hoe",
-  "smashes_required": 10,
-  "experience": 10
+  "smashes_required": 6,
+  "experience": 12
 }

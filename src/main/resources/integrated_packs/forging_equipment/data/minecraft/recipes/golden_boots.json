@@ -6,9 +6,9 @@
   },
   "amount": 4,
   "gear": {
-    "item": "iguanatweaksexpanded:chained_copper_boots"
+    "item": "iguanatweaksreborn:copper_boots"
   },
   "result": "minecraft:golden_boots",
   "smashes_required": 4,
-  "experience": 4
+  "experience": 8
 }

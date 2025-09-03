@@ -16,10 +16,10 @@
                 },
                 "amount": 5,
                 "gear": {
-                    "item": "iguanatweaksexpanded:chained_copper_helmet"
+                    "item": "minecraft:leather_helmet"
                 },
                 "result": "caverns_and_chasms:sanguine_helmet",
-                "smashes_required": 12,
+                "smashes_required": 6,
                 "experience": 12
             }
         }

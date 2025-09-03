@@ -6,9 +6,9 @@
   },
   "amount": 8,
   "gear": {
-    "item": "iguanatweaksexpanded:chained_copper_chestplate"
+    "item": "iguanatweaksreborn:copper_chestplate"
   },
   "result": "minecraft:golden_chestplate",
-  "smashes_required": 6,
-  "experience": 6
+  "smashes_required": 4,
+  "experience": 8
 }

@@ -16,11 +16,11 @@
                 },
                 "amount": 3,
                 "gear": {
-                    "item": "iguanatweaksreborn:flint_pickaxe"
+                    "item": "iguanatweaksreborn:copper_pickaxe"
                 },
                 "result": "caverns_and_chasms:silver_pickaxe",
-                "smashes_required": 6,
-                "experience": 6
+                "smashes_required": 4,
+                "experience": 8
             }
         }
     ]

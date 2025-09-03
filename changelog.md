@@ -1,5 +1,12 @@
 # Changelog
 
+## Upcoming
+* Overhauled and re-enabled Forging
+  * Now only one hammer exists, made out of iron (same stats as before)
+  * Recipes have been fixed to work with latest ISO (most items are made from copper equipment)
+  * Launch ability now only works on grounded entities
+* Fixed crash with latest ISO
+
 ## 1.27.2
 * Fixed compat with latest ISO
 

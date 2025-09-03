@@ -661,82 +661,19 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         //<editor-fold desc="Forge Recipes">
         featureBoundRecipe(writer, "Forging", Forging.FORGE.item().get(),
                 recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Forging.FORGE.item().get())
-                        .pattern("ISI")
-                        .pattern(" c ")
-                        .pattern("cCc")
+                        .pattern("CSC")
+                        .pattern(" i ")
+                        .pattern("IiI")
                         .define('S', Items.SMOOTH_STONE)
                         .define('I', Items.IRON_BLOCK)
-                        .define('c', Items.COPPER_INGOT)
+                        .define('i', Items.IRON_INGOT)
                         .define('C', Items.COPPER_BLOCK)
                         .unlockedBy("has_copper_ingot", has(Items.COPPER_INGOT))
                         .save(recipe)
         );
 
-        hammerCraftingRecipe(writer, Forging.WOODEN_HAMMER.get(), ItemTags.PLANKS);
-        hammerCraftingRecipe(writer, Forging.STONE_HAMMER.get(), ItemTags.STONE_TOOL_MATERIALS);
-        hammerCraftingRecipe(writer, Forging.FLINT_HAMMER.get(), Items.FLINT);
-        hammerCraftingRecipe(writer, Forging.COPPER_HAMMER.get(), Items.COPPER_INGOT);
-        appendGearToName = true;
-        featureBoundRecipe(writer, "Forging",
-                forgeRecipeBuilder(Items.IRON_INGOT, 5, Forging.STONE_HAMMER.get(), Forging.IRON_HAMMER.get(), 10), ResourceLocation.parse(modIdPrefix + "iron_hammer_from_stone_hammer")
-        );
-        featureBoundRecipe(writer, "Forging",
-                forgeRecipeBuilder(Items.IRON_INGOT, 5, Forging.FLINT_HAMMER.get(), Forging.IRON_HAMMER.get(), 8), ResourceLocation.parse(modIdPrefix + "iron_hammer_from_flint_hammer")
-        );
-        appendGearToName = false;
-        featureBoundRecipe(writer, "Forging", Forging.SOLARIUM_HAMMER.get(),
-                forgeRecipeBuilder(Solarium.SOLARIUM_BALL.get(), 5, Forging.WOODEN_HAMMER.get(), Forging.SOLARIUM_HAMMER.get(), 6)
-        );
-        featureBoundRecipe(writer, "Forging", Forging.DURIUM_HAMMER.get(),
-                forgeRecipeBuilder(Durium.INGOT.get(), 5, Forging.STONE_HAMMER.get(), Forging.DURIUM_HAMMER.get(), 14)
-        );
-        featureBoundRecipe(writer, "Forging", Forging.QUARON_HAMMER.get(),
-                forgeRecipeBuilder(Quaron.INGOT.get(), 5, Forging.WOODEN_HAMMER.get(), Forging.QUARON_HAMMER.get(), 17)
-        );
-        featureBoundRecipe(writer, "Forging", Forging.GOLDEN_HAMMER.get(),
-                forgeRecipeBuilder(Items.GOLD_INGOT, 5, Forging.COPPER_HAMMER.get(), Forging.GOLDEN_HAMMER.get(), 6)
-        );
-        featureBoundRecipe(writer, "Forging", Forging.KEEGO_HAMMER.get(),
-                forgeRecipeBuilder(Keego.GEM.get(), 5, Forging.FLINT_HAMMER.get(), Forging.KEEGO_HAMMER.get(), 16)
-        );
-        featureBoundRecipe(writer, "Forging", Forging.DIAMOND_HAMMER.get(),
-                forgeRecipeBuilder(Items.DIAMOND, 5, Forging.GOLDEN_HAMMER.get(), Forging.DIAMOND_HAMMER.get(), 16)
-        );
-
-        featureBoundRecipe(writer, "Soul Steel", Forging.SOUL_STEEL_HAMMER.get(),
-                recipe -> SmithingTransformRecipeBuilder.smithing(
-                                Ingredient.of(SoulSteel.UPGRADE_SMITHING_TEMPLATE.get()),
-                                Ingredient.of(Forging.QUARON_HAMMER.get()),
-                                Ingredient.of(SoulSteel.INGOT.get()),
-                                RecipeCategory.TOOLS,
-                                Forging.SOUL_STEEL_HAMMER.get()
-                        )
-                        .unlocks("has_material", has(SoulSteel.INGOT.get()))
-                        .save(recipe, ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + "soul_steel_hammer"))
-        );
-        featureBoundRecipe(writer, "Forging", Forging.NETHERITE_HAMMER.get(),
-                recipe -> SmithingTransformRecipeBuilder.smithing(
-                                Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-                                Ingredient.of(Forging.DIAMOND_HAMMER.get()),
-                                Ingredient.of(Items.NETHERITE_INGOT),
-                                RecipeCategory.TOOLS,
-                                Forging.NETHERITE_HAMMER.get()
-                        )
-                        .unlocks("has_material", has(Items.NETHERITE_INGOT))
-                        .save(recipe, ResourceLocation.parse(InsaneSE.RESOURCE_PREFIX + "netherite_hammer"))
-        );
-
-        //Recycle Forge Hammers
-        recycleGear(writer, Forging.COPPER_HAMMER.get(), Items.COPPER_INGOT, 200, 5);
-        recycleGear(writer, Forging.IRON_HAMMER.get(), Items.IRON_NUGGET, 200, 45);
-        recycleGear(writer, Forging.DURIUM_HAMMER.get(), Durium.NUGGET.get(), 200, 45);
-        recycleGear(writer, Forging.QUARON_HAMMER.get(), Quaron.NUGGET.get(), 200, 45);
-        recycleGear(writer, Forging.GOLDEN_HAMMER.get(), Items.GOLD_NUGGET, 200, 45);
-        recycleGear(writer, Forging.KEEGO_HAMMER.get(), Keego.GEM.get(), 200, 5);
-        recycleGear(writer, Forging.DIAMOND_HAMMER.get(), Items.DIAMOND, 200, 5);
-        recycleGear(writer, Forging.NETHERITE_HAMMER.get(), Items.NETHERITE_INGOT, 200, 1);
-        recycleGear(writer, Forging.SOUL_STEEL_HAMMER.get(), SoulSteel.NUGGET.get(), 200, 9);
-        //</editor-fold>
+        hammerCraftingRecipe(writer, Forging.HAMMER.get(), Items.IRON_INGOT);
+        recycleGear(writer, Forging.HAMMER.get(), Items.IRON_NUGGET, 200, 45);
 
         addPoorRichOreRecipes(writer, BeegOreVeins.POOR_RICH_COPPER_ORE, Items.COPPER_INGOT, 0.75f, 100, 7f);
         addPoorRichOreRecipes(writer, BeegOreVeins.POOR_RICH_IRON_ORE, Items.IRON_INGOT, 1f, 200, 1f);
@@ -747,10 +684,23 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         featureBoundRecipe(writer, featureName, recipeBuilder, ForgeRegistries.ITEMS.getKey(resultItem.asItem()));
     }
 
+    public static void featuresBoundRecipe(Consumer<FinishedRecipe> writer, ItemLike resultItem, Consumer<Consumer<FinishedRecipe>> recipeBuilder, String... featureNames) {
+        featuresBoundRecipe(writer, recipeBuilder, ForgeRegistries.ITEMS.getKey(resultItem.asItem()), featureNames);
+    }
+
     public static void featureBoundRecipe(Consumer<FinishedRecipe> writer, String featureName, Consumer<Consumer<FinishedRecipe>> recipeBuilder, ResourceLocation name) {
         ConditionalRecipe.builder()
                 .addCondition(new FeatureEnabledCondition(featureName))
                 .addRecipe(recipeBuilder)
+                .build(writer, name);
+    }
+
+    public static void featuresBoundRecipe(Consumer<FinishedRecipe> writer, Consumer<Consumer<FinishedRecipe>> recipeBuilder, ResourceLocation name, String... featureNames) {
+        ConditionalRecipe.Builder builder = ConditionalRecipe.builder();
+        for (String featureName : featureNames) {
+            builder.addCondition(new FeatureEnabledCondition(featureName));
+        }
+        builder.addRecipe(recipeBuilder)
                 .build(writer, name);
     }
 
@@ -914,6 +864,20 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         );
     }
 
+    private void hammerCraftingRecipe(Consumer<FinishedRecipe> writer, Item hammer, Item material, String extraFeature) {
+        featuresBoundRecipe(writer, hammer,
+                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hammer)
+                        .pattern("MMM")
+                        .pattern("MSM")
+                        .pattern(" S ")
+                        .define('S', Items.STICK)
+                        .define('M', material)
+                        .unlockedBy("has_material", has(material))
+                        .save(recipe),
+                "Forging", extraFeature
+        );
+    }
+
     private void hammerCraftingRecipe(Consumer<FinishedRecipe> writer, Item hammer, TagKey<Item> materialTag) {
         featureBoundRecipe(writer, "Forging", hammer,
                 recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hammer)
@@ -925,6 +889,19 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         .unlockedBy("has_material", has(materialTag))
                         .save(recipe)
         );
+    }
+
+    private void hammerCraftingRecipe(Consumer<FinishedRecipe> writer, Item hammer, TagKey<Item> materialTag, String extraFeature) {
+        featuresBoundRecipe(writer, hammer,
+                recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hammer)
+                        .pattern("MMM")
+                        .pattern("MSM")
+                        .pattern(" S ")
+                        .define('S', Items.STICK)
+                        .define('M', materialTag)
+                        .unlockedBy("has_material", has(materialTag))
+                        .save(recipe)
+                , "Forging", extraFeature);
     }
 
     private boolean appendMaterialToName = false;

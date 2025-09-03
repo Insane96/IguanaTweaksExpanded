@@ -6,9 +6,9 @@
   },
   "amount": 7,
   "gear": {
-    "item": "minecraft:chainmail_leggings"
+    "item": "iguanatweaksreborn:copper_leggings"
   },
   "result": "minecraft:iron_leggings",
-  "smashes_required": 9,
-  "experience": 9
+  "smashes_required": 6,
+  "experience": 12
 }

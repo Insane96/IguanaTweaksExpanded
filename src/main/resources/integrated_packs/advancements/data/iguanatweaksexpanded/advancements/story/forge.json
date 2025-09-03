@@ -1,28 +1,28 @@
 {
 	"display": {
 		"icon": {
-			"item": "minecraft:shears"
+			"item": "iguanatweaksexpanded:forge"
 		},
 		"title": {
-			"translate": "advancements.sr_story.shears.title"
+			"translate": "advancements.sr_story.forge.title"
 		},
 		"description": {
-			"translate": "advancements.sr_story.shears.description"
+			"translate": "advancements.sr_story.forge.description"
 		},
 		"frame": "task",
 		"show_toast": true,
 		"announce_to_chat": true,
 		"hidden": false
 	},
-	"parent": "iguanatweaksexpanded:story/forge",
+	"parent": "iguanatweaksexpanded:story/blast_furnace",
 	"criteria": {
-		"shears": {
+		"forge": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [
 					{
 						"items": [
-							"minecraft:shears"
+							"iguanatweaksexpanded:forge"
 						]
 					}
 				]
@@ -31,7 +31,7 @@
 	},
 	"requirements": [
 		[
-			"shears"
+			"forge"
 		]
 	]
 }

@@ -16,11 +16,11 @@
                 },
                 "amount": 2,
                 "gear": {
-                    "item": "iguanatweaksreborn:flint_sword"
+                    "item": "iguanatweaksreborn:copper_sword"
                 },
                 "result": "caverns_and_chasms:silver_sword",
-                "smashes_required": 6,
-                "experience": 6
+                "smashes_required": 4,
+                "experience": 8
             }
         }
     ]

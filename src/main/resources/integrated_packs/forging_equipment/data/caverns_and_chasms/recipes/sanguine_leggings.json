@@ -16,11 +16,11 @@
                 },
                 "amount": 7,
                 "gear": {
-                    "item": "iguanatweaksexpanded:chained_copper_leggings"
+                    "item": "minecraft:leather_leggings"
                 },
                 "result": "caverns_and_chasms:sanguine_leggings",
-                "smashes_required": 14,
-                "experience": 14
+                "smashes_required": 6,
+                "experience": 12
             }
         }
     ]

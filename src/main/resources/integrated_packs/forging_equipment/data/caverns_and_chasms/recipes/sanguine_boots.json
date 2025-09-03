@@ -9,31 +9,18 @@
                 }
             ],
             "recipe": {
-                "type": "forge:conditional",
-                "recipes": [
-                    {
-                        "conditions": [
-                            {
-                                "type": "forge:mod_loaded",
-                                "modid": "caverns_and_chasms"
-                            }
-                        ],
-                        "recipe": {
-                            "type": "iguanatweaksexpanded:forging",
-                            "category": "forge_misc",
-                            "ingredient": {
-                                "item": "caverns_and_chasms:living_flesh"
-                            },
-                            "amount": 4,
-                            "gear": {
-                                "item": "iguanatweaksexpanded:chained_copper_boots"
-                            },
-                            "result": "caverns_and_chasms:sanguine_boots",
-                            "smashes_required": 10,
-                            "experience": 10
-                        }
-                    }
-                ]
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "caverns_and_chasms:living_flesh"
+                },
+                "amount": 4,
+                "gear": {
+                    "item": "minecraft:leather_boots"
+                },
+                "result": "caverns_and_chasms:sanguine_boots",
+                "smashes_required": 6,
+                "experience": 12
             }
         }
     ]

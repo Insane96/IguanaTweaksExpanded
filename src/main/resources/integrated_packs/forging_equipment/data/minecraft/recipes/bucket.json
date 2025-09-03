@@ -6,9 +6,9 @@
   },
   "amount": 3,
   "gear": {
-    "item": "iguanatweaksexpanded:durium_ingot"
+    "item": "minecraft:gold_ingot"
   },
   "result": "minecraft:bucket",
-  "smashes_required": 10,
-  "experience": 10
+  "smashes_required": 6,
+  "experience": 12
 }

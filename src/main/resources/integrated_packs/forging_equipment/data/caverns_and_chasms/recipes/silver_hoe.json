@@ -16,11 +16,11 @@
                 },
                 "amount": 2,
                 "gear": {
-                    "item": "iguanatweaksreborn:flint_hoe"
+                    "item": "iguanatweaksreborn:copper_hoe"
                 },
                 "result": "caverns_and_chasms:silver_hoe",
-                "smashes_required": 6,
-                "experience": 6
+                "smashes_required": 4,
+                "experience": 8
             }
         }
     ]

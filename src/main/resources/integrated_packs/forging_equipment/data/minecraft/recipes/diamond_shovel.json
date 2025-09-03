@@ -9,6 +9,6 @@
     "item": "minecraft:golden_shovel"
   },
   "result": "minecraft:diamond_shovel",
-  "smashes_required": 16,
-  "experience": 16
+  "smashes_required": 10,
+  "experience": 20
 }

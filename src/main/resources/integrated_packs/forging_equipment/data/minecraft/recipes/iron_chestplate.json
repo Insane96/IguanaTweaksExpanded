@@ -6,9 +6,9 @@
   },
   "amount": 8,
   "gear": {
-    "item": "minecraft:chainmail_chestplate"
+    "item": "iguanatweaksreborn:copper_chestplate"
   },
   "result": "minecraft:iron_chestplate",
-  "smashes_required": 10,
-  "experience": 10
+  "smashes_required": 6,
+  "experience": 12
 }

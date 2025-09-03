@@ -31,7 +31,6 @@ public class ForgeHammerItem extends TieredItem implements Vanishable, Durabilit
     protected static final UUID ENTITY_REACH_UUID = UUID.fromString("cdec6524-49a5-465a-a61c-f53c2e637c48");
 
     public static final String FORGE_COOLDOWN_LANG = InsaneSE.MOD_ID + ".hammer_cooldown";
-    public static final String FORGE_DURABILITY_LANG = InsaneSE.MOD_ID + ".hammer_durability";
 
     final int useCooldown;
     private final Multimap<Attribute, AttributeModifier> defaultModifiers;

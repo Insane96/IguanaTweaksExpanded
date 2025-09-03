@@ -1,22 +1,13 @@
 package insane96mcp.iguanatweaksexpanded.module.mining.forging;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
-import insane96mcp.iguanatweaksexpanded.data.generator.ISEItemTagsProvider;
 import insane96mcp.iguanatweaksexpanded.module.Modules;
-import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
-import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
-import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
-import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
-import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksexpanded.module.misc.ISEDataPacks;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.iguanatweaksreborn.event.ISOLivingAttackEvent;
 import insane96mcp.iguanatweaksreborn.module.experience.enchantments.EnchantmentsFeature;
-import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
-import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.insanelib.base.Feature;
-import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.base.config.Config;
@@ -42,7 +33,7 @@ import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-@LoadFeature(module = Modules.Ids.MINING, enabledByDefault = false)
+@LoadFeature(module = Modules.Ids.MINING)
 public class Forging extends Feature {
 	public static final SimpleBlockWithItem FORGE = SimpleBlockWithItem.register("forge", () -> new ForgeBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
 	public static final RegistryObject<BlockEntityType<ForgeBlockEntity>> FORGE_BLOCK_ENTITY_TYPE = ISERegistries.BLOCK_ENTITY_TYPES.register("forge", () -> BlockEntityType.Builder.of(ForgeBlockEntity::new, FORGE.block().get()).build(null));
@@ -56,43 +47,29 @@ public class Forging extends Feature {
 	public static final RegistryObject<ForgeRecipe.ForgeRecipeSerializer> FORGE_RECIPE_SERIALIZER = ISERegistries.RECIPE_SERIALIZERS.register("forging", ForgeRecipe.ForgeRecipeSerializer::new);
 	public static final RegistryObject<MenuType<ForgeMenu>> FORGE_MENU_TYPE = ISERegistries.MENU_TYPES.register("forge", () -> new MenuType<>(ForgeMenu::new, FeatureFlags.VANILLA_SET));
 
-	public static final RegistryObject<ForgeHammerItem> WOODEN_HAMMER = ISERegistries.ITEMS.register("wooden_hammer", () -> new ForgeHammerItem(Tiers.WOOD, 35, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> STONE_HAMMER = ISERegistries.ITEMS.register("stone_hammer", () -> new ForgeHammerItem(Tiers.STONE, 30, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> FLINT_HAMMER = ISERegistries.ITEMS.register("flint_hammer", () -> new ForgeHammerItem(FlintExpansion.ITEM_TIER, 30, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> COPPER_HAMMER = ISERegistries.ITEMS.register("copper_hammer", () -> new ForgeHammerItem(CopperEquipment.ITEM_TIER, 20, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> GOLDEN_HAMMER = ISERegistries.ITEMS.register("golden_hammer", () -> new ForgeHammerItem(Tiers.GOLD, 8, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> IRON_HAMMER = ISERegistries.ITEMS.register("iron_hammer", () -> new ForgeHammerItem(Tiers.IRON, 25, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> SOLARIUM_HAMMER = ISERegistries.ITEMS.register("solarium_hammer", () -> new SolariumForgeHammerItem(Solarium.ITEM_TIER, 30, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> DURIUM_HAMMER = ISERegistries.ITEMS.register("durium_hammer", () -> new ForgeHammerItem(Durium.ITEM_TIER, 30, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> QUARON_HAMMER = ISERegistries.ITEMS.register("quaron_hammer", () -> new ForgeHammerItem(Quaron.ITEM_TIER, 20, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> KEEGO_HAMMER = ISERegistries.ITEMS.register("keego_hammer", () -> new KeegoForgeHammerItem(Keego.ITEM_TIER, 18, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> DIAMOND_HAMMER = ISERegistries.ITEMS.register("diamond_hammer", () -> new ForgeHammerItem(Tiers.DIAMOND, 15, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> SOUL_STEEL_HAMMER = ISERegistries.ITEMS.register("soul_steel_hammer", () -> new ForgeHammerItem(SoulSteel.ITEM_TIER, 20, new Item.Properties()));
-	public static final RegistryObject<ForgeHammerItem> NETHERITE_HAMMER = ISERegistries.ITEMS.register("netherite_hammer", () -> new ForgeHammerItem(Tiers.NETHERITE, 15, new Item.Properties()));
+	public static final RegistryObject<ForgeHammerItem> HAMMER = ISERegistries.ITEMS.register("forge_hammer", () -> new ForgeHammerItem(Tiers.IRON, 20, new Item.Properties()));
 
-	@Config
-	@Label(name = "Unforgable enchanted items", description = "Enchanted items can't be forged")
+	@Config(description = "Enchanted items can't be forged")
 	public static Boolean unforgableEnchantedItems = true;
 
-	@Config
-	@Label(name = "Forging Equipment Crafting Data Pack", description = """
+	@Config(description = """
 			Enables the following changes to vanilla data pack:
 			* All metal gear requires a forge to be made
 			* Diamond Gear requires Gold gear to be forged
 			* Gold Gear requires Flint / Leather gear to be forged
 			* Iron Gear requires Stone / Chained Copper gear to be forged
 			* Buckets, Flint and Steel and Shears require a forge to be made""")
-	public static Boolean forgingEquipment = true;
+	public static Boolean forgingEquipmentCraftingDataPack = true;
 
-	public Forging(Module module, boolean enabledByDefault, boolean canBeDisabled) {
-		super(module, enabledByDefault, canBeDisabled);
-		InsaneSE.addServerPack("forging_equipment", "IguanaTweaks Expanded Forging Equipment", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && forgingEquipment);
+	public void init(Module module, boolean enabledByDefault, boolean canBeDisabled) {
+		super.init(module, enabledByDefault, canBeDisabled);
+		InsaneSE.addServerPack("forging_equipment", "IguanaTweaks Expanded Forging Equipment", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks && forgingEquipmentCraftingDataPack);
 	}
 
 	@SubscribeEvent
 	public void onHammerDamage(ISOLivingAttackEvent event) {
 		if (!(event.getSource().getEntity() instanceof LivingEntity attacker)
-				|| !attacker.getMainHandItem().is(ISEItemTagsProvider.FORGE_HAMMERS)
+				|| !attacker.getMainHandItem().is(HAMMER.get())
 				|| event.getEntity().level().isClientSide)
 			return;
 
@@ -102,11 +79,12 @@ public class Forging extends Feature {
 		if (attacker instanceof Player player)
 			attackStrengthScale = player.getAttackStrengthScale(0.5f);
 
-		float range = 3F;
+		float range = 3.5F;
 		float rangeSqr = range * range;
 
 		for (LivingEntity livingEntity : event.getEntity().level().getEntitiesOfClass(LivingEntity.class, event.getEntity().getBoundingBox().inflate(range, range / 2f, range))) {
 			if (livingEntity != attacker
+                    && livingEntity.onGround()
 					&& !livingEntity.isAlliedTo(attacker)
 					&& (!(livingEntity instanceof ArmorStand armorStand) || !armorStand.isMarker())
 					&& event.getEntity().distanceToSqr(livingEntity) < rangeSqr) {
@@ -121,7 +99,7 @@ public class Forging extends Feature {
 	}
 
 	private static float getKnockbackBonus(LivingEntity entity) {
-		return Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, entity), EnchantmentHelper.getEnchantmentLevel(EnchantmentsFeature.KNOCKBACK.get(), entity)) * 0.2f;
+		return Math.max(EnchantmentHelper.getEnchantmentLevel(Enchantments.KNOCKBACK, entity), EnchantmentHelper.getEnchantmentLevel(EnchantmentsFeature.KNOCKBACK.get(), entity)) * 0.15f;
 	}
 
 	@SubscribeEvent

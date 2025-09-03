@@ -16,11 +16,11 @@
                 },
                 "amount": 3,
                 "gear": {
-                    "item": "iguanatweaksexpanded:durium_ingot"
+                    "item": "minecraft:iron_ingot"
                 },
                 "result": "caverns_and_chasms:golden_bucket",
-                "smashes_required": 15,
-                "experience": 15
+                "smashes_required": 6,
+                "experience": 12
             }
         }
     ]

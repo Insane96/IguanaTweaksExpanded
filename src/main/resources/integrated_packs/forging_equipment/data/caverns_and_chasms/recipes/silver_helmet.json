@@ -16,11 +16,11 @@
                 },
                 "amount": 5,
                 "gear": {
-                    "item": "minecraft:chainmail_helmet"
+                    "item": "iguanatweaksreborn:copper_helmet"
                 },
                 "result": "caverns_and_chasms:silver_helmet",
                 "smashes_required": 4,
-                "experience": 4
+                "experience": 8
             }
         }
     ]

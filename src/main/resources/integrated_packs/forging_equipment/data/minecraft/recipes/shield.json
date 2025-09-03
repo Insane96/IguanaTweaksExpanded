@@ -6,9 +6,9 @@
   },
   "amount": 4,
   "gear": {
-    "item": "minecraft:redstone"
+    "tag": "minecraft:logs"
   },
-  "result": "minecraft:compass",
+  "result": "minecraft:shield",
   "smashes_required": 6,
   "experience": 12
 }

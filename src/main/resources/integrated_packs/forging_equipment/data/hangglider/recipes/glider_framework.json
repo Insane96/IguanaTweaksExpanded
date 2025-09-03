@@ -19,8 +19,8 @@
                     "item": "minecraft:iron_ingot"
                 },
                 "result": "hangglider:glider_framework",
-                "smashes_required": 8,
-                "experience": 8
+                "smashes_required": 6,
+                "experience": 12
             }
         }
     ]

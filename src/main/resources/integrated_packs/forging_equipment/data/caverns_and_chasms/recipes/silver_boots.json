@@ -1,14 +1,27 @@
 {
-    "type": "iguanatweaksexpanded:forging",
-    "category": "forge_misc",
-    "ingredient": {
-        "item": "caverns_and_chasms:silver_ingot"
-    },
-    "amount": 4,
-    "gear": {
-        "item": "minecraft:chainmail_boots"
-    },
-    "result": "caverns_and_chasms:silver_boots",
-    "smashes_required": 4,
-    "experience": 4
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "type": "forge:mod_loaded",
+                    "modid": "caverns_and_chasms"
+                }
+            ],
+            "recipe": {
+                "type": "iguanatweaksexpanded:forging",
+                "category": "forge_misc",
+                "ingredient": {
+                    "item": "caverns_and_chasms:silver_ingot"
+                },
+                "amount": 4,
+                "gear": {
+                    "item": "iguanatweaksreborn:copper_boots"
+                },
+                "result": "caverns_and_chasms:silver_boots",
+                "smashes_required": 4,
+                "experience": 8
+            }
+        }
+    ]
 }

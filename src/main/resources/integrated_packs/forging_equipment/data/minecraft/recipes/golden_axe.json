@@ -9,6 +9,6 @@
     "item": "iguanatweaksreborn:copper_axe"
   },
   "result": "minecraft:golden_axe",
-  "smashes_required": 6,
-  "experience": 6
+  "smashes_required": 4,
+  "experience": 8
 }

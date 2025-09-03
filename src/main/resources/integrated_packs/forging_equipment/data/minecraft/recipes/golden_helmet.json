@@ -6,9 +6,9 @@
   },
   "amount": 5,
   "gear": {
-    "item": "iguanatweaksexpanded:chained_copper_helmet"
+    "item": "iguanatweaksreborn:copper_helmet"
   },
   "result": "minecraft:golden_helmet",
   "smashes_required": 4,
-  "experience": 4
+  "experience": 8
 }
