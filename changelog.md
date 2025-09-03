@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.28.0
 * Overhauled and re-enabled Forging
   * Now only one hammer exists, made out of iron (same stats as before)
   * Recipes have been fixed to work with latest ISO (most items are made from copper equipment)
