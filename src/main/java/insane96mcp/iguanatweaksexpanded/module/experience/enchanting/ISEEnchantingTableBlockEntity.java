@@ -52,18 +52,6 @@ public class ISEEnchantingTableBlockEntity extends BaseContainerBlockEntity impl
         super.load(tag);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(tag, this.items);
-        //Remove legacy stored enchantments
-        if (tag.contains("treasure_enchantments")) {
-            ListTag listtag = tag.getList("treasure_enchantments", CompoundTag.TAG_STRING);
-            for (int i = 0; i < listtag.size(); i++) {
-                String enchantment = listtag.getString(i);
-                Enchantment enchantment1 = ForgeRegistries.ENCHANTMENTS.getValue(ResourceLocation.tryParse(enchantment));
-                if (enchantment1 == null)
-                    continue;
-                this.knownEnchantments.put(enchantment1, enchantment1.getMaxLevel() / 2);
-            }
-            tag.remove("treasure_enchantments");
-        }
         //Load stored enchantments
         ListTag listTag = tag.getList("learned_enchantments", CompoundTag.TAG_COMPOUND);
         for (int i = 0; i < listTag.size(); i++) {

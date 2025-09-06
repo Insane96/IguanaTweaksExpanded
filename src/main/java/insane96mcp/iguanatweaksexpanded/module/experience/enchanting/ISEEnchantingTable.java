@@ -129,11 +129,13 @@ public class ISEEnchantingTable extends BaseEntityBlock {
                         hasLearned = true;
                         toRemove.add(compound);
                     }
-                    for (CompoundTag tag : toRemove) {
-                        list.remove(tag);
+                    if (!player.getAbilities().instabuild) {
+                        for (CompoundTag tag : toRemove) {
+                            list.remove(tag);
+                        }
                     }
                     if (hasOneEligibleEnchantment && hasLearned) {
-                        if (list.isEmpty()) {
+                        if (list.isEmpty() && !player.getAbilities().instabuild) {
                             player.getItemInHand(hand).shrink(1);
                             player.setItemSlot(hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND, new ItemStack(Items.BOOK));
                         }
@@ -159,7 +161,6 @@ public class ISEEnchantingTable extends BaseEntityBlock {
                 }
 
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
-                //ensorcellerBlockEntity.dropExperience(pLevel);
             }
 
             super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);

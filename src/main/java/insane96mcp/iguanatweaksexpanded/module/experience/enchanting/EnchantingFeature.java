@@ -60,14 +60,17 @@ import java.util.Map;
 @LoadFeature(module = Modules.Ids.EXPERIENCE)
 public class EnchantingFeature extends JsonFeature {
     public static final TagKey<Item> NOT_ENCHANTABLE = ISEItemTagsProvider.create("not_enchantable");
+
 	public static final SimpleBlockWithItem ENCHANTING_TABLE = SimpleBlockWithItem.register("enchanting_table", () -> new ISEEnchantingTable(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE)));
 	public static final RegistryObject<BlockEntityType<ISEEnchantingTableBlockEntity>> ENCHANTING_TABLE_BLOCK_ENTITY = ISERegistries.BLOCK_ENTITY_TYPES.register("enchanting_table", () -> BlockEntityType.Builder.of(ISEEnchantingTableBlockEntity::new, ENCHANTING_TABLE.block().get()).build(null));
     public static final RegistryObject<MenuType<ISEEnchantingTableMenu>> ENCHANTING_TABLE_MENU_TYPE = ISERegistries.MENU_TYPES.register("enchanting_table", () -> new MenuType<>(ISEEnchantingTableMenu::new, FeatureFlags.VANILLA_SET));
 
+    public static final SimpleBlockWithItem ENSORCELLER = SimpleBlockWithItem.register("ensorceller", () -> new ISEEnsorceller(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).lightLevel(state -> 10)));
+    public static final RegistryObject<BlockEntityType<ISEEnsorcellerBlockEntity>> ENSORCELLER_BLOCK_ENTITY = ISERegistries.BLOCK_ENTITY_TYPES.register("ensorceller", () -> BlockEntityType.Builder.of(ISEEnsorcellerBlockEntity::new, ENSORCELLER.block().get()).build(null));
+
     public static final ResourceLocation PURIFIED_ITEM = InsaneSE.location("purified");
     public static final Component PURIFIED_COMPONENT = Component.translatable(InsaneSE.lang("enchanting_purified")).withStyle(ChatFormatting.DARK_PURPLE);
     public static final String EMPOWERED_ITEM_LEGACY = InsaneSE.RESOURCE_PREFIX + "empowered";
-
 
     @Config
     @Label(name = "No enchantment merge", description = "Enchanted items can no longer be merged with other enchanted items.")
@@ -101,7 +104,7 @@ public class EnchantingFeature extends JsonFeature {
     public static Boolean enchantingTableRequiresLearning = true;
     @Config
     @Label(name = "Enchanting Table.One time use enchantments", description = "If true, all the enchantments in the enchanting table (so, not only curses) are one time use. If enabled, you can no longer disenchant items in grindstone to prevent accidental loss.")
-    public static Boolean enchantingTableOneTimeUseEnchantments = false;
+    public static Boolean enchantingTableOneTimeUseEnchantments = true;
     @Config(min = 0)
     @Label(name = "Enchanting Table.Max enchanting power", description = "Increasing this increases bookshelves required. Vanilla is 15")
     public static Integer enchantingTableMaxEnchantingPower = 20;
@@ -117,6 +120,9 @@ public class EnchantingFeature extends JsonFeature {
     @Config(min = 0)
     @Label(name = "Enchanting Table.Base enchantability", description = "Enchantability with no bookshelves")
     public static Integer enchantingTableBaseEnchantability = 0;
+
+    @Config(description = "How many ticks will the ensorceller take to generate a new enchantment")
+    public static Integer ensorceller$timeToGenerate = 2400;
 
     @Config
     public static Boolean enablePurifyItems = true;
@@ -274,8 +280,8 @@ public class EnchantingFeature extends JsonFeature {
     );
     public static final ArrayList<IdTagValue> startingEnchantments = new ArrayList<>();
 
-	public EnchantingFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
-		super(module, enabledByDefault, canBeDisabled);
+	public void init(Module module, boolean enabledByDefault, boolean canBeDisabled) {
+		super.init(module, enabledByDefault, canBeDisabled);
 
         InsaneSE.addServerPack("new_enchanting_table", "IguanaTweaks Expanded New Enchanting Table", () -> this.isEnabled() && !ISEDataPacks.disableAllDataPacks);
 

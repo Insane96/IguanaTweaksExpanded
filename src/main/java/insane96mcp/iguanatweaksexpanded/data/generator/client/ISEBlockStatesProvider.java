@@ -1,5 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator.client;
 
+import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
@@ -27,5 +28,6 @@ public class ISEBlockStatesProvider extends BlockStateProvider {
         simpleBlock(Keego.ORE.block().get());
         simpleBlock(Keego.BLOCK.block().get());
         simpleBlock(Quaron.BLOCK.block().get());
+        blockTexture(EnchantingFeature.ENSORCELLER.block().get());
     }
 }

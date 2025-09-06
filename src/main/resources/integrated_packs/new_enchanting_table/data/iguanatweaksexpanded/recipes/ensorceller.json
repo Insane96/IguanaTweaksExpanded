@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "D#D",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:crying_obsidian"
+        },
+        "D": {
+            "item": "minecraft:netherite_scrap"
+        }
+    },
+    "result": {
+        "item": "iguanatweaksexpanded:ensorceller"
+    }
+}

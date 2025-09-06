@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.29.0
+* Added Ensorceller, an item made with ancient scrap and crying obsidian that can be used to re-roll enchantments
+  * Use enchanted books to charge it and after a few minutes use a book to extract the generated enchantment
+* Enchanting table enchantments are now one use only by default
+* Removed any differentiation between treasure and non-treasure enchantments, they are now treated the same
+
 ## 1.28.0
 * Overhauled and re-enabled Forging
   * Now only one hammer exists, made out of iron (same stats as before)

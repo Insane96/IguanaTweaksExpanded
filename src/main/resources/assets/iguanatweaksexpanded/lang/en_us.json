@@ -1,5 +1,6 @@
 {
 	"block.iguanatweaksexpanded.enchanting_table": "Enchanting Table",
+	"block.iguanatweaksexpanded.ensorceller": "Ensorceller",
 	"iguanatweaksexpanded.enchanting_purified": "Enchanting Purified",
 	"iguanatweaksexpanded.apply_to_enchanting_table": "Use this book on an Enchanting Table to teach it new enchantments",
 	"iguanatweaksexpanded.enchanting_table.already_known": "Equal or higher level of %s already known",

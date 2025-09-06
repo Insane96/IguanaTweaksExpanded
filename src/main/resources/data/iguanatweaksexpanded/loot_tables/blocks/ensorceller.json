@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "iguanatweaksexpanded:ensorceller",
+                    "functions": [
+                        {
+                            "function": "minecraft:copy_name",
+                            "source": "block_entity"
+                        },
+                        {
+                            "function": "minecraft:copy_nbt",
+                            "source": "block_entity",
+                            "ops": [
+                                { "op": "replace", "source": "Charges", "target": "BlockEntityTag.Charges" },
+                                { "op": "replace", "source": "EnsorcellingTicks", "target": "BlockEntityTag.EnsorcellingTicks" },
+                                { "op": "replace", "source": "PendingId", "target": "BlockEntityTag.PendingId" },
+                                { "op": "replace", "source": "PendingLvl", "target": "BlockEntityTag.PendingLvl" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

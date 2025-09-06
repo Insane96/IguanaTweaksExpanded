@@ -200,6 +200,7 @@ public class ClientSetup {
                 addAfter(event, Items.FLETCHING_TABLE, Fletching.FLETCHING_TABLE.item().get());
             }
             if (Feature.isEnabled(EnchantingFeature.class)) {
+                addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENSORCELLER.item().get());
                 addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENCHANTING_TABLE.item().get());
                 event.getEntries().remove(new ItemStack(Items.ENCHANTING_TABLE));
             }
