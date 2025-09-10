@@ -2,9 +2,6 @@ package insane96mcp.iguanatweaksexpanded.setup.client;
 
 import com.google.common.collect.ImmutableList;
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.FletchingScreen;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.client.ISEArrowRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableScreen;
@@ -162,13 +159,6 @@ public class ClientSetup {
                 addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.CHESTPLATE.get());
                 addAfter(event, Items.NETHERITE_BOOTS, SoulSteel.HELMET.get());
             }
-            if (Feature.isEnabled(Fletching.class)) {
-                addAfter(event, Items.ARROW, Fletching.TORCH_ARROW_ITEM.get());
-                addAfter(event, Items.ARROW, Fletching.EXPLOSIVE_ARROW_ITEM.get());
-                addAfter(event, Items.ARROW, Fletching.DIAMOND_ARROW_ITEM.get());
-                addAfter(event, Items.ARROW, Fletching.QUARTZ_ARROW_ITEM.get());
-                addAfter(event, Items.ARROW, Fletching.ICE_ARROW_ITEM.get());
-            }
         }
         else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             if (Feature.isEnabled(Durium.class)) {
@@ -195,9 +185,6 @@ public class ClientSetup {
             }
             if (Feature.isEnabled(Forging.class)) {
                 addBefore(event, Items.ANVIL, Forging.FORGE.item().get());
-            }
-            if (Feature.isEnabled(Fletching.class)) {
-                addAfter(event, Items.FLETCHING_TABLE, Fletching.FLETCHING_TABLE.item().get());
             }
             if (Feature.isEnabled(EnchantingFeature.class)) {
                 addAfter(event, Items.ENCHANTING_TABLE, EnchantingFeature.ENSORCELLER.item().get());
@@ -305,15 +292,9 @@ public class ClientSetup {
         MenuScreens.register(MultiBlockFurnaces.SOUL_BLAST_FURNACE_MENU_TYPE.get(), MultiBlockSoulBlastFurnaceScreen::new);
         MenuScreens.register(Forging.FORGE_MENU_TYPE.get(), ForgeScreen::new);
         MenuScreens.register(EnchantingFeature.ENCHANTING_TABLE_MENU_TYPE.get(), ISEEnchantingTableScreen::new);
-        MenuScreens.register(Fletching.FLETCHING_MENU_TYPE.get(), FletchingScreen::new);
     }
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(Fletching.QUARTZ_ARROW.get(), ISEArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.DIAMOND_ARROW.get(), ISEArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.EXPLOSIVE_ARROW.get(), ISEArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.TORCH_ARROW.get(), ISEArrowRenderer::new);
-        event.registerEntityRenderer(Fletching.ICE_ARROW.get(), ISEArrowRenderer::new);
         event.registerEntityRenderer(MiningCharge.PRIMED_MINING_CHARGE.get(), MiningChargeRenderer::new);
 
         event.registerBlockEntityRenderer(Forging.FORGE_BLOCK_ENTITY_TYPE.get(), ForgeRenderer::new);
@@ -329,9 +310,6 @@ public class ClientSetup {
     static RecipeBookCategories FORGE_SEARCH = RecipeBookCategories.create("forge_search", new ItemStack(Items.COMPASS));
     static RecipeBookCategories FORGE_MISC = RecipeBookCategories.create("forge_misc", new ItemStack(Forging.FORGE.item().get()));
     public static final List<RecipeBookCategories> FORGE_CATEGORIES = ImmutableList.of(FORGE_SEARCH, FORGE_MISC);
-    static RecipeBookCategories FLETCHING_SEARCH = RecipeBookCategories.create("fletching_search", new ItemStack(Items.COMPASS));
-    static RecipeBookCategories FLETCHING_MISC = RecipeBookCategories.create("fletching_misc", new ItemStack(Items.FLETCHING_TABLE));
-    public static final List<RecipeBookCategories> FLETCHING_CATEGORIES = ImmutableList.of(FLETCHING_SEARCH, FLETCHING_MISC);
 
     public static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
         event.registerBookCategories(InsaneSE.MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE, BLAST_FURNACE_CATEGORIES);
@@ -345,10 +323,6 @@ public class ClientSetup {
         event.registerBookCategories(InsaneSE.FORGING_RECIPE_BOOK_TYPE, FORGE_CATEGORIES);
         event.registerAggregateCategory(FORGE_SEARCH, ImmutableList.of(FORGE_MISC));
         event.registerRecipeCategoryFinder(Forging.FORGE_RECIPE_TYPE.get(), r -> FORGE_MISC);
-
-        event.registerBookCategories(InsaneSE.FLETCHING_RECIPE_BOOK_TYPE, FLETCHING_CATEGORIES);
-        event.registerAggregateCategory(FLETCHING_SEARCH, ImmutableList.of(FLETCHING_MISC));
-        event.registerRecipeCategoryFinder(Fletching.FLETCHING_RECIPE_TYPE.get(), r -> FLETCHING_MISC);
     }
 
     public static void registerTooltips(RegisterClientTooltipComponentFactoriesEvent event) {

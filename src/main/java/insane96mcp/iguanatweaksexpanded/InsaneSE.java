@@ -5,8 +5,6 @@ import insane96mcp.iguanatweaksexpanded.data.generator.*;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEBlockModelsProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEBlockStatesProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEItemModelsProvider;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.dispenser.ISEArrowDispenseBehaviour;
 import insane96mcp.iguanatweaksexpanded.module.items.recallpotion.Recall;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -29,7 +27,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -60,7 +57,6 @@ public class InsaneSE
     public static final RecipeBookType MULTI_ITEM_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSE.RESOURCE_PREFIX + "multi_item_blasting");
     public static final RecipeBookType MULTI_ITEM_SOUL_BLASTING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSE.RESOURCE_PREFIX + "multi_item_soul_blasting");
     public static final RecipeBookType FORGING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSE.RESOURCE_PREFIX + "forging");
-    public static final RecipeBookType FLETCHING_RECIPE_BOOK_TYPE = RecipeBookType.create(InsaneSE.RESOURCE_PREFIX + "fletching");
 
     public InsaneSE(FMLJavaModLoadingContext context) {
         context.registerConfig(ModConfig.Type.COMMON, ISECommonConfig.CONFIG_SPEC, InsaneSO.NEW_MOD_ID + "/expanded-common.toml");
@@ -92,14 +88,6 @@ public class InsaneSE
     private void commonSetup(final FMLCommonSetupEvent event) {
         NetworkHandler.init();
         Recall.onLoadComplete();
-
-        event.enqueueWork(() -> {
-            DispenserBlock.registerBehavior(Fletching.QUARTZ_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.DIAMOND_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.EXPLOSIVE_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.TORCH_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
-            DispenserBlock.registerBehavior(Fletching.ICE_ARROW_ITEM.get(), new ISEArrowDispenseBehaviour());
-        });
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

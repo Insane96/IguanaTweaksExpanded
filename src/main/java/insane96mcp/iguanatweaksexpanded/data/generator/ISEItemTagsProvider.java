@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.integration.Allurement;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchantments.enchantment.*;
@@ -105,7 +104,6 @@ public class ISEItemTagsProvider extends ItemTagsProvider {
                 .add(Keego.HELMET.get(), Keego.CHESTPLATE.get(), Keego.LEGGINGS.get(), Keego.BOOTS.get())
                 .add(Quaron.HELMET.get(), Quaron.CHESTPLATE.get(), Quaron.LEGGINGS.get(), Quaron.BOOTS.get());
 
-        tag(ItemTags.ARROWS).add(Fletching.QUARTZ_ARROW_ITEM.get(), Fletching.DIAMOND_ARROW_ITEM.get(), Fletching.EXPLOSIVE_ARROW_ITEM.get(), Fletching.TORCH_ARROW_ITEM.get(), Fletching.ICE_ARROW_ITEM.get());
 
         tag(ItemTags.BEACON_PAYMENT_ITEMS).add(Items.NETHER_STAR).add(Durium.INGOT.get(), SoulSteel.INGOT.get(), Keego.GEM.get(), Quaron.INGOT.get());
 

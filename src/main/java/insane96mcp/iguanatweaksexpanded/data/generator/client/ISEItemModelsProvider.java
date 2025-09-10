@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator.client;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
@@ -146,12 +145,6 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         withExistingParent("explosive_barrel", new ResourceLocation(InsaneSE.MOD_ID, "block/explosive_barrel"));
 
         handHeld(Forging.HAMMER.get());
-
-        basicItem(Fletching.QUARTZ_ARROW_ITEM.get());
-        basicItem(Fletching.DIAMOND_ARROW_ITEM.get());
-        basicItem(Fletching.EXPLOSIVE_ARROW_ITEM.get());
-        basicItem(Fletching.TORCH_ARROW_ITEM.get());
-        basicItem(Fletching.ICE_ARROW_ITEM.get());
 
         //basicItem(RecallIdol.ITEM.get());
     }

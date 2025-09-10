@@ -9,8 +9,6 @@ import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.crafting.FletchingRecipe;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
@@ -40,10 +38,6 @@ public class ISEEmiPlugin implements EmiPlugin {
 	public static final ResourceLocation FORGE_CATEGORY_ID = new ResourceLocation(InsaneSE.MOD_ID, "forging");
 	public static final EmiStack FORGE_WORKSTATION = EmiStack.of(Forging.FORGE.item().get());
 	public static final EmiRecipeCategory FORGE_RECIPE_CATEGORY = new EmiRecipeCategory(FORGE_CATEGORY_ID, FORGE_WORKSTATION);
-
-	public static final ResourceLocation FLETCHING_CATEGORY_ID = InsaneSE.location("fletching");
-	public static final EmiStack FLETCHING_WORKSTATION = EmiStack.of(Fletching.FLETCHING_TABLE.item().get());
-	public static final EmiRecipeCategory FLETCHING_RECIPE_CATEGORY = new EmiRecipeCategory(FLETCHING_CATEGORY_ID, FLETCHING_WORKSTATION);
 
 	public static final ResourceLocation BLAST_FURNACE_CATEGORY_ID = InsaneSE.location("blast_furnace");
 	public static final EmiStack BLAST_FURNACE_WORKSTATION = EmiStack.of(MultiBlockFurnaces.BLAST_FURNACE.item().get());
@@ -85,13 +79,6 @@ public class ISEEmiPlugin implements EmiPlugin {
 			}
 		}
 
-		if (Feature.isEnabled(Fletching.class)) {
-			registry.addCategory(FLETCHING_RECIPE_CATEGORY);
-			registry.addWorkstation(FLETCHING_RECIPE_CATEGORY, FLETCHING_WORKSTATION);
-			for (FletchingRecipe fletchingRecipe : manager.getAllRecipesFor(Fletching.FLETCHING_RECIPE_TYPE.get())) {
-				registry.addRecipe(new EmiFletchingRecipe(fletchingRecipe));
-			}
-		}
 		//registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.ANVIL_REPAIRING);
 		if (Feature.isEnabled(EnchantingFeature.class)) {
 			registry.removeRecipes(emiRecipe -> emiRecipe.getCategory() == VanillaEmiRecipeCategories.GRINDING);
@@ -153,9 +140,6 @@ public class ISEEmiPlugin implements EmiPlugin {
 			}
 
 			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.ENCHANTING_TABLE));
-		}
-		if (Feature.isEnabled(Fletching.class)) {
-			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.FLETCHING_TABLE));
 		}
 		if (Feature.isEnabled(Altimeter.class)) {
 			registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), Component.translatable("emi.info.iguanatweaksexpanded.altimeter"), "info_altimeter"));

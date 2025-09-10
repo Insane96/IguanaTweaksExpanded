@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.setup;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.SoliumBoulderFeature;
 import insane96mcp.iguanatweaksexpanded.module.mining.multiblockfurnaces.MultiBlockFurnaces;
 import insane96mcp.iguanatweaksexpanded.module.mining.oregeneration.BeegOreVeinFeature;
@@ -60,16 +59,6 @@ public class ISERegistries {
         HashSet<BlockState> states = new HashSet<>(ForgeRegistries.POI_TYPES.getDelegateOrThrow(PoiTypes.ARMORER).get().matchingStates());
         RegistryObject<Block>[] barrelRegistryObjects = new RegistryObject[]{
                 MultiBlockFurnaces.BLAST_FURNACE.block()
-        };
-        for (RegistryObject<Block> barrelRegistryObject : barrelRegistryObjects) {
-            states.addAll(barrelRegistryObject.get().getStateDefinition().getPossibleStates());
-        }
-        return new PoiType(states, 1, 1);
-    });
-    public static RegistryObject<PoiType> FLETCHER = POI_TYPES.register("fletcher", () -> {
-        HashSet<BlockState> states = new HashSet<>(ForgeRegistries.POI_TYPES.getDelegateOrThrow(PoiTypes.FLETCHER).get().matchingStates());
-        RegistryObject<Block>[] barrelRegistryObjects = new RegistryObject[]{
-                Fletching.FLETCHING_TABLE.block()
         };
         for (RegistryObject<Block> barrelRegistryObject : barrelRegistryObjects) {
             states.addAll(barrelRegistryObject.get().getStateDefinition().getPossibleStates());

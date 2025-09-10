@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
-import insane96mcp.iguanatweaksexpanded.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
@@ -41,7 +40,7 @@ public class ISEBlockTagsProvider extends BlockTagsProvider {
                 .add(Solarium.SOLIUM_MOSS.block().get());*/
 
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(PortableCrate.BLOCK.get(), ExplosiveBarrel.BLOCK.block().get(), Fletching.FLETCHING_TABLE.block().get());
+                .add(PortableCrate.BLOCK.get(), ExplosiveBarrel.BLOCK.block().get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(Durium.SAND_ORE.block().get(), Durium.GRAVEL_ORE.block().get(), Durium.CLAY_ORE.block().get(), Durium.DIRT_ORE.block().get());
