@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.30.0
 * Removed Fletching. Moved to ISO
 * Fixed curses not showing available levels with an item in the enchanting table
 
