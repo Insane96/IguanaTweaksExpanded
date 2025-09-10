@@ -1,5 +1,8 @@
 # Changelog
 
+## Upcoming
+* Fixed curses not showing available levels with an item in the enchanting table
+
 ## 1.29.0
 * Added Ensorceller, an item made with ancient scrap and crying obsidian that can be used to re-roll enchantments
   * Use enchanted books to charge it and after a few minutes use a book to extract the generated enchantment
