@@ -17,6 +17,7 @@ import insane96mcp.iguanatweaksexpanded.setup.ISECommonConfig;
 import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.InsaneSO;
+import insane96mcp.iguanatweaksreborn.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
 import insane96mcp.iguanatweaksreborn.module.items.repairkit.RepairKits;
 import insane96mcp.insanelib.InsaneLib;
@@ -128,6 +129,24 @@ public class InsaneSE
             case "stone_hammer" -> Items.COBBLESTONE;
             case "copper_hammer" -> Items.COPPER_BLOCK;
             case "iron_hammer", "golden_hammer", "diamond_hammer", "netherite_hammer", "keego_hammer", "soul_steel_hammer", "durium_hammer", "quaron_hammer", "solarium_hammer" -> Forging.HAMMER.get();
+            case "quartz_arrow" -> Fletching.QUARTZ_ARROW_ITEM.get();
+            case "diamond_arrow" -> Fletching.DIAMOND_ARROW_ITEM.get();
+            case "torch_arrow" -> Fletching.TORCH_ARROW_ITEM.get();
+            case "explosive_arrow" -> Fletching.EXPLOSIVE_ARROW_ITEM.get();
+            case "ice_arrow" -> Fletching.ICE_ARROW_ITEM.get();
+            case "fletching_table" -> Fletching.FLETCHING_TABLE.item().get();
+            default -> null;
+        });
+        InsaneLib.handleMissingMappings(event, MOD_ID, Registries.BLOCK, name -> switch (name) {
+            case "fletching_table" -> Fletching.FLETCHING_TABLE.block().get();
+            default -> null;
+        });
+        InsaneLib.handleMissingMappings(event, MOD_ID, Registries.ENTITY_TYPE, name -> switch (name) {
+            case "quartz_arrow" -> Fletching.QUARTZ_ARROW.get();
+            case "diamond_arrow" -> Fletching.DIAMOND_ARROW.get();
+            case "torch_arrow" -> Fletching.TORCH_ARROW.get();
+            case "explosive_arrow" -> Fletching.EXPLOSIVE_ARROW.get();
+            case "ice_arrow" -> Fletching.ICE_ARROW.get();
             default -> null;
         });
         if (ModList.get().isLoaded("shieldsplus")) {
