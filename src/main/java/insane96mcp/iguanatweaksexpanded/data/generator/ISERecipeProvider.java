@@ -18,7 +18,6 @@ import insane96mcp.iguanatweaksexpanded.module.mining.quaron.Quaron;
 import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
 import insane96mcp.iguanatweaksreborn.module.items.flintexpansion.FlintExpansion;
 import insane96mcp.iguanatweaksreborn.module.sleeprespawn.death.Death;
-import insane96mcp.iguanatweaksreborn.module.world.coalfire.CoalFire;
 import insane96mcp.insanelib.base.FeatureEnabledCondition;
 import insane96mcp.shieldsplus.setup.SPItems;
 import net.minecraft.core.NonNullList;
@@ -349,13 +348,13 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoulSteel.INGOT.get(), 1)
                         .requires(Items.NETHERITE_SCRAP, 4)
                         .requires(Items.IRON_INGOT, 2)
-                        .requires(CoalFire.HELLISH_COAL.get(), 2)
+                        .requires(Items.COAL, 2)
                         .requires(Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS), 1)
                         .unlockedBy("has_ingot", has(SoulSteel.INGOT.get()))
                         .save(recipe)
         );
 
-        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.IRON_INGOT), Ingredient.of(CoalFire.HELLISH_COAL.get()), Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS)), CoalFire.HELLISH_COAL.get(), SoulSteel.INGOT.get(), 8f, 1200);
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.IRON_INGOT), Ingredient.of(Items.COAL), Ingredient.of(ItemTags.SOUL_FIRE_BASE_BLOCKS)), Items.COAL, SoulSteel.INGOT.get(), 8f, 1200);
 
         featureBoundRecipe(writer, "Explosive barrel", ExplosiveBarrel.BLOCK.item().get(),
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ExplosiveBarrel.BLOCK.item().get())
@@ -543,10 +542,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_copper_armor", has(CopperEquipment.BOOTS.get()))
                 .save(writer, InsaneSE.RESOURCE_PREFIX + "blasting_copper_boots");
         //</editor-fold>
-
-        //Hellish Coal
-        addBlastingRecipe(writer, CoalFire.ITEM_ORES, CoalFire.HELLISH_COAL.get(), 1.2f, 200, 1f);
-        addSoulBlastingRecipe(writer, CoalFire.ITEM_ORES, CoalFire.HELLISH_COAL.get(), 1.2f, 150, 0.3f);
 
         //<editor-fold desc="Recycle recipes">
         recycleGear(writer, CopperEquipment.HELMET.get(), Items.COPPER_INGOT, 200, 5);
