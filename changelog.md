@@ -1,7 +1,6 @@
 # Changelog
 
 ## Upcoming
-* Increased fire surge damage (2 -> 2.5 per level)
 * Fixed curses not showing available levels with an item in the enchanting table
 
 ## 1.29.0

@@ -16,7 +16,7 @@ public class FireSurge extends BonusDamageEnchantment {
 
     @Override
     public float getDamageBonusPerLevel() {
-        return 2.5f;
+        return 2f;
     }
 
     @Override
