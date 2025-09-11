@@ -67,7 +67,8 @@ public class Keego extends Enchantment {
 
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
         if (event.getEntity().level().isClientSide
-                || event.getEntity().isCrouching())
+                || event.getEntity().isCrouching()
+                || !event.getEntity().onGround())
             return;
 
         int lvl = EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.KEEGO.get(), event.getEntity());
