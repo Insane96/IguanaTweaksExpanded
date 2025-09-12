@@ -2,6 +2,7 @@
 
 ## Upcoming
 * Keego no longer activates if not on ground
+* Fixed shields enchantability
 
 ## 1.30.0
 * Removed Fletching. Moved to ISO
