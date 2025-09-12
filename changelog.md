@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.30.1
 * Keego no longer activates if not on ground
 * Fixed shields enchantability
 
