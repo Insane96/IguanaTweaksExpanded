@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.30.2
+* Fixed smelting Silver Ore in (Soul) Blast Furnace
+
 ## 1.30.1
 * Keego no longer activates if not on ground
 * Fixed shields enchantability

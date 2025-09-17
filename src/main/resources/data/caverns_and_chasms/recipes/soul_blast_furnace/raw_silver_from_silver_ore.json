@@ -3,12 +3,12 @@
   "category": "soul_blast_furnace_misc",
   "cookingtime": 300,
   "experience": 2.0,
-  "group": "silver_ingot",
+  "group": "raw_silver",
   "ingredients": [
     {
       "item": "caverns_and_chasms:silver_ore"
     }
   ],
   "output_increase": 0.3,
-  "result": "caverns_and_chasms:silver_ingot"
+  "result": "caverns_and_chasms:raw_silver"
 }
