@@ -429,44 +429,44 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
         //Soul Blast furnace recipes
         //Copper
-        addSoulBlastingRecipe(writer, Items.RAW_COPPER, Items.COPPER_INGOT, 0.7f, 150);
-        addSoulBlastingRecipe(writer, Items.COPPER_ORE, Items.RAW_COPPER, 0.7f, 300, 4.2f);
-        addSoulBlastingRecipe(writer, Items.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER, 0.7f, 300, 4.2f);
-        addSoulBlastingRecipe(writer, BeegOreVeins.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 300, 2f);
-        addSoulBlastingRecipe(writer, Items.RAW_COPPER_BLOCK, Items.COPPER_BLOCK, 6.3f, 1200);
+        addSoulBlastingRecipe(writer, Items.RAW_COPPER, Items.COPPER_INGOT, 0.7f, 100);
+        addSoulBlastingRecipe(writer, Items.COPPER_ORE, Items.RAW_COPPER, 0.7f, 200, 4.2f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_COPPER_ORE, Items.RAW_COPPER, 0.7f, 200, 4.2f);
+        addSoulBlastingRecipe(writer, BeegOreVeins.COPPER_ORE_ROCK.item().get(), Items.COPPER_INGOT, 0.7f, 200, 2f);
+        addSoulBlastingRecipe(writer, Items.RAW_COPPER_BLOCK, Items.COPPER_BLOCK, 6.3f, 800);
         //Iron
-        addSoulBlastingRecipe(writer, Items.RAW_IRON, Items.IRON_INGOT, 1f, 300);
-        addSoulBlastingRecipe(writer, Items.IRON_ORE, Items.RAW_IRON, 1f, 600, 0.3f);
-        addSoulBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.RAW_IRON, 1f, 600, 0.3f);
-        addSoulBlastingRecipe(writer, BeegOreVeins.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 600, 0.3f);
-        addSoulBlastingRecipe(writer, Items.RAW_IRON_BLOCK, Items.IRON_BLOCK, 9f, 2400);
-        addSoulBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 300, 4.4f);
-        addSoulBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 300);
-        addSoulBlastingRecipe(writer, Items.SMITHING_TABLE, Items.IRON_INGOT, 0f, 300);
-        addSoulBlastingRecipe(writer, Items.CAULDRON, Items.IRON_INGOT, 0f, 300, 6f);
+        addSoulBlastingRecipe(writer, Items.RAW_IRON, Items.IRON_INGOT, 1f, 200);
+        addSoulBlastingRecipe(writer, Items.IRON_ORE, Items.RAW_IRON, 1f, 400, 0.3f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_IRON_ORE, Items.RAW_IRON, 1f, 400, 0.3f);
+        addSoulBlastingRecipe(writer, BeegOreVeins.IRON_ORE_ROCK.item().get(), Items.IRON_INGOT, 1f, 400, 0.3f);
+        addSoulBlastingRecipe(writer, Items.RAW_IRON_BLOCK, Items.IRON_BLOCK, 9f, 1600);
+        addSoulBlastingRecipe(writer, Items.IRON_DOOR, Items.IRON_NUGGET, 0f, 200, 4.4f);
+        addSoulBlastingRecipe(writer, Death.GRAVE.item().get(), Items.IRON_INGOT, 0f, 200);
+        addSoulBlastingRecipe(writer, Items.SMITHING_TABLE, Items.IRON_INGOT, 0f, 200);
+        addSoulBlastingRecipe(writer, Items.CAULDRON, Items.IRON_INGOT, 0f, 200, 6f);
         //Gold
-        addSoulBlastingRecipe(writer, Items.RAW_GOLD, Items.GOLD_INGOT, 2f, 300);
-        addSoulBlastingRecipe(writer, Items.GOLD_ORE, Items.RAW_GOLD, 2f, 600, 0.3f);
-        addSoulBlastingRecipe(writer, Items.DEEPSLATE_GOLD_ORE, Items.RAW_GOLD, 2f, 600, 0.3f);
-        addSoulBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_NUGGET, 2f, 600, 4.2f);
-        addSoulBlastingRecipe(writer, BeegOreVeins.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 300, 0.3f);
-        addSoulBlastingRecipe(writer, Items.RAW_GOLD_BLOCK, Items.GOLD_BLOCK, 18f, 2400);
+        addSoulBlastingRecipe(writer, Items.RAW_GOLD, Items.GOLD_INGOT, 2f, 200);
+        addSoulBlastingRecipe(writer, Items.GOLD_ORE, Items.RAW_GOLD, 2f, 400, 0.3f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_GOLD_ORE, Items.RAW_GOLD, 2f, 400, 0.3f);
+        addSoulBlastingRecipe(writer, Items.NETHER_GOLD_ORE, Items.GOLD_NUGGET, 2f, 400, 4.2f);
+        addSoulBlastingRecipe(writer, BeegOreVeins.GOLD_ORE_ROCK.item().get(), Items.GOLD_INGOT, 2f, 200, 0.3f);
+        addSoulBlastingRecipe(writer, Items.RAW_GOLD_BLOCK, Items.GOLD_BLOCK, 18f, 1600);
         //Durium
-        addSoulBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 600, 6f);
+        addSoulBlastingRecipe(writer, Durium.ITEM_ORES, Durium.SCRAP_PIECE.get(), 2f, 400, 6f);
         //Other
-        addSoulBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 600);
-        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT)), Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, 8f, 1200);
-        addSoulBlastingRecipe(writer, Items.COAL_ORE, Items.COAL, 0.7f, 300, 0.3f);
-        addSoulBlastingRecipe(writer, Items.LAPIS_ORE, Items.LAPIS_LAZULI, 1f, 600, 7.5f);
-        addSoulBlastingRecipe(writer, Items.REDSTONE_ORE, Items.REDSTONE, 2f, 600, 4.2f);
-        addSoulBlastingRecipe(writer, Items.EMERALD_ORE, Items.EMERALD, 4f, 1200, 0.3f);
-        addSoulBlastingRecipe(writer, Items.DIAMOND_ORE, Items.DIAMOND, 4f, 1200, 0.3f);
-        addSoulBlastingRecipe(writer, Items.DEEPSLATE_COAL_ORE, Items.COAL, 0.7f, 300, 0.3f);
-        addSoulBlastingRecipe(writer, Items.DEEPSLATE_LAPIS_ORE, Items.LAPIS_LAZULI, 1f, 600, 7.5f);
-        addSoulBlastingRecipe(writer, Items.DEEPSLATE_REDSTONE_ORE, Items.REDSTONE, 2f, 600, 4.2f);
-        addSoulBlastingRecipe(writer, Items.DEEPSLATE_EMERALD_ORE, Items.EMERALD, 4f, 1200, 0.3f);
-        addSoulBlastingRecipe(writer, Items.DEEPSLATE_DIAMOND_ORE, Items.DIAMOND, 4f, 1200, 0.3f);
-        addSoulBlastingRecipe(writer, Items.NETHER_QUARTZ_ORE, Items.QUARTZ, 2f, 600, 0.3f);
+        addSoulBlastingRecipe(writer, Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP, 5f, 400);
+        addSoulBlastingAlloy(writer, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT)), Items.NETHERITE_SCRAP, Items.NETHERITE_INGOT, 8f, 800);
+        addSoulBlastingRecipe(writer, Items.COAL_ORE, Items.COAL, 0.7f, 200, 0.3f);
+        addSoulBlastingRecipe(writer, Items.LAPIS_ORE, Items.LAPIS_LAZULI, 1f, 400, 7.5f);
+        addSoulBlastingRecipe(writer, Items.REDSTONE_ORE, Items.REDSTONE, 2f, 400, 4.2f);
+        addSoulBlastingRecipe(writer, Items.EMERALD_ORE, Items.EMERALD, 4f, 800, 0.3f);
+        addSoulBlastingRecipe(writer, Items.DIAMOND_ORE, Items.DIAMOND, 4f, 800, 0.3f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_COAL_ORE, Items.COAL, 0.7f, 200, 0.3f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_LAPIS_ORE, Items.LAPIS_LAZULI, 1f, 400, 7.5f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_REDSTONE_ORE, Items.REDSTONE, 2f, 400, 4.2f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_EMERALD_ORE, Items.EMERALD, 4f, 800, 0.3f);
+        addSoulBlastingRecipe(writer, Items.DEEPSLATE_DIAMOND_ORE, Items.DIAMOND, 4f, 800, 0.3f);
+        addSoulBlastingRecipe(writer, Items.NETHER_QUARTZ_ORE, Items.QUARTZ, 2f, 400, 0.3f);
 
         //<editor-fold desc="Chained Copper Armor">
         SimpleCookingRecipeBuilder.smelting(
@@ -648,9 +648,9 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, Items.IRON_HORSE_ARMOR, Items.IRON_NUGGET, 0, 200, 20.6f);
         addBlastingRecipe(writer, Items.GOLDEN_HORSE_ARMOR, Items.GOLD_NUGGET, 0, 200, 20.6f);
         addBlastingRecipe(writer, Items.DIAMOND_HORSE_ARMOR, Items.DIAMOND, 0, 200, 1.4f);
-        addSoulBlastingRecipe(writer, Items.IRON_HORSE_ARMOR, Items.IRON_NUGGET, 0, 300, 35);
-        addSoulBlastingRecipe(writer, Items.GOLDEN_HORSE_ARMOR, Items.GOLD_NUGGET, 0, 300, 35);
-        addSoulBlastingRecipe(writer, Items.DIAMOND_HORSE_ARMOR, Items.DIAMOND, 0, 300, 3);
+        addSoulBlastingRecipe(writer, Items.IRON_HORSE_ARMOR, Items.IRON_NUGGET, 0, 200, 35);
+        addSoulBlastingRecipe(writer, Items.GOLDEN_HORSE_ARMOR, Items.GOLD_NUGGET, 0, 200, 35);
+        addSoulBlastingRecipe(writer, Items.DIAMOND_HORSE_ARMOR, Items.DIAMOND, 0, 200, 3);
         //</editor-fold>
 
         //<editor-fold desc="Forge Recipes">
@@ -704,14 +704,10 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         addBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f);
         addBlastingRecipe(writer, poorRichOre.richOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f);
         addBlastingRecipe(writer, poorRichOre.richDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f);
-        addSoulBlastingRecipe(writer, poorRichOre.poorOre().item().get(), smeltOutput, experience, (int) (cookingTime * 1.5f), baseOutputIncrease / 2f * 0.3f);
-        addSoulBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, (int) (cookingTime * 1.5f), baseOutputIncrease / 2f * 0.3f);
-        addSoulBlastingRecipe(writer, poorRichOre.richOre().item().get(), smeltOutput, experience, (int) (cookingTime * 1.5f), baseOutputIncrease * 1.5f * 0.3f);
-        addSoulBlastingRecipe(writer, poorRichOre.richDeepslateOre().item().get(), smeltOutput, experience, (int) (cookingTime * 1.5f), baseOutputIncrease * 1.5f * 0.3f);
-    }
-
-    public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
-        addBlastingRecipe(writer, item, result, experience, cookingTime, 0f);
+        addSoulBlastingRecipe(writer, poorRichOre.poorOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f * 0.3f);
+        addSoulBlastingRecipe(writer, poorRichOre.poorDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease / 2f * 0.3f);
+        addSoulBlastingRecipe(writer, poorRichOre.richOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f * 0.3f);
+        addSoulBlastingRecipe(writer, poorRichOre.richDeepslateOre().item().get(), smeltOutput, experience, cookingTime, baseOutputIncrease * 1.5f * 0.3f);
     }
 
     public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, TagKey<Item> itemTag, Item result, float experience, int cookingTime, float outputIncrease) {
@@ -727,6 +723,10 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                 .group(resultPath)
                 .unlockedBy("has_" + itemTag.location().getPath(), has(itemTag))
                 .save(writer, InsaneSE.RESOURCE_PREFIX + "blast_furnace/" + resultPath + "_from_" + itemTag.location().getPath());
+    }
+
+    public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime) {
+        addBlastingRecipe(writer, item, result, experience, cookingTime, 0f);
     }
 
     public static void addBlastingRecipe(Consumer<FinishedRecipe> writer, Item item, Item result, float experience, int cookingTime, float outputIncrease) {
@@ -839,7 +839,7 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
                         NonNullList.of(Ingredient.EMPTY, Ingredient.of(itemToRecycle)),
                         RecipeCategory.COMBAT,
                         output,
-                        baseCookingTime)
+                        baseCookingTime / 2)
                 .recycle(amountAtMaxDurability)
                 .unlockedBy("has_armor", has(itemToRecycle))
                 .group("recycle_" + ForgeRegistries.ITEMS.getKey(output).getPath())

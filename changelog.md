@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.30.3
+* Soul Blasting recipes no longer take 50% more time than Blasting recipes
+
 ## 1.30.2
 * Fixed smelting Silver Ore in (Soul) Blast Furnace
 

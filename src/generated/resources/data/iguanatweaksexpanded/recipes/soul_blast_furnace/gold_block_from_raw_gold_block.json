@@ -1,7 +1,7 @@
 {
   "type": "iguanatweaksexpanded:multi_item_soul_blasting",
   "category": "soul_blast_furnace_misc",
-  "cookingtime": 2400,
+  "cookingtime": 1600,
   "experience": 18.0,
   "group": "gold_block",
   "ingredients": [
