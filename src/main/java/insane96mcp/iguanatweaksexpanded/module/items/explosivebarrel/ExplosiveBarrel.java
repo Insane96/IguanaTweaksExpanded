@@ -5,6 +5,7 @@ import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.LoadFeature;
 import insane96mcp.insanelib.base.Module;
+import insane96mcp.insanelib.base.config.Config;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -13,6 +14,9 @@ import net.minecraft.world.level.material.MapColor;
 @LoadFeature(module = Modules.Ids.ITEMS, description = "Add a new explosive block.")
 public class ExplosiveBarrel extends Feature {
 	public static final SimpleBlockWithItem BLOCK = SimpleBlockWithItem.register("explosive_barrel", () -> new ExplosiveBarrelBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().instrument(NoteBlockInstrument.BASS).strength(2.5F).sound(SoundType.WOOD)));
+
+    @Config(min = 0.5)
+    public static Double explosionRadius = 5d;
 
 	public ExplosiveBarrel(Module module, boolean enabledByDefault, boolean canBeDisabled) {
 		super(module, enabledByDefault, canBeDisabled);

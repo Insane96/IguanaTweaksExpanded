@@ -209,7 +209,7 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
             blockEntity.cookingProgress = Mth.clamp(blockEntity.cookingProgress - BURN_COOL_SPEED, 0, blockEntity.cookingTotalTime);
         }
 
-        if (!blockEntity.isLit() && (!hasInputItem || !hasFuel) && pLevel.getGameTime() % 100 == 21) {
+        if (/*!blockEntity.isLit() &&*/ (!hasInputItem || !hasFuel) && pLevel.getGameTime() % 100 == 21) {
             tryGetItemFromLevel(pPos, pState, pLevel, blockEntity);
         }
 
@@ -228,24 +228,23 @@ public abstract class AbstractMultiBlockFurnaceBlockEntity extends BaseContainer
         Optional<HopperBlockEntity> oHopperBlockEntity = level.getBlockEntity(posBehind, BlockEntityType.HOPPER);
         if (oHopperBlockEntity.isEmpty())
             return;
-        ItemStack currentFuelStack = blockEntity.getItem(FUEL_SLOT);
-        if (currentFuelStack.getCount() >= currentFuelStack.getMaxStackSize())
-            return;
-
         HopperBlockEntity hopperBlockEntity = oHopperBlockEntity.get();
-        Tuple<ItemStack, Integer> fuelItem = getFirstFuelItem(blockEntity, hopperBlockEntity);
-        if (fuelItem != null) {
-            ItemStack inHopperStack = fuelItem.getA();
-            int hopperSlot = fuelItem.getB();
-            if (currentFuelStack.isEmpty()) {
-                blockEntity.setItem(FUEL_SLOT, inHopperStack);
-                hopperBlockEntity.setItem(hopperSlot, ItemStack.EMPTY);
-            }
-            else if (canMergeItems(currentFuelStack, inHopperStack)) {
-                int placeableItemsCount = inHopperStack.getMaxStackSize() - currentFuelStack.getCount();
-                int actuallyPlaceableItemsCount = Math.min(inHopperStack.getCount(), placeableItemsCount);
-                hopperBlockEntity.removeItem(hopperSlot, actuallyPlaceableItemsCount);
-                currentFuelStack.grow(actuallyPlaceableItemsCount);
+        ItemStack currentFuelStack = blockEntity.getItem(FUEL_SLOT);
+        if (currentFuelStack.getCount() < currentFuelStack.getMaxStackSize()) {
+            Tuple<ItemStack, Integer> fuelItem = getFirstFuelItem(blockEntity, hopperBlockEntity);
+            if (fuelItem != null) {
+                ItemStack inHopperStack = fuelItem.getA();
+                int hopperSlot = fuelItem.getB();
+                if (currentFuelStack.isEmpty()) {
+                    blockEntity.setItem(FUEL_SLOT, inHopperStack);
+                    hopperBlockEntity.setItem(hopperSlot, ItemStack.EMPTY);
+                }
+                else if (canMergeItems(currentFuelStack, inHopperStack)) {
+                    int placeableItemsCount = inHopperStack.getMaxStackSize() - currentFuelStack.getCount();
+                    int actuallyPlaceableItemsCount = Math.min(inHopperStack.getCount(), placeableItemsCount);
+                    hopperBlockEntity.removeItem(hopperSlot, actuallyPlaceableItemsCount);
+                    currentFuelStack.grow(actuallyPlaceableItemsCount);
+                }
             }
         }
 

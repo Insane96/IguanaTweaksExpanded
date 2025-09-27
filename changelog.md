@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.30.4
+* Explosive barrel power has been increased and it's now configurable
+* Fixed soul blast furnace not picking up items from hoppers
+* Fixed blast furnaces not picking up items from hoppers if fuel slot was full
+
 ## 1.30.3
 * Soul Blasting recipes no longer take 50% more time than Blasting recipes
 

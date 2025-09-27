@@ -40,7 +40,7 @@ public class ExplosiveBarrelBlock extends Block {
     public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable net.minecraft.core.Direction face, @Nullable LivingEntity igniter) {
         if (level.isClientSide)
             return;
-        float radius = 4.5F;
+        float radius = ExplosiveBarrel.explosionRadius.floatValue();
         level.explode(igniter, pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, radius, Level.ExplosionInteraction.BLOCK);
     }
 
