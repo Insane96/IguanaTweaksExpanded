@@ -77,8 +77,6 @@ public class ISEItemModelsProvider extends ItemModelProvider {
         withExistingParent("flint_block", new ResourceLocation(InsaneSE.MOD_ID, "block/flint_block"));
         withExistingParent("polished_flint_block", new ResourceLocation(InsaneSE.MOD_ID, "block/polished_flint_block"));
 
-        withExistingParent("crate", new ResourceLocation(InsaneSE.MOD_ID, "block/crate"));
-
         handHeld(Solarium.AXE.get());
         handHeld(Solarium.PICKAXE.get());
         handHeld(Solarium.SHOVEL.get());

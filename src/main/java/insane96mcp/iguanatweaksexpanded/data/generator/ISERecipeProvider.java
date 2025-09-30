@@ -2,7 +2,6 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -49,17 +48,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> writer) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, PortableCrate.ITEM.get())
-                .pattern("nnn")
-                .pattern("ibi")
-                .pattern("nnn")
-                .define('n', Durium.NUGGET.get())
-                .define('i', Items.IRON_INGOT)
-                .define('b', Items.BARREL)
-                .unlockedBy("has_durium", has(Durium.INGOT.get()))
-                .unlockedBy("has_barrel", has(Items.BARREL))
-                .save(writer);
-
         ConditionalRecipe.builder()
                 .addCondition(new NotCondition(new ModLoadedCondition("caverns_and_chasms")))
                 .addRecipe(writerConsumer -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Altimeter.ITEM.get())

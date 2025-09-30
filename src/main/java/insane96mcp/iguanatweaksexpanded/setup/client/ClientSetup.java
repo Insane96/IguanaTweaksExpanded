@@ -6,9 +6,6 @@ import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingF
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableScreen;
 import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.ClientCrateTooltip;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.CrateTooltip;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -176,9 +173,6 @@ public class ClientSetup {
             }
         }
         else if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            if (Feature.isEnabled(PortableCrate.class)) {
-                addBefore(event, Items.SHULKER_BOX, PortableCrate.ITEM.get());
-            }
             if (Feature.isEnabled(MultiBlockFurnaces.class)) {
                 addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.SOUL_BLAST_FURNACE.item().get());
                 addAfter(event, Items.BLAST_FURNACE, MultiBlockFurnaces.BLAST_FURNACE.item().get());
@@ -326,6 +320,6 @@ public class ClientSetup {
     }
 
     public static void registerTooltips(RegisterClientTooltipComponentFactoriesEvent event) {
-        event.register(CrateTooltip.class, ClientCrateTooltip::new);
+
     }
 }

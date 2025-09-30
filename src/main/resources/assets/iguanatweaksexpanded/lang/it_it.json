@@ -175,10 +175,6 @@
 	"item.minecraft.tipped_arrow.effect.recall": "Freccia del richiamo",
 	"effect.iguanatweaksexpanded.back_to_spawn": "Ritorno allo spawn",
 
-	"iguanatweaksexpanded.container.crate": "Cassa portatile",
-	"block.iguanatweaksexpanded.crate": "Cassa portatile",
-	"iguanatweaksexpanded.crate_weighted": "Rallenti se ne porti più di %d",
-
 	"block.iguanatweaksexpanded.explosive_barrel": "Barile esplosivo",
 	"iguanatweaksexpanded.unstable": "ATTENZIONE! Altamente instabile",
 

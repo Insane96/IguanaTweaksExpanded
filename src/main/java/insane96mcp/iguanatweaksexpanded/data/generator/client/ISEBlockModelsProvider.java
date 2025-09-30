@@ -25,9 +25,6 @@ public class ISEBlockModelsProvider extends BlockModelProvider {
             cubeAll("rich_deepslate_%s_ore".formatted(poorRichOre), "block/rich_deepslate_%s_ore".formatted(poorRichOre));
         }
 
-        cubeBottomTop("crate", new ResourceLocation(InsaneSE.MOD_ID, "block/crate_side"), new ResourceLocation(InsaneSE.MOD_ID, "block/crate_bottom"), new ResourceLocation(InsaneSE.MOD_ID, "block/crate_top"));
-        cubeBottomTop("crate_open", new ResourceLocation(InsaneSE.MOD_ID, "block/crate_side"), new ResourceLocation(InsaneSE.MOD_ID, "block/crate_bottom"), new ResourceLocation(InsaneSE.MOD_ID, "block/crate_top_open"));
-
         cubeAll("durium_scrap_block", "block/durium_scrap_block");
         cubeAll("durium_block", "block/durium_block");
         cubeAll("durium_ore", "block/durium_ore");

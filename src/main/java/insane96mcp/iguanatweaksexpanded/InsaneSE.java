@@ -19,6 +19,7 @@ import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.InsaneSO;
 import insane96mcp.iguanatweaksreborn.module.combat.fletching.Fletching;
 import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
+import insane96mcp.iguanatweaksreborn.module.items.pouch.Pouch;
 import insane96mcp.iguanatweaksreborn.module.items.repairkit.RepairKits;
 import insane96mcp.insanelib.InsaneLib;
 import insane96mcp.insanelib.util.IntegratedPack;
@@ -135,6 +136,7 @@ public class InsaneSE
             case "explosive_arrow" -> Fletching.EXPLOSIVE_ARROW_ITEM.get();
             case "ice_arrow" -> Fletching.ICE_ARROW_ITEM.get();
             case "fletching_table" -> Fletching.FLETCHING_TABLE.item().get();
+            case "crate" -> Pouch.ITEM.get();
             default -> null;
         });
         InsaneLib.handleMissingMappings(event, MOD_ID, Registries.BLOCK, name -> switch (name) {

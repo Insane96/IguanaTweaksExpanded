@@ -2,8 +2,6 @@ package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.items.crate.PortableCrate;
-import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
 import insane96mcp.iguanatweaksexpanded.module.mining.durium.Durium;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
@@ -39,9 +37,6 @@ public class ISEBlockTagsProvider extends BlockTagsProvider {
         /*tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(Solarium.SOLIUM_MOSS.block().get());*/
 
-        tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(PortableCrate.BLOCK.get(), ExplosiveBarrel.BLOCK.block().get());
-
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(Durium.SAND_ORE.block().get(), Durium.GRAVEL_ORE.block().get(), Durium.CLAY_ORE.block().get(), Durium.DIRT_ORE.block().get());
 
@@ -58,7 +53,6 @@ public class ISEBlockTagsProvider extends BlockTagsProvider {
                 .add(EnchantingFeature.ENCHANTING_TABLE.block().get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(PortableCrate.BLOCK.get())
                 .add(BeegOreVeins.POOR_RICH_IRON_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_IRON_ORE.richDeepslateOre().block().get())
                 .add(BeegOreVeins.POOR_RICH_COPPER_ORE.poorOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.poorDeepslateOre().block().get(), BeegOreVeins.POOR_RICH_COPPER_ORE.richDeepslateOre().block().get())
                 .add(EnchantingFeature.ENCHANTING_TABLE.block().get())
