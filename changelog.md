@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+* Removed Portable Crates
+  * Check out Pouches in ISE
+
 ## 1.30.4
 * Explosive barrel power has been increased and it's now configurable
 * Fixed soul blast furnace not picking up items from hoppers
