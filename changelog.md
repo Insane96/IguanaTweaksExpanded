@@ -3,6 +3,7 @@
 ## Upcoming
 * Removed Portable Crates
   * Check out Pouches in ISE
+  * **PLEASE MAKE SURE YOU DON'T HAVE CRATES IN THE WORLD. THEY WILL BECOME POUCHES ONLY IF YOU HAD PORTABLE CRATES IN THE INVENTORY**
 
 ## 1.30.4
 * Explosive barrel power has been increased and it's now configurable
