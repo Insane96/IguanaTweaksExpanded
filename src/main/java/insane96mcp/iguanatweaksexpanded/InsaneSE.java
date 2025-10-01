@@ -135,6 +135,7 @@ public class InsaneSE
             case "ice_arrow" -> Fletching.ICE_ARROW_ITEM.get();
             case "fletching_table" -> Fletching.FLETCHING_TABLE.item().get();
             case "crate" -> Pouch.ITEM.get();
+            case "altimeter" -> Altimeter.ITEM.get();
             default -> null;
         });
         InsaneLib.handleMissingMappings(event, MOD_ID, Registries.BLOCK, name -> switch (name) {
