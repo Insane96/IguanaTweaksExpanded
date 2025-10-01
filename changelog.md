@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.31.0
 * Removed Portable Crates
   * Check out Pouches in ISE
   * **PLEASE MAKE SURE YOU DON'T HAVE PORTABLE CRATES IN THE WORLD. THEY WILL BECOME POUCHES ONLY IF YOU HAVE THEM IN THE INVENTORY**
