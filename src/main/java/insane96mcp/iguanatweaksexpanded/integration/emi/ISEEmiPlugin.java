@@ -10,7 +10,6 @@ import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
-import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.ForgeRecipe;
 import insane96mcp.iguanatweaksexpanded.module.mining.forging.Forging;
 import insane96mcp.iguanatweaksexpanded.module.mining.keego.Keego;
@@ -140,9 +139,6 @@ public class ISEEmiPlugin implements EmiPlugin {
 			}
 
 			registry.removeEmiStacks(emiStack -> emiStack.getItemStack().is(Items.ENCHANTING_TABLE));
-		}
-		if (Feature.isEnabled(Altimeter.class)) {
-			registry.addRecipe(createSimpleInfo(Altimeter.ITEM.get(), Component.translatable("emi.info.iguanatweaksexpanded.altimeter"), "info_altimeter"));
 		}
 		if (Feature.isEnabled(Keego.class)) {
 			registry.addRecipe(createSimpleInfo(Keego.KEEGO_TOOL_EQUIPMENT, Component.translatable("emi.info.iguanatweaksexpanded.keego"), "info_keego_mining"));

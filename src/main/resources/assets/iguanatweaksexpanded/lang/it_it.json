@@ -163,8 +163,6 @@
 	"enchantment.iguanatweaksexpanded.static_charge_curse.desc": "Possibilità di essere colpito da un fulmine",
 	"enchantment.iguanatweaksexpanded.blood_pact_curse.desc": "Usare l'oggetto può danneggiare l'utilizzatore",
 
-	"item.iguanatweaksexpanded.altimeter": "Altimetro",
-
 	"item.minecraft.potion.effect.regen_wither": "Pozione dell'avvizzimento rigenerativo",
 	"item.minecraft.potion.effect.recall": "Pozione del richiamo",
 	"item.minecraft.splash_potion.effect.regen_wither": "Pozione da lancio dell'avvizzimento rigenerativo",
@@ -376,7 +374,6 @@
 	"emi.info.iguanatweaksexpanded.grindstone2": "Può essere utilizzata per estrarre maledizioni e incantesimi. Può essere utilizzata anche per \"ripristinare\" una bussola magnetizzata",
 	"emi.info.iguanatweaksexpanded.experience_bottle": "Applica ad un oggetto per aumentarne l'incantabilità e permettere di incantarlo con incantesimi sopra il livello massimo",
 	"emi.info.grindstone": "Può essere utilizzato per disincantare gli oggetti",
-	"emi.info.iguanatweaksexpanded.altimeter": "Mostra la tua altezza nel mondo",
 	"emi.info.charcoal": "Può essere ottenuto bruciando tronchi",
 	"emi.info.iguanatweaksexpanded.keego": "L'equipaggiamento di keego è basati sul momento. Ogni blocco scavato aumenta la velocità di scavo, ogni creatura colpita aumenta la velocità di attacco e ogni blocco camminato incrementa la velocità di movimento"
 }

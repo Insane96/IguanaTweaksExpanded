@@ -1,7 +1,6 @@
 package insane96mcp.iguanatweaksexpanded.data.generator;
 
 import insane96mcp.iguanatweaksexpanded.InsaneSE;
-import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -33,7 +32,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
-import net.minecraftforge.common.crafting.conditions.NotCondition;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,19 +46,6 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> writer) {
-        ConditionalRecipe.builder()
-                .addCondition(new NotCondition(new ModLoadedCondition("caverns_and_chasms")))
-                .addRecipe(writerConsumer -> ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Altimeter.ITEM.get())
-                        .pattern(" i ")
-                        .pattern("frf")
-                        .pattern(" f ")
-                        .define('f', Durium.INGOT.get())
-                        .define('i', Items.IRON_INGOT)
-                        .define('r', Items.REDSTONE)
-                        .unlockedBy("has_durium_ingot", has(Durium.INGOT.get()))
-                        .save(writerConsumer))
-                .build(writer, ResourceLocation.fromNamespaceAndPath(InsaneSE.MOD_ID, "altimeter"));
-
         //Solarium ball and forging
         featureBoundRecipe(writer, "Solarium", Solarium.SOLARIUM_BALL.get(),
                 recipe -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Solarium.SOLARIUM_BALL.get(), 1)

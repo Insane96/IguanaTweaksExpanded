@@ -5,6 +5,7 @@
   * Check out Pouches in ISE
   * **PLEASE MAKE SURE YOU DON'T HAVE PORTABLE CRATES IN THE WORLD. THEY WILL BECOME POUCHES ONLY IF YOU HAVE THEM IN THE INVENTORY**
     * They may become chests, but not sure if works, so better pick em up
+* Moved Altimeter to ISO
 
 ## 1.30.4
 * Explosive barrel power has been increased and it's now configurable

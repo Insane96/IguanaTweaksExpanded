@@ -5,7 +5,6 @@ import insane96mcp.iguanatweaksexpanded.InsaneSE;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.EnchantingFeature;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableRenderer;
 import insane96mcp.iguanatweaksexpanded.module.experience.enchanting.ISEEnchantingTableScreen;
-import insane96mcp.iguanatweaksexpanded.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksexpanded.module.items.explosivebarrel.ExplosiveBarrel;
 import insane96mcp.iguanatweaksexpanded.module.items.solarium.Solarium;
 import insane96mcp.iguanatweaksexpanded.module.mining.SoulSteel;
@@ -80,9 +79,6 @@ public class ClientSetup {
             if (Feature.isEnabled(Forging.class)) {
                 addBefore(event, Items.BUCKET, Forging.HAMMER.get());
             }
-
-            if (!ModList.get().isLoaded("caverns_and_chasms") && Feature.isEnabled(Altimeter.class))
-                addAfter(event, Items.RECOVERY_COMPASS, Altimeter.ITEM.get());
             //addAfter(event, Items.ENDER_EYE, RecallIdol.ITEM.get());
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT) {
@@ -262,12 +258,6 @@ public class ClientSetup {
     }
 
     public static void init(FMLClientSetupEvent event) {
-        event.enqueueWork(() ->
-                ItemProperties.register(Altimeter.ITEM.get(), new ResourceLocation(InsaneSE.MOD_ID, "y"), (stack, clientLevel, livingEntity, entityId) -> {
-                    if (livingEntity == null)
-                        return 96f;
-                    return (float) livingEntity.getY();
-                }));
         event.enqueueWork(() ->
                 ItemProperties.register(Quaron.FISHING_ROD.get(), new ResourceLocation(InsaneSE.MOD_ID, "cast"), (stack, clientLevel, livingEntity, entityId) -> {
                     if (livingEntity == null) {
