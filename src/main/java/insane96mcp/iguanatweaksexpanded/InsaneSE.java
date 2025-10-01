@@ -29,6 +29,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -141,6 +142,7 @@ public class InsaneSE
         });
         InsaneLib.handleMissingMappings(event, MOD_ID, Registries.BLOCK, name -> switch (name) {
             case "fletching_table" -> Fletching.FLETCHING_TABLE.block().get();
+            case "crate" -> Blocks.CHEST;
             default -> null;
         });
         InsaneLib.handleMissingMappings(event, MOD_ID, Registries.ENTITY_TYPE, name -> switch (name) {
