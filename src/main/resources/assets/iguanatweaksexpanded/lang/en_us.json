@@ -176,10 +176,6 @@
 	"item.minecraft.tipped_arrow.effect.recall": "Arrow of Recall",
 	"effect.iguanatweaksexpanded.back_to_spawn": "Back to Spawn",
 
-	"iguanatweaksexpanded.container.crate": "Portable Crate",
-	"block.iguanatweaksexpanded.crate": "Portable Crate",
-	"iguanatweaksexpanded.crate_weighted": "Slows down if %d or more are carried",
-
 	"block.iguanatweaksexpanded.explosive_barrel": "Explosive Barrel",
 	"iguanatweaksexpanded.unstable": "WARNING! Highly unstable",
 
@@ -337,8 +333,6 @@
 	"advancements.sr_story.learn_enchantment.description": "Use an enchanted book on an enchanting table to make the enchantment(s) available in the table",
 	"advancements.sr_story.enchant_purify_item.title": "Purified",
 	"advancements.sr_story.enchant_purify_item.description": "Purify an item with a Bottle o' Enchanting to get bonus enchantability and over max level enchantments",
-	"advancements.sr_story.crate.title": "This is heavy",
-	"advancements.sr_story.crate.description": "Get a movement speed penalty by transporting more than one Portable Crate.",
 	"advancements.sr_story.bucket.title": "How is water infinite?",
 	"advancements.sr_story.bucket.description": "Craft an iron bucket using a Forge to move fluids around.",
 	"advancements.sr_story.shears.title": "Scissors?",

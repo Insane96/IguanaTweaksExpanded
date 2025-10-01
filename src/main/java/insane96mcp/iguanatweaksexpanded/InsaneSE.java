@@ -1,6 +1,6 @@
 package insane96mcp.iguanatweaksexpanded;
 
-import insane96mcp.iguanatweaksexpanded.data.criterion.ISETriggers;
+
 import insane96mcp.iguanatweaksexpanded.data.generator.*;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEBlockModelsProvider;
 import insane96mcp.iguanatweaksexpanded.data.generator.client.ISEBlockStatesProvider;
@@ -83,9 +83,6 @@ public class InsaneSE
             Keego.ShieldsPlusIntegration.init();
             Solarium.ShieldsPlusIntegration.init();
         }
-
-        ISETriggers.init();
-
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
