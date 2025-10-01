@@ -6,6 +6,11 @@
   * **PLEASE MAKE SURE YOU DON'T HAVE PORTABLE CRATES IN THE WORLD. THEY WILL BECOME POUCHES ONLY IF YOU HAVE THEM IN THE INVENTORY**
     * They may become chests, but not sure if works, so better pick em up
 * Moved Altimeter to ISO
+* Mining charges 
+  * Increased tunnel length (6 -> 8) and made tunnel size configurable
+  * Are now correctly oriented when primed
+  * Crafting requires iron now instead of durium
+  * Fixed mining charge dupe
 
 ## 1.30.4
 * Explosive barrel power has been increased and it's now configurable

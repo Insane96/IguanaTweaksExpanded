@@ -13,7 +13,7 @@
         "category": "redstone",
         "key": {
           "C": {
-            "item": "iguanatweaksexpanded:durium_nugget"
+            "item": "minecraft:iron_nugget"
           },
           "S": {
             "item": "minecraft:slime_ball"
@@ -24,8 +24,8 @@
         },
         "pattern": [
           " T ",
-          " S ",
-          "CCC"
+          "CCC",
+          " S "
         ],
         "result": {
           "count": 2,

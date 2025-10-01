@@ -2,7 +2,6 @@ package insane96mcp.iguanatweaksexpanded.module.mining.miningcharge;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -10,7 +9,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -65,7 +63,7 @@ public class MiningChargeBlock extends TntBlock {
         if (!level.isClientSide) {
             PrimedMiningCharge primedMiningCharge = new PrimedMiningCharge(level, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, igniter, state.getValue(FACING));
             level.addFreshEntity(primedMiningCharge);
-            level.playSound(null, primedMiningCharge.getX(), primedMiningCharge.getY(), primedMiningCharge.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.2F);
+            level.playSound(null, primedMiningCharge.getX(), primedMiningCharge.getY(), primedMiningCharge.getZ(), MiningCharge.PRIMED_MINING_CHARGE_SOUND.get(), SoundSource.BLOCKS, 1.0F, 1.2F);
             level.gameEvent(igniter, GameEvent.PRIME_FUSE, pos);
         }
     }
@@ -84,11 +82,15 @@ public class MiningChargeBlock extends TntBlock {
             primedMiningCharge.setFuse((short)(level.random.nextInt(fuse / 4) + fuse / 8));
             level.addFreshEntity(primedMiningCharge);
         }
-        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(UNSTABLE, FACING);
+    }
+
+    @Override
+    public boolean canDropFromExplosion(BlockState state, BlockGetter level, BlockPos pos, Explosion explosion) {
+        return false;
     }
 }

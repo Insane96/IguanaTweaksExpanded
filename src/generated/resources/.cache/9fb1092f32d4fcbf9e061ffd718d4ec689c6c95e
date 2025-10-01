@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-01T11:14:55.1008346	Recipes
+// 1.20.1	2025-10-01T13:04:39.8287648	Recipes
 507466e5d6b978e07ed203a435a16ede2cd832b8 data/iguanatweaksexpanded/advancements/recipes/building_blocks/soul_blast_furnace.json
 abe01e0100b51a2b294e41a86907b1297844a1ec data/iguanatweaksexpanded/advancements/recipes/combat/blast_furnace/recycle/chainmail_boots.json
 157127e93e4c5babb0e5a05efab391be387a825b data/iguanatweaksexpanded/advancements/recipes/combat/blast_furnace/recycle/chainmail_chestplate.json
@@ -482,7 +482,7 @@ f993cf91a02355e318dae054f707501afd37c45e data/iguanatweaksexpanded/recipes/keego
 a99b8c040fad9e0a95fa4713af4944085099d942 data/iguanatweaksexpanded/recipes/keego_shield.json
 d1437ff66312aa90a2375c758992753f0d12665e data/iguanatweaksexpanded/recipes/keego_shovel.json
 4ad68228618315e6625fc55cde92f6a7b2119ea7 data/iguanatweaksexpanded/recipes/keego_sword.json
-adf4f8c3976bc7611d78b314837cf91acb873e39 data/iguanatweaksexpanded/recipes/mining_charge.json
+201ae63249b80fa8b8349d613f2df8256567af44 data/iguanatweaksexpanded/recipes/mining_charge.json
 d6dc13be54c96f39e17cbb203ded4ce349a2607f data/iguanatweaksexpanded/recipes/quaron_axe.json
 b983693329c902a29e3ed8382fe8c904b701261f data/iguanatweaksexpanded/recipes/quaron_block.json
 938a5549245a200f2d41f59cbb699df41725ffab data/iguanatweaksexpanded/recipes/quaron_boots.json

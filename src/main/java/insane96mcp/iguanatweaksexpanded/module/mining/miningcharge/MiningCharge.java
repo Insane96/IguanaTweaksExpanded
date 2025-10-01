@@ -5,7 +5,7 @@ import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.registry.SimpleBlockWithItem;
 import insane96mcp.insanelib.base.Feature;
 import insane96mcp.insanelib.base.LoadFeature;
-import insane96mcp.insanelib.base.Module;
+import insane96mcp.insanelib.base.config.Config;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
@@ -23,7 +23,8 @@ public class MiningCharge extends Feature {
 
 	public static final RegistryObject<SoundEvent> PRIMED_MINING_CHARGE_SOUND = ISERegistries.SOUND_EVENTS.register("primed_mining_charge", () -> SoundEvent.createFixedRangeEvent(new ResourceLocation("entity.tnt.primed"), 16f));
 
-	public MiningCharge(Module module, boolean enabledByDefault, boolean canBeDisabled) {
-		super(module, enabledByDefault, canBeDisabled);
-	}
+    @Config(min = 1)
+    public static Integer tunnelLength = 8;
+    @Config(min = 0)
+    public static Integer tunnelRadius = 1;
 }

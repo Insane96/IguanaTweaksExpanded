@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 
 public class PrimedMiningCharge extends Entity implements TraceableEntity {
     private static final EntityDataAccessor<Integer> DATA_FUSE_ID = SynchedEntityData.defineId(PrimedMiningCharge.class, EntityDataSerializers.INT);
-    Direction direction = Direction.DOWN;
+    private static final EntityDataAccessor<Direction> DATA_DIRECTION = SynchedEntityData.defineId(PrimedMiningCharge.class, EntityDataSerializers.DIRECTION);
     private static final int DEFAULT_FUSE_TIME = 50;
     @javax.annotation.Nullable
     private LivingEntity owner;
@@ -44,11 +44,12 @@ public class PrimedMiningCharge extends Entity implements TraceableEntity {
         this.yo = pY;
         this.zo = pZ;
         this.owner = pOwner;
-        this.direction = direction;
+        this.setDirection(direction);
     }
 
     protected void defineSynchedData() {
         this.entityData.define(DATA_FUSE_ID, DEFAULT_FUSE_TIME);
+        this.entityData.define(DATA_DIRECTION, Direction.DOWN);
     }
 
     protected Entity.MovementEmission getMovementEmission() {
@@ -83,12 +84,12 @@ public class PrimedMiningCharge extends Entity implements TraceableEntity {
 
     protected void explode() {
         int relativeX, relativeY, relativeZ;
-        if (this.direction.getAxis() == Direction.Axis.X) {
+        if (this.getDirection().getAxis() == Direction.Axis.X) {
             relativeX = 0;
             relativeY = 1;
             relativeZ = 1;
         }
-        else if (this.direction.getAxis() == Direction.Axis.Y) {
+        else if (this.getDirection().getAxis() == Direction.Axis.Y) {
             relativeX = 1;
             relativeY = 0;
             relativeZ = 1;
@@ -98,22 +99,27 @@ public class PrimedMiningCharge extends Entity implements TraceableEntity {
             relativeY = 1;
             relativeZ = 0;
         }
-        Iterable<BlockPos> positions = BlockPos.betweenClosed(this.blockPosition().relative(this.direction, 1).offset(-relativeX, -relativeY, -relativeZ), this.blockPosition().relative(this.direction, 6).offset(relativeX, relativeY, relativeZ));
+        relativeX *= MiningCharge.tunnelRadius;
+        relativeY *= MiningCharge.tunnelRadius;
+        relativeZ *= MiningCharge.tunnelRadius;
+        Iterable<BlockPos> positions = BlockPos.betweenClosed(this.blockPosition().relative(this.getDirection(), 1).offset(-relativeX, -relativeY, -relativeZ), this.blockPosition().relative(this.getDirection(), MiningCharge.tunnelLength).offset(relativeX, relativeY, relativeZ));
         //Fake explosion needed for various explosion related methods
         Explosion explosion = new Explosion(this.level(), this.owner, this.getX(), this.getY(), this.getZ(), 3, false, Explosion.BlockInteraction.KEEP);
         for (BlockPos pos : positions) {
             BlockState blockState = this.level().getBlockState(pos);
-            if (!blockState.isAir() && blockState.getExplosionResistance(this.level(), pos, explosion) < 10) {
+            if (blockState.getExplosionResistance(this.level(), pos, explosion) < 10) {
                 this.level().getProfiler().push("mining_charge_explosion");
-                if (this.level() instanceof ServerLevel) {
-                    BlockEntity blockEntity = blockState.hasBlockEntity() ? this.level().getBlockEntity(pos) : null;
-                    LootParams.Builder lootParams$Builder = (new LootParams.Builder((ServerLevel) this.level())).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity).withOptionalParameter(LootContextParams.THIS_ENTITY, this);
-                    blockState.getDrops(lootParams$Builder).forEach((stack) -> this.level().addFreshEntity(new ItemEntity(this.level(), pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, stack)));
+                if (blockState.canDropFromExplosion(this.level(), pos, explosion)) {
+                    if (this.level() instanceof ServerLevel) {
+                        BlockEntity blockEntity = blockState.hasBlockEntity() ? this.level().getBlockEntity(pos) : null;
+                        LootParams.Builder lootParams$Builder = (new LootParams.Builder((ServerLevel) this.level())).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity).withOptionalParameter(LootContextParams.THIS_ENTITY, this);
+                        blockState.getDrops(lootParams$Builder).forEach((stack) -> this.level().addFreshEntity(new ItemEntity(this.level(), pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, stack)));
+                    }
                 }
-                this.level().getProfiler().pop();
                 blockState.getBlock().onBlockExploded(blockState, this.level(), pos, explosion);
                 if (this.level().getBlockState(pos).getExplosionResistance(this.level(), pos, explosion) < 10)
                     this.level().setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                this.level().getProfiler().pop();
             }
         }
         this.level().playSound(null, this.blockPosition(), SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.25f);
@@ -125,7 +131,7 @@ public class PrimedMiningCharge extends Entity implements TraceableEntity {
             entity.hurt(damageSource, 15f);
         }*/
         if (this.level() instanceof ServerLevel serverLevel)
-            serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, this.blockPosition().relative(this.direction, 3).getCenter().x, this.blockPosition().relative(this.direction, 3).getCenter().y, this.blockPosition().relative(this.direction, 3).getCenter().z, 1, 0d, 0d, 0d, 0d);
+            serverLevel.sendParticles(ParticleTypes.EXPLOSION_EMITTER, this.blockPosition().relative(this.getDirection(), 3).getCenter().x, this.blockPosition().relative(this.getDirection(), 3).getCenter().y, this.blockPosition().relative(this.getDirection(), 3).getCenter().z, 1, 0d, 0d, 0d, 0d);
     }
 
     protected void addAdditionalSaveData(CompoundTag pCompound) {
@@ -160,5 +166,13 @@ public class PrimedMiningCharge extends Entity implements TraceableEntity {
      */
     public int getFuse() {
         return this.entityData.get(DATA_FUSE_ID);
+    }
+
+    public void setDirection(Direction dir) {
+        this.entityData.set(DATA_DIRECTION, dir);
+    }
+
+    public Direction getDirection() {
+        return this.entityData.get(DATA_DIRECTION);
     }
 }

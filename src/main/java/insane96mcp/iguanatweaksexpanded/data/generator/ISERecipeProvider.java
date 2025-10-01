@@ -342,10 +342,10 @@ public class ISERecipeProvider extends RecipeProvider implements IConditionBuild
         featureBoundRecipe(writer, "Mining charge", MiningCharge.MINING_CHARGE.item().get(),
                 recipe -> ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, MiningCharge.MINING_CHARGE.item().get(), 2)
                         .pattern(" T ")
-                        .pattern(" S ")
                         .pattern("CCC")
-                        .define('C', Durium.NUGGET.get())
+                        .pattern(" S ")
                         .define('T', Items.TNT)
+                        .define('C', Items.IRON_NUGGET)
                         .define('S', Items.SLIME_BALL)
                         .unlockedBy("has_tnt", has(Items.TNT))
                         .save(recipe)
