@@ -18,6 +18,7 @@ import insane96mcp.iguanatweaksexpanded.setup.ISERegistries;
 import insane96mcp.iguanatweaksexpanded.setup.client.ClientSetup;
 import insane96mcp.iguanatweaksreborn.InsaneSO;
 import insane96mcp.iguanatweaksreborn.module.combat.fletching.Fletching;
+import insane96mcp.iguanatweaksreborn.module.items.altimeter.Altimeter;
 import insane96mcp.iguanatweaksreborn.module.items.copper.CopperEquipment;
 import insane96mcp.iguanatweaksreborn.module.items.pouch.Pouch;
 import insane96mcp.iguanatweaksreborn.module.items.repairkit.RepairKits;
