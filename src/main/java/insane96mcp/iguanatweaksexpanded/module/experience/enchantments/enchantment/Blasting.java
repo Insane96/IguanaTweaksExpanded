@@ -42,7 +42,7 @@ public class Blasting extends Enchantment {
         return Feature.isEnabled(NewEnchantmentsFeature.class);
     }
 
-    public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state) {
+    public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state, boolean tooltip) {
         if (state == null || entity == null)
             return 0f;
         if (!stack.isCorrectToolForDrops(state))
@@ -54,6 +54,6 @@ public class Blasting extends Enchantment {
             return 0f;
 
         float miningSpeedBoost = lvl * Math.max(0.04f, (7f - state.getBlock().getExplosionResistance()) * 0.2f) * diggerItem.speed;
-        return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, state, false, entity);
+        return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, state, false, entity, !tooltip);
     }
 }

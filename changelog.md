@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming
+* Added Dwarfing enchantment
+  * Increased mining speed the deeper you mine
+* Mining Speed tooltip no longer takes into account player's mining speed changes (such as effects or being in water / off ground)
+
 ## 1.31.0
 * Removed Portable Crates
   * Check out Pouches in ISE

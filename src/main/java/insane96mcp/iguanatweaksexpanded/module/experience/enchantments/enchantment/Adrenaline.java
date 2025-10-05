@@ -57,11 +57,11 @@ public class Adrenaline extends Enchantment implements IAttributeEnchantment {
         return EnchantmentsFeature.getEfficiencyBonus(diggerItem.speed, lvl) * 2f * durConsumed;
     }
 
-    public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state) {
+    public static float getMiningSpeedBoost(ItemStack stack, LivingEntity entity, BlockState state, boolean tooltip) {
         float miningSpeedBoost = getMiningSpeedBoost(stack);
         if (miningSpeedBoost == 0f)
             return 0f;
-        return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, state,false, entity);
+        return EnchantmentsFeature.applyMiningSpeedModifiers(miningSpeedBoost, state,false, entity, !tooltip);
     }
 
     @Override

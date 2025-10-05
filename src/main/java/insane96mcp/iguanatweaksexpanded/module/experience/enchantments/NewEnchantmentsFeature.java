@@ -12,9 +12,7 @@ import insane96mcp.iguanatweaksreborn.data.lootmodifier.DropMultiplierModifier;
 import insane96mcp.iguanatweaksreborn.event.EnchantmentBonusMiningSpeedEvent;
 import insane96mcp.iguanatweaksreborn.event.StackMaxDamageEvent;
 import insane96mcp.insanelib.base.Feature;
-import insane96mcp.insanelib.base.Label;
 import insane96mcp.insanelib.base.LoadFeature;
-import insane96mcp.insanelib.base.Module;
 import insane96mcp.insanelib.event.HurtItemStackEvent;
 import insane96mcp.insanelib.event.PlayerSprintEvent;
 import insane96mcp.insanelib.world.effect.ILMobEffect;
@@ -59,8 +57,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-@Label(name = "New Enchantments", description = "Adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'. Disabling this feature will make the new enchantments not discoverable")
-@LoadFeature(module = Modules.Ids.EXPERIENCE)
+@LoadFeature(module = Modules.Ids.EXPERIENCE, description = "Adds new enchantments. Please note that Damaging enchantments such as water coolant are enabled only if ITR 'Replace damaging enchantments' is enabled. This also applies for protection enchantments and ITR 'Replace protection enchantments'. Disabling this feature will make the new enchantments not discoverable")
 public class NewEnchantmentsFeature extends Feature {
 
 	//Tools
@@ -70,6 +67,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> EXCHANGE = ISERegistries.ENCHANTMENTS.register("exchange", Exchange::new);
 	public static final RegistryObject<Enchantment> HASTE = ISERegistries.ENCHANTMENTS.register("haste", Haste::new);
 	public static final RegistryObject<Enchantment> EARTHBEND = ISERegistries.ENCHANTMENTS.register("earthbend", Earthbend::new);
+	public static final RegistryObject<Enchantment> DWARFING = ISERegistries.ENCHANTMENTS.register("dwarfing", Dwarfing::new);
 
 	//Armor
 	public static final RegistryObject<Enchantment> MAGIC_PROTECTION = ISERegistries.ENCHANTMENTS.register("magic_protection", MagicProtection::new);
@@ -146,10 +144,6 @@ public class NewEnchantmentsFeature extends Feature {
     public static final RegistryObject<MobEffect> MOVEMENT_MOMENTUM = ISERegistries.MOB_EFFECTS.register("movement_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.MOVEMENT_SPEED, "544cf3ee-676f-4685-aec7-a6b3d64875b0", 0.0625d, AttributeModifier.Operation.MULTIPLY_BASE));
     public static final RegistryObject<MobEffect> ATTACK_MOMENTUM = ISERegistries.MOB_EFFECTS.register("attack_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false).addAttributeModifier(Attributes.ATTACK_SPEED, "f6fe8408-b88c-4e51-8892-8b20574cfc49", 0.0625d, AttributeModifier.Operation.ADDITION));
     public static final RegistryObject<MobEffect> MINING_MOMENTUM = ISERegistries.MOB_EFFECTS.register("mining_momentum", () -> new ILMobEffect(MobEffectCategory.BENEFICIAL, 0xFCD373, false));
-
-    public NewEnchantmentsFeature(Module module, boolean enabledByDefault, boolean canBeDisabled) {
-		super(module, enabledByDefault, canBeDisabled);
-	}
 
 	@SubscribeEvent
 	public void onHurtItemStack(HurtItemStackEvent event) {
@@ -243,8 +237,9 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onBreakSpeedEnchantment(EnchantmentBonusMiningSpeedEvent event) {
-		event.setNewMiningSpeed(event.getNewMiningSpeed() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
-		event.setNewMiningSpeed(event.getNewMiningSpeed() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState()));
+		event.setNewMiningSpeed(event.getNewMiningSpeed() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState(), event.isTooltip()));
+		event.setNewMiningSpeed(event.getNewMiningSpeed() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState(), event.isTooltip()));
+		event.setNewMiningSpeed(event.getNewMiningSpeed() + Dwarfing.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState(), event.isTooltip()));
 		if (event.getStack().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
 			event.setNewMiningSpeed(event.getNewMiningSpeed() * 0.5f);
 		int veiningLvl = event.getStack().getEnchantmentLevel(VEINING.get());
