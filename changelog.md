@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 1.32.0
 * Added Dwarfing enchantment
   * Increased mining speed the deeper you mine
 * Added Weathering enchantment
