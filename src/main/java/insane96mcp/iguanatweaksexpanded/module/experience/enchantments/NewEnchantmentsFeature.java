@@ -118,6 +118,7 @@ public class NewEnchantmentsFeature extends Feature {
 	public static final RegistryObject<Enchantment> SOULBOUND = ISERegistries.ENCHANTMENTS.register("soulbound", Soulbound::new);
 	public static final RegistryObject<Enchantment> ENDURING = ISERegistries.ENCHANTMENTS.register("enduring", Enduring::new);
 	public static final RegistryObject<Enchantment> KEEGO = ISERegistries.ENCHANTMENTS.register("keego", Keego::new);
+	public static final RegistryObject<Enchantment> WEATHERING = ISERegistries.ENCHANTMENTS.register("weathering", Weathering::new);
 
 	//Curses
 	public static final RegistryObject<Enchantment> CURSE_OF_EXPERIENCE = ISERegistries.ENCHANTMENTS.register("experience_curse", CurseOfExperience::new);
@@ -147,6 +148,7 @@ public class NewEnchantmentsFeature extends Feature {
 
 	@SubscribeEvent
 	public void onHurtItemStack(HurtItemStackEvent event) {
+        Weathering.applyUnbreaking(event);
 		CurseOfExperience.consumePlayerExperience(event);
 		CurseOfBloodPact.trySuckingAndRepairing(event);
 	}
@@ -170,6 +172,7 @@ public class NewEnchantmentsFeature extends Feature {
 		Retreat.applyMovementSpeedModifier(event);
 		ChargedJump.tryChargeJump(event.getEntity());
         Keego.onLivingTick(event);
+        Weathering.applyAttackSpeedBoost(event.getEntity());
 		/*if (event.getEntity() instanceof Player player && EnchantmentHelper.getEnchantmentLevel(NewEnchantmentsFeature.INVULNERABILITY.get(), player) > 0) {
 			player.setNoGravity(true);
 		}
@@ -240,6 +243,7 @@ public class NewEnchantmentsFeature extends Feature {
 		event.setNewMiningSpeed(event.getNewMiningSpeed() + Blasting.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState(), event.isTooltip()));
 		event.setNewMiningSpeed(event.getNewMiningSpeed() + Adrenaline.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState(), event.isTooltip()));
 		event.setNewMiningSpeed(event.getNewMiningSpeed() + Dwarfing.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState(), event.isTooltip()));
+		event.setNewMiningSpeed(event.getNewMiningSpeed() + Weathering.getMiningSpeedBoost(event.getStack(), event.getEntity(), event.getState(), event.isTooltip()));
 		if (event.getStack().getEnchantmentLevel(CURSE_OF_INEFFICIENCY.get()) > 0)
 			event.setNewMiningSpeed(event.getNewMiningSpeed() * 0.5f);
 		int veiningLvl = event.getStack().getEnchantmentLevel(VEINING.get());

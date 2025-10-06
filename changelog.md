@@ -3,6 +3,11 @@
 ## Upcoming
 * Added Dwarfing enchantment
   * Increased mining speed the deeper you mine
+* Added Weathering enchantment
+  * Increased stats when under different weathers
+  * Bonus efficiency when under the sunlight. Effect reduced when raining
+  * Bonus attack speed when under moon light. Effect reduced when raining
+  * 3x Unbreaking when in rain
 * Adrenaline max bonus is now at 35% durability left instead of 0%
 * Mining Speed tooltip no longer takes into account player's mining speed changes (such as effects or being in water / off ground)
 * Ensorceller recipe removed
