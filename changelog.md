@@ -5,6 +5,8 @@
   * Increased mining speed the deeper you mine
 * Adrenaline max bonus is now at 35% durability left instead of 0%
 * Mining Speed tooltip no longer takes into account player's mining speed changes (such as effects or being in water / off ground)
+* Ensorceller recipe removed
+  * It's up to pack devs to add it if needed
 
 ## 1.31.0
 * Removed Portable Crates
