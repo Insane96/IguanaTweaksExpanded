@@ -121,6 +121,9 @@ public class Weathering extends Enchantment {
     }
 
     public static void applyUnbreaking(HurtItemStackEvent event) {
+        int lvl = event.getStack().getEnchantmentLevel(NewEnchantmentsFeature.WEATHERING.get());
+        if (lvl == 0)
+            return;
         float skyLightRatio = getRainRatio(event.getEntity());
         if (skyLightRatio <= 0f)
             return;
