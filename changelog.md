@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.32.2
+* Removed better_loot data pack
+
 ## 1.32.1
 * Fixed Weathering unbreaking working without the enchantment
 

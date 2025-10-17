@@ -38,7 +38,6 @@ public class ISEDataPacks extends Feature {
         super(module, enabledByDefault, canBeDisabled);
         InsaneSE.addServerPack("advancements", "IguanaTweaks Expanded Advancements", () -> this.isEnabled() && !disableAllDataPacks && advancements);
         InsaneSE.addServerPack("item_stats", "IguanaTweaks Expanded Item Stats", () -> this.isEnabled() && !disableAllDataPacks && itemStatsDataPack);
-        InsaneSE.addServerPack("better_loot", "IguanaTweaks Expanded Better Loot", () -> this.isEnabled() && !disableAllDataPacks && betterStructureLoot);
         InsaneSE.addServerPack("block_data", "IguanaTweaks Expanded Block Data", () -> this.isEnabled() && !disableAllDataPacks && blockData);
         InsaneSE.addServerPack("supplementaries_integration", "IguanaTweaks Expanded Supplementaries Integration", () -> this.isEnabled() && !Packs.disableAllDataPacks && Packs.supplementaries && ModList.get().isLoaded("supplementaries"));
         InsaneSE.addServerPack("farmers_delight_integration", "IguanaTweaks Expanded Farmer's Delight integration", () -> this.isEnabled() && !Packs.disableAllDataPacks && ModList.get().isLoaded("farmersdelight") && Packs.farmersDelight);
