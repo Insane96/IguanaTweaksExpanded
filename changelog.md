@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.32.3
+* Fixed iron shield recipe requiring flint instead of copper shield
+
 ## 1.32.2
 * Removed better_loot data pack
 

@@ -6,7 +6,7 @@
     },
     "amount": 4,
     "gear": {
-        "item": "iguanatweaksreborn:flint_shield"
+        "item": "shieldsplus:copper_shield"
     },
     "result": "shieldsplus:iron_shield",
     "smashes_required": 10,
